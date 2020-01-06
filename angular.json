@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dawu-home"
+    }
+  },
+  "defaultProject": "dawu-home",
+  "cli": {
+    "defaultCollection": "@nativescript/schematics"
+  }
 }
