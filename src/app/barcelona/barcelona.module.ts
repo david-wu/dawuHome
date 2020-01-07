@@ -18,10 +18,10 @@ import {
     RouterModule
   ],
   declarations: [
-    ...componentDeclarations
+    ...componentDeclarations,
   ],
   providers: [
-    ...componentDeclarations
+    ...providerDeclarations,
   ]
 })
 export class BarcelonaModule { }
