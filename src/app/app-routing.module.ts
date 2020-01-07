@@ -1,10 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { AboutMeRoutes } from './about-me/about-me.routes';
+import { PortfolioRoutes } from './portfolio/portfolio.routes';
+
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'portfolio'
+  },
+  {
+    path: 'about-me',
+    children: AboutMeRoutes,
+  },
+  {
+    path: 'portfolio',
+    children: PortfolioRoutes,
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
