@@ -1,0 +1,15 @@
+@import 'mixins';
+
+:host {
+  @include top-nav-page;
+  .top-nav {
+  	background-color: $black-olive;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5rem;
+
+  	.nav-item {
+  		@include dark-button;
+  	}
+  }
+}
