@@ -10,7 +10,7 @@ export class FileGroup {
 
     public rootFileId: string;
     public filesById: Record<string, File> = {};
-    public openFileIds: Record<string, boolean> = {};
+    public closedFileIds: Record<string, boolean> = {};
 
     constructor(public seed = "dfg_") {}
 
@@ -22,8 +22,8 @@ export class FileGroup {
         parent.childIds = uniq([...(parent.childIds || []), child.id]);
     }
 
-    public setOpenFileIds(openFileIds: Record<string, boolean>) {
-        this.openFileIds = openFileIds;
+    public setClosedFileIds(closedFileIds: Record<string, boolean>) {
+        this.closedFileIds = closedFileIds;
     }
 
     public createFile(overrides: Partial<File> = {}): File {

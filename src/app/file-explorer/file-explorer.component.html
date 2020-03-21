@@ -8,8 +8,8 @@
         <ng-container *ngIf="file.childIds">
             <i
                 class="material-icons arrow clickable"
-                (click)="toggleOpenFile(file, $event)"
-                [class.open]="openFileIds[file.id]"
+                (click)="toggleClosedFile(file, $event)"
+                [class.closed]="closedFileIds[file.id]"
             >
                 keyboard_arrow_right
             </i>

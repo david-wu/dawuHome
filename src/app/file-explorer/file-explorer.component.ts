@@ -49,15 +49,15 @@ export class FileExplorerComponent {
     @Input() filesById: Record<string, File>;
     @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
 
-    @Input() openFileIds: Record<string, boolean> = {};
-    @Output() openFileIdsChange = new EventEmitter<Record<string, boolean>>();
+    @Input() closedFileIds: Record<string, boolean> = {};
+    @Output() closedFileIdsChange = new EventEmitter<Record<string, boolean>>();
 
-    @Input() fuzzFilterString: string = 'demo';
+    @Input() fuzzFilterString: string = '';
     public fuzzItemsByFileId: Record<string, FuzzItem> = {};
     public fileIdsAndDepth: Array<[string, number]> = [];
 
     public ngOnChanges(changes: SimpleChanges) {
-        if (changes.rootFileId || changes.filesById || changes.openFileIds || changes.fuzzFilterString) {
+        if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString) {
             if (this.rootFileId && this.filesById) {
                 const filesById = this.fuzzFilterString
                     ? this.getFilteredFilesById(this.fuzzFilterString, this.filesById)
@@ -160,7 +160,7 @@ export class FileExplorerComponent {
         const fileIdsAndDepth: Array<[string, number]> = [
             [currentFileId, depth],
         ];
-        if (this.openFileIds[currentFileId]) {
+        if (!this.closedFileIds[currentFileId]) {
             each(currentFile.childIds, (childId: string) => {
                 const childFile = filesById[childId];
                 const childFileIdsAndDepth = this.getFileIdsAndDepth(childId, filesById, depth + 1);
@@ -170,13 +170,13 @@ export class FileExplorerComponent {
         return fileIdsAndDepth;
     }
 
-    public toggleOpenFile(file: File, event: Event) {
+    public toggleClosedFile(file: File, event: Event) {
         event.stopPropagation();
-        this.openFileIds = {
-            ...this.openFileIds,
-            [file.id]: !this.openFileIds[file.id],
+        this.closedFileIds = {
+            ...this.closedFileIds,
+            [file.id]: !this.closedFileIds[file.id],
         };
-        this.openFileIdsChange.emit(this.openFileIds);
+        this.closedFileIdsChange.emit(this.closedFileIds);
     }
 
     public getPaddingLeft(depth: number) {

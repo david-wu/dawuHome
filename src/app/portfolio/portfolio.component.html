@@ -18,8 +18,8 @@
     <dwu-file-explorer
         [rootFileId]="fileGroup.rootFileId"
         [filesById]="fileGroup.filesById"
-        [openFileIds]="fileGroup.openFileIds"
-        (openFileIdsChange)="fileGroup.setOpenFileIds($event)"
+        [closedFileIds]="fileGroup.closedFileIds"
+        (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
         [fuzzFilterString]="filterStr"
     ></dwu-file-explorer>
     <router-outlet></router-outlet>
