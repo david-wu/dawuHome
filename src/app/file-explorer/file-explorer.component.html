@@ -1,0 +1,26 @@
+<div *ngFor="let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn">
+    <div
+        *ngIf="filesById[fileIdAndDepth[0]] as file"
+        class="file-row"
+        [ngClass]="(i % 2) ? 'odd' : 'even'"
+        [style.padding-left]="getPaddingLeft(fileIdAndDepth[1])"
+    >
+        <ng-container *ngIf="file.childIds">
+            <i
+                class="material-icons arrow clickable"
+                (click)="toggleOpenFile(file)"
+                [class.open]="openFileIds[file.id]"
+            >
+                keyboard_arrow_right
+            </i>
+            <i class="material-icons folder">
+                folder
+            </i>
+        </ng-container>
+        <div *ngIf="!file.childIds" class="space-maker">
+        </div>
+        <div class="file-label">
+            {{ file.label || file.id }}
+        </div>
+    </div>
+</div>

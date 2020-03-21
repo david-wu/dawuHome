@@ -11,7 +11,6 @@ import { PortfolioModule } from '@src/app/portfolio/portfolio.module';
 
 import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
 
-
 @NgModule({
   imports: [
     AboutMeModule,

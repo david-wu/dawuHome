@@ -9,6 +9,7 @@ import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 import { PortfolioRoutes } from '@src/app/portfolio/portfolio.routes';
 
 import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
+import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    FileExplorerModule,
   ],
   declarations: [
     PortfolioComponent,

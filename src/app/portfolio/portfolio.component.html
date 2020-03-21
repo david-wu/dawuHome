@@ -11,5 +11,11 @@
     >fuzz-js</div>
 </div>
 <div class="main-content">
-  <router-outlet></router-outlet>
+    <dwu-file-explorer
+        [rootFileId]="fileGroup.rootFileId"
+        [filesById]="fileGroup.filesById"
+        [openFileIds]="fileGroup.openFileIds"
+        (openFileIdsChange)="fileGroup.setOpenFileIds($event)"
+    ></dwu-file-explorer>
+    <router-outlet></router-outlet>
 </div>

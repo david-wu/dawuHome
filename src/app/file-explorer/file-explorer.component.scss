@@ -1,0 +1,45 @@
+
+@import 'mixins';
+
+.file-row {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0;
+    &.even {
+        background-color: $eggshell;
+    }
+    &.odd {
+        background-color: $eggshell-light;
+    }
+    &:hover {
+        background-color: $eggshell-dark;
+    }
+
+    .material-icons {
+        user-select: none;
+        font-size: 1rem;
+        &.folder {
+            margin-left: 0.25rem;
+        }
+        &.arrow {
+            // make click target bigger
+            padding: 0.25rem;
+            margin: -0.25rem;
+            transition-duration: 200ms;
+            transform: rotate(0);
+            &.open {
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .space-maker {
+        width: 2rem;
+    }
+    .file-label {
+        margin-left: 0.25rem;
+    }
+}
+
+.clickable {
+    cursor: pointer;
+}

@@ -1,30 +1,39 @@
 @import 'variables';
 
 @mixin dark-button {
-  min-width: 10rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  text-align: center;
-  background-color: $black-olive;
-  color: $lightest-green;
-  &:hover {
-    background-color: $army-green;
+    @include dark-theme;
+    @include button-md;
+}
+
+@mixin button-md {
+    min-width: 10rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+}
+
+@mixin dark-theme {
+    background-color: $black-olive;
     color: $lightest-green;
-  }
-  &.active {
-    background-color: $olive-green;
-    color: $lightest-green;
-  }
+    &:hover {
+        background-color: $army-green;
+        color: $lightest-green;
+    }
+    &.active {
+        background-color: $olive-green;
+        color: $lightest-green;
+    }
 }
 
 @mixin top-nav-page {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  .main-content {
-    flex: 1 1 0;
-    overflow: auto;
-    background-color: $lightest-green;
-  }
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .main-content {
+        flex: 1 1 0;
+        overflow: auto;
+        background-color: $lightest-green;
+    }
 }
