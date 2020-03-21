@@ -1,4 +1,4 @@
-<div class="top-nav">
+<!-- <div class="top-nav">
     <div
     class="nav-item"
     [routerLinkActive]="['active']"
@@ -9,13 +9,18 @@
     [routerLinkActive]="['active']"
     [routerLink]="['fuzz']"
     >fuzz-js</div>
-</div>
+</div> -->
+
 <div class="main-content">
+    <div>
+        <input type="text" [(ngModel)]="filterStr">
+    </div>
     <dwu-file-explorer
         [rootFileId]="fileGroup.rootFileId"
         [filesById]="fileGroup.filesById"
         [openFileIds]="fileGroup.openFileIds"
         (openFileIdsChange)="fileGroup.setOpenFileIds($event)"
+        [fuzzFilterString]="filterStr"
     ></dwu-file-explorer>
     <router-outlet></router-outlet>
 </div>

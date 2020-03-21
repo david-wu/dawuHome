@@ -23,13 +23,14 @@ export class FileGroup {
     }
 
     public setOpenFileIds(openFileIds: Record<string, boolean>) {
-        console.log('setOpenFileIds', openFileIds)
         this.openFileIds = openFileIds;
     }
 
     public createFile(overrides: Partial<File> = {}): File {
+        const uniqueId = this.getUniqueId();
         const newFile = Object.assign(new File(), {
-            id: this.getUniqueId(),
+            id: uniqueId,
+            label: uniqueId,
             ...overrides,
         });
         this.filesById = {

@@ -16,15 +16,15 @@ export class PortfolioComponent {
     }
 
     public populateFileGroup() {
-        const root = this.fileGroup.createFile();
+        const root = this.fileGroup.createFile({label: 'projects'});
         this.fileGroup.setRootFile(root);
 
-        const f1 = this.fileGroup.createFile();
-        const f2 = this.fileGroup.createFile();
-        const f3 = this.fileGroup.createFile();
-        const f4 = this.fileGroup.createFile();
-        const f5 = this.fileGroup.createFile();
-        const f6 = this.fileGroup.createFile();
+        const f1 = this.fileGroup.createFile({label: 'fuzz'});
+        const f2 = this.fileGroup.createFile({label: 'library'});
+        const f3 = this.fileGroup.createFile({label: 'demo'});
+        const f4 = this.fileGroup.createFile({label: 'demo2'});
+        const f5 = this.fileGroup.createFile({label: 'source'});
+        const f6 = this.fileGroup.createFile({label: 'fileExplorer'});
         const f7 = this.fileGroup.createFile();
         this.fileGroup.addAsChild(root, f1);
         this.fileGroup.addAsChild(f1, f3);

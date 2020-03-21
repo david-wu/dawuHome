@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
@@ -14,6 +15,7 @@ import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module'
 @NgModule({
   imports: [
     RouterModule.forChild(PortfolioRoutes),
+    FormsModule,
     FuzzAppModule,
     BrowserModule,
     AppRoutingModule,
