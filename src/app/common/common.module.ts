@@ -2,22 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FILE_EXPLORER_COMPONENTS } from './index';
-import { CommonModule } from '@src/app/common/common.module';
+import { TextDecoratorComponent } from './index';
 
 @NgModule({
   imports: [
     BrowserModule,
-    CommonModule,
     NoopAnimationsModule,
   ],
   declarations: [
-    ...FILE_EXPLORER_COMPONENTS,
+    TextDecoratorComponent,
   ],
   exports: [
-    ...FILE_EXPLORER_COMPONENTS,
+    TextDecoratorComponent,
   ],
   providers: [],
 })
-export class FileExplorerModule { }
+export class CommonModule { }
 

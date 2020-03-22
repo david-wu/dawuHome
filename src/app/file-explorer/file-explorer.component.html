@@ -19,7 +19,13 @@
         </ng-container>
         <div *ngIf="!file.childIds" class="space-maker">
         </div>
-        <div class="file-label">
+        <div class="file-label" *ngIf="fuzzItemsByFileId[file.id] as fuzzItem">
+            <dwu-text-decorator
+                [text]="fuzzItemsByFileId[file.id].subject"
+                [matchRanges]="fuzzItemsByFileId[file.id].matchRanges"
+            ></dwu-text-decorator>
+        </div>
+        <div class="file-label" *ngIf="!fuzzItemsByFileId[file.id]">
             {{ file.label || file.id }}
         </div>
     </div>

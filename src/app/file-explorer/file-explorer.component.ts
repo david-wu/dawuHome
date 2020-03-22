@@ -59,6 +59,7 @@ export class FileExplorerComponent {
     public ngOnChanges(changes: SimpleChanges) {
         if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString) {
             if (this.rootFileId && this.filesById) {
+                this.fuzzItemsByFileId = {};
                 const filesById = this.fuzzFilterString
                     ? this.getFilteredFilesById(this.fuzzFilterString, this.filesById)
                     : this.filesById;
@@ -91,7 +92,6 @@ export class FileExplorerComponent {
             { subjectKeys: ['label'] },
         );
 
-        this.fuzzItemsByFileId = {};
         fuzzResults.forEach((fuzzItem: FuzzItem) => {
             this.fuzzItemsByFileId[fuzzItem.original.id] = fuzzItem;
         });

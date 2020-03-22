@@ -20,21 +20,26 @@ export class PortfolioComponent {
         this.fileGroup.setRootFile(root);
 
         const f1 = this.fileGroup.createFile({label: 'fuzz'});
-        const f2 = this.fileGroup.createFile({label: 'library'});
+        const f2 = this.fileGroup.createFile({label: 'todos'});
         const f3 = this.fileGroup.createFile({label: 'demo'});
-        const f4 = this.fileGroup.createFile({label: 'demo2'});
-        const f5 = this.fileGroup.createFile({label: 'source'});
-        const f6 = this.fileGroup.createFile({label: 'fileExplorer'});
-        const f7 = this.fileGroup.createFile();
+        const f4 = this.fileGroup.createFile({label: 'text-decorator'});
+        const f5 = this.fileGroup.createFile({label: 'fluid-height'});
+        const f6 = this.fileGroup.createFile({label: 'select-files'});
+        const f7 = this.fileGroup.createFile({label: 'drag-n-drop-files'});
+        const f8 = this.fileGroup.createFile({label: 'fileTypes: markdown, text, sql'});
+        const f9 = this.fileGroup.createFile({label: 'earley'});
+        const f10 = this.fileGroup.createFile({label: 'components'});
         this.fileGroup.addAsChild(root, f1);
         this.fileGroup.addAsChild(f1, f3);
 
         this.fileGroup.addAsChild(root, f2);
-        this.fileGroup.addAsChild(f2, f4);
-        this.fileGroup.addAsChild(f2, f5);
-        this.fileGroup.addAsChild(f2, f6);
-
-        this.fileGroup.addAsChild(root, f7);
+        this.fileGroup.addAsChild(f10, f4);
+        this.fileGroup.addAsChild(f10, f5);
+        this.fileGroup.addAsChild(f10, f6);
+        this.fileGroup.addAsChild(f10, f7);
+        this.fileGroup.addAsChild(f2, f8);
+        this.fileGroup.addAsChild(f2, f9);
+        this.fileGroup.addAsChild(f2, f10);
     }
 
 }
