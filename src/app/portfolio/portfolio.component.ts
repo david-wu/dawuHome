@@ -22,10 +22,10 @@ export class PortfolioComponent {
         const f1 = this.fileGroup.createFile({label: 'fuzz'});
         const f2 = this.fileGroup.createFile({label: 'todos'});
         const f3 = this.fileGroup.createFile({label: 'demo'});
-        const f4 = this.fileGroup.createFile({label: 'text-decorator'});
-        const f5 = this.fileGroup.createFile({label: 'fluid-height'});
-        const f6 = this.fileGroup.createFile({label: 'select-files'});
-        const f7 = this.fileGroup.createFile({label: 'drag-n-drop-files'});
+        const f4 = this.fileGroup.createFile({label: 'shift/control-select'});
+        const f5 = this.fileGroup.createFile({label: 'mobile'});
+        const f6 = this.fileGroup.createFile({label: 'angular-animation-on-destroy'});
+        const f7 = this.fileGroup.createFile({label: 'drag-n-drop-move-files'});
         const f8 = this.fileGroup.createFile({label: 'fileTypes: markdown, text, sql'});
         const f9 = this.fileGroup.createFile({label: 'earley'});
         const f10 = this.fileGroup.createFile({label: 'components'});

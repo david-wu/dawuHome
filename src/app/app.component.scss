@@ -26,6 +26,7 @@
                 .nav-item {
                     @include dark-button;
                     margin: 0 0.25rem;
+                    border-radius: 4px 4px 0 0;
                 }
             }
         }

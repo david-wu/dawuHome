@@ -3,7 +3,9 @@
         *ngIf="filesById[fileIdAndDepth[0]] as file"
         class="file-row"
         [ngClass]="(i % 2) ? 'odd' : 'even'"
+        [class.selected]="selectedFileIds.has(file.id)"
         [style.padding-left]="getPaddingLeft(fileIdAndDepth[1])"
+        (click)="selectFile(file)"
     >
         <ng-container *ngIf="file.childIds">
             <i

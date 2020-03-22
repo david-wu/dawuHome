@@ -11,8 +11,13 @@ export class FileGroup {
     public rootFileId: string;
     public filesById: Record<string, File> = {};
     public closedFileIds: Record<string, boolean> = {};
+    public selectedFileIds: Set<string> = new Set<string>();
 
     constructor(public seed = "dfg_") {}
+
+    public setSelectedFileIds(fileIds: Set<string>) {
+        this.selectedFileIds = fileIds;
+    }
 
     public setRootFile(file: File) {
         this.rootFileId = file.id;

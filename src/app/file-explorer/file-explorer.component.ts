@@ -52,11 +52,15 @@ export class FileExplorerComponent {
     @Input() closedFileIds: Record<string, boolean> = {};
     @Output() closedFileIdsChange = new EventEmitter<Record<string, boolean>>();
 
+    @Input() selectedFileIds: Set<string> = new Set<string>();
+    @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
+
     @Input() fuzzFilterString: string = '';
     public fuzzItemsByFileId: Record<string, FuzzItem> = {};
     public fileIdsAndDepth: Array<[string, number]> = [];
 
     public ngOnChanges(changes: SimpleChanges) {
+        console.log('changes', changes)
         if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString) {
             if (this.rootFileId && this.filesById) {
                 this.fuzzItemsByFileId = {};
@@ -177,6 +181,10 @@ export class FileExplorerComponent {
             [file.id]: !this.closedFileIds[file.id],
         };
         this.closedFileIdsChange.emit(this.closedFileIds);
+    }
+
+    public selectFile(file: File) {
+        this.selectedFileIdsChange.emit(new Set([file.id]));
     }
 
     public getPaddingLeft(depth: number) {

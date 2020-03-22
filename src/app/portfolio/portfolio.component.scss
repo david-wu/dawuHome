@@ -1,5 +1,21 @@
 @import 'mixins';
 
 :host {
-  @include top-nav-page;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    .left-side {
+        overflow: hidden;
+        max-width: 30%;
+        width: 20rem;
+    }
+    .right-side {
+        flex: 1 1 0;
+        overflow: auto;
+    }
+}
+
+dwu-file-explorer {
+    height: 100%;
+    width: 100%;
 }

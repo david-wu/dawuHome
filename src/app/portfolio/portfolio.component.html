@@ -1,26 +1,17 @@
-<!-- <div class="top-nav">
-    <div
-    class="nav-item"
-    [routerLinkActive]="['active']"
-    [routerLink]="['overview']"
-    >overview</div>
-    <div
-    class="nav-item"
-    [routerLinkActive]="['active']"
-    [routerLink]="['fuzz']"
-    >fuzz-js</div>
-</div> -->
-
-<div class="main-content">
+<div class="left-side">
     <div>
         <input type="text" [(ngModel)]="filterStr">
     </div>
     <dwu-file-explorer
         [rootFileId]="fileGroup.rootFileId"
         [filesById]="fileGroup.filesById"
+        [fuzzFilterString]="filterStr"
         [closedFileIds]="fileGroup.closedFileIds"
         (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
-        [fuzzFilterString]="filterStr"
+        [selectedFileIds]="fileGroup.selectedFileIds"
+        (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
     ></dwu-file-explorer>
+</div>
+<div class="right-side">
     <router-outlet></router-outlet>
 </div>
