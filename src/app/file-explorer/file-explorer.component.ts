@@ -56,41 +56,48 @@ export class FileExplorerComponent {
     public fuzzItemsByFileId: Record<string, FuzzItem> = {};
     public fileIdsAndDepth: Array<[string, number]> = [];
     public visibleFileIds: Set<string> = new Set<string>();
+    public fileIsOddById: Record<string, boolean> = {}
 
     public ngOnChanges(changes: SimpleChanges) {
         if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString) {
             if (this.rootFileId && this.filesById) {
-                if (!this.fuzzFilterString) {
-                    this.fuzzItemsByFileId = {};
-                    this.fileIdsAndDepth = this.getFileIdsAndDepth(
-                        this.rootFileId,
-                        this.filesById,
-                        0,
-                    );
-                    this.visibleFileIds = this.getVisibleFileIds(
-                        this.rootFileId,
-                        this.filesById,
-                        this.closedFileIds,
-                    );
-                } else {
-                    this.fuzzItemsByFileId = this.getFuzzResultsByFileId(this.fuzzFilterString, this.filesById);
-                    // maxScore is the highest score between the item and all its descendants
-                    // low max scores will get filtered out
-                    const clonedFileIndex = cloneDeep(this.filesById);
-                    const maxScoresByFileId = this.sortFileIndexChildren(clonedFileIndex, this.fuzzItemsByFileId);
-                    this.fileIdsAndDepth = this.getFileIdsAndDepth(
-                        this.rootFileId,
-                        clonedFileIndex,
-                        0,
-                    );
-                    this.visibleFileIds = this.getVisibleFileIds(
-                        this.rootFileId,
-                        clonedFileIndex,
-                        this.closedFileIds,
-                        maxScoresByFileId,
-                    );
-                }
+                this.setTableIndices();
             }
+        }
+    }
+
+    public setTableIndices() {
+        if (!this.fuzzFilterString) {
+            this.fuzzItemsByFileId = {};
+            this.fileIdsAndDepth = this.getFileIdsAndDepth(
+                this.rootFileId,
+                this.filesById,
+                0,
+            );
+            this.visibleFileIds = this.getVisibleFileIds(
+                this.rootFileId,
+                this.filesById,
+                this.closedFileIds,
+            );
+            this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
+        } else {
+            this.fuzzItemsByFileId = this.getFuzzResultsByFileId(this.fuzzFilterString, this.filesById);
+            // maxScore is the highest score between the item and all its descendants
+            // low max scores will get filtered out
+            const clonedFileIndex = cloneDeep(this.filesById);
+            const maxScoresByFileId = this.sortFileIndexChildren(clonedFileIndex, this.fuzzItemsByFileId);
+            this.fileIdsAndDepth = this.getFileIdsAndDepth(
+                this.rootFileId,
+                clonedFileIndex,
+                0,
+            );
+            this.visibleFileIds = this.getVisibleFileIds(
+                this.rootFileId,
+                clonedFileIndex,
+                this.closedFileIds,
+                maxScoresByFileId,
+            );
+            this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
         }
     }
 
@@ -113,9 +120,10 @@ export class FileExplorerComponent {
         });
         return fuzzItemsByFileId;
     }
+
     /**
      * sortFileIndexChildren
-     * Filters and sorts the childIds for a file tree
+     * Sorts the childIds for a file tree
      * @param {Record<string, File>} filesById
      * @param {Set<string>} fileIdsToKeep
      */
@@ -187,6 +195,19 @@ export class FileExplorerComponent {
             });
         }
         return visibleFileIds;
+    }
+
+    public getFileIsOddById(fileIdsAndDepth: Array<[string, number]>, visibleFileIds: Set<string>) {
+        const fileIsOddById = {}
+        let isOdd = false;
+        for(let i = 0; i < fileIdsAndDepth.length; i++) {
+            const fileId = fileIdsAndDepth[i][0];
+            if (visibleFileIds.has(fileId)) {
+                isOdd = !isOdd;
+            }
+            fileIsOddById[fileId] = isOdd;
+        }
+        return fileIsOddById;
     }
 
     public toggleClosedFile(file: File, event: Event) {

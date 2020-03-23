@@ -1,8 +1,9 @@
-<div *ngFor="let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn">
+<div cdkDropList>
+<div *ngFor="let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn" cdkDrag>
     <div
         *ngIf="filesById[fileIdAndDepth[0]] as file"
         class="file-row"
-        [ngClass]="(i % 2) ? 'odd' : 'even'"
+        [ngClass]="fileIsOddById[file.id] ? 'odd' : 'even'"
         [class.selected]="selectedFileIds.has(file.id)"
         [class.hidden]="visibleFileIds && !visibleFileIds.has(file.id)"
         [style.padding-left]="getPaddingLeft(fileIdAndDepth[1])"
@@ -33,4 +34,5 @@
             {{ file.label || file.id }}
         </div>
     </div>
+</div>
 </div>

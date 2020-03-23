@@ -3,28 +3,27 @@
 
 :host {
     display: block;
-    background-color: $eggshell-dark;
+    background-color: $eggshell-darker;
     overflow: auto;
 }
 
 .file-row {
     display: flex;
     align-items: center;
-    padding: 0.25rem 0;
     overflow-y: hidden;
 
     height: 1.5rem;
-    transform: scaleY(1);
-    transition: height 100ms, transform 100ms;
-    &.even {
-        background-color: $eggshell;
-    }
+    transition: height 75ms linear, color 75ms linear;
     &.odd {
         background-color: $eggshell-light;
+    }
+    &.even {
+        background-color: $eggshell-dark;
     }
     &.selected {
         background-color: $olive-green;
         color: $lightest-green;
+        transition: height 75ms linear;
     }
     &:hover:not(.selected) {
         background-color: $laurel-green;
@@ -32,7 +31,7 @@
     &.hidden {
         height: 0;
         padding: 0;
-        transform: scaleY(0);
+        color: rgba(0,0,0,0);
     }
 
     .material-icons {
@@ -45,7 +44,7 @@
             // make click target bigger
             padding: 0.25rem;
             margin: -0.25rem;
-            transition: transform 100ms;
+            transition: transform 75ms linear;
             transform: rotate(90deg);
             &.closed {
                 transform: rotate(0);
