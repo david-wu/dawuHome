@@ -5,6 +5,8 @@ import {
     Output,
     SimpleChanges,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import {
     Fuzz,
     FuzzItem,
@@ -12,8 +14,13 @@ import {
 import {
     cloneDeep,
     isUndefined,
+    includes,
     each,
+    without,
+    uniq,
 } from 'lodash';
+import { DragulaService } from 'ng2-dragula';
+
 import {
     File,
     FileType,
@@ -43,6 +50,9 @@ function reverseBreadthFirstBy(rootNode, getChildren, iteratee) {
     selector: 'dwu-file-explorer',
     templateUrl: './file-explorer.component.html',
     styleUrls: ['./file-explorer.component.scss'],
+    providers: [
+        DragulaService,
+    ],
 })
 export class FileExplorerComponent {
     @Input() rootFileId: string;
@@ -53,10 +63,85 @@ export class FileExplorerComponent {
     @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
     @Output() closedFileIdsChange = new EventEmitter<Record<string, boolean>>();
     @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
+    public parentIdsByFileId: Record<string, string>;
     public fuzzItemsByFileId: Record<string, FuzzItem> = {};
     public fileIdsAndDepth: Array<[string, number]> = [];
     public visibleFileIds: Set<string> = new Set<string>();
     public fileIsOddById: Record<string, boolean> = {}
+    private subs = new Subscription();
+
+    public fileIdBeingDragged: string;
+
+    constructor(private dragulaService: DragulaService) {
+        const drakeGroup = dragulaService.createGroup('EXP', {
+          isContainer: (el) => {
+              const fileId = el.getAttribute('data-file-id');
+              if (!fileId) {
+                  return false;
+              }
+              return !!this.filesById[fileId].childIds;
+          },
+          revertOnSpill: false,
+        });
+
+        this.subs.add(this.dragulaService.drop('EXP')
+            .subscribe((drop) => {
+                // use on our own dom manipulation
+                drakeGroup.drake.cancel(true);
+
+                console.log('drop', drop)
+                // if (this.getElFileId(drop.target)) {
+                //     this.addFileToFileChildren(
+                //         this.getElFileId(drop.el),
+                //         this.getElFileId(drop.target),
+                //     );
+                // } else {
+                //     this.insertFileBeforeFile(
+                //         this.getElFileId(drop.el),
+                //         this.getElFileId(drop.sibling),
+                //     );
+                // }
+
+                if (drop.sibling && this.getElFileId(drop.sibling)) {
+                    this.insertFileBeforeFile(
+                        this.getElFileId(drop.el),
+                        this.getElFileId(drop.sibling),
+                    );
+                } else {
+                    this.addFileToFileChildren(
+                        this.getElFileId(drop.el),
+                        this.getElFileId(drop.target),
+                    );
+                }
+            })
+        );
+
+        this.subs.add(this.dragulaService.over('EXP')
+            .subscribe(({ el }) => {
+                // if a folder is being dragged isContainer function will return true
+                // this makes 'el' be the childElement so I also check the parentNode's attribute
+                const nextFileIdBeingDragged = this.getElFileId(el);
+
+                // for the first over event after a dragend, el is the element being dragged
+                if (!this.fileIdBeingDragged && (this.fileIdBeingDragged !== nextFileIdBeingDragged)) {
+                    this.fileIdBeingDragged = nextFileIdBeingDragged;
+                    this.closedFileIdsChange.emit({
+                        ...this.closedFileIds,
+                        [this.fileIdBeingDragged]: true,
+                    })
+                }
+            })
+        );
+
+        this.subs.add(this.dragulaService.dragend('EXP')
+            .subscribe(() => {
+                if (this.fileIdBeingDragged) {
+                    this.fileIdBeingDragged = undefined;
+                }
+            }),
+        );
+
+    }
 
     public ngOnChanges(changes: SimpleChanges) {
         if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString) {
@@ -66,7 +151,78 @@ export class FileExplorerComponent {
         }
     }
 
+    public insertFileBeforeFile(fileId1, fileId2) {
+        if (fileId2 === this.rootFileId) {
+            return;
+        }
+
+        // const fileToInsert = fileId1;
+        let changes = {};
+        each(this.filesById, (file: File) => {
+            if (includes(file.childIds, fileId1)) {
+                changes[file.id] = Object.assign(new File(), {
+                    ...file,
+                    childIds: without(file.childIds, fileId1),
+                });
+            }
+        });
+
+        const insertParent = this.filesById[this.parentIdsByFileId[fileId2]];
+        const nextChildIds = without(insertParent.childIds, fileId1);
+        const insertionIndex = nextChildIds.indexOf(fileId2);
+        nextChildIds.splice(insertionIndex, 0, fileId1);
+
+        console.log(fileId1, fileId2)
+        changes[insertParent.id] = Object.assign(new File(), {
+            ...insertParent,
+            childIds: nextChildIds,
+        });
+        this.filesByIdChange.emit({
+            ...this.filesById,
+            ...changes,
+        })
+    }
+
+    public addFileToFileChildren(fileId1, fileId2) {
+        // empty fileId2 means insert after the last element
+        fileId2 = fileId2 || this.rootFileId;
+        let changes = {};
+        each(this.filesById, (file: File) => {
+            if (includes(file.childIds, fileId1)) {
+                changes[file.id] = Object.assign(new File(), {
+                    ...file,
+                    childIds: without(file.childIds, fileId1),
+                });
+            }
+        });
+
+        const parentFile = this.filesById[fileId2];
+        changes[parentFile.id] = Object.assign(new File(), {
+            ...this.filesById[parentFile.id],
+            childIds: uniq([fileId1, ...parentFile.childIds]),
+        });
+        this.filesByIdChange.emit({
+            ...this.filesById,
+            ...changes,
+        })
+    }
+
+    public getParentIdsByFileId(fileId: string, filesById: Record<string, File>) {
+        const file = filesById[fileId];
+        const parentIdsByFileId = {};
+
+        each(file.childIds, (childId: string) => {
+            parentIdsByFileId[childId] = fileId;
+            const innerParentIdsByFileId = this.getParentIdsByFileId(childId, filesById);
+            each(innerParentIdsByFileId, (parentId: string, grandChildId: string) => {
+                parentIdsByFileId[grandChildId] = parentId;
+            });
+        });
+        return parentIdsByFileId;
+    }
+
     public setTableIndices() {
+        this.parentIdsByFileId = this.getParentIdsByFileId(this.rootFileId, this.filesById);
         if (!this.fuzzFilterString) {
             this.fuzzItemsByFileId = {};
             this.fileIdsAndDepth = this.getFileIdsAndDepth(
@@ -230,5 +386,16 @@ export class FileExplorerComponent {
     public trackByFn(fileIdAndDepth: [string, number]) {
         return fileIdAndDepth[0];
     }
+
+    public getElFileId(el) {
+        if (!el) {
+            return;
+        }
+        return el.getAttribute('data-file-id') || el.parentNode.getAttribute('data-file-id');
+    }
+
+    // public dragStart(file) {
+    //     console.log('dragStart', file)
+    // }
 
 }
