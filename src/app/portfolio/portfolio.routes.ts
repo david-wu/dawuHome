@@ -7,21 +7,10 @@ import { DemoPageWrapperComponent as FuzzDemoPageComponent } from 'fuzz-demo-app
 export const PortfolioRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'fuzz',
-    pathMatch: 'full'
+    component: PortfolioComponent,
   },
   {
-    path: '',
-    component: PortfolioComponent,
-    children: [
-      {
-        path: 'overview',
-        component: FuzzDemoPageComponent,
-      },
-      {
-        path: 'fuzz',
-        component: FuzzDemoPageComponent,
-      },
-    ],
+    path: '**',
+    redirectTo: '',
   },
 ];

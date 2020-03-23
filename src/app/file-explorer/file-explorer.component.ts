@@ -184,8 +184,6 @@ export class FileExplorerComponent {
     }
 
     public addFileToFileChildren(fileId1, fileId2) {
-        // empty fileId2 means insert after the last element
-        fileId2 = fileId2 || this.rootFileId;
         let changes = {};
         each(this.filesById, (file: File) => {
             if (includes(file.childIds, fileId1)) {
@@ -196,11 +194,21 @@ export class FileExplorerComponent {
             }
         });
 
-        const parentFile = this.filesById[fileId2];
-        changes[parentFile.id] = Object.assign(new File(), {
-            ...this.filesById[parentFile.id],
-            childIds: uniq([fileId1, ...parentFile.childIds]),
-        });
+        // empty fileId2 means insert after the last element
+        if (fileId2) {
+            const parentFile = this.filesById[fileId2];
+            changes[parentFile.id] = Object.assign(new File(), {
+                ...this.filesById[parentFile.id],
+                childIds: uniq([fileId1, ...parentFile.childIds]),
+            });
+        } else {
+            const parentFile = this.filesById[this.rootFileId];
+            changes[parentFile.id] = Object.assign(new File(), {
+                ...this.filesById[parentFile.id],
+                childIds: uniq([...parentFile.childIds, fileId1]),
+            });
+        }
+
         this.filesByIdChange.emit({
             ...this.filesById,
             ...changes,
@@ -270,7 +278,7 @@ export class FileExplorerComponent {
                 skipFilter: true,
             },
         );
-        const fuzzItemsByFileId = {}
+        const fuzzItemsByFileId = {};
         fuzzResults.forEach((fuzzItem: FuzzItem) => {
             fuzzItemsByFileId[fuzzItem.original.id] = fuzzItem;
         });
@@ -393,9 +401,5 @@ export class FileExplorerComponent {
         }
         return el.getAttribute('data-file-id') || el.parentNode.getAttribute('data-file-id');
     }
-
-    // public dragStart(file) {
-    //     console.log('dragStart', file)
-    // }
 
 }
