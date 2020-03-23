@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     EventEmitter,
     Input,
@@ -12,6 +13,7 @@ import {
 import {
     cloneDeep,
     each,
+    isEqual,
 } from 'lodash';
 
 interface SpanElement {
@@ -22,18 +24,26 @@ interface SpanElement {
 @Component({
     selector: 'dwu-text-decorator',
     templateUrl: './text-decorator.component.html',
-    styleUrls: ['./text-decorator.component.scss']
+    styleUrls: ['./text-decorator.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextDecoratorComponent {
 
     @Input() text: string = '';
     @Input() matchRanges: number[][] = [];
+    @Input() ignoreUpdates: boolean = false;
 
     public spanElements: SpanElement[] = [];
 
     public ngOnChanges(changes: SimpleChanges) {
+        if (this.ignoreUpdates) {
+            return;
+        }
         if (changes.text || changes.matchRanges) {
-            this.spanElements = this.getSpanElements();
+            const willResultingElementsChange = changes.text || !isEqual(changes.matchRanges.currentValue, changes.matchRanges.previousValue);
+            if (willResultingElementsChange) {
+                this.spanElements = this.getSpanElements();
+            }
         }
     }
 

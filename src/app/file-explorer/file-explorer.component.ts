@@ -11,6 +11,7 @@ import {
 } from 'fuzz-js';
 import {
     cloneDeep,
+    isUndefined,
     each,
 } from 'lodash';
 import {
@@ -41,77 +42,84 @@ function reverseBreadthFirstBy(rootNode, getChildren, iteratee) {
 @Component({
     selector: 'dwu-file-explorer',
     templateUrl: './file-explorer.component.html',
-    styleUrls: ['./file-explorer.component.scss']
+    styleUrls: ['./file-explorer.component.scss'],
 })
 export class FileExplorerComponent {
     @Input() rootFileId: string;
-
-    @Input() filesById: Record<string, File>;
-    @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
-
-    @Input() closedFileIds: Record<string, boolean> = {};
-    @Output() closedFileIdsChange = new EventEmitter<Record<string, boolean>>();
-
-    @Input() selectedFileIds: Set<string> = new Set<string>();
-    @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
-
     @Input() fuzzFilterString: string = '';
+    @Input() filesById: Record<string, File>;
+    @Input() closedFileIds: Record<string, boolean> = {};
+    @Input() selectedFileIds: Set<string> = new Set<string>();
+    @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
+    @Output() closedFileIdsChange = new EventEmitter<Record<string, boolean>>();
+    @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
     public fuzzItemsByFileId: Record<string, FuzzItem> = {};
     public fileIdsAndDepth: Array<[string, number]> = [];
+    public visibleFileIds: Set<string> = new Set<string>();
 
     public ngOnChanges(changes: SimpleChanges) {
-        console.log('changes', changes)
         if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString) {
             if (this.rootFileId && this.filesById) {
-                this.fuzzItemsByFileId = {};
-                const filesById = this.fuzzFilterString
-                    ? this.getFilteredFilesById(this.fuzzFilterString, this.filesById)
-                    : this.filesById;
-
-                this.fileIdsAndDepth = this.getFileIdsAndDepth(
-                    this.rootFileId,
-                    filesById,
-                    0,
-                );
+                if (!this.fuzzFilterString) {
+                    this.fuzzItemsByFileId = {};
+                    this.fileIdsAndDepth = this.getFileIdsAndDepth(
+                        this.rootFileId,
+                        this.filesById,
+                        0,
+                    );
+                    this.visibleFileIds = this.getVisibleFileIds(
+                        this.rootFileId,
+                        this.filesById,
+                        this.closedFileIds,
+                    );
+                } else {
+                    this.fuzzItemsByFileId = this.getFuzzResultsByFileId(this.fuzzFilterString, this.filesById);
+                    // maxScore is the highest score between the item and all its descendants
+                    // low max scores will get filtered out
+                    const clonedFileIndex = cloneDeep(this.filesById);
+                    const maxScoresByFileId = this.sortFileIndexChildren(clonedFileIndex, this.fuzzItemsByFileId);
+                    this.fileIdsAndDepth = this.getFileIdsAndDepth(
+                        this.rootFileId,
+                        clonedFileIndex,
+                        0,
+                    );
+                    this.visibleFileIds = this.getVisibleFileIds(
+                        this.rootFileId,
+                        clonedFileIndex,
+                        this.closedFileIds,
+                        maxScoresByFileId,
+                    );
+                }
             }
         }
     }
 
-    /**
-     * getFilteredFilesById
-     * Returns a clone of filesById that is filtered
-     * populates this.fuzzItemsByFileId
-     * @param  {string} filterString
-     * @param  {Record<string, File>} filesById
-     * @return {Record<string, File>}
-     */
-    public getFilteredFilesById(
+    public getFuzzResultsByFileId(
         filterString: string,
         filesById: Record<string, File>,
-    ): Record<string, File> {
+    ): Record<string, FuzzItem> {
         const fileList = Object.keys(filesById).map((fileId: string) => filesById[fileId]);
         const fuzzResults = Fuzz.search(
             fileList,
-            this.fuzzFilterString,
-            { subjectKeys: ['label'] },
+            filterString,
+            {
+                subjectKeys: ['label'],
+                skipFilter: true,
+            },
         );
-
+        const fuzzItemsByFileId = {}
         fuzzResults.forEach((fuzzItem: FuzzItem) => {
-            this.fuzzItemsByFileId[fuzzItem.original.id] = fuzzItem;
+            fuzzItemsByFileId[fuzzItem.original.id] = fuzzItem;
         });
-
-        const clonedFiles = cloneDeep(filesById);
-        this.removeFilteredChildIds(clonedFiles, new Set(Object.keys(this.fuzzItemsByFileId)));
-        return clonedFiles;
+        return fuzzItemsByFileId;
     }
-
     /**
-     * removeFilteredChildIds
+     * sortFileIndexChildren
      * Filters and sorts the childIds for a file tree
      * @param {Record<string, File>} filesById
      * @param {Set<string>} fileIdsToKeep
      */
-    public removeFilteredChildIds(filesById: Record<string, File>, fileIdsToKeep: Set<string>) {
+    public sortFileIndexChildren(filesById: Record<string, File>, fuzzItemsById: Record<string, FuzzItem>) {
         const maxScoresByFileId = {};
         reverseBreadthFirstBy(
             this.rootFileId,
@@ -121,40 +129,24 @@ export class FileExplorerComponent {
             },
             (fileId: string) => {
                 const file = filesById[fileId];
-                const fuzzItem = this.fuzzItemsByFileId[fileId];
+                const fuzzItem = fuzzItemsById[fileId];
                 maxScoresByFileId[fileId] = fuzzItem ? fuzzItem.score : 0;
                 if (!file.childIds) {
                     return;
                 }
-
                 // maxScoresByFileId maintains the highest score for the file and all its children
                 const childMaxScores = file.childIds.map((childId: string) => maxScoresByFileId[childId]);
                 maxScoresByFileId[file.id] = Math.max(
                     maxScoresByFileId[file.id],
                     ...childMaxScores,
                 );
-
-                // Removes files that didn't meet the fuzzy score threshold and sorts them by maxScore
                 file.childIds = file.childIds
-                    .filter((childId: string) => fileIdsToKeep.has(childId))
                     .sort((id1: string, id2: string) => maxScoresByFileId[id2] - maxScoresByFileId[id1]);
-
-                // Also keep any folders with children that met the threshold
-                if (file.childIds.length) {
-                    fileIdsToKeep.add(file.id);
-                }
             },
         );
+        return maxScoresByFileId;
     }
 
-    /**
-     * getFileIdsAndDepth
-     * fileIdsAndDepth is used for rendering the table
-     * @param  {string} currentFileId
-     * @param  {Record<string, File>} filesById
-     * @param  {number} depth
-     * @return {Array}
-     */
     public getFileIdsAndDepth(
         currentFileId: string,
         filesById: Record<string, File>,
@@ -164,14 +156,37 @@ export class FileExplorerComponent {
         const fileIdsAndDepth: Array<[string, number]> = [
             [currentFileId, depth],
         ];
+        each(currentFile.childIds, (childId: string) => {
+            const childFileIdsAndDepth = this.getFileIdsAndDepth(childId, filesById, depth + 1);
+            fileIdsAndDepth.push(...childFileIdsAndDepth);
+        });
+        return fileIdsAndDepth;
+    }
+
+    public getVisibleFileIds(
+        currentFileId: string,
+        filesById: Record<string, File>,
+        closedFileIds: Record<string, boolean>,
+        maxScoresByFileId: Record<string, number> = {},
+    ) {
+        const currentFile = filesById[currentFileId];
+        const currentMaxScore = isUndefined(maxScoresByFileId[currentFileId]) ? 1 : maxScoresByFileId[currentFileId];
+        const visibleFileIds = new Set<string>();
+        if (currentMaxScore > 0.4) {
+            visibleFileIds.add(currentFile.id);
+        }
         if (!this.closedFileIds[currentFileId]) {
             each(currentFile.childIds, (childId: string) => {
-                const childFile = filesById[childId];
-                const childFileIdsAndDepth = this.getFileIdsAndDepth(childId, filesById, depth + 1);
-                fileIdsAndDepth.push(...childFileIdsAndDepth);
+                const childVisibleFileIds = this.getVisibleFileIds(
+                    childId,
+                    filesById,
+                    closedFileIds,
+                    maxScoresByFileId,
+                );
+                childVisibleFileIds.forEach((visibleFileId: string) => visibleFileIds.add(visibleFileId));
             });
         }
-        return fileIdsAndDepth;
+        return visibleFileIds;
     }
 
     public toggleClosedFile(file: File, event: Event) {
