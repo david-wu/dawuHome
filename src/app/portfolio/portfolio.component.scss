@@ -8,15 +8,15 @@
         overflow: hidden;
         max-width: 30%;
         width: 20rem;
+        display: flex;
+        flex-direction: column;
+        dwu-file-explorer {
+            flex: 1 1 0;
+        }
     }
     .right-side {
         flex: 1 1 0;
         overflow: auto;
         position: relative;
     }
-}
-
-dwu-file-explorer {
-    height: 100%;
-    width: 100%;
 }

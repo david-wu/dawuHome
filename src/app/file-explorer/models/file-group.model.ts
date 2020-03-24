@@ -46,6 +46,11 @@ export class FileGroup {
     }
 
     public getUniqueId() {
-        return uniqueId(this.seed);
+        while(true) {
+            const id = uniqueId(this.seed);
+            if (!this.filesById[id]) {
+                return id;
+            }
+        }
     }
 }

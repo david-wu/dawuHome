@@ -88,20 +88,6 @@ export class FileExplorerComponent {
             .subscribe((drop) => {
                 // use on our own dom manipulation
                 drakeGroup.drake.cancel(true);
-
-                console.log('drop', drop)
-                // if (this.getElFileId(drop.target)) {
-                //     this.addFileToFileChildren(
-                //         this.getElFileId(drop.el),
-                //         this.getElFileId(drop.target),
-                //     );
-                // } else {
-                //     this.insertFileBeforeFile(
-                //         this.getElFileId(drop.el),
-                //         this.getElFileId(drop.sibling),
-                //     );
-                // }
-
                 if (drop.sibling && this.getElFileId(drop.sibling)) {
                     this.insertFileBeforeFile(
                         this.getElFileId(drop.el),
@@ -134,11 +120,7 @@ export class FileExplorerComponent {
         );
 
         this.subs.add(this.dragulaService.dragend('EXP')
-            .subscribe(() => {
-                if (this.fileIdBeingDragged) {
-                    this.fileIdBeingDragged = undefined;
-                }
-            }),
+            .subscribe(() => this.fileIdBeingDragged = undefined),
         );
 
     }
@@ -151,12 +133,16 @@ export class FileExplorerComponent {
         }
     }
 
+    public ngOnDestroy() {
+        this.subs.unsubscribe();
+        this.dragulaService.destroy('EXP');
+    }
+
     public insertFileBeforeFile(fileId1, fileId2) {
         if (fileId2 === this.rootFileId) {
             return;
         }
 
-        // const fileToInsert = fileId1;
         let changes = {};
         each(this.filesById, (file: File) => {
             if (includes(file.childIds, fileId1)) {
@@ -172,7 +158,6 @@ export class FileExplorerComponent {
         const insertionIndex = nextChildIds.indexOf(fileId2);
         nextChildIds.splice(insertionIndex, 0, fileId1);
 
-        console.log(fileId1, fileId2)
         changes[insertParent.id] = Object.assign(new File(), {
             ...insertParent,
             childIds: nextChildIds,

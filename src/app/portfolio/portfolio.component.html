@@ -1,6 +1,6 @@
 <div class="left-side">
     <div>
-        <input type="text" [(ngModel)]="filterStr">
+        <input type="text" [(ngModel)]="filterStr" placeholder="fuzzy search">
     </div>
     <dwu-file-explorer
         [rootFileId]="fileGroup.rootFileId"
@@ -16,7 +16,7 @@
 <div class="right-side">
     <ng-container *ngIf="getSelectedFileId() as selectedFileId">
         <ng-container [ngSwitch]="selectedFileId">
-            <app-demo-page-wrapper *ngSwitchCase="filesByLabel['demo'].id"></app-demo-page-wrapper>
+            <app-demo-page-wrapper *ngSwitchCase="filesByLabel['fuzz-demo'].id"></app-demo-page-wrapper>
         </ng-container>
         <ng-container [ngSwitch]="selectedFileId">
             <div *ngSwitchCase="filesByLabel['file-explorer'].id">

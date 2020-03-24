@@ -18,13 +18,10 @@ export class PortfolioComponent {
     }
 
     public populateFileGroup() {
-        // const root = this.fileGroup.createFile({label: 'projects'});
-
         const files = [
             this.fileGroup.createFile({label: 'projects'}),
-            this.fileGroup.createFile({label: 'fuzz'}),
             this.fileGroup.createFile({label: 'todos'}),
-            this.fileGroup.createFile({label: 'demo'}),
+            this.fileGroup.createFile({label: 'fuzz-demo'}),
             this.fileGroup.createFile({label: 'shift/control-select'}),
             this.fileGroup.createFile({label: 'mobile'}),
             this.fileGroup.createFile({label: 'fileTypes: markdown, text, sql'}),
@@ -36,9 +33,7 @@ export class PortfolioComponent {
         const filesByLabel = this.filesByLabel = keyBy(files, 'label');
 
         this.fileGroup.setRootFile(filesByLabel['projects']);
-
-        this.fileGroup.addAsChild(filesByLabel['projects'], filesByLabel['fuzz']);
-        this.fileGroup.addAsChild(filesByLabel['fuzz'], filesByLabel['demo']);
+        this.fileGroup.addAsChild(filesByLabel['projects'], filesByLabel['fuzz-demo']);
 
         this.fileGroup.addAsChild(filesByLabel['projects'], filesByLabel['todos']);
         this.fileGroup.addAsChild(filesByLabel['todos'], filesByLabel['shift/control-select']);
@@ -49,6 +44,8 @@ export class PortfolioComponent {
         this.fileGroup.addAsChild(filesByLabel['projects'], filesByLabel['components']);
         this.fileGroup.addAsChild(filesByLabel['components'], filesByLabel['file-explorer']);
         this.fileGroup.addAsChild(filesByLabel['components'], filesByLabel['text-decorator']);
+
+        this.fileGroup.selectedFileIds = new Set([filesByLabel['fuzz-demo'].id]);
     }
 
     public getSelectedFileId() {
