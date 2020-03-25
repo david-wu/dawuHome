@@ -19,16 +19,22 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            overflow: hidden;
             .nav-items-container {
                 display: flex;
                 justify-content: flex-end;
-                padding-right: 5rem;
+                margin: 0 3rem;
+                @include respond-to(small) {
+                    margin: 0 0.25rem;
+                }
                 .nav-item {
+                    flex: 0 1 auto;
                     @include dark-button;
                     margin: 0 0.25rem;
                     border-radius: 4px 4px 0 0;
                 }
             }
+
         }
     }
 }

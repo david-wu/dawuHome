@@ -6,3 +6,4 @@ export const COMMON_COMPONENTS = [
 ];
 
 export * from './text-decorator/text-decorator.component';
+export * from './common.module';

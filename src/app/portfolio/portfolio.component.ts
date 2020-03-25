@@ -1,6 +1,7 @@
-import { keyBy } from 'lodash';
 import { Component } from '@angular/core';
-import { FileGroup, FileType, File } from '@src/app/file-explorer/index';
+import { keyBy } from 'lodash';
+
+import { FileGroup, FileType, File } from '@file-explorer/index';
 
 @Component({
   selector: 'portfolio',
@@ -18,34 +19,35 @@ export class PortfolioComponent {
     }
 
     public populateFileGroup() {
-        const files = [
-            this.fileGroup.createFile({label: 'projects'}),
-            this.fileGroup.createFile({label: 'todos'}),
-            this.fileGroup.createFile({label: 'fuzz-demo'}),
-            this.fileGroup.createFile({label: 'shift/control-select'}),
-            this.fileGroup.createFile({label: 'mobile'}),
-            this.fileGroup.createFile({label: 'fileTypes: markdown, text, sql'}),
-            this.fileGroup.createFile({label: 'earley'}),
-            this.fileGroup.createFile({label: 'components'}),
-            this.fileGroup.createFile({label: 'file-explorer'}),
-            this.fileGroup.createFile({label: 'text-decorator'}),
-        ];
-        const filesByLabel = this.filesByLabel = keyBy(files, 'label');
+        const fileDataById = {
+            id: 'PROJECTS',
+            label: 'Projects',
+            childrenById: {
+                FUZZ: { label: 'fuzz-demo' },
+                TODOS: {
+                    label: 'Todos',
+                    childrenById: {
+                        SHIFT: { label: 'shift/control-select' },
+                        MOBILE: { label: 'mobile' },
+                        FILETYPES: { label: 'fileTypes: markdown, text, sql' },
+                        EARLEY: { label: 'earley' },
+                    },
+                },
+                COMPONENTS: {
+                    label: 'components',
+                    childrenById: {
+                        FILE_EXPLORER: { label: 'file-explorer' },
+                        TEXT_DECORATOR: { label: 'text-decorator' },
+                    },
+                },
+            },
+        };
 
-        this.fileGroup.setRootFile(filesByLabel['projects']);
-        this.fileGroup.addAsChild(filesByLabel['projects'], filesByLabel['fuzz-demo']);
+        const files = this.fileGroup.filesByIdFromJson(fileDataById);
+        this.filesById = keyBy(files, 'id');
 
-        this.fileGroup.addAsChild(filesByLabel['projects'], filesByLabel['todos']);
-        this.fileGroup.addAsChild(filesByLabel['todos'], filesByLabel['shift/control-select']);
-        this.fileGroup.addAsChild(filesByLabel['todos'], filesByLabel['mobile']);
-        this.fileGroup.addAsChild(filesByLabel['todos'], filesByLabel['earley']);
-        this.fileGroup.addAsChild(filesByLabel['todos'], filesByLabel['fileTypes: markdown, text, sql']);
-
-        this.fileGroup.addAsChild(filesByLabel['projects'], filesByLabel['components']);
-        this.fileGroup.addAsChild(filesByLabel['components'], filesByLabel['file-explorer']);
-        this.fileGroup.addAsChild(filesByLabel['components'], filesByLabel['text-decorator']);
-
-        this.fileGroup.selectedFileIds = new Set([filesByLabel['fuzz-demo'].id]);
+        this.fileGroup.setRootFile(this.filesById.PROJECTS);
+        this.fileGroup.selectedFileIds = new Set([this.filesById['FUZZ'].id]);
     }
 
     public getSelectedFileId() {

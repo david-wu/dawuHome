@@ -6,11 +6,12 @@
 }
 
 @mixin button-md {
-    min-width: 10rem;
-    padding: 0.5rem 1rem;
+    width: 8rem;
+    padding: 0.5rem;
     cursor: pointer;
     text-align: center;
     outline: none;
+    white-space: nowrap;
 }
 
 @mixin dark-theme {
@@ -36,4 +37,16 @@
         overflow: auto;
         background-color: $lightest-green;
     }
+}
+
+@mixin respond-to($media) {
+  @if $media == small {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
 }

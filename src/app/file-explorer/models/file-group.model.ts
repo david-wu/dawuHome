@@ -2,9 +2,12 @@
 import {
     uniqueId,
     uniq,
+    values,
+    mapValues,
 } from 'lodash';
 import { FileType } from './file-type.enum';
 import { File } from './file.model';
+import { breadthFirstBy } from '@utils/index';
 
 export class FileGroup {
 
@@ -14,6 +17,38 @@ export class FileGroup {
     public selectedFileIds: Set<string> = new Set<string>();
 
     constructor(public seed = "dfg_") {}
+
+    public filesByIdFromJson(fileData) {
+        const files = [];
+        breadthFirstBy(
+            fileData,
+            (parent) => {
+                const childFiles = mapValues(parent.childrenById, (childFile: any, fileId: string) => {
+                    return {
+                        label: fileId,
+                        id: fileId,
+                        ...childFile,
+                    };
+                });
+                return values(childFiles);
+            },
+            (file) => {
+                const partialFile = { ...file };
+                delete partialFile.childrenById;
+
+                if (file.childrenById) {
+                    const childIds = Object.keys(file.childrenById || {});
+                    files.push(this.createFile({
+                        ...partialFile,
+                        childIds,
+                    }));
+                } else {
+                    files.push(this.createFile(partialFile));
+                }
+            },
+        );
+        return files;
+    }
 
     public setSelectedFileIds(fileIds: Set<string>) {
         this.selectedFileIds = fileIds;

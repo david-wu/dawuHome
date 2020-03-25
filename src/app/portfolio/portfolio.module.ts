@@ -10,6 +10,7 @@ import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 import { PortfolioRoutes } from '@src/app/portfolio/portfolio.routes';
 
 import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
+import { CommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module'
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    CommonModule,
     FileExplorerModule,
   ],
   declarations: [

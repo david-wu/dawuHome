@@ -14,24 +14,22 @@
     ></dwu-file-explorer>
 </div>
 <div class="right-side">
-    <ng-container *ngIf="getSelectedFileId() as selectedFileId">
-        <ng-container [ngSwitch]="selectedFileId">
-            <app-demo-page-wrapper *ngSwitchCase="filesByLabel['fuzz-demo'].id"></app-demo-page-wrapper>
-        </ng-container>
-        <ng-container [ngSwitch]="selectedFileId">
-            <div *ngSwitchCase="filesByLabel['file-explorer'].id">
-                <div>
-                    file explorer demo
-                </div>
+    <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
+        <app-demo-page-wrapper *ngSwitchCase="'FUZZ'"></app-demo-page-wrapper>
+        <div *ngSwitchCase="'FILE_EXPLORER'">
+            <div>
+                file explorer demo
             </div>
-        </ng-container>
-        <ng-container [ngSwitch]="selectedFileId">
-            <div *ngSwitchCase="filesByLabel['text-decorator'].id">
-                <div>
-                    text-decorator demo
-                </div>
+        </div>
+        <div *ngSwitchCase="'TEXT_DECORATOR'">
+            <div>
+                text-decorator demo
             </div>
-        </ng-container>
-
+        </div>
+        <div *ngSwitchDefault>
+            <div>
+                default demo
+            </div>
+        </div>
     </ng-container>
 </div>

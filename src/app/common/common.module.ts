@@ -1,8 +1,9 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TextDecoratorComponent } from './index';
+
+import { TextDecoratorComponent } from './text-decorator/text-decorator.component';
 
 @NgModule({
   imports: [

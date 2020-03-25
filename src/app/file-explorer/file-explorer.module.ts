@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DragulaModule } from 'ng2-dragula';
-
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FILE_EXPLORER_COMPONENTS } from './index';
-import { CommonModule } from '@src/app/common/common.module';
 
-export class AppModule { }
+import { CommonModule } from '@src/app/common/common.module';
+import { FileExplorerComponent } from './file-explorer.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -15,10 +14,10 @@ export class AppModule { }
     DragulaModule,
   ],
   declarations: [
-    ...FILE_EXPLORER_COMPONENTS,
+    FileExplorerComponent,
   ],
   exports: [
-    ...FILE_EXPLORER_COMPONENTS,
+    FileExplorerComponent,
   ],
   providers: [],
 })

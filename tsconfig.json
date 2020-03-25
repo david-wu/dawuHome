@@ -25,7 +25,10 @@
         "src/*.tns.ts",
         "src/*.web.ts",
         "src/*"
-      ]
+      ],
+      "@common/*": ["src/app/common/*"],
+      "@file-explorer/*": ["src/app/file-explorer/*"],
+      "@utils/*": ["src/app/utils/*"]
     }
   },
   "angularCompilerOptions": {
