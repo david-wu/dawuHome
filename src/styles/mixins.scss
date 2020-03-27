@@ -50,3 +50,26 @@
     @media only screen and (min-width: $break-large) { @content; }
   }
 }
+
+@mixin fuzzy-input-container {
+    padding: 0.25rem 1rem 0.25rem 0.75rem;
+    position: relative;
+    background-color: $eggshell-darker;
+    .search-icon {
+        position: absolute;
+        top: 50%;
+        transform: translate(0.5rem, -50%);
+        font-size: 1.25rem;
+        color: $granite;
+        pointer-events: none;
+    }
+    input {
+        padding: 0 0.5rem 0 2rem;
+        border-radius: 0.5rem;
+        border: 2px solid $moss-green;
+        outline: none;
+        width: 100%;
+        font-size: 0.75rem;
+        height: 1.75rem;
+    }
+}

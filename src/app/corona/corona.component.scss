@@ -20,3 +20,7 @@
         position: relative;
     }
 }
+
+.input-container {
+    @include fuzzy-input-container;
+}

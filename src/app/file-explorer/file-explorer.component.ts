@@ -62,7 +62,7 @@ export class FileExplorerComponent {
 
     public fileIdBeingDragged: string;
 
-    constructor(private dragulaService: DragulaService) {
+    constructor(public dragulaService: DragulaService) {
         const drakeGroup = dragulaService.createGroup('EXP', {
           isContainer: (el) => {
               const fileId = el.getAttribute('data-file-id');
@@ -154,14 +154,19 @@ export class FileExplorerComponent {
     }
 
     public scrollToSelectedFileId() {
-        if (!this.scrollViewport || !this.scrollViewport.first) {
+        const viewPort = this.scrollViewport && this.scrollViewport.first;
+        if (!viewPort) {
             return;
         }
         const firstSelectedFileId = Array.from(this.selectedFileIds)[0];
         const filePosition = this.getFileIdPosition(firstSelectedFileId);
         // leave some space above file to show you can scroll up
-        const scrollPosition = Math.max(0, filePosition - 3);
-        this.scrollViewport.first.scrollToIndex(scrollPosition);
+        const scrollPosition = Math.max(0, filePosition - 5);
+
+        // weird issue with cdk needs timeout
+        setTimeout(() => {
+            viewPort.scrollToIndex(scrollPosition);
+        });
     }
 
     public insertFileBeforeFile(fileId1, fileId2) {

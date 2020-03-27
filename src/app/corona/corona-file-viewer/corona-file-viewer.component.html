@@ -1,0 +1,10 @@
+<h3>{{ location }}</h3>
+<div *ngIf="isLoading$ | async">
+    loading..
+</div>
+<div *ngIf="coronaFile$ | async as coronaFile">
+    <div *ngIf="coronaFile.population">
+        population: {{ coronaFile.population.toLocaleString() }}
+    </div>
+    <dwu-corona-dashboard [coronaFile]="coronaFile"></dwu-corona-dashboard>
+</div>

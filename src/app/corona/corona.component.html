@@ -1,6 +1,9 @@
 <div class="left-side">
-    <div>
-        <input type="text" [(ngModel)]="filterStr" placeholder="fuzzy search">
+    <div class="input-container">
+        <span class="material-icons search-icon">
+            search
+        </span>
+        <input type="text" [(ngModel)]="filterStr" placeholder="County, State, or Country">
     </div>
     <dwu-file-explorer
         [rootFileId]="fileGroup.rootFileId"
@@ -16,21 +19,8 @@
 </div>
 <div class="right-side">
     <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
-        <app-demo-page-wrapper *ngSwitchCase="'FUZZ'"></app-demo-page-wrapper>
-        <div *ngSwitchCase="'FILE_EXPLORER'">
-            <div>
-                file explorer demo
-            </div>
-        </div>
-        <div *ngSwitchCase="'TEXT_DECORATOR'">
-            <div>
-                text-decorator demo
-            </div>
-        </div>
         <div *ngSwitchDefault>
-            <div>
-                default demo
-            </div>
+            <dwu-corona-file-viewer [location]="locationsByFileId[selectedFileId]"></dwu-corona-file-viewer>
         </div>
     </ng-container>
 </div>

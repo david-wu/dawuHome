@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {
     each,
     keyBy,
+    get,
     set,
     last,
     isString,
@@ -14,7 +15,7 @@ import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
 
 @Component({
-  selector: 'corona',
+  selector: 'dwu-corona',
   templateUrl: './corona.component.html',
   styleUrls: ['./corona.component.scss']
 })
@@ -58,8 +59,16 @@ export class CoronaComponent {
      */
     public getNestedCoronaLocations(coronaLocations: string[]) {
         const nestedCoronaLocations = {};
+
+        // set nestedCoronaLocations from the leaves
+        // if there is a location with the same name as a folder, create summary
+        coronaLocations.sort((a, b) => b.length - a.length);
         coronaLocations.forEach((coronaLocation: string) => {
             const splitLocation = this.decorateAndSplitLocation(coronaLocation);
+            if (get(nestedCoronaLocations, splitLocation)) {
+                const folderName = last(splitLocation);
+                splitLocation.push(`${folderName} Summary`)
+            }
             set(nestedCoronaLocations, splitLocation, coronaLocation);
         });
         return nestedCoronaLocations;
@@ -68,21 +77,14 @@ export class CoronaComponent {
     /**
      * decorateAndSplitLocation
      * Replaces country and state codes
-     * Adds "State Total" to indexes and "Others" to countries with no nested data
      * @param {string} coronaLocation
      */
     public decorateAndSplitLocation(coronaLocation: string) {
         const splitLocation = coronaLocation.split(', ').reverse();
-        if (splitLocation[0] === 'USA') {
-            // no county label means it's state summary data
-            if (splitLocation.length === 2) {
-                splitLocation.push('State Total');
-            }
-            splitLocation[1] = stateNamesByCode[splitLocation[1]] || splitLocation[1];
-        }
         splitLocation[0] = countryNamesByCode[splitLocation[0]] || splitLocation[0];
-        if (splitLocation.length === 1) {
-            splitLocation.unshift('Others');
+
+        if (splitLocation.length > 1 && splitLocation[0] === 'United States') {
+            splitLocation[1] = stateNamesByCode[splitLocation[1]] || splitLocation[1];
         }
         return splitLocation;
     }
