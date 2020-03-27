@@ -1,4 +1,4 @@
 <span
-    *ngFor="let spanElement of spanElements"
+    *ngFor="let spanElement of spanElements; trackBy: trackByFn"
     [class.decorated]="spanElement.isDecorated"
 >{{spanElement.text}}</span>

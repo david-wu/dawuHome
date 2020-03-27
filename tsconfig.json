@@ -29,7 +29,9 @@
       "@common/*": ["src/app/common/*"],
       "@file-explorer/*": ["src/app/file-explorer/*"],
       "@utils/*": ["src/app/utils/*"]
-    }
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

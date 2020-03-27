@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AboutMeRoutes } from './about-me/about-me.routes';
 import { PortfolioRoutes } from './portfolio/portfolio.routes';
+import { CoronaRoutes } from './corona/corona.routes';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'portfolio',
     children: PortfolioRoutes,
+  },
+  {
+    path: 'corona',
+    children: CoronaRoutes,
   }
 ];
 

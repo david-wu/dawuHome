@@ -4,8 +4,12 @@ import {
     Input,
     Output,
     SimpleChanges,
+    ViewChildren,
+    QueryList,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 import {
     Fuzz,
@@ -20,31 +24,12 @@ import {
     uniq,
 } from 'lodash';
 import { DragulaService } from 'ng2-dragula';
+import { breadthFirstBy, reverseBreadthFirstBy } from '@utils/index';
 
 import {
     File,
     FileType,
 } from './models/index';
-
-function breadthFirstBy(rootNode, getChildren, iteratee) {
-    const queue = [rootNode];
-    while (queue.length) {
-        const currentNode = queue.shift();
-        iteratee(currentNode);
-        const children = getChildren(currentNode);
-        queue.push(...children);
-    }
-}
-
-function reverseBreadthFirstBy(rootNode, getChildren, iteratee) {
-    const stack = [];
-    breadthFirstBy(rootNode, getChildren, (node: any) => {
-        stack.push(node);
-    });
-    for(let i = stack.length - 1; i >= 0; i--) {
-        iteratee(stack[i]);
-    }
-}
 
 @Component({
     selector: 'dwu-file-explorer',
@@ -58,11 +43,16 @@ export class FileExplorerComponent {
     @Input() rootFileId: string;
     @Input() fuzzFilterString: string = '';
     @Input() filesById: Record<string, File>;
-    @Input() closedFileIds: Record<string, boolean> = {};
+    @Input() closedFileIds: Set<string> = new Set();
     @Input() selectedFileIds: Set<string> = new Set<string>();
+    @Input() perfMode: boolean = true;
     @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
-    @Output() closedFileIdsChange = new EventEmitter<Record<string, boolean>>();
+    @Output() closedFileIdsChange = new EventEmitter<Set<string>>();
     @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
+
+    @Input() initialScrollToId: string;
+    @ViewChildren(CdkVirtualScrollViewport) scrollViewport: QueryList<CdkVirtualScrollViewport>;
+
     public parentIdsByFileId: Record<string, string>;
     public fuzzItemsByFileId: Record<string, FuzzItem> = {};
     public fileIdsAndDepth: Array<[string, number]> = [];
@@ -111,10 +101,10 @@ export class FileExplorerComponent {
                 // for the first over event after a dragend, el is the element being dragged
                 if (!this.fileIdBeingDragged && (this.fileIdBeingDragged !== nextFileIdBeingDragged)) {
                     this.fileIdBeingDragged = nextFileIdBeingDragged;
-                    this.closedFileIdsChange.emit({
+                    this.closedFileIdsChange.emit(new Set([
                         ...this.closedFileIds,
-                        [this.fileIdBeingDragged]: true,
-                    })
+                        this.fileIdBeingDragged,
+                    ]));
                 }
             })
         );
@@ -131,11 +121,38 @@ export class FileExplorerComponent {
                 this.setTableIndices();
             }
         }
+        if (changes.fuzzFilterString && this.fuzzFilterString && this.scrollViewport) {
+            this.scrollViewport.first.scrollToIndex(0);
+        }
+
+        // Scroll back to selected if queryString is removed
+        if (
+            changes.fuzzFilterString
+            && changes.fuzzFilterString.previousValue
+            && !this.fuzzFilterString
+            && this.scrollViewport
+        ) {
+            this.scrollToSelectedFileId();
+        }
+    }
+
+    public ngAfterViewInit() {
+        this.subs.add(this.scrollViewport.changes.pipe(first())
+            .subscribe(() => this.scrollToSelectedFileId()),
+        );
     }
 
     public ngOnDestroy() {
         this.subs.unsubscribe();
         this.dragulaService.destroy('EXP');
+    }
+
+    public scrollToSelectedFileId() {
+        const firstSelectedFileId = Array.from(this.selectedFileIds)[0];
+        const filePosition = this.getFileIdPosition(firstSelectedFileId);
+        // leave some space above file to show you can scroll up
+        const scrollPosition = Math.max(0, filePosition - 3);
+        this.scrollViewport.first.scrollToIndex(scrollPosition);
     }
 
     public insertFileBeforeFile(fileId1, fileId2) {
@@ -218,15 +235,15 @@ export class FileExplorerComponent {
         this.parentIdsByFileId = this.getParentIdsByFileId(this.rootFileId, this.filesById);
         if (!this.fuzzFilterString) {
             this.fuzzItemsByFileId = {};
-            this.fileIdsAndDepth = this.getFileIdsAndDepth(
-                this.rootFileId,
-                this.filesById,
-                0,
-            );
             this.visibleFileIds = this.getVisibleFileIds(
                 this.rootFileId,
                 this.filesById,
                 this.closedFileIds,
+            );
+            this.fileIdsAndDepth = this.getFileIdsAndDepth(
+                this.rootFileId,
+                this.filesById,
+                0,
             );
             this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
         } else {
@@ -235,16 +252,16 @@ export class FileExplorerComponent {
             // low max scores will get filtered out
             const clonedFileIndex = cloneDeep(this.filesById);
             const maxScoresByFileId = this.sortFileIndexChildren(clonedFileIndex, this.fuzzItemsByFileId);
+            this.visibleFileIds = this.getVisibleFileIds(
+                this.rootFileId,
+                clonedFileIndex,
+                new Set(), // no closed folders while searching
+                maxScoresByFileId,
+            );
             this.fileIdsAndDepth = this.getFileIdsAndDepth(
                 this.rootFileId,
                 clonedFileIndex,
                 0,
-            );
-            this.visibleFileIds = this.getVisibleFileIds(
-                this.rootFileId,
-                clonedFileIndex,
-                this.closedFileIds,
-                maxScoresByFileId,
             );
             this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
         }
@@ -259,6 +276,8 @@ export class FileExplorerComponent {
             fileList,
             filterString,
             {
+                disableDiagnostics: true,
+                disableStyledString: true,
                 subjectKeys: ['label'],
                 skipFilter: true,
             },
@@ -309,6 +328,10 @@ export class FileExplorerComponent {
         filesById: Record<string, File>,
         depth: number = 0,
     ): Array<[string, number]> {
+        // don't animate stuff, use virtual scroll viewport
+        if (this.perfMode && !this.visibleFileIds.has(currentFileId)) {
+            return [];
+        }
         const currentFile = filesById[currentFileId];
         const fileIdsAndDepth: Array<[string, number]> = [
             [currentFileId, depth],
@@ -323,16 +346,16 @@ export class FileExplorerComponent {
     public getVisibleFileIds(
         currentFileId: string,
         filesById: Record<string, File>,
-        closedFileIds: Record<string, boolean>,
+        closedFileIds: Set<string>,
         maxScoresByFileId: Record<string, number> = {},
-    ) {
+    ): Set<string> {
         const currentFile = filesById[currentFileId];
         const currentMaxScore = isUndefined(maxScoresByFileId[currentFileId]) ? 1 : maxScoresByFileId[currentFileId];
         const visibleFileIds = new Set<string>();
         if (currentMaxScore > 0.4) {
             visibleFileIds.add(currentFile.id);
         }
-        if (!this.closedFileIds[currentFileId]) {
+        if (!closedFileIds.has(currentFileId)) {
             each(currentFile.childIds, (childId: string) => {
                 const childVisibleFileIds = this.getVisibleFileIds(
                     childId,
@@ -361,10 +384,12 @@ export class FileExplorerComponent {
 
     public toggleClosedFile(file: File, event: Event) {
         event.stopPropagation();
-        this.closedFileIds = {
-            ...this.closedFileIds,
-            [file.id]: !this.closedFileIds[file.id],
-        };
+        this.closedFileIds = new Set(this.closedFileIds);
+        if (this.closedFileIds.has(file.id)) {
+            this.closedFileIds.delete(file.id);
+        } else {
+            this.closedFileIds.add(file.id);
+        }
         this.closedFileIdsChange.emit(this.closedFileIds);
     }
 
@@ -378,6 +403,13 @@ export class FileExplorerComponent {
 
     public trackByFn(fileIdAndDepth: [string, number]) {
         return fileIdAndDepth[0];
+    }
+
+    public getFileIdPosition(fileId: string) {
+        return Math.max(
+            this.fileIdsAndDepth.findIndex((idAndDepth: [string, number]) => idAndDepth[0] === fileId),
+            0,
+        );
     }
 
     public getElFileId(el) {

@@ -1,0 +1,36 @@
+<div class="left-side">
+    <div>
+        <input type="text" [(ngModel)]="filterStr" placeholder="fuzzy search">
+    </div>
+    <dwu-file-explorer
+        [rootFileId]="fileGroup.rootFileId"
+        [filesById]="fileGroup.filesById"
+        (filesByIdChange)="fileGroup.filesById = $event"
+        [fuzzFilterString]="filterStr"
+        [closedFileIds]="fileGroup.closedFileIds"
+        (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
+        [selectedFileIds]="fileGroup.selectedFileIds"
+        (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
+        [perfMode]="true"
+    ></dwu-file-explorer>
+</div>
+<div class="right-side">
+    <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
+        <app-demo-page-wrapper *ngSwitchCase="'FUZZ'"></app-demo-page-wrapper>
+        <div *ngSwitchCase="'FILE_EXPLORER'">
+            <div>
+                file explorer demo
+            </div>
+        </div>
+        <div *ngSwitchCase="'TEXT_DECORATOR'">
+            <div>
+                text-decorator demo
+            </div>
+        </div>
+        <div *ngSwitchDefault>
+            <div>
+                default demo
+            </div>
+        </div>
+    </ng-container>
+</div>

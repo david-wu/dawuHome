@@ -77,4 +77,8 @@ export class TextDecoratorComponent {
         return spanElements;
     }
 
+    public trackByFn(spanElement: SpanElement) {
+        return `${spanElement.text}${spanElement.isDecorated}`;
+    }
+
 }

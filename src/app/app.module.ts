@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
@@ -8,6 +7,7 @@ import { BarcelonaModule } from '@src/app/barcelona/barcelona.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutMeModule } from '@src/app/about-me/about-me.module'
 import { PortfolioModule } from '@src/app/portfolio/portfolio.module';
+import { CoronaModule } from '@src/app/corona/corona.module';
 
 import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
 
@@ -15,7 +15,7 @@ import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
   imports: [
     AboutMeModule,
     PortfolioModule,
-    // MatSidenavModule,
+    CoronaModule,
     FuzzAppModule,
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,32 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+import { AppRoutingModule } from '@src/app/app-routing.module';
+import { AppComponent } from '@src/app/app.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CoronaComponent } from '@src/app/corona/corona.component';
+import { CoronaRoutes } from '@src/app/corona/corona.routes';
+
+import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
+import { CommonModule } from '@src/app/common/common.module';
+import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
+
+@NgModule({
+  imports: [
+    RouterModule.forChild(CoronaRoutes),
+    FormsModule,
+    FuzzAppModule,
+    BrowserModule,
+    AppRoutingModule,
+    NoopAnimationsModule,
+    CommonModule,
+    FileExplorerModule,
+  ],
+  declarations: [
+    CoronaComponent,
+  ],
+  providers: [],
+})
+export class CoronaModule { }
