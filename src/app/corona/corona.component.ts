@@ -41,7 +41,11 @@ export class CoronaComponent {
         this.fileGroup.setRootFile(locationRoot);
 
         const nestedCoronaLocations = this.getNestedCoronaLocations(coronaLocations);
+
+        // setFileGroup just batches file creations, make sure to flush
         this.setFileGroup(locationRoot, nestedCoronaLocations);
+        this.fileGroup.flush();
+
         this.fileGroup.setSelectedFileIds(new Set([
             this.fileIdsByLocation['Santa Clara County, CA, USA'],
         ]));
@@ -87,21 +91,22 @@ export class CoronaComponent {
      * setFileGroup
      * Uses the nestedLocations to create files in this.fileGroup
      * Also sets locationsByFileId for referencing files later on.
-     * @param {File} rootNode
+     * @param {File} node
      * @param {any}  nestedLocations
      */
-    public setFileGroup(rootNode: File, nestedLocations: any) {
+    public setFileGroup(node: File, nestedLocations: any) {
         if (isString(nestedLocations)) {
-            this.locationsByFileId[rootNode.id] = nestedLocations;
-            this.fileIdsByLocation[nestedLocations] = rootNode.id;
+            this.locationsByFileId[node.id] = nestedLocations;
+            this.fileIdsByLocation[nestedLocations] = node.id;
             return;
         }
         const locations = Object.keys(nestedLocations).sort();
         each(locations, (location: string) => {
-            const childNode = this.fileGroup.createFile({
+            // batchCreateFile is more performant, make sure to flush
+            const childNode = this.fileGroup.batchCreateFile({
                 label: location,
             });
-            this.fileGroup.addAsChild(rootNode, childNode);
+            this.fileGroup.batchAddAsChild(node, childNode);
             this.setFileGroup(childNode, nestedLocations[location]);
         });
     }

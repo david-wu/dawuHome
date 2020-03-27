@@ -8,7 +8,7 @@ import {
     QueryList,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 import {
@@ -121,7 +121,12 @@ export class FileExplorerComponent {
                 this.setTableIndices();
             }
         }
-        if (changes.fuzzFilterString && this.fuzzFilterString && this.scrollViewport) {
+        if (
+            changes.fuzzFilterString
+            && this.fuzzFilterString
+            && this.scrollViewport
+            && this.scrollViewport.first
+        ) {
             this.scrollViewport.first.scrollToIndex(0);
         }
 
@@ -131,13 +136,14 @@ export class FileExplorerComponent {
             && changes.fuzzFilterString.previousValue
             && !this.fuzzFilterString
             && this.scrollViewport
+            && this.scrollViewport.first
         ) {
             this.scrollToSelectedFileId();
         }
     }
 
     public ngAfterViewInit() {
-        this.subs.add(this.scrollViewport.changes.pipe(first())
+        this.subs.add(this.scrollViewport.changes.pipe(take(1))
             .subscribe(() => this.scrollToSelectedFileId()),
         );
     }
@@ -148,6 +154,9 @@ export class FileExplorerComponent {
     }
 
     public scrollToSelectedFileId() {
+        if (!this.scrollViewport || !this.scrollViewport.first) {
+            return;
+        }
         const firstSelectedFileId = Array.from(this.selectedFileIds)[0];
         const filePosition = this.getFileIdPosition(firstSelectedFileId);
         // leave some space above file to show you can scroll up
@@ -243,24 +252,30 @@ export class FileExplorerComponent {
             this.fileIdsAndDepth = this.getFileIdsAndDepth(
                 this.rootFileId,
                 this.filesById,
+                undefined,
                 0,
             );
             this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
         } else {
             this.fuzzItemsByFileId = this.getFuzzResultsByFileId(this.fuzzFilterString, this.filesById);
+
             // maxScore is the highest score between the item and all its descendants
             // low max scores will get filtered out
-            const clonedFileIndex = cloneDeep(this.filesById);
-            const maxScoresByFileId = this.sortFileIndexChildren(clonedFileIndex, this.fuzzItemsByFileId);
+            const {
+                maxScoresByFileId,
+                sortedChildIdsByFileId,
+            } = this.sortFileIndexChildren(this.filesById, this.fuzzItemsByFileId);
+
             this.visibleFileIds = this.getVisibleFileIds(
                 this.rootFileId,
-                clonedFileIndex,
+                this.filesById,
                 new Set(), // no closed folders while searching
                 maxScoresByFileId,
             );
             this.fileIdsAndDepth = this.getFileIdsAndDepth(
                 this.rootFileId,
-                clonedFileIndex,
+                this.filesById,
+                sortedChildIdsByFileId,
                 0,
             );
             this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
@@ -279,7 +294,6 @@ export class FileExplorerComponent {
                 disableDiagnostics: true,
                 disableStyledString: true,
                 subjectKeys: ['label'],
-                skipFilter: true,
             },
         );
         const fuzzItemsByFileId = {};
@@ -292,11 +306,13 @@ export class FileExplorerComponent {
     /**
      * sortFileIndexChildren
      * Sorts the childIds for a file tree
+     * avoids modifying filesById
      * @param {Record<string, File>} filesById
      * @param {Set<string>} fileIdsToKeep
      */
     public sortFileIndexChildren(filesById: Record<string, File>, fuzzItemsById: Record<string, FuzzItem>) {
         const maxScoresByFileId = {};
+        const sortedChildIdsByFileId = {};
         reverseBreadthFirstBy(
             this.rootFileId,
             (fileId: string) => {
@@ -316,16 +332,30 @@ export class FileExplorerComponent {
                     maxScoresByFileId[file.id],
                     ...childMaxScores,
                 );
-                file.childIds = file.childIds
+                sortedChildIdsByFileId[file.id] = [...file.childIds]
                     .sort((id1: string, id2: string) => maxScoresByFileId[id2] - maxScoresByFileId[id1]);
             },
         );
-        return maxScoresByFileId;
+        return {
+            maxScoresByFileId,
+            sortedChildIdsByFileId,
+        };
     }
 
+    /**
+     * getFileIdsAndDepth
+     * if sortedChildIdsByFileId is passed, it overrides the childIds in filesById
+     * this is used when fuzzy filtering and the children are in a different order
+     * @param  {string} currentFileId
+     * @param  {Record<string, File>} filesById
+     * @param  {Record<string, string[]>} sortedChildIdsByFileId
+     * @param  {number} depth
+     * @return {Array}
+     */
     public getFileIdsAndDepth(
         currentFileId: string,
         filesById: Record<string, File>,
+        sortedChildIdsByFileId: Record<string, string[]>,
         depth: number = 0,
     ): Array<[string, number]> {
         // don't animate stuff, use virtual scroll viewport
@@ -336,10 +366,13 @@ export class FileExplorerComponent {
         const fileIdsAndDepth: Array<[string, number]> = [
             [currentFileId, depth],
         ];
-        each(currentFile.childIds, (childId: string) => {
-            const childFileIdsAndDepth = this.getFileIdsAndDepth(childId, filesById, depth + 1);
-            fileIdsAndDepth.push(...childFileIdsAndDepth);
-        });
+        each(
+            sortedChildIdsByFileId ? sortedChildIdsByFileId[currentFile.id] : currentFile.childIds,
+            (childId: string) => {
+                const childFileIdsAndDepth = this.getFileIdsAndDepth(childId, filesById, sortedChildIdsByFileId, depth + 1);
+                fileIdsAndDepth.push(...childFileIdsAndDepth);
+            },
+        );
         return fileIdsAndDepth;
     }
 
@@ -352,7 +385,7 @@ export class FileExplorerComponent {
         const currentFile = filesById[currentFileId];
         const currentMaxScore = isUndefined(maxScoresByFileId[currentFileId]) ? 1 : maxScoresByFileId[currentFileId];
         const visibleFileIds = new Set<string>();
-        if (currentMaxScore > 0.4) {
+        if (currentMaxScore > 0.55) {
             visibleFileIds.add(currentFile.id);
         }
         if (!closedFileIds.has(currentFileId)) {

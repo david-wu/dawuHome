@@ -18,9 +18,14 @@ export class FileGroup {
     public closedFileIds: Set<string> = new Set();
     public selectedFileIds: Set<string> = new Set<string>();
 
-    constructor(public seed = "dfg_") {}
+    constructor(public seed = uniqueId("dfg_")) {}
 
-    public filesByIdFromJson(fileData) {
+    /**
+     * filesByIdFromJson
+     * handy when declaring files using a nested structure
+     * @param {any} fileData
+     */
+    public filesByIdFromJson(fileData: any) {
         const files = [];
         breadthFirstBy(
             fileData,
@@ -52,7 +57,10 @@ export class FileGroup {
         return files;
     }
 
-    // close all folders then open all the parents of selected
+    /**
+     * focusOnSelected
+     * close all folders then open all the parents of selected so that it's visible
+     */
     public focusOnSelected() {
         this.closeAllFolders();
         const openFileIds = new Set<string>();
@@ -78,6 +86,9 @@ export class FileGroup {
         });
     }
 
+    /**
+     * closeAllFolders
+     */
     public closeAllFolders() {
         this.closedFileIds = new Set();
         each(this.filesById, (file: File) => {
@@ -87,22 +98,68 @@ export class FileGroup {
         });
     }
 
+    /**
+     * setSelectedFileIds
+     * @param {Set<string>} fileIds
+     */
     public setSelectedFileIds(fileIds: Set<string>) {
         this.selectedFileIds = fileIds;
     }
 
+    /**
+     * setRootFile
+     * @param {File} file
+     */
     public setRootFile(file: File) {
         this.rootFileId = file.id;
     }
 
-    public addAsChild(parent: File, child: File) {
-        parent.childIds = uniq([...(parent.childIds || []), child.id]);
-    }
-
+    /**
+     * setClosedFileIds
+     * @param {Set<string>} closedFileIds
+     */
     public setClosedFileIds(closedFileIds: Set<string>) {
         this.closedFileIds = closedFileIds;
     }
 
+    /**
+     * addAsChild
+     * @param {File} parent
+     * @param {File} child
+     */
+    public addAsChild(parent: File, child: File) {
+        parent.childIds = uniq([...(parent.childIds || []), child.id]);
+    }
+
+    /**
+     * batchAddAsChild
+     * more performant version of addAsChild, make sure to flush!
+     * @param {File} parent
+     * @param {File} child
+     */
+    public batchAddAsChild(parent: File, child: File) {
+        if (parent.childIds) {
+            parent.childIds.push(child.id);
+        } else {
+            parent.childIds = [child.id];
+        }
+    }
+
+    /**
+     * flushBatchedCreateFile
+     * new reference for childIds so change detection will pick up on batchAddAsChild
+     */
+    public flushBatchAddAsChild() {
+        each(this.filesById, (file: File) => {
+            file.childIds = file.childIds && uniq(file.childIds);
+        });
+    }
+
+    /**
+     * createFile
+     * @param  {Partial<File>} overrides
+     * @return {File}
+     */
     public createFile(overrides: Partial<File> = {}): File {
         const uniqueId = this.getUniqueId();
         const newFile = Object.assign(new File(), {
@@ -117,7 +174,45 @@ export class FileGroup {
         return newFile;
     }
 
-    public getUniqueId() {
+    /**
+     * batchCreateFile
+     * this.createFile replaces this.filesById for change detection
+     * this is very slow when creating a lot of files
+     * batchCreateFile modifies filesById, then flushBatchedCreateFile replaces this.filesById
+     * @param  {Partial<File> = {}} overrides
+     * @return {File}
+     */
+    public batchCreateFile(overrides: Partial<File> = {}): File {
+        const uniqueId = this.getUniqueId();
+        const newFile = Object.assign(new File(), {
+            id: uniqueId,
+            label: uniqueId,
+        }, overrides);
+        this.filesById[newFile.id] = newFile;
+        return newFile;
+    }
+
+    /**
+     * flushBatchedCreateFile
+     * new reference for filesById so change detection will pick up on batchCreateFile
+     */
+    public flushBatchedCreateFile() {
+        this.filesById = {...this.filesById};
+    }
+
+    /**
+     * flush
+     */
+    public flush() {
+        this.flushBatchedCreateFile();
+        this.flushBatchAddAsChild();
+    }
+
+    /**
+     * getUniqueId
+     * @return {string}
+     */
+    public getUniqueId(): string {
         while(true) {
             const id = uniqueId(this.seed);
             if (!this.filesById[id]) {
