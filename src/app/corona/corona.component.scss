@@ -1,18 +1,31 @@
 @import 'mixins';
 
-:host {
+.page-container {
     height: 100%;
     width: 100%;
     display: flex;
+
+    &.is-small-screen {
+        flex-direction: column;
+        .left-side {
+            width: 100%;
+            max-width: none;
+            dwu-file-explorer {
+                min-height: 6.75rem;
+            }
+        }
+    }
+
     .left-side {
         background-color: $eggshell-darker;
         overflow: hidden;
+        flex: 1 1 0;
         max-width: 30%;
-        width: 20rem;
+        min-width: 17.5rem;
         display: flex;
         flex-direction: column;
         dwu-file-explorer {
-            flex: 1 1 0;
+            flex: 1 0 0;
         }
 
         .input-container {

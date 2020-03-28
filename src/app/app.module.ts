@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
 import { BarcelonaModule } from '@src/app/barcelona/barcelona.module';
@@ -25,7 +27,10 @@ import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
   declarations: [
     AppComponent,
   ],
-  providers: [],
+  providers: [
+      Location,
+      { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

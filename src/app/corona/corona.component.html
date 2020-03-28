@@ -1,46 +1,48 @@
-<div class="left-side">
-    <div class="input-container">
-        <span class="material-icons search-icon">
-            search
-        </span>
-        <input type="text" [(ngModel)]="filterStr" placeholder="County, State, or Country" autofocus>
-    </div>
-    <div class="view-tabs">
-        <div class="view-tab" [class.active]="!viewingFavorites" (click)="setViewingFavorites(false)">
-            All
+<div class="page-container" [class.is-small-screen]="isSmallScreen">
+    <div class="left-side">
+        <div class="input-container">
+            <span class="material-icons search-icon">
+                search
+            </span>
+            <input type="text" [(ngModel)]="filterStr" placeholder="County, State, or Country" autofocus>
         </div>
-        <div class="view-tab" [class.active]="viewingFavorites" (click)="setViewingFavorites(true)">
-            <div class="material-icons star active">
-                grade
+        <div class="view-tabs">
+            <div class="view-tab" [class.active]="!viewingFavorites" (click)="setViewingFavorites(false)">
+                All
             </div>
-            <div>Favorites</div>
+            <div class="view-tab" [class.active]="viewingFavorites" (click)="setViewingFavorites(true)">
+                <div class="material-icons star active">
+                    grade
+                </div>
+                <div>Favorites</div>
+            </div>
         </div>
+        <dwu-file-explorer
+            [rootFileId]="fileGroup.rootFileId"
+            [filesById]="fileGroup.filesById"
+            (filesByIdChange)="fileGroup.filesById = $event"
+            [fuzzFilterString]="filterStr"
+            [closedFileIds]="fileGroup.closedFileIds"
+            (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
+            [selectedFileIds]="fileGroup.selectedFileIds"
+            (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
+            [rowIconTemplate]="rowIconTemplate"
+            [perfMode]="true"
+        ></dwu-file-explorer>
     </div>
-    <dwu-file-explorer
-        [rootFileId]="fileGroup.rootFileId"
-        [filesById]="fileGroup.filesById"
-        (filesByIdChange)="fileGroup.filesById = $event"
-        [fuzzFilterString]="filterStr"
-        [closedFileIds]="fileGroup.closedFileIds"
-        (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
-        [selectedFileIds]="fileGroup.selectedFileIds"
-        (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
-        [rowIconTemplate]="rowIconTemplate"
-        [perfMode]="true"
-    ></dwu-file-explorer>
-</div>
-<div class="right-side">
-    <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
-        <dwu-corona-file-viewer *ngSwitchDefault [location]="locationsByFileId[selectedFileId]"></dwu-corona-file-viewer>
-    </ng-container>
-</div>
-<ng-template #rowIconTemplate let-file="file">
-    <div
-        *ngIf="file.id !== favoritesRoot.id"
-        class="material-icons star clickable"
-        [class.active]="favoriteFileIds.has(file.id)"
-        (click)="toggleFavoriteFile(file, $event)"
-    >
-        grade
+    <div class="right-side">
+        <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
+            <dwu-corona-file-viewer *ngSwitchDefault [location]="locationsByFileId[selectedFileId]"></dwu-corona-file-viewer>
+        </ng-container>
     </div>
-</ng-template>
+    <ng-template #rowIconTemplate let-file="file">
+        <div
+            *ngIf="file.id !== favoritesRoot.id"
+            class="material-icons star clickable"
+            [class.active]="favoriteFileIds.has(file.id)"
+            (click)="toggleFavoriteFile(file, $event)"
+        >
+            grade
+        </div>
+    </ng-template>
+</div>

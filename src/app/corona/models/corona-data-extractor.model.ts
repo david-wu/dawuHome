@@ -12,6 +12,20 @@ export class CoronaDataExtractor {
 
     };
 
+    /**
+     * getDateFromStr
+     * Safari has troubles dealing with new Date("1-1-20")
+     * @param {string} dateStr
+     */
+    public getDateFromStr(dateStr: string) {
+        const splitDateStr = dateStr.split('-').map(Number);
+        return new Date(
+            splitDateStr[0],
+            splitDateStr[1],
+            splitDateStr[2],
+        );
+    }
+
     public clean(file) {
         const cleanData = [];
 
@@ -25,7 +39,7 @@ export class CoronaDataExtractor {
             });
         });
 
-        const sortedDateStrs = sortBy(dateStrs, (dateStr) => +new Date(dateStr))
+        const sortedDateStrs = sortBy(dateStrs, (dateStr) => +this.getDateFromStr(dateStr))
 
         let previousPoint = {
             cases: sortedDateStrs[0].cases || 0,
@@ -42,8 +56,8 @@ export class CoronaDataExtractor {
             const augmentedDataPoint = {
                 ...file.dates[dateStr],
                 dateStr: dateStr,
-                date: new Date(dateStr),
-                timestamp: +new Date(dateStr),
+                date: this.getDateFromStr(dateStr),
+                timestamp: +this.getDateFromStr(dateStr),
                 cases: Math.max(point.cases, previousPoint.cases),
                 deaths: Math.max(point.deaths, previousPoint.deaths),
                 recovered: Math.max(point.recovered, previousPoint.recovered),

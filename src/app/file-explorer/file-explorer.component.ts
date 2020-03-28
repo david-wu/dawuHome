@@ -163,7 +163,7 @@ export class FileExplorerComponent {
         const firstSelectedFileId = Array.from(this.selectedFileIds)[0];
         const filePosition = this.getFileIdPosition(firstSelectedFileId);
         // leave some space above file to show you can scroll up
-        const scrollPosition = Math.max(0, filePosition - 5);
+        const scrollPosition = Math.max(0, filePosition - 2);
 
         // weird issue with cdk needs timeout
         setTimeout(() => {

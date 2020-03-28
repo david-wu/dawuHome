@@ -18,7 +18,6 @@ export class CoronaDashboardComponent {
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
-            console.log('this.coronaFile', this.coronaFile)
             this.coronaData = this.coronaExtractor.clean(this.coronaFile);
         }
     }
