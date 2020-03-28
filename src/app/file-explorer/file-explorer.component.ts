@@ -4,6 +4,7 @@ import {
     Input,
     Output,
     SimpleChanges,
+    TemplateRef,
     ViewChildren,
     QueryList,
 } from '@angular/core';
@@ -46,6 +47,7 @@ export class FileExplorerComponent {
     @Input() closedFileIds: Set<string> = new Set();
     @Input() selectedFileIds: Set<string> = new Set<string>();
     @Input() perfMode: boolean = true;
+    @Input() rowIconTemplate?: TemplateRef<any>;
     @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
     @Output() closedFileIdsChange = new EventEmitter<Set<string>>();
     @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();

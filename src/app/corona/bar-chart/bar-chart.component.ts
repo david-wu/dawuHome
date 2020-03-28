@@ -47,13 +47,10 @@ export class BarChartComponent {
         ]);
         const dataset = stack(this.coronaData);
 
-        // Set x, y and colors
         var x = d3.scaleBand()
           .domain(dataset[0].map((d) => d.data.timestamp))
           .range([10, width-10])
           .padding(0.05);
-          // .paddingOuter();
-          // .rangeRoundBands([10, width-10], 0.02);
 
         const maxY = dataset.reduce((currentMax: number, series: number[][]) => {
             const seriesMax = series.reduce((currentSeriesMax: number, stack: number[]) => {
@@ -69,8 +66,8 @@ export class BarChartComponent {
           const colorsByKey = {
               deaths: '2B1919',
               recovered: '34A2AA',
-              active: 'C45C5C',
-              new: 'E58E8E',
+              active: 'AD3E3E',
+              new: 'ED9797',
           }
 
 
@@ -131,8 +128,8 @@ export class BarChartComponent {
           // .attr('class', 'series')
           .style('fill', (d) => colorsByKey[d.key]);
 
-        var rect = groups.selectAll('rect')
-          .data((d, a,b,c) => {
+        const rect = groups.selectAll('rect')
+          .data((d) => {
               d.forEach((points: any) => {
                   points.seriesKey = d.key;
               });
@@ -147,9 +144,9 @@ export class BarChartComponent {
           .on('mouseover', function() { tooltip.style('display', null); })
           .on('mouseout', function() { tooltip.style('display', 'none'); })
           .on('mousemove', function(d) {
-            var xPosition = d3.mouse(this)[0] - (120 / 2);
-            var yPosition = d3.mouse(this)[1] - (48 + 20);
-            tooltip.attr('transform', 'translate(' + xPosition + ',' + yPosition + ')');
+            const xPosition = d3.mouse(this)[0] - (120 / 2);
+            const yPosition = d3.mouse(this)[1] - (48 + 20);
+            tooltip.attr('transform', `translate(${xPosition},${yPosition})`);
             tooltip.select('text.value-text').text(`${d.seriesKey}: ${d.data[d.seriesKey]}`);
             tooltip.select('text.time-text').text(`${d3.timeFormat('%b-%e-%Y')(d.data.timestamp)}`);
           });

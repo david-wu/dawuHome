@@ -5,10 +5,13 @@
     display: block;
     background-color: $eggshell-darker;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .virtual-viewport {
     height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .file-row {
@@ -79,6 +82,10 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+        .icon-template-container {
+            flex: 0 0 auto;
+            margin-right: 0.25rem;
         }
     }
 }

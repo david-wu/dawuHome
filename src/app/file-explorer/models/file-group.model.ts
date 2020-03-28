@@ -122,6 +122,10 @@ export class FileGroup {
         this.closedFileIds = closedFileIds;
     }
 
+    public removeAsChild(parent: File, child: File) {
+        parent.childIds = parent.childIds.filter((childId: string) => childId !== child.id);
+    }
+
     /**
      * addAsChild
      * @param {File} parent
@@ -146,7 +150,7 @@ export class FileGroup {
     }
 
     /**
-     * flushBatchedCreateFile
+     * flushFileChanges
      * new reference for childIds so change detection will pick up on batchAddAsChild
      */
     public flushBatchAddAsChild() {
@@ -178,7 +182,7 @@ export class FileGroup {
      * batchCreateFile
      * this.createFile replaces this.filesById for change detection
      * this is very slow when creating a lot of files
-     * batchCreateFile modifies filesById, then flushBatchedCreateFile replaces this.filesById
+     * batchCreateFile modifies filesById, then flushFileChanges replaces this.filesById
      * @param  {Partial<File> = {}} overrides
      * @return {File}
      */
@@ -193,10 +197,10 @@ export class FileGroup {
     }
 
     /**
-     * flushBatchedCreateFile
+     * flushFileChanges
      * new reference for filesById so change detection will pick up on batchCreateFile
      */
-    public flushBatchedCreateFile() {
+    public flushFileChanges() {
         this.filesById = {...this.filesById};
     }
 
@@ -204,7 +208,7 @@ export class FileGroup {
      * flush
      */
     public flush() {
-        this.flushBatchedCreateFile();
+        this.flushFileChanges();
         this.flushBatchAddAsChild();
     }
 

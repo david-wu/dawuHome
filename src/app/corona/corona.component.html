@@ -10,10 +10,10 @@
             All
         </div>
         <div class="view-tab" [class.active]="viewingFavorites" (click)="setViewingFavorites(true)">
-            <div>Favorites</div>
-            <div class="material-icons star">
+            <div class="material-icons star active">
                 grade
             </div>
+            <div>Favorites</div>
         </div>
     </div>
     <dwu-file-explorer
@@ -25,6 +25,7 @@
         (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
         [selectedFileIds]="fileGroup.selectedFileIds"
         (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
+        [rowIconTemplate]="rowIconTemplate"
         [perfMode]="true"
     ></dwu-file-explorer>
 </div>
@@ -35,8 +36,13 @@
         </div>
     </ng-container>
 </div>
-<ng-template #rowIconTemplate>
-    <div class="material-icons star">
+<ng-template #rowIconTemplate let-file="file">
+    <div
+        *ngIf="file.id !== favoritesRoot.id"
+        class="material-icons star clickable"
+        [class.active]="favoriteFileIds.has(file.id)"
+        (click)="toggleFavoriteFile(file, $event)"
+    >
         grade
     </div>
 </ng-template>

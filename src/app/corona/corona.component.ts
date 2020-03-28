@@ -26,6 +26,8 @@ export class CoronaComponent {
     public fileIdsByLocation: Record<string, string> = {};
     public locationRoot: File;
     public favoritesRoot: File;
+    public favoriteFileIds: Set<string> = new Set();
+    public filterStr: string = '';
 
     public viewingFavorites = false;
 
@@ -38,6 +40,18 @@ export class CoronaComponent {
         this.fileGroup.closedFileIds.delete(this.favoritesRoot.id);
     }
 
+    public toggleFavoriteFile(file: File, event: Event) {
+        event.stopPropagation();
+        if (this.favoriteFileIds.has(file.id)) {
+            this.favoriteFileIds.delete(file.id)
+            this.fileGroup.removeAsChild(this.favoritesRoot, file);
+        } else {
+            this.favoriteFileIds.add(file.id)
+            this.fileGroup.addAsChild(this.favoritesRoot, file);
+        };
+        this.fileGroup.flushFileChanges();
+    }
+
     public setViewingFavorites(viewingFavorites: boolean) {
         this.viewingFavorites = viewingFavorites;
         if (viewingFavorites) {
@@ -45,6 +59,7 @@ export class CoronaComponent {
         } else {
             this.fileGroup.setRootFile(this.locationRoot);
         }
+        this.filterStr = '';
     }
 
     /**
