@@ -15,8 +15,8 @@ import {
 } from 'rxjs/operators';
 
 import coronaLocations from '@src/assets/corona/locations.json';
-import countryNamesByCode from '@src/assets/corona/country-names-by-code.json';
-import stateNamesByCode from '@src/assets/corona/state-names-by-code.json';
+import countryNamesByCode from '@src/assets/country-names-by-code.json';
+import stateNamesByCode from '@src/assets/state-names-by-code.json';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
 import { CoronaService } from '../services/corona.service';
