@@ -5,7 +5,10 @@ import {
 } from '@angular/core';
 import { CoronaDataExtractor } from '../models/corona-data-extractor.model';
 import * as d3 from 'd3';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
+// console.log('ResizeSensor', ResizeSensor)
+// ElementQueries = require('css-element-queries/src/ElementQueries');
 @Component({
   selector: 'dwu-bar-chart',
   templateUrl: './bar-chart.component.html',
@@ -15,6 +18,7 @@ export class BarChartComponent {
 
     @Input() coronaData: any;
 
+    public sensor;
     public coronaExtractor = new CoronaDataExtractor();
     public margins = {
         top: 50,
@@ -26,18 +30,34 @@ export class BarChartComponent {
     constructor(public hostEl: ElementRef) {}
 
     public ngOnChanges(changes) {
+        if (changes.coronaData && changes.coronaData.firstChange && this.coronaData) {
+            this.initializeSvg();
+        }
         if (changes.coronaData && this.coronaData) {
             this.render();
         }
     }
 
-    public updateSvg() {
+    public ngAfterViewInit() {
+        this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
+            this.render();
+        });
+    }
+
+    public ngOnDestroy() {
+        this.sensor.detach()
+    }
+
+    public initializeSvg() {
 
     }
 
     public render() {
-        const width = 960 - this.margins.left - this.margins.right;
-        const height = 500 - this.margins.top - this.margins.bottom;
+        const elDim = this.getElDim();
+
+        console.log('render', elDim);
+        const width = elDim.width - this.margins.left - this.margins.right;
+        const height = elDim.height - this.margins.top - this.margins.bottom;
 
         const stack = d3.stack().keys([
             'deaths',
@@ -203,4 +223,12 @@ export class BarChartComponent {
           // .style('pointer-events', 'none')
           .attr('font-size', '12px')
     }
+
+    public getElDim() {
+        return {
+            width: this.hostEl.nativeElement.clientWidth,
+            height: this.hostEl.nativeElement.clientHeight,
+        }
+    }
+
 }
