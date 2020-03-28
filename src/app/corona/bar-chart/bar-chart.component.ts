@@ -20,9 +20,9 @@ export class BarChartComponent {
     public coronaExtractor = new CoronaDataExtractor();
     public margins = {
         top: 50,
-        right: 30,
-        bottom: 35,
-        left: 30,
+        right: 20,
+        bottom: 40,
+        left: 45,
     };
 
     public svg;
