@@ -7,8 +7,6 @@ import { CoronaDataExtractor } from '../models/corona-data-extractor.model';
 import * as d3 from 'd3';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
-// console.log('ResizeSensor', ResizeSensor)
-// ElementQueries = require('css-element-queries/src/ElementQueries');
 @Component({
   selector: 'dwu-bar-chart',
   templateUrl: './bar-chart.component.html',
@@ -22,10 +20,15 @@ export class BarChartComponent {
     public coronaExtractor = new CoronaDataExtractor();
     public margins = {
         top: 50,
-        right: 160,
+        right: 30,
         bottom: 35,
         left: 30,
     };
+
+    public svg;
+    public rootG;
+    public yAxis;
+    public xAxis;
 
     constructor(public hostEl: ElementRef) {}
 
@@ -49,13 +52,19 @@ export class BarChartComponent {
     }
 
     public initializeSvg() {
+        this.svg = d3.select(this.hostEl.nativeElement).append('svg');
+        this.rootG = this.svg.append('g');
+        this.yAxis = this.rootG.append('g')
+            .attr('class', 'y axis');
+
+        this.xAxis = this.rootG.append('g')
+            .attr('class', 'x axis');
 
     }
 
     public render() {
         const elDim = this.getElDim();
 
-        console.log('render', elDim);
         const width = elDim.width - this.margins.left - this.margins.right;
         const height = elDim.height - this.margins.top - this.margins.bottom;
 
@@ -100,128 +109,148 @@ export class BarChartComponent {
           .tickFormat((d) => d);
 
 
+        const numberOfXDataPoints = dataset[0].length;
+        const xDomainInterval = this.getXDomainInterval(width, numberOfXDataPoints);
         const filteredXDomainValues = x.domain().filter((d, i)=> {
-            const maxXpoints = 10;
-            const xValues = dataset[0].length;
-            let xPoints = xValues;
-            let interval = 1;
-            while(xPoints > maxXpoints) {
-                interval++;
-                xPoints = xValues / interval;
-            }
-            return !(i % interval);
+            // (i + 1 - remainder) makes sure the most recent datapoint's tick is always visible
+            const remainder = numberOfXDataPoints % xDomainInterval;
+            return !((i + 1 - remainder) % xDomainInterval);
         });
         var xAxis = d3.axisBottom()
           .scale(x)
           .tickValues(filteredXDomainValues)
           .tickSizeOuter(0)
-          .tickFormat(d3.timeFormat('%b-%e-%Y'));
+          .tickFormat(d3.timeFormat('%x'));
 
-        const svg = d3.select(this.hostEl.nativeElement)
-          .append('svg')
-          .attr('width', width + this.margins.left + this.margins.right)
-          .attr('height', height + this.margins.top + this.margins.bottom)
-          .append('g')
-          .attr('transform', 'translate(' + this.margins.left + ',' + this.margins.top + ')');
+        this.svg
+            .attr('width', width + this.margins.left + this.margins.right)
+            .attr('height', height + this.margins.top + this.margins.bottom)
 
-        svg.append('g')
-          .attr('class', 'y axis')
-          .call(yAxis)
-          // remove left vertical line
-          .call(g => g.select(".domain")
-            .remove())
-          .call(g => g.selectAll(".tick:not(:first-of-type) line")
+        this.rootG
+            .attr('transform', 'translate(' + this.margins.left + ',' + this.margins.top + ')');
+
+        this.yAxis
+            .call(yAxis)
+            .call(g => g.select(".domain")
+                .remove())
+            .call(g => g.selectAll(".tick:not(:first-of-type) line")
             .attr("stroke-opacity", 0.5)
             .attr("stroke-dasharray", "2,2"));
 
-        svg.append('g')
-          .attr('class', 'x axis')
-          .attr('transform', 'translate(0,' + height + ')')
-          .call(xAxis);
-
+        this.xAxis
+            .attr('transform', 'translate(0,' + height + ')')
+            .call(xAxis);
 
         // Create groups for each series, rects for each segment
-        var groups = svg.selectAll('g.series')
-          .data(dataset)
-          .enter().append('g')
-          .attr('class', (d) => `series ${d.key}`)
-          // .attr('class', 'series')
-          .style('fill', (d) => colorsByKey[d.key]);
+        var groups = this.rootG.selectAll('g.series')
+          .data(dataset);
+        groups.enter()
+            .append('g')
+            .attr('class', 'series')
+            .merge(groups)
+            .style('fill', (d) => colorsByKey[d.key]);
+        groups.exit().remove();
 
-        const rect = groups.selectAll('rect')
-          .data((d) => {
-              d.forEach((points: any) => {
-                  points.seriesKey = d.key;
-              });
-              return d;
-          })
-          .enter()
-          .append('rect')
-          .attr('x', (d) => x(d.data.timestamp))
-          .attr('y', (d) => y(d[1]))
-          .attr('height', (d) => y(d[0]) - y(d[1]))
-          .attr('width', x.bandwidth())
-          .on('mouseover', function() { tooltip.style('display', null); })
-          .on('mouseout', function() { tooltip.style('display', 'none'); })
-          .on('mousemove', function(d) {
-            const xPosition = d3.mouse(this)[0] - (120 / 2);
-            const yPosition = d3.mouse(this)[1] - (48 + 20);
-            tooltip.attr('transform', `translate(${xPosition},${yPosition})`);
-            tooltip.select('text.value-text').text(`${d.seriesKey}: ${d.data[d.seriesKey]}`);
-            tooltip.select('text.time-text').text(`${d3.timeFormat('%b-%e-%Y')(d.data.timestamp)}`);
-          });
+        const rects = groups.selectAll('rect')
+            .data((d) => {
+                d.forEach((points: any) => {
+                    points.seriesKey = d.key;
+                });
+                return d;
+            });
+        rects.enter()
+            .append('rect')
+            .merge(rects)
+            .attr('x', (d) => x(d.data.timestamp))
+            .attr('y', (d) => y(d[1]))
+            .attr('height', (d) => y(d[0]) - y(d[1]))
+            .attr('width', x.bandwidth())
+            .on('mouseover', () => tooltip.style('display', null))
+            .on('mouseout', () => tooltip.style('display', 'none'))
+            .on('mousemove', function(d) {
+                const xPosition = d3.mouse(this)[0] - (120 / 2);
+                const yPosition = d3.mouse(this)[1] - (48 + 20);
+                tooltip.attr('transform', `translate(${xPosition},${yPosition})`);
+                tooltip.select('text.value-text').text(`${d.seriesKey}: ${d.data[d.seriesKey]}`);
+                tooltip.select('text.time-text').text(`${d3.timeFormat('%b-%e-%Y')(d.data.timestamp)}`);
+            });
+        rects.exit().remove()
 
+        const legendData = dataset.slice().reverse().map((d) => ({ key: d.key }));
+        const legend = this.rootG.selectAll('g.legend')
+            .data(legendData);
+        legend.enter()
+            .append('g')
+            .attr('class', 'legend')
+            .merge(legend)
+            .attr('transform', (d, i) => {
+                const x = (i * 100);
+                const y = height + 20;
+                return `translate(${x},${y})`;
+            })
+        legend.exit().remove();
 
-        // Draw legend
-        const reversedDataSet = dataset.slice().reverse();
-        const legend = svg.selectAll('.legend')
-          .data(reversedDataSet)
-          .enter().append('g')
-          .attr('class', 'legend')
-          .attr('transform', function(d, i) { return 'translate(30,' + i * 19 + ')'; });
+        const legendRects = legend.selectAll('rect')
+            .data((d) => [d]);
+        legendRects.enter()
+            .append('rect')
+            .merge(legendRects)
+            .attr('x', 0)
+            .attr('width', 18)
+            .attr('height', 18)
+            .style('fill', (d) => colorsByKey[d.key]);
+        legendRects.exit().remove();
 
-        legend.append('rect')
-          .attr('x', width - 18)
-          .attr('width', 18)
-          .attr('height', 18)
-          .style('fill', (d) => colorsByKey[d.key]);
+        const legendText = legend.selectAll('text')
+            .data((d) => [d]);
+        legendText.enter()
+            .append('text')
+            .merge(legendText)
+            .attr('x', 18 + 5)
+            .attr('y', 9)
+            .attr('dy', '.35em')
+            .style('text-anchor', 'start')
+            .text((d) => d.key);
+        legendText.exit().remove();
 
-        legend.append('text')
-          .attr('x', width + 5)
-          .attr('y', 9)
-          .attr('dy', '.35em')
-          .style('text-anchor', 'start')
-          .text((d) => d.key);
-
-
-        // Prep the tooltip bits, initial display is hidden
-        var tooltip = svg.append('g')
-          .attr('class', 'tooltip')
-          .style('display', 'none');
-
-        tooltip.append('rect')
-          .attr('width', 120)
-          .attr('height', 48)
-          .attr('rx', 5)
-          .attr('fill', '#DDD9CF')
-          .style('opacity', 0.8);
-
-        tooltip.append('text')
+        const tooltip = this.rootG.selectAll('g.tooltip')
+            .data([null]);
+        const tooltipContainer = tooltip.enter()
+            .append('g')
+            .attr('class', 'tooltip')
+            .style('display', 'none')
+            // do not .merge() because we only want to append on new element
+        tooltipContainer.append('rect')
+            .attr('width', 120)
+            .attr('height', 48)
+            .attr('rx', 5)
+            .attr('fill', '#DDD9CF')
+            .style('opacity', 0.8)
+        tooltipContainer.append('text')
           .attr('class', 'time-text')
           .attr('x', 120/2)
           .attr('dy', '1.2rem')
           .style('text-anchor', 'middle')
-          // .style('pointer-events', 'none')
           .attr('font-size', '12px')
-          .attr('font-weight', 'bold');
-
-        tooltip.append('text')
+          .attr('font-weight', 'bold')
+        tooltipContainer.append('text')
           .attr('class', 'value-text')
           .attr('x', 120/2)
           .attr('dy', '2.4rem')
           .style('text-anchor', 'middle')
-          // .style('pointer-events', 'none')
           .attr('font-size', '12px')
+        tooltip.exit().remove();
+    }
+
+    public getXDomainInterval(width: number, xDataPoints: number) {
+        const maxXpoints = Math.floor(width / 60);
+        let xPoints = xDataPoints;
+        let interval = 1;
+        while(xPoints > maxXpoints) {
+            interval++;
+            xPoints = xDataPoints / interval;
+        }
+        return interval;
     }
 
     public getElDim() {

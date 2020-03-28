@@ -43,16 +43,20 @@
         position: relative;
     }
 }
+.clickable {
+    padding: 0.25rem;
+    margin: -0.25rem;
+}
 
 .star {
-    font-size: 1rem;
+    font-size: 1.25rem;
     opacity: 0.25;
     &:hover {
         opacity: 0.5;
-        color: $gold;
+        color: $star-blue;
     }
     &.active {
         opacity: 1;
-        color: $gold;
+        color: $star-blue;
     }
 }

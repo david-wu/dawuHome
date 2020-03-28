@@ -43,10 +43,10 @@
                     <div class="file-label" *ngIf="!fuzzItemsByFileId[file.id]">
                         {{ file.label || file.id }}
                     </div>
-                    <div *ngIf="rowIconTemplate" class="icon-template-container">
+                    <ng-container *ngIf="rowIconTemplate">
                         <ng-container *ngTemplateOutlet="rowIconTemplate; context: { file: file }">
                         </ng-container>
-                    </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
