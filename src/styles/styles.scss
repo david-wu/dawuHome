@@ -11,12 +11,13 @@
   cursor: pointer;
 }
 
-body {
+html body {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  font: 100% sans-serif;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/

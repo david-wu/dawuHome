@@ -1,8 +1,22 @@
 @import 'variables';
 
+@mixin light-small-button {
+    @include light-theme;
+    @include button-sm;
+}
+
 @mixin dark-button {
     @include dark-theme;
     @include button-md;
+}
+
+@mixin button-sm {
+    width: 6rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    white-space: nowrap;
 }
 
 @mixin button-md {
@@ -12,6 +26,27 @@
     text-align: center;
     outline: none;
     white-space: nowrap;
+}
+
+@mixin light-theme {
+        background-color: $eggshell-dark;
+        // border: 1px solid $moss-green;
+        // border-bottom: none;
+        // background-color: $eggshell-dark;
+    //     background-color: $olive-green;
+    //     color: $lightest-green;
+
+    // background-color: $light-green;
+    // // color: $lightest-green;
+    &:hover {
+        background-color: $laurel-green;
+        // color: $lightest-green;
+    }
+    &.active {
+        background-color: $olive-green;
+        color: $lightest-green;
+        // color: $lightest-green;
+    }
 }
 
 @mixin dark-theme {
@@ -52,9 +87,8 @@
 }
 
 @mixin fuzzy-input-container {
-    padding: 0.25rem 1rem 0.25rem 0.75rem;
+    padding: 0.5rem 1rem 0.5rem 0.75rem;
     position: relative;
-    background-color: $eggshell-darker;
     .search-icon {
         position: absolute;
         top: 50%;

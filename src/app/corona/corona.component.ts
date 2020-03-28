@@ -24,13 +24,27 @@ export class CoronaComponent {
     public fileGroup: FileGroup = new FileGroup();
     public locationsByFileId: Record<string, string> = {};
     public fileIdsByLocation: Record<string, string> = {};
+    public locationRoot: File;
+    public favoritesRoot: File;
+
+    public viewingFavorites = false;
 
     /**
      * ngOnInit
      */
-    public ngOnInit() {
+    constructor() {
         this.populateFileGroup();
         this.fileGroup.focusOnSelected();
+        this.fileGroup.closedFileIds.delete(this.favoritesRoot.id);
+    }
+
+    public setViewingFavorites(viewingFavorites: boolean) {
+        this.viewingFavorites = viewingFavorites;
+        if (viewingFavorites) {
+            this.fileGroup.setRootFile(this.favoritesRoot);
+        } else {
+            this.fileGroup.setRootFile(this.locationRoot);
+        }
     }
 
     /**
@@ -38,13 +52,14 @@ export class CoronaComponent {
      * Puts data from coronaLocations into fileGroup
      */
     public populateFileGroup() {
-        const locationRoot = this.fileGroup.createFile({ label: 'Locations' });
-        this.fileGroup.setRootFile(locationRoot);
+        this.locationRoot = this.fileGroup.createFile({ label: 'Locations' });
+        this.favoritesRoot = this.fileGroup.createFile({ label: 'Favorites', childIds: [] });
+        this.fileGroup.setRootFile(this.locationRoot);
 
         const nestedCoronaLocations = this.getNestedCoronaLocations(coronaLocations);
 
         // setFileGroup just batches file creations, make sure to flush
-        this.setFileGroup(locationRoot, nestedCoronaLocations);
+        this.setFileGroup(this.locationRoot, nestedCoronaLocations);
         this.fileGroup.flush();
 
         this.fileGroup.setSelectedFileIds(new Set([

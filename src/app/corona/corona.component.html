@@ -3,7 +3,18 @@
         <span class="material-icons search-icon">
             search
         </span>
-        <input type="text" [(ngModel)]="filterStr" placeholder="County, State, or Country">
+        <input type="text" [(ngModel)]="filterStr" placeholder="County, State, or Country" autofocus>
+    </div>
+    <div class="view-tabs">
+        <div class="view-tab" [class.active]="!viewingFavorites" (click)="setViewingFavorites(false)">
+            All
+        </div>
+        <div class="view-tab" [class.active]="viewingFavorites" (click)="setViewingFavorites(true)">
+            <div>Favorites</div>
+            <div class="material-icons star">
+                grade
+            </div>
+        </div>
     </div>
     <dwu-file-explorer
         [rootFileId]="fileGroup.rootFileId"
@@ -24,3 +35,8 @@
         </div>
     </ng-container>
 </div>
+<ng-template #rowIconTemplate>
+    <div class="material-icons star">
+        grade
+    </div>
+</ng-template>

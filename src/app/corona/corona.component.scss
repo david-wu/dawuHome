@@ -5,6 +5,7 @@
     width: 100%;
     display: flex;
     .left-side {
+        background-color: $eggshell-darker;
         overflow: hidden;
         max-width: 30%;
         width: 20rem;
@@ -12,6 +13,25 @@
         flex-direction: column;
         dwu-file-explorer {
             flex: 1 1 0;
+        }
+
+        .input-container {
+            @include fuzzy-input-container;
+        }
+
+        .view-tabs {
+            padding: 0 0.5rem;
+            display: flex;
+            .view-tab {
+                @include light-small-button;
+                margin: 0 0.5rem;
+                border-radius: 4px 4px 0 0;
+                flex: 1 1 0;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
     .right-side {
@@ -21,6 +41,8 @@
     }
 }
 
-.input-container {
-    @include fuzzy-input-container;
+.star {
+    font-size: 1rem;
+    margin-left: 0.25rem;
+    color: $gold;
 }
