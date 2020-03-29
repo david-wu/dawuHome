@@ -1,3 +1,13 @@
-<div class="top-chart-container">
-    <dwu-bar-chart [coronaData]="coronaData"></dwu-bar-chart>
+<div class="chart-container">
+    <dwu-bar-chart
+        [coronaData]="coronaData"
+        [keys]="coronaKeys"
+        [colorsByKey]="coronaColorsByKey"
+        [disabledKeys]="disabledBarKeys"
+    ></dwu-bar-chart>
+    <dwu-chart-legend
+        [keys]="coronaKeys"
+        [colorsByKey]="coronaColorsByKey"
+        [(disabledKeys)]="disabledBarKeys"
+    ></dwu-chart-legend>
 </div>

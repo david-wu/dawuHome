@@ -45,7 +45,11 @@
     </div>
     <div class="right-side">
         <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
-            <dwu-corona-file-viewer *ngSwitchDefault [location]="locationsByFileId[selectedFileId]"></dwu-corona-file-viewer>
+            <dwu-corona-file-viewer
+                *ngSwitchDefault
+                [location]="locationsByFileId[selectedFileId]"
+                [fileName]="fileGroup.filesById[selectedFileId].label"
+            ></dwu-corona-file-viewer>
         </ng-container>
     </div>
     <ng-template #rowIconTemplate let-file="file">

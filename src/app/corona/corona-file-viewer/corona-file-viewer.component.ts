@@ -29,10 +29,12 @@ import { CoronaService } from '../services/corona.service';
 export class CoronaFileViewerComponent {
 
     @Input() location: string;
+    @Input() fileName: string;
     public location$ = new BehaviorSubject(undefined);
-
     public coronaFile$: Observable<any>;
     public isLoading$: Observable<boolean>;
+    public fileUrl: string;
+    public readonly countryNamesByCode = countryNamesByCode;
 
     constructor(public coronaService: CoronaService) {
         this.coronaFile$ = this.location$.pipe(
@@ -40,6 +42,7 @@ export class CoronaFileViewerComponent {
                 if (!location) {
                     return of(undefined);
                 }
+                this.fileUrl = this.coronaService.getCoronaFileUrl(location);
                 return this.coronaService.getCoronaFileByLocation(location).pipe(
                     startWith(undefined),
                 );

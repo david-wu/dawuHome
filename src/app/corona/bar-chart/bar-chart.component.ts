@@ -15,13 +15,16 @@ import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 export class BarChartComponent {
 
     @Input() coronaData: any;
+    @Input() keys: string[];
+    @Input() colorsByKey: Record<string, string>;
+    @Input() disabledKeys: Set<string> = new Set();
 
     public sensor;
     public coronaExtractor = new CoronaDataExtractor();
     public margins = {
         top: 50,
         right: 20,
-        bottom: 40,
+        bottom: 20,
         left: 45,
     };
 
@@ -36,8 +39,10 @@ export class BarChartComponent {
         if (changes.coronaData && changes.coronaData.firstChange && this.coronaData) {
             this.initializeSvg();
         }
-        if (changes.coronaData && this.coronaData) {
-            this.render();
+        if (changes.coronaData || changes.disabledKeys) {
+            if (this.coronaData) {
+                this.render();
+            }
         }
     }
 
@@ -68,16 +73,16 @@ export class BarChartComponent {
         const width = elDim.width - this.margins.left - this.margins.right;
         const height = elDim.height - this.margins.top - this.margins.bottom;
 
-        const stack = d3.stack().keys([
-            'deaths',
-            'recovered',
-            'active',
-            'new',
-        ]);
+        const filteredKeys = this.keys.filter((key: string) => {
+            return !(this.disabledKeys && this.disabledKeys.has(key));
+        });
+        const reversedKeys = filteredKeys.reverse();
+        const stack = d3.stack().keys(reversedKeys);
         const dataset = stack(this.coronaData);
 
+        const domain = dataset.length ? dataset[0].map((d) => d.data.timestamp) : [];
         var x = d3.scaleBand()
-          .domain(dataset[0].map((d) => d.data.timestamp))
+          .domain(domain)
           .range([10, width-10])
           .padding(0.05);
 
@@ -92,14 +97,6 @@ export class BarChartComponent {
           .domain([0, maxY])
           .range([height, 0]);
 
-          const colorsByKey = {
-              deaths: '2B1919',
-              recovered: '34A2AA',
-              active: 'AD3E3E',
-              new: 'ED9797',
-          }
-
-
         // Define and draw axes
         var yAxis = d3.axisLeft()
           .scale(y)
@@ -108,7 +105,7 @@ export class BarChartComponent {
           .tickSize(-width, 0, 0)
           .tickFormat((d) => d);
 
-        const numberOfXDataPoints = dataset[0].length;
+        const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
         const xDomainInterval = this.getXDomainInterval(width, numberOfXDataPoints);
         const remainder = numberOfXDataPoints % xDomainInterval;
         const filteredXDomainValues = x.domain().filter((d, i)=> {
@@ -141,21 +138,23 @@ export class BarChartComponent {
             .call(xAxis);
 
         // Create groups for each series, rects for each segment
-        var groups = this.rootG.selectAll('g.series')
+        const groups = this.rootG.selectAll('g.series')
           .data(dataset);
         groups.enter()
             .append('g')
-            .attr('class', 'series')
+            .attr('class', (d) => `series ${d.key}`)
             .merge(groups)
-            .style('fill', (d) => colorsByKey[d.key]);
+            .style('fill', (d) => this.colorsByKey[d.key]);
         groups.exit().remove();
 
-        const rects = groups.selectAll('rect')
-            .data((d) => {
-                d.forEach((points: any) => {
-                    points.seriesKey = d.key;
+        // reusing "groups" selection doesn't work, not sure why
+        // explicitly selectAll again before rebinding works
+        const rects = this.rootG.selectAll('g.series').selectAll('rect')
+            .data((series) => {
+                series.forEach((points: any) => {
+                    points.seriesKey = series.key;
                 });
-                return d;
+                return series;
             });
         rects.enter()
             .append('rect')
@@ -175,45 +174,45 @@ export class BarChartComponent {
             });
         rects.exit().remove()
 
-        const legendData = dataset.slice().reverse().map((d) => ({ key: d.key }));
-        const legend = this.rootG.selectAll('g.legend')
-            .data(legendData);
-        legend.enter()
-            .append('g')
-            .attr('class', 'legend')
-            .merge(legend)
-            .attr('transform', (d, i) => {
-                const x = (i * 100);
-                const y = height + 20;
-                return `translate(${x},${y})`;
-            })
-        legend.exit().remove();
+        // const legendData = dataset.slice().reverse().map((d) => ({ key: d.key }));
+        // const legend = this.rootG.selectAll('g.legend')
+        //     .data(legendData);
+        // legend.enter()
+        //     .append('g')
+        //     .attr('class', 'legend')
+        //     .merge(legend)
+        //     .attr('transform', (d, i) => {
+        //         const x = (i * 100);
+        //         const y = height + 20;
+        //         return `translate(${x},${y})`;
+        //     })
+        // legend.exit().remove();
 
-        const legendRects = legend.selectAll('rect')
-            .data((d) => [d]);
-        legendRects.enter()
-            .append('rect')
-            .merge(legendRects)
-            .attr('x', 0)
-            .attr('width', 18)
-            .attr('height', 18)
-            .style('fill', (d) => colorsByKey[d.key]);
-        legendRects.exit().remove();
+        // const legendRects = legend.selectAll('rect')
+        //     .data((d) => [d]);
+        // legendRects.enter()
+        //     .append('rect')
+        //     .merge(legendRects)
+        //     .attr('x', 0)
+        //     .attr('width', 18)
+        //     .attr('height', 18)
+        //     .style('fill', (d) => this.colorsByKey[d.key]);
+        // legendRects.exit().remove();
 
-        const legendText = legend.selectAll('text')
-            .data((d) => [d]);
-        legendText.enter()
-            .append('text')
-            .merge(legendText)
-            .attr('x', 18 + 5)
-            .attr('y', 9)
-            .attr('dy', '.35em')
-            .style('text-anchor', 'start')
-            .text((d) => d.key);
-        legendText.exit().remove();
+        // const legendText = legend.selectAll('text')
+        //     .data((d) => [d]);
+        // legendText.enter()
+        //     .append('text')
+        //     .merge(legendText)
+        //     .attr('x', 18 + 5)
+        //     .attr('y', 9)
+        //     .attr('dy', '.35em')
+        //     .style('text-anchor', 'start')
+        //     .text((d) => d.key);
+        // legendText.exit().remove();
 
         const tooltip = this.rootG.selectAll('g.tooltip')
-            .data([null]);
+            .data([{}]);
         const tooltipContainer = tooltip.enter()
             .append('g')
             .attr('class', 'tooltip')

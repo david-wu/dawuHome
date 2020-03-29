@@ -19,6 +19,7 @@ import { CoronaService } from './services/corona.service';
 import { LocalStorageService } from './services/localStorage.service';
 import { CoronaDashboardComponent } from './corona-dashboard/corona-dashboard.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { ChartLegendComponent } from './chart-legend/chart-legend.component';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     ],
     declarations: [
         BarChartComponent,
+        ChartLegendComponent,
         CoronaComponent,
         CoronaFileViewerComponent,
         CoronaDashboardComponent,

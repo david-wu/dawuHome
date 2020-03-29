@@ -1,11 +1,24 @@
 <div class="header">
-    <div>{{ location }}</div>
-    <div *ngIf="(coronaFile$ | async)?.population as population" class="population">
-        Population: {{ population.toLocaleString() }}
+    <div class="header-main">
+        <div>{{ fileName }}</div>
+        <a [href]="fileUrl" class="download-link" download>
+            <span class="material-icons download-icon">
+                get_app
+            </span>
+        </a>
+        <div class="loader" [class.visible]="isLoading$ | async">
+            <span class="material-icons hour-glass">
+                hourglass_empty
+            </span>
+        </div>
     </div>
-</div>
-<div *ngIf="isLoading$ | async">
-    loading..
+    <div class="population">
+        <div>Population:</div>
+        <div
+            *ngIf="(coronaFile$ | async)?.population as population"
+            class="population-count"
+        >{{ population.toLocaleString() }}</div>
+    </div>
 </div>
 <dwu-corona-dashboard
     *ngIf="coronaFile$ | async as coronaFile"

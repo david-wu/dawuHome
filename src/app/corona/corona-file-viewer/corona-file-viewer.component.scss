@@ -1,16 +1,40 @@
 @import 'mixins';
 
-h3 {
-    margin: 1rem
-}
-
 .header {
     display: flex;
     padding: 1rem;
     flex-direction: column;
     font-size: 1rem;
+    .header-main {
+        display: flex;
+        align-items: center;
+        .download-link {
+            margin-left: 0.25rem;
+            text-decoration: none;
+            .download-icon {
+                font-size: 1.25rem;
+                color: $granite;
+                display: block;
+            }
+        }
+    }
     .population {
         font-size: 0.75rem;
         color: $granite;
+        display: flex;
+        .population-count {
+            margin-left: 0.25rem;
+        }
+    }
+}
+
+.loader {
+    visibility: hidden;
+    margin-left: 0.25rem;
+    &.visible {
+        visibility: visible;
+    }
+    .hour-glass {
+        font-size: 1rem;
     }
 }

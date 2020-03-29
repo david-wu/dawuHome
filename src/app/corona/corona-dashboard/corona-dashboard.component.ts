@@ -15,10 +15,23 @@ export class CoronaDashboardComponent {
 
     public coronaData: any;
     public coronaExtractor = new CoronaDataExtractor();
+    public readonly coronaKeys = [
+        'new',
+        'active',
+        'recovered',
+        'deaths',
+    ];
+    public readonly coronaColorsByKey = {
+        deaths: '#2B1919',
+        recovered: '#34A2AA',
+        active: '#AD3E3E',
+        new: '#ED9797',
+    }
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile);
+
         }
     }
 }

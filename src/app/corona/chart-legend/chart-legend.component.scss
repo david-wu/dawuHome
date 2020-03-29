@@ -1,5 +1,29 @@
 :host {
-    width: 100%;
-    height: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    .key-set {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:not(:first-child) {
+            margin-left: 1rem;
+        }
+        &:hover {
+            .key-color {
+                transform: scale(1.2);
+            }
+        }
+
+        .key-color {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 2px;
+            transition: transform 75ms, background-color 75ms;
+            transform: scale(1);
+        }
+        .key-label {
+            margin-left: 0.25rem;
+        }
+    }
 }

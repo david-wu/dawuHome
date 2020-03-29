@@ -5,13 +5,6 @@ import {
 
 export class CoronaDataExtractor {
 
-
-    public labelsByColumn = {
-        cases: 'Cases',
-
-
-    };
-
     /**
      * getDateFromStr
      * Safari has troubles dealing with new Date("1-1-20")
