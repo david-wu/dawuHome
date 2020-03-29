@@ -57,6 +57,7 @@ export class CoronaDataExtractor {
             };
             augmentedDataPoint.new = augmentedDataPoint.cases - previousPoint.cases;
             augmentedDataPoint.active = augmentedDataPoint.cases - augmentedDataPoint.new - augmentedDataPoint.deaths - augmentedDataPoint.recovered;
+            augmentedDataPoint.active = Math.max(0, augmentedDataPoint.active);
             cleanData.push(augmentedDataPoint)
             previousPoint = augmentedDataPoint;
         });

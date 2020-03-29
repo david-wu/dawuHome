@@ -55,7 +55,7 @@
     <ng-template #rowIconTemplate let-file="file">
         <div
             *ngIf="locationsByFileId[file.id]"
-            class="material-icons star clickable"
+            class="material-icons star clickable row-icon"
             [class.active]="favoriteFileIds.has(file.id)"
             (click)="toggleFavoriteFile(file, $event)"
         >

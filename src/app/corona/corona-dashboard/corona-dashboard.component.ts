@@ -15,6 +15,8 @@ export class CoronaDashboardComponent {
 
     public coronaData: any;
     public coronaExtractor = new CoronaDataExtractor();
+    public overviewHoverIndex = 0;
+
     public readonly coronaKeys = [
         'new',
         'active',
@@ -31,7 +33,7 @@ export class CoronaDashboardComponent {
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile);
-
+            this.overviewHoverIndex = this.coronaData.length - 1;
         }
     }
 }

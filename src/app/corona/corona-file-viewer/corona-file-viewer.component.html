@@ -1,4 +1,9 @@
-<div class="header">
+<div *ngIf="!location" class="header">
+    <div class="header-main">
+        <div>{{ fileName }}</div>
+    </div>
+</div>
+<div *ngIf="location" class="header">
     <div class="header-main">
         <div>{{ fileName }}</div>
         <a [href]="fileUrl" class="download-link" download>

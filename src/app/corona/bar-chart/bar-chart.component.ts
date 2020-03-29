@@ -1,7 +1,9 @@
 import {
     Component,
     ElementRef,
+    EventEmitter,
     Input,
+    Output,
 } from '@angular/core';
 import { CoronaDataExtractor } from '../models/corona-data-extractor.model';
 import * as d3 from 'd3';
@@ -18,20 +20,29 @@ export class BarChartComponent {
     @Input() keys: string[];
     @Input() colorsByKey: Record<string, string>;
     @Input() disabledKeys: Set<string> = new Set();
+    @Input() hoverIndex: number;
+    @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
 
     public sensor;
     public coronaExtractor = new CoronaDataExtractor();
     public margins = {
-        top: 50,
+        top: 0,
         right: 20,
         bottom: 20,
         left: 45,
     };
+    public barPadding = 0.05
 
     public svg;
     public rootG;
+    public seriesG;
+    public hoverBox;
+    public xScale;
+    public yScale
     public yAxis;
     public xAxis;
+    public maxY;
+    // public hoverIndex: number;
 
     constructor(public hostEl: ElementRef) {}
 
@@ -43,6 +54,9 @@ export class BarChartComponent {
             if (this.coronaData) {
                 this.render();
             }
+        }
+        if(changes.hoverIndex) {
+            this.positionHoverBox();
         }
     }
 
@@ -57,14 +71,45 @@ export class BarChartComponent {
     }
 
     public initializeSvg() {
-        this.svg = d3.select(this.hostEl.nativeElement).append('svg');
+        this.svg = d3.select(this.hostEl.nativeElement).append('svg')
+            .on('mousemove', () => this.onMouseMove());
         this.rootG = this.svg.append('g');
         this.yAxis = this.rootG.append('g')
             .attr('class', 'y axis');
-
         this.xAxis = this.rootG.append('g')
             .attr('class', 'x axis');
+        this.seriesG = this.rootG.append('g');
+        this.hoverBox = this.rootG.append('rect')
+            .attr('class', 'hover-box')
+            .style('fill', '#8A9A5B')
+            .style('fill-opacity', '0.25')
+            .style('stroke', '#8A9A5B')
+            .style('stroke-opacity', '1')
+            .style('stroke-width', '1');
+    }
 
+    public onMouseMove() {
+        const [x, y] = d3.mouse(this.svg.node());
+        const distanceBetweenBars = this.xScale.step();
+        const paddingWidth = this.barPadding * distanceBetweenBars;
+        const startingPx = this.xScale(this.coronaData[0].timestamp);
+        const xOnChart = x - this.margins.left - startingPx - (paddingWidth / 2);
+        const rawIndex = Math.floor(xOnChart / distanceBetweenBars);
+        const hoverIndex = Math.min(Math.max(rawIndex, 0), this.coronaData.length - 1);
+        if (hoverIndex !== this.hoverIndex) {
+            this.hoverIndex = hoverIndex;
+            this.hoverIndexChange.emit(hoverIndex);
+        }
+        // this.positionHoverBox();
+    }
+
+    public positionHoverBox() {
+        const hoverBoxTimestamp = this.coronaData[this.hoverIndex].timestamp;
+        this.hoverBox
+            .attr('x', this.xScale(hoverBoxTimestamp))
+            .attr('y', this.yScale(this.maxY))
+            .attr('width', this.xScale.bandwidth)
+            .attr('height', this.yScale(0) - this.yScale(this.maxY))
     }
 
     public render() {
@@ -81,25 +126,26 @@ export class BarChartComponent {
         const dataset = stack(this.coronaData);
 
         const domain = dataset.length ? dataset[0].map((d) => d.data.timestamp) : [];
-        var x = d3.scaleBand()
+        this.xScale = d3.scaleBand()
           .domain(domain)
           .range([10, width-10])
-          .padding(0.05);
+          .paddingOuter(0)
+          .paddingInner(this.barPadding);
 
-        const maxY = dataset.reduce((currentMax: number, series: number[][]) => {
+        this.maxY = dataset.reduce((currentMax: number, series: number[][]) => {
             const seriesMax = series.reduce((currentSeriesMax: number, stack: number[]) => {
                 return Math.max(currentSeriesMax, ...stack);
             }, 0);
             return Math.max(currentMax, seriesMax)
         }, 0);
 
-        var y = d3.scaleLinear()
-          .domain([0, maxY])
+        this.yScale = d3.scaleLinear()
+          .domain([0, this.maxY])
           .range([height, 0]);
 
         // Define and draw axes
         var yAxis = d3.axisLeft()
-          .scale(y)
+          .scale(this.yScale)
           // .orient('left')
           .ticks(6)
           .tickSize(-width, 0, 0)
@@ -108,14 +154,15 @@ export class BarChartComponent {
         const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
         const xDomainInterval = this.getXDomainInterval(width, numberOfXDataPoints);
         const remainder = numberOfXDataPoints % xDomainInterval;
-        const filteredXDomainValues = x.domain().filter((d, i)=> {
+        const filteredXDomainValues = this.xScale.domain().filter((d, i)=> {
             // (i + 1 - remainder) makes sure the most recent datapoint's tick is always visible
             return !((i + 1 - remainder) % xDomainInterval);
         });
         var xAxis = d3.axisBottom()
-          .scale(x)
+          .scale(this.xScale)
           .tickValues(filteredXDomainValues)
           .tickSizeOuter(0)
+          // .align()
           .tickFormat(d3.timeFormat('%x'));
 
         this.svg
@@ -138,7 +185,7 @@ export class BarChartComponent {
             .call(xAxis);
 
         // Create groups for each series, rects for each segment
-        const groups = this.rootG.selectAll('g.series')
+        const groups = this.seriesG.selectAll('g.series')
           .data(dataset);
         groups.enter()
             .append('g')
@@ -149,7 +196,7 @@ export class BarChartComponent {
 
         // reusing "groups" selection doesn't work, not sure why
         // explicitly selectAll again before rebinding works
-        const rects = this.rootG.selectAll('g.series').selectAll('rect')
+        const rects = this.seriesG.selectAll('g.series').selectAll('rect')
             .data((series) => {
                 series.forEach((points: any) => {
                     points.seriesKey = series.key;
@@ -159,21 +206,22 @@ export class BarChartComponent {
         rects.enter()
             .append('rect')
             .merge(rects)
-            .attr('x', (d) => x(d.data.timestamp))
-            .attr('y', (d) => y(d[1]))
-            .attr('height', (d) => y(d[0]) - y(d[1]))
-            .attr('width', x.bandwidth())
-            .on('mouseover', () => tooltip.style('display', null))
-            .on('mouseout', () => tooltip.style('display', 'none'))
-            .on('mousemove', function(d) {
-                const xPosition = d3.mouse(this)[0] - (120 / 2);
-                const yPosition = d3.mouse(this)[1] - (48 + 20);
-                tooltip.attr('transform', `translate(${xPosition},${yPosition})`);
-                tooltip.select('text.value-text').text(`${d.seriesKey}: ${d.data[d.seriesKey]}`);
-                tooltip.select('text.time-text').text(`${d3.timeFormat('%b-%e-%Y')(d.data.timestamp)}`);
-            });
+            .attr('x', (d) => this.xScale(d.data.timestamp))
+            .attr('y', (d) => this.yScale(d[1]))
+            .attr('height', (d) => this.yScale(d[0]) - this.yScale(d[1]))
+            .attr('width', this.xScale.bandwidth())
+            // .on('mouseover', () => tooltip.style('display', null))
+            // .on('mouseout', () => tooltip.style('display', 'none'))
+            // .on('mousemove', function(d) {
+            //     const xPosition = d3.mouse(this)[0] - (120 / 2);
+            //     const yPosition = d3.mouse(this)[1] - (48 + 20);
+            //     tooltip.attr('transform', `translate(${xPosition},${yPosition})`);
+            //     tooltip.select('text.value-text').text(`${d.seriesKey}: ${d.data[d.seriesKey]}`);
+            //     tooltip.select('text.time-text').text(`${d3.timeFormat('%b-%e-%Y')(d.data.timestamp)}`);
+            // });
         rects.exit().remove()
 
+        this.positionHoverBox();
         // const legendData = dataset.slice().reverse().map((d) => ({ key: d.key }));
         // const legend = this.rootG.selectAll('g.legend')
         //     .data(legendData);
@@ -211,33 +259,33 @@ export class BarChartComponent {
         //     .text((d) => d.key);
         // legendText.exit().remove();
 
-        const tooltip = this.rootG.selectAll('g.tooltip')
-            .data([{}]);
-        const tooltipContainer = tooltip.enter()
-            .append('g')
-            .attr('class', 'tooltip')
-            .style('display', 'none')
-            // do not .merge() because we only want to append on new element
-        tooltipContainer.append('rect')
-            .attr('width', 120)
-            .attr('height', 48)
-            .attr('rx', 5)
-            .attr('fill', '#DDD9CF')
-            .style('opacity', 0.8)
-        tooltipContainer.append('text')
-          .attr('class', 'time-text')
-          .attr('x', 120/2)
-          .attr('dy', '1.2rem')
-          .style('text-anchor', 'middle')
-          .attr('font-size', '12px')
-          .attr('font-weight', 'bold')
-        tooltipContainer.append('text')
-          .attr('class', 'value-text')
-          .attr('x', 120/2)
-          .attr('dy', '2.4rem')
-          .style('text-anchor', 'middle')
-          .attr('font-size', '12px')
-        tooltip.exit().remove();
+        // const tooltip = this.rootG.selectAll('g.tooltip')
+        //     .data([{}]);
+        // const tooltipContainer = tooltip.enter()
+        //     .append('g')
+        //     .attr('class', 'tooltip')
+        //     .style('display', 'none')
+        //     // do not .merge() because we only want to append on new element
+        // tooltipContainer.append('rect')
+        //     .attr('width', 120)
+        //     .attr('height', 48)
+        //     .attr('rx', 5)
+        //     .attr('fill', '#DDD9CF')
+        //     .style('opacity', 0.8)
+        // tooltipContainer.append('text')
+        //   .attr('class', 'time-text')
+        //   .attr('x', 120/2)
+        //   .attr('dy', '1.2rem')
+        //   .style('text-anchor', 'middle')
+        //   .attr('font-size', '12px')
+        //   .attr('font-weight', 'bold')
+        // tooltipContainer.append('text')
+        //   .attr('class', 'value-text')
+        //   .attr('x', 120/2)
+        //   .attr('dy', '2.4rem')
+        //   .style('text-anchor', 'middle')
+        //   .attr('font-size', '12px')
+        // tooltip.exit().remove();
     }
 
     public getXDomainInterval(width: number, xDataPoints: number) {

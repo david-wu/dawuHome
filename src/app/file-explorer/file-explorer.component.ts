@@ -118,7 +118,7 @@ export class FileExplorerComponent {
     }
 
     public ngOnChanges(changes: SimpleChanges) {
-        if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString) {
+        if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString || changes.perfMode) {
             if (this.rootFileId && this.filesById) {
                 this.setTableIndices();
             }
