@@ -21,7 +21,7 @@ export class CoronaDataExtractor {
         const splitDateStr = dateStr.split('-').map(Number);
         return new Date(
             splitDateStr[0],
-            splitDateStr[1],
+            splitDateStr[1] + 1,
             splitDateStr[2],
         );
     }

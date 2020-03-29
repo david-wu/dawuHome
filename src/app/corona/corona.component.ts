@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import coronaLocations from '@src/assets/corona/locations.json';
 import countryNamesByCode from '@src/assets/country-names-by-code.json';
 import stateNamesByCode from '@src/assets/state-names-by-code.json';
+import { LocalStorageService } from '@src/app/corona/services/localStorage.service';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
 
@@ -40,25 +41,48 @@ export class CoronaComponent {
      */
     constructor(
         public breakpointObserver: BreakpointObserver,
+        public localStorageService: LocalStorageService,
         public mediaMatcher: MediaMatcher,
     ) {
         this.populateFileGroup();
-        this.fileGroup.focusOnSelected();
+        this.fileGroup.closeAllFolders();
         this.fileGroup.closedFileIds.delete(this.favoritesRoot.id);
+        this.fileGroup.closedFileIds.delete(this.locationRoot.id);
+        this.loadFavorites();
+        this.setViewingFavorites(true)
 
         this.subs.add(
-            this.breakpointObserver.observe([
-              '(max-width: 749px)'
-            ])
-              .subscribe((res) => {
+            this.breakpointObserver.observe(['(max-width: 749px)']).subscribe((res) => {
                 this.isSmallScreen = this.mediaMatcher.matchMedia('(max-width: 749px)').matches;
-              }),
-          );
-
+            }),
+        );
     }
 
     public ngOnDestroy() {
         this.subs.unsubscribe();
+    }
+
+    public onFilterStringChange(filterStr: string) {
+        if (filterStr) {
+            this.setViewingFavorites(false);
+        }
+        this.filterStr = filterStr;
+    }
+
+    public loadFavorites() {
+        const favoriteLocations = this.localStorageService.getFavoriteLocations();
+        const favoriteIds = favoriteLocations.map((location: string) => this.fileIdsByLocation[location]);
+        this.favoritesRoot.childIds = favoriteIds;
+        this.favoriteFileIds = new Set(favoriteIds);
+        if (favoriteIds.length) {
+            this.fileGroup.setSelectedFileIds(new Set([favoriteIds[0]]));
+        }
+    }
+
+    public saveFavorites() {
+        const locations = Array.from(this.favoriteFileIds)
+            .map((fileId: string) => this.locationsByFileId[fileId]);
+        this.localStorageService.setFavoriteLocations(locations);
     }
 
     public toggleFavoriteFile(file: File, event: Event) {
@@ -70,6 +94,7 @@ export class CoronaComponent {
             this.favoriteFileIds.add(file.id)
             this.fileGroup.addAsChild(this.favoritesRoot, file);
         };
+        this.saveFavorites()
         this.fileGroup.flushFileChanges();
     }
 
@@ -88,19 +113,14 @@ export class CoronaComponent {
      * Puts data from coronaLocations into fileGroup
      */
     public populateFileGroup() {
-        this.locationRoot = this.fileGroup.createFile({ label: 'Locations' });
+        this.locationRoot = this.fileGroup.createFile({ label: 'World' });
         this.favoritesRoot = this.fileGroup.createFile({ label: 'Favorites', childIds: [] });
-        this.fileGroup.setRootFile(this.locationRoot);
 
         const nestedCoronaLocations = this.getNestedCoronaLocations(coronaLocations);
 
-        // setFileGroup just batches file creations, make sure to flush
+        // setFileGroup batches file creations, make sure to flush
         this.setFileGroup(this.locationRoot, nestedCoronaLocations);
         this.fileGroup.flush();
-
-        this.fileGroup.setSelectedFileIds(new Set([
-            this.fileIdsByLocation['Santa Clara County, CA, USA'],
-        ]));
     }
 
     /**
@@ -144,13 +164,13 @@ export class CoronaComponent {
      * setFileGroup
      * Uses the nestedLocations to create files in this.fileGroup
      * Also sets locationsByFileId for referencing files later on.
-     * @param {File} node
+     * @param {File} file
      * @param {any}  nestedLocations
      */
-    public setFileGroup(node: File, nestedLocations: any) {
+    public setFileGroup(file: File, nestedLocations: any) {
         if (isString(nestedLocations)) {
-            this.locationsByFileId[node.id] = nestedLocations;
-            this.fileIdsByLocation[nestedLocations] = node.id;
+            this.locationsByFileId[file.id] = nestedLocations;
+            this.fileIdsByLocation[nestedLocations] = file.id;
             return;
         }
         const locations = Object.keys(nestedLocations).sort();
@@ -159,7 +179,7 @@ export class CoronaComponent {
             const childNode = this.fileGroup.batchCreateFile({
                 label: location,
             });
-            this.fileGroup.batchAddAsChild(node, childNode);
+            this.fileGroup.batchAddAsChild(file, childNode);
             this.setFileGroup(childNode, nestedLocations[location]);
         });
     }

@@ -108,11 +108,12 @@ export class BarChartComponent {
           .tickSize(-width, 0, 0)
           .tickFormat((d) => d);
 
+
         const numberOfXDataPoints = dataset[0].length;
         const xDomainInterval = this.getXDomainInterval(width, numberOfXDataPoints);
-        const remainder = numberOfXDataPoints % xDomainInterval;
         const filteredXDomainValues = x.domain().filter((d, i)=> {
             // (i + 1 - remainder) makes sure the most recent datapoint's tick is always visible
+            const remainder = numberOfXDataPoints % xDomainInterval;
             return !((i + 1 - remainder) % xDomainInterval);
         });
         var xAxis = d3.axisBottom()

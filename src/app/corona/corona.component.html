@@ -4,7 +4,20 @@
             <span class="material-icons search-icon">
                 search
             </span>
-            <input type="text" [(ngModel)]="filterStr" placeholder="County, State, or Country" autofocus>
+            <span
+                *ngIf="filterStr"
+                class="material-icons cancel-icon"
+                (click)="onFilterStringChange('')"
+            >
+                highlight_off
+            </span>
+            <input
+                type="text"
+                [ngModel]="filterStr"
+                (ngModelChange)="onFilterStringChange($event)"
+                placeholder="County, State, or Country"
+                autofocus
+            >
         </div>
         <div class="view-tabs">
             <div class="view-tab" [class.active]="!viewingFavorites" (click)="setViewingFavorites(false)">
@@ -37,7 +50,7 @@
     </div>
     <ng-template #rowIconTemplate let-file="file">
         <div
-            *ngIf="file.id !== favoritesRoot.id"
+            *ngIf="locationsByFileId[file.id]"
             class="material-icons star clickable"
             [class.active]="favoriteFileIds.has(file.id)"
             (click)="toggleFavoriteFile(file, $event)"

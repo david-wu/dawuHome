@@ -30,22 +30,12 @@
 
 @mixin light-theme {
         background-color: $eggshell-dark;
-        // border: 1px solid $moss-green;
-        // border-bottom: none;
-        // background-color: $eggshell-dark;
-    //     background-color: $olive-green;
-    //     color: $lightest-green;
-
-    // background-color: $light-green;
-    // // color: $lightest-green;
     &:hover {
         background-color: $laurel-green;
-        // color: $lightest-green;
     }
     &.active {
         background-color: $olive-green;
         color: $lightest-green;
-        // color: $lightest-green;
     }
 }
 
@@ -96,6 +86,16 @@
         font-size: 1.25rem;
         color: $granite;
         pointer-events: none;
+    }
+    .cancel-icon {
+        position: absolute;
+        padding: 0.25rem;
+        cursor: pointer;
+        top: 50%;
+        right: 0;
+        transform: translate(-1.25rem, -50%);
+        font-size: 1.25rem;
+        color: $granite;
     }
     input {
         padding: 0 0.5rem 0 2rem;
