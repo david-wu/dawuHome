@@ -1,5 +1,36 @@
 @import 'variables';
 
+@mixin responsive-page {
+    @media screen and (max-width: 750px) {
+        div.page-container {
+            flex-direction: column;
+            .left-side {
+                width: 100%;
+                max-width: none;
+                max-height: 14rem;
+            }
+        }
+    }
+    .page-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+
+        .left-side {
+            overflow: hidden;
+            flex: 1 1 0;
+            max-width: 25%;
+            min-width: 17.5rem;
+        }
+        .right-side {
+            flex: 1 1 0;
+            overflow: auto;
+            position: relative;
+        }
+    }
+
+}
+
 @mixin light-small-button {
     @include light-theme;
     @include button-sm;
@@ -60,7 +91,6 @@
     .main-content {
         flex: 1 1 0;
         overflow: auto;
-        background-color: $lightest-green;
     }
 }
 
@@ -74,36 +104,4 @@
   @else if $media == wide {
     @media only screen and (min-width: $break-large) { @content; }
   }
-}
-
-@mixin fuzzy-input-container {
-    padding: 0.5rem 1rem 0.5rem 0.75rem;
-    position: relative;
-    .search-icon {
-        position: absolute;
-        top: 50%;
-        transform: translate(0.5rem, -50%);
-        font-size: 1.25rem;
-        color: $granite;
-        pointer-events: none;
-    }
-    .cancel-icon {
-        position: absolute;
-        padding: 0.25rem;
-        cursor: pointer;
-        top: 50%;
-        right: 0;
-        transform: translate(-1.25rem, -50%);
-        font-size: 1.25rem;
-        color: $granite;
-    }
-    input {
-        padding: 0 0.5rem 0 2rem;
-        border-radius: 0.5rem;
-        border: 2px solid $moss-green;
-        outline: none;
-        width: 100%;
-        font-size: 0.75rem;
-        height: 1.75rem;
-    }
 }

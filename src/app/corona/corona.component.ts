@@ -7,7 +7,6 @@ import {
     last,
     isString,
 } from 'lodash';
-import { BreakpointObserver, Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 
 import coronaLocations from '@src/assets/corona/locations.json';
@@ -33,16 +32,13 @@ export class CoronaComponent {
     public filterStr: string = '';
 
     public viewingFavorites = false;
-    public isSmallScreen: boolean;
     public subs = new Subscription();
 
     /**
      * ngOnInit
      */
     constructor(
-        public breakpointObserver: BreakpointObserver,
         public localStorageService: LocalStorageService,
-        public mediaMatcher: MediaMatcher,
     ) {
         this.populateFileGroup();
         this.fileGroup.closeAllFolders();
@@ -50,12 +46,6 @@ export class CoronaComponent {
         this.fileGroup.closedFileIds.delete(this.locationRoot.id);
         this.loadFavorites();
         this.setViewingFavorites(true)
-
-        this.subs.add(
-            this.breakpointObserver.observe(['(max-width: 749px)']).subscribe((res) => {
-                this.isSmallScreen = this.mediaMatcher.matchMedia('(max-width: 749px)').matches;
-            }),
-        );
     }
 
     public ngOnDestroy() {

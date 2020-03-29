@@ -1,0 +1,19 @@
+<div class="input-container">
+    <span class="material-icons search-icon">
+        search
+    </span>
+    <span
+        *ngIf="filterStr"
+        class="material-icons cancel-icon"
+        (click)="searchTextChange.emit('')"
+    >
+        highlight_off
+    </span>
+    <input
+        type="text"
+        [ngModel]="filterStr"
+        (ngModelChange)="searchTextChange.emit($event)"
+        placeholder="County, State, or Country"
+        autofocus
+    >
+</div>

@@ -26,10 +26,10 @@ export class BarChartComponent {
     public sensor;
     public coronaExtractor = new CoronaDataExtractor();
     public margins = {
-        top: 0,
+        top: 5,
         right: 20,
         bottom: 20,
-        left: 45,
+        left: 55,
     };
     public barPadding = 0.05
 
@@ -72,7 +72,10 @@ export class BarChartComponent {
 
     public initializeSvg() {
         this.svg = d3.select(this.hostEl.nativeElement).append('svg')
-            .on('mousemove', () => this.onMouseMove());
+            .on('mousemove', () => this.onMouseMove())
+            .on('touchstart', () => this.touchmove())
+            .on('touchmove', () => this.touchmove());
+
         this.rootG = this.svg.append('g');
         this.yAxis = this.rootG.append('g')
             .attr('class', 'y axis');
@@ -88,8 +91,21 @@ export class BarChartComponent {
             .style('stroke-width', '1');
     }
 
+    public touchmove() {
+        // prevents following mouse event
+        d3.event.preventDefault();
+        d3.event.stopPropagation();
+        const touch = d3.touches(this.svg.node());
+        const [x, y] = touch[0];
+        this.setHoverIndex(x, y);
+    }
+
     public onMouseMove() {
         const [x, y] = d3.mouse(this.svg.node());
+        this.setHoverIndex(x, y);
+    }
+
+    public setHoverIndex(x: number, y: number) {
         const distanceBetweenBars = this.xScale.step();
         const paddingWidth = this.barPadding * distanceBetweenBars;
         const startingPx = this.xScale(this.coronaData[0].timestamp);
@@ -100,7 +116,6 @@ export class BarChartComponent {
             this.hoverIndex = hoverIndex;
             this.hoverIndexChange.emit(hoverIndex);
         }
-        // this.positionHoverBox();
     }
 
     public positionHoverBox() {
@@ -149,7 +164,7 @@ export class BarChartComponent {
           // .orient('left')
           .ticks(6)
           .tickSize(-width, 0, 0)
-          .tickFormat((d) => d);
+          .tickFormat((d: number) => d.toLocaleString());
 
         const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
         const xDomainInterval = this.getXDomainInterval(width, numberOfXDataPoints);

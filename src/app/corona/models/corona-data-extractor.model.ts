@@ -14,7 +14,7 @@ export class CoronaDataExtractor {
         const splitDateStr = dateStr.split('-').map(Number);
         return new Date(
             splitDateStr[0],
-            splitDateStr[1] + 1,
+            splitDateStr[1] - 1,
             splitDateStr[2],
         );
     }
@@ -61,7 +61,12 @@ export class CoronaDataExtractor {
             cleanData.push(augmentedDataPoint)
             previousPoint = augmentedDataPoint;
         });
-        return cleanData;
+
+        const clippedData = [];
+        const firstNonZeroIndex = cleanData.findIndex((point) => point.cases !== 0);
+        // includes a 0 datapoint at the beginning
+        const clipIndex = Math.max(0, firstNonZeroIndex - 1);
+        return cleanData.slice(clipIndex);
     }
 
     public getCaseSeries() {

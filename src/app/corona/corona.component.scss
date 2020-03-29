@@ -1,35 +1,17 @@
 @import 'mixins';
 
+:host {
+    @include responsive-page;
+}
+
 .page-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-
-    &.is-small-screen {
-        flex-direction: column;
-        .left-side {
-            width: 100%;
-            max-width: none;
-            max-height: 14rem;
-        }
-    }
-
     .left-side {
         background-color: $eggshell-darker;
-        overflow: hidden;
-        flex: 1 1 0;
-        max-width: 30%;
-        min-width: 17.5rem;
         display: flex;
         flex-direction: column;
         dwu-file-explorer {
             flex: 1 0 0;
         }
-
-        .input-container {
-            @include fuzzy-input-container;
-        }
-
         .view-tabs {
             padding: 0 0.5rem;
             display: flex;
@@ -48,12 +30,8 @@
             }
         }
     }
-    .right-side {
-        flex: 1 1 0;
-        overflow: auto;
-        position: relative;
-    }
 }
+
 .clickable {
     padding: 0.25rem;
     margin: -0.25rem;

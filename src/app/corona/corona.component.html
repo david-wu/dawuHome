@@ -1,24 +1,6 @@
-<div class="page-container" [class.is-small-screen]="isSmallScreen">
+<div class="page-container">
     <div class="left-side">
-        <div class="input-container">
-            <span class="material-icons search-icon">
-                search
-            </span>
-            <span
-                *ngIf="filterStr"
-                class="material-icons cancel-icon"
-                (click)="onFilterStringChange('')"
-            >
-                highlight_off
-            </span>
-            <input
-                type="text"
-                [ngModel]="filterStr"
-                (ngModelChange)="onFilterStringChange($event)"
-                placeholder="County, State, or Country"
-                autofocus
-            >
-        </div>
+        <dwu-search-input [searchText]="filterStr" (searchTextChange)="onFilterStringChange($event)"></dwu-search-input>
         <div class="view-tabs">
             <div class="view-tab" [class.active]="!viewingFavorites" (click)="setViewingFavorites(false)">
                 All
