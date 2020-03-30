@@ -19,6 +19,8 @@
                 @include light-small-button;
                 margin: 0 0.5rem;
                 border-radius: 4px 4px 0 0;
+                border: 1px solid $moss-green;
+                border-bottom: none;
                 flex: 1 1 0;
                 text-align: center;
                 display: flex;

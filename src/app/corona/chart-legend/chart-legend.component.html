@@ -1,4 +1,8 @@
 <div *ngFor="let key of keys" class="key-set" (click)="onKeyClick(key)">
-    <div class="key-color" [style.background-color]="isKeyDisabled(key)"></div>
+    <div
+        class="key-color"
+        [style.background-color]="getKeyBackgroundColor(key)"
+        [style.border-color]="getKeyBorderColor(key)"
+    ></div>
     <div class="key-label">{{ key }}</div>
 </div>

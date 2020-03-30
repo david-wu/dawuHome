@@ -2,23 +2,35 @@
 
 :host {
     display: block;
-    padding: 0 1rem 1rem 1rem;
+    padding-bottom: 2rem;
     .chart-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         .selected-stats {
-            .stats-row {
+            padding: 0 1rem;
+            font-size: 0.75rem;
+            display: flex;
+            .stats-column-container {
                 display: flex;
-                align-items: center;
-                > :not(:first-child) {
-                    margin-left: 3rem;
+                &:not(:first-child) {
+                    margin-left: 2.5rem;
                 }
-                .stats-pair {
+                .stats-column {
                     display: flex;
-                    align-items: center;
-                    > :not(:first-child) {
-                        margin-left: 0.25rem;
+                    flex-direction: column;
+                    text-align: right;
+                    &:first-child {
+                        margin-right: 0.25rem;
+                    }
+                    &.stats {
+                        min-width: 2.5rem;
+                    }
+                    .count-stat {
+                        font-weight: 600;
+                    }
+                    .date-stat {
+                        min-width: 3.75rem;
                     }
                 }
             }

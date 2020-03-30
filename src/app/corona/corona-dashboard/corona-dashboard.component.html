@@ -1,33 +1,33 @@
 <div class="chart-container">
     <div class="selected-stats" *ngIf="coronaData[overviewHoverIndex] as stats">
-        <div class="stats-row">
-            <div class="stats-pair">
-                <div>Date:</div>
-                <div>{{ stats.dateStr }}</div>
+        <div class="stats-column-container">
+            <div class="stats-column">
+                <div>total:</div>
+                <div>date:</div>
             </div>
-            <div class="stats-pair">
-                <div>Total Cases:</div>
-                <div>{{ stats.cases }}</div>
-            </div>
-        </div>
-        <div class="stats-row">
-            <div class="stats-pair">
-                <div>New:</div>
-                <div>{{ stats.new }}</div>
-            </div>
-            <div class="stats-pair">
-                <div>Active:</div>
-                <div>{{ stats.active }}</div>
+            <div class="stats-column stats">
+                <div class="count-stat">{{ stats.cases.toLocaleString() }}</div>
+                <div class="date-stat">{{ stats.dateStr }}</div>
             </div>
         </div>
-        <div class="stats-row">
-            <div class="stats-pair">
-                <div>Recovered:</div>
-                <div>{{ stats.recovered }}</div>
+        <div class="stats-column-container">
+            <div class="stats-column">
+                <div>new:</div>
+                <div>active:</div>
             </div>
-            <div class="stats-pair">
-                <div>Deaths:</div>
-                <div>{{ stats.deaths }}</div>
+            <div class="stats-column stats">
+                <div>{{ stats.new.toLocaleString() }}</div>
+                <div>{{ stats.active.toLocaleString() }}</div>
+            </div>
+        </div>
+        <div class="stats-column-container">
+            <div class="stats-column">
+                <div>recovered:</div>
+                <div>deaths:</div>
+            </div>
+            <div class="stats-column stats">
+                <div>{{ stats.recovered.toLocaleString() }}</div>
+                <div>{{ stats.deaths.toLocaleString() }}</div>
             </div>
         </div>
     </div>

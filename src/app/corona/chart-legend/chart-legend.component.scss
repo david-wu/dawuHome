@@ -1,3 +1,5 @@
+@import 'mixins';
+
 :host {
     display: flex;
     align-items: center;
@@ -6,6 +8,16 @@
         display: flex;
         align-items: center;
         cursor: pointer;
+        background-color: $eggshell;
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+        transition-duration: 25ms;
+        box-shadow: 1px 1px 2px 0 $lighter-gray;
+        transform: translateY(0);
+        &:active {
+            transform: translateY(1px);
+            box-shadow: none;
+        }
         &:not(:first-child) {
             margin-left: 1rem;
         }
@@ -16,10 +28,11 @@
         }
 
         .key-color {
+            border: 1px solid;
             width: 0.75rem;
             height: 0.75rem;
             border-radius: 2px;
-            transition: transform 75ms, background-color 75ms;
+            transition: transform 25ms, background-color 25ms;
             transform: scale(1);
         }
         .key-label {

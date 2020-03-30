@@ -24,7 +24,11 @@ export class ChartLegendComponent {
     // $eggshell-darker
     public readonly disabledColor = '#DDD9CF';
 
-    public isKeyDisabled(key: string) {
+    public getKeyBorderColor(key: string) {
+        return this.colorsByKey[key];
+    }
+
+    public getKeyBackgroundColor(key: string) {
         if (this.disabledKeys && this.disabledKeys.has(key)) {
             return this.disabledColor;
         }
