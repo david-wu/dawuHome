@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 
 import { TextDecoratorComponent } from './text-decorator/text-decorator.component';
 import { SearchInputComponent } from './search-input/search-input.component';
+import { ChartsModule } from './charts/charts.module';
 
 @NgModule({
   imports: [
     BrowserModule,
+    ChartsModule,
     NoopAnimationsModule,
     FormsModule,
   ],
@@ -18,6 +20,7 @@ import { SearchInputComponent } from './search-input/search-input.component';
     SearchInputComponent,
   ],
   exports: [
+    ChartsModule,
     TextDecoratorComponent,
     SearchInputComponent,
   ],

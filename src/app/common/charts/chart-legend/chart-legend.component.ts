@@ -1,13 +1,9 @@
 import {
     Component,
-    ElementRef,
     EventEmitter,
     Input,
     Output,
 } from '@angular/core';
-import { CoronaDataExtractor } from '../models/corona-data-extractor.model';
-import * as d3 from 'd3';
-import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 @Component({
   selector: 'dwu-chart-legend',
