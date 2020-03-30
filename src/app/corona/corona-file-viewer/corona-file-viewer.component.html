@@ -28,4 +28,8 @@
 <dwu-corona-dashboard
     *ngIf="coronaFile$ | async as coronaFile"
     [coronaFile]="coronaFile"
+    [disabledBarKeys]="disabledBarKeys"
+    (disabledBarKeysChange)="disabledBarKeysChange.emit($event)"
+    [disabledNormalKeys]="disabledNormalKeys"
+    (disabledNormalKeysChange)="disabledNormalKeysChange.emit($event)"
 ></dwu-corona-dashboard>

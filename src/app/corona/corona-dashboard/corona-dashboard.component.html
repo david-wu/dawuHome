@@ -43,7 +43,8 @@
     <dwu-chart-legend
         [keys]="coronaKeys"
         [colorsByKey]="coronaColorsByKey"
-        [(disabledKeys)]="disabledBarKeys"
+        [disabledKeys]="disabledBarKeys"
+        (disabledKeysChange)="disabledBarKeysChange.emit($event)"
     ></dwu-chart-legend>
 
     <dwu-line-chart
@@ -58,6 +59,7 @@
     <dwu-chart-legend
         [keys]="normalKeys"
         [colorsByKey]="normalColorsByKeys"
-        [(disabledKeys)]="disabledNormalKeys"
+        [disabledKeys]="disabledNormalKeys"
+        (disabledKeysChange)="disabledNormalKeysChange.emit($event)"
     ></dwu-chart-legend>
 </div>

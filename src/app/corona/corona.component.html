@@ -35,6 +35,8 @@
                 *ngSwitchDefault
                 [location]="locationsByFileId[selectedFileId]"
                 [fileName]="fileGroup.filesById[selectedFileId].label"
+                [(disabledBarKeys)]="disabledBarKeys"
+                [(disabledNormalKeys)]="disabledNormalKeys"
             ></dwu-corona-file-viewer>
         </ng-container>
     </div>

@@ -30,6 +30,8 @@ export class CoronaComponent {
     public favoritesRoot: File;
     public favoriteFileIds: Set<string> = new Set();
     public filterStr: string = '';
+    public disabledBarKeys = new Set<string>();
+    public disabledNormalKeys = new Set<string>();
 
     public viewingFavorites = false;
     public subs = new Subscription();

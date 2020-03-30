@@ -1,5 +1,6 @@
 import {
     each,
+    last,
     sortBy,
 } from 'lodash';
 
@@ -64,14 +65,42 @@ export class CoronaDataExtractor {
             previousPoint = cleanPoint;
         });
 
-        const clippedData = [];
-        const firstNonZeroIndex = cleanData.findIndex((point) => point[CoronaKeys.CASES] !== 0);
-        // includes a 0 datapoint at the beginning
+        // if there is a hole in the data, this removes everything before that hole
+        let spottyDataClipIndex = 0;
+        const overOneDay = (1000 * 60 * 60 * 24) * 1.2;
+        for(let i = 1; i < cleanData.length; i++) {
+            const point = cleanData[i];
+            const previousPoint = cleanData[i - 1];
+            if (!previousPoint) {
+                break;
+            }
+            if ((previousPoint.timestamp + overOneDay) < point.timestamp) {
+                spottyDataClipIndex = i;
+            }
+        }
+        const unspottyData = cleanData.slice(spottyDataClipIndex);
+
+        // if there's a bunch leading 0's in the data, this removes them except the first 0
+        const firstNonZeroIndex = unspottyData.findIndex((point) => point[CoronaKeys.CASES] !== 0);
         const clipIndex = Math.max(0, firstNonZeroIndex - 1);
-        return cleanData.slice(clipIndex);
+        const oneLeadingZeroData = unspottyData.slice(clipIndex);
+
+        let boringDataClipIndex = 0;
+        const lastCases = last(oneLeadingZeroData).cases;
+        for(let i = 1; i < oneLeadingZeroData.length; i++) {
+            const point = oneLeadingZeroData[i];
+            if ((point.cases < 100) && ((point.cases / lastCases) < 0.01)) {
+                boringDataClipIndex = i;
+            } else {
+                break;
+            }
+        }
+        return oneLeadingZeroData.slice(boringDataClipIndex);
+
+        // return oneLeadingZeroData;
     }
 
-    public getNormalizedData(cleanData, population) {
+    public getNormalizedData(cleanData, population: number = 1) {
         const normalizedData = [];
 
         for(let i = 0; i < cleanData.length; i++) {
@@ -92,6 +121,20 @@ export class CoronaDataExtractor {
                 [NormalKeys.DEATHS]: (cleanPoint.deaths / population) * 1000000,
             };
             normalizedData.push(normalizedPoint);
+        }
+
+        for(let i = 0; i < cleanData.length; i++) {
+            const point = cleanData[i];
+            const pPreviousPoint = cleanData[i - 2] || { cases: 0, new: 0};
+            const previousPoint = cleanData[i - 1] || { cases: 0, new: 0};
+            const nextPoint = cleanData[i + 1] || { cases: 0, new: 0};
+
+            const totalCases = pPreviousPoint.cases + previousPoint.cases + point.cases;
+            const totalNew = previousPoint.new + point.new + nextPoint.new;
+
+            const newR = totalCases ? (totalNew / totalCases) : 1;
+            const clippedR = Math.min(newR, 1);
+            normalizedData[i][NormalKeys.R_AVG] = clippedR;
         }
         return normalizedData;
     }

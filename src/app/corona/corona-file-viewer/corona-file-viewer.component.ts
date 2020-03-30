@@ -1,6 +1,8 @@
 import {
     Component,
+    EventEmitter,
     Input,
+    Output,
 } from '@angular/core';
 import {
     BehaviorSubject,
@@ -30,6 +32,10 @@ export class CoronaFileViewerComponent {
 
     @Input() location: string;
     @Input() fileName: string;
+    @Input() disabledBarKeys = new Set<string>();
+    @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
+    @Input() disabledNormalKeys = new Set<string>();
+    @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
     public location$ = new BehaviorSubject(undefined);
     public coronaFile$: Observable<any>;
     public isLoading$: Observable<boolean>;

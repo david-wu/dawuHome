@@ -1,6 +1,8 @@
 import {
     Component,
+    EventEmitter,
     Input,
+    Output,
 } from '@angular/core';
 import {
     CoronaDataExtractor,
@@ -16,6 +18,10 @@ import {
 export class CoronaDashboardComponent {
 
     @Input() coronaFile: any;
+    @Input() disabledBarKeys = new Set<string>();
+    @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
+    @Input() disabledNormalKeys = new Set<string>();
+    @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
 
     public coronaData: any[];
     public normalizedData: any[];
@@ -44,6 +50,7 @@ export class CoronaDashboardComponent {
         NormalKeys.ACTIVE,
         NormalKeys.RECOVERED,
         NormalKeys.DEATHS,
+        NormalKeys.R_AVG,
     ];
     public readonly normalColorsByKeys = {
         [NormalKeys.CASES]: '#2B1919',
@@ -52,6 +59,7 @@ export class CoronaDashboardComponent {
         [NormalKeys.ACTIVE]: '#ED9797',
         [NormalKeys.RECOVERED]: '#2B1919',
         [NormalKeys.DEATHS]: '#34A2AA',
+        [NormalKeys.R_AVG]: '#AD3E3E',
     };
 
     public ngOnChanges(changes) {
@@ -59,7 +67,6 @@ export class CoronaDashboardComponent {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile);
             this.normalizedData = this.coronaExtractor.getNormalizedData(this.coronaData, this.coronaFile.population);
             this.hoverIndex = this.coronaData.length - 1;
-            console.log(this.coronaData, this.normalizedData)
         }
     }
 }

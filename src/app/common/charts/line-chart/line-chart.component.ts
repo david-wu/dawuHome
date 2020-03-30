@@ -74,7 +74,7 @@ export class LineChartComponent extends BaseChartComponent {
         const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
         const distanceBetweenPoints = width / (numberOfXDataPoints - 1)
         const xOnChart = x - this.margins.left - this.chartMargin;
-        const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0);
+        const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
         const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
         if (hoverIndex !== this.hoverIndex) {
             this.hoverIndex = hoverIndex;
@@ -83,10 +83,13 @@ export class LineChartComponent extends BaseChartComponent {
     }
 
     public positionHoverLine() {
+        if (!this.tableData || !this.tableData.length) {
+            return;
+        }
         const hoverLineTimestamp = this.tableData[this.hoverIndex].timestamp;
         this.hoverLine
-            .attr('x1', this.xScale(hoverLineTimestamp))
-            .attr('x2', this.xScale(hoverLineTimestamp))
+            .attr('x1', this.xScale(hoverLineTimestamp) || 0)
+            .attr('x2', this.xScale(hoverLineTimestamp) || 0)
             .attr('y1', this.yScale(this.maxY) - 3)
             .attr('y2', this.yScale(0) + 3)
     }
@@ -126,7 +129,7 @@ export class LineChartComponent extends BaseChartComponent {
         }, 0);
 
         this.yScale = d3.scaleLinear()
-          .domain([0, this.maxY])
+          .domain([0, this.maxY || 1])
           .range([height, 0]);
 
         const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;

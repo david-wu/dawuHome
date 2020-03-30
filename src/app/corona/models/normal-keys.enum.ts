@@ -1,9 +1,10 @@
 
 export enum NormalKeys {
-    CASES = 'cases/million',
-    R = 'growth factor (r)',
-    NEW = 'new/million',
-    ACTIVE = 'active/million',
-    RECOVERED = 'recovered/million',
-    DEATHS = 'deaths/million',
+    CASES = 'cases/mil',
+    R = 'r',
+    R_AVG = 'r (3 day avg)',
+    NEW = 'new/mil',
+    ACTIVE = 'active/mil',
+    RECOVERED = 'recovered/mil',
+    DEATHS = 'deaths/mil',
 };

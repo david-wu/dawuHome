@@ -15,13 +15,9 @@ export class LocalStorageService {
 
         return locations.length ? locations : [
             'USA',
-            'ITA',
-            'CHN',
-            'KOR',
             'CA, USA',
             'Santa Clara County, CA, USA',
-            "NY, USA",
-            "New York City, NY, USA",
+            'ITA',
         ];
     }
 

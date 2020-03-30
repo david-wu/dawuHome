@@ -125,7 +125,7 @@ export class BaseChartComponent {
           .scale(xScale)
           .tickSizeOuter(0)
           .tickValues(filteredXDomainValues)
-          .tickFormat(d3.timeFormat('%x'));
+          .tickFormat(d3.timeFormat('%-m/%e'));
     }
 
     public getXBandAxis(xScale: any, width: number, numberOfXDataPoints: number) {
@@ -135,7 +135,7 @@ export class BaseChartComponent {
           .scale(xScale)
           .tickSizeOuter(0)
           .tickValues(filteredXDomainValues)
-          .tickFormat(d3.timeFormat('%x'));
+          .tickFormat(d3.timeFormat('%-m/%-d'));
     }
 
     public applyXAxis(xAxisG, xAxis, height) {
@@ -165,7 +165,7 @@ export class BaseChartComponent {
     }
 
     public getMaxXPoints(width: number) {
-        return Math.floor(width / 60);
+        return Math.floor(width / 30);
     }
 
     public getElDim() {
