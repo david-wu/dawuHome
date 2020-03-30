@@ -88,19 +88,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/charts/base-chart/base-chart.component.html":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common/charts/base-chart/base-chart.component.html ***!
-  \**********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("");
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/charts/chart-legend/chart-legend.component.html":
 /*!**************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common/charts/chart-legend/chart-legend.component.html ***!
@@ -162,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"chart-container\">\n    <div class=\"selected-stats\" *ngIf=\"coronaData[hoverIndex] as stats\">\n        <div class=\"stats-column-container\">\n            <div class=\"stats-column\">\n                <div>total:</div>\n                <div>date:</div>\n            </div>\n            <div class=\"stats-column stats\">\n                <div class=\"count-stat\">{{ stats.cases.toLocaleString() }}</div>\n                <div class=\"date-stat\">{{ stats.dateStr }}</div>\n            </div>\n        </div>\n        <div class=\"stats-column-container\">\n            <div class=\"stats-column\">\n                <div>new:</div>\n                <div>active:</div>\n            </div>\n            <div class=\"stats-column stats\">\n                <div>{{ stats.new.toLocaleString() }}</div>\n                <div>{{ stats.active.toLocaleString() }}</div>\n            </div>\n        </div>\n        <div class=\"stats-column-container\">\n            <div class=\"stats-column\">\n                <div>recovered:</div>\n                <div>deaths:</div>\n            </div>\n            <div class=\"stats-column stats\">\n                <div>{{ stats.recovered.toLocaleString() }}</div>\n                <div>{{ stats.deaths.toLocaleString() }}</div>\n            </div>\n        </div>\n    </div>\n    <dwu-bar-chart\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-bar-chart>\n    <dwu-chart-legend\n        [keys]=\"coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [(disabledKeys)]=\"disabledBarKeys\"\n    ></dwu-chart-legend>\n\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"normalizedData\"\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"normalColorsByKeys\"\n        [disabledKeys]=\"disabledNormalKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"normalColorsByKeys\"\n        [(disabledKeys)]=\"disabledNormalKeys\"\n    ></dwu-chart-legend>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"chart-container\">\n    <div class=\"selected-stats\" *ngIf=\"coronaData[hoverIndex] as stats\">\n        <div class=\"stats-column-container\">\n            <div class=\"stats-column\">\n                <div>total:</div>\n                <div>date:</div>\n            </div>\n            <div class=\"stats-column stats\">\n                <div class=\"count-stat\">{{ stats.cases.toLocaleString() }}</div>\n                <div class=\"date-stat\">{{ stats.dateStr }}</div>\n            </div>\n        </div>\n        <div class=\"stats-column-container\">\n            <div class=\"stats-column\">\n                <div>new:</div>\n                <div>active:</div>\n            </div>\n            <div class=\"stats-column stats\">\n                <div>{{ stats.new.toLocaleString() }}</div>\n                <div>{{ stats.active.toLocaleString() }}</div>\n            </div>\n        </div>\n        <div class=\"stats-column-container\">\n            <div class=\"stats-column\">\n                <div>recovered:</div>\n                <div>deaths:</div>\n            </div>\n            <div class=\"stats-column stats\">\n                <div>{{ stats.recovered.toLocaleString() }}</div>\n                <div>{{ stats.deaths.toLocaleString() }}</div>\n            </div>\n        </div>\n    </div>\n    <dwu-bar-chart\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-bar-chart>\n    <dwu-chart-legend\n        [keys]=\"coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        (disabledKeysChange)=\"disabledBarKeysChange.emit($event)\"\n    ></dwu-chart-legend>\n\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"normalizedData\"\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"normalColorsByKeys\"\n        [disabledKeys]=\"disabledNormalKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"normalColorsByKeys\"\n        [disabledKeys]=\"disabledNormalKeys\"\n        (disabledKeysChange)=\"disabledNormalKeysChange.emit($event)\"\n    ></dwu-chart-legend>\n</div>\n");
 
 /***/ }),
 
@@ -175,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!location\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ fileName }}</div>\n    </div>\n</div>\n<div *ngIf=\"location\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ fileName }}</div>\n        <a [href]=\"fileUrl\" class=\"download-link\" download>\n            <span class=\"material-icons download-icon\">\n                get_app\n            </span>\n        </a>\n        <div class=\"loader\" [class.visible]=\"isLoading$ | async\">\n            <span class=\"material-icons hour-glass\">\n                hourglass_empty\n            </span>\n        </div>\n    </div>\n    <div class=\"population\">\n        <div>Population:</div>\n        <div\n            *ngIf=\"(coronaFile$ | async)?.population as population\"\n            class=\"population-count\"\n        >{{ population.toLocaleString() }}</div>\n    </div>\n</div>\n<dwu-corona-dashboard\n    *ngIf=\"coronaFile$ | async as coronaFile\"\n    [coronaFile]=\"coronaFile\"\n></dwu-corona-dashboard>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!location\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ fileName }}</div>\n    </div>\n</div>\n<div *ngIf=\"location\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ fileName }}</div>\n        <a [href]=\"fileUrl\" class=\"download-link\" download>\n            <span class=\"material-icons download-icon\">\n                get_app\n            </span>\n        </a>\n        <div class=\"loader\" [class.visible]=\"isLoading$ | async\">\n            <span class=\"material-icons hour-glass\">\n                hourglass_empty\n            </span>\n        </div>\n    </div>\n    <div class=\"population\">\n        <div>Population:</div>\n        <div\n            *ngIf=\"(coronaFile$ | async)?.population as population\"\n            class=\"population-count\"\n        >{{ population.toLocaleString() }}</div>\n    </div>\n</div>\n<dwu-corona-dashboard\n    *ngIf=\"coronaFile$ | async as coronaFile\"\n    [coronaFile]=\"coronaFile\"\n    [disabledBarKeys]=\"disabledBarKeys\"\n    (disabledBarKeysChange)=\"disabledBarKeysChange.emit($event)\"\n    [disabledNormalKeys]=\"disabledNormalKeys\"\n    (disabledNormalKeysChange)=\"disabledNormalKeysChange.emit($event)\"\n></dwu-corona-dashboard>\n");
 
 /***/ }),
 
@@ -188,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input\n            [searchText]=\"filterStr\"\n            (searchTextChange)=\"onFilterStringChange($event)\"\n            [placeholder]=\"'County, State, or Country'\"\n        ></dwu-search-input>\n        <div class=\"view-tabs\">\n            <div class=\"view-tab\" [class.active]=\"!viewingFavorites\" (click)=\"setViewingFavorites(false)\">\n                All\n            </div>\n            <div class=\"view-tab\" [class.active]=\"viewingFavorites\" (click)=\"setViewingFavorites(true)\">\n                <div class=\"material-icons star active\">\n                    grade\n                </div>\n                <div>Favorites</div>\n            </div>\n        </div>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [rowIconTemplate]=\"rowIconTemplate\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <dwu-corona-file-viewer\n                *ngSwitchDefault\n                [location]=\"locationsByFileId[selectedFileId]\"\n                [fileName]=\"fileGroup.filesById[selectedFileId].label\"\n            ></dwu-corona-file-viewer>\n        </ng-container>\n    </div>\n    <ng-template #rowIconTemplate let-file=\"file\">\n        <div\n            *ngIf=\"locationsByFileId[file.id]\"\n            class=\"material-icons star clickable row-icon\"\n            [class.active]=\"favoriteFileIds.has(file.id)\"\n            (click)=\"toggleFavoriteFile(file, $event)\"\n        >\n            grade\n        </div>\n    </ng-template>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input\n            [searchText]=\"filterStr\"\n            (searchTextChange)=\"onFilterStringChange($event)\"\n            [placeholder]=\"'County, State, or Country'\"\n        ></dwu-search-input>\n        <div class=\"view-tabs\">\n            <div class=\"view-tab\" [class.active]=\"!viewingFavorites\" (click)=\"setViewingFavorites(false)\">\n                All\n            </div>\n            <div class=\"view-tab\" [class.active]=\"viewingFavorites\" (click)=\"setViewingFavorites(true)\">\n                <div class=\"material-icons star active\">\n                    grade\n                </div>\n                <div>Favorites</div>\n            </div>\n        </div>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [rowIconTemplate]=\"rowIconTemplate\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <dwu-corona-file-viewer\n                *ngSwitchDefault\n                [location]=\"locationsByFileId[selectedFileId]\"\n                [fileName]=\"fileGroup.filesById[selectedFileId].label\"\n                [(disabledBarKeys)]=\"disabledBarKeys\"\n                [(disabledNormalKeys)]=\"disabledNormalKeys\"\n            ></dwu-corona-file-viewer>\n        </ng-container>\n    </div>\n    <ng-template #rowIconTemplate let-file=\"file\">\n        <div\n            *ngIf=\"locationsByFileId[file.id]\"\n            class=\"material-icons star clickable row-icon\"\n            [class.active]=\"favoriteFileIds.has(file.id)\"\n            (click)=\"toggleFavoriteFile(file, $event)\"\n        >\n            grade\n        </div>\n    </ng-template>\n</div>");
 
 /***/ }),
 
@@ -528,8 +515,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/about-me/about-me.component */ "./src/app/about-me/about-me.component.ts");
 /* harmony import */ var _src_app_about_me_about_me_routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @src/app/about-me/about-me.routes */ "./src/app/about-me/about-me.routes.ts");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/bundles/fuzz-demo-app.umd.js");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(fuzz_demo_app__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
 
 
 
@@ -712,8 +698,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_about_me_about_me_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/about-me/about-me.module */ "./src/app/about-me/about-me.module.ts");
 /* harmony import */ var _src_app_portfolio_portfolio_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/portfolio/portfolio.module */ "./src/app/portfolio/portfolio.module.ts");
 /* harmony import */ var _src_app_corona_corona_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/corona/corona.module */ "./src/app/corona/corona.module.ts");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/bundles/fuzz-demo-app.umd.js");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
 
 
 
@@ -1141,19 +1126,6 @@ var BarChartComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/app/common/charts/base-chart/base-chart.component.scss":
-/*!********************************************************************!*\
-  !*** ./src/app/common/charts/base-chart/base-chart.component.scss ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9jaGFydHMvYmFzZS1jaGFydC9iYXNlLWNoYXJ0LmNvbXBvbmVudC5zY3NzIn0= */");
-
-/***/ }),
-
 /***/ "./src/app/common/charts/base-chart/base-chart.component.ts":
 /*!******************************************************************!*\
   !*** ./src/app/common/charts/base-chart/base-chart.component.ts ***!
@@ -1165,11 +1137,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseChartComponent", function() { return BaseChartComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
-/* harmony import */ var css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! css-element-queries/src/ResizeSensor */ "./node_modules/css-element-queries/src/ResizeSensor.js");
-/* harmony import */ var css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_3__);
-
+/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
+/* harmony import */ var css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! css-element-queries/src/ResizeSensor */ "./node_modules/css-element-queries/src/ResizeSensor.js");
+/* harmony import */ var css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -1185,7 +1155,7 @@ var BaseChartComponent = /** @class */ (function () {
     }
     BaseChartComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        this.sensor = new css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_3___default.a(this.hostEl.nativeElement, function () {
+        this.sensor = new css_element_queries_src_ResizeSensor__WEBPACK_IMPORTED_MODULE_2___default.a(this.hostEl.nativeElement, function () {
             _this.render();
         });
     };
@@ -1194,7 +1164,7 @@ var BaseChartComponent = /** @class */ (function () {
     };
     BaseChartComponent.prototype.initializeSvg = function () {
         var _this = this;
-        this.svg = d3__WEBPACK_IMPORTED_MODULE_2__["select"](this.hostEl.nativeElement).append('svg')
+        this.svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"](this.hostEl.nativeElement).append('svg')
             .on('mousemove', function () { return _this.onMouseMove(); })
             .on('touchstart', function () { return _this.touchmove(); })
             .on('touchmove', function () { return _this.touchmove(); });
@@ -1207,13 +1177,13 @@ var BaseChartComponent = /** @class */ (function () {
     };
     BaseChartComponent.prototype.touchmove = function () {
         // prevents following mouse event
-        d3__WEBPACK_IMPORTED_MODULE_2__["event"].stopPropagation();
-        var touch = d3__WEBPACK_IMPORTED_MODULE_2__["touches"](this.svg.node());
+        d3__WEBPACK_IMPORTED_MODULE_1__["event"].stopPropagation();
+        var touch = d3__WEBPACK_IMPORTED_MODULE_1__["touches"](this.svg.node());
         var _a = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](touch[0], 2), x = _a[0], y = _a[1];
         this.onXYHover(x, y);
     };
     BaseChartComponent.prototype.onMouseMove = function () {
-        var _a = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](d3__WEBPACK_IMPORTED_MODULE_2__["mouse"](this.svg.node()), 2), x = _a[0], y = _a[1];
+        var _a = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](d3__WEBPACK_IMPORTED_MODULE_1__["mouse"](this.svg.node()), 2), x = _a[0], y = _a[1];
         this.onXYHover(x, y);
     };
     BaseChartComponent.prototype.onXYHover = function (x, y) {
@@ -1241,7 +1211,7 @@ var BaseChartComponent = /** @class */ (function () {
         this.renderFor(width, height);
     };
     BaseChartComponent.prototype.getLinearYAxis = function (yScale, width) {
-        return d3__WEBPACK_IMPORTED_MODULE_2__["axisLeft"]()
+        return d3__WEBPACK_IMPORTED_MODULE_1__["axisLeft"]()
             .scale(yScale)
             .ticks(6)
             .tickSize(-width, 0, 0)
@@ -1257,20 +1227,20 @@ var BaseChartComponent = /** @class */ (function () {
     };
     BaseChartComponent.prototype.getXAxisTicks = function (xScale, width, numberOfXDataPoints, allXValues) {
         var filteredXDomainValues = this.getFilteredTickValues(allXValues, width, numberOfXDataPoints);
-        return d3__WEBPACK_IMPORTED_MODULE_2__["axisBottom"]()
+        return d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]()
             .scale(xScale)
             .tickSizeOuter(0)
             .tickValues(filteredXDomainValues)
-            .tickFormat(d3__WEBPACK_IMPORTED_MODULE_2__["timeFormat"]('%x'));
+            .tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%-m/%e'));
     };
     BaseChartComponent.prototype.getXBandAxis = function (xScale, width, numberOfXDataPoints) {
         var ticks = xScale.domain();
         var filteredXDomainValues = this.getFilteredTickValues(ticks, width, numberOfXDataPoints);
-        return d3__WEBPACK_IMPORTED_MODULE_2__["axisBottom"]()
+        return d3__WEBPACK_IMPORTED_MODULE_1__["axisBottom"]()
             .scale(xScale)
             .tickSizeOuter(0)
             .tickValues(filteredXDomainValues)
-            .tickFormat(d3__WEBPACK_IMPORTED_MODULE_2__["timeFormat"]('%x'));
+            .tickFormat(d3__WEBPACK_IMPORTED_MODULE_1__["timeFormat"]('%-m/%-d'));
     };
     BaseChartComponent.prototype.applyXAxis = function (xAxisG, xAxis, height) {
         return xAxisG
@@ -1296,7 +1266,7 @@ var BaseChartComponent = /** @class */ (function () {
         return interval;
     };
     BaseChartComponent.prototype.getMaxXPoints = function (width) {
-        return Math.floor(width / 60);
+        return Math.floor(width / 30);
     };
     BaseChartComponent.prototype.getElDim = function () {
         return {
@@ -1304,16 +1274,6 @@ var BaseChartComponent = /** @class */ (function () {
             height: this.hostEl.nativeElement.clientHeight,
         };
     };
-    BaseChartComponent.ctorParameters = function () { return [
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
-    ]; };
-    BaseChartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'dwu-base-chart',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./base-chart.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/charts/base-chart/base-chart.component.html")).default,
-            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./base-chart.component.scss */ "./src/app/common/charts/base-chart/base-chart.component.scss")).default]
-        })
-    ], BaseChartComponent);
     return BaseChartComponent;
 }());
 
@@ -1536,7 +1496,7 @@ var LineChartComponent = /** @class */ (function (_super) {
         var width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
         var distanceBetweenPoints = width / (numberOfXDataPoints - 1);
         var xOnChart = x - this.margins.left - this.chartMargin;
-        var rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0);
+        var rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
         var hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
         if (hoverIndex !== this.hoverIndex) {
             this.hoverIndex = hoverIndex;
@@ -1544,10 +1504,13 @@ var LineChartComponent = /** @class */ (function (_super) {
         }
     };
     LineChartComponent.prototype.positionHoverLine = function () {
+        if (!this.tableData || !this.tableData.length) {
+            return;
+        }
         var hoverLineTimestamp = this.tableData[this.hoverIndex].timestamp;
         this.hoverLine
-            .attr('x1', this.xScale(hoverLineTimestamp))
-            .attr('x2', this.xScale(hoverLineTimestamp))
+            .attr('x1', this.xScale(hoverLineTimestamp) || 0)
+            .attr('x2', this.xScale(hoverLineTimestamp) || 0)
             .attr('y1', this.yScale(this.maxY) - 3)
             .attr('y2', this.yScale(0) + 3);
     };
@@ -1582,7 +1545,7 @@ var LineChartComponent = /** @class */ (function (_super) {
             return Math.max(currentMax, seriesMax);
         }, 0);
         this.yScale = d3__WEBPACK_IMPORTED_MODULE_3__["scaleLinear"]()
-            .domain([0, this.maxY])
+            .domain([0, this.maxY || 1])
             .range([height, 0]);
         var numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
         var xAxis = _super.prototype.getXAxisTicks.call(this, this.xScale, width, numberOfXDataPoints, allXValues);
@@ -1888,6 +1851,10 @@ __webpack_require__.r(__webpack_exports__);
 var CoronaDashboardComponent = /** @class */ (function () {
     function CoronaDashboardComponent() {
         var _a, _b;
+        this.disabledBarKeys = new Set();
+        this.disabledBarKeysChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.disabledNormalKeys = new Set();
+        this.disabledNormalKeysChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.coronaExtractor = new _models_index__WEBPACK_IMPORTED_MODULE_2__["CoronaDataExtractor"]();
         this.hoverIndex = 0;
         this.CoronaKeys = _models_index__WEBPACK_IMPORTED_MODULE_2__["CoronaKeys"];
@@ -1911,6 +1878,7 @@ var CoronaDashboardComponent = /** @class */ (function () {
             _models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].ACTIVE,
             _models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].RECOVERED,
             _models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].DEATHS,
+            _models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].R_AVG,
         ];
         this.normalColorsByKeys = (_b = {},
             _b[_models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].CASES] = '#2B1919',
@@ -1919,6 +1887,7 @@ var CoronaDashboardComponent = /** @class */ (function () {
             _b[_models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].ACTIVE] = '#ED9797',
             _b[_models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].RECOVERED] = '#2B1919',
             _b[_models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].DEATHS] = '#34A2AA',
+            _b[_models_index__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].R_AVG] = '#AD3E3E',
             _b);
     }
     CoronaDashboardComponent.prototype.ngOnChanges = function (changes) {
@@ -1926,12 +1895,23 @@ var CoronaDashboardComponent = /** @class */ (function () {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile);
             this.normalizedData = this.coronaExtractor.getNormalizedData(this.coronaData, this.coronaFile.population);
             this.hoverIndex = this.coronaData.length - 1;
-            console.log(this.coronaData, this.normalizedData);
         }
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], CoronaDashboardComponent.prototype, "coronaFile", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], CoronaDashboardComponent.prototype, "disabledBarKeys", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], CoronaDashboardComponent.prototype, "disabledBarKeysChange", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], CoronaDashboardComponent.prototype, "disabledNormalKeys", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], CoronaDashboardComponent.prototype, "disabledNormalKeysChange", void 0);
     CoronaDashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-corona-dashboard',
@@ -1986,6 +1966,10 @@ var CoronaFileViewerComponent = /** @class */ (function () {
     function CoronaFileViewerComponent(coronaService) {
         var _this = this;
         this.coronaService = coronaService;
+        this.disabledBarKeys = new Set();
+        this.disabledBarKeysChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.disabledNormalKeys = new Set();
+        this.disabledNormalKeysChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.location$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
         this.countryNamesByCode = _src_assets_country_names_by_code_json__WEBPACK_IMPORTED_MODULE_4__;
         this.coronaFile$ = this.location$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (location) {
@@ -2013,6 +1997,18 @@ var CoronaFileViewerComponent = /** @class */ (function () {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], CoronaFileViewerComponent.prototype, "fileName", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], CoronaFileViewerComponent.prototype, "disabledBarKeys", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], CoronaFileViewerComponent.prototype, "disabledBarKeysChange", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], CoronaFileViewerComponent.prototype, "disabledNormalKeys", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], CoronaFileViewerComponent.prototype, "disabledNormalKeysChange", void 0);
     CoronaFileViewerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-corona-file-viewer',
@@ -2083,6 +2079,8 @@ var CoronaComponent = /** @class */ (function () {
         this.fileIdsByLocation = {};
         this.favoriteFileIds = new Set();
         this.filterStr = '';
+        this.disabledBarKeys = new Set();
+        this.disabledNormalKeys = new Set();
         this.viewingFavorites = false;
         this.subs = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"]();
         this.populateFileGroup();
@@ -2257,15 +2255,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/corona/corona.component */ "./src/app/corona/corona.component.ts");
 /* harmony import */ var _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/corona/corona-file-viewer/corona-file-viewer.component */ "./src/app/corona/corona-file-viewer/corona-file-viewer.component.ts");
 /* harmony import */ var _src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/corona/corona.routes */ "./src/app/corona/corona.routes.ts");
-/* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @swimlane/ngx-charts */ "./node_modules/@swimlane/ngx-charts/fesm5/swimlane-ngx-charts.js");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/bundles/fuzz-demo-app.umd.js");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(fuzz_demo_app__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
-/* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
-/* harmony import */ var _services_corona_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/corona.service */ "./src/app/corona/services/corona.service.ts");
-/* harmony import */ var _services_localStorage_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/localStorage.service */ "./src/app/corona/services/localStorage.service.ts");
-/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
-
+/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
+/* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
+/* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
+/* harmony import */ var _services_corona_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/corona.service */ "./src/app/corona/services/corona.service.ts");
+/* harmony import */ var _services_localStorage_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/localStorage.service */ "./src/app/corona/services/localStorage.service.ts");
+/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
 
 
 
@@ -2291,23 +2286,22 @@ var CoronaModule = /** @class */ (function () {
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_10__["CoronaRoutes"]),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-                fuzz_demo_app__WEBPACK_IMPORTED_MODULE_12__["AppModule"],
+                fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__["AppModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["NoopAnimationsModule"],
-                _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_11__["NgxChartsModule"],
-                _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_13__["CommonModule"],
-                _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_14__["FileExplorerModule"],
+                _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_12__["CommonModule"],
+                _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_13__["FileExplorerModule"],
             ],
             declarations: [
                 _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_8__["CoronaComponent"],
                 _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_9__["CoronaFileViewerComponent"],
-                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_17__["CoronaDashboardComponent"],
+                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__["CoronaDashboardComponent"],
             ],
             providers: [
-                _services_corona_service__WEBPACK_IMPORTED_MODULE_15__["CoronaService"],
-                _services_localStorage_service__WEBPACK_IMPORTED_MODULE_16__["LocalStorageService"],
+                _services_corona_service__WEBPACK_IMPORTED_MODULE_14__["CoronaService"],
+                _services_localStorage_service__WEBPACK_IMPORTED_MODULE_15__["LocalStorageService"],
             ],
         })
     ], CoronaModule);
@@ -2417,14 +2411,41 @@ var CoronaDataExtractor = /** @class */ (function () {
             cleanData.push(cleanPoint);
             previousPoint = cleanPoint;
         });
-        var clippedData = [];
-        var firstNonZeroIndex = cleanData.findIndex(function (point) { return point[_corona_keys_enum__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].CASES] !== 0; });
-        // includes a 0 datapoint at the beginning
+        // if there is a hole in the data, this removes everything before that hole
+        var spottyDataClipIndex = 0;
+        var overOneDay = (1000 * 60 * 60 * 24) * 1.2;
+        for (var i = 1; i < cleanData.length; i++) {
+            var point = cleanData[i];
+            var previousPoint_1 = cleanData[i - 1];
+            if (!previousPoint_1) {
+                break;
+            }
+            if ((previousPoint_1.timestamp + overOneDay) < point.timestamp) {
+                spottyDataClipIndex = i;
+            }
+        }
+        var unspottyData = cleanData.slice(spottyDataClipIndex);
+        // if there's a bunch leading 0's in the data, this removes them except the first 0
+        var firstNonZeroIndex = unspottyData.findIndex(function (point) { return point[_corona_keys_enum__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].CASES] !== 0; });
         var clipIndex = Math.max(0, firstNonZeroIndex - 1);
-        return cleanData.slice(clipIndex);
+        var oneLeadingZeroData = unspottyData.slice(clipIndex);
+        var boringDataClipIndex = 0;
+        var lastCases = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["last"])(oneLeadingZeroData).cases;
+        for (var i = 1; i < oneLeadingZeroData.length; i++) {
+            var point = oneLeadingZeroData[i];
+            if ((point.cases < 100) && ((point.cases / lastCases) < 0.01)) {
+                boringDataClipIndex = i;
+            }
+            else {
+                break;
+            }
+        }
+        return oneLeadingZeroData.slice(boringDataClipIndex);
+        // return oneLeadingZeroData;
     };
     CoronaDataExtractor.prototype.getNormalizedData = function (cleanData, population) {
         var _a;
+        if (population === void 0) { population = 1; }
         var normalizedData = [];
         for (var i = 0; i < cleanData.length; i++) {
             var cleanPoint = cleanData[i];
@@ -2445,6 +2466,17 @@ var CoronaDataExtractor = /** @class */ (function () {
                 _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].DEATHS] = (cleanPoint.deaths / population) * 1000000,
                 _a);
             normalizedData.push(normalizedPoint);
+        }
+        for (var i = 0; i < cleanData.length; i++) {
+            var point = cleanData[i];
+            var pPreviousPoint = cleanData[i - 2] || { cases: 0, new: 0 };
+            var previousPoint = cleanData[i - 1] || { cases: 0, new: 0 };
+            var nextPoint = cleanData[i + 1] || { cases: 0, new: 0 };
+            var totalCases = pPreviousPoint.cases + previousPoint.cases + point.cases;
+            var totalNew = previousPoint.new + point.new + nextPoint.new;
+            var newR = totalCases ? (totalNew / totalCases) : 1;
+            var clippedR = Math.min(newR, 1);
+            normalizedData[i][_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].R_AVG] = clippedR;
         }
         return normalizedData;
     };
@@ -2521,12 +2553,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var NormalKeys;
 (function (NormalKeys) {
-    NormalKeys["CASES"] = "cases/million";
-    NormalKeys["R"] = "growth factor (r)";
-    NormalKeys["NEW"] = "new/million";
-    NormalKeys["ACTIVE"] = "active/million";
-    NormalKeys["RECOVERED"] = "recovered/million";
-    NormalKeys["DEATHS"] = "deaths/million";
+    NormalKeys["CASES"] = "cases/mil";
+    NormalKeys["R"] = "r";
+    NormalKeys["R_AVG"] = "r (3 day avg)";
+    NormalKeys["NEW"] = "new/mil";
+    NormalKeys["ACTIVE"] = "active/mil";
+    NormalKeys["RECOVERED"] = "recovered/mil";
+    NormalKeys["DEATHS"] = "deaths/mil";
 })(NormalKeys || (NormalKeys = {}));
 ;
 
@@ -2599,13 +2632,9 @@ var LocalStorageService = /** @class */ (function () {
         var locations = JSON.parse(locationsStr);
         return locations.length ? locations : [
             'USA',
-            'ITA',
-            'CHN',
-            'KOR',
             'CA, USA',
             'Santa Clara County, CA, USA',
-            "NY, USA",
-            "New York City, NY, USA",
+            'ITA',
         ];
     };
     LocalStorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -3074,7 +3103,7 @@ var FileExplorerModule = /** @class */ (function () {
 /*!****************************************!*\
   !*** ./src/app/file-explorer/index.ts ***!
   \****************************************/
-/*! exports provided: FileExplorerModule, FileExplorerComponent, FileGroup, FileType, File */
+/*! exports provided: FileExplorerComponent, FileExplorerModule, FileGroup, FileType, File */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3486,8 +3515,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _src_app_portfolio_portfolio_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @src/app/portfolio/portfolio.component */ "./src/app/portfolio/portfolio.component.ts");
 /* harmony import */ var _src_app_portfolio_portfolio_routes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/portfolio/portfolio.routes */ "./src/app/portfolio/portfolio.routes.ts");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/bundles/fuzz-demo-app.umd.js");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
 /* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
 /* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
 

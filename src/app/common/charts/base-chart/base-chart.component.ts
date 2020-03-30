@@ -1,5 +1,4 @@
 import {
-    Component,
     ElementRef,
     EventEmitter,
     Input,
@@ -8,11 +7,6 @@ import {
 import * as d3 from 'd3';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
-@Component({
-  selector: 'dwu-base-chart',
-  templateUrl: './base-chart.component.html',
-  styleUrls: ['./base-chart.component.scss'],
-})
 export class BaseChartComponent {
 
     public sensor;
