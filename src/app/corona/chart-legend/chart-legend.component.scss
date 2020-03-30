@@ -19,7 +19,7 @@
             box-shadow: none;
         }
         &:not(:first-child) {
-            margin-left: 1rem;
+            margin-left: 0.75rem;
         }
         &:hover {
             .key-color {
@@ -37,6 +37,7 @@
         }
         .key-label {
             margin-left: 0.25rem;
+            font-size: 14px;
         }
     }
 }
