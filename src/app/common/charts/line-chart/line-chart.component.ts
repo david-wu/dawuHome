@@ -5,6 +5,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import { first, last } from 'lodash';
 import * as d3 from 'd3';
 
 import { BaseChartComponent } from '../base-chart/base-chart.component';
@@ -23,9 +24,11 @@ export class LineChartComponent extends BaseChartComponent {
     @Input() hoverIndex: number;
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
 
-    public barPadding = 0.05
-    public hoverBox;
+    public hoverLine;
     public maxY;
+
+    // some extra margin on the chart itself
+    public chartMargin = 10;
 
     constructor(public hostEl: ElementRef) {
         super(hostEl);
@@ -41,7 +44,7 @@ export class LineChartComponent extends BaseChartComponent {
             }
         }
         if(changes.hoverIndex) {
-            this.positionHoverBox();
+            this.positionHoverLine();
         }
     }
 
@@ -55,35 +58,37 @@ export class LineChartComponent extends BaseChartComponent {
 
     public initializeSvg() {
         super.initializeSvg();
-        this.hoverBox = this.rootG.append('rect')
-            .attr('class', 'hover-box')
-            .style('fill', '#8A9A5B')
-            .style('fill-opacity', '0.25')
+        this.hoverLine = this.rootG.append('line')
+            .attr('class', 'hover-line')
             .style('stroke', '#8A9A5B')
-            .style('stroke-opacity', '1')
-            .style('stroke-width', '1');
+            .style('stroke-opacity', '0.8')
+            .style('stroke-width', '3');
     }
 
     public onXYHover(x: number, y: number) {
-        const distanceBetweenBars = this.xScale.step();
-        const paddingWidth = this.barPadding * distanceBetweenBars;
-        const startingPx = this.xScale(this.tableData[0].timestamp);
-        const xOnChart = x - this.margins.left - startingPx - (paddingWidth / 2);
-        const rawIndex = Math.floor(xOnChart / distanceBetweenBars);
-        const hoverIndex = Math.min(Math.max(rawIndex, 0), this.tableData.length - 1);
+        const numberOfXDataPoints = this.tableData && this.tableData.length;
+        if (!numberOfXDataPoints) {
+            return;
+        }
+        const xDomain = this.xScale.domain();
+        const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
+        const distanceBetweenPoints = width / (numberOfXDataPoints - 1)
+        const xOnChart = x - this.margins.left - this.chartMargin;
+        const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0);
+        const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
         if (hoverIndex !== this.hoverIndex) {
             this.hoverIndex = hoverIndex;
             this.hoverIndexChange.emit(hoverIndex);
         }
     }
 
-    public positionHoverBox() {
-        const hoverBoxTimestamp = this.tableData[this.hoverIndex].timestamp;
-        this.hoverBox
-            .attr('x', this.xScale(hoverBoxTimestamp))
-            .attr('y', this.yScale(this.maxY))
-            .attr('width', this.xScale.bandwidth)
-            .attr('height', this.yScale(0) - this.yScale(this.maxY))
+    public positionHoverLine() {
+        const hoverLineTimestamp = this.tableData[this.hoverIndex].timestamp;
+        this.hoverLine
+            .attr('x1', this.xScale(hoverLineTimestamp))
+            .attr('x2', this.xScale(hoverLineTimestamp))
+            .attr('y1', this.yScale(this.maxY) - 3)
+            .attr('y2', this.yScale(0) + 3)
     }
 
     public renderFor(width: number, height: number) {
@@ -92,19 +97,30 @@ export class LineChartComponent extends BaseChartComponent {
             return !(this.disabledKeys && this.disabledKeys.has(key));
         });
         const reversedKeys = filteredKeys.reverse();
-        const stack = d3.stack().keys(reversedKeys);
-        const dataset = stack(this.tableData);
+        const dataset = reversedKeys.map((key: string) => {
+            const series = this.tableData.map((columnData: any) => {
+                const cellData = columnData[key];
+                return {
+                    key: key,
+                    y: cellData,
+                    x: columnData.timestamp,
+                    data: columnData,
+                };
+            });
+            series.key = key;
+            return series;
+        });
 
-        const domain = dataset.length ? dataset[0].map((d) => d.data.timestamp) : [];
-        this.xScale = d3.scaleBand()
+        const allXValues = dataset.length ? dataset[0].map((d) => d.data.timestamp) : [];
+        const domain = dataset.length ? [first(dataset[0]).x, last(dataset[0]).x] : [];
+
+        this.xScale = d3.scaleTime()
           .domain(domain)
-          .range([10, width-10])
-          .paddingOuter(0)
-          .paddingInner(this.barPadding);
+          .range([this.chartMargin, width - this.chartMargin]);
 
-        this.maxY = dataset.reduce((currentMax: number, series: number[][]) => {
-            const seriesMax = series.reduce((currentSeriesMax: number, stack: number[]) => {
-                return Math.max(currentSeriesMax, ...stack);
+        this.maxY = dataset.reduce((currentMax: number, series: any[]) => {
+            const seriesMax = series.reduce((currentSeriesMax: number, cell: any) => {
+                return Math.max(currentSeriesMax, cell.y);
             }, 0);
             return Math.max(currentMax, seriesMax)
         }, 0);
@@ -114,41 +130,29 @@ export class LineChartComponent extends BaseChartComponent {
           .range([height, 0]);
 
         const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
-        const xAxis = super.getXAxis(this.xScale, width, numberOfXDataPoints)
+        const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
         super.applyXAxis(this.xAxisG, xAxis, height);
         const yAxis = super.getLinearYAxis(this.yScale, width);
         super.applyYAxis(this.yAxisG, yAxis);
 
+        const pathLineDrawer = d3.line()
+            .x((d) => this.xScale(d.x))
+            .y((d) => this.yScale(d.y));
+
         // Create groups for each series, rects for each segment
-        const groups = this.seriesG.selectAll('g.series')
+        const paths = this.seriesG.selectAll('path.series')
           .data(dataset);
-        groups.enter()
-            .append('g')
+        paths.enter()
+            .append('path')
+            .style('fill', 'none')
+            .merge(paths)
             .attr('class', (d) => `series ${d.key}`)
-            .merge(groups)
-            .style('fill', (d) => this.colorsByKey[d.key]);
-        groups.exit().remove();
+            .attr('d', pathLineDrawer)
+            .style('stroke-width', '2px')
+            .style('stroke', (d) => this.colorsByKey[d.key]);
+        paths.exit().remove();
 
-        // reusing "groups" selection doesn't work, not sure why
-        // explicitly selectAll again before rebinding works
-        const rects = this.seriesG.selectAll('g.series').selectAll('rect')
-            .data((series) => {
-                series.forEach((points: any) => {
-                    points.seriesKey = series.key;
-                });
-                return series;
-            });
-        rects.enter()
-            .append('rect')
-            .merge(rects)
-            .attr('x', (d) => this.xScale(d.data.timestamp))
-            .attr('y', (d) => this.yScale(d[1]))
-            .attr('height', (d) => this.yScale(d[0]) - this.yScale(d[1]))
-            .attr('width', this.xScale.bandwidth());
-
-        rects.exit().remove()
-
-        this.positionHoverBox();
+        this.positionHoverLine();
     }
 
 }

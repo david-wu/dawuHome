@@ -2,7 +2,11 @@ import {
     Component,
     Input,
 } from '@angular/core';
-import { CoronaDataExtractor } from '../models/corona-data-extractor.model';
+import {
+    CoronaDataExtractor,
+    CoronaKeys,
+    NormalKeys,
+} from '../models/index';
 
 @Component({
   selector: 'dwu-corona-dashboard',
@@ -13,27 +17,49 @@ export class CoronaDashboardComponent {
 
     @Input() coronaFile: any;
 
-    public coronaData: any;
+    public coronaData: any[];
+    public normalizedData: any[];
     public coronaExtractor = new CoronaDataExtractor();
-    public overviewHoverIndex = 0;
+    public hoverIndex = 0;
 
+    public readonly CoronaKeys = CoronaKeys;
+    public readonly NormalKeys = NormalKeys;
     public readonly coronaKeys = [
-        'new',
-        'active',
-        'recovered',
-        'deaths',
+        CoronaKeys.NEW,
+        CoronaKeys.ACTIVE,
+        CoronaKeys.RECOVERED,
+        CoronaKeys.DEATHS,
     ];
     public readonly coronaColorsByKey = {
-        deaths: '#2B1919',
-        recovered: '#34A2AA',
-        active: '#AD3E3E',
-        new: '#ED9797',
-    }
+        [CoronaKeys.NEW]: '#ED9797',
+        [CoronaKeys.ACTIVE]: '#AD3E3E',
+        [CoronaKeys.RECOVERED]: '#34A2AA',
+        [CoronaKeys.DEATHS]: '#2B1919',
+    };
+
+    public readonly normalKeys = [
+        NormalKeys.CASES,
+        NormalKeys.R,
+        NormalKeys.NEW,
+        NormalKeys.ACTIVE,
+        NormalKeys.RECOVERED,
+        NormalKeys.DEATHS,
+    ];
+    public readonly normalColorsByKeys = {
+        [NormalKeys.CASES]: '#2B1919',
+        [NormalKeys.R]: '#34A2AA',
+        [NormalKeys.NEW]: '#AD3E3E',
+        [NormalKeys.ACTIVE]: '#ED9797',
+        [NormalKeys.RECOVERED]: '#2B1919',
+        [NormalKeys.DEATHS]: '#34A2AA',
+    };
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile);
-            this.overviewHoverIndex = this.coronaData.length - 1;
+            this.normalizedData = this.coronaExtractor.getNormalizedData(this.coronaData, this.coronaFile.population);
+            this.hoverIndex = this.coronaData.length - 1;
+            console.log(this.coronaData, this.normalizedData)
         }
     }
 }

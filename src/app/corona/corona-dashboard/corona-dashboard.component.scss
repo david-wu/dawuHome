@@ -35,13 +35,14 @@
                 }
             }
         }
-        dwu-bar-chart {
+        .overview.chart {
             height: 12.5rem;
             width: 100%;
         }
         dwu-chart-legend {
             flex: 0 0 auto;
             margin-top: 0.25rem;
+            margin-bottom: 1.5rem;
         }
     }
 }

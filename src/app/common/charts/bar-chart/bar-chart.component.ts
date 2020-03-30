@@ -27,6 +27,9 @@ export class BarChartComponent extends BaseChartComponent {
     public hoverBox;
     public maxY;
 
+    // some extra margin on the chart itself
+    public chartMargin = 5;
+
     constructor(public hostEl: ElementRef) {
         super(hostEl);
     }
@@ -65,12 +68,16 @@ export class BarChartComponent extends BaseChartComponent {
     }
 
     public onXYHover(x: number, y: number) {
+        const numberOfXDataPoints = this.tableData && this.tableData.length;
+        if (!numberOfXDataPoints) {
+            return;
+        }
         const distanceBetweenBars = this.xScale.step();
         const paddingWidth = this.barPadding * distanceBetweenBars;
         const startingPx = this.xScale(this.tableData[0].timestamp);
         const xOnChart = x - this.margins.left - startingPx - (paddingWidth / 2);
         const rawIndex = Math.floor(xOnChart / distanceBetweenBars);
-        const hoverIndex = Math.min(Math.max(rawIndex, 0), this.tableData.length - 1);
+        const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
         if (hoverIndex !== this.hoverIndex) {
             this.hoverIndex = hoverIndex;
             this.hoverIndexChange.emit(hoverIndex);
@@ -98,7 +105,7 @@ export class BarChartComponent extends BaseChartComponent {
         const domain = dataset.length ? dataset[0].map((d) => d.data.timestamp) : [];
         this.xScale = d3.scaleBand()
           .domain(domain)
-          .range([10, width-10])
+          .range([this.chartMargin, width - this.chartMargin])
           .paddingOuter(0)
           .paddingInner(this.barPadding);
 
@@ -114,7 +121,7 @@ export class BarChartComponent extends BaseChartComponent {
           .range([height, 0]);
 
         const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
-        const xAxis = super.getXAxis(this.xScale, width, numberOfXDataPoints)
+        const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
         super.applyXAxis(this.xAxisG, xAxis, height);
         const yAxis = super.getLinearYAxis(this.yScale, width);
         super.applyYAxis(this.yAxisG, yAxis);

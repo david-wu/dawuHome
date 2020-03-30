@@ -3,8 +3,11 @@
 :host {
     display: flex;
     align-items: center;
+    justify-content: center;
     user-select: none;
+    flex-wrap: wrap;
     .key-set {
+        margin: 0 0.5rem 0.5rem 0.5rem;
         display: flex;
         align-items: center;
         cursor: pointer;
@@ -17,9 +20,6 @@
         &:active {
             transform: translateY(1px);
             box-shadow: none;
-        }
-        &:not(:first-child) {
-            margin-left: 0.75rem;
         }
         &:hover {
             .key-color {

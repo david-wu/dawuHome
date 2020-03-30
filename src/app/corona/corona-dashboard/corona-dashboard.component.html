@@ -1,5 +1,5 @@
 <div class="chart-container">
-    <div class="selected-stats" *ngIf="coronaData[overviewHoverIndex] as stats">
+    <div class="selected-stats" *ngIf="coronaData[hoverIndex] as stats">
         <div class="stats-column-container">
             <div class="stats-column">
                 <div>total:</div>
@@ -31,18 +31,33 @@
             </div>
         </div>
     </div>
-
     <dwu-bar-chart
+        class="overview chart"
         [tableData]="coronaData"
         [keys]="coronaKeys"
         [colorsByKey]="coronaColorsByKey"
         [disabledKeys]="disabledBarKeys"
-        [hoverIndex]="overviewHoverIndex"
-        (hoverIndexChange)="overviewHoverIndex = $event"
+        [hoverIndex]="hoverIndex"
+        (hoverIndexChange)="hoverIndex = $event"
     ></dwu-bar-chart>
     <dwu-chart-legend
         [keys]="coronaKeys"
         [colorsByKey]="coronaColorsByKey"
         [(disabledKeys)]="disabledBarKeys"
+    ></dwu-chart-legend>
+
+    <dwu-line-chart
+        class="overview chart"
+        [tableData]="normalizedData"
+        [keys]="normalKeys"
+        [colorsByKey]="normalColorsByKeys"
+        [disabledKeys]="disabledNormalKeys"
+        [hoverIndex]="hoverIndex"
+        (hoverIndexChange)="hoverIndex = $event"
+    ></dwu-line-chart>
+    <dwu-chart-legend
+        [keys]="normalKeys"
+        [colorsByKey]="normalColorsByKeys"
+        [(disabledKeys)]="disabledNormalKeys"
     ></dwu-chart-legend>
 </div>

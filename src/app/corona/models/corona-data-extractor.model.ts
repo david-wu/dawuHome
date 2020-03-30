@@ -3,6 +3,9 @@ import {
     sortBy,
 } from 'lodash';
 
+import { NormalKeys } from './normal-keys.enum';
+import { CoronaKeys } from './corona-keys.enum';
+
 export class CoronaDataExtractor {
 
     /**
@@ -42,35 +45,55 @@ export class CoronaDataExtractor {
         };
         sortedDateStrs.forEach((dateStr) => {
             const point = file.dates[dateStr];
-            point.cases = point.cases || 0;
-            point.deaths = point.deaths || 0;
-            point.recovered = point.recovered || 0;
+            point[CoronaKeys.CASES] = point[CoronaKeys.CASES] || 0;
+            point[CoronaKeys.DEATHS] = point[CoronaKeys.DEATHS] || 0;
+            point[CoronaKeys.RECOVERED] = point[CoronaKeys.RECOVERED] || 0;
 
-            const augmentedDataPoint = {
-                ...file.dates[dateStr],
+            const cleanPoint = {
                 dateStr: dateStr,
                 date: this.getDateFromStr(dateStr),
                 timestamp: +this.getDateFromStr(dateStr),
-                cases: Math.max(point.cases, previousPoint.cases),
-                deaths: Math.max(point.deaths, previousPoint.deaths),
-                recovered: Math.max(point.recovered, previousPoint.recovered),
-            };
-            augmentedDataPoint.new = augmentedDataPoint.cases - previousPoint.cases;
-            augmentedDataPoint.active = augmentedDataPoint.cases - augmentedDataPoint.new - augmentedDataPoint.deaths - augmentedDataPoint.recovered;
-            augmentedDataPoint.active = Math.max(0, augmentedDataPoint.active);
-            cleanData.push(augmentedDataPoint)
-            previousPoint = augmentedDataPoint;
+                [CoronaKeys.CASES]: Math.max(point[CoronaKeys.CASES], previousPoint[CoronaKeys.CASES]),
+                [CoronaKeys.DEATHS]: Math.max(point[CoronaKeys.DEATHS], previousPoint[CoronaKeys.DEATHS]),
+                [CoronaKeys.RECOVERED]: Math.max(point[CoronaKeys.RECOVERED], previousPoint[CoronaKeys.RECOVERED]),
+            } as any;
+            cleanPoint[CoronaKeys.NEW] = cleanPoint[CoronaKeys.CASES] - previousPoint[CoronaKeys.CASES];
+            cleanPoint[CoronaKeys.ACTIVE] = cleanPoint[CoronaKeys.CASES] - cleanPoint[CoronaKeys.NEW] - cleanPoint[CoronaKeys.DEATHS] - cleanPoint[CoronaKeys.RECOVERED];
+            cleanPoint[CoronaKeys.ACTIVE] = Math.max(0, cleanPoint[CoronaKeys.ACTIVE]);
+            cleanData.push(cleanPoint)
+            previousPoint = cleanPoint;
         });
 
         const clippedData = [];
-        const firstNonZeroIndex = cleanData.findIndex((point) => point.cases !== 0);
+        const firstNonZeroIndex = cleanData.findIndex((point) => point[CoronaKeys.CASES] !== 0);
         // includes a 0 datapoint at the beginning
         const clipIndex = Math.max(0, firstNonZeroIndex - 1);
         return cleanData.slice(clipIndex);
     }
 
-    public getCaseSeries() {
+    public getNormalizedData(cleanData, population) {
+        const normalizedData = [];
 
+        for(let i = 0; i < cleanData.length; i++) {
+            const cleanPoint = cleanData[i];
+            const previousCases = cleanPoint.cases - cleanPoint.new;
+            const r = previousCases
+                ? (cleanPoint.new / previousCases)
+                : 1;
+            const normalizedPoint = {
+                dateStr: cleanPoint.dateStr,
+                date: cleanPoint.date,
+                timestamp: cleanPoint.timestamp,
+                [NormalKeys.R]: r,
+                [NormalKeys.CASES]: (cleanPoint.cases / population) * 1000000,
+                [NormalKeys.NEW]: (cleanPoint.new / population) * 1000000,
+                [NormalKeys.ACTIVE]: (cleanPoint.active / population) * 1000000,
+                [NormalKeys.RECOVERED]: (cleanPoint.recovered / population) * 1000000,
+                [NormalKeys.DEATHS]: (cleanPoint.deaths / population) * 1000000,
+            };
+            normalizedData.push(normalizedPoint);
+        }
+        return normalizedData;
     }
 
 }

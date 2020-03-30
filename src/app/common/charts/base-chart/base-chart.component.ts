@@ -18,7 +18,7 @@ export class BaseChartComponent {
     public sensor;
     public margins = {
         top: 5,
-        right: 20,
+        right: 30,
         bottom: 20,
         left: 55,
     };
@@ -78,11 +78,20 @@ export class BaseChartComponent {
         throw('must implement renderFor');
     }
 
-    public render() {
+    public getChartDim() {
         const elDim = this.getElDim();
+        return {
+            width: elDim.width - this.margins.left - this.margins.right,
+            height: elDim.height - this.margins.top - this.margins.bottom,
+        }
+    }
 
-        const width = elDim.width - this.margins.left - this.margins.right;
-        const height = elDim.height - this.margins.top - this.margins.bottom;
+    public render() {
+        const { width, height } = this.getChartDim();
+        // const elDim = this.getElDim();
+
+        // const width = elDim.width - this.margins.left - this.margins.right;
+        // const height = elDim.height - this.margins.top - this.margins.bottom;
 
         this.svg
             .attr('width', width + this.margins.left + this.margins.right)
@@ -111,12 +120,22 @@ export class BaseChartComponent {
             .attr('stroke-dasharray', '2,2'));
     }
 
-    public getXAxis(xScale, width, numberOfXDataPoints) {
-        const filteredXDomainValues = this.getFilteredXDomainValues(xScale, width, numberOfXDataPoints);
+    public getXAxisTicks(xScale: any, width: number, numberOfXDataPoints: number, allXValues: any[]) {
+        const filteredXDomainValues = this.getFilteredTickValues(allXValues, width, numberOfXDataPoints);
         return d3.axisBottom()
           .scale(xScale)
-          .tickValues(filteredXDomainValues)
           .tickSizeOuter(0)
+          .tickValues(filteredXDomainValues)
+          .tickFormat(d3.timeFormat('%x'));
+    }
+
+    public getXBandAxis(xScale: any, width: number, numberOfXDataPoints: number) {
+        const ticks = xScale.domain();
+        const filteredXDomainValues = this.getFilteredTickValues(ticks, width, numberOfXDataPoints);
+        return d3.axisBottom()
+          .scale(xScale)
+          .tickSizeOuter(0)
+          .tickValues(filteredXDomainValues)
           .tickFormat(d3.timeFormat('%x'));
     }
 
@@ -126,17 +145,17 @@ export class BaseChartComponent {
             .call(xAxis);
     }
 
-    public getFilteredXDomainValues(xScale, width, numberOfXDataPoints) {
+    public getFilteredTickValues(ticks, width, numberOfXDataPoints) {
         const xDomainInterval = this.getXDomainInterval(width, numberOfXDataPoints);
         const remainder = numberOfXDataPoints % xDomainInterval;
-        return xScale.domain().filter((d, i)=> {
+        return ticks.filter((d, i)=> {
             // (i + 1 - remainder) makes sure the most recent datapoint's tick is always visible
             return !((i + 1 - remainder) % xDomainInterval);
         });
     }
 
     public getXDomainInterval(width: number, numberOfXDataPoints: number) {
-        const maxXpoints = Math.floor(width / 60);
+        const maxXpoints = this.getMaxXPoints(width);
         let xPoints = numberOfXDataPoints;
         let interval = 1;
         while(xPoints > maxXpoints) {
@@ -144,6 +163,10 @@ export class BaseChartComponent {
             xPoints = numberOfXDataPoints / interval;
         }
         return interval;
+    }
+
+    public getMaxXPoints(width: number) {
+        return Math.floor(width / 60);
     }
 
     public getElDim() {
