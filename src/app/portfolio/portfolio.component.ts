@@ -25,12 +25,13 @@ export class PortfolioComponent {
             childrenById: {
                 FUZZ: { label: 'fuzz-demo' },
                 TODOS: {
-                    label: 'Todos',
+                    label: 'todos',
                     childrenById: {
-                        SHIFT: { label: 'shift/control-select' },
-                        MOBILE: { label: 'mobile' },
-                        FILETYPES: { label: 'fileTypes: markdown, text, sql' },
-                        EARLEY: { label: 'earley' },
+                        TODO_LIST: { label: 'implement todo list' },
+                        MARKDOWN: { label: 'support markdown-editor' },
+                        FAVICON: { label: 'favicon' },
+                        COMMON: { label: 'common components' },
+                        ABOUT_ME: { label: 'about me page' },
                     },
                 },
                 COMPONENTS: {

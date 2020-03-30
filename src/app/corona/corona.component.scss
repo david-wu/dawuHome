@@ -2,32 +2,31 @@
 
 :host {
     @include responsive-page;
-}
-
-.page-container {
-    .left-side {
-        background-color: $eggshell-darker;
-        display: flex;
-        flex-direction: column;
-        dwu-file-explorer {
-            flex: 1 0 0;
-        }
-        .view-tabs {
-            padding: 0 0.5rem;
+    .page-container {
+        .left-side {
+            background-color: $eggshell-darker;
             display: flex;
-            .view-tab {
-                @include light-small-button;
-                margin: 0 0.5rem;
-                border-radius: 4px 4px 0 0;
-                border: 1px solid $moss-green;
-                border-bottom: none;
-                flex: 1 1 0;
-                text-align: center;
+            flex-direction: column;
+            dwu-file-explorer {
+                flex: 1 0 0;
+            }
+            .view-tabs {
+                padding: 0 0.5rem;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                .star {
-                    margin-right: 0.25rem;
+                .view-tab {
+                    @include light-small-button;
+                    margin: 0 0.5rem;
+                    border-radius: 4px 4px 0 0;
+                    border: 1px solid $moss-green;
+                    border-bottom: none;
+                    flex: 1 1 0;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .star {
+                        margin-right: 0.25rem;
+                    }
                 }
             }
         }

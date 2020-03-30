@@ -1,22 +1,15 @@
 @import 'mixins';
 
 :host {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    .left-side {
-        overflow: hidden;
-        max-width: 30%;
-        width: 20rem;
-        display: flex;
-        flex-direction: column;
-        dwu-file-explorer {
-            flex: 1 1 0;
+    @include responsive-page;
+    .page-container {
+        .left-side {
+            background-color: $eggshell-darker;
+            display: flex;
+            flex-direction: column;
+            dwu-file-explorer {
+                flex: 1 1 0;
+            }
         }
-    }
-    .right-side {
-        flex: 1 1 0;
-        overflow: auto;
-        position: relative;
     }
 }

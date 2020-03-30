@@ -13,7 +13,7 @@
         type="text"
         [ngModel]="filterStr"
         (ngModelChange)="searchTextChange.emit($event)"
-        placeholder="County, State, or Country"
+        [placeholder]="placeholder"
         autofocus
     >
 </div>

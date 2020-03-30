@@ -13,8 +13,7 @@ import {
 export class SearchInputComponent {
 
     @Input() searchText: string = '';
-    @Input() colorsByKey: Record<string, string> = {};
-    @Input() disabledKeys: Set<string> = new Set();
+    @Input() placeholder: string = 'search..';
     @Output() searchTextChange: EventEmitter<string> = new EventEmitter<string>();
 
 }

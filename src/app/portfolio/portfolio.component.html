@@ -1,36 +1,36 @@
-<div class="left-side">
-    <div>
-        <input type="text" [(ngModel)]="filterStr" placeholder="fuzzy search">
+<div class="page-container">
+    <div class="left-side">
+        <dwu-search-input [(searchText)]="filterStr" [placeholder]="'search..'"></dwu-search-input>
+        <dwu-file-explorer
+            [rootFileId]="fileGroup.rootFileId"
+            [filesById]="fileGroup.filesById"
+            (filesByIdChange)="fileGroup.filesById = $event"
+            [fuzzFilterString]="filterStr"
+            [closedFileIds]="fileGroup.closedFileIds"
+            (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
+            [selectedFileIds]="fileGroup.selectedFileIds"
+            (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
+            [perfMode]="false"
+        ></dwu-file-explorer>
     </div>
-    <dwu-file-explorer
-        [rootFileId]="fileGroup.rootFileId"
-        [filesById]="fileGroup.filesById"
-        (filesByIdChange)="fileGroup.filesById = $event"
-        [fuzzFilterString]="filterStr"
-        [closedFileIds]="fileGroup.closedFileIds"
-        (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
-        [selectedFileIds]="fileGroup.selectedFileIds"
-        (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
-        [perfMode]="false"
-    ></dwu-file-explorer>
-</div>
-<div class="right-side">
-    <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
-        <app-demo-page-wrapper *ngSwitchCase="'FUZZ'"></app-demo-page-wrapper>
-        <div *ngSwitchCase="'FILE_EXPLORER'">
-            <div>
-                file explorer demo
+    <div class="right-side">
+        <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
+            <app-demo-page-wrapper *ngSwitchCase="'FUZZ'"></app-demo-page-wrapper>
+            <div *ngSwitchCase="'FILE_EXPLORER'">
+                <div>
+                    future file explorer demo
+                </div>
             </div>
-        </div>
-        <div *ngSwitchCase="'TEXT_DECORATOR'">
-            <div>
-                text-decorator demo
+            <div *ngSwitchCase="'TEXT_DECORATOR'">
+                <div>
+                    future text-decorator demo
+                </div>
             </div>
-        </div>
-        <div *ngSwitchDefault>
-            <div>
-                default demo
+            <div *ngSwitchDefault>
+                <div>
+                    Nothing here yet
+                </div>
             </div>
-        </div>
-    </ng-container>
+        </ng-container>
+    </div>
 </div>

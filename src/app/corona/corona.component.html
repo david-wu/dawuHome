@@ -1,6 +1,10 @@
 <div class="page-container">
     <div class="left-side">
-        <dwu-search-input [searchText]="filterStr" (searchTextChange)="onFilterStringChange($event)"></dwu-search-input>
+        <dwu-search-input
+            [searchText]="filterStr"
+            (searchTextChange)="onFilterStringChange($event)"
+            [placeholder]="'County, State, or Country'"
+        ></dwu-search-input>
         <div class="view-tabs">
             <div class="view-tab" [class.active]="!viewingFavorites" (click)="setViewingFavorites(false)">
                 All
