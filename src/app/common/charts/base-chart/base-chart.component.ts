@@ -59,7 +59,6 @@ export class BaseChartComponent {
 
     public touchmove() {
         // prevents following mouse event
-        d3.event.preventDefault();
         d3.event.stopPropagation();
         const touch = d3.touches(this.svg.node());
         const [x, y] = touch[0];

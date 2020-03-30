@@ -1,4 +1,4 @@
-<cdk-virtual-scroll-viewport *ngIf="perfMode" itemSize="24" class="viewport">
+<cdk-virtual-scroll-viewport itemSize="24" class="viewport">
     <div
         *cdkVirtualFor="let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn"
         [attr.data-file-id]="filesById[fileIdAndDepth[0]].id"
@@ -53,7 +53,7 @@
 
 
 <!-- Not sure how, but should avoid duplicating this -->
-<div *ngIf="!perfMode" class="viewport">
+<!-- <div *ngIf="!perfMode" class="viewport">
     <div [dragula]="'EXP'">
         <div
             *ngFor="let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn"
@@ -106,4 +106,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

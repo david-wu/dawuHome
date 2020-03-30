@@ -50,6 +50,7 @@
     text-align: center;
     outline: none;
     white-space: nowrap;
+    user-select: none;
 }
 
 @mixin button-md {
@@ -59,6 +60,7 @@
     text-align: center;
     outline: none;
     white-space: nowrap;
+    user-select: none;
 }
 
 @mixin light-theme {

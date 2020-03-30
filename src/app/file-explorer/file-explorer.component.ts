@@ -24,7 +24,7 @@ import {
     without,
     uniq,
 } from 'lodash';
-import { DragulaService } from 'ng2-dragula';
+// import { DragulaService } from 'ng2-dragula';
 import { breadthFirstBy, reverseBreadthFirstBy } from '@utils/index';
 
 import {
@@ -37,7 +37,7 @@ import {
     templateUrl: './file-explorer.component.html',
     styleUrls: ['./file-explorer.component.scss'],
     providers: [
-        DragulaService,
+        // DragulaService,
     ],
 })
 export class FileExplorerComponent {
@@ -64,58 +64,58 @@ export class FileExplorerComponent {
 
     public fileIdBeingDragged: string;
 
-    constructor(public dragulaService: DragulaService) {
-        const drakeGroup = dragulaService.createGroup('EXP', {
-          isContainer: (el) => {
-              const fileId = el.getAttribute('data-file-id');
-              if (!fileId) {
-                  return false;
-              }
-              return !!this.filesById[fileId].childIds;
-          },
-          revertOnSpill: false,
-        });
+    // constructor(public dragulaService: DragulaService) {
+    //     const drakeGroup = dragulaService.createGroup('EXP', {
+    //       isContainer: (el) => {
+    //           const fileId = el.getAttribute('data-file-id');
+    //           if (!fileId) {
+    //               return false;
+    //           }
+    //           return !!this.filesById[fileId].childIds;
+    //       },
+    //       revertOnSpill: false,
+    //     });
 
-        this.subs.add(this.dragulaService.drop('EXP')
-            .subscribe((drop) => {
-                // use on our own dom manipulation
-                drakeGroup.drake.cancel(true);
-                if (drop.sibling && this.getElFileId(drop.sibling)) {
-                    this.insertFileBeforeFile(
-                        this.getElFileId(drop.el),
-                        this.getElFileId(drop.sibling),
-                    );
-                } else {
-                    this.addFileToFileChildren(
-                        this.getElFileId(drop.el),
-                        this.getElFileId(drop.target),
-                    );
-                }
-            })
-        );
+    //     this.subs.add(this.dragulaService.drop('EXP')
+    //         .subscribe((drop) => {
+    //             // use on our own dom manipulation
+    //             drakeGroup.drake.cancel(true);
+    //             if (drop.sibling && this.getElFileId(drop.sibling)) {
+    //                 this.insertFileBeforeFile(
+    //                     this.getElFileId(drop.el),
+    //                     this.getElFileId(drop.sibling),
+    //                 );
+    //             } else {
+    //                 this.addFileToFileChildren(
+    //                     this.getElFileId(drop.el),
+    //                     this.getElFileId(drop.target),
+    //                 );
+    //             }
+    //         })
+    //     );
 
-        this.subs.add(this.dragulaService.over('EXP')
-            .subscribe(({ el }) => {
-                // if a folder is being dragged isContainer function will return true
-                // this makes 'el' be the childElement so I also check the parentNode's attribute
-                const nextFileIdBeingDragged = this.getElFileId(el);
+    //     this.subs.add(this.dragulaService.over('EXP')
+    //         .subscribe(({ el }) => {
+    //             // if a folder is being dragged isContainer function will return true
+    //             // this makes 'el' be the childElement so I also check the parentNode's attribute
+    //             const nextFileIdBeingDragged = this.getElFileId(el);
 
-                // for the first over event after a dragend, el is the element being dragged
-                if (!this.fileIdBeingDragged && (this.fileIdBeingDragged !== nextFileIdBeingDragged)) {
-                    this.fileIdBeingDragged = nextFileIdBeingDragged;
-                    this.closedFileIdsChange.emit(new Set([
-                        ...this.closedFileIds,
-                        this.fileIdBeingDragged,
-                    ]));
-                }
-            })
-        );
+    //             // for the first over event after a dragend, el is the element being dragged
+    //             if (!this.fileIdBeingDragged && (this.fileIdBeingDragged !== nextFileIdBeingDragged)) {
+    //                 this.fileIdBeingDragged = nextFileIdBeingDragged;
+    //                 this.closedFileIdsChange.emit(new Set([
+    //                     ...this.closedFileIds,
+    //                     this.fileIdBeingDragged,
+    //                 ]));
+    //             }
+    //         })
+    //     );
 
-        this.subs.add(this.dragulaService.dragend('EXP')
-            .subscribe(() => this.fileIdBeingDragged = undefined),
-        );
+    //     this.subs.add(this.dragulaService.dragend('EXP')
+    //         .subscribe(() => this.fileIdBeingDragged = undefined),
+    //     );
 
-    }
+    // }
 
     public ngOnChanges(changes: SimpleChanges) {
         if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString || changes.perfMode) {
@@ -152,7 +152,7 @@ export class FileExplorerComponent {
 
     public ngOnDestroy() {
         this.subs.unsubscribe();
-        this.dragulaService.destroy('EXP');
+        // this.dragulaService.destroy('EXP');
     }
 
     public scrollToSelectedFileId() {
