@@ -3,7 +3,7 @@
         search
     </span>
     <span
-        *ngIf="filterStr"
+        *ngIf="searchText"
         class="material-icons cancel-icon"
         (click)="searchTextChange.emit('')"
     >
@@ -11,7 +11,7 @@
     </span>
     <input
         type="text"
-        [ngModel]="filterStr"
+        [ngModel]="searchText"
         (ngModelChange)="searchTextChange.emit($event)"
         [placeholder]="placeholder"
         autofocus
