@@ -1,5 +1,18 @@
 @import 'variables';
 
+@mixin radio-button-container {
+    display: flex;
+    .radio-button {
+        @include light-mini-button;
+        &:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+        &:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+    }
+}
+
 @mixin responsive-page {
     @media screen and (max-width: 750px) {
         div.page-container {
@@ -32,6 +45,10 @@
     }
 
 }
+@mixin light-mini-button {
+    @include light-theme;
+    @include button-xs;
+}
 
 @mixin light-small-button {
     @include light-theme;
@@ -43,8 +60,19 @@
     @include button-md;
 }
 
+@mixin button-xs {
+    min-width: 2rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+}
+
 @mixin button-sm {
-    width: 6rem;
+    min-width: 6rem;
     padding: 0.25rem 0.5rem;
     cursor: pointer;
     text-align: center;

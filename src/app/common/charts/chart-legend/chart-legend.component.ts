@@ -15,6 +15,7 @@ export class ChartLegendComponent {
     @Input() keys: string[] = [];
     @Input() colorsByKey: Record<string, string> = {};
     @Input() disabledKeys: Set<string> = new Set();
+    @Input() labelsByKey: Record<string, string>;
     @Output() disabledKeysChange: EventEmitter<Set<string>> = new EventEmitter<Set<string>>();
 
     // $eggshell-darker

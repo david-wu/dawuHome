@@ -1,0 +1,27 @@
+@import 'mixins';
+
+.selected-stats {
+    padding: 0 1rem;
+    font-size: 0.75rem;
+    display: flex;
+    .stats-column-container {
+        display: flex;
+        &:not(:first-child) {
+            margin-left: 2.5rem;
+        }
+        .stats-column {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            &:first-child {
+                margin-right: 0.25rem;
+            }
+            &.stats {
+                min-width: 3rem;
+            }
+            .first-val {
+                font-weight: 600;
+            }
+        }
+    }
+}

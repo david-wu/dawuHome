@@ -3,6 +3,7 @@ import {
     ElementRef,
     EventEmitter,
     Input,
+    NgZone,
     Output,
 } from '@angular/core';
 import * as d3 from 'd3';
@@ -30,8 +31,11 @@ export class BarChartComponent extends BaseChartComponent {
     // some extra margin on the chart itself
     public chartMargin = 5;
 
-    constructor(public hostEl: ElementRef) {
-        super(hostEl);
+    constructor(
+        public hostEl: ElementRef,
+        public zone: NgZone,
+    ) {
+        super(hostEl, zone);
     }
 
     public ngOnChanges(changes) {
@@ -79,8 +83,10 @@ export class BarChartComponent extends BaseChartComponent {
         const rawIndex = Math.floor(xOnChart / distanceBetweenBars);
         const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
         if (hoverIndex !== this.hoverIndex) {
-            this.hoverIndex = hoverIndex;
-            this.hoverIndexChange.emit(hoverIndex);
+            this.ngZone.run(() => {
+                this.hoverIndex = hoverIndex;
+                this.hoverIndexChange.emit(hoverIndex);
+            });
         }
     }
 

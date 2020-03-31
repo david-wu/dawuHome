@@ -1,10 +1,11 @@
 
 export enum NormalKeys {
-    CASES = 'cases/mil',
+    DATE_STR = 'dateStr',
+    CASES = 'cases',
     R = 'r',
-    R_AVG = 'r (3 day avg)',
-    NEW = 'new/mil',
-    ACTIVE = 'active/mil',
-    RECOVERED = 'recovered/mil',
-    DEATHS = 'deaths/mil',
+    R_AVG = 'r (average)',
+    NEW = 'new_mil',
+    ACTIVE = 'active_mil',
+    RECOVERED = 'recovered_mil',
+    DEATHS = 'deaths_mil',
 };

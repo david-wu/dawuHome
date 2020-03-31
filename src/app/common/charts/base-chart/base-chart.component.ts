@@ -1,7 +1,9 @@
 import {
+    ChangeDetectorRef,
     ElementRef,
     EventEmitter,
     Input,
+    NgZone,
     Output,
 } from '@angular/core';
 import * as d3 from 'd3';
@@ -25,12 +27,15 @@ export class BaseChartComponent {
     public xAxisG;
     public yAxisG;
 
-    constructor(public hostEl: ElementRef) {}
+    constructor(
+        public hostEl: ElementRef,
+        public ngZone: NgZone,
+    ) {}
 
     public ngAfterViewInit() {
-        this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
-            this.render();
-        });
+            this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
+                this.render();
+            });
     }
 
     public ngOnDestroy() {
@@ -38,10 +43,12 @@ export class BaseChartComponent {
     }
 
     public initializeSvg() {
-        this.svg = d3.select(this.hostEl.nativeElement).append('svg')
-            .on('mousemove', () => this.onMouseMove())
-            .on('touchstart', () => this.touchmove())
-            .on('touchmove', () => this.touchmove());
+        this.ngZone.runOutsideAngular(() => {
+            this.svg = d3.select(this.hostEl.nativeElement).append('svg')
+                .on('mousemove', () => this.onMouseMove())
+                .on('touchstart', () => this.touchmove())
+                .on('touchmove', () => this.touchmove());
+        });
 
         this.rootG = this.svg.append('g');
         this.yAxisG = this.rootG.append('g')

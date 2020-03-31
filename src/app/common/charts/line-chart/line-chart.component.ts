@@ -3,6 +3,7 @@ import {
     ElementRef,
     EventEmitter,
     Input,
+    NgZone,
     Output,
 } from '@angular/core';
 import { first, last } from 'lodash';
@@ -30,8 +31,11 @@ export class LineChartComponent extends BaseChartComponent {
     // some extra margin on the chart itself
     public chartMargin = 10;
 
-    constructor(public hostEl: ElementRef) {
-        super(hostEl);
+    constructor(
+        public hostEl: ElementRef,
+        public zone: NgZone,
+    ) {
+        super(hostEl, zone);
     }
 
     public ngOnChanges(changes) {
@@ -77,8 +81,10 @@ export class LineChartComponent extends BaseChartComponent {
         const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
         const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
         if (hoverIndex !== this.hoverIndex) {
-            this.hoverIndex = hoverIndex;
-            this.hoverIndexChange.emit(hoverIndex);
+            this.ngZone.run(() => {
+                this.hoverIndex = hoverIndex;
+                this.hoverIndexChange.emit(hoverIndex);
+            });
         }
     }
 

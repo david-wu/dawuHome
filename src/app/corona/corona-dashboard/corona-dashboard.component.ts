@@ -8,6 +8,7 @@ import {
     CoronaDataExtractor,
     CoronaKeys,
     NormalKeys,
+    Labels,
 } from '../models/index';
 
 @Component({
@@ -23,50 +24,102 @@ export class CoronaDashboardComponent {
     @Input() disabledNormalKeys = new Set<string>();
     @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
 
+    @Input() isViewingNormalized: boolean = false;
+    @Input() isViewingLineChart: boolean = false;
+    // @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
+
     public coronaData: any[];
-    public normalizedData: any[];
     public coronaExtractor = new CoronaDataExtractor();
     public hoverIndex = 0;
 
     public readonly CoronaKeys = CoronaKeys;
     public readonly NormalKeys = NormalKeys;
+    public readonly Labels = Labels;
     public readonly coronaKeys = [
         CoronaKeys.NEW,
         CoronaKeys.ACTIVE,
         CoronaKeys.RECOVERED,
         CoronaKeys.DEATHS,
     ];
+    public readonly coronaViewKeys = [
+        CoronaKeys.CASES,
+        CoronaKeys.DATE_STR,
+        CoronaKeys.NEW,
+        CoronaKeys.ACTIVE,
+        CoronaKeys.RECOVERED,
+        CoronaKeys.DEATHS,
+    ];
+    public readonly perMilKeys = [
+        NormalKeys.NEW,
+        NormalKeys.ACTIVE,
+        NormalKeys.RECOVERED,
+        NormalKeys.DEATHS,
+    ];
+    public readonly perMilViewKeys = [
+        CoronaKeys.CASES,
+        CoronaKeys.DATE_STR,
+        NormalKeys.NEW,
+        NormalKeys.ACTIVE,
+        NormalKeys.RECOVERED,
+        NormalKeys.DEATHS,
+    ];
     public readonly coronaColorsByKey = {
         [CoronaKeys.NEW]: '#ED9797',
         [CoronaKeys.ACTIVE]: '#AD3E3E',
         [CoronaKeys.RECOVERED]: '#34A2AA',
         [CoronaKeys.DEATHS]: '#2B1919',
+        [NormalKeys.NEW]: '#ED9797',
+        [NormalKeys.ACTIVE]: '#AD3E3E',
+        [NormalKeys.RECOVERED]: '#34A2AA',
+        [NormalKeys.DEATHS]: '#2B1919',
+        [NormalKeys.CASES]: '#D6B902',
+        [NormalKeys.R]: '#65635F',
+        [NormalKeys.R_AVG]: '#1D62C4',
     };
 
     public readonly normalKeys = [
-        NormalKeys.CASES,
-        NormalKeys.R,
-        NormalKeys.NEW,
-        NormalKeys.ACTIVE,
-        NormalKeys.RECOVERED,
-        NormalKeys.DEATHS,
+        // NormalKeys.CASES,
         NormalKeys.R_AVG,
+        NormalKeys.R,
+        // NormalKeys.NEW,
+        // NormalKeys.ACTIVE,
+        // NormalKeys.RECOVERED,
+        // NormalKeys.DEATHS,
     ];
-    public readonly normalColorsByKeys = {
-        [NormalKeys.CASES]: '#2B1919',
-        [NormalKeys.R]: '#34A2AA',
-        [NormalKeys.NEW]: '#AD3E3E',
-        [NormalKeys.ACTIVE]: '#ED9797',
-        [NormalKeys.RECOVERED]: '#2B1919',
-        [NormalKeys.DEATHS]: '#34A2AA',
-        [NormalKeys.R_AVG]: '#AD3E3E',
-    };
+    public readonly normalizedViewKeys = [
+        NormalKeys.CASES,
+        NormalKeys.DATE_STR,
+        NormalKeys.R_AVG,
+        NormalKeys.R,
+        // NormalKeys.NEW,
+        // NormalKeys.ACTIVE,
+        // NormalKeys.RECOVERED,
+        // NormalKeys.DEATHS,
+    ];
+    // public readonly normalColorsByKeys = {
+    //     [NormalKeys.CASES]: '#2B1919',
+    //     [NormalKeys.R]: '#34A2AA',
+    //     [NormalKeys.NEW]: '#AD3E3E',
+    //     [NormalKeys.ACTIVE]: '#ED9797',
+    //     [NormalKeys.RECOVERED]: '#2B1919',
+    //     [NormalKeys.DEATHS]: '#34A2AA',
+    //     [NormalKeys.R_AVG]: '#AD3E3E',
+    // };
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
-            this.coronaData = this.coronaExtractor.clean(this.coronaFile);
-            this.normalizedData = this.coronaExtractor.getNormalizedData(this.coronaData, this.coronaFile.population);
+            this.coronaData = this.coronaExtractor.clean(this.coronaFile, this.coronaFile.population);
             this.hoverIndex = this.coronaData.length - 1;
         }
+    }
+
+    public onChangeNormalized(isViewingNormalized: boolean) {
+        this.disabledBarKeysChange.emit(new Set());
+        this.isViewingNormalized = isViewingNormalized;
+    }
+
+    public onChangeViewingLineChart(isViewingLineChart: boolean) {
+        // this.disabledBarKeysChange.emit(new Set());
+        this.isViewingLineChart = isViewingLineChart;
     }
 }

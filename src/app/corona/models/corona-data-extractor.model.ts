@@ -23,7 +23,7 @@ export class CoronaDataExtractor {
         );
     }
 
-    public clean(file) {
+    public clean(file, population: number = 1) {
         const cleanData = [];
 
         // const dates = Object.keys(file.dates);
@@ -95,8 +95,9 @@ export class CoronaDataExtractor {
                 break;
             }
         }
-        return oneLeadingZeroData.slice(boringDataClipIndex);
+        const coolData = oneLeadingZeroData.slice(boringDataClipIndex);
 
+        return this.getNormalizedData(coolData, population);
         // return oneLeadingZeroData;
     }
 
@@ -110,9 +111,7 @@ export class CoronaDataExtractor {
                 ? (cleanPoint.new / previousCases)
                 : 1;
             const normalizedPoint = {
-                dateStr: cleanPoint.dateStr,
-                date: cleanPoint.date,
-                timestamp: cleanPoint.timestamp,
+                ...cleanData[i],
                 [NormalKeys.R]: r,
                 [NormalKeys.CASES]: (cleanPoint.cases / population) * 1000000,
                 [NormalKeys.NEW]: (cleanPoint.new / population) * 1000000,
