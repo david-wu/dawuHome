@@ -515,7 +515,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/about-me/about-me.component */ "./src/app/about-me/about-me.component.ts");
 /* harmony import */ var _src_app_about_me_about_me_routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @src/app/about-me/about-me.routes */ "./src/app/about-me/about-me.routes.ts");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
 
 
 
@@ -524,7 +523,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+// import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
 var AboutMeModule = /** @class */ (function () {
     function AboutMeModule() {
     }
@@ -535,7 +534,7 @@ var AboutMeModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_src_app_about_me_about_me_routes__WEBPACK_IMPORTED_MODULE_7__["AboutMeRoutes"]),
-                fuzz_demo_app__WEBPACK_IMPORTED_MODULE_8__["AppModule"],
+                // FuzzAppModule,
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["NoopAnimationsModule"],
@@ -698,7 +697,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_about_me_about_me_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/about-me/about-me.module */ "./src/app/about-me/about-me.module.ts");
 /* harmony import */ var _src_app_portfolio_portfolio_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/portfolio/portfolio.module */ "./src/app/portfolio/portfolio.module.ts");
 /* harmony import */ var _src_app_corona_corona_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/corona/corona.module */ "./src/app/corona/corona.module.ts");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
 
 
 
@@ -710,7 +708,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+// import { AppModule2 } from 'fuzz-demo-app';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -720,7 +718,7 @@ var AppModule = /** @class */ (function () {
                 _src_app_about_me_about_me_module__WEBPACK_IMPORTED_MODULE_8__["AboutMeModule"],
                 _src_app_portfolio_portfolio_module__WEBPACK_IMPORTED_MODULE_9__["PortfolioModule"],
                 _src_app_corona_corona_module__WEBPACK_IMPORTED_MODULE_10__["CoronaModule"],
-                fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__["AppModule"],
+                // AppModule2,
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _src_app_barcelona_barcelona_module__WEBPACK_IMPORTED_MODULE_6__["BarcelonaModule"],
@@ -2255,12 +2253,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/corona/corona.component */ "./src/app/corona/corona.component.ts");
 /* harmony import */ var _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/corona/corona-file-viewer/corona-file-viewer.component */ "./src/app/corona/corona-file-viewer/corona-file-viewer.component.ts");
 /* harmony import */ var _src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/corona/corona.routes */ "./src/app/corona/corona.routes.ts");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
-/* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
-/* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
-/* harmony import */ var _services_corona_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/corona.service */ "./src/app/corona/services/corona.service.ts");
-/* harmony import */ var _services_localStorage_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/localStorage.service */ "./src/app/corona/services/localStorage.service.ts");
-/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
+/* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
+/* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
+/* harmony import */ var _services_corona_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/corona.service */ "./src/app/corona/services/corona.service.ts");
+/* harmony import */ var _services_localStorage_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/localStorage.service */ "./src/app/corona/services/localStorage.service.ts");
+/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
 
 
 
@@ -2272,7 +2269,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+// import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
 
 
 
@@ -2286,22 +2283,22 @@ var CoronaModule = /** @class */ (function () {
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_10__["CoronaRoutes"]),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-                fuzz_demo_app__WEBPACK_IMPORTED_MODULE_11__["AppModule"],
+                // FuzzAppModule,
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["NoopAnimationsModule"],
-                _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_12__["CommonModule"],
-                _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_13__["FileExplorerModule"],
+                _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
+                _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_12__["FileExplorerModule"],
             ],
             declarations: [
                 _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_8__["CoronaComponent"],
                 _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_9__["CoronaFileViewerComponent"],
-                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__["CoronaDashboardComponent"],
+                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_15__["CoronaDashboardComponent"],
             ],
             providers: [
-                _services_corona_service__WEBPACK_IMPORTED_MODULE_14__["CoronaService"],
-                _services_localStorage_service__WEBPACK_IMPORTED_MODULE_15__["LocalStorageService"],
+                _services_corona_service__WEBPACK_IMPORTED_MODULE_13__["CoronaService"],
+                _services_localStorage_service__WEBPACK_IMPORTED_MODULE_14__["LocalStorageService"],
             ],
         })
     ], CoronaModule);
@@ -2326,6 +2323,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @src/app/corona/corona.component */ "./src/app/corona/corona.component.ts");
 
 
+// import { DemoPageWrapperComponent as FuzzDemoPageComponent } from 'fuzz-demo-app';
 var CoronaRoutes = [
     {
         path: '',
@@ -3103,7 +3101,7 @@ var FileExplorerModule = /** @class */ (function () {
 /*!****************************************!*\
   !*** ./src/app/file-explorer/index.ts ***!
   \****************************************/
-/*! exports provided: FileExplorerComponent, FileExplorerModule, FileGroup, FileType, File */
+/*! exports provided: FileExplorerModule, FileExplorerComponent, FileGroup, FileType, File */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3444,6 +3442,7 @@ var PortfolioComponent = /** @class */ (function () {
         this.filesById = {};
         this.filesByLabel = {};
         this.fileGroup = new _file_explorer_index__WEBPACK_IMPORTED_MODULE_3__["FileGroup"]();
+        this.filterStr = '';
     }
     PortfolioComponent.prototype.ngOnInit = function () {
         this.populateFileGroup();
@@ -3515,7 +3514,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _src_app_portfolio_portfolio_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @src/app/portfolio/portfolio.component */ "./src/app/portfolio/portfolio.component.ts");
 /* harmony import */ var _src_app_portfolio_portfolio_routes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/portfolio/portfolio.routes */ "./src/app/portfolio/portfolio.routes.ts");
-/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/esm2015/fuzz-demo-app.js");
+/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! fuzz-demo-app */ "./node_modules/fuzz-demo-app/dist/bundles/fuzz-demo-app.umd.js");
+/* harmony import */ var fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(fuzz_demo_app__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
 /* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
 
@@ -3572,6 +3572,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_portfolio_portfolio_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @src/app/portfolio/portfolio.component */ "./src/app/portfolio/portfolio.component.ts");
 
 
+// import { DemoPageWrapperComponent as FuzzDemoPageComponent } from 'fuzz-demo-app';
 var PortfolioRoutes = [
     {
         path: '',
