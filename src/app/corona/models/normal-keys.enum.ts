@@ -1,7 +1,7 @@
 
 export enum NormalKeys {
     DATE_STR = 'dateStr',
-    CASES = 'cases',
+    CASES = 'cases_mil',
     R = 'r',
     R_AVG = 'r (average)',
     NEW = 'new_mil',

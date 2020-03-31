@@ -36,6 +36,11 @@ export class CoronaFileViewerComponent {
     @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
     @Input() disabledNormalKeys = new Set<string>();
     @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
+    @Input() isViewingNormalized: boolean = false;
+    @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
+    @Input() isViewingLineChart: boolean = false;
+    @Output() isViewingLineChartChange = new EventEmitter<boolean>();
+
     public location$ = new BehaviorSubject(undefined);
     public coronaFile$: Observable<any>;
     public isLoading$: Observable<boolean>;

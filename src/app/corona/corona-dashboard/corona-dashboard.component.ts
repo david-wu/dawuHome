@@ -25,7 +25,9 @@ export class CoronaDashboardComponent {
     @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
 
     @Input() isViewingNormalized: boolean = false;
+    @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
     @Input() isViewingLineChart: boolean = false;
+    @Output() isViewingLineChartChange = new EventEmitter<boolean>();
     // @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
 
     public coronaData: any[];
@@ -56,8 +58,8 @@ export class CoronaDashboardComponent {
         NormalKeys.DEATHS,
     ];
     public readonly perMilViewKeys = [
-        CoronaKeys.CASES,
-        CoronaKeys.DATE_STR,
+        NormalKeys.CASES,
+        NormalKeys.DATE_STR,
         NormalKeys.NEW,
         NormalKeys.ACTIVE,
         NormalKeys.RECOVERED,
@@ -78,33 +80,15 @@ export class CoronaDashboardComponent {
     };
 
     public readonly normalKeys = [
-        // NormalKeys.CASES,
         NormalKeys.R_AVG,
         NormalKeys.R,
-        // NormalKeys.NEW,
-        // NormalKeys.ACTIVE,
-        // NormalKeys.RECOVERED,
-        // NormalKeys.DEATHS,
     ];
     public readonly normalizedViewKeys = [
         NormalKeys.CASES,
         NormalKeys.DATE_STR,
         NormalKeys.R_AVG,
         NormalKeys.R,
-        // NormalKeys.NEW,
-        // NormalKeys.ACTIVE,
-        // NormalKeys.RECOVERED,
-        // NormalKeys.DEATHS,
     ];
-    // public readonly normalColorsByKeys = {
-    //     [NormalKeys.CASES]: '#2B1919',
-    //     [NormalKeys.R]: '#34A2AA',
-    //     [NormalKeys.NEW]: '#AD3E3E',
-    //     [NormalKeys.ACTIVE]: '#ED9797',
-    //     [NormalKeys.RECOVERED]: '#2B1919',
-    //     [NormalKeys.DEATHS]: '#34A2AA',
-    //     [NormalKeys.R_AVG]: '#AD3E3E',
-    // };
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
@@ -116,10 +100,11 @@ export class CoronaDashboardComponent {
     public onChangeNormalized(isViewingNormalized: boolean) {
         this.disabledBarKeysChange.emit(new Set());
         this.isViewingNormalized = isViewingNormalized;
+        this.isViewingNormalizedChange.emit(isViewingNormalized);
     }
 
     public onChangeViewingLineChart(isViewingLineChart: boolean) {
-        // this.disabledBarKeysChange.emit(new Set());
         this.isViewingLineChart = isViewingLineChart;
+        this.isViewingLineChartChange.emit(isViewingLineChart);
     }
 }

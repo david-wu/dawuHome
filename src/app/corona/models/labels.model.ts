@@ -13,7 +13,7 @@ export class Labels {
         [CoronaKeys.RECOVERED]: 'Recovered',
         [CoronaKeys.DEATHS]: 'Deaths',
         [NormalKeys.CASES]: 'Cases',
-        [NormalKeys.R]: 'R',
+        [NormalKeys.R]: 'Growth rate (R)',
         [NormalKeys.R_AVG]: 'R Avg',
         [NormalKeys.NEW]: 'New',
         [NormalKeys.ACTIVE]: 'Active',

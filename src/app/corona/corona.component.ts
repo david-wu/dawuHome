@@ -32,7 +32,8 @@ export class CoronaComponent {
     public filterStr: string = '';
     public disabledBarKeys = new Set<string>();
     public disabledNormalKeys = new Set<string>();
-
+    public isViewingNormalized: boolean = false;
+    public isViewingLineChart: boolean = false;
     public viewingFavorites = false;
     public subs = new Subscription();
 

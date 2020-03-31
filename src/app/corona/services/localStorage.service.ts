@@ -18,6 +18,7 @@ export class LocalStorageService {
             'CA, USA',
             'Santa Clara County, CA, USA',
             'ITA',
+            'CHN',
         ];
     }
 
