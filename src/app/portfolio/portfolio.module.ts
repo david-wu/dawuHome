@@ -9,7 +9,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 import { PortfolioRoutes } from '@src/app/portfolio/portfolio.routes';
 
-import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
+import { AppModule } from 'fuzz-demo-app';
 import { CommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
 
@@ -17,7 +17,7 @@ import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module'
   imports: [
     RouterModule.forChild(PortfolioRoutes),
     FormsModule,
-    FuzzAppModule,
+    AppModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,

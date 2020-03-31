@@ -13,6 +13,7 @@ export class PortfolioComponent {
     public filesById: Record<string, File> = {};
     public filesByLabel: Record<string, File> = {};
     public fileGroup: FileGroup = new FileGroup();
+    public filterStr: string = '';
 
     public ngOnInit() {
         this.populateFileGroup();

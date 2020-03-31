@@ -11,14 +11,14 @@ import { AboutMeModule } from '@src/app/about-me/about-me.module'
 import { PortfolioModule } from '@src/app/portfolio/portfolio.module';
 import { CoronaModule } from '@src/app/corona/corona.module';
 
-import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
+// import { AppModule2 } from 'fuzz-demo-app';
 
 @NgModule({
   imports: [
     AboutMeModule,
     PortfolioModule,
     CoronaModule,
-    FuzzAppModule,
+    // AppModule2,
     BrowserModule,
     AppRoutingModule,
     BarcelonaModule,

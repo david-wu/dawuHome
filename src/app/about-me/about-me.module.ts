@@ -8,7 +8,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutMeComponent } from '@src/app/about-me/about-me.component';
 import { AboutMeRoutes } from '@src/app/about-me/about-me.routes';
 
-import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
+// import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
   ],
   imports: [
     RouterModule.forChild(AboutMeRoutes),
-    FuzzAppModule,
+    // FuzzAppModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
