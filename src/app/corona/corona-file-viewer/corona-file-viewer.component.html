@@ -26,7 +26,7 @@
     </div>
 </div>
 <dwu-corona-dashboard
-    *ngIf="latestCoronaFile$ | async as coronaFile"
+    *ngIf="location && latestCoronaFile$ | async as coronaFile"
     [coronaFile]="coronaFile"
     [disabledBarKeys]="disabledBarKeys"
     (disabledBarKeysChange)="disabledBarKeysChange.emit($event)"

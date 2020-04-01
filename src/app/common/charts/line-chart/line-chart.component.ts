@@ -106,11 +106,7 @@ export class LineChartComponent extends BaseChartComponent {
             };
         });
 
-        console.log('tableColumnValues', tableColumnValues);
-
-        this.bubblesG
-            .attr('transform', `translate(${this.xScale(hoverLineTimestamp)},0)`);
-
+        this.bubblesG.attr('transform', `translate(${this.xScale(hoverLineTimestamp)},0)`);
         const bubbles = this.bubblesG.selectAll('circle.bubble')
             .data(tableColumnValues);
         bubbles.enter()
@@ -124,17 +120,6 @@ export class LineChartComponent extends BaseChartComponent {
             .attr('stroke', (d) => this.colorsByKey[d.key])
             .attr('cy', (d) => this.yScale(d.value))
         bubbles.exit().remove();
-
-        // paths.enter()
-        //     .append('path')
-        //     .style('fill', 'none')
-        //     .merge(paths)
-        //     .attr('class', (d) => `series ${d.key}`)
-        //     .attr('d', pathLineDrawer)
-        //     .style('stroke-width', '2px')
-        //     .style('stroke', (d) => this.colorsByKey[d.key]);
-        // paths.exit().remove();
-
 
         this.hoverLine
             .attr('x1', this.xScale(hoverLineTimestamp) || 0)
