@@ -38,18 +38,25 @@
     margin: -0.25rem;
 }
 
-.star {
-    font-size: 1.25rem;
-    opacity: 0.25;
-    &:hover {
+.row-icon {
+    margin-right: 0.25rem;
+}
+.material-icons {
+    &.star {
+        font-size: 1.25rem;
+        opacity: 0.25;
+        &:hover {
+            opacity: 0.5;
+            color: $star-blue;
+        }
+        &.active {
+            opacity: 1;
+            color: $star-blue;
+        }
+    }
+    &.lock {
+        font-size: 1rem;
         opacity: 0.5;
-        color: $star-blue;
-    }
-    &.active {
-        opacity: 1;
-        color: $star-blue;
-    }
-    &.row-icon {
-        margin-right: 0.25rem;
     }
 }
+

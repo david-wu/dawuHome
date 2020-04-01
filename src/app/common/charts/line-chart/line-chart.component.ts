@@ -6,7 +6,7 @@ import {
     NgZone,
     Output,
 } from '@angular/core';
-import { first, last } from 'lodash';
+import { first, filter, last } from 'lodash';
 import * as d3 from 'd3';
 
 import { BaseChartComponent } from '../base-chart/base-chart.component';
@@ -25,6 +25,7 @@ export class LineChartComponent extends BaseChartComponent {
     @Input() hoverIndex: number;
     @Input() yAxisFormatter: any;
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
+    @Input() indicators: any[];
 
     public filteredKeys;
     public hoverLine;
@@ -53,6 +54,9 @@ export class LineChartComponent extends BaseChartComponent {
         if(changes.hoverIndex) {
             this.positionHoverLine();
         }
+        if (changes.indicators) {
+            this.renderIndicators(this.indicators, this.tableData, this.maxY);
+        }
     }
 
     public ngAfterViewInit() {
@@ -71,7 +75,6 @@ export class LineChartComponent extends BaseChartComponent {
             .style('stroke', '#8A9A5B')
             .style('stroke-opacity', '0.8')
             .style('stroke-width', '3');
-
     }
 
     public onXYHover(x: number, y: number) {
@@ -190,6 +193,7 @@ export class LineChartComponent extends BaseChartComponent {
         paths.exit().remove();
 
         this.positionHoverLine();
+        this.renderIndicators(this.indicators, this.tableData, this.maxY);
     }
 
 }

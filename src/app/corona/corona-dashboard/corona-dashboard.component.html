@@ -47,6 +47,7 @@
         [disabledKeys]="disabledBarKeys"
         [hoverIndex]="hoverIndex"
         (hoverIndexChange)="hoverIndex = $event"
+        [indicators]="indicators"
     ></dwu-line-chart>
     <dwu-bar-chart
         *ngIf="!isViewingLineChart"
@@ -57,6 +58,7 @@
         [disabledKeys]="disabledBarKeys"
         [hoverIndex]="hoverIndex"
         (hoverIndexChange)="hoverIndex = $event"
+        [indicators]="indicators"
     ></dwu-bar-chart>
     <dwu-chart-legend
         [keys]="isViewingNormalized ? perMilKeys : coronaKeys"
@@ -85,6 +87,7 @@
         [disabledKeys]="disabledNormalKeys"
         [hoverIndex]="hoverIndex"
         [yAxisFormatter]="toPercentage"
+        [indicators]="indicators"
         (hoverIndexChange)="hoverIndex = $event"
     ></dwu-line-chart>
     <dwu-chart-legend

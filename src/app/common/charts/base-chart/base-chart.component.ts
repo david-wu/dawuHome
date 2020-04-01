@@ -8,12 +8,13 @@ import {
 } from '@angular/core';
 import * as d3 from 'd3';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
+import { filter, last } from 'lodash';
 
 export class BaseChartComponent {
 
     public sensor;
     public margins = {
-        top: 5,
+        top: 15,
         right: 30,
         bottom: 20,
         left: 55,
@@ -26,6 +27,7 @@ export class BaseChartComponent {
     public yScale
     public xAxisG;
     public yAxisG;
+    public indicatorsG;
 
     constructor(
         public hostEl: ElementRef,
@@ -56,6 +58,7 @@ export class BaseChartComponent {
         this.xAxisG = this.rootG.append('g')
             .attr('class', 'x axis');
         this.seriesG = this.rootG.append('g');
+        this.indicatorsG = this.rootG.append('g');
     }
 
     public touchmove() {
@@ -179,6 +182,45 @@ export class BaseChartComponent {
             width: this.hostEl.nativeElement.clientWidth,
             height: this.hostEl.nativeElement.clientHeight,
         }
+    }
+
+    public renderIndicators(indicators, tableData, maxY, barStepWidth = 0) {
+        const cleanIndicatorData = filter(indicators, (indicatorInfo) => {
+            return (indicatorInfo.value >= tableData[0].timestamp)
+                && (indicatorInfo.value <= last(tableData).timestamp)
+        });
+        const indicatorLines = this.indicatorsG.selectAll('line.indicators')
+            .data(cleanIndicatorData);
+        indicatorLines.enter()
+            .append('line')
+            .attr('class', 'indicators')
+            .style('stroke-opacity', '1')
+            .style('stroke-width', '2')
+            .style('stroke-dasharray', '2 3')
+            .style('stroke-opacity', '0.8')
+            .merge(indicatorLines)
+            .style('stroke', (d) => d.color || '#292E12')
+            .attr('x1', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
+            .attr('x2', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
+            .attr('y1', this.yScale(maxY) - 1)
+            .attr('y2', this.yScale(0) + 3)
+        indicatorLines.exit().remove();
+
+        const indicatorText = this.indicatorsG.selectAll('text.indicators')
+            .data(cleanIndicatorData);
+        indicatorText.enter()
+            .append('text')
+            .attr('class', 'indicators')
+            .attr('font-size', '12')
+            .style('opacity', '0.8')
+            .merge(indicatorText)
+            .attr('text-anchor', 'middle')
+            .text((d) => d.label || '')
+            .style('fill', (d) => d.color || '#292E12')
+            .attr('x', (d) => this.xScale(d.value) || 0)
+            .attr('y', this.yScale(maxY) - 3)
+        indicatorText.exit().remove();
+
     }
 
 }

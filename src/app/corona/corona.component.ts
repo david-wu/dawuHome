@@ -9,6 +9,7 @@ import {
 } from 'lodash';
 import { Subscription } from 'rxjs';
 
+import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
 import coronaLocations from '@src/assets/corona/locations.json';
 import countryNamesByCode from '@src/assets/country-names-by-code.json';
 import stateNamesByCode from '@src/assets/state-names-by-code.json';
@@ -37,6 +38,8 @@ export class CoronaComponent {
     public isViewingLineChart: boolean = false;
     public viewingFavorites = false;
     public subs = new Subscription();
+
+    public readonly lockdownDataByLocation = lockdownDataByLocation;
 
     /**
      * ngOnInit

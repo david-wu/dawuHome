@@ -6,6 +6,7 @@ import {
 
 import { NormalKeys } from './normal-keys.enum';
 import { CoronaKeys } from './corona-keys.enum';
+import { getDateFromStr } from '@src/app/utils/index';
 
 export class CoronaDataExtractor {
 
@@ -14,14 +15,14 @@ export class CoronaDataExtractor {
      * Safari has troubles dealing with new Date("1-1-20")
      * @param {string} dateStr
      */
-    public getDateFromStr(dateStr: string) {
-        const splitDateStr = dateStr.split('-').map(Number);
-        return new Date(
-            splitDateStr[0],
-            splitDateStr[1] - 1,
-            splitDateStr[2],
-        );
-    }
+    // public getDateFromStr(dateStr: string) {
+    //     const splitDateStr = dateStr.split('-').map(Number);
+    //     return new Date(
+    //         splitDateStr[0],
+    //         splitDateStr[1] - 1,
+    //         splitDateStr[2],
+    //     );
+    // }
 
     public clean(file, population: number = 1) {
         const cleanData = [];
@@ -36,7 +37,7 @@ export class CoronaDataExtractor {
             });
         });
 
-        const sortedDateStrs = sortBy(dateStrs, (dateStr) => +this.getDateFromStr(dateStr))
+        const sortedDateStrs = sortBy(dateStrs, (dateStr) => +getDateFromStr(dateStr))
 
         let previousPoint = {
             cases: sortedDateStrs[0].cases || 0,
@@ -52,8 +53,8 @@ export class CoronaDataExtractor {
 
             const cleanPoint = {
                 dateStr: dateStr,
-                date: this.getDateFromStr(dateStr),
-                timestamp: +this.getDateFromStr(dateStr),
+                date: getDateFromStr(dateStr),
+                timestamp: +getDateFromStr(dateStr),
                 [CoronaKeys.CASES]: Math.max(point[CoronaKeys.CASES], previousPoint[CoronaKeys.CASES]),
                 [CoronaKeys.DEATHS]: Math.max(point[CoronaKeys.DEATHS], previousPoint[CoronaKeys.DEATHS]),
                 [CoronaKeys.RECOVERED]: Math.max(point[CoronaKeys.RECOVERED], previousPoint[CoronaKeys.RECOVERED]),

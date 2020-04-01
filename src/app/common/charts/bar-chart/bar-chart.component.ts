@@ -24,6 +24,7 @@ export class BarChartComponent extends BaseChartComponent {
     @Input() hoverIndex: number;
     @Input() yAxisFormatter: any;
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
+    @Input() indicators: any[];
 
     public barPadding = 0.05
     public hoverBox;
@@ -50,6 +51,9 @@ export class BarChartComponent extends BaseChartComponent {
         }
         if(changes.hoverIndex) {
             this.positionHoverBox();
+        }
+        if (changes.indicators) {
+            this.renderIndicators(this.indicators, this.tableData, this.maxY, this.xScale.step());
         }
     }
 
@@ -163,6 +167,7 @@ export class BarChartComponent extends BaseChartComponent {
         rects.exit().remove()
 
         this.positionHoverBox();
+        this.renderIndicators(this.indicators, this.tableData, this.maxY, this.xScale.step());
     }
 
 }

@@ -12,6 +12,7 @@ import {
     NormalKeys,
     Labels,
 } from '../models/index';
+import { getDateFromStr } from '@src/app/utils/index';
 
 @Component({
   selector: 'dwu-corona-dashboard',
@@ -20,6 +21,7 @@ import {
 })
 export class CoronaDashboardComponent {
 
+    @Input() lockdownInfo: any;
     @Input() coronaFile: any;
     @Input() disabledBarKeys = new Set<string>();
     @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
@@ -34,6 +36,7 @@ export class CoronaDashboardComponent {
     public coronaData: any[];
     public coronaExtractor = new CoronaDataExtractor();
     public hoverIndex = 0;
+    public indicators;
 
     public readonly CoronaKeys = CoronaKeys;
     public readonly NormalKeys = NormalKeys;
@@ -95,6 +98,27 @@ export class CoronaDashboardComponent {
         if (changes.coronaFile && this.coronaFile) {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile, this.coronaFile.population);
             this.hoverIndex = this.coronaData.length - 1;
+        }
+        if (changes.lockdownInfo) {
+            if (this.lockdownInfo) {
+                const startDate = getDateFromStr(this.lockdownInfo.startDate);
+                const tenDaysLater = new Date(startDate);
+                tenDaysLater.setDate(startDate.getDate() + 10);
+                this.indicators = this.lockdownInfo && [
+                    {
+                        value: +startDate,
+                        label: 'Start Lockdown',
+                        color: '#164EB7',
+                    },
+                    {
+                        value: +tenDaysLater,
+                        label: '10 days of Lockdown',
+                        color: '#729900',
+                    },
+                ];
+            } else {
+                this.indicators = undefined;
+            }
         }
     }
 
