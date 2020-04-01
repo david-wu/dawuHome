@@ -10,4 +10,4 @@ For example, I build into "/dist/dawu-home", and I want that to be the root fold
 <!-- 5.  `git push -f --set-upstream origin master` -->
 6.  `git push --set-upstream prod master`
 
-`git branch -D master;git subtree split --prefix dist/dawu-home -b master;git checkout master;git push -f --set-upstream origin master;`
+`git subtree split --prefix dist/dawu-home -b master;git checkout master;git push --set-upstream prod master;git checkout develop;`
