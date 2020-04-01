@@ -3385,7 +3385,7 @@ var FileExplorerModule = /** @class */ (function () {
 /*!****************************************!*\
   !*** ./src/app/file-explorer/index.ts ***!
   \****************************************/
-/*! exports provided: FileExplorerComponent, FileExplorerModule, FileGroup, FileType, File */
+/*! exports provided: FileExplorerModule, FileExplorerComponent, FileGroup, FileType, File */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

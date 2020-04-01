@@ -5,37 +5,37 @@ const fs = require('fs');
 const timeSeriesByLocation = require('./timeseries-byLocation.json');
 const path = require('path');
 
-// const ASSET_PATH = 'src/assets/corona';
+const ASSET_PATH = 'src/assets/corona';
 
-// execSync(`rm -rf ${ASSET_PATH}`);
-// execSync(`mkdir -p ${ASSET_PATH}/by-location`);
-// const locations = Object.keys(timeSeriesByLocation);
-// const locationFileNames = [];
-// for(let i = 0 ; i < locations.length; i++) {
-//     const location = locations[i];
-//     const timeSeriesStr = JSON.stringify(timeSeriesByLocation[location]);
+execSync(`rm -rf ${ASSET_PATH}`);
+execSync(`mkdir -p ${ASSET_PATH}/by-location`);
+const locations = Object.keys(timeSeriesByLocation);
+const locationFileNames = [];
+for(let i = 0 ; i < locations.length; i++) {
+    const location = locations[i];
+    const timeSeriesStr = JSON.stringify(timeSeriesByLocation[location]);
 
-//     const fileName = location.replace(/\//g, '-');
-//     const filePath = path.join(`${ASSET_PATH}/by-location`, `${fileName}.json`);
-//     fs.writeFileSync(filePath, timeSeriesStr);
-//     locationFileNames.push(fileName);
-// }
+    const fileName = location.replace(/\//g, '-');
+    const filePath = path.join(`${ASSET_PATH}/by-location`, `${fileName}.json`);
+    fs.writeFileSync(filePath, timeSeriesStr);
+    locationFileNames.push(fileName);
+}
 
-// fs.writeFileSync(`${ASSET_PATH}/locations.json`, JSON.stringify(locationFileNames));
+fs.writeFileSync(`${ASSET_PATH}/locations.json`, JSON.stringify(locationFileNames));
 
 
 
-const csv = require('csv-parser')
-const fs = require('fs')
-const results = [];
+// const csv = require('csv-parser')
+// const fs = require('fs')
+// const results = [];
 
-fs.createReadStream('lockdown_dates.csv')
-  .pipe(csv())
-  .on('data', (data) => results.push(data))
-  .on('end', () => {
-    console.log(results);
-    // [
-    //   { NAME: 'Daffy Duck', AGE: '24' },
-    //   { NAME: 'Bugs Bunny', AGE: '22' }
-    // ]
-  });
+// fs.createReadStream('lockdown_dates.csv')
+//   .pipe(csv())
+//   .on('data', (data) => results.push(data))
+//   .on('end', () => {
+//     console.log(results);
+//     // [
+//     //   { NAME: 'Daffy Duck', AGE: '24' },
+//     //   { NAME: 'Bugs Bunny', AGE: '22' }
+//     // ]
+//   });
