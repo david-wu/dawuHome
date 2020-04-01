@@ -22,6 +22,7 @@ export class BarChartComponent extends BaseChartComponent {
     @Input() colorsByKey: Record<string, string>;
     @Input() disabledKeys: Set<string> = new Set();
     @Input() hoverIndex: number;
+    @Input() yAxisFormatter: any;
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
 
     public barPadding = 0.05
@@ -129,7 +130,7 @@ export class BarChartComponent extends BaseChartComponent {
         const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
         const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
         super.applyXAxis(this.xAxisG, xAxis, height);
-        const yAxis = super.getLinearYAxis(this.yScale, width);
+        const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);
         super.applyYAxis(this.yAxisG, yAxis);
 
         // Create groups for each series, rects for each segment

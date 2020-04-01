@@ -123,13 +123,17 @@ export class CoronaDataExtractor {
         }
 
         for(let i = 0; i < cleanData.length; i++) {
+            const ppPreviousPoint = cleanData[i - 3] || { cases: 0, new: 0 };
+            const pPreviousPoint = cleanData[i - 2] || { cases: 0, new: 0 };
+            const previousPoint = cleanData[i - 1] || { cases: 0, new: 0 };
             const point = cleanData[i];
-            const pPreviousPoint = cleanData[i - 2] || { cases: 0, new: 0};
-            const previousPoint = cleanData[i - 1] || { cases: 0, new: 0};
-            const nextPoint = cleanData[i + 1] || { cases: 0, new: 0};
+            const nextPoint = cleanData[i + 1] || { cases: 0, new: 0 };
+            const nNextPoint = cleanData[i + 2] || { cases: 0, new: 0 };
 
-            const totalCases = pPreviousPoint.cases + previousPoint.cases + point.cases;
-            const totalNew = previousPoint.new + point.new + nextPoint.new;
+            const totalCases = [ppPreviousPoint, pPreviousPoint, previousPoint, point, nextPoint]
+                .reduce((sum, point) => sum + point.cases, 0);
+            const totalNew = [pPreviousPoint, previousPoint, point, nextPoint, nNextPoint]
+                .reduce((sum, point) => sum + point.new, 0);
 
             const newR = totalCases ? (totalNew / totalCases) : 1;
             const clippedR = Math.min(newR, 1);

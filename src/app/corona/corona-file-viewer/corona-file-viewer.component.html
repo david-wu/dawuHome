@@ -20,13 +20,13 @@
     <div class="population">
         <div>Population:</div>
         <div
-            *ngIf="(coronaFile$ | async)?.population as population"
+            *ngIf="(latestCoronaFile$ | async)?.population as population"
             class="population-count"
         >{{ population.toLocaleString() }}</div>
     </div>
 </div>
 <dwu-corona-dashboard
-    *ngIf="coronaFile$ | async as coronaFile"
+    *ngIf="latestCoronaFile$ | async as coronaFile"
     [coronaFile]="coronaFile"
     [disabledBarKeys]="disabledBarKeys"
     (disabledBarKeysChange)="disabledBarKeysChange.emit($event)"
@@ -37,3 +37,4 @@
     [isViewingLineChart]="isViewingLineChart"
     (isViewingLineChartChange)="isViewingLineChartChange.emit($event)"
 ></dwu-corona-dashboard>
+<div class="loading-overlay active" [class.active]="isLoading$ | async"></div>

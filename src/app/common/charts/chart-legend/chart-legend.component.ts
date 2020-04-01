@@ -25,8 +25,12 @@ export class ChartLegendComponent {
         return this.colorsByKey[key];
     }
 
+    public isKeyDisabled(key: string) {
+        return this.disabledKeys && this.disabledKeys.has(key)
+    }
+
     public getKeyBackgroundColor(key: string) {
-        if (this.disabledKeys && this.disabledKeys.has(key)) {
+        if (this.isKeyDisabled(key)) {
             return this.disabledColor;
         }
         return this.colorsByKey[key];

@@ -4,6 +4,8 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import { round } from 'lodash';
+
 import {
     CoronaDataExtractor,
     CoronaKeys,
@@ -28,7 +30,6 @@ export class CoronaDashboardComponent {
     @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
     @Input() isViewingLineChart: boolean = false;
     @Output() isViewingLineChartChange = new EventEmitter<boolean>();
-    // @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
 
     public coronaData: any[];
     public coronaExtractor = new CoronaDataExtractor();
@@ -80,11 +81,11 @@ export class CoronaDashboardComponent {
     };
 
     public readonly normalKeys = [
-        NormalKeys.R_AVG,
         NormalKeys.R,
+        NormalKeys.R_AVG,
     ];
     public readonly normalizedViewKeys = [
-        NormalKeys.CASES,
+        CoronaKeys.CASES,
         NormalKeys.DATE_STR,
         NormalKeys.R_AVG,
         NormalKeys.R,
@@ -106,5 +107,9 @@ export class CoronaDashboardComponent {
     public onChangeViewingLineChart(isViewingLineChart: boolean) {
         this.isViewingLineChart = isViewingLineChart;
         this.isViewingLineChartChange.emit(isViewingLineChart);
+    }
+
+    public toPercentage(d: number) {
+        return `${round(d * 100, 3).toLocaleString()}%`;
     }
 }

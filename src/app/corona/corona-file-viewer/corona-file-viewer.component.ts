@@ -10,6 +10,7 @@ import {
     of,
 } from 'rxjs';
 import {
+    filter,
     startWith,
     switchMap,
     map,
@@ -43,6 +44,7 @@ export class CoronaFileViewerComponent {
 
     public location$ = new BehaviorSubject(undefined);
     public coronaFile$: Observable<any>;
+    public latestCoronaFile$: Observable<any>;
     public isLoading$: Observable<boolean>;
     public fileUrl: string;
     public readonly countryNamesByCode = countryNamesByCode;
@@ -59,6 +61,9 @@ export class CoronaFileViewerComponent {
                 );
             }),
             shareReplay(1),
+        );
+        this.latestCoronaFile$ = this.coronaFile$.pipe(
+            filter(Boolean),
         );
         this.isLoading$ = this.location$.pipe(
             switchMap((location: string) => {

@@ -15,6 +15,7 @@ import stateNamesByCode from '@src/assets/state-names-by-code.json';
 import { LocalStorageService } from '@src/app/corona/services/localStorage.service';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
+import { NormalKeys } from '@src/app/corona/models/index';
 
 @Component({
   selector: 'dwu-corona',
@@ -31,7 +32,7 @@ export class CoronaComponent {
     public favoriteFileIds: Set<string> = new Set();
     public filterStr: string = '';
     public disabledBarKeys = new Set<string>();
-    public disabledNormalKeys = new Set<string>();
+    public disabledNormalKeys = new Set<string>([NormalKeys.R]);
     public isViewingNormalized: boolean = false;
     public isViewingLineChart: boolean = false;
     public viewingFavorites = false;

@@ -65,14 +65,18 @@
         [labelsByKey]="Labels.corona"
         (disabledKeysChange)="disabledBarKeysChange.emit($event)"
     ></dwu-chart-legend>
+</div>
 
-    <dwu-stat-viewer
-        [columnData]="coronaData[hoverIndex]"
-        [keys]="normalizedViewKeys"
-        [disabledKeys]="disabledBarKeys"
-        [labelsByKey]="Labels.corona"
-        [rowCount]="2"
-    ></dwu-stat-viewer>
+<div class="chart-container">
+    <div class="chart-header">
+        <dwu-stat-viewer
+            [columnData]="coronaData[hoverIndex]"
+            [keys]="normalizedViewKeys"
+            [disabledKeys]="disabledBarKeys"
+            [labelsByKey]="Labels.corona"
+            [rowCount]="2"
+        ></dwu-stat-viewer>
+    </div>
     <dwu-line-chart
         class="overview chart"
         [tableData]="coronaData"
@@ -80,6 +84,7 @@
         [colorsByKey]="coronaColorsByKey"
         [disabledKeys]="disabledNormalKeys"
         [hoverIndex]="hoverIndex"
+        [yAxisFormatter]="toPercentage"
         (hoverIndexChange)="hoverIndex = $event"
     ></dwu-line-chart>
     <dwu-chart-legend

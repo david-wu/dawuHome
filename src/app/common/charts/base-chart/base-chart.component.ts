@@ -103,12 +103,17 @@ export class BaseChartComponent {
         this.renderFor(width, height);
     }
 
-    public getLinearYAxis(yScale, width) {
-        return d3.axisLeft()
+    public getLinearYAxis(yScale, width: number, formatter?: any) {
+        let baseAxis = d3.axisLeft()
           .scale(yScale)
           .ticks(6)
-          .tickSize(-width, 0, 0)
-          .tickFormat((d: number) => d.toLocaleString());
+          .tickSize(-width, 0, 0);
+
+        if (formatter) {
+            return baseAxis.tickFormat(formatter);
+        } else {
+            return baseAxis.tickFormat((d: number) => d.toLocaleString());
+        }
     }
 
     public applyYAxis(yAxisG, yAxis) {

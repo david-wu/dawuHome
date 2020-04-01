@@ -4,12 +4,27 @@
     display: flex;
     .radio-button {
         @include light-mini-button;
+        @include shadow;
         &:first-child {
             border-radius: 5px 0 0 5px;
         }
         &:last-child {
             border-radius: 0 5px 5px 0;
         }
+    }
+}
+
+@mixin shadow {
+    transition-duration: box-shadow 25ms, transform, 25ms;
+    box-shadow: 1px 1px 2px 0 $lighter-gray;
+    transform: translateY(0);
+    &:active {
+        transform: translateY(1px);
+        box-shadow: none;
+    }
+    &.active {
+        transform: translateY(1px);
+        box-shadow: none;
     }
 }
 

@@ -23,9 +23,12 @@ export class LineChartComponent extends BaseChartComponent {
     @Input() colorsByKey: Record<string, string>;
     @Input() disabledKeys: Set<string> = new Set();
     @Input() hoverIndex: number;
+    @Input() yAxisFormatter: any;
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
 
+    public filteredKeys;
     public hoverLine;
+    public bubblesG;
     public maxY;
 
     // some extra margin on the chart itself
@@ -62,11 +65,13 @@ export class LineChartComponent extends BaseChartComponent {
 
     public initializeSvg() {
         super.initializeSvg();
+        this.bubblesG = this.rootG.append('g');
         this.hoverLine = this.rootG.append('line')
             .attr('class', 'hover-line')
             .style('stroke', '#8A9A5B')
             .style('stroke-opacity', '0.8')
             .style('stroke-width', '3');
+
     }
 
     public onXYHover(x: number, y: number) {
@@ -92,7 +97,45 @@ export class LineChartComponent extends BaseChartComponent {
         if (!this.tableData || !this.tableData.length) {
             return;
         }
-        const hoverLineTimestamp = this.tableData[this.hoverIndex].timestamp;
+        const tableColumnData = this.tableData[this.hoverIndex];
+        const hoverLineTimestamp = tableColumnData.timestamp;
+        const tableColumnValues = this.filteredKeys.map((key: string) => {
+            return {
+                value: tableColumnData[key],
+                key: key,
+            };
+        });
+
+        console.log('tableColumnValues', tableColumnValues);
+
+        this.bubblesG
+            .attr('transform', `translate(${this.xScale(hoverLineTimestamp)},0)`);
+
+        const bubbles = this.bubblesG.selectAll('circle.bubble')
+            .data(tableColumnValues);
+        bubbles.enter()
+            .append('circle')
+            .attr('r', 4)
+            .attr('cx', 0)
+            .attr('class', 'bubble')
+            .style('fill', 'white')
+            .attr('stroke-width', '2px')
+            .merge(bubbles)
+            .attr('stroke', (d) => this.colorsByKey[d.key])
+            .attr('cy', (d) => this.yScale(d.value))
+        bubbles.exit().remove();
+
+        // paths.enter()
+        //     .append('path')
+        //     .style('fill', 'none')
+        //     .merge(paths)
+        //     .attr('class', (d) => `series ${d.key}`)
+        //     .attr('d', pathLineDrawer)
+        //     .style('stroke-width', '2px')
+        //     .style('stroke', (d) => this.colorsByKey[d.key]);
+        // paths.exit().remove();
+
+
         this.hoverLine
             .attr('x1', this.xScale(hoverLineTimestamp) || 0)
             .attr('x2', this.xScale(hoverLineTimestamp) || 0)
@@ -102,10 +145,10 @@ export class LineChartComponent extends BaseChartComponent {
 
     public renderFor(width: number, height: number) {
 
-        const filteredKeys = this.keys.filter((key: string) => {
+        this.filteredKeys = this.keys.filter((key: string) => {
             return !(this.disabledKeys && this.disabledKeys.has(key));
         });
-        const reversedKeys = filteredKeys.reverse();
+        const reversedKeys = this.filteredKeys.reverse();
         const dataset = reversedKeys.map((key: string) => {
             const series = this.tableData.map((columnData: any) => {
                 const cellData = columnData[key];
@@ -141,7 +184,7 @@ export class LineChartComponent extends BaseChartComponent {
         const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
         const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
         super.applyXAxis(this.xAxisG, xAxis, height);
-        const yAxis = super.getLinearYAxis(this.yScale, width);
+        const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);
         super.applyYAxis(this.yAxisG, yAxis);
 
         const pathLineDrawer = d3.line()
