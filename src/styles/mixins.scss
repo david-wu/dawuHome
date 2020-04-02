@@ -50,7 +50,7 @@
             flex: 1 1 0;
             overflow: hidden;
             max-width: 27.5%;
-            min-width: 17.5rem;
+            min-width: 20rem;
         }
         .right-side {
             flex: 1 1 0;
@@ -87,7 +87,7 @@
 }
 
 @mixin button-sm {
-    min-width: 6rem;
+    min-width: 3rem;
     padding: 0.25rem 0.5rem;
     cursor: pointer;
     text-align: center;

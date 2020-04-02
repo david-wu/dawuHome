@@ -18,6 +18,12 @@ import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
 import { NormalKeys } from '@src/app/corona/models/index';
 
+enum Tab {
+    ALL = 'ALL',
+    SAVED = 'SAVED',
+    COMPARE = 'COMPARE',
+}
+
 @Component({
   selector: 'dwu-corona',
   templateUrl: './corona.component.html',
@@ -36,9 +42,10 @@ export class CoronaComponent {
     public disabledNormalKeys = new Set<string>([NormalKeys.R]);
     public isViewingNormalized: boolean = false;
     public isViewingLineChart: boolean = false;
-    public viewingFavorites = false;
+    public selectedTab: Tab;
     public subs = new Subscription();
 
+    public readonly Tab = Tab;
     public readonly lockdownDataByLocation = lockdownDataByLocation;
 
     /**
@@ -52,7 +59,19 @@ export class CoronaComponent {
         this.fileGroup.closedFileIds.delete(this.favoritesRoot.id);
         this.fileGroup.closedFileIds.delete(this.locationRoot.id);
         this.loadFavorites();
-        this.setViewingFavorites(true)
+        this.setSelectedTab(Tab.SAVED)
+    }
+
+    public setSelectedTab(tab: Tab) {
+        this.selectedTab = tab;
+        if (tab === Tab.SAVED) {
+            this.fileGroup.setRootFile(this.favoritesRoot);
+        } else if (tab === Tab.ALL) {
+            this.fileGroup.setRootFile(this.locationRoot);
+        } else if (tab === Tab.COMPARE) {
+            this.fileGroup.setRootFile(this.locationRoot);
+        }
+        this.filterStr = '';
     }
 
     public ngOnDestroy() {
@@ -60,8 +79,8 @@ export class CoronaComponent {
     }
 
     public onFilterStringChange(filterStr: string) {
-        if (filterStr) {
-            this.setViewingFavorites(false);
+        if (filterStr && this.selectedTab === Tab.SAVED) {
+            this.setSelectedTab(Tab.ALL);
         }
         this.filterStr = filterStr;
     }
@@ -93,16 +112,6 @@ export class CoronaComponent {
         };
         this.saveFavorites()
         this.fileGroup.flushFileChanges();
-    }
-
-    public setViewingFavorites(viewingFavorites: boolean) {
-        this.viewingFavorites = viewingFavorites;
-        if (viewingFavorites) {
-            this.fileGroup.setRootFile(this.favoritesRoot);
-        } else {
-            this.fileGroup.setRootFile(this.locationRoot);
-        }
-        this.filterStr = '';
     }
 
     /**

@@ -202,7 +202,7 @@ export class BaseChartComponent {
             .style('stroke', (d) => d.color || '#292E12')
             .attr('x1', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
             .attr('x2', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
-            .attr('y1', this.yScale(maxY) - 1)
+            .attr('y1', this.yScale(maxY))
             .attr('y2', this.yScale(0) + 3)
         indicatorLines.exit().remove();
 
@@ -217,7 +217,7 @@ export class BaseChartComponent {
             .attr('text-anchor', 'middle')
             .text((d) => d.label || '')
             .style('fill', (d) => d.color || '#292E12')
-            .attr('x', (d) => this.xScale(d.value) || 0)
+            .attr('x', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
             .attr('y', this.yScale(maxY) - 3)
         indicatorText.exit().remove();
 

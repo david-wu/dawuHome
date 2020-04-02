@@ -6,14 +6,29 @@
             [placeholder]="'County, State, or Country'"
         ></dwu-search-input>
         <div class="view-tabs">
-            <div class="view-tab" [class.active]="!viewingFavorites" (click)="setViewingFavorites(false)">
+            <div
+                class="view-tab"
+                [class.active]="selectedTab === Tab.ALL"
+                (click)="setSelectedTab(Tab.ALL)"
+            >
                 All
             </div>
-            <div class="view-tab" [class.active]="viewingFavorites" (click)="setViewingFavorites(true)">
+            <div
+                class="view-tab"
+                [class.active]="selectedTab === Tab.SAVED"
+                (click)="setSelectedTab(Tab.SAVED)"
+            >
                 <div class="material-icons star active">
                     grade
                 </div>
-                <div>Favorites</div>
+                <div>Saved</div>
+            </div>
+            <div
+                class="view-tab"
+                [class.active]="selectedTab === Tab.COMPARE"
+                (click)="setSelectedTab(Tab.COMPARE)"
+            >
+                <div>Compare</div>
             </div>
         </div>
         <dwu-file-explorer
@@ -27,6 +42,7 @@
             (selectedFileIdsChange)="fileGroup.setSelectedFileIds($event)"
             [rowIconTemplate]="rowIconTemplate"
             [perfMode]="true"
+            [multiFileSelect]="selectedTab === Tab.COMPARE"
         ></dwu-file-explorer>
     </div>
     <div class="right-side">

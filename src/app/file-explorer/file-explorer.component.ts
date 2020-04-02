@@ -48,6 +48,8 @@ export class FileExplorerComponent {
     @Input() selectedFileIds: Set<string> = new Set<string>();
     @Input() perfMode: boolean = true;
     @Input() rowIconTemplate?: TemplateRef<any>;
+    @Input() hideRoot: boolean = true;
+    @Input() multiFileSelect: boolean = false;
     @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
     @Output() closedFileIdsChange = new EventEmitter<Set<string>>();
     @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
@@ -373,6 +375,11 @@ export class FileExplorerComponent {
         const fileIdsAndDepth: Array<[string, number]> = [
             [currentFileId, depth],
         ];
+        if (this.hideRoot && currentFileId === this.rootFileId) {
+            fileIdsAndDepth.length = 0;
+            depth--;
+        }
+
         each(
             sortedChildIdsByFileId ? sortedChildIdsByFileId[currentFile.id] : currentFile.childIds,
             (childId: string) => {
@@ -434,7 +441,20 @@ export class FileExplorerComponent {
     }
 
     public selectFile(file: File) {
-        this.selectedFileIdsChange.emit(new Set([file.id]));
+        if (!this.multiFileSelect) {
+            this.selectedFileIdsChange.emit(new Set([file.id]));
+        } else {
+            if (file.childIds) {
+                return;
+            }
+            const nextSelectedFileIds = new Set(this.selectedFileIds);
+            if (nextSelectedFileIds.has(file.id)) {
+                nextSelectedFileIds.delete(file.id);
+            } else {
+                nextSelectedFileIds.add(file.id);
+            }
+            this.selectedFileIdsChange.emit(nextSelectedFileIds);
+        }
     }
 
     public getPaddingLeft(depth: number) {

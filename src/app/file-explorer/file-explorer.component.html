@@ -30,7 +30,10 @@
                 <ng-container *ngIf="!file.childIds">
                     <div class="space-maker">
                     </div>
-                    <i class="material-icons text">subject</i>
+                    <div *ngIf="multiFileSelect" class="checkbox-container">
+                        <input type="checkbox" [attr.checked]="selectedFileIds.has(file.id) ? true : null">
+                    </div>
+                    <i *ngIf="!multiFileSelect" class="material-icons text">subject</i>
                 </ng-container>
                 <div class="file-label" *ngIf="fuzzItemsByFileId[file.id] as fuzzItem">
                     <dwu-text-decorator
