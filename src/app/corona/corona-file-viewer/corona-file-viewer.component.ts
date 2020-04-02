@@ -8,6 +8,8 @@ import {
     BehaviorSubject,
     Observable,
     of,
+    forkJoin,
+    combineLatest,
 } from 'rxjs';
 import {
     filter,
@@ -16,6 +18,7 @@ import {
     map,
     shareReplay,
 } from 'rxjs/operators';
+import { mapValues } from 'lodash';
 
 import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
 import { FileGroup, FileType, File } from '@file-explorer/index';
@@ -29,8 +32,11 @@ import { CoronaService } from '../services/corona.service';
 })
 export class CoronaFileViewerComponent {
 
-    @Input() location: string;
-    @Input() fileName: string;
+    @Input() selectedFileIds: Set<string>;
+    @Input() locationsByFileId: Record<string, string>;
+    @Input() filesById: Record<string, File>;
+    @Input() isComparing: boolean = false;
+
     @Input() disabledBarKeys = new Set<string>();
     @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
     @Input() disabledNormalKeys = new Set<string>();
@@ -40,42 +46,99 @@ export class CoronaFileViewerComponent {
     @Input() isViewingLineChart: boolean = false;
     @Output() isViewingLineChartChange = new EventEmitter<boolean>();
 
-    public location$ = new BehaviorSubject(undefined);
-    public coronaFile$: Observable<any>;
-    public latestCoronaFile$: Observable<any>;
+    public selectedFileIds$ = new BehaviorSubject<Set<string>>(undefined);
+    public locationsByFileId$ = new BehaviorSubject<Record<string, string>>(undefined);
+    public filesById$ = new BehaviorSubject<Record<string, File>>(undefined);
+    public totalPopulation$: Observable<number>;
+
+    public coronaFiles$: Observable<any>;
+    public latestCoronaFilesWithFileId$: Observable<any>;
     public isLoading$: Observable<boolean>;
-    public fileUrl: string;
+    // public fileUrl: string;
     public readonly lockdownDataByLocation = lockdownDataByLocation;
 
     constructor(public coronaService: CoronaService) {
-        this.coronaFile$ = this.location$.pipe(
-            switchMap((location: string) => {
-                if (!location) {
+
+        // type: [location, fileId][]
+        const selectedlocationsWithFileId$: Observable<[string, string][]> = combineLatest(
+            this.selectedFileIds$,
+            this.locationsByFileId$,
+            this.filesById$,
+            (fileIds: Set<string>, locationsByFileId: Record<string, string>, filesById: Record<string, File>) => {
+                if (!fileIds || !locationsByFileId || !filesById) {
+                    return;
+                }
+
+                const locationsWithFileId = [];
+                Array.from(fileIds).forEach((fileId: string) => {
+                    const file = filesById[fileId];
+                    const location = locationsByFileId[fileId];
+                    if (location) {
+                        locationsWithFileId.push([location, file.id]);
+                    }
+                })
+                return locationsWithFileId;
+            },
+        );
+
+        const coronaFilesWithFileId$: Observable<[File, string][]> = selectedlocationsWithFileId$.pipe(
+            switchMap((locationsWithFileId: [string, string][]) => {
+                if (!locationsWithFileId) {
                     return of(undefined);
                 }
-                this.fileUrl = this.coronaService.getCoronaFileUrl(location);
-                return this.coronaService.getCoronaFileByLocation(location).pipe(
+                const requests$ = locationsWithFileId.map((locationWithFileId: [string, string]) => {
+                   return this.coronaService.getCoronaFileByLocation(locationWithFileId[0]);
+                });
+                return forkJoin(requests$).pipe(
+                    map((files: File[]) => {
+                        return files.map((file: File, index: number) => [file, locationsWithFileId[index][1]]);
+                    }),
                     startWith(undefined),
                 );
             }),
             shareReplay(1),
         );
-        this.latestCoronaFile$ = this.coronaFile$.pipe(
+        this.latestCoronaFilesWithFileId$ = coronaFilesWithFileId$.pipe(
             filter(Boolean),
         );
-        this.isLoading$ = this.location$.pipe(
-            switchMap((location: string) => {
-                return this.coronaFile$.pipe(
-                    map((file: any) => Boolean(location && !file)),
-                );
+
+        this.totalPopulation$ = coronaFilesWithFileId$.pipe(
+            map((coronaFilesWithFileId: [any, string]) => {
+                if (!coronaFilesWithFileId) {
+                    return 0;
+                }
+                return coronaFilesWithFileId.reduce((sum: number, [coronaFile, fileId]: [any, string]) => {
+                    return sum + (coronaFile.population || 0);
+                }, 0);
             }),
-        );
+        )
     }
 
     public ngOnChanges(changes) {
-        if (changes.location) {
-            this.location$.next(this.location);
+        if (changes.selectedFileIds) {
+            this.selectedFileIds$.next(this.selectedFileIds);
         }
+        if (changes.locationsByFileId) {
+            this.locationsByFileId$.next(this.locationsByFileId);
+        }
+        if (changes.filesById) {
+            this.filesById$.next(this.filesById);
+        }
+    }
+
+    public getHeader() {
+        const fileIds = Array.from(this.selectedFileIds || []);
+        const labels = fileIds.map((fileId: string) => {
+            return this.filesById && this.filesById[fileId] && this.filesById[fileId].label;
+        }).filter(Boolean);
+
+        return labels.join(', ');
+    }
+
+    public getFirstSelectedFileLockdownInfo() {
+        const fileId = Array.from(this.selectedFileIds || [])[0];
+        const location = this.locationsByFileId && this.locationsByFileId[fileId];
+        return this.lockdownDataByLocation && this.lockdownDataByLocation[location]
     }
 
 }

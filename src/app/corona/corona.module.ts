@@ -16,6 +16,7 @@ import { CommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
 import { CoronaService } from './services/corona.service';
 import { LocalStorageService } from './services/localStorage.service';
+import { CoronaCompareDashboardComponent } from './corona-compare-dashboard/corona-compare-dashboard.component';
 import { CoronaDashboardComponent } from './corona-dashboard/corona-dashboard.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { CoronaDashboardComponent } from './corona-dashboard/corona-dashboard.co
     declarations: [
         CoronaComponent,
         CoronaFileViewerComponent,
+        CoronaCompareDashboardComponent,
         CoronaDashboardComponent,
     ],
     providers: [

@@ -43,6 +43,7 @@ export class CoronaComponent {
     public isViewingNormalized: boolean = false;
     public isViewingLineChart: boolean = false;
     public selectedTab: Tab;
+    public compareSelectedFileIds = new Set<string>();
     public subs = new Subscription();
 
     public readonly Tab = Tab;
@@ -60,6 +61,14 @@ export class CoronaComponent {
         this.fileGroup.closedFileIds.delete(this.locationRoot.id);
         this.loadFavorites();
         this.setSelectedTab(Tab.SAVED)
+    }
+
+    public onSelectedFileIdsChange(selectedFileIds: Set<string>) {
+        if (this.selectedTab === Tab.COMPARE) {
+            this.compareSelectedFileIds = selectedFileIds;
+        } else {
+            this.fileGroup.setSelectedFileIds(selectedFileIds)
+        }
     }
 
     public setSelectedTab(tab: Tab) {
@@ -194,9 +203,13 @@ export class CoronaComponent {
      * getSelectedFileId
      * @return {string}
      */
-    public getSelectedFileId(): string {
-        const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
-        return (selectedFileIds.length === 1) && selectedFileIds[0];
+    // public getSelectedFileId(): string {
+    //     const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
+    //     return (selectedFileIds.length === 1) && selectedFileIds[0];
+    // }
+
+    public getSelectedFileIds() {
+        return (this.selectedTab === Tab.COMPARE) ? this.compareSelectedFileIds : this.fileGroup.selectedFileIds;
     }
 
 }

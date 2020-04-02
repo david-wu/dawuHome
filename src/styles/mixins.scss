@@ -1,5 +1,66 @@
 @import 'variables';
 
+@mixin base-corona-dashboard {
+    display: block;
+    padding-bottom: 2rem;
+    .chart-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .chart-header {
+            width: 100%;
+            display: flex;
+            padding: 0 1.5rem;
+            align-items: flex-end;
+            flex-direction: column;
+
+            .radio-button-container{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+
+                .radio-buttons {
+                    @include radio-button-container;
+                    &:not(:first-child) {
+                        margin-left: 1rem;
+                    }
+                    &.chart {
+                        .radio-button {
+                            min-width: auto;
+                            padding: 3px;
+                            display: flex;
+                            flex-direction: column;
+                            .material-icons {
+                                flex: 1 0 auto;
+                                font-size: 1.25rem;
+                            }
+                        }
+                    }
+                    .radio-button {
+                        margin-top: 0.5rem;
+                    }
+                }
+            }
+            dwu-stat-viewer {
+                display: flex;
+                justify-content: flex-end;
+                flex: 1 0 auto;
+                margin-top: 1rem;
+            }
+        }
+        .overview.chart {
+            height: 12.5rem;
+            width: 100%;
+        }
+        dwu-chart-legend {
+            flex: 0 0 auto;
+            margin-top: 0.25rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
 @mixin radio-button-container {
     display: flex;
     .radio-button {

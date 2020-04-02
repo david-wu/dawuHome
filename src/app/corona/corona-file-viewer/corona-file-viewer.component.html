@@ -1,16 +1,16 @@
-<div *ngIf="!location" class="header">
+<div *ngIf="!selectedFileIds" class="header">
     <div class="header-main">
         <div>{{ fileName }}</div>
     </div>
 </div>
-<div *ngIf="location" class="header">
+<div *ngIf="selectedFileIds && selectedFileIds.size" class="header">
     <div class="header-main">
-        <div>{{ fileName }}</div>
-        <a [href]="fileUrl" class="download-link" download>
+        <div>{{ getHeader() }}</div>
+        <!-- <a [href]="fileUrl" class="download-link" download>
             <span class="material-icons download-icon">
                 get_app
             </span>
-        </a>
+        </a> -->
         <div class="loader" [class.visible]="isLoading$ | async">
             <span class="material-icons hour-glass">
                 hourglass_empty
@@ -18,24 +18,33 @@
         </div>
     </div>
     <div class="population">
-        <div>Population:</div>
+        <div>Total Population:</div>
         <div
-            *ngIf="(latestCoronaFile$ | async)?.population as population"
+            *ngIf="totalPopulation$ | async as population"
             class="population-count"
         >{{ population.toLocaleString() }}</div>
     </div>
 </div>
-<dwu-corona-dashboard
-    *ngIf="location && latestCoronaFile$ | async as coronaFile"
-    [lockdownInfo]="lockdownDataByLocation[location]"
-    [coronaFile]="coronaFile"
-    [disabledBarKeys]="disabledBarKeys"
-    (disabledBarKeysChange)="disabledBarKeysChange.emit($event)"
-    [disabledNormalKeys]="disabledNormalKeys"
-    (disabledNormalKeysChange)="disabledNormalKeysChange.emit($event)"
-    [isViewingNormalized]="isViewingNormalized"
-    (isViewingNormalizedChange)="isViewingNormalizedChange.emit($event)"
-    [isViewingLineChart]="isViewingLineChart"
-    (isViewingLineChartChange)="isViewingLineChartChange.emit($event)"
-></dwu-corona-dashboard>
+
+<ng-container *ngIf="selectedFileIds && (selectedFileIds.size > 0) && latestCoronaFilesWithFileId$ | async as coronaFilesWithFileId">
+    <dwu-corona-compare-dashboard
+        *ngIf="isComparing"
+        [coronaFilesWithFileId]="coronaFilesWithFileId"
+        [filesById]="filesById"
+    ></dwu-corona-compare-dashboard>
+
+    <dwu-corona-dashboard
+        *ngIf="!isComparing"
+        [lockdownInfo]="getFirstSelectedFileLockdownInfo()"
+        [coronaFile]="coronaFilesWithFileId[0][0]"
+        [disabledBarKeys]="disabledBarKeys"
+        (disabledBarKeysChange)="disabledBarKeysChange.emit($event)"
+        [disabledNormalKeys]="disabledNormalKeys"
+        (disabledNormalKeysChange)="disabledNormalKeysChange.emit($event)"
+        [isViewingNormalized]="isViewingNormalized"
+        (isViewingNormalizedChange)="isViewingNormalizedChange.emit($event)"
+        [isViewingLineChart]="isViewingLineChart"
+        (isViewingLineChartChange)="isViewingLineChartChange.emit($event)"
+    ></dwu-corona-dashboard>
+</ng-container>
 <div class="loading-overlay active" [class.active]="isLoading$ | async"></div>

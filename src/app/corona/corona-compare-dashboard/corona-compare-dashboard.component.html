@@ -1,0 +1,112 @@
+<div class="chart-container">
+    <div class="chart-header">
+        <div class="radio-button-container">
+            <div class="radio-buttons">
+                <div class="radio-button"
+                    [class.active]="!isViewingNormalized"
+                    (click)="onChangeNormalized(false)"
+                >Cases</div>
+                <div class="radio-button"
+                    [class.active]="isViewingNormalized"
+                    (click)="onChangeNormalized(true)"
+                >Per 1M</div>
+            </div>
+            <div class="radio-buttons">
+                <div
+                    class="radio-button"
+                    [class.active]="selectedMetricIndex === 0"
+                    (click)="onSelectMetricIndex(0)"
+                >{{ Labels.corona[CoronaKeys.CASES] }}</div>
+                <div
+                    class="radio-button"
+                    [class.active]="selectedMetricIndex === 1"
+                    (click)="onSelectMetricIndex(1)"
+                >{{ Labels.corona[CoronaKeys.NEW] }}</div>
+                <div
+                    class="radio-button"
+                    [class.active]="selectedMetricIndex === 2"
+                    (click)="onSelectMetricIndex(2)"
+                >{{ Labels.corona[CoronaKeys.ACTIVE] }}</div>
+                <div
+                    class="radio-button"
+                    [class.active]="selectedMetricIndex === 3"
+                    (click)="onSelectMetricIndex(3)"
+                >{{ Labels.corona[CoronaKeys.RECOVERED] }}</div>
+                <div
+                    class="radio-button"
+                    [class.active]="selectedMetricIndex === 4"
+                    (click)="onSelectMetricIndex(4)"
+                >{{ Labels.corona[CoronaKeys.DEATHS] }}</div>
+            </div>
+        </div>
+        <dwu-stat-viewer
+            [columnData]="compareData[hoverIndex]"
+            [keys]="compareKeys"
+            [disabledKeys]="disabledCompareKeys"
+            [labelsByKey]="compareLabelsByKey"
+            [rowCount]="3"
+        ></dwu-stat-viewer>
+    </div>
+
+    <dwu-line-chart
+        class="overview chart"
+        [tableData]="compareData"
+        [keys]="compareKeys"
+        [colorsByKey]="compareColorsByKey"
+        [disabledKeys]="disabledCompareKeys"
+        [hoverIndex]="hoverIndex"
+        (hoverIndexChange)="hoverIndex = $event"
+        [indicators]="indicators"
+    ></dwu-line-chart>
+    <dwu-chart-legend
+        [keys]="compareKeys"
+        [colorsByKey]="compareColorsByKey"
+        [disabledKeys]="disabledCompareKeys"
+        [labelsByKey]="compareLabelsByKey"
+        (disabledKeysChange)="disabledCompareKeys = $event"
+    ></dwu-chart-legend>
+
+</div>
+
+<div class="chart-container">
+    <div class="chart-header">
+        <div class="radio-button-container">
+            <div class="radio-buttons">
+                <div class="radio-button"
+                    [class.active]="!isViewingRAvg"
+                    (click)="setViewingRAvg(false)"
+                >{{ Labels.corona[NormalKeys.R] }}</div>
+                <div class="radio-button"
+                    [class.active]="isViewingRAvg"
+                    (click)="setViewingRAvg(true)"
+                >{{ Labels.corona[NormalKeys.R_AVG] }}</div>
+            </div>
+        </div>
+        <dwu-stat-viewer
+            [columnData]="compareRData[hoverIndex]"
+            [keys]="compareKeys"
+            [disabledKeys]="disabledCompareKeys"
+            [labelsByKey]="compareLabelsByKey"
+            [rowCount]="3"
+            [formattersByKeys]="rFormattersByKeys"
+        ></dwu-stat-viewer>
+    </div>
+    <dwu-line-chart
+        class="overview chart"
+        [tableData]="compareRData"
+        [keys]="compareKeys"
+        [colorsByKey]="compareColorsByKey"
+        [disabledKeys]="disabledCompareKeys"
+        [hoverIndex]="hoverIndex"
+        [yAxisFormatter]="toPercentage"
+        [indicators]="indicators"
+        (hoverIndexChange)="hoverIndex = $event"
+    ></dwu-line-chart>
+    <dwu-chart-legend
+        [keys]="compareKeys"
+        [colorsByKey]="compareColorsByKey"
+        [disabledKeys]="disabledCompareKeys"
+        [labelsByKey]="compareLabelsByKey"
+        (disabledKeysChange)="disabledCompareKeys = $event"
+    ></dwu-chart-legend>
+</div>

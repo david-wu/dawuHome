@@ -101,6 +101,7 @@ export class CoronaDashboardComponent {
     }
 
     public ngOnChanges(changes) {
+        console.log('changes', changes)
         if (changes.coronaFile && this.coronaFile) {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile, this.coronaFile.population);
             this.hoverIndex = this.coronaData.length - 1;

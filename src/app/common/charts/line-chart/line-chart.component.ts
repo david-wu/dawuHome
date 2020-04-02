@@ -6,7 +6,7 @@ import {
     NgZone,
     Output,
 } from '@angular/core';
-import { first, filter, last } from 'lodash';
+import { isUndefined, first, filter, last } from 'lodash';
 import * as d3 from 'd3';
 
 import { BaseChartComponent } from '../base-chart/base-chart.component';
@@ -127,7 +127,7 @@ export class LineChartComponent extends BaseChartComponent {
         this.hoverLine
             .attr('x1', this.xScale(hoverLineTimestamp) || 0)
             .attr('x2', this.xScale(hoverLineTimestamp) || 0)
-            .attr('y1', this.yScale(this.maxY) - 3)
+            .attr('y1', this.yScale(this.maxY || 1) - 3)
             .attr('y2', this.yScale(0) + 3)
     }
 
@@ -140,19 +140,18 @@ export class LineChartComponent extends BaseChartComponent {
         const dataset = reversedKeys.map((key: string) => {
             const series = this.tableData.map((columnData: any) => {
                 const cellData = columnData[key];
-                return {
+                return !isUndefined(cellData) && {
                     key: key,
                     y: cellData,
                     x: columnData.timestamp,
                     data: columnData,
                 };
-            });
+            }).filter(Boolean);
             series.key = key;
             return series;
         });
 
-        const allXValues = dataset.length ? dataset[0].map((d) => d.data.timestamp) : [];
-        const domain = dataset.length ? [first(dataset[0]).x, last(dataset[0]).x] : [];
+        const domain = this.tableData.length ? [first(this.tableData).timestamp, last(this.tableData).timestamp] : [];
 
         this.xScale = d3.scaleTime()
           .domain(domain)
@@ -169,7 +168,8 @@ export class LineChartComponent extends BaseChartComponent {
           .domain([0, this.maxY || 1])
           .range([height, 0]);
 
-        const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
+        const numberOfXDataPoints = this.tableData.length || 0;
+        const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
         const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
         super.applyXAxis(this.xAxisG, xAxis, height);
         const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);
