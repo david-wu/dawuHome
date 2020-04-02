@@ -69,12 +69,12 @@ export class LineChartComponent extends BaseChartComponent {
 
     public initializeSvg() {
         super.initializeSvg();
-        this.bubblesG = this.rootG.append('g');
         this.hoverLine = this.rootG.append('line')
             .attr('class', 'hover-line')
             .style('stroke', '#8A9A5B')
             .style('stroke-opacity', '0.8')
             .style('stroke-width', '3');
+        this.bubblesG = this.rootG.append('g');
     }
 
     public onXYHover(x: number, y: number) {

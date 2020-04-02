@@ -18,6 +18,7 @@ export class StatViewerComponent {
     @Input() disabledKeys: Set<string> = new Set();
     @Input() labelsByKey: Record<string, string>;
     @Input() rowCount = 2;
+    @Input() formattersByKeys: Record<string, Function> = {};
 
     public statTable = [];
 
@@ -36,6 +37,9 @@ export class StatViewerComponent {
             const columnKeys = keys.splice(0, this.rowCount);
             const columnValues = columnKeys.map((columnKey: string) => {
                 const cellValue = this.columnData[columnKey];
+                if (this.formattersByKeys[columnKey]) {
+                    return this.formattersByKeys[columnKey](cellValue);
+                }
                 if (typeof cellValue === 'number') {
                     return round(cellValue, 2).toLocaleString();
                 } else {

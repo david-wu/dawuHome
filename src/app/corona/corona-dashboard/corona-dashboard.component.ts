@@ -5,6 +5,7 @@ import {
     Output,
 } from '@angular/core';
 import { round } from 'lodash';
+import * as d3 from 'd3';
 
 import {
     CoronaDataExtractor,
@@ -49,7 +50,7 @@ export class CoronaDashboardComponent {
     ];
     public readonly coronaViewKeys = [
         CoronaKeys.CASES,
-        CoronaKeys.DATE_STR,
+        CoronaKeys.TIMESTAMP,
         CoronaKeys.NEW,
         CoronaKeys.ACTIVE,
         CoronaKeys.RECOVERED,
@@ -63,7 +64,7 @@ export class CoronaDashboardComponent {
     ];
     public readonly perMilViewKeys = [
         NormalKeys.CASES,
-        NormalKeys.DATE_STR,
+        CoronaKeys.TIMESTAMP,
         NormalKeys.NEW,
         NormalKeys.ACTIVE,
         NormalKeys.RECOVERED,
@@ -88,11 +89,16 @@ export class CoronaDashboardComponent {
         NormalKeys.R_AVG,
     ];
     public readonly normalizedViewKeys = [
-        CoronaKeys.CASES,
-        NormalKeys.DATE_STR,
         NormalKeys.R_AVG,
         NormalKeys.R,
+        CoronaKeys.TIMESTAMP,
+        CoronaKeys.CASES,
     ];
+    public readonly formattersByKeys = {
+        [NormalKeys.R_AVG]: this.toPercentage,
+        [NormalKeys.R]: this.toPercentage,
+        [CoronaKeys.TIMESTAMP]: d3.timeFormat('%-m/%e'),
+    }
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
@@ -134,6 +140,6 @@ export class CoronaDashboardComponent {
     }
 
     public toPercentage(d: number) {
-        return `${round(d * 100, 3).toLocaleString()}%`;
+        return `${round(d * 100, 2)}%`;
     }
 }

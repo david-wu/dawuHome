@@ -6,7 +6,7 @@ export class Labels {
     public static readonly corona = {
         [CoronaKeys.DATE_STR]: 'Date',
         [CoronaKeys.DATE]: 'Date',
-        [CoronaKeys.TIMESTAMP]: 'Timestamp',
+        [CoronaKeys.TIMESTAMP]: 'Date',
         [CoronaKeys.CASES]: 'Cases',
         [CoronaKeys.NEW]: 'New',
         [CoronaKeys.ACTIVE]: 'Active',
