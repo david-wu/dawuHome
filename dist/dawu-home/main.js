@@ -2705,6 +2705,7 @@ var CoronaComponent = /** @class */ (function () {
         var favoriteIds = favoriteLocations.map(function (location) { return _this.fileIdsByLocation[location]; });
         this.favoritesRoot.childIds = favoriteIds;
         this.favoriteFileIds = new Set(favoriteIds);
+        this.compareSelectedFileIds = new Set(favoriteIds);
         if (favoriteIds.length) {
             this.fileGroup.setSelectedFileIds(new Set([favoriteIds[0]]));
         }
@@ -3779,7 +3780,7 @@ var FileExplorerModule = /** @class */ (function () {
 /*!****************************************!*\
   !*** ./src/app/file-explorer/index.ts ***!
   \****************************************/
-/*! exports provided: FileExplorerModule, FileExplorerComponent, FileGroup, FileType, File */
+/*! exports provided: FileExplorerComponent, FileExplorerModule, FileGroup, FileType, File */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

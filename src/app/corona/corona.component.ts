@@ -99,6 +99,7 @@ export class CoronaComponent {
         const favoriteIds = favoriteLocations.map((location: string) => this.fileIdsByLocation[location]);
         this.favoritesRoot.childIds = favoriteIds;
         this.favoriteFileIds = new Set(favoriteIds);
+        this.compareSelectedFileIds = new Set(favoriteIds);
         if (favoriteIds.length) {
             this.fileGroup.setSelectedFileIds(new Set([favoriteIds[0]]));
         }
