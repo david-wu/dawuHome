@@ -35,7 +35,7 @@ export class CoronaComponent {
     public locationsByFileId: Record<string, string> = {};
     public fileIdsByLocation: Record<string, string> = {};
     public locationRoot: File;
-    public favoritesRoot: File;
+    public favoritesRootId: string;
     public favoriteFileIds: Set<string> = new Set();
     public filterStr: string = '';
     public disabledBarKeys = new Set<string>();
@@ -45,6 +45,7 @@ export class CoronaComponent {
     public selectedTab: Tab;
     public compareSelectedFileIds = new Set<string>();
     public subs = new Subscription();
+    public closedFileIdsWhileQuery = new Set<string>();
 
     public readonly Tab = Tab;
     public readonly lockdownDataByLocation = lockdownDataByLocation;
@@ -57,7 +58,7 @@ export class CoronaComponent {
     ) {
         this.populateFileGroup();
         this.fileGroup.closeAllFolders();
-        this.fileGroup.closedFileIds.delete(this.favoritesRoot.id);
+        this.fileGroup.closedFileIds.delete(this.favoritesRootId);
         this.fileGroup.closedFileIds.delete(this.locationRoot.id);
         this.loadFavorites();
         this.setSelectedTab(Tab.SAVED)
@@ -74,7 +75,7 @@ export class CoronaComponent {
     public setSelectedTab(tab: Tab) {
         this.selectedTab = tab;
         if (tab === Tab.SAVED) {
-            this.fileGroup.setRootFile(this.favoritesRoot);
+            this.fileGroup.rootFileId = this.favoritesRootId;
         } else if (tab === Tab.ALL) {
             this.fileGroup.setRootFile(this.locationRoot);
         } else if (tab === Tab.COMPARE) {
@@ -97,7 +98,7 @@ export class CoronaComponent {
     public loadFavorites() {
         const favoriteLocations = this.localStorageService.getFavoriteLocations();
         const favoriteIds = favoriteLocations.map((location: string) => this.fileIdsByLocation[location]);
-        this.favoritesRoot.childIds = favoriteIds;
+        this.fileGroup.filesById[this.favoritesRootId].childIds = favoriteIds;
         this.favoriteFileIds = new Set(favoriteIds);
         this.compareSelectedFileIds = new Set(favoriteIds);
         if (favoriteIds.length) {
@@ -106,7 +107,7 @@ export class CoronaComponent {
     }
 
     public saveFavorites() {
-        const locations = Array.from(this.favoriteFileIds)
+        const locations = this.fileGroup.filesById[this.favoritesRootId].childIds
             .map((fileId: string) => this.locationsByFileId[fileId]);
         this.localStorageService.setFavoriteLocations(locations);
     }
@@ -115,10 +116,10 @@ export class CoronaComponent {
         event.stopPropagation();
         if (this.favoriteFileIds.has(file.id)) {
             this.favoriteFileIds.delete(file.id)
-            this.fileGroup.removeAsChild(this.favoritesRoot, file);
+            this.fileGroup.removeAsChildId(this.favoritesRootId, file.id);
         } else {
             this.favoriteFileIds.add(file.id)
-            this.fileGroup.addAsChild(this.favoritesRoot, file);
+            this.fileGroup.addAsChildId(this.favoritesRootId, file.id);
         };
         this.saveFavorites()
         this.fileGroup.flushFileChanges();
@@ -130,8 +131,8 @@ export class CoronaComponent {
      */
     public populateFileGroup() {
         this.locationRoot = this.fileGroup.createFile({ label: 'World' });
-        this.favoritesRoot = this.fileGroup.createFile({ label: 'Favorites', childIds: [] });
-
+        const favoritesRoot = this.fileGroup.createFile({ label: 'Favorites', childIds: [] });
+        this.favoritesRootId = favoritesRoot.id;
         const nestedCoronaLocations = this.getNestedCoronaLocations(coronaLocations);
 
         // setFileGroup batches file creations, make sure to flush
@@ -200,14 +201,10 @@ export class CoronaComponent {
         });
     }
 
-    /**
-     * getSelectedFileId
-     * @return {string}
-     */
-    // public getSelectedFileId(): string {
-    //     const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
-    //     return (selectedFileIds.length === 1) && selectedFileIds[0];
-    // }
+    public onFilesByIdChange(filesById: Record<string, File>) {
+        this.fileGroup.filesById = filesById;
+        this.saveFavorites();
+    }
 
     public getSelectedFileIds() {
         return (this.selectedTab === Tab.COMPARE) ? this.compareSelectedFileIds : this.fileGroup.selectedFileIds;

@@ -122,8 +122,20 @@ export class FileGroup {
         this.closedFileIds = closedFileIds;
     }
 
+    public removeAsChildId(parentId: string, childId: string) {
+        const parent = this.filesById[parentId];
+        const child = this.filesById[childId];
+        this.removeAsChild(parent, child);
+    }
+
     public removeAsChild(parent: File, child: File) {
         parent.childIds = parent.childIds.filter((childId: string) => childId !== child.id);
+    }
+
+    public addAsChildId(parentId: string, childId: string) {
+        const parent = this.filesById[parentId];
+        const child = this.filesById[childId];
+        this.addAsChild(parent, child);
     }
 
     /**

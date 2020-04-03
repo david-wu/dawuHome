@@ -201,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input\n            [searchText]=\"filterStr\"\n            (searchTextChange)=\"onFilterStringChange($event)\"\n            [placeholder]=\"'County, State, or Country'\"\n        ></dwu-search-input>\n        <div class=\"view-tabs\">\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.ALL\"\n                (click)=\"setSelectedTab(Tab.ALL)\"\n            >\n                All\n            </div>\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.SAVED\"\n                (click)=\"setSelectedTab(Tab.SAVED)\"\n            >\n                <div class=\"material-icons star active\">\n                    grade\n                </div>\n                <div>Saved</div>\n            </div>\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.COMPARE\"\n                (click)=\"setSelectedTab(Tab.COMPARE)\"\n            >\n                <div>Compare</div>\n            </div>\n        </div>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"(this.selectedTab === Tab.COMPARE) ? compareSelectedFileIds : fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"onSelectedFileIdsChange($event)\"\n            [rowIconTemplate]=\"rowIconTemplate\"\n            [perfMode]=\"true\"\n            [multiFileSelect]=\"selectedTab === Tab.COMPARE\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileIds() as selectedFileId\">\n            <dwu-corona-file-viewer\n                [selectedFileIds]=\"getSelectedFileIds()\"\n                [locationsByFileId]=\"locationsByFileId\"\n                [filesById]=\"fileGroup.filesById\"\n                [isComparing]=\"selectedTab === Tab.COMPARE\"\n                [(disabledBarKeys)]=\"disabledBarKeys\"\n                [(disabledNormalKeys)]=\"disabledNormalKeys\"\n                [(isViewingNormalized)]=\"isViewingNormalized\"\n                [(isViewingLineChart)]=\"isViewingLineChart\"\n            ></dwu-corona-file-viewer>\n        </ng-container>\n    </div>\n    <ng-template #rowIconTemplate let-file=\"file\">\n        <div\n            *ngIf=\"lockdownDataByLocation[locationsByFileId[file.id]]\"\n            class=\"material-icons row-icon lock\"\n        >\n            lock\n        </div>\n\n        <div\n            *ngIf=\"locationsByFileId[file.id]\"\n            class=\"material-icons star clickable row-icon\"\n            [class.active]=\"favoriteFileIds.has(file.id)\"\n            (click)=\"toggleFavoriteFile(file, $event)\"\n        >\n            grade\n        </div>\n    </ng-template>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input\n            [searchText]=\"filterStr\"\n            (searchTextChange)=\"onFilterStringChange($event)\"\n            [placeholder]=\"'County, State, or Country'\"\n        ></dwu-search-input>\n        <div class=\"view-tabs\">\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.ALL\"\n                (click)=\"setSelectedTab(Tab.ALL)\"\n            >\n                All\n            </div>\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.SAVED\"\n                (click)=\"setSelectedTab(Tab.SAVED)\"\n            >\n                <div class=\"material-icons star active\">\n                    grade\n                </div>\n                <div>Saved</div>\n            </div>\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.COMPARE\"\n                (click)=\"setSelectedTab(Tab.COMPARE)\"\n            >\n                <div>Compare</div>\n            </div>\n        </div>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"this.onFilesByIdChange($event)\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"(this.selectedTab === Tab.COMPARE) ? compareSelectedFileIds : fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"onSelectedFileIdsChange($event)\"\n            [rowIconTemplate]=\"rowIconTemplate\"\n            [perfMode]=\"true\"\n            [dragEnabled]=\"this.selectedTab === Tab.SAVED\"\n            [multiFileSelect]=\"selectedTab === Tab.COMPARE\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileIds() as selectedFileId\">\n            <dwu-corona-file-viewer\n                [selectedFileIds]=\"getSelectedFileIds()\"\n                [locationsByFileId]=\"locationsByFileId\"\n                [filesById]=\"fileGroup.filesById\"\n                [isComparing]=\"selectedTab === Tab.COMPARE\"\n                [(disabledBarKeys)]=\"disabledBarKeys\"\n                [(disabledNormalKeys)]=\"disabledNormalKeys\"\n                [(isViewingNormalized)]=\"isViewingNormalized\"\n                [(isViewingLineChart)]=\"isViewingLineChart\"\n            ></dwu-corona-file-viewer>\n        </ng-container>\n    </div>\n    <ng-template #rowIconTemplate let-file=\"file\">\n        <div\n            *ngIf=\"lockdownDataByLocation[locationsByFileId[file.id]]\"\n            class=\"material-icons row-icon lock\"\n        >\n            lock\n        </div>\n\n        <div\n            *ngIf=\"locationsByFileId[file.id]\"\n            class=\"material-icons star clickable row-icon\"\n            [class.active]=\"favoriteFileIds.has(file.id)\"\n            (click)=\"toggleFavoriteFile(file, $event)\"\n        >\n            grade\n        </div>\n    </ng-template>\n</div>");
 
 /***/ }),
 
@@ -214,7 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<cdk-virtual-scroll-viewport itemSize=\"24\" class=\"viewport\">\n    <div\n        *cdkVirtualFor=\"let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn\"\n        [attr.data-file-id]=\"filesById[fileIdAndDepth[0]].id\"\n    >\n        <div\n            *ngIf=\"filesById[fileIdAndDepth[0]] as file\"\n            class=\"file-row\"\n            [ngClass]=\"fileIsOddById[file.id] ? 'odd' : 'even'\"\n            [class.dragging]=\"fileIdBeingDragged\"\n            [class.being-dragged]=\"fileIdBeingDragged === file.id\"\n            [class.selected]=\"selectedFileIds.has(file.id)\"\n            [class.hidden]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n            [style.padding-left]=\"getPaddingLeft(fileIdAndDepth[1])\"\n            (click)=\"selectFile(file)\"\n        >\n            <div class=\"dragula-container\">\n                <ng-container *ngIf=\"file.childIds\">\n                    <i\n                        class=\"material-icons arrow clickable\"\n                        (click)=\"toggleClosedFile(file, $event)\"\n                        [class.closed]=\"!this.fuzzFilterString && closedFileIds.has(file.id)\"\n                    >\n                        keyboard_arrow_right\n                    </i>\n                    <i class=\"material-icons folder\">\n                        folder\n                    </i>\n                </ng-container>\n                <ng-container *ngIf=\"!file.childIds\">\n                    <div class=\"space-maker\">\n                    </div>\n                    <div *ngIf=\"multiFileSelect\" class=\"checkbox-container\">\n                        <input type=\"checkbox\" [attr.checked]=\"selectedFileIds.has(file.id) ? true : null\">\n                    </div>\n                    <i *ngIf=\"!multiFileSelect\" class=\"material-icons text\">subject</i>\n                </ng-container>\n                <div class=\"file-label\" *ngIf=\"fuzzItemsByFileId[file.id] as fuzzItem\">\n                    <dwu-text-decorator\n                        [ignoreUpdates]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n                        [text]=\"fuzzItemsByFileId[file.id].subject\"\n                        [matchRanges]=\"fuzzItemsByFileId[file.id].matchRanges\"\n                    ></dwu-text-decorator>\n                </div>\n                <div class=\"file-label\" *ngIf=\"!fuzzItemsByFileId[file.id]\">\n                    {{ file.label || file.id }}\n                </div>\n                <ng-container *ngIf=\"rowIconTemplate\">\n                    <ng-container *ngTemplateOutlet=\"rowIconTemplate; context: { file: file }\">\n                    </ng-container>\n                </ng-container>\n            </div>\n        </div>\n    </div>\n</cdk-virtual-scroll-viewport>\n\n\n<!-- Not sure how, but should avoid duplicating this -->\n<!-- <div *ngIf=\"!perfMode\" class=\"viewport\">\n    <div [dragula]=\"'EXP'\">\n        <div\n            *ngFor=\"let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn\"\n            [attr.data-file-id]=\"filesById[fileIdAndDepth[0]].id\"\n        >\n            <div\n                *ngIf=\"filesById[fileIdAndDepth[0]] as file\"\n                class=\"file-row\"\n                [ngClass]=\"fileIsOddById[file.id] ? 'odd' : 'even'\"\n                [class.dragging]=\"fileIdBeingDragged\"\n                [class.being-dragged]=\"fileIdBeingDragged === file.id\"\n                [class.selected]=\"selectedFileIds.has(file.id)\"\n                [class.hidden]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n                [style.padding-left]=\"getPaddingLeft(fileIdAndDepth[1])\"\n                (click)=\"selectFile(file)\"\n            >\n                <div class=\"dragula-container\">\n                    <ng-container *ngIf=\"file.childIds\">\n                        <i\n                            class=\"material-icons arrow clickable\"\n                            (click)=\"toggleClosedFile(file, $event)\"\n                            [class.closed]=\"closedFileIds.has(file.id)\"\n                        >\n                            keyboard_arrow_right\n                        </i>\n                        <i class=\"material-icons folder\">\n                            folder\n                        </i>\n                    </ng-container>\n                    <ng-container *ngIf=\"!file.childIds\">\n                        <div class=\"space-maker\">\n                        </div>\n                        <i class=\"material-icons text\">subject</i>\n                    </ng-container>\n                    <div class=\"file-label\" *ngIf=\"fuzzItemsByFileId[file.id] as fuzzItem\">\n                        <dwu-text-decorator\n                            [ignoreUpdates]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n                            [text]=\"fuzzItemsByFileId[file.id].subject\"\n                            [matchRanges]=\"fuzzItemsByFileId[file.id].matchRanges\"\n                        ></dwu-text-decorator>\n                    </div>\n                    <div class=\"file-label\" *ngIf=\"!fuzzItemsByFileId[file.id]\">\n                        {{ file.label || file.id }}\n                    </div>\n                    <ng-container *ngIf=\"rowIconTemplate\">\n                        <ng-container *ngTemplateOutlet=\"rowIconTemplate; context: { file: file }\">\n                        </ng-container>\n                    </ng-container>\n                </div>\n            </div>\n        </div>\n    </div>\n</div> -->");
+/* harmony default export */ __webpack_exports__["default"] = ("<cdk-virtual-scroll-viewport itemSize=\"24\" class=\"viewport\">\n    <div [dragula]=\"'EXP'\">\n        <div\n            *cdkVirtualFor=\"let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn\"\n            [attr.data-file-id]=\"filesById[fileIdAndDepth[0]].id\"\n        >\n            <div\n                *ngIf=\"filesById[fileIdAndDepth[0]] as file\"\n                class=\"file-row\"\n                [ngClass]=\"fileIsOddById[file.id] ? 'odd' : 'even'\"\n                [class.dragging]=\"fileIdBeingDragged\"\n                [class.being-dragged]=\"fileIdBeingDragged === file.id\"\n                [class.selected]=\"selectedFileIds.has(file.id)\"\n                [class.hidden]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n                [style.padding-left]=\"getPaddingLeft(fileIdAndDepth[1])\"\n                (click)=\"selectFile(file)\"\n            >\n                <div class=\"dragula-container\">\n                    <span *ngIf=\"dragEnabled\" class=\"material-icons dragula-handle\">\n                        swap_vert\n                    </span>\n                    <ng-container *ngIf=\"file.childIds\">\n                        <i\n                            class=\"material-icons arrow clickable\"\n                            (click)=\"toggleClosedFile(file, $event)\"\n                            [class.closed]=\"!this.fuzzFilterString && closedFileIds.has(file.id)\"\n                        >\n                            keyboard_arrow_right\n                        </i>\n                        <i class=\"material-icons folder\">\n                            folder\n                        </i>\n                    </ng-container>\n                    <ng-container *ngIf=\"!file.childIds\">\n                        <div class=\"space-maker\">\n                        </div>\n                        <div *ngIf=\"multiFileSelect\" class=\"checkbox-container\">\n                            <input type=\"checkbox\" [attr.checked]=\"selectedFileIds.has(file.id) ? true : null\">\n                        </div>\n                        <i *ngIf=\"!multiFileSelect\" class=\"material-icons text\">subject</i>\n                    </ng-container>\n                    <div class=\"file-label\" *ngIf=\"fuzzItemsByFileId[file.id] as fuzzItem\">\n                        <dwu-text-decorator\n                            [ignoreUpdates]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n                            [text]=\"fuzzItemsByFileId[file.id].subject\"\n                            [matchRanges]=\"fuzzItemsByFileId[file.id].matchRanges\"\n                        ></dwu-text-decorator>\n                    </div>\n                    <div class=\"file-label\" *ngIf=\"!fuzzItemsByFileId[file.id]\">\n                        {{ file.label || file.id }}\n                    </div>\n                    <ng-container *ngIf=\"rowIconTemplate\">\n                        <ng-container *ngTemplateOutlet=\"rowIconTemplate; context: { file: file }\">\n                        </ng-container>\n                    </ng-container>\n                </div>\n            </div>\n        </div>\n    </div>\n</cdk-virtual-scroll-viewport>\n\n\n<!-- Not sure how, but should avoid duplicating this -->\n<!-- <div *ngIf=\"!perfMode\" class=\"viewport\">\n    <div [dragula]=\"'EXP'\">\n        <div\n            *ngFor=\"let fileIdAndDepth of fileIdsAndDepth; index as i; trackBy: trackByFn\"\n            [attr.data-file-id]=\"filesById[fileIdAndDepth[0]].id\"\n        >\n            <div\n                *ngIf=\"filesById[fileIdAndDepth[0]] as file\"\n                class=\"file-row\"\n                [ngClass]=\"fileIsOddById[file.id] ? 'odd' : 'even'\"\n                [class.dragging]=\"fileIdBeingDragged\"\n                [class.being-dragged]=\"fileIdBeingDragged === file.id\"\n                [class.selected]=\"selectedFileIds.has(file.id)\"\n                [class.hidden]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n                [style.padding-left]=\"getPaddingLeft(fileIdAndDepth[1])\"\n                (click)=\"selectFile(file)\"\n            >\n                <div class=\"dragula-container\">\n                    <ng-container *ngIf=\"file.childIds\">\n                        <i\n                            class=\"material-icons arrow clickable\"\n                            (click)=\"toggleClosedFile(file, $event)\"\n                            [class.closed]=\"closedFileIds.has(file.id)\"\n                        >\n                            keyboard_arrow_right\n                        </i>\n                        <i class=\"material-icons folder\">\n                            folder\n                        </i>\n                    </ng-container>\n                    <ng-container *ngIf=\"!file.childIds\">\n                        <div class=\"space-maker\">\n                        </div>\n                        <i class=\"material-icons text\">subject</i>\n                    </ng-container>\n                    <div class=\"file-label\" *ngIf=\"fuzzItemsByFileId[file.id] as fuzzItem\">\n                        <dwu-text-decorator\n                            [ignoreUpdates]=\"visibleFileIds && !visibleFileIds.has(file.id)\"\n                            [text]=\"fuzzItemsByFileId[file.id].subject\"\n                            [matchRanges]=\"fuzzItemsByFileId[file.id].matchRanges\"\n                        ></dwu-text-decorator>\n                    </div>\n                    <div class=\"file-label\" *ngIf=\"!fuzzItemsByFileId[file.id]\">\n                        {{ file.label || file.id }}\n                    </div>\n                    <ng-container *ngIf=\"rowIconTemplate\">\n                        <ng-container *ngTemplateOutlet=\"rowIconTemplate; context: { file: file }\">\n                        </ng-container>\n                    </ng-container>\n                </div>\n            </div>\n        </div>\n    </div>\n</div> -->");
 
 /***/ }),
 
@@ -2335,7 +2335,6 @@ var CoronaDashboardComponent = /** @class */ (function () {
             _b);
     }
     CoronaDashboardComponent.prototype.ngOnChanges = function (changes) {
-        console.log('changes', changes);
         if (changes.coronaFile && this.coronaFile) {
             this.coronaData = this.coronaExtractor.clean(this.coronaFile, this.coronaFile.population);
             this.hoverIndex = this.coronaData.length - 1;
@@ -2660,11 +2659,12 @@ var CoronaComponent = /** @class */ (function () {
         this.isViewingLineChart = false;
         this.compareSelectedFileIds = new Set();
         this.subs = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"]();
+        this.closedFileIdsWhileQuery = new Set();
         this.Tab = Tab;
         this.lockdownDataByLocation = _src_assets_corona_lockdown_data_by_location_json__WEBPACK_IMPORTED_MODULE_4__;
         this.populateFileGroup();
         this.fileGroup.closeAllFolders();
-        this.fileGroup.closedFileIds.delete(this.favoritesRoot.id);
+        this.fileGroup.closedFileIds.delete(this.favoritesRootId);
         this.fileGroup.closedFileIds.delete(this.locationRoot.id);
         this.loadFavorites();
         this.setSelectedTab(Tab.SAVED);
@@ -2680,7 +2680,7 @@ var CoronaComponent = /** @class */ (function () {
     CoronaComponent.prototype.setSelectedTab = function (tab) {
         this.selectedTab = tab;
         if (tab === Tab.SAVED) {
-            this.fileGroup.setRootFile(this.favoritesRoot);
+            this.fileGroup.rootFileId = this.favoritesRootId;
         }
         else if (tab === Tab.ALL) {
             this.fileGroup.setRootFile(this.locationRoot);
@@ -2703,7 +2703,7 @@ var CoronaComponent = /** @class */ (function () {
         var _this = this;
         var favoriteLocations = this.localStorageService.getFavoriteLocations();
         var favoriteIds = favoriteLocations.map(function (location) { return _this.fileIdsByLocation[location]; });
-        this.favoritesRoot.childIds = favoriteIds;
+        this.fileGroup.filesById[this.favoritesRootId].childIds = favoriteIds;
         this.favoriteFileIds = new Set(favoriteIds);
         this.compareSelectedFileIds = new Set(favoriteIds);
         if (favoriteIds.length) {
@@ -2712,7 +2712,7 @@ var CoronaComponent = /** @class */ (function () {
     };
     CoronaComponent.prototype.saveFavorites = function () {
         var _this = this;
-        var locations = Array.from(this.favoriteFileIds)
+        var locations = this.fileGroup.filesById[this.favoritesRootId].childIds
             .map(function (fileId) { return _this.locationsByFileId[fileId]; });
         this.localStorageService.setFavoriteLocations(locations);
     };
@@ -2720,11 +2720,11 @@ var CoronaComponent = /** @class */ (function () {
         event.stopPropagation();
         if (this.favoriteFileIds.has(file.id)) {
             this.favoriteFileIds.delete(file.id);
-            this.fileGroup.removeAsChild(this.favoritesRoot, file);
+            this.fileGroup.removeAsChildId(this.favoritesRootId, file.id);
         }
         else {
             this.favoriteFileIds.add(file.id);
-            this.fileGroup.addAsChild(this.favoritesRoot, file);
+            this.fileGroup.addAsChildId(this.favoritesRootId, file.id);
         }
         ;
         this.saveFavorites();
@@ -2736,7 +2736,8 @@ var CoronaComponent = /** @class */ (function () {
      */
     CoronaComponent.prototype.populateFileGroup = function () {
         this.locationRoot = this.fileGroup.createFile({ label: 'World' });
-        this.favoritesRoot = this.fileGroup.createFile({ label: 'Favorites', childIds: [] });
+        var favoritesRoot = this.fileGroup.createFile({ label: 'Favorites', childIds: [] });
+        this.favoritesRootId = favoritesRoot.id;
         var nestedCoronaLocations = this.getNestedCoronaLocations(_src_assets_corona_locations_json__WEBPACK_IMPORTED_MODULE_5__);
         // setFileGroup batches file creations, make sure to flush
         this.setFileGroup(this.locationRoot, nestedCoronaLocations);
@@ -2800,14 +2801,10 @@ var CoronaComponent = /** @class */ (function () {
             _this.setFileGroup(childNode, nestedLocations[location]);
         });
     };
-    /**
-     * getSelectedFileId
-     * @return {string}
-     */
-    // public getSelectedFileId(): string {
-    //     const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
-    //     return (selectedFileIds.length === 1) && selectedFileIds[0];
-    // }
+    CoronaComponent.prototype.onFilesByIdChange = function (filesById) {
+        this.fileGroup.filesById = filesById;
+        this.saveFavorites();
+    };
     CoronaComponent.prototype.getSelectedFileIds = function () {
         return (this.selectedTab === Tab.COMPARE) ? this.compareSelectedFileIds : this.fileGroup.selectedFileIds;
     };
@@ -3306,7 +3303,7 @@ var LocalStorageService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  background-color: #DDD9CF;\n  overflow: auto;\n  overflow-x: hidden;\n  display: flex;\n}\n\n.viewport {\n  flex: 1 1 0;\n  width: 100%;\n  overflow-x: hidden;\n}\n\n.file-row {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  height: 1.5rem;\n  transition: height 75ms linear, color 75ms linear;\n}\n\n.file-row.odd {\n  background-color: #F2EEE1;\n}\n\n.file-row.even {\n  background-color: #EAE6DA;\n}\n\n.file-row.selected {\n  background-color: #708238;\n  color: #FCFCF9;\n  transition: height 75ms linear;\n}\n\n.file-row:hover:not(.selected):not(.dragging) {\n  background-color: #BAC39F;\n}\n\n.file-row.being-dragged {\n  color: rgba(0, 0, 0, 0);\n  border: 2px dashed #4B5320;\n  border-radius: 5px;\n}\n\n.file-row.hidden {\n  height: 0;\n  padding: 0;\n  color: rgba(0, 0, 0, 0);\n}\n\n.file-row .dragula-container {\n  display: flex;\n  align-items: center;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.file-row .dragula-container > * {\n  flex: 0 0 auto;\n}\n\n.file-row .dragula-container .material-icons {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  font-size: 1rem;\n}\n\n.file-row .dragula-container .material-icons.folder {\n  margin-left: 0.25rem;\n}\n\n.file-row .dragula-container .material-icons.arrow {\n  padding: 0.25rem;\n  margin: -0.25rem;\n  transition: transform 75ms linear;\n  transform: rotate(90deg);\n}\n\n.file-row .dragula-container .material-icons.arrow.closed {\n  transform: rotate(0);\n}\n\n.file-row .dragula-container .space-maker {\n  width: 1.25rem;\n}\n\n.file-row .dragula-container .checkbox-container {\n  width: 1;\n}\n\n.file-row .dragula-container .file-label {\n  flex: 1 1 0;\n  margin-left: 0.25rem;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.clickable {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9maWxlLWV4cGxvcmVyL2ZpbGUtZXhwbG9yZXIuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvYWRtaW4vcHJvamVjdHMvZGF3dS1ob21lL3NyYy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiLCJzcmMvYXBwL2ZpbGUtZXhwbG9yZXIvZmlsZS1leHBsb3Jlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNJLHlCQ1djO0VEVmQsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtBRUZKOztBRktBO0VBQ0ksV0FBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtBRUZKOztBRktBO0VBSUkseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7RUFFQSxjQUFBO0VBQ0EsaURBQUE7QUVOSjs7QUZPSTtFQUNJLHlCQ1BTO0FDRWpCOztBRk9JO0VBQ0kseUJDWlE7QUNPaEI7O0FGT0k7RUFDSSx5QkM1Qk07RUQ2Qk4sY0NwQlM7RURxQlQsOEJBQUE7QUVMUjs7QUZPSTtFQUNJLHlCQy9CTztBQzBCZjs7QUZPSTtFQUNJLHVCQUFBO0VBQ0EsMEJBQUE7RUFDQSxrQkFBQTtBRUxSOztBRk9JO0VBQ0ksU0FBQTtFQUNBLFVBQUE7RUFDQSx1QkFBQTtBRUxSOztBRlFJO0VBQ0ksYUFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBRU5SOztBRk9RO0VBQ0ksY0FBQTtBRUxaOztBRk9RO0VBRUkseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7RUFDQSxlQUFBO0FFTlo7O0FGT1k7RUFDSSxvQkFBQTtBRUxoQjs7QUZPWTtFQUVJLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQ0FBQTtFQUNBLHdCQUFBO0FFTmhCOztBRk9nQjtFQUNJLG9CQUFBO0FFTHBCOztBRlNRO0VBQ0ksY0FBQTtBRVBaOztBRlNRO0VBQ0ksUUFBQTtBRVBaOztBRlNRO0VBQ0ksV0FBQTtFQUNBLG9CQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLHVCQUFBO0FFUFo7O0FGWUE7RUFDSSxlQUFBO0FFVEoiLCJmaWxlIjoic3JjL2FwcC9maWxlLWV4cGxvcmVyL2ZpbGUtZXhwbG9yZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkZWdnc2hlbGwtZGFya2VyO1xuICAgIG92ZXJmbG93OiBhdXRvO1xuICAgIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgICBkaXNwbGF5OiBmbGV4O1xufVxuXG4udmlld3BvcnQge1xuICAgIGZsZXg6IDEgMSAwO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG92ZXJmbG93LXg6IGhpZGRlbjtcbn1cblxuLmZpbGUtcm93IHtcbiAgICAvLyBkaXNwbGF5OiBmbGV4O1xuICAgIC8vIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgLy8gb3ZlcmZsb3cteTogaGlkZGVuO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuXG4gICAgaGVpZ2h0OiAxLjVyZW07XG4gICAgdHJhbnNpdGlvbjogaGVpZ2h0IDc1bXMgbGluZWFyLCBjb2xvciA3NW1zIGxpbmVhcjtcbiAgICAmLm9kZCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRlZ2dzaGVsbC1saWdodDtcbiAgICB9XG4gICAgJi5ldmVuIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGVnZ3NoZWxsLWRhcms7XG4gICAgfVxuICAgICYuc2VsZWN0ZWQge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkb2xpdmUtZ3JlZW47XG4gICAgICAgIGNvbG9yOiAkbGlnaHRlc3QtZ3JlZW47XG4gICAgICAgIHRyYW5zaXRpb246IGhlaWdodCA3NW1zIGxpbmVhcjtcbiAgICB9XG4gICAgJjpob3Zlcjpub3QoLnNlbGVjdGVkKTpub3QoLmRyYWdnaW5nKSB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRsYXVyZWwtZ3JlZW47XG4gICAgfVxuICAgICYuYmVpbmctZHJhZ2dlZCB7XG4gICAgICAgIGNvbG9yOiByZ2JhKDAsMCwwLDApO1xuICAgICAgICBib3JkZXI6IDJweCBkYXNoZWQgJGFybXktZ3JlZW47XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICB9XG4gICAgJi5oaWRkZW4ge1xuICAgICAgICBoZWlnaHQ6IDA7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGNvbG9yOiByZ2JhKDAsMCwwLDApO1xuICAgIH1cblxuICAgIC5kcmFndWxhLWNvbnRhaW5lciB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBoZWlnaHQ6IDEwMCU7XG4gICAgICAgID4gKiB7XG4gICAgICAgICAgICBmbGV4OiAwIDAgYXV0bztcbiAgICAgICAgfVxuICAgICAgICAubWF0ZXJpYWwtaWNvbnMge1xuICAgICAgICAgICAgLy8gZmxleDogMCAwIGF1dG87XG4gICAgICAgICAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMXJlbTtcbiAgICAgICAgICAgICYuZm9sZGVyIHtcbiAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMC4yNXJlbTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgICYuYXJyb3cge1xuICAgICAgICAgICAgICAgIC8vIG1ha2UgY2xpY2sgdGFyZ2V0IGJpZ2dlclxuICAgICAgICAgICAgICAgIHBhZGRpbmc6IDAuMjVyZW07XG4gICAgICAgICAgICAgICAgbWFyZ2luOiAtMC4yNXJlbTtcbiAgICAgICAgICAgICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gNzVtcyBsaW5lYXI7XG4gICAgICAgICAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xuICAgICAgICAgICAgICAgICYuY2xvc2VkIHtcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMCk7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5zcGFjZS1tYWtlciB7XG4gICAgICAgICAgICB3aWR0aDogMS4yNXJlbTtcbiAgICAgICAgfVxuICAgICAgICAuY2hlY2tib3gtY29udGFpbmVyIHtcbiAgICAgICAgICAgIHdpZHRoOiAxO1xuICAgICAgICB9XG4gICAgICAgIC5maWxlLWxhYmVsIHtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgbWFyZ2luLWxlZnQ6IDAuMjVyZW07XG4gICAgICAgICAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuICAgICAgICB9XG4gICAgfVxufVxuXG4uY2xpY2thYmxlIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG59IiwiXG4kZGFyay1ncmVlbjogIzI5MkUxMjtcbiRhcm15LWdyZWVuOiAjNEI1MzIwO1xuJG9saXZlLWdyZWVuOiAjNzA4MjM4O1xuJG1vc3MtZ3JlZW46ICM4QTlBNUI7XG4kbGF1cmVsLWdyZWVuOiAjQkFDMzlGO1xuXG4kc2F0dXJhdGVkLW9saXZlOiAjNzI5OTAwO1xuJHNhdHVyYXRlZC1ibHVlOiAjMTY0RUI3O1xuXG4vLyBuaWNlIGZvciB0ZXh0IGFnYWluc3QgZGFyayBiYWNrZ3JvdW5kXG4kbGlnaHQtZ3JlZW46ICNGNEY3RUE7XG4kbGlnaHRlc3QtZ3JlZW46ICNGQ0ZDRjk7XG5cbi8vIFVzZWQgZm9yIGZpbGUgc2VsZWN0b3JcbiRlZ2dzaGVsbC1kYXJrZXI6ICNEREQ5Q0Y7XG4kZWdnc2hlbGwtZGFyazogI0VBRTZEQTtcbiRlZ2dzaGVsbDogI0VGRUJERjtcbiRlZ2dzaGVsbC1saWdodDogI0YyRUVFMTtcblxuLy8gZ3JheXNcbiRiYXNpY2FsbHktYmxhY2s6ICMyMDIxMjQ7XG4kYmxhY2stb2xpdmU6ICMzRjQwMzg7XG4kZ3Jhbml0ZTogIzY1NjM1RjtcbiRsaWdodGVyLWdyYXk6ICM5RDlCOTk7XG4kd2hpdGU6ICNmZmY7XG5cbiRnb2xkOiAjRDZCOTAyO1xuJHN0YXItYmx1ZTogIzFENjJDNDtcblxuJGJyZWFrLXNtYWxsOiA1NTBweDtcbiRicmVhay1tZDogODAwcHg7XG4kYnJlYWstbGFyZ2U6IDEwMjRweDtcbiIsIjpob3N0IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0RERDlDRjtcbiAgb3ZlcmZsb3c6IGF1dG87XG4gIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgZGlzcGxheTogZmxleDtcbn1cblxuLnZpZXdwb3J0IHtcbiAgZmxleDogMSAxIDA7XG4gIHdpZHRoOiAxMDAlO1xuICBvdmVyZmxvdy14OiBoaWRkZW47XG59XG5cbi5maWxlLXJvdyB7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBoZWlnaHQ6IDEuNXJlbTtcbiAgdHJhbnNpdGlvbjogaGVpZ2h0IDc1bXMgbGluZWFyLCBjb2xvciA3NW1zIGxpbmVhcjtcbn1cbi5maWxlLXJvdy5vZGQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjJFRUUxO1xufVxuLmZpbGUtcm93LmV2ZW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRUFFNkRBO1xufVxuLmZpbGUtcm93LnNlbGVjdGVkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzcwODIzODtcbiAgY29sb3I6ICNGQ0ZDRjk7XG4gIHRyYW5zaXRpb246IGhlaWdodCA3NW1zIGxpbmVhcjtcbn1cbi5maWxlLXJvdzpob3Zlcjpub3QoLnNlbGVjdGVkKTpub3QoLmRyYWdnaW5nKSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNCQUMzOUY7XG59XG4uZmlsZS1yb3cuYmVpbmctZHJhZ2dlZCB7XG4gIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDApO1xuICBib3JkZXI6IDJweCBkYXNoZWQgIzRCNTMyMDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuLmZpbGUtcm93LmhpZGRlbiB7XG4gIGhlaWdodDogMDtcbiAgcGFkZGluZzogMDtcbiAgY29sb3I6IHJnYmEoMCwgMCwgMCwgMCk7XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cbi5maWxlLXJvdyAuZHJhZ3VsYS1jb250YWluZXIgPiAqIHtcbiAgZmxleDogMCAwIGF1dG87XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5tYXRlcmlhbC1pY29ucyB7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBmb250LXNpemU6IDFyZW07XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5tYXRlcmlhbC1pY29ucy5mb2xkZXIge1xuICBtYXJnaW4tbGVmdDogMC4yNXJlbTtcbn1cbi5maWxlLXJvdyAuZHJhZ3VsYS1jb250YWluZXIgLm1hdGVyaWFsLWljb25zLmFycm93IHtcbiAgcGFkZGluZzogMC4yNXJlbTtcbiAgbWFyZ2luOiAtMC4yNXJlbTtcbiAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDc1bXMgbGluZWFyO1xuICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5tYXRlcmlhbC1pY29ucy5hcnJvdy5jbG9zZWQge1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgwKTtcbn1cbi5maWxlLXJvdyAuZHJhZ3VsYS1jb250YWluZXIgLnNwYWNlLW1ha2VyIHtcbiAgd2lkdGg6IDEuMjVyZW07XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5jaGVja2JveC1jb250YWluZXIge1xuICB3aWR0aDogMTtcbn1cbi5maWxlLXJvdyAuZHJhZ3VsYS1jb250YWluZXIgLmZpbGUtbGFiZWwge1xuICBmbGV4OiAxIDEgMDtcbiAgbWFyZ2luLWxlZnQ6IDAuMjVyZW07XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xufVxuXG4uY2xpY2thYmxlIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  background-color: #DDD9CF;\n  overflow: auto;\n  overflow-x: hidden;\n  display: flex;\n}\n\n.viewport {\n  flex: 1 1 0;\n  width: 100%;\n  overflow-x: hidden;\n}\n\n.file-row {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  height: 1.5rem;\n  transition: height 75ms linear, color 75ms linear;\n}\n\n.file-row.odd {\n  background-color: #F2EEE1;\n}\n\n.file-row.even {\n  background-color: #EAE6DA;\n}\n\n.file-row.selected {\n  background-color: #708238;\n  color: #FCFCF9;\n  transition: height 75ms linear;\n}\n\n.file-row:hover:not(.selected):not(.dragging) {\n  background-color: #BAC39F;\n}\n\n.file-row.being-dragged {\n  color: rgba(0, 0, 0, 0);\n  border: 2px dashed #4B5320;\n  border-radius: 5px;\n}\n\n.file-row.hidden {\n  height: 0;\n  padding: 0;\n  color: rgba(0, 0, 0, 0);\n}\n\n.file-row .dragula-container {\n  display: flex;\n  align-items: center;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.file-row .dragula-container > * {\n  flex: 0 0 auto;\n}\n\n.file-row .dragula-container .material-icons {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  font-size: 1rem;\n}\n\n.file-row .dragula-container .material-icons.folder {\n  margin-left: 0.25rem;\n}\n\n.file-row .dragula-container .material-icons.arrow {\n  padding: 0.25rem;\n  margin: -0.25rem;\n  transition: transform 75ms linear;\n  transform: rotate(90deg);\n}\n\n.file-row .dragula-container .material-icons.arrow.closed {\n  transform: rotate(0);\n}\n\n.file-row .dragula-container .material-icons.dragula-handle {\n  height: 1.5rem;\n  line-height: 1.5rem;\n  touch-action: none;\n  padding: 0 0.5rem;\n  margin: 0 -0.5rem 0 0;\n  font-size: 1.25rem;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n\n.file-row .dragula-container .space-maker {\n  width: 1.25rem;\n}\n\n.file-row .dragula-container .checkbox-container {\n  width: 1;\n}\n\n.file-row .dragula-container .file-label {\n  flex: 1 1 0;\n  margin-left: 0.25rem;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.clickable {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9maWxlLWV4cGxvcmVyL2ZpbGUtZXhwbG9yZXIuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvYWRtaW4vcHJvamVjdHMvZGF3dS1ob21lL3NyYy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiLCJzcmMvYXBwL2ZpbGUtZXhwbG9yZXIvZmlsZS1leHBsb3Jlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNJLHlCQ1djO0VEVmQsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtBRUZKOztBRktBO0VBQ0ksV0FBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtBRUZKOztBRktBO0VBSUkseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7RUFFQSxjQUFBO0VBQ0EsaURBQUE7QUVOSjs7QUZPSTtFQUNJLHlCQ1BTO0FDRWpCOztBRk9JO0VBQ0kseUJDWlE7QUNPaEI7O0FGT0k7RUFDSSx5QkM1Qk07RUQ2Qk4sY0NwQlM7RURxQlQsOEJBQUE7QUVMUjs7QUZPSTtFQUNJLHlCQy9CTztBQzBCZjs7QUZPSTtFQUNJLHVCQUFBO0VBQ0EsMEJBQUE7RUFDQSxrQkFBQTtBRUxSOztBRk9JO0VBQ0ksU0FBQTtFQUNBLFVBQUE7RUFDQSx1QkFBQTtBRUxSOztBRlFJO0VBQ0ksYUFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBRU5SOztBRk9RO0VBQ0ksY0FBQTtBRUxaOztBRk9RO0VBRUkseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7RUFDQSxlQUFBO0FFTlo7O0FGT1k7RUFDSSxvQkFBQTtBRUxoQjs7QUZPWTtFQUVJLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQ0FBQTtFQUNBLHdCQUFBO0FFTmhCOztBRk9nQjtFQUNJLG9CQUFBO0FFTHBCOztBRlFZO0VBQ0ksY0FBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxvQkFBQTtFQUFBLFlBQUE7QUVOaEI7O0FGU1E7RUFDSSxjQUFBO0FFUFo7O0FGU1E7RUFDSSxRQUFBO0FFUFo7O0FGU1E7RUFDSSxXQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtFQUNBLGdCQUFBO0VBQ0EsdUJBQUE7QUVQWjs7QUZZQTtFQUNJLGVBQUE7QUVUSiIsImZpbGUiOiJzcmMvYXBwL2ZpbGUtZXhwbG9yZXIvZmlsZS1leHBsb3Jlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRlZ2dzaGVsbC1kYXJrZXI7XG4gICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgb3ZlcmZsb3cteDogaGlkZGVuO1xuICAgIGRpc3BsYXk6IGZsZXg7XG59XG5cbi52aWV3cG9ydCB7XG4gICAgZmxleDogMSAxIDA7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgb3ZlcmZsb3cteDogaGlkZGVuO1xufVxuXG4uZmlsZS1yb3cge1xuICAgIC8vIGRpc3BsYXk6IGZsZXg7XG4gICAgLy8gYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAvLyBvdmVyZmxvdy15OiBoaWRkZW47XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG5cbiAgICBoZWlnaHQ6IDEuNXJlbTtcbiAgICB0cmFuc2l0aW9uOiBoZWlnaHQgNzVtcyBsaW5lYXIsIGNvbG9yIDc1bXMgbGluZWFyO1xuICAgICYub2RkIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGVnZ3NoZWxsLWxpZ2h0O1xuICAgIH1cbiAgICAmLmV2ZW4ge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkZWdnc2hlbGwtZGFyaztcbiAgICB9XG4gICAgJi5zZWxlY3RlZCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRvbGl2ZS1ncmVlbjtcbiAgICAgICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgICAgICAgdHJhbnNpdGlvbjogaGVpZ2h0IDc1bXMgbGluZWFyO1xuICAgIH1cbiAgICAmOmhvdmVyOm5vdCguc2VsZWN0ZWQpOm5vdCguZHJhZ2dpbmcpIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGxhdXJlbC1ncmVlbjtcbiAgICB9XG4gICAgJi5iZWluZy1kcmFnZ2VkIHtcbiAgICAgICAgY29sb3I6IHJnYmEoMCwwLDAsMCk7XG4gICAgICAgIGJvcmRlcjogMnB4IGRhc2hlZCAkYXJteS1ncmVlbjtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIH1cbiAgICAmLmhpZGRlbiB7XG4gICAgICAgIGhlaWdodDogMDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgY29sb3I6IHJnYmEoMCwwLDAsMCk7XG4gICAgfVxuXG4gICAgLmRyYWd1bGEtY29udGFpbmVyIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgPiAqIHtcbiAgICAgICAgICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgICAgICB9XG4gICAgICAgIC5tYXRlcmlhbC1pY29ucyB7XG4gICAgICAgICAgICAvLyBmbGV4OiAwIDAgYXV0bztcbiAgICAgICAgICAgIHVzZXItc2VsZWN0OiBub25lO1xuICAgICAgICAgICAgZm9udC1zaXplOiAxcmVtO1xuICAgICAgICAgICAgJi5mb2xkZXIge1xuICAgICAgICAgICAgICAgIG1hcmdpbi1sZWZ0OiAwLjI1cmVtO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgJi5hcnJvdyB7XG4gICAgICAgICAgICAgICAgLy8gbWFrZSBjbGljayB0YXJnZXQgYmlnZ2VyXG4gICAgICAgICAgICAgICAgcGFkZGluZzogMC4yNXJlbTtcbiAgICAgICAgICAgICAgICBtYXJnaW46IC0wLjI1cmVtO1xuICAgICAgICAgICAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSA3NW1zIGxpbmVhcjtcbiAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XG4gICAgICAgICAgICAgICAgJi5jbG9zZWQge1xuICAgICAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwKTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICAmLmRyYWd1bGEtaGFuZGxlIHtcbiAgICAgICAgICAgICAgICBoZWlnaHQ6IDEuNXJlbTtcbiAgICAgICAgICAgICAgICBsaW5lLWhlaWdodDogMS41cmVtO1xuICAgICAgICAgICAgICAgIHRvdWNoLWFjdGlvbjogbm9uZTtcbiAgICAgICAgICAgICAgICBwYWRkaW5nOiAwIDAuNXJlbTtcbiAgICAgICAgICAgICAgICBtYXJnaW46IDAgLTAuNXJlbSAwIDA7XG4gICAgICAgICAgICAgICAgZm9udC1zaXplOiAxLjI1cmVtO1xuICAgICAgICAgICAgICAgIGN1cnNvcjogZ3JhYjtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAuc3BhY2UtbWFrZXIge1xuICAgICAgICAgICAgd2lkdGg6IDEuMjVyZW07XG4gICAgICAgIH1cbiAgICAgICAgLmNoZWNrYm94LWNvbnRhaW5lciB7XG4gICAgICAgICAgICB3aWR0aDogMTtcbiAgICAgICAgfVxuICAgICAgICAuZmlsZS1sYWJlbCB7XG4gICAgICAgICAgICBmbGV4OiAxIDEgMDtcbiAgICAgICAgICAgIG1hcmdpbi1sZWZ0OiAwLjI1cmVtO1xuICAgICAgICAgICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICAgICAgICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgICAgICAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgICAgICAgfVxuICAgIH1cbn1cblxuLmNsaWNrYWJsZSB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xufVxuIiwiXG4kZGFyay1ncmVlbjogIzI5MkUxMjtcbiRhcm15LWdyZWVuOiAjNEI1MzIwO1xuJG9saXZlLWdyZWVuOiAjNzA4MjM4O1xuJG1vc3MtZ3JlZW46ICM4QTlBNUI7XG4kbGF1cmVsLWdyZWVuOiAjQkFDMzlGO1xuXG4kc2F0dXJhdGVkLW9saXZlOiAjNzI5OTAwO1xuJHNhdHVyYXRlZC1ibHVlOiAjMTY0RUI3O1xuXG4vLyBuaWNlIGZvciB0ZXh0IGFnYWluc3QgZGFyayBiYWNrZ3JvdW5kXG4kbGlnaHQtZ3JlZW46ICNGNEY3RUE7XG4kbGlnaHRlc3QtZ3JlZW46ICNGQ0ZDRjk7XG5cbi8vIFVzZWQgZm9yIGZpbGUgc2VsZWN0b3JcbiRlZ2dzaGVsbC1kYXJrZXI6ICNEREQ5Q0Y7XG4kZWdnc2hlbGwtZGFyazogI0VBRTZEQTtcbiRlZ2dzaGVsbDogI0VGRUJERjtcbiRlZ2dzaGVsbC1saWdodDogI0YyRUVFMTtcblxuLy8gZ3JheXNcbiRiYXNpY2FsbHktYmxhY2s6ICMyMDIxMjQ7XG4kYmxhY2stb2xpdmU6ICMzRjQwMzg7XG4kZ3Jhbml0ZTogIzY1NjM1RjtcbiRsaWdodGVyLWdyYXk6ICM5RDlCOTk7XG4kd2hpdGU6ICNmZmY7XG5cbiRnb2xkOiAjRDZCOTAyO1xuJHN0YXItYmx1ZTogIzFENjJDNDtcblxuJGJyZWFrLXNtYWxsOiA1NTBweDtcbiRicmVhay1tZDogODAwcHg7XG4kYnJlYWstbGFyZ2U6IDEwMjRweDtcbiIsIjpob3N0IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0RERDlDRjtcbiAgb3ZlcmZsb3c6IGF1dG87XG4gIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgZGlzcGxheTogZmxleDtcbn1cblxuLnZpZXdwb3J0IHtcbiAgZmxleDogMSAxIDA7XG4gIHdpZHRoOiAxMDAlO1xuICBvdmVyZmxvdy14OiBoaWRkZW47XG59XG5cbi5maWxlLXJvdyB7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBoZWlnaHQ6IDEuNXJlbTtcbiAgdHJhbnNpdGlvbjogaGVpZ2h0IDc1bXMgbGluZWFyLCBjb2xvciA3NW1zIGxpbmVhcjtcbn1cbi5maWxlLXJvdy5vZGQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjJFRUUxO1xufVxuLmZpbGUtcm93LmV2ZW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRUFFNkRBO1xufVxuLmZpbGUtcm93LnNlbGVjdGVkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzcwODIzODtcbiAgY29sb3I6ICNGQ0ZDRjk7XG4gIHRyYW5zaXRpb246IGhlaWdodCA3NW1zIGxpbmVhcjtcbn1cbi5maWxlLXJvdzpob3Zlcjpub3QoLnNlbGVjdGVkKTpub3QoLmRyYWdnaW5nKSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNCQUMzOUY7XG59XG4uZmlsZS1yb3cuYmVpbmctZHJhZ2dlZCB7XG4gIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDApO1xuICBib3JkZXI6IDJweCBkYXNoZWQgIzRCNTMyMDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuLmZpbGUtcm93LmhpZGRlbiB7XG4gIGhlaWdodDogMDtcbiAgcGFkZGluZzogMDtcbiAgY29sb3I6IHJnYmEoMCwgMCwgMCwgMCk7XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cbi5maWxlLXJvdyAuZHJhZ3VsYS1jb250YWluZXIgPiAqIHtcbiAgZmxleDogMCAwIGF1dG87XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5tYXRlcmlhbC1pY29ucyB7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBmb250LXNpemU6IDFyZW07XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5tYXRlcmlhbC1pY29ucy5mb2xkZXIge1xuICBtYXJnaW4tbGVmdDogMC4yNXJlbTtcbn1cbi5maWxlLXJvdyAuZHJhZ3VsYS1jb250YWluZXIgLm1hdGVyaWFsLWljb25zLmFycm93IHtcbiAgcGFkZGluZzogMC4yNXJlbTtcbiAgbWFyZ2luOiAtMC4yNXJlbTtcbiAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDc1bXMgbGluZWFyO1xuICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5tYXRlcmlhbC1pY29ucy5hcnJvdy5jbG9zZWQge1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgwKTtcbn1cbi5maWxlLXJvdyAuZHJhZ3VsYS1jb250YWluZXIgLm1hdGVyaWFsLWljb25zLmRyYWd1bGEtaGFuZGxlIHtcbiAgaGVpZ2h0OiAxLjVyZW07XG4gIGxpbmUtaGVpZ2h0OiAxLjVyZW07XG4gIHRvdWNoLWFjdGlvbjogbm9uZTtcbiAgcGFkZGluZzogMCAwLjVyZW07XG4gIG1hcmdpbjogMCAtMC41cmVtIDAgMDtcbiAgZm9udC1zaXplOiAxLjI1cmVtO1xuICBjdXJzb3I6IGdyYWI7XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5zcGFjZS1tYWtlciB7XG4gIHdpZHRoOiAxLjI1cmVtO1xufVxuLmZpbGUtcm93IC5kcmFndWxhLWNvbnRhaW5lciAuY2hlY2tib3gtY29udGFpbmVyIHtcbiAgd2lkdGg6IDE7XG59XG4uZmlsZS1yb3cgLmRyYWd1bGEtY29udGFpbmVyIC5maWxlLWxhYmVsIHtcbiAgZmxleDogMSAxIDA7XG4gIG1hcmdpbi1sZWZ0OiAwLjI1cmVtO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbn1cblxuLmNsaWNrYWJsZSB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn0iXX0= */");
 
 /***/ }),
 
@@ -3329,8 +3326,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var fuzz_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(fuzz_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _utils_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @utils/index */ "./src/app/utils/index.ts");
-/* harmony import */ var _models_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./models/index */ "./src/app/file-explorer/models/index.ts");
+/* harmony import */ var ng2_dragula__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ng2-dragula */ "./node_modules/ng2-dragula/dist/fesm5/ng2-dragula.js");
+/* harmony import */ var _utils_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @utils/index */ "./src/app/utils/index.ts");
+/* harmony import */ var _models_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./models/index */ "./src/app/file-explorer/models/index.ts");
 
 
 
@@ -3338,17 +3336,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { DragulaService } from 'ng2-dragula';
+
 
 
 var FileExplorerComponent = /** @class */ (function () {
-    function FileExplorerComponent() {
+    function FileExplorerComponent(dragulaService) {
+        var _this = this;
+        this.dragulaService = dragulaService;
         this.fuzzFilterString = '';
         this.closedFileIds = new Set();
         this.selectedFileIds = new Set();
         this.perfMode = true;
         this.hideRoot = true;
         this.multiFileSelect = false;
+        this.dragEnabled = false;
         this.filesByIdChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.closedFileIdsChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.selectedFileIdsChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
@@ -3357,54 +3358,52 @@ var FileExplorerComponent = /** @class */ (function () {
         this.visibleFileIds = new Set();
         this.fileIsOddById = {};
         this.subs = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subscription"]();
+        var drakeGroup = dragulaService.createGroup('EXP', {
+            isContainer: function (el) {
+                var fileId = el.getAttribute('data-file-id');
+                return Boolean(fileId && _this.filesById[fileId].childIds);
+            },
+            moves: function (el, container, handle) {
+                return _this.dragEnabled && handle.classList.contains('dragula-handle');
+            },
+            revertOnSpill: false,
+        });
+        this.subs.add(this.dragulaService.drop('EXP')
+            .subscribe(function (drop) {
+            // use on our own dom manipulation
+            drakeGroup.drake.cancel(true);
+            // If there is a target container, just add it in
+            if (_this.getElFileId(drop.target)) {
+                _this.addFileToFileChildren(_this.getElFileId(drop.el), _this.getElFileId(drop.target));
+                return;
+            }
+            // If there is a sibling, insert it before the sibling
+            if (drop.sibling && _this.getElFileId(drop.sibling)) {
+                _this.insertFileBeforeFile(_this.getElFileId(drop.el), _this.getElFileId(drop.sibling));
+                // If there is NO sibling, it was dropped at the bottom, insert at end
+            }
+            else {
+                var lastVisibleFileId = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["last"])(_this.fileIdsAndDepth)[0];
+                _this.insertFileAfterFile(_this.getElFileId(drop.el), lastVisibleFileId);
+            }
+        }));
+        this.subs.add(this.dragulaService.over('EXP')
+            .subscribe(function (_a) {
+            var el = _a.el;
+            // if a folder is being dragged isContainer function will return true
+            // this makes 'el' be the childElement so I also check the parentNode's attribute
+            var nextFileIdBeingDragged = _this.getElFileId(el);
+            // for the first over event after a dragend, el is the element being dragged
+            if (!_this.fileIdBeingDragged && (_this.fileIdBeingDragged !== nextFileIdBeingDragged)) {
+                _this.fileIdBeingDragged = nextFileIdBeingDragged;
+                _this.closedFileIdsChange.emit(new Set(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](_this.closedFileIds, [
+                    _this.fileIdBeingDragged,
+                ])));
+            }
+        }));
+        this.subs.add(this.dragulaService.dragend('EXP')
+            .subscribe(function () { return _this.fileIdBeingDragged = undefined; }));
     }
-    // constructor(public dragulaService: DragulaService) {
-    //     const drakeGroup = dragulaService.createGroup('EXP', {
-    //       isContainer: (el) => {
-    //           const fileId = el.getAttribute('data-file-id');
-    //           if (!fileId) {
-    //               return false;
-    //           }
-    //           return !!this.filesById[fileId].childIds;
-    //       },
-    //       revertOnSpill: false,
-    //     });
-    //     this.subs.add(this.dragulaService.drop('EXP')
-    //         .subscribe((drop) => {
-    //             // use on our own dom manipulation
-    //             drakeGroup.drake.cancel(true);
-    //             if (drop.sibling && this.getElFileId(drop.sibling)) {
-    //                 this.insertFileBeforeFile(
-    //                     this.getElFileId(drop.el),
-    //                     this.getElFileId(drop.sibling),
-    //                 );
-    //             } else {
-    //                 this.addFileToFileChildren(
-    //                     this.getElFileId(drop.el),
-    //                     this.getElFileId(drop.target),
-    //                 );
-    //             }
-    //         })
-    //     );
-    //     this.subs.add(this.dragulaService.over('EXP')
-    //         .subscribe(({ el }) => {
-    //             // if a folder is being dragged isContainer function will return true
-    //             // this makes 'el' be the childElement so I also check the parentNode's attribute
-    //             const nextFileIdBeingDragged = this.getElFileId(el);
-    //             // for the first over event after a dragend, el is the element being dragged
-    //             if (!this.fileIdBeingDragged && (this.fileIdBeingDragged !== nextFileIdBeingDragged)) {
-    //                 this.fileIdBeingDragged = nextFileIdBeingDragged;
-    //                 this.closedFileIdsChange.emit(new Set([
-    //                     ...this.closedFileIds,
-    //                     this.fileIdBeingDragged,
-    //                 ]));
-    //             }
-    //         })
-    //     );
-    //     this.subs.add(this.dragulaService.dragend('EXP')
-    //         .subscribe(() => this.fileIdBeingDragged = undefined),
-    //     );
-    // }
     FileExplorerComponent.prototype.ngOnChanges = function (changes) {
         if (changes.rootFileId || changes.filesById || changes.closedFileIds || changes.fuzzFilterString || changes.perfMode) {
             if (this.rootFileId && this.filesById) {
@@ -3433,7 +3432,7 @@ var FileExplorerComponent = /** @class */ (function () {
     };
     FileExplorerComponent.prototype.ngOnDestroy = function () {
         this.subs.unsubscribe();
-        // this.dragulaService.destroy('EXP');
+        this.dragulaService.destroy('EXP');
     };
     FileExplorerComponent.prototype.scrollToSelectedFileId = function () {
         var viewPort = this.scrollViewport && this.scrollViewport.first;
@@ -3449,6 +3448,20 @@ var FileExplorerComponent = /** @class */ (function () {
             viewPort.scrollToIndex(scrollPosition);
         });
     };
+    FileExplorerComponent.prototype.insertFileAfterFile = function (fileId1, fileId2) {
+        var changes = {};
+        Object(lodash__WEBPACK_IMPORTED_MODULE_6__["each"])(this.filesById, function (file) {
+            if (Object(lodash__WEBPACK_IMPORTED_MODULE_6__["includes"])(file.childIds, fileId1)) {
+                changes[file.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_9__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, file, { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["without"])(file.childIds, fileId1) }));
+            }
+        });
+        var insertParent = this.filesById[this.parentIdsByFileId[fileId2]];
+        var nextChildIds = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["without"])(insertParent.childIds, fileId1);
+        // const insertionIndex = nextChildIds.indexOf(fileId2);
+        nextChildIds.push(fileId1);
+        changes[insertParent.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_9__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, insertParent, { childIds: nextChildIds }));
+        this.filesByIdChange.emit(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.filesById, changes));
+    };
     FileExplorerComponent.prototype.insertFileBeforeFile = function (fileId1, fileId2) {
         if (fileId2 === this.rootFileId) {
             return;
@@ -3456,31 +3469,31 @@ var FileExplorerComponent = /** @class */ (function () {
         var changes = {};
         Object(lodash__WEBPACK_IMPORTED_MODULE_6__["each"])(this.filesById, function (file) {
             if (Object(lodash__WEBPACK_IMPORTED_MODULE_6__["includes"])(file.childIds, fileId1)) {
-                changes[file.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_8__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, file, { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["without"])(file.childIds, fileId1) }));
+                changes[file.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_9__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, file, { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["without"])(file.childIds, fileId1) }));
             }
         });
         var insertParent = this.filesById[this.parentIdsByFileId[fileId2]];
         var nextChildIds = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["without"])(insertParent.childIds, fileId1);
         var insertionIndex = nextChildIds.indexOf(fileId2);
         nextChildIds.splice(insertionIndex, 0, fileId1);
-        changes[insertParent.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_8__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, insertParent, { childIds: nextChildIds }));
+        changes[insertParent.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_9__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, insertParent, { childIds: nextChildIds }));
         this.filesByIdChange.emit(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.filesById, changes));
     };
     FileExplorerComponent.prototype.addFileToFileChildren = function (fileId1, fileId2) {
         var changes = {};
         Object(lodash__WEBPACK_IMPORTED_MODULE_6__["each"])(this.filesById, function (file) {
             if (Object(lodash__WEBPACK_IMPORTED_MODULE_6__["includes"])(file.childIds, fileId1)) {
-                changes[file.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_8__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, file, { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["without"])(file.childIds, fileId1) }));
+                changes[file.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_9__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, file, { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["without"])(file.childIds, fileId1) }));
             }
         });
         // empty fileId2 means insert after the last element
         if (fileId2) {
             var parentFile = this.filesById[fileId2];
-            changes[parentFile.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_8__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.filesById[parentFile.id], { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["uniq"])(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"]([fileId1], parentFile.childIds)) }));
+            changes[parentFile.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_9__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.filesById[parentFile.id], { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["uniq"])(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"]([fileId1], parentFile.childIds)) }));
         }
         else {
             var parentFile = this.filesById[this.rootFileId];
-            changes[parentFile.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_8__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.filesById[parentFile.id], { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["uniq"])(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](parentFile.childIds, [fileId1])) }));
+            changes[parentFile.id] = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_9__["File"](), tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.filesById[parentFile.id], { childIds: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["uniq"])(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](parentFile.childIds, [fileId1])) }));
         }
         this.filesByIdChange.emit(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.filesById, changes));
     };
@@ -3539,7 +3552,7 @@ var FileExplorerComponent = /** @class */ (function () {
     FileExplorerComponent.prototype.sortFileIndexChildren = function (filesById, fuzzItemsById) {
         var maxScoresByFileId = {};
         var sortedChildIdsByFileId = {};
-        Object(_utils_index__WEBPACK_IMPORTED_MODULE_7__["reverseBreadthFirstBy"])(this.rootFileId, function (fileId) {
+        Object(_utils_index__WEBPACK_IMPORTED_MODULE_8__["reverseBreadthFirstBy"])(this.rootFileId, function (fileId) {
             var file = filesById[fileId];
             return (file && file.childIds) ? file.childIds : [];
         }, function (fileId) {
@@ -3663,6 +3676,9 @@ var FileExplorerComponent = /** @class */ (function () {
         }
         return el.getAttribute('data-file-id') || el.parentNode.getAttribute('data-file-id');
     };
+    FileExplorerComponent.ctorParameters = function () { return [
+        { type: ng2_dragula__WEBPACK_IMPORTED_MODULE_7__["DragulaService"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], FileExplorerComponent.prototype, "rootFileId", void 0);
@@ -3691,6 +3707,9 @@ var FileExplorerComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], FileExplorerComponent.prototype, "multiFileSelect", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], FileExplorerComponent.prototype, "dragEnabled", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
     ], FileExplorerComponent.prototype, "filesByIdChange", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -3710,7 +3729,7 @@ var FileExplorerComponent = /** @class */ (function () {
             selector: 'dwu-file-explorer',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./file-explorer.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/file-explorer/file-explorer.component.html")).default,
             providers: [
-            // DragulaService,
+                ng2_dragula__WEBPACK_IMPORTED_MODULE_7__["DragulaService"],
             ],
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./file-explorer.component.scss */ "./src/app/file-explorer/file-explorer.component.scss")).default]
         })
@@ -3916,8 +3935,18 @@ var FileGroup = /** @class */ (function () {
     FileGroup.prototype.setClosedFileIds = function (closedFileIds) {
         this.closedFileIds = closedFileIds;
     };
+    FileGroup.prototype.removeAsChildId = function (parentId, childId) {
+        var parent = this.filesById[parentId];
+        var child = this.filesById[childId];
+        this.removeAsChild(parent, child);
+    };
     FileGroup.prototype.removeAsChild = function (parent, child) {
         parent.childIds = parent.childIds.filter(function (childId) { return childId !== child.id; });
+    };
+    FileGroup.prototype.addAsChildId = function (parentId, childId) {
+        var parent = this.filesById[parentId];
+        var child = this.filesById[childId];
+        this.addAsChild(parent, child);
     };
     /**
      * addAsChild

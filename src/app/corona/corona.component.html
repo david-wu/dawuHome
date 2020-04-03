@@ -34,7 +34,7 @@
         <dwu-file-explorer
             [rootFileId]="fileGroup.rootFileId"
             [filesById]="fileGroup.filesById"
-            (filesByIdChange)="fileGroup.filesById = $event"
+            (filesByIdChange)="this.onFilesByIdChange($event)"
             [fuzzFilterString]="filterStr"
             [closedFileIds]="fileGroup.closedFileIds"
             (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
@@ -42,6 +42,7 @@
             (selectedFileIdsChange)="onSelectedFileIdsChange($event)"
             [rowIconTemplate]="rowIconTemplate"
             [perfMode]="true"
+            [dragEnabled]="this.selectedTab === Tab.SAVED"
             [multiFileSelect]="selectedTab === Tab.COMPARE"
         ></dwu-file-explorer>
     </div>
