@@ -84,9 +84,15 @@ export class LineChartComponent extends BaseChartComponent {
             return;
         }
         const xDomain = this.xScale.domain();
+        const range = this.xScale.range();
         const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
+        const startingPx = this.xScale(this.tableData[0].timestamp);
+        console.log('width', width);
         const distanceBetweenPoints = width / (numberOfXDataPoints - 1)
-        const xOnChart = x - this.margins.left - this.chartMargin;
+        console.log('distanceBetweenPoints', distanceBetweenPoints);
+        const xOnChart =  x - this.margins.left - this.chartMargin - startingPx;
+        console.log('xOnChart', xOnChart);
+        const valueOnChart = this.xScale.invert(xOnChart);
         const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
         const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
         if (hoverIndex !== this.hoverIndex) {
