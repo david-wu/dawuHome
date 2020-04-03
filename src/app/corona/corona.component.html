@@ -1,5 +1,5 @@
 <div class="page-container">
-    <div class="left-side">
+    <div class="left-side" [class.expanded]="leftSideExpanded">
         <dwu-search-input
             [searchText]="filterStr"
             (searchTextChange)="onFilterStringChange($event)"
@@ -45,6 +45,11 @@
             [dragEnabled]="this.selectedTab === Tab.SAVED"
             [multiFileSelect]="selectedTab === Tab.COMPARE"
         ></dwu-file-explorer>
+        <div class="expander" (click)="leftSideExpanded = !leftSideExpanded;">
+            <span class="material-icons expander-icon" [class.flipped]="leftSideExpanded">
+                expand_more
+            </span>
+        </div>
     </div>
     <div class="right-side">
         <ng-container  *ngIf="getSelectedFileIds() as selectedFileId">

@@ -73,7 +73,8 @@ export class BarChartComponent extends BaseChartComponent {
             .style('fill-opacity', '0.25')
             .style('stroke', '#8A9A5B')
             .style('stroke-opacity', '1')
-            .style('stroke-width', '1');
+            .style('stroke-width', '1')
+            .attr('clip-path', 'url(#clip)');
     }
 
     public onXYHover(x: number, y: number) {
@@ -104,6 +105,23 @@ export class BarChartComponent extends BaseChartComponent {
             .attr('height', this.yScale(0) - this.yScale(this.maxY))
     }
 
+    public onZoom(event, width, height) {
+        const nextRange = [this.chartMargin, width - this.chartMargin]
+            .map(d => d3.event.transform.applyX(d));
+
+        this.xScale.range(nextRange);
+
+        const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
+        const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
+        super.applyXAxis(this.xAxisG, xAxis, height);
+
+        this.seriesG.selectAll('g.series').selectAll('rect')
+            .attr('x', (d) => this.xScale(d.data.timestamp))
+            .attr('width', this.xScale.bandwidth());
+
+        this.positionHoverBox();
+    }
+
     public renderFor(width: number, height: number) {
 
         const filteredKeys = this.keys.filter((key: string) => {
@@ -131,7 +149,7 @@ export class BarChartComponent extends BaseChartComponent {
           .domain([0, this.maxY])
           .range([height, 0]);
 
-        const numberOfXDataPoints = dataset.length ? dataset[0].length : 0;
+        const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
         const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
         super.applyXAxis(this.xAxisG, xAxis, height);
         const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);

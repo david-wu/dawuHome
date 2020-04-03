@@ -28,6 +28,8 @@ export class BaseChartComponent {
     public xAxisG;
     public yAxisG;
     public indicatorsG;
+    public clipPathRect;
+    // public clipPathRectAxis;
 
     constructor(
         public hostEl: ElementRef,
@@ -56,9 +58,28 @@ export class BaseChartComponent {
         this.yAxisG = this.rootG.append('g')
             .attr('class', 'y axis');
         this.xAxisG = this.rootG.append('g')
-            .attr('class', 'x axis');
-        this.seriesG = this.rootG.append('g');
+            .attr('class', 'x axis')
+            .attr('clip-path', 'url(#clip)');
+        this.seriesG = this.rootG.append('g')
+            .attr('clip-path', 'url(#clip)');
+
         this.indicatorsG = this.rootG.append('g');
+        this.applyZoom(this.svg);
+
+        const defs = this.svg.append('defs')
+
+        this.clipPathRect = defs.append('clipPath')
+            .attr('id', 'clip')
+            .append('rect')
+            .attr('x', 0)
+            .attr('y', 0);
+
+        // this.clipPathRectAxis = defs.append('clipPath')
+        //     .attr('id', 'clipAxis')
+        //     .append('rect')
+        //     .attr('x', 0)
+        //     .attr('y', 0);
+
     }
 
     public touchmove() {
@@ -102,6 +123,11 @@ export class BaseChartComponent {
 
         this.rootG
             .attr('transform', 'translate(' + this.margins.left + ',' + this.margins.top + ')');
+
+        this.clipPathRect
+            .attr('width', width)
+            .attr('height', height + this.margins.top);
+
 
         this.renderFor(width, height);
     }
@@ -223,4 +249,29 @@ export class BaseChartComponent {
 
     }
 
+    public onZoom(event, width, height) {
+
+    }
+
+    public applyZoom(root, width?, height?) {
+        if (!width || !height) {
+            const chartDim = this.getChartDim();
+            width = chartDim.width;
+            height = chartDim.height;
+        }
+
+      const extent = [
+          [0, 0],
+          [width, height],
+      ];
+
+      root.call(
+          d3.zoom()
+              .scaleExtent([1, 8])
+              .translateExtent(extent)
+              .extent(extent)
+              .on('zoom', () => this.onZoom(d3.event, width, height)),
+      );
+
+    }
 }

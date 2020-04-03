@@ -73,7 +73,8 @@ export class LineChartComponent extends BaseChartComponent {
             .attr('class', 'hover-line')
             .style('stroke', '#8A9A5B')
             .style('stroke-opacity', '0.8')
-            .style('stroke-width', '3');
+            .style('stroke-width', '3')
+            .style('shape-rendering', 'crispEdges');
         this.bubblesG = this.rootG.append('g');
     }
 
@@ -103,22 +104,25 @@ export class LineChartComponent extends BaseChartComponent {
         const tableColumnData = this.tableData[this.hoverIndex];
         const hoverLineTimestamp = tableColumnData.timestamp;
         const tableColumnValues = this.filteredKeys.map((key: string) => {
+            if (isUndefined(tableColumnData[key])) {
+                return;
+            }
             return {
                 value: tableColumnData[key],
                 key: key,
             };
-        });
+        }).filter(Boolean);
 
         this.bubblesG.attr('transform', `translate(${this.xScale(hoverLineTimestamp)},0)`);
         const bubbles = this.bubblesG.selectAll('circle.bubble')
             .data(tableColumnValues);
         bubbles.enter()
             .append('circle')
-            .attr('r', 4)
+            .attr('r', 3)
             .attr('cx', 0)
             .attr('class', 'bubble')
             .style('fill', 'white')
-            .attr('stroke-width', '2px')
+            .attr('stroke-width', '1px')
             .merge(bubbles)
             .attr('stroke', (d) => this.colorsByKey[d.key])
             .attr('cy', (d) => this.yScale(d.value))
@@ -129,6 +133,27 @@ export class LineChartComponent extends BaseChartComponent {
             .attr('x2', this.xScale(hoverLineTimestamp) || 0)
             .attr('y1', this.yScale(this.maxY || 1) - 3)
             .attr('y2', this.yScale(0) + 3)
+    }
+
+    public onZoom(event, width, height) {
+        const nextRange = [this.chartMargin, width - this.chartMargin]
+            .map(d => d3.event.transform.applyX(d));
+
+        this.xScale.range(nextRange);
+
+        const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
+        const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
+        const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
+        super.applyXAxis(this.xAxisG, xAxis, height);
+
+        const pathLineDrawer = d3.line()
+            .x((d) => this.xScale(d.x))
+            .y((d) => this.yScale(d.y));
+
+        this.seriesG.selectAll('path.series')
+            .attr('d', pathLineDrawer);
+
+        this.positionHoverLine();
     }
 
     public renderFor(width: number, height: number) {
@@ -185,10 +210,10 @@ export class LineChartComponent extends BaseChartComponent {
         paths.enter()
             .append('path')
             .style('fill', 'none')
+            .style('stroke-width', '2px')
             .merge(paths)
             .attr('class', (d) => `series ${d.key}`)
             .attr('d', pathLineDrawer)
-            .style('stroke-width', '2px')
             .style('stroke', (d) => this.colorsByKey[d.key]);
         paths.exit().remove();
 

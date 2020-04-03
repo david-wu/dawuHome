@@ -1,5 +1,6 @@
 import {
     Component,
+    ElementRef,
     EventEmitter,
     Input,
     Output,
@@ -11,6 +12,7 @@ import {
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 import {
     Fuzz,
@@ -64,11 +66,15 @@ export class FileExplorerComponent {
     public fileIdsAndDepth: Array<[string, number]> = [];
     public visibleFileIds: Set<string> = new Set<string>();
     public fileIsOddById: Record<string, boolean> = {}
+    public sensor;
     private subs = new Subscription();
 
     public fileIdBeingDragged: string;
 
-    constructor(public dragulaService: DragulaService) {
+    constructor(
+        public dragulaService: DragulaService,
+        public hostEl: ElementRef,
+    ) {
         const drakeGroup = dragulaService.createGroup('EXP', {
           isContainer: (el) => {
               const fileId = el.getAttribute('data-file-id');
@@ -165,11 +171,17 @@ export class FileExplorerComponent {
         this.subs.add(this.scrollViewport.changes.pipe(take(1))
             .subscribe(() => this.scrollToSelectedFileId()),
         );
+        this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
+            if (this.scrollViewport && this.scrollViewport.first) {
+                this.scrollViewport.first.checkViewportSize();
+            }
+        });
     }
 
     public ngOnDestroy() {
         this.subs.unsubscribe();
         this.dragulaService.destroy('EXP');
+        this.sensor.detach()
     }
 
     public scrollToSelectedFileId() {
@@ -440,7 +452,7 @@ export class FileExplorerComponent {
         const currentFile = filesById[currentFileId];
         const currentMaxScore = isUndefined(maxScoresByFileId[currentFileId]) ? 1 : maxScoresByFileId[currentFileId];
         const visibleFileIds = new Set<string>();
-        if (currentMaxScore > 0.55) {
+        if (currentMaxScore > 0.80) {
             visibleFileIds.add(currentFile.id);
         }
         if (!closedFileIds.has(currentFileId)) {

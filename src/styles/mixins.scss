@@ -98,7 +98,33 @@
                 height: 13.25rem;
                 width: 100%;
                 max-width: none;
-                min-width: none;
+                // min-width: none;
+                transition: height 50ms;
+                &.expanded {
+                    height: 85%;
+                }
+                .expander {
+                    @include dark-theme;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 3.5rem;
+                    height: 1rem;
+                    border: 1px solid $moss-green;
+                    border-radius: 5px 5px 0 0 ;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    cursor: pointer;
+                    .expander-icon {
+                        font-size: 16px;
+                        &.flipped {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                }
             }
         }
     }
@@ -108,10 +134,14 @@
         display: flex;
 
         .left-side {
+            position: relative;
             flex: 1 1 0;
             overflow: hidden;
             max-width: 27.5%;
             min-width: 20rem;
+            .expander {
+                display: none;
+            }
         }
         .right-side {
             flex: 1 1 0;

@@ -46,6 +46,7 @@ export class CoronaComponent {
     public compareSelectedFileIds = new Set<string>();
     public subs = new Subscription();
     public closedFileIdsWhileQuery = new Set<string>();
+    public leftSideExpanded = false;
 
     public readonly Tab = Tab;
     public readonly lockdownDataByLocation = lockdownDataByLocation;

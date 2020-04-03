@@ -68,7 +68,6 @@ export class CoronaCompareDashboardComponent {
         '#5438DC',
         '#357DED',
         '#56EEF4',
-        '#D3F6DB',
         '#92D5E6',
         '#772D8B',
         '#5A0B4D',
@@ -163,7 +162,8 @@ export class CoronaCompareDashboardComponent {
     }
 
     public toPercentage(d: number): string {
-        return `${round(d * 100, 2)}%`;
+        const roundedPercent = round(d * 100, 2)
+        return isNaN(roundedPercent) ? '' : `${roundedPercent}%`;
     }
 
 }

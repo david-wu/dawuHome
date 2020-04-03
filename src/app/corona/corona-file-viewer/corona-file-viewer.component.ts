@@ -128,11 +128,15 @@ export class CoronaFileViewerComponent {
 
     public getHeader() {
         const fileIds = Array.from(this.selectedFileIds || []);
-        const labels = fileIds.map((fileId: string) => {
-            return this.filesById && this.filesById[fileId] && this.filesById[fileId].label;
-        }).filter(Boolean);
+        if (this.isComparing) {
+            return `Comparing ${fileIds.length} locations`;
+        }
+        return this.filesById && this.filesById[fileIds[0]] && this.filesById[fileIds[0]].label;
 
-        return labels.join(', ');
+        // const labels = fileIds.map((fileId: string) => {
+        //     return this.filesById && this.filesById[fileId] && this.filesById[fileId].label;
+        // }).filter(Boolean);
+        // return labels.join(', ');
     }
 
     public getFirstSelectedFileLockdownInfo() {
