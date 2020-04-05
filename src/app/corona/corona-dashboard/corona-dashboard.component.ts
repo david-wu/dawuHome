@@ -25,6 +25,7 @@ export class CoronaDashboardComponent {
     @Input() lockdownInfo: any;
     @Input() coronaFile: any;
     @Input() disabledBarKeys = new Set<string>();
+    @Input() population: number = 0;
     @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
     @Input() disabledNormalKeys = new Set<string>();
     @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
@@ -102,9 +103,7 @@ export class CoronaDashboardComponent {
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
-            this.coronaData = this.coronaExtractor.cleanJh(this.coronaFile, this.coronaFile.population);
-            // this.coronaData = this.coronaFile;
-            console.log('this.coronaData', this.coronaData);
+            this.coronaData = this.coronaExtractor.cleanJh(this.coronaFile, this.population);
             this.hoverIndex = this.coronaData.length - 1;
         }
         if (changes.lockdownInfo) {

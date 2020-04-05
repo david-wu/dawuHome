@@ -28,6 +28,7 @@ import { getDateFromStr } from '@src/app/utils/index';
 export class CoronaCompareDashboardComponent {
 
     @Input() coronaFilesWithFileId: Record<string, string>;
+    @Input() populationsByFileId: any;
     @Input() filesById: Record<string, File>;
 
     public coronaExtractor = new CoronaDataExtractor();
@@ -79,7 +80,7 @@ export class CoronaCompareDashboardComponent {
 
     public ngOnChanges(changes) {
         if (this.coronaFilesWithFileId && this.filesById) {
-            this.setup(this.coronaFilesWithFileId, this.filesById)
+            this.setup(this.coronaFilesWithFileId, this.filesById, this.populationsByFileId)
         }
     }
 
@@ -98,7 +99,7 @@ export class CoronaCompareDashboardComponent {
         this.refreshRTable();
     }
 
-    public setup(coronaFilesWithFileId, filesById) {
+    public setup(coronaFilesWithFileId, filesById, populationsByFileId) {
         this.refreshCompareTable();
         this.refreshRTable()
 
@@ -123,7 +124,7 @@ export class CoronaCompareDashboardComponent {
         const dataByTimestamp = {};
         const fileIds = [];
         coronaFilesWithFileId.forEach(([coronaFile, fileId]: [any, string]) => {
-            const cleanData = this.coronaExtractor.cleanJh(coronaFile, coronaFile.population);
+            const cleanData = this.coronaExtractor.cleanJh(coronaFile, this.populationsByFileId[fileId]);
             fileIds.push(fileId);
             cleanData.forEach((column: any) => {
                 set(dataByTimestamp, [column.timestamp, fileId], column[metric]);

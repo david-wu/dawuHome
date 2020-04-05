@@ -64,7 +64,7 @@ export class BaseChartComponent {
             .attr('clip-path', 'url(#clip)');
 
         this.indicatorsG = this.rootG.append('g');
-        this.applyZoom(this.svg);
+        // this.applyZoom(this.svg);
 
         const defs = this.svg.append('defs')
 

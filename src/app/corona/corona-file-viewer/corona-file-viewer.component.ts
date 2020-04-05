@@ -20,6 +20,7 @@ import {
 } from 'rxjs/operators';
 import { mapValues } from 'lodash';
 
+import populationDataByFileName from '@src/assets/jh-corona/population-by-file-name.json';
 import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
@@ -50,6 +51,7 @@ export class CoronaFileViewerComponent {
     public locationsByFileId$ = new BehaviorSubject<Record<string, string>>(undefined);
     public filesById$ = new BehaviorSubject<Record<string, File>>(undefined);
     public totalPopulation$: Observable<number>;
+    public populationsByFileId$: Observable<any>;
 
     public coronaFiles$: Observable<any>;
     public latestCoronaFilesWithFileId$: Observable<any>;
@@ -101,14 +103,23 @@ export class CoronaFileViewerComponent {
         this.latestCoronaFilesWithFileId$ = coronaFilesWithFileId$.pipe(
             filter(Boolean),
         );
+        this.populationsByFileId$ = selectedlocationsWithFileId$.pipe(
+            map((fileNamesWithFileId: [string, string][]) => {
+                const populationsByFileId = {};
+                fileNamesWithFileId.forEach(([coronaFileName, fileId]: [any, string]) => {
+                    populationsByFileId[fileId] = populationDataByFileName[coronaFileName];
+                });
+                return populationsByFileId;
+            })
+        );
 
-        this.totalPopulation$ = coronaFilesWithFileId$.pipe(
-            map((coronaFilesWithFileId: [any, string]) => {
-                if (!coronaFilesWithFileId) {
+        this.totalPopulation$ = selectedlocationsWithFileId$.pipe(
+            map((fileNamesWithFileId: [string, string][]) => {
+                if (!fileNamesWithFileId) {
                     return 0;
                 }
-                return coronaFilesWithFileId.reduce((sum: number, [coronaFile, fileId]: [any, string]) => {
-                    return sum + (coronaFile.population || 0);
+                return fileNamesWithFileId.reduce((sum: number, [coronaFileName, fileId]: [any, string]) => {
+                    return sum + Number((populationDataByFileName[coronaFileName] || 0));
                 }, 0);
             }),
         )

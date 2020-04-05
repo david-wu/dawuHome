@@ -31,12 +31,14 @@
         *ngIf="isComparing"
         [coronaFilesWithFileId]="coronaFilesWithFileId"
         [filesById]="filesById"
+        [populationsByFileId]="populationsByFileId$ | async"
     ></dwu-corona-compare-dashboard>
 
     <dwu-corona-dashboard
         *ngIf="!isComparing"
         [lockdownInfo]="getFirstSelectedFileLockdownInfo()"
         [coronaFile]="coronaFilesWithFileId[0][0]"
+        [population]="totalPopulation$ | async"
         [disabledBarKeys]="disabledBarKeys"
         (disabledBarKeysChange)="disabledBarKeysChange.emit($event)"
         [disabledNormalKeys]="disabledNormalKeys"

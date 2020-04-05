@@ -8,6 +8,7 @@ const csv = require('csv-parser')
 // jhPath is the location of https://github.com/CSSEGISandData/COVID-19
 // targetPath is where you want the indexes
 const jhPath = '../COVID-19';
+const populationDataPath = 'scripts/data/population-figures-by-country-csv_csv.csv'
 const targetPath = 'src/assets/jh-corona';
 
 // file location details
@@ -106,15 +107,88 @@ module.exports = class JhData {
     }
 
     async writeDataByLocation() {
+        execSync(`rm -rf ${targetPath}`);
         const dataByFileSource = await this.getDataByFileSource();
         const dataByLocation = this.getDataByLocation(dataByFileSource);
         const worldData = this.populateStateAndCountryTotals(dataByLocation);
         this.formatDataByLocation(dataByLocation);
+        const flattenedTimeSeriesData = this.getFlattenedTimeSeriesData(dataByLocation, worldData);
         const lastPointDataByFileName = this.getLastPointDataByFileName(dataByLocation);
 
+        this.writePopulationData(flattenedTimeSeriesData);
         this.writeLastPointData(lastPointDataByFileName);
-        this.writeDataByLocationToFiles(dataByLocation, worldData);
+        this.writeFlatLocationFiles(flattenedTimeSeriesData);
         this.writeFileNames(this.fileNames);
+    }
+
+    /**
+     * writePopulationData
+     * @param  {[type]} flattenedTimeSeriesData used for logging
+     * @return {[type]}
+     */
+    async writePopulationData(flattenedTimeSeriesData) {
+        const usPopulationByFileName = await this.getUsPopulation()
+        const worldPopulationData = await this.getWorldPopulation();
+        const populationByFileName = {
+            ...usPopulationByFileName,
+            ...worldPopulationData,
+        };
+
+        _.keys(flattenedTimeSeriesData).forEach((fileName) => {
+            if (!populationByFileName[fileName]) {
+                console.log('missing pop', fileName);
+            }
+        })
+
+        const filePath = path.join(targetPath, `population-by-file-name.json`);
+        execSync(`mkdir -p ${targetPath}`);
+        fs.writeFileSync(filePath, JSON.stringify(populationByFileName, null, 2));
+    }
+
+    async getWorldPopulation() {
+        // https://datahub.io/JohnSnowLabs/population-figures-by-country#readme
+        const populationByFileName = {};
+        const worldPopulationData = await this.getFileData(populationDataPath);
+        worldPopulationData.forEach((populationData) => {
+            const fileName = this.getFileNameFromLocationArr([populationData.Country]);
+            populationByFileName[fileName] = populationData.Year_2016;
+        });
+        return populationByFileName;
+    }
+
+    async getUsPopulation() {
+        const deathData = await this.getFileData(filePathsBySource.deathsUs);
+        const populationByFileName = {}
+        deathData.forEach((row) => {
+            const countyLocationArr = [
+                row.Country_Region,
+                row.Province_State,
+                row.Admin2,
+            ].filter(Boolean);
+            const stateLocationArr = [
+                row.Country_Region,
+                row.Province_State,
+            ];
+            const countryLocationArr = [
+                row.Country_Region,
+            ];
+
+            const population = Number(row.Population);
+            const countyFileName = this.getFileNameFromLocationArr(countyLocationArr);
+            populationByFileName[countyFileName] = population;
+
+            const stateFileName = this.getFileNameFromLocationArr(stateLocationArr);
+            populationByFileName[stateFileName] = populationByFileName[stateFileName]
+                ? populationByFileName[stateFileName] + population
+                : population;
+
+            const countryFileName = this.getFileNameFromLocationArr(countryLocationArr);
+            populationByFileName[countryFileName] = populationByFileName[countryFileName]
+                ? populationByFileName[countryFileName] + population
+                : population;
+
+        });
+        return populationByFileName;
     }
 
     formatDataByLocation(dataByLocation) {
@@ -138,7 +212,6 @@ module.exports = class JhData {
                 });
                 previousCases = unformattedCell.cases;
             }
-            data.original = data;
             data.formatted = sortedFormattedData;
         });
 
@@ -294,21 +367,28 @@ module.exports = class JhData {
         fs.writeFileSync(filePath, JSON.stringify(fileNameArr, null, 2));
     }
 
-    writeDataByLocationToFiles(dataByLocation, worldData) {
+
+    getFlattenedTimeSeriesData(dataByLocation, worldData) {
+        const flatData = {
+            world: { formatted: worldData },
+        };
         this.iterateOnDataByLocation(
             dataByLocation,
-            (data, locationArr) => this.writeLocationFile(data, locationArr),
+            (data, locationArr) => {
+                const fileName = this.getFileNameFromLocationArr(locationArr);
+                flatData[fileName] = data;
+            },
         );
-        this.writeLocationFile(worldData, ['world']);
-
+        return flatData;
     }
 
-    writeLocationFile(data, locationArr) {
-        const fileName = this.getFileNameFromLocationArr(locationArr);
+    writeFlatLocationFiles(flatData) {
         const dirPath = path.join(targetPath, 'time-series', );
-        const filePath = path.join(dirPath, `${fileName}.json`);
         execSync(`mkdir -p ${dirPath}`);
-        fs.writeFileSync(filePath, JSON.stringify(data.formatted, null, 2));
+        _.each(flatData, (data, fileName) => {
+            const filePath = path.join(dirPath, `${fileName}.json`);
+            fs.writeFileSync(filePath, JSON.stringify(data.formatted, null, 2));
+        });
     }
 
     writeLastPointData(lastPointData) {
@@ -318,6 +398,13 @@ module.exports = class JhData {
             const filePath = path.join(dirPath, `${indexFileName}.json`);
             fs.writeFileSync(filePath, JSON.stringify(lastPointIndex, null, 2));
         });
+    }
+
+    writePopulationByFileName(populationByFileName) {
+        const dirPath = path.join(targetPath, 'population', );
+        const filePath = path.join(dirPath, `by-file-name.json`);
+        execSync(`mkdir -p ${dirPath}`);
+        fs.writeFileSync(filePath, JSON.stringify(populationByFileName, null, 2));
     }
 
     getDataByLocation(dataByFileSource) {
