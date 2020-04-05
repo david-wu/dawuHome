@@ -10,11 +10,10 @@ import {
 import { Subscription } from 'rxjs';
 
 import jhFileNames from '@src/assets/jh-corona/file-names.json';
-
 import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
-import coronaLocations from '@src/assets/corona/locations.json';
-import countryNamesByCode from '@src/assets/country-names-by-code.json';
-import stateNamesByCode from '@src/assets/state-names-by-code.json';
+// import coronaLocations from '@src/assets/corona/locations.json';
+// import countryNamesByCode from '@src/assets/country-names-by-code.json';
+// import stateNamesByCode from '@src/assets/state-names-by-code.json';
 
 import { LocalStorageService } from '@src/app/corona/services/localStorage.service';
 import { FileGroup, FileType, File } from '@file-explorer/index';
@@ -140,8 +139,8 @@ export class CoronaComponent {
         this.favoritesRootId = favoritesRoot.id;
         // const nestedCoronaLocations = this.getNestedCoronaLocations(coronaLocations);
         const nestedCoronaLocations = this.getNestedJhCoronaLocations(jhFileNames);
-        // setFileGroup batches file creations, make sure to flush
-        this.setFileGroup(this.locationRoot, nestedCoronaLocations, jhFileNameSet);
+        // setFileGroupNested batches file creations, make sure to flush
+        this.setFileGroupNested(this.locationRoot, nestedCoronaLocations, jhFileNameSet);
         this.fileGroup.flush();
     }
 
@@ -193,13 +192,13 @@ export class CoronaComponent {
     // }
 
     /**
-     * setFileGroup
+     * setFileGroupNested
      * Uses the nestedLocations to create files in this.fileGroup
      * Also sets locationsByFileId for referencing files later on.
      * @param {File} file
      * @param {any}  nestedLocations
      */
-    public setFileGroup(file: File, nestedLocations: any, jhFileNameSet: Set<string>, path = []) {
+    public setFileGroupNested(file: File, nestedLocations: any, jhFileNameSet: Set<string>, path = []) {
         const fileName = path.join('_');
         if (jhFileNameSet.has(fileName)) {
             this.locationsByFileId[file.id] = fileName;
@@ -211,11 +210,14 @@ export class CoronaComponent {
         const locations = Object.keys(nestedLocations).sort();
         each(locations, (location: string) => {
             // batchCreateFile is more performant, make sure to flush
+            const label = location.replace(/-/g, ' ')
+                .replace(/\*/g, '');
+
             const childNode = this.fileGroup.batchCreateFile({
-                label: location,
+                label: label,
             });
             this.fileGroup.batchAddAsChild(file, childNode);
-            this.setFileGroup(childNode, nestedLocations[location], jhFileNameSet, [...path, location]);
+            this.setFileGroupNested(childNode, nestedLocations[location], jhFileNameSet, [...path, location]);
         });
     }
 

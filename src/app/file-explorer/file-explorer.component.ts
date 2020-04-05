@@ -54,6 +54,7 @@ export class FileExplorerComponent {
     @Input() hideRoot: boolean = true;
     @Input() multiFileSelect: boolean = false;
     @Input() dragEnabled: boolean = false;
+    @Input() disableOpening: boolean = false;
     @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
     @Output() closedFileIdsChange = new EventEmitter<Set<string>>();
     @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
@@ -77,6 +78,9 @@ export class FileExplorerComponent {
     ) {
         const drakeGroup = dragulaService.createGroup('EXP', {
           isContainer: (el) => {
+              if (this.disableOpening) {
+                  return false;
+              }
               const fileId = el.getAttribute('data-file-id');
               return Boolean(fileId && this.filesById[fileId].childIds);
           },
@@ -315,7 +319,7 @@ export class FileExplorerComponent {
                 this.rootFileId,
                 this.filesById,
                 undefined,
-                0,
+                this.disableOpening ? -1 : Infinity,
             );
             this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
         } else {
@@ -338,7 +342,7 @@ export class FileExplorerComponent {
                 this.rootFileId,
                 this.filesById,
                 sortedChildIdsByFileId,
-                0,
+                this.disableOpening ? -1 : Infinity,
             );
             this.fileIsOddById = this.getFileIsOddById(this.fileIdsAndDepth, this.visibleFileIds);
         }
@@ -418,6 +422,7 @@ export class FileExplorerComponent {
         currentFileId: string,
         filesById: Record<string, File>,
         sortedChildIdsByFileId: Record<string, string[]>,
+        maxDepth: number,
         depth: number = 0,
     ): Array<[string, number]> {
         // don't animate stuff, use virtual scroll viewport
@@ -432,11 +437,21 @@ export class FileExplorerComponent {
             fileIdsAndDepth.length = 0;
             depth--;
         }
+        if(depth > maxDepth) {
+            console.log('returned at depth', depth)
+            return fileIdsAndDepth;
+        }
 
         each(
             sortedChildIdsByFileId ? sortedChildIdsByFileId[currentFile.id] : currentFile.childIds,
             (childId: string) => {
-                const childFileIdsAndDepth = this.getFileIdsAndDepth(childId, filesById, sortedChildIdsByFileId, depth + 1);
+                const childFileIdsAndDepth = this.getFileIdsAndDepth(
+                    childId,
+                    filesById,
+                    sortedChildIdsByFileId,
+                    maxDepth,
+                    depth + 1,
+                );
                 fileIdsAndDepth.push(...childFileIdsAndDepth);
             },
         );
@@ -497,9 +512,6 @@ export class FileExplorerComponent {
         if (!this.multiFileSelect) {
             this.selectedFileIdsChange.emit(new Set([file.id]));
         } else {
-            if (file.childIds) {
-                return;
-            }
             const nextSelectedFileIds = new Set(this.selectedFileIds);
             if (nextSelectedFileIds.has(file.id)) {
                 nextSelectedFileIds.delete(file.id);

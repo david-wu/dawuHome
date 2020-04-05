@@ -14,11 +14,9 @@ export class LocalStorageService {
         const locations = JSON.parse(locationsStr);
 
         return locations.length ? locations : [
-            // 'USA',
-            // 'CA, USA',
-            // 'Santa Clara County, CA, USA',
-            // 'ITA',
-            // 'CHN',
+            'US',
+            'US_California',
+            'US_California_Santa-Clara',
         ];
     }
 

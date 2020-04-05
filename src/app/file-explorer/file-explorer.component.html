@@ -21,13 +21,17 @@
                     </span>
                     <ng-container *ngIf="file.childIds">
                         <i
+                            *ngIf="!disableOpening"
                             class="material-icons arrow clickable"
                             (click)="toggleClosedFile(file, $event)"
                             [class.closed]="!this.fuzzFilterString && closedFileIds.has(file.id)"
                         >
                             keyboard_arrow_right
                         </i>
-                        <i class="material-icons folder">
+                        <div *ngIf="multiFileSelect" class="checkbox-container">
+                            <input type="checkbox" [attr.checked]="selectedFileIds.has(file.id) ? true : null">
+                        </div>
+                        <i *ngIf="!multiFileSelect" class="material-icons folder">
                             folder
                         </i>
                     </ng-container>

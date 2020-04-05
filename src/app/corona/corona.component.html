@@ -36,6 +36,7 @@
             [filesById]="fileGroup.filesById"
             (filesByIdChange)="this.onFilesByIdChange($event)"
             [fuzzFilterString]="filterStr"
+            [disableOpening]="this.selectedTab === Tab.SAVED"
             [closedFileIds]="fileGroup.closedFileIds"
             (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
             [selectedFileIds]="(this.selectedTab === Tab.COMPARE) ? compareSelectedFileIds : fileGroup.selectedFileIds"
