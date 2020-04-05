@@ -10,6 +10,7 @@ const timeSeriesByLocation = require('../data/timeseries-byLocation.json');
 const csv = require('csv-parser')
 const _ = require('lodash');
 
+const JhData = require('./jh-data');
 
 const ASSET_PATH = 'src/assets';
 const DATA_PATH = 'scripts/data';
@@ -17,36 +18,40 @@ const DATA_PATH = 'scripts/data';
 populateAssets();
 
 async function populateAssets() {
-    execSync(`rm -rf ${ASSET_PATH}/corona`);
-    execSync(`mkdir -p ${ASSET_PATH}/corona/by-location`);
-    recordStaticFiles();
+    const jh = new JhData();
+    await jh.writeDataByLocation();
 
-    const fileNames = getFileNames(timeSeriesByLocation);
-    recordTimeSeriesByLocation(timeSeriesByLocation);
-    recordFileNames(fileNames);
+    // console.log(dataByMetric.totalGlobal.slice(0, 10));
 
-    const lockdownData = await getLockdownData()
-    const countryCodeByNames = getCountryCodeByNames()
-    const stateCodesByNames = getStateCodesByNames()
-    const locationSet = new Set(Object.keys(timeSeriesByLocation));
-    const lockdownDataByLocation = getLockdownDataByLocation(
-        lockdownData,
-        countryCodeByNames,
-        stateCodesByNames,
-        locationSet,
-    );
-    const expandedLockdownDataByLocation = expandLockdownDataByLocation(
-        lockdownDataByLocation,
-        locationSet,
-    );
-    const allLockdownData = {
-        ...lockdownDataByLocation,
-        ...expandedLockdownDataByLocation,
-    }
-    // console.log('expandedLockdownDataByLocation', expandedLockdownDataByLocation)
-    recordLockdownDataByLocation(allLockdownData);
-    console.log(`lockdown summary: ${Object.keys(lockdownDataByLocation).length}/${lockdownData.length} linked\n`)
-    console.log(`lockdown summary: ${Object.keys(allLockdownData).length} including children}`);
+    // execSync(`rm -rf ${ASSET_PATH}/corona`);
+    // execSync(`mkdir -p ${ASSET_PATH}/corona/by-location`);
+    // recordStaticFiles();
+
+    // const fileNames = getFileNames(timeSeriesByLocation);
+    // recordTimeSeriesByLocation(timeSeriesByLocation);
+    // recordFileNames(fileNames);
+
+    // const lockdownData = await getLockdownData()
+    // const countryCodeByNames = getCountryCodeByNames()
+    // const stateCodesByNames = getStateCodesByNames()
+    // const locationSet = new Set(Object.keys(timeSeriesByLocation));
+    // const lockdownDataByLocation = getLockdownDataByLocation(
+    //     lockdownData,
+    //     countryCodeByNames,
+    //     stateCodesByNames,
+    //     locationSet,
+    // );
+    // const expandedLockdownDataByLocation = expandLockdownDataByLocation(
+    //     lockdownDataByLocation,
+    //     locationSet,
+    // );
+    // const allLockdownData = {
+    //     ...lockdownDataByLocation,
+    //     ...expandedLockdownDataByLocation,
+    // }
+    // recordLockdownDataByLocation(allLockdownData);
+    // console.log(`lockdown summary: ${Object.keys(lockdownDataByLocation).length}/${lockdownData.length} linked\n`)
+    // console.log(`lockdown summary: ${Object.keys(allLockdownData).length} including children}`);
 }
 
 const locationLevels = {
