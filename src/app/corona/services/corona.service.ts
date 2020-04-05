@@ -10,7 +10,7 @@ export class CoronaService {
     constructor(public http: HttpClient) {}
 
     public getCoronaFileUrl(location: string): string {
-        return `/assets/corona/by-location/${location}.json`
+        return `/assets/jh-corona/time-series/${location}.json`
     }
 
     public getCoronaFileByLocation(location: string): Observable<any> {

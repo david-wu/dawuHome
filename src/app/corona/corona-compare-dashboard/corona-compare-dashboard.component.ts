@@ -123,7 +123,7 @@ export class CoronaCompareDashboardComponent {
         const dataByTimestamp = {};
         const fileIds = [];
         coronaFilesWithFileId.forEach(([coronaFile, fileId]: [any, string]) => {
-            const cleanData = this.coronaExtractor.clean(coronaFile, coronaFile.population);
+            const cleanData = this.coronaExtractor.cleanJh(coronaFile, coronaFile.population);
             fileIds.push(fileId);
             cleanData.forEach((column: any) => {
                 set(dataByTimestamp, [column.timestamp, fileId], column[metric]);

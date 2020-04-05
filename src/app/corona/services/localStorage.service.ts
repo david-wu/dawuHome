@@ -6,19 +6,19 @@ export class LocalStorageService {
 
     public setFavoriteLocations(locations: string[] = []) {
         const locationsStr = JSON.stringify(locations);
-        localStorage.setItem('favorites', locationsStr);
+        localStorage.setItem('favorites-jh', locationsStr);
     }
 
     public getFavoriteLocations(): string[] {
-        const locationsStr = localStorage.getItem('favorites') || '[]';
+        const locationsStr = localStorage.getItem('favorites-jh') || '[]';
         const locations = JSON.parse(locationsStr);
 
         return locations.length ? locations : [
-            'USA',
-            'CA, USA',
-            'Santa Clara County, CA, USA',
-            'ITA',
-            'CHN',
+            // 'USA',
+            // 'CA, USA',
+            // 'Santa Clara County, CA, USA',
+            // 'ITA',
+            // 'CHN',
         ];
     }
 

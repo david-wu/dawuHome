@@ -9,10 +9,13 @@ import {
 } from 'lodash';
 import { Subscription } from 'rxjs';
 
+import jhFileNames from '@src/assets/jh-corona/file-names.json';
+
 import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
 import coronaLocations from '@src/assets/corona/locations.json';
 import countryNamesByCode from '@src/assets/country-names-by-code.json';
 import stateNamesByCode from '@src/assets/state-names-by-code.json';
+
 import { LocalStorageService } from '@src/app/corona/services/localStorage.service';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
@@ -131,14 +134,25 @@ export class CoronaComponent {
      * Puts data from coronaLocations into fileGroup
      */
     public populateFileGroup() {
+        const jhFileNameSet = new Set<string>(jhFileNames);
         this.locationRoot = this.fileGroup.createFile({ label: 'World' });
         const favoritesRoot = this.fileGroup.createFile({ label: 'Favorites', childIds: [] });
         this.favoritesRootId = favoritesRoot.id;
-        const nestedCoronaLocations = this.getNestedCoronaLocations(coronaLocations);
-
+        // const nestedCoronaLocations = this.getNestedCoronaLocations(coronaLocations);
+        const nestedCoronaLocations = this.getNestedJhCoronaLocations(jhFileNames);
         // setFileGroup batches file creations, make sure to flush
-        this.setFileGroup(this.locationRoot, nestedCoronaLocations);
+        this.setFileGroup(this.locationRoot, nestedCoronaLocations, jhFileNameSet);
         this.fileGroup.flush();
+    }
+
+    public getNestedJhCoronaLocations(jhFileNames) {
+        const nestedJhCoronaFileNames = {};
+        jhFileNames.sort((a, b) => a.length - b.length);
+        jhFileNames.forEach((fileName: string) => {
+            const splitLocation = fileName.split('_');
+            set(nestedJhCoronaFileNames, splitLocation, fileName);
+        });
+        return nestedJhCoronaFileNames;
     }
 
     /**
@@ -146,37 +160,37 @@ export class CoronaComponent {
      * This returns a nested format that represents the final files
      * @param {string[]} coronaLocations
      */
-    public getNestedCoronaLocations(coronaLocations: string[]) {
-        const nestedCoronaLocations = {};
+    // public getNestedCoronaLocations(coronaLocations: string[]) {
+    //     const nestedCoronaLocations = {};
 
-        // set nestedCoronaLocations from the leaves
-        // if there is a location with the same name as a folder, create summary
-        coronaLocations.sort((a, b) => b.length - a.length);
-        coronaLocations.forEach((coronaLocation: string) => {
-            const splitLocation = this.decorateAndSplitLocation(coronaLocation);
-            if (get(nestedCoronaLocations, splitLocation)) {
-                const folderName = last(splitLocation);
-                splitLocation.push(`${folderName} Summary`)
-            }
-            set(nestedCoronaLocations, splitLocation, coronaLocation);
-        });
-        return nestedCoronaLocations;
-    }
+    //     // set nestedCoronaLocations from the leaves
+    //     // if there is a location with the same name as a folder, create summary
+    //     coronaLocations.sort((a, b) => b.length - a.length);
+    //     coronaLocations.forEach((coronaLocation: string) => {
+    //         const splitLocation = this.decorateAndSplitLocation(coronaLocation);
+    //         if (get(nestedCoronaLocations, splitLocation)) {
+    //             const folderName = last(splitLocation);
+    //             splitLocation.push(`${folderName} Summary`)
+    //         }
+    //         set(nestedCoronaLocations, splitLocation, coronaLocation);
+    //     });
+    //     return nestedCoronaLocations;
+    // }
 
     /**
      * decorateAndSplitLocation
      * Replaces country and state codes
      * @param {string} coronaLocation
      */
-    public decorateAndSplitLocation(coronaLocation: string) {
-        const splitLocation = coronaLocation.split(', ').reverse();
-        splitLocation[0] = countryNamesByCode[splitLocation[0]] || splitLocation[0];
+    // public decorateAndSplitLocation(coronaLocation: string) {
+    //     const splitLocation = coronaLocation.split(', ').reverse();
+    //     splitLocation[0] = countryNamesByCode[splitLocation[0]] || splitLocation[0];
 
-        if (splitLocation.length > 1 && splitLocation[0] === 'United States') {
-            splitLocation[1] = stateNamesByCode[splitLocation[1]] || splitLocation[1];
-        }
-        return splitLocation;
-    }
+    //     if (splitLocation.length > 1 && splitLocation[0] === 'United States') {
+    //         splitLocation[1] = stateNamesByCode[splitLocation[1]] || splitLocation[1];
+    //     }
+    //     return splitLocation;
+    // }
 
     /**
      * setFileGroup
@@ -185,10 +199,13 @@ export class CoronaComponent {
      * @param {File} file
      * @param {any}  nestedLocations
      */
-    public setFileGroup(file: File, nestedLocations: any) {
+    public setFileGroup(file: File, nestedLocations: any, jhFileNameSet: Set<string>, path = []) {
+        const fileName = path.join('_');
+        if (jhFileNameSet.has(fileName)) {
+            this.locationsByFileId[file.id] = fileName;
+            this.fileIdsByLocation[fileName] = file.id;
+        }
         if (isString(nestedLocations)) {
-            this.locationsByFileId[file.id] = nestedLocations;
-            this.fileIdsByLocation[nestedLocations] = file.id;
             return;
         }
         const locations = Object.keys(nestedLocations).sort();
@@ -198,7 +215,7 @@ export class CoronaComponent {
                 label: location,
             });
             this.fileGroup.batchAddAsChild(file, childNode);
-            this.setFileGroup(childNode, nestedLocations[location]);
+            this.setFileGroup(childNode, nestedLocations[location], jhFileNameSet, [...path, location]);
         });
     }
 

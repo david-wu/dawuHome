@@ -22,7 +22,7 @@ const filePathsBySource = {
 // useful columns in COVID-19 csvs
 const fileSources = {
     totalGlobal: {
-        cellKey: 'total',
+        cellKey: 'cases',
         countryKey: 'Country/Region',
         stateKey: 'Province/State',
         countyKey: '',
@@ -34,7 +34,7 @@ const fileSources = {
         ],
     },
     totalUs: {
-        cellKey: 'total',
+        cellKey: 'cases',
         countryKey: 'Country_Region',
         stateKey: 'Province_State',
         countyKey: 'Admin2',
@@ -125,18 +125,18 @@ module.exports = class JhData {
                 (dateKey) => this.getTimestampCached(dateKey),
             );
             const sortedFormattedData = [];
-            let previousTotal = 0;
+            let previousCases = 0;
             for(let i = 0; i < sortedDateStrs.length; i++) {
                 const dateStr = sortedDateStrs[i];
                 const unformattedCell = data[dateStr];
                 sortedFormattedData.push({
                     dateStr: dateStr,
-                    total: unformattedCell.total,
+                    cases: unformattedCell.cases,
                     deaths: unformattedCell.deaths,
                     recovered: unformattedCell.recovered,
-                    new: unformattedCell.total - previousTotal,
+                    new: unformattedCell.cases - previousCases,
                 });
-                previousTotal = unformattedCell.total;
+                previousCases = unformattedCell.cases;
             }
             data.original = data;
             data.formatted = sortedFormattedData;
@@ -168,7 +168,7 @@ module.exports = class JhData {
             dataByLocation.countryIndex,
             (worldData, locationArr) => {
                 const worldLatestPointData = this.getLatestPointData(worldData);
-                lastPointDataByFileName['_world'] = worldLatestPointData;
+                lastPointDataByFileName['world'] = worldLatestPointData;
             },
             0,
         );
@@ -257,14 +257,14 @@ module.exports = class JhData {
         return _.mapValues(joinedByDateData, (byDateDatas) => {
             let totalDeaths = 0;
             let totalRecovered = 0;
-            let totalTotal = 0;
+            let totalCases = 0;
             byDateDatas.forEach((byDateData) => {
                 totalDeaths += (Number(byDateData.deaths) || 0);
-                totalTotal += (Number(byDateData.total) || 0);
+                totalCases += (Number(byDateData.cases) || 0);
                 totalRecovered += (Number(byDateData.recovered) || 0);
             });
             return {
-                total: totalTotal,
+                cases: totalCases,
                 deaths: totalDeaths,
                 recovered: totalRecovered,
             };
@@ -299,7 +299,7 @@ module.exports = class JhData {
             dataByLocation,
             (data, locationArr) => this.writeLocationFile(data, locationArr),
         );
-        this.writeLocationFile(worldData, ['_world']);
+        this.writeLocationFile(worldData, ['world']);
 
     }
 

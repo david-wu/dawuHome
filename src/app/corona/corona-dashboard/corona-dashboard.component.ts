@@ -102,7 +102,9 @@ export class CoronaDashboardComponent {
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
-            this.coronaData = this.coronaExtractor.clean(this.coronaFile, this.coronaFile.population);
+            this.coronaData = this.coronaExtractor.cleanJh(this.coronaFile, this.coronaFile.population);
+            // this.coronaData = this.coronaFile;
+            console.log('this.coronaData', this.coronaData);
             this.hoverIndex = this.coronaData.length - 1;
         }
         if (changes.lockdownInfo) {
