@@ -102,7 +102,7 @@ const fileSources = {
 module.exports = class JhData {
 
     constructor() {
-        this.fileNames = new Set(['world']);
+        this.fileNames = new Set(['World']);
         this.timestampByDateStrCache = {};
     }
 
@@ -111,8 +111,9 @@ module.exports = class JhData {
         const dataByFileSource = await this.getDataByFileSource();
         const dataByLocation = this.getDataByLocation(dataByFileSource);
         const worldData = this.populateStateAndCountryTotals(dataByLocation);
+        dataByLocation.countryIndex['World'] = worldData;
         this.formatDataByLocation(dataByLocation);
-        const flattenedTimeSeriesData = this.getFlattenedTimeSeriesData(dataByLocation, worldData);
+        const flattenedTimeSeriesData = this.getFlattenedTimeSeriesData(dataByLocation);
         const lastPointDataByFileName = this.getLastPointDataByFileName(dataByLocation);
 
         this.writePopulationData(flattenedTimeSeriesData);
@@ -136,7 +137,7 @@ module.exports = class JhData {
 
         _.keys(flattenedTimeSeriesData).forEach((fileName) => {
             if (!populationByFileName[fileName]) {
-                console.log('missing pop', fileName);
+                // console.log('missing pop', fileName);
             }
         })
 
@@ -241,7 +242,7 @@ module.exports = class JhData {
             dataByLocation.countryIndex,
             (worldData, locationArr) => {
                 const worldLatestPointData = this.getLatestPointData(worldData);
-                lastPointDataByFileName['world'] = worldLatestPointData;
+                lastPointDataByFileName['World'] = worldLatestPointData;
             },
             0,
         );
@@ -369,10 +370,8 @@ module.exports = class JhData {
     }
 
 
-    getFlattenedTimeSeriesData(dataByLocation, worldData) {
-        const flatData = {
-            world: { formatted: worldData },
-        };
+    getFlattenedTimeSeriesData(dataByLocation) {
+        const flatData = {};
         this.iterateOnDataByLocation(
             dataByLocation,
             (data, locationArr) => {
