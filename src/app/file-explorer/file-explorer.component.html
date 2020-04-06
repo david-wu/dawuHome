@@ -36,7 +36,7 @@
                         </i>
                     </ng-container>
                     <ng-container *ngIf="!file.childIds">
-                        <div class="space-maker">
+                        <div *ngIf="!disableOpening" class="space-maker">
                         </div>
                         <div *ngIf="multiFileSelect" class="checkbox-container">
                             <input type="checkbox" [attr.checked]="selectedFileIds.has(file.id) ? true : null">

@@ -102,7 +102,7 @@ const fileSources = {
 module.exports = class JhData {
 
     constructor() {
-        this.fileNames = new Set();
+        this.fileNames = new Set(['world']);
         this.timestampByDateStrCache = {};
     }
 
@@ -260,6 +260,7 @@ module.exports = class JhData {
         const safeKeys = locationArr.map((location) => {
             return location.replace(/ /g, '-')
                 .replace(/'/g, '')
+                .replace(/\*/g, '')
                 .replace(/\./g, '');
         });
         const fileName = safeKeys.join('_');

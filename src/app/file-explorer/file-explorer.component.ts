@@ -438,7 +438,6 @@ export class FileExplorerComponent {
             depth--;
         }
         if(depth > maxDepth) {
-            console.log('returned at depth', depth)
             return fileIdsAndDepth;
         }
 
@@ -523,6 +522,9 @@ export class FileExplorerComponent {
     }
 
     public getPaddingLeft(depth: number) {
+        if (this.disableOpening) {
+            return '0.25rem';
+        }
         return `${depth}rem`;
     }
 
