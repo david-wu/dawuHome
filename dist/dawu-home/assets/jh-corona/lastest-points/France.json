@@ -4,69 +4,79 @@
     "cases": 61,
     "deaths": 0,
     "recovered": 22,
-    "new": 0
+    "new": 0,
+    "newDeaths": 0
   },
   "French Polynesia": {
     "dateStr": "4/5/20",
     "cases": 41,
     "deaths": 0,
     "recovered": 0,
-    "new": 1
+    "new": 1,
+    "newDeaths": 0
   },
   "Guadeloupe": {
     "dateStr": "4/5/20",
     "cases": 135,
     "deaths": 7,
     "recovered": 31,
-    "new": 1
+    "new": 1,
+    "newDeaths": 0
   },
   "Mayotte": {
     "dateStr": "4/5/20",
     "cases": 147,
     "deaths": 2,
     "recovered": 14,
-    "new": 13
+    "new": 13,
+    "newDeaths": 0
   },
   "New Caledonia": {
     "dateStr": "4/5/20",
     "cases": 18,
     "deaths": 0,
     "recovered": 1,
-    "new": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Reunion": {
     "dateStr": "4/5/20",
     "cases": 344,
     "deaths": 0,
     "recovered": 40,
-    "new": 10
+    "new": 10,
+    "newDeaths": 0
   },
   "Saint Barthelemy": {
     "dateStr": "4/5/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 1,
-    "new": 0
+    "new": 0,
+    "newDeaths": 0
   },
   "St Martin": {
     "dateStr": "4/5/20",
     "cases": 32,
     "deaths": 2,
     "recovered": 7,
-    "new": 8
+    "new": 8,
+    "newDeaths": 0
   },
   "Martinique": {
     "dateStr": "4/5/20",
     "cases": 149,
     "deaths": 4,
     "recovered": 50,
-    "new": 4
+    "new": 4,
+    "newDeaths": 1
   },
   "Saint Pierre and Miquelon": {
     "dateStr": "4/5/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
-    "new": 1
+    "new": 1,
+    "newDeaths": 0
   }
 }

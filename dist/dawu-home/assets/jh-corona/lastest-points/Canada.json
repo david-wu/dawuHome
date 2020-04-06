@@ -3,90 +3,120 @@
     "dateStr": "4/5/20",
     "cases": 1181,
     "deaths": 20,
-    "new": 106
+    "recovered": 0,
+    "new": 106,
+    "newDeaths": 2
   },
   "British Columbia": {
     "dateStr": "4/5/20",
     "cases": 1203,
     "deaths": 38,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Grand Princess": {
     "dateStr": "4/5/20",
     "cases": 13,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Manitoba": {
     "dateStr": "4/5/20",
     "cases": 203,
     "deaths": 2,
-    "new": 21
+    "recovered": 0,
+    "new": 21,
+    "newDeaths": 0
   },
   "New Brunswick": {
     "dateStr": "4/5/20",
     "cases": 98,
     "deaths": 0,
-    "new": 7
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
   },
   "Newfoundland and Labrador": {
     "dateStr": "4/5/20",
     "cases": 217,
     "deaths": 1,
-    "new": 22
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 0
   },
   "Nova Scotia": {
     "dateStr": "4/5/20",
     "cases": 262,
     "deaths": 0,
-    "new": 26
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 0
   },
   "Ontario": {
     "dateStr": "4/5/20",
     "cases": 4354,
     "deaths": 119,
-    "new": 724
+    "recovered": 0,
+    "new": 724,
+    "newDeaths": 25
   },
   "Prince Edward Island": {
     "dateStr": "4/5/20",
     "cases": 22,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Quebec": {
     "dateStr": "4/5/20",
     "cases": 7944,
     "deaths": 75,
-    "new": 1843
+    "recovered": 0,
+    "new": 1843,
+    "newDeaths": 14
   },
   "Saskatchewan": {
     "dateStr": "4/5/20",
     "cases": 249,
     "deaths": 3,
-    "new": 29
+    "recovered": 0,
+    "new": 29,
+    "newDeaths": 0
   },
   "Diamond Princess": {
     "dateStr": "4/5/20",
     "cases": 0,
     "deaths": 1,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Recovered": {
     "dateStr": "4/5/20",
     "cases": 0,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Northwest Territories": {
     "dateStr": "4/5/20",
     "cases": 4,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Yukon": {
     "dateStr": "4/5/20",
     "cases": 6,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   }
 }

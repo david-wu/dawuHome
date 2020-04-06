@@ -2,31 +2,41 @@
   "Kent": {
     "dateStr": "4/5/20",
     "cases": 86,
-    "deaths": 2,
-    "new": 18
+    "deaths": 3,
+    "recovered": 0,
+    "new": 18,
+    "newDeaths": 0
   },
   "New Castle": {
     "dateStr": "4/5/20",
     "cases": 436,
     "deaths": 7,
-    "new": 36
+    "recovered": 0,
+    "new": 36,
+    "newDeaths": 0
   },
   "Sussex": {
     "dateStr": "4/5/20",
     "cases": 151,
     "deaths": 3,
-    "new": 26
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 0
   },
   "Out of DE": {
     "dateStr": "4/5/20",
     "cases": 0,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Unassigned": {
     "dateStr": "4/5/20",
     "cases": 0,
-    "deaths": 2,
-    "new": 0
+    "deaths": 3,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   }
 }

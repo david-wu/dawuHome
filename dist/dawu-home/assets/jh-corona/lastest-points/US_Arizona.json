@@ -3,102 +3,136 @@
     "dateStr": "4/5/20",
     "cases": 45,
     "deaths": 0,
-    "new": 3
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
   },
   "Cochise": {
     "dateStr": "4/5/20",
     "cases": 8,
     "deaths": 0,
-    "new": 1
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
   },
   "Coconino": {
     "dateStr": "4/5/20",
     "cases": 238,
     "deaths": 10,
-    "new": 42
+    "recovered": 0,
+    "new": 42,
+    "newDeaths": 0
   },
   "Gila": {
     "dateStr": "4/5/20",
     "cases": 3,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Graham": {
     "dateStr": "4/5/20",
-    "cases": 2,
+    "cases": 4,
     "deaths": 0,
-    "new": -1
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Greenlee": {
     "dateStr": "4/5/20",
     "cases": 1,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "La Paz": {
     "dateStr": "4/5/20",
     "cases": 3,
     "deaths": 0,
-    "new": 1
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
   },
   "Maricopa": {
     "dateStr": "4/5/20",
     "cases": 1326,
     "deaths": 31,
-    "new": 155
+    "recovered": 0,
+    "new": 155,
+    "newDeaths": 3
   },
   "Mohave": {
     "dateStr": "4/5/20",
     "cases": 16,
     "deaths": 0,
-    "new": 4
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
   },
   "Navajo": {
     "dateStr": "4/5/20",
     "cases": 307,
     "deaths": 1,
-    "new": 33
+    "recovered": 0,
+    "new": 33,
+    "newDeaths": 0
   },
   "Pima": {
     "dateStr": "4/5/20",
     "cases": 372,
     "deaths": 12,
-    "new": 46
+    "recovered": 0,
+    "new": 46,
+    "newDeaths": 1
   },
   "Pinal": {
     "dateStr": "4/5/20",
     "cases": 103,
     "deaths": 0,
-    "new": 14
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 0
   },
   "Santa Cruz": {
     "dateStr": "4/5/20",
     "cases": 4,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Yavapai": {
     "dateStr": "4/5/20",
     "cases": 45,
     "deaths": 0,
-    "new": 2
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
   },
   "Yuma": {
     "dateStr": "4/5/20",
-    "cases": 13,
+    "cases": 14,
     "deaths": 0,
-    "new": -1
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Out of AZ": {
     "dateStr": "4/5/20",
     "cases": 0,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Unassigned": {
     "dateStr": "4/5/20",
     "cases": 0,
-    "deaths": 10,
-    "new": 0
+    "deaths": 18,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   }
 }

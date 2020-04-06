@@ -4,55 +4,63 @@
     "cases": 96,
     "deaths": 2,
     "recovered": 28,
-    "new": 3
+    "new": 3,
+    "newDeaths": 0
   },
   "New South Wales": {
     "dateStr": "4/5/20",
     "cases": 2580,
     "deaths": 16,
     "recovered": 4,
-    "new": 87
+    "new": 87,
+    "newDeaths": 4
   },
   "Northern Territory": {
     "dateStr": "4/5/20",
     "cases": 27,
     "deaths": 0,
     "recovered": 1,
-    "new": 1
+    "new": 1,
+    "newDeaths": 0
   },
   "Queensland": {
     "dateStr": "4/5/20",
     "cases": 907,
     "deaths": 4,
     "recovered": 8,
-    "new": 7
+    "new": 7,
+    "newDeaths": 0
   },
   "South Australia": {
     "dateStr": "4/5/20",
     "cases": 407,
     "deaths": 0,
     "recovered": 46,
-    "new": 0
+    "new": 0,
+    "newDeaths": 0
   },
   "Tasmania": {
     "dateStr": "4/5/20",
     "cases": 82,
     "deaths": 2,
     "recovered": 5,
-    "new": 2
+    "new": 2,
+    "newDeaths": 0
   },
   "Victoria": {
     "dateStr": "4/5/20",
     "cases": 1135,
     "deaths": 8,
     "recovered": 573,
-    "new": 20
+    "new": 20,
+    "newDeaths": 0
   },
   "Western Australia": {
     "dateStr": "4/5/20",
     "cases": 453,
     "deaths": 3,
     "recovered": 92,
-    "new": 17
+    "new": 17,
+    "newDeaths": 1
   }
 }

@@ -3,18 +3,24 @@
     "dateStr": "4/5/20",
     "cases": 1002,
     "deaths": 22,
-    "new": 100
+    "recovered": 0,
+    "new": 100,
+    "newDeaths": 1
   },
   "Out of DC": {
     "dateStr": "4/5/20",
     "cases": 0,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   },
   "Unassigned": {
     "dateStr": "4/5/20",
     "cases": 0,
     "deaths": 0,
-    "new": 0
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
   }
 }
