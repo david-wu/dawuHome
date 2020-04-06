@@ -88,7 +88,7 @@ export class LineChartComponent extends BaseChartComponent {
         const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
         const startingPx = this.xScale(this.tableData[0].timestamp);
         const distanceBetweenPoints = width / (numberOfXDataPoints - 1)
-        const xOnChart =  x - this.margins.left - this.chartMargin - startingPx;
+        const xOnChart =  x - this.margins.left - this.chartMargin;
         const valueOnChart = this.xScale.invert(xOnChart);
         const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
         const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);

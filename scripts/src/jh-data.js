@@ -200,18 +200,25 @@ module.exports = class JhData {
                 (dateKey) => this.getTimestampCached(dateKey),
             );
             const sortedFormattedData = [];
-            let previousCases = 0;
+            let previousPoint = {
+                cases: 0,
+                deaths: 0,
+                recovered: 0,
+            };
             for(let i = 0; i < sortedDateStrs.length; i++) {
                 const dateStr = sortedDateStrs[i];
                 const unformattedCell = data[dateStr];
-                sortedFormattedData.push({
+                const nextPoint = {
                     dateStr: dateStr,
-                    cases: unformattedCell.cases,
-                    deaths: unformattedCell.deaths,
-                    recovered: unformattedCell.recovered,
-                    new: unformattedCell.cases - previousCases,
-                });
-                previousCases = unformattedCell.cases;
+                    cases: Math.max(previousPoint.cases, (unformattedCell.cases || 0)),
+                    deaths: Math.max(previousPoint.deaths, (unformattedCell.deaths || 0)),
+                    recovered: Math.max(previousPoint.recovered, (unformattedCell.recovered || 0)),
+                };
+                nextPoint.new = nextPoint.cases - previousPoint.cases,
+                nextPoint.newDeaths = nextPoint.deaths - previousPoint.deaths,
+
+                sortedFormattedData.push(nextPoint)
+                previousPoint = nextPoint;
             }
             data.formatted = sortedFormattedData;
         });
@@ -292,8 +299,9 @@ module.exports = class JhData {
                 const stateData = _.values(countryData);
                 const countryTotalData = this.joinByDateData(stateData);
 
-                // prefer existing country data
-                if (!_.get(dataByLocation.countryIndex, locationArr)) {
+                // prefer existing country data if it's clean
+                const existingCountryData = _.get(dataByLocation.countryIndex, locationArr);
+                if (!existingCountryData || !this.isDataIsClean(existingCountryData)) {
                     _.set(dataByLocation.countryIndex, locationArr, countryTotalData);
                 }
             },
@@ -310,6 +318,23 @@ module.exports = class JhData {
             0,
         );
         return worldData;
+    }
+
+    isDataIsClean(data) {
+        const dates = Object.keys(data);
+        if (!dates.length) {
+            return false;
+        }
+        return _.every(data, (cell) => {
+            if (!cell) {
+                return false;
+            }
+            return typeof cell.cases === 'number'
+                && typeof cell.deaths === 'number';
+        });
+        // if dates.forEach(() => {
+
+        // })
     }
 
     /**
