@@ -137,7 +137,7 @@ module.exports = class JhData {
 
         _.keys(flattenedTimeSeriesData).forEach((fileName) => {
             if (!populationByFileName[fileName]) {
-                // console.log('missing pop', fileName);
+                console.log('missing pop', fileName);
             }
         })
 
