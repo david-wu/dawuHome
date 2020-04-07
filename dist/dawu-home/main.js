@@ -3200,7 +3200,7 @@ var CoronaDataExtractor = /** @class */ (function () {
             var r = previousCases
                 ? (cleanPoint.new / previousCases)
                 : 1;
-            var normalizedPoint = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, cleanData[i], (_a = {}, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].R] = r, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].CASES] = (cleanPoint.cases / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].NEW] = (cleanPoint.new / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].ACTIVE] = (cleanPoint.active / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].RECOVERED] = (cleanPoint.recovered / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].DEATHS] = (cleanPoint.deaths / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].NEW_DEATHS] = (cleanPoint.newDeaths || 0), _a));
+            var normalizedPoint = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, cleanData[i], (_a = {}, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].R] = r, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].CASES] = (cleanPoint.cases / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].NEW] = (cleanPoint.new / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].ACTIVE] = (cleanPoint.active / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].RECOVERED] = (cleanPoint.recovered / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].DEATHS] = (cleanPoint.deaths / population) * 1000000, _a[_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].NEW_DEATHS] = (cleanPoint.newDeaths / population) * 1000000, _a));
             normalizedData.push(normalizedPoint);
         }
         for (var i = 0; i < cleanData.length; i++) {
@@ -3968,7 +3968,7 @@ var FileExplorerModule = /** @class */ (function () {
 /*!****************************************!*\
   !*** ./src/app/file-explorer/index.ts ***!
   \****************************************/
-/*! exports provided: FileExplorerComponent, FileExplorerModule, FileGroup, FileType, File */
+/*! exports provided: FileExplorerModule, FileExplorerComponent, FileGroup, FileType, File */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

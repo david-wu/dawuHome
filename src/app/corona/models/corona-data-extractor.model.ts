@@ -158,7 +158,7 @@ export class CoronaDataExtractor {
                 [NormalKeys.ACTIVE]: (cleanPoint.active / population) * 1000000,
                 [NormalKeys.RECOVERED]: (cleanPoint.recovered / population) * 1000000,
                 [NormalKeys.DEATHS]: (cleanPoint.deaths / population) * 1000000,
-                [NormalKeys.NEW_DEATHS]: (cleanPoint.newDeaths || 0),
+                [NormalKeys.NEW_DEATHS]: (cleanPoint.newDeaths / population) * 1000000,
             };
             normalizedData.push(normalizedPoint);
         }
