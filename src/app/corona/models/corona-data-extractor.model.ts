@@ -20,6 +20,7 @@ export class CoronaDataExtractor {
                 timestamp: +getDateFromStr(point.dateStr),
                 [CoronaKeys.CASES]: (point.cases || 0),
                 [CoronaKeys.DEATHS]: (point.deaths || 0),
+                [CoronaKeys.NEW_DEATHS]: (point.newDeaths || 0),
                 [CoronaKeys.RECOVERED]: (point.recovered || 0),
                 [CoronaKeys.NEW]: (point.new || 0),
             } as any;
@@ -157,6 +158,7 @@ export class CoronaDataExtractor {
                 [NormalKeys.ACTIVE]: (cleanPoint.active / population) * 1000000,
                 [NormalKeys.RECOVERED]: (cleanPoint.recovered / population) * 1000000,
                 [NormalKeys.DEATHS]: (cleanPoint.deaths / population) * 1000000,
+                [NormalKeys.NEW_DEATHS]: (cleanPoint.newDeaths || 0),
             };
             normalizedData.push(normalizedPoint);
         }

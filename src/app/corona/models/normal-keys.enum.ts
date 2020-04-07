@@ -8,4 +8,5 @@ export enum NormalKeys {
     ACTIVE = 'active_mil',
     RECOVERED = 'recovered_mil',
     DEATHS = 'deaths_mil',
+    NEW_DEATHS = 'new_deaths_mil',
 };

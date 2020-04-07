@@ -21,7 +21,8 @@ import {
 import { mapValues } from 'lodash';
 
 import populationDataByFileName from '@src/assets/jh-corona/population-by-file-name.json';
-import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
+// import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
+import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
 import { CoronaService } from '../services/corona.service';
@@ -137,17 +138,12 @@ export class CoronaFileViewerComponent {
         }
     }
 
-    public getHeader() {
+    public getHeaderText() {
         const fileIds = Array.from(this.selectedFileIds || []);
         if (this.isComparing) {
             return `Comparing ${fileIds.length} locations`;
         }
         return this.filesById && this.filesById[fileIds[0]] && this.filesById[fileIds[0]].label;
-
-        // const labels = fileIds.map((fileId: string) => {
-        //     return this.filesById && this.filesById[fileId] && this.filesById[fileId].label;
-        // }).filter(Boolean);
-        // return labels.join(', ');
     }
 
     public getFirstSelectedFileLockdownInfo() {

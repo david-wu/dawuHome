@@ -10,7 +10,7 @@ import {
 import { Subscription } from 'rxjs';
 
 import jhFileNames from '@src/assets/jh-corona/file-names.json';
-import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
+import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
 // import coronaLocations from '@src/assets/corona/locations.json';
 // import countryNamesByCode from '@src/assets/country-names-by-code.json';
 // import stateNamesByCode from '@src/assets/state-names-by-code.json';

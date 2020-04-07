@@ -13,7 +13,10 @@ import {
     NormalKeys,
     Labels,
 } from '../models/index';
-import { getDateFromStr } from '@src/app/utils/index';
+import {
+    getDateFromStr,
+    getDateFromLeadingYearStr,
+} from '@src/app/utils/index';
 
 @Component({
   selector: 'dwu-corona-dashboard',
@@ -47,6 +50,7 @@ export class CoronaDashboardComponent {
         CoronaKeys.NEW,
         CoronaKeys.ACTIVE,
         CoronaKeys.RECOVERED,
+        CoronaKeys.NEW_DEATHS,
         CoronaKeys.DEATHS,
     ];
     public readonly coronaViewKeys = [
@@ -55,12 +59,14 @@ export class CoronaDashboardComponent {
         CoronaKeys.NEW,
         CoronaKeys.ACTIVE,
         CoronaKeys.RECOVERED,
+        CoronaKeys.NEW_DEATHS,
         CoronaKeys.DEATHS,
     ];
     public readonly perMilKeys = [
         NormalKeys.NEW,
         NormalKeys.ACTIVE,
         NormalKeys.RECOVERED,
+        NormalKeys.NEW_DEATHS,
         NormalKeys.DEATHS,
     ];
     public readonly perMilViewKeys = [
@@ -69,6 +75,7 @@ export class CoronaDashboardComponent {
         NormalKeys.NEW,
         NormalKeys.ACTIVE,
         NormalKeys.RECOVERED,
+        NormalKeys.NEW_DEATHS,
         NormalKeys.DEATHS,
     ];
     public readonly coronaColorsByKey = {
@@ -76,10 +83,12 @@ export class CoronaDashboardComponent {
         [CoronaKeys.ACTIVE]: '#AD3E3E',
         [CoronaKeys.RECOVERED]: '#34A2AA',
         [CoronaKeys.DEATHS]: '#2B1919',
+        [CoronaKeys.NEW_DEATHS]: '#65635F',
         [NormalKeys.NEW]: '#ED9797',
         [NormalKeys.ACTIVE]: '#AD3E3E',
         [NormalKeys.RECOVERED]: '#34A2AA',
         [NormalKeys.DEATHS]: '#2B1919',
+        [NormalKeys.NEW_DEATHS]: '#65635F',
         [NormalKeys.CASES]: '#D6B902',
         [NormalKeys.R]: '#65635F',
         [NormalKeys.R_AVG]: '#1D62C4',
@@ -108,7 +117,7 @@ export class CoronaDashboardComponent {
         }
         if (changes.lockdownInfo) {
             if (this.lockdownInfo) {
-                const startDate = getDateFromStr(this.lockdownInfo.startDate);
+                const startDate = getDateFromLeadingYearStr(this.lockdownInfo.startDate);
                 const tenDaysLater = new Date(startDate);
                 tenDaysLater.setDate(startDate.getDate() + 10);
                 this.indicators = this.lockdownInfo && [
