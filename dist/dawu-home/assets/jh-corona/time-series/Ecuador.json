@@ -606,5 +606,29 @@
     "recovered": 100,
     "new": 101,
     "newDeaths": 11
+  },
+  {
+    "dateStr": "4/7/20",
+    "cases": 3747,
+    "deaths": 191,
+    "recovered": 100,
+    "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "4/8/20",
+    "cases": 4450,
+    "deaths": 242,
+    "recovered": 140,
+    "new": 703,
+    "newDeaths": 51
+  },
+  {
+    "dateStr": "4/9/20",
+    "cases": 4965,
+    "deaths": 272,
+    "recovered": 339,
+    "new": 515,
+    "newDeaths": 30
   }
 ]

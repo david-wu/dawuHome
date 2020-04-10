@@ -601,10 +601,34 @@
   },
   {
     "dateStr": "4/6/20",
-    "cases": 185,
+    "cases": 190,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "4/7/20",
+    "cases": 213,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "4/8/20",
+    "cases": 226,
+    "deaths": 7,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "4/9/20",
+    "cases": 235,
+    "deaths": 7,
+    "recovered": 0,
+    "new": 9,
     "newDeaths": 0
   }
 ]

@@ -1,66 +1,66 @@
 {
   "Australian Capital Territory": {
-    "dateStr": "4/6/20",
-    "cases": 96,
+    "dateStr": "4/9/20",
+    "cases": 100,
     "deaths": 2,
-    "recovered": 40,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "New South Wales": {
-    "dateStr": "4/6/20",
-    "cases": 2637,
-    "deaths": 18,
-    "recovered": 4,
-    "new": 57,
-    "newDeaths": 2
-  },
-  "Northern Territory": {
-    "dateStr": "4/6/20",
-    "cases": 28,
-    "deaths": 0,
-    "recovered": 2,
+    "recovered": 47,
     "new": 1,
     "newDeaths": 0
   },
+  "New South Wales": {
+    "dateStr": "4/9/20",
+    "cases": 2773,
+    "deaths": 21,
+    "recovered": 4,
+    "new": 39,
+    "newDeaths": 0
+  },
+  "Northern Territory": {
+    "dateStr": "4/9/20",
+    "cases": 28,
+    "deaths": 0,
+    "recovered": 2,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Queensland": {
-    "dateStr": "4/6/20",
-    "cases": 921,
+    "dateStr": "4/9/20",
+    "cases": 953,
     "deaths": 4,
-    "recovered": 173,
-    "new": 14,
+    "recovered": 345,
+    "new": 10,
     "newDeaths": 0
   },
   "South Australia": {
-    "dateStr": "4/6/20",
-    "cases": 411,
-    "deaths": 0,
-    "recovered": 53,
-    "new": 4,
-    "newDeaths": 0
+    "dateStr": "4/9/20",
+    "cases": 420,
+    "deaths": 3,
+    "recovered": 120,
+    "new": 5,
+    "newDeaths": 1
   },
   "Tasmania": {
-    "dateStr": "4/6/20",
-    "cases": 86,
-    "deaths": 2,
-    "recovered": 26,
-    "new": 4,
+    "dateStr": "4/9/20",
+    "cases": 111,
+    "deaths": 3,
+    "recovered": 48,
+    "new": 13,
     "newDeaths": 0
   },
   "Victoria": {
-    "dateStr": "4/6/20",
-    "cases": 1158,
-    "deaths": 10,
-    "recovered": 620,
-    "new": 23,
-    "newDeaths": 2
+    "dateStr": "4/9/20",
+    "cases": 1228,
+    "deaths": 12,
+    "recovered": 736,
+    "new": 16,
+    "newDeaths": 0
   },
   "Western Australia": {
-    "dateStr": "4/6/20",
-    "cases": 460,
-    "deaths": 4,
-    "recovered": 162,
-    "new": 7,
-    "newDeaths": 1
+    "dateStr": "4/9/20",
+    "cases": 495,
+    "deaths": 6,
+    "recovered": 170,
+    "new": 14,
+    "newDeaths": 0
   }
 }
