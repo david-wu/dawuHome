@@ -1,29 +1,48 @@
 <div class="table-container">
     <mat-table [dataSource]="tableData$ | async" matSort (matSortChange)="onSortChange($event)">
-
         <ng-container matColumnDef="location">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Location</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+              <div>Location</div>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <div> {{element.location}} </div>
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="cases">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Cases</mat-header-cell>
-          <mat-cell *matCellDef="let element">{{ element.cases }}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <div>Cases</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div>{{ element.cases.toLocaleString() }}</div>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="new">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>New</mat-header-cell>
-          <mat-cell *matCellDef="let element">{{ element.new }}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <div>New</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div>{{ element.new.toLocaleString() }}</div>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="deaths">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Deaths</mat-header-cell>
-          <mat-cell *matCellDef="let element">{{ element.deaths }}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <div>Deaths</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div>{{ element.deaths.toLocaleString() }}</div>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="newDeaths">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>New Deaths</mat-header-cell>
-          <mat-cell *matCellDef="let element">{{ element.newDeaths }}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <div>New Deaths</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div>{{ element.newDeaths.toLocaleString() }}</div>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

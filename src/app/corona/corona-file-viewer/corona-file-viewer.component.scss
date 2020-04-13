@@ -3,6 +3,7 @@
 :host {
     display: block;
     position: relative;
+    padding-bottom: 5rem;
     .loading-overlay {
         position: absolute;
         top: 0;
@@ -54,4 +55,9 @@
     .hour-glass {
         font-size: 1rem;
     }
+}
+
+dwu-latest-points-viewer {
+    display: block;
+    padding: 0.5rem 1rem;
 }
