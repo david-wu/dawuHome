@@ -188,7 +188,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!selectedFileIds\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ fileName }}</div>\n    </div>\n</div>\n<div *ngIf=\"selectedFileIds && selectedFileIds.size\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ getHeaderText() }}</div>\n        <div class=\"loader\" [class.visible]=\"isLoading$ | async\">\n            <span class=\"material-icons hour-glass\">\n                hourglass_empty\n            </span>\n        </div>\n    </div>\n    <div class=\"population\">\n        <div>Total Population:</div>\n        <div\n            *ngIf=\"totalPopulation$ | async as population\"\n            class=\"population-count\"\n        >{{ population.toLocaleString() }}</div>\n    </div>\n</div>\n\n<ng-container *ngIf=\"selectedFileIds && (selectedFileIds.size > 0) && latestCoronaFilesWithFileId$ | async as coronaFilesWithFileId\">\n    <dwu-corona-compare-dashboard\n        *ngIf=\"isComparing\"\n        [coronaFilesWithFileId]=\"coronaFilesWithFileId\"\n        [filesById]=\"filesById\"\n        [populationsByFileId]=\"populationsByFileId$ | async\"\n    ></dwu-corona-compare-dashboard>\n\n    <dwu-corona-dashboard\n        *ngIf=\"!isComparing\"\n        [lockdownInfo]=\"getFirstSelectedFileLockdownInfo()\"\n        [coronaFile]=\"coronaFilesWithFileId[0][0]\"\n        [population]=\"totalPopulation$ | async\"\n        [disabledBarKeys]=\"disabledBarKeys\"\n        (disabledBarKeysChange)=\"disabledBarKeysChange.emit($event)\"\n        [disabledNormalKeys]=\"disabledNormalKeys\"\n        (disabledNormalKeysChange)=\"disabledNormalKeysChange.emit($event)\"\n        [isViewingNormalized]=\"isViewingNormalized\"\n        (isViewingNormalizedChange)=\"isViewingNormalizedChange.emit($event)\"\n        [isViewingLineChart]=\"isViewingLineChart\"\n        (isViewingLineChartChange)=\"isViewingLineChartChange.emit($event)\"\n    ></dwu-corona-dashboard>\n</ng-container>\n<div class=\"loading-overlay active\" [class.active]=\"isLoading$ | async\"></div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!selectedFileIds\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ fileName }}</div>\n    </div>\n</div>\n\n<dwu-latest-points-viewer\n    [locations]=\"locationsWithLatestPointData$ | async\"\n></dwu-latest-points-viewer>\n\n<div *ngIf=\"selectedFileIds && selectedFileIds.size\" class=\"header\">\n    <div class=\"header-main\">\n        <div>{{ getHeaderText() }}</div>\n        <div class=\"loader\" [class.visible]=\"isLoading$ | async\">\n            <span class=\"material-icons hour-glass\">\n                hourglass_empty\n            </span>\n        </div>\n    </div>\n    <div class=\"population\">\n        <div>Total Population:</div>\n        <div\n            *ngIf=\"totalPopulation$ | async as population\"\n            class=\"population-count\"\n        >{{ population.toLocaleString() }}</div>\n    </div>\n</div>\n\n<ng-container>\n    <dwu-corona-compare-dashboard\n        *ngIf=\"isComparing && latestCoronaFilesWithFileId$ | async as latestCoronaFilesWithFileId\"\n        [coronaFilesWithFileId]=\"latestCoronaFilesWithFileId\"\n        [filesById]=\"filesById\"\n        [populationsByFileId]=\"populationsByFileId$ | async\"\n    ></dwu-corona-compare-dashboard>\n\n    <dwu-corona-dashboard\n        *ngIf=\"!isComparing && firstCoronaFile$ | async as coronaFile\"\n        [lockdownInfo]=\"getFirstSelectedFileLockdownInfo()\"\n        [coronaFile]=\"coronaFile\"\n        [population]=\"totalPopulation$ | async\"\n        [disabledBarKeys]=\"disabledBarKeys\"\n        (disabledBarKeysChange)=\"disabledBarKeysChange.emit($event)\"\n        [disabledNormalKeys]=\"disabledNormalKeys\"\n        (disabledNormalKeysChange)=\"disabledNormalKeysChange.emit($event)\"\n        [isViewingNormalized]=\"isViewingNormalized\"\n        (isViewingNormalizedChange)=\"isViewingNormalizedChange.emit($event)\"\n        [isViewingLineChart]=\"isViewingLineChart\"\n        (isViewingLineChartChange)=\"isViewingLineChartChange.emit($event)\"\n    ></dwu-corona-dashboard>\n</ng-container>\n<div class=\"loading-overlay active\" [class.active]=\"isLoading$ | async\"></div>\n");
 
 /***/ }),
 
@@ -202,6 +202,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\" [class.expanded]=\"leftSideExpanded\">\n        <dwu-search-input\n            [searchText]=\"filterStr\"\n            (searchTextChange)=\"onFilterStringChange($event)\"\n            [placeholder]=\"'County, State, or Country'\"\n        ></dwu-search-input>\n        <div class=\"view-tabs\">\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.ALL\"\n                (click)=\"setSelectedTab(Tab.ALL)\"\n            >\n                All\n            </div>\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.SAVED\"\n                (click)=\"setSelectedTab(Tab.SAVED)\"\n            >\n                <div class=\"material-icons star active\">\n                    grade\n                </div>\n                <div>Saved</div>\n            </div>\n            <div\n                class=\"view-tab\"\n                [class.active]=\"selectedTab === Tab.COMPARE\"\n                (click)=\"setSelectedTab(Tab.COMPARE)\"\n            >\n                <div>Compare</div>\n            </div>\n        </div>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"this.onFilesByIdChange($event)\"\n            [fuzzFilterString]=\"filterStr\"\n            [disableOpening]=\"this.selectedTab === Tab.SAVED\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"(this.selectedTab === Tab.COMPARE) ? compareSelectedFileIds : fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"onSelectedFileIdsChange($event)\"\n            [rowIconTemplate]=\"rowIconTemplate\"\n            [perfMode]=\"true\"\n            [dragEnabled]=\"this.selectedTab === Tab.SAVED\"\n            [multiFileSelect]=\"selectedTab === Tab.COMPARE\"\n        ></dwu-file-explorer>\n        <div class=\"expander\" (click)=\"leftSideExpanded = !leftSideExpanded;\">\n            <span class=\"material-icons expander-icon\" [class.flipped]=\"leftSideExpanded\">\n                expand_more\n            </span>\n        </div>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileIds() as selectedFileId\">\n            <dwu-corona-file-viewer\n                [selectedFileIds]=\"getSelectedFileIds()\"\n                [locationsByFileId]=\"locationsByFileId\"\n                [filesById]=\"fileGroup.filesById\"\n                [isComparing]=\"selectedTab === Tab.COMPARE\"\n                [(disabledBarKeys)]=\"disabledBarKeys\"\n                [(disabledNormalKeys)]=\"disabledNormalKeys\"\n                [(isViewingNormalized)]=\"isViewingNormalized\"\n                [(isViewingLineChart)]=\"isViewingLineChart\"\n            ></dwu-corona-file-viewer>\n        </ng-container>\n    </div>\n    <ng-template #rowIconTemplate let-file=\"file\">\n        <div\n            *ngIf=\"lockdownDataByLocation[locationsByFileId[file.id]]\"\n            class=\"material-icons row-icon lock\"\n        >\n            lock\n        </div>\n\n        <div\n            *ngIf=\"locationsByFileId[file.id]\"\n            class=\"material-icons star clickable row-icon\"\n            [class.active]=\"favoriteFileIds.has(file.id)\"\n            (click)=\"toggleFavoriteFile(file, $event)\"\n        >\n            grade\n        </div>\n    </ng-template>\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/corona/latest-points-viewer/latest-points-viewer.component.html":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/corona/latest-points-viewer/latest-points-viewer.component.html ***!
+  \***********************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("lastest points viewer");
 
 /***/ }),
 
@@ -2532,11 +2545,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _src_assets_jh_corona_population_by_file_name_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @src/assets/jh-corona/population-by-file-name.json */ "./src/assets/jh-corona/population-by-file-name.json");
-var _src_assets_jh_corona_population_by_file_name_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! @src/assets/jh-corona/population-by-file-name.json */ "./src/assets/jh-corona/population-by-file-name.json", 1);
-/* harmony import */ var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json");
-var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpack_require__.t(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json", 1);
-/* harmony import */ var _services_corona_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/corona.service */ "./src/app/corona/services/corona.service.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _src_assets_jh_corona_population_by_file_name_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/assets/jh-corona/population-by-file-name.json */ "./src/assets/jh-corona/population-by-file-name.json");
+var _src_assets_jh_corona_population_by_file_name_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpack_require__.t(/*! @src/assets/jh-corona/population-by-file-name.json */ "./src/assets/jh-corona/population-by-file-name.json", 1);
+/* harmony import */ var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json");
+var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_6___namespace = /*#__PURE__*/__webpack_require__.t(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json", 1);
+/* harmony import */ var _services_corona_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/corona.service */ "./src/app/corona/services/corona.service.ts");
+
 
 
 
@@ -2559,54 +2575,66 @@ var CoronaFileViewerComponent = /** @class */ (function () {
         this.isViewingLineChart = false;
         this.isViewingLineChartChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.selectedFileIds$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
-        this.locationsByFileId$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
         this.filesById$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
+        this.locationsByFileId$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
         // public fileUrl: string;
-        this.lockdownDataByLocation = _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_5__;
-        // type: [location, fileId][]
-        var selectedlocationsWithFileId$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this.selectedFileIds$, this.locationsByFileId$, this.filesById$, function (fileIds, locationsByFileId, filesById) {
-            if (!fileIds || !locationsByFileId || !filesById) {
+        this.lockdownDataByLocation = _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_6__;
+        var coronaDataByFileId$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this.selectedFileIds$, this.locationsByFileId$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (_a) {
+            var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_a, 2), fileIdSet = _b[0], locationsByFileId = _b[1];
+            var fileIds = Array.from(fileIdSet);
+            var requests$ = fileIds.map(function (fileId) {
+                return _this.coronaService.getCoronaFileByLocation(locationsByFileId[fileId]);
+            });
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["forkJoin"])(requests$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (files) { return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["fromPairs"])(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["zip"])(fileIds, files)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["startWith"])(undefined));
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["shareReplay"])(1));
+        this.isLoading$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this.selectedFileIds$, coronaDataByFileId$, function (selectedFileIds, coronaDataByFileId) {
+            return Boolean(selectedFileIds && !coronaDataByFileId);
+        });
+        this.latestCoronaFilesWithFileId$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this.selectedFileIds$, coronaDataByFileId$, function (fileIdSet, coronaDataByFileId) {
+            if (!fileIdSet || !coronaDataByFileId) {
                 return;
             }
-            var locationsWithFileId = [];
-            Array.from(fileIds).forEach(function (fileId) {
-                var file = filesById[fileId];
-                var location = locationsByFileId[fileId];
-                if (location) {
-                    locationsWithFileId.push([location, file.id]);
-                }
+            return Array.from(fileIdSet).map(function (fileId) { return [coronaDataByFileId[fileId], fileId]; });
+        }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(Boolean));
+        this.firstCoronaFile$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this.selectedFileIds$, coronaDataByFileId$, function (fileIdSet, coronaDataByFileId) {
+            var selectedFileId = Array.from(fileIdSet)[0];
+            return coronaDataByFileId && coronaDataByFileId[selectedFileId];
+        }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(Boolean));
+        this.populationsByFileId$ = this.locationsByFileId$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (locationsByFileId) {
+            return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["mapValues"])(locationsByFileId, function (location) {
+                return _src_assets_jh_corona_population_by_file_name_json__WEBPACK_IMPORTED_MODULE_5__[location];
             });
-            return locationsWithFileId;
-        });
-        var coronaFilesWithFileId$ = selectedlocationsWithFileId$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (locationsWithFileId) {
-            if (!locationsWithFileId) {
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(undefined);
-            }
-            var requests$ = locationsWithFileId.map(function (locationWithFileId) {
-                return _this.coronaService.getCoronaFileByLocation(locationWithFileId[0]);
-            });
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["forkJoin"])(requests$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (files) {
-                return files.map(function (file, index) { return [file, locationsWithFileId[index][1]]; });
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["startWith"])(undefined));
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["shareReplay"])(1));
-        this.latestCoronaFilesWithFileId$ = coronaFilesWithFileId$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(Boolean));
-        this.populationsByFileId$ = selectedlocationsWithFileId$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (fileNamesWithFileId) {
-            var populationsByFileId = {};
-            fileNamesWithFileId.forEach(function (_a) {
-                var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_a, 2), coronaFileName = _b[0], fileId = _b[1];
-                populationsByFileId[fileId] = _src_assets_jh_corona_population_by_file_name_json__WEBPACK_IMPORTED_MODULE_4__[coronaFileName];
-            });
-            return populationsByFileId;
         }));
-        this.totalPopulation$ = selectedlocationsWithFileId$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (fileNamesWithFileId) {
-            if (!fileNamesWithFileId) {
-                return 0;
-            }
-            return fileNamesWithFileId.reduce(function (sum, _a) {
-                var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_a, 2), coronaFileName = _b[0], fileId = _b[1];
-                return sum + Number((_src_assets_jh_corona_population_by_file_name_json__WEBPACK_IMPORTED_MODULE_4__[coronaFileName] || 0));
+        this.totalPopulation$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this.selectedFileIds$, this.populationsByFileId$, function (fileIdSet, populationByFileId) {
+            return Array.from(fileIdSet).reduce(function (sum, fileId) {
+                return sum + Number((populationByFileId[fileId] || 0));
             }, 0);
-        }));
+        });
+        this.locationsWithLatestPointData$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this.selectedFileIds$, this.filesById$, this.locationsByFileId$, function (selectedFileIds, filesById, locationsByFileId) {
+            return Array.from(selectedFileIds)
+                .filter(function (fileId) { return filesById[fileId].childIds; })
+                .map(function (fileId) { return locationsByFileId[fileId]; });
+        });
+        // const latestPointDataByFileId$ = combineLatest(
+        //     this.selectedFileIds$,
+        //     this.filesById$,
+        //     this.locationsByFileId$,
+        // ).pipe(
+        //     filter((args: any[]) => every(args, Boolean)),
+        //     switchMap(([fileIdSet, filesById, locationsByFileId]: [Set<string>, Record<string, any>, Record<string, string>]) => {
+        //         const filesIds = Array.from(fileIdSet)
+        //             .filter((fileId: string) => filesById[fileId].childIds);
+        //         const requests$ = filesIds.map((fileId: string) => {
+        //            return this.coronaService.getCoronaLatestPoints(locationsByFileId[fileId]);
+        //         });
+        //         return forkJoin(requests$).pipe(
+        //             map((files: File[]) => fromPairs(zip(filesIds, files))),
+        //             startWith(undefined),
+        //         );
+        //     }),
+        //     shareReplay(1),
+        // );
+        // latestPointDataByFileId$.subscribe(console.log);
     }
     CoronaFileViewerComponent.prototype.ngOnChanges = function (changes) {
         if (changes.selectedFileIds) {
@@ -2632,17 +2660,17 @@ var CoronaFileViewerComponent = /** @class */ (function () {
         return this.lockdownDataByLocation && this.lockdownDataByLocation[location];
     };
     CoronaFileViewerComponent.ctorParameters = function () { return [
-        { type: _services_corona_service__WEBPACK_IMPORTED_MODULE_6__["CoronaService"] }
+        { type: _services_corona_service__WEBPACK_IMPORTED_MODULE_7__["CoronaService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], CoronaFileViewerComponent.prototype, "selectedFileIds", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-    ], CoronaFileViewerComponent.prototype, "locationsByFileId", void 0);
+    ], CoronaFileViewerComponent.prototype, "filesById", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-    ], CoronaFileViewerComponent.prototype, "filesById", void 0);
+    ], CoronaFileViewerComponent.prototype, "locationsByFileId", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], CoronaFileViewerComponent.prototype, "isComparing", void 0);
@@ -2716,7 +2744,7 @@ __webpack_require__.r(__webpack_exports__);
 var _src_assets_jh_corona_file_names_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! @src/assets/jh-corona/file-names.json */ "./src/assets/jh-corona/file-names.json", 1);
 /* harmony import */ var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json");
 var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpack_require__.t(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json", 1);
-/* harmony import */ var _src_app_corona_services_localStorage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/corona/services/localStorage.service */ "./src/app/corona/services/localStorage.service.ts");
+/* harmony import */ var _src_app_corona_services_local_storage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/corona/services/local-storage.service */ "./src/app/corona/services/local-storage.service.ts");
 /* harmony import */ var _file_explorer_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @file-explorer/index */ "./src/app/file-explorer/index.ts");
 /* harmony import */ var _src_app_corona_models_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/corona/models/index */ "./src/app/corona/models/index.ts");
 
@@ -2921,7 +2949,7 @@ var CoronaComponent = /** @class */ (function () {
         return (this.selectedTab === Tab.COMPARE) ? this.compareSelectedFileIds : this.fileGroup.selectedFileIds;
     };
     CoronaComponent.ctorParameters = function () { return [
-        { type: _src_app_corona_services_localStorage_service__WEBPACK_IMPORTED_MODULE_6__["LocalStorageService"] }
+        { type: _src_app_corona_services_local_storage_service__WEBPACK_IMPORTED_MODULE_6__["LocalStorageService"] }
     ]; };
     CoronaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2960,10 +2988,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/corona/corona.routes */ "./src/app/corona/corona.routes.ts");
 /* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
 /* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
-/* harmony import */ var _services_corona_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/corona.service */ "./src/app/corona/services/corona.service.ts");
-/* harmony import */ var _services_localStorage_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/localStorage.service */ "./src/app/corona/services/localStorage.service.ts");
-/* harmony import */ var _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./corona-compare-dashboard/corona-compare-dashboard.component */ "./src/app/corona/corona-compare-dashboard/corona-compare-dashboard.component.ts");
-/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
+/* harmony import */ var _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./corona-compare-dashboard/corona-compare-dashboard.component */ "./src/app/corona/corona-compare-dashboard/corona-compare-dashboard.component.ts");
+/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
+/* harmony import */ var _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./latest-points-viewer/latest-points-viewer.component */ "./src/app/corona/latest-points-viewer/latest-points-viewer.component.ts");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/index */ "./src/app/corona/services/index.ts");
 
 
 
@@ -2982,6 +3010,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+console.log('LatestPointsViewerComponent', _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_15__["LatestPointsViewerComponent"]);
+console.log('SERVICES', _services_index__WEBPACK_IMPORTED_MODULE_16__["SERVICES"]);
 var CoronaModule = /** @class */ (function () {
     function CoronaModule() {
     }
@@ -3001,13 +3031,11 @@ var CoronaModule = /** @class */ (function () {
             declarations: [
                 _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_8__["CoronaComponent"],
                 _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_9__["CoronaFileViewerComponent"],
-                _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_15__["CoronaCompareDashboardComponent"],
-                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__["CoronaDashboardComponent"],
+                _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_13__["CoronaCompareDashboardComponent"],
+                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_14__["CoronaDashboardComponent"],
+                _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_15__["LatestPointsViewerComponent"],
             ],
-            providers: [
-                _services_corona_service__WEBPACK_IMPORTED_MODULE_13__["CoronaService"],
-                _services_localStorage_service__WEBPACK_IMPORTED_MODULE_14__["LocalStorageService"],
-            ],
+            providers: tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](_services_index__WEBPACK_IMPORTED_MODULE_16__["SERVICES"]),
         })
     ], CoronaModule);
     return CoronaModule;
@@ -3042,6 +3070,62 @@ var CoronaRoutes = [
         redirectTo: '',
     },
 ];
+
+
+/***/ }),
+
+/***/ "./src/app/corona/latest-points-viewer/latest-points-viewer.component.scss":
+/*!*********************************************************************************!*\
+  !*** ./src/app/corona/latest-points-viewer/latest-points-viewer.component.scss ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Nvcm9uYS9sYXRlc3QtcG9pbnRzLXZpZXdlci9sYXRlc3QtcG9pbnRzLXZpZXdlci5jb21wb25lbnQuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/corona/latest-points-viewer/latest-points-viewer.component.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/corona/latest-points-viewer/latest-points-viewer.component.ts ***!
+  \*******************************************************************************/
+/*! exports provided: LatestPointsViewerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LatestPointsViewerComponent", function() { return LatestPointsViewerComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/index */ "./src/app/corona/services/index.ts");
+
+
+
+var LatestPointsViewerComponent = /** @class */ (function () {
+    // public latestPointDataByFileId$: Observable<string>;
+    function LatestPointsViewerComponent(
+    // public coronaService: CoronaService,
+    coronaStoreService) {
+        this.coronaStoreService = coronaStoreService;
+    }
+    LatestPointsViewerComponent.ctorParameters = function () { return [
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["CoronaStoreService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], LatestPointsViewerComponent.prototype, "locations", void 0);
+    LatestPointsViewerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-latest-points-viewer',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./latest-points-viewer.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/corona/latest-points-viewer/latest-points-viewer.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./latest-points-viewer.component.scss */ "./src/app/corona/latest-points-viewer/latest-points-viewer.component.scss")).default]
+        })
+    ], LatestPointsViewerComponent);
+    return LatestPointsViewerComponent;
+}());
+
 
 
 /***/ }),
@@ -3362,6 +3446,33 @@ var NormalKeys;
 
 /***/ }),
 
+/***/ "./src/app/corona/services/corona-store.service.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/corona/services/corona-store.service.ts ***!
+  \*********************************************************/
+/*! exports provided: CoronaStoreService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoronaStoreService", function() { return CoronaStoreService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var CoronaStoreService = /** @class */ (function () {
+    function CoronaStoreService() {
+    }
+    CoronaStoreService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], CoronaStoreService);
+    return CoronaStoreService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/corona/services/corona.service.ts":
 /*!***************************************************!*\
   !*** ./src/app/corona/services/corona.service.ts ***!
@@ -3381,12 +3492,16 @@ __webpack_require__.r(__webpack_exports__);
 var CoronaService = /** @class */ (function () {
     function CoronaService(http) {
         this.http = http;
+        this.latestPointsPath = '/assets/jh-corona/latest-points';
     }
     CoronaService.prototype.getCoronaFileUrl = function (location) {
         return "/assets/jh-corona/time-series/" + location + ".json";
     };
     CoronaService.prototype.getCoronaFileByLocation = function (location) {
         return this.http.get(this.getCoronaFileUrl(location));
+    };
+    CoronaService.prototype.getCoronaLatestPoints = function (location) {
+        return this.http.get(this.latestPointsPath + "/" + location + ".json");
     };
     CoronaService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -3401,10 +3516,46 @@ var CoronaService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/corona/services/localStorage.service.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/corona/services/localStorage.service.ts ***!
-  \*********************************************************/
+/***/ "./src/app/corona/services/index.ts":
+/*!******************************************!*\
+  !*** ./src/app/corona/services/index.ts ***!
+  \******************************************/
+/*! exports provided: SERVICES, CoronaStoreService, CoronaService, LocalStorageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SERVICES", function() { return SERVICES; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _corona_store_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./corona-store.service */ "./src/app/corona/services/corona-store.service.ts");
+/* harmony import */ var _corona_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./corona.service */ "./src/app/corona/services/corona.service.ts");
+/* harmony import */ var _local_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./local-storage.service */ "./src/app/corona/services/local-storage.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CoronaStoreService", function() { return _corona_store_service__WEBPACK_IMPORTED_MODULE_1__["CoronaStoreService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CoronaService", function() { return _corona_service__WEBPACK_IMPORTED_MODULE_2__["CoronaService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LocalStorageService", function() { return _local_storage_service__WEBPACK_IMPORTED_MODULE_3__["LocalStorageService"]; });
+
+
+
+
+
+var SERVICES = [
+    _corona_store_service__WEBPACK_IMPORTED_MODULE_1__["CoronaStoreService"],
+    _corona_service__WEBPACK_IMPORTED_MODULE_2__["CoronaService"],
+    _local_storage_service__WEBPACK_IMPORTED_MODULE_3__["LocalStorageService"],
+];
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/corona/services/local-storage.service.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/corona/services/local-storage.service.ts ***!
+  \**********************************************************/
 /*! exports provided: LocalStorageService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

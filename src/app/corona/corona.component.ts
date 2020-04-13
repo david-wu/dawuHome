@@ -15,7 +15,7 @@ import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-
 // import countryNamesByCode from '@src/assets/country-names-by-code.json';
 // import stateNamesByCode from '@src/assets/state-names-by-code.json';
 
-import { LocalStorageService } from '@src/app/corona/services/localStorage.service';
+import { LocalStorageService } from '@src/app/corona/services/local-storage.service';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
 import { NormalKeys } from '@src/app/corona/models/index';

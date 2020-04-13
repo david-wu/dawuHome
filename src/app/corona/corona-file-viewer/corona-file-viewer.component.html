@@ -3,6 +3,7 @@
         <div>{{ fileName }}</div>
     </div>
 </div>
+
 <div *ngIf="selectedFileIds && selectedFileIds.size" class="header">
     <div class="header-main">
         <div>{{ getHeaderText() }}</div>
@@ -21,18 +22,18 @@
     </div>
 </div>
 
-<ng-container *ngIf="selectedFileIds && (selectedFileIds.size > 0) && latestCoronaFilesWithFileId$ | async as coronaFilesWithFileId">
+<ng-container>
     <dwu-corona-compare-dashboard
-        *ngIf="isComparing"
-        [coronaFilesWithFileId]="coronaFilesWithFileId"
+        *ngIf="isComparing && latestCoronaFilesWithFileId$ | async as latestCoronaFilesWithFileId"
+        [coronaFilesWithFileId]="latestCoronaFilesWithFileId"
         [filesById]="filesById"
         [populationsByFileId]="populationsByFileId$ | async"
     ></dwu-corona-compare-dashboard>
 
     <dwu-corona-dashboard
-        *ngIf="!isComparing"
+        *ngIf="!isComparing && firstCoronaFile$ | async as coronaFile"
         [lockdownInfo]="getFirstSelectedFileLockdownInfo()"
-        [coronaFile]="coronaFilesWithFileId[0][0]"
+        [coronaFile]="coronaFile"
         [population]="totalPopulation$ | async"
         [disabledBarKeys]="disabledBarKeys"
         (disabledBarKeysChange)="disabledBarKeysChange.emit($event)"
@@ -44,4 +45,10 @@
         (isViewingLineChartChange)="isViewingLineChartChange.emit($event)"
     ></dwu-corona-dashboard>
 </ng-container>
+
+<dwu-latest-points-viewer
+    *ngIf="(locationsWithLatestPointData$ | async)?.length"
+    [locations]="locationsWithLatestPointData$ | async"
+></dwu-latest-points-viewer>
+
 <div class="loading-overlay active" [class.active]="isLoading$ | async"></div>

@@ -7,6 +7,8 @@ import { share } from 'rxjs/operators';
 @Injectable()
 export class CoronaService {
 
+    public latestPointsPath = '/assets/jh-corona/latest-points';
+
     constructor(public http: HttpClient) {}
 
     public getCoronaFileUrl(location: string): string {
@@ -15,6 +17,10 @@ export class CoronaService {
 
     public getCoronaFileByLocation(location: string): Observable<any> {
         return this.http.get(this.getCoronaFileUrl(location));
+    }
+
+    public getCoronaLatestPoints(location: string): Observable<any> {
+        return this.http.get(`${this.latestPointsPath}/${location}.json`);
     }
 
 }

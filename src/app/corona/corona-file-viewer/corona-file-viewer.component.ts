@@ -18,9 +18,14 @@ import {
     map,
     shareReplay,
 } from 'rxjs/operators';
-import { mapValues } from 'lodash';
+import {
+    every,
+    mapValues,
+    fromPairs,
+    zip,
+} from 'lodash';
 
-import populationDataByFileName from '@src/assets/jh-corona/population-by-file-name.json';
+import populationDataByLocation from '@src/assets/jh-corona/population-by-file-name.json';
 // import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
 import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
 import { FileGroup, FileType, File } from '@file-explorer/index';
@@ -35,8 +40,8 @@ import { CoronaService } from '../services/corona.service';
 export class CoronaFileViewerComponent {
 
     @Input() selectedFileIds: Set<string>;
-    @Input() locationsByFileId: Record<string, string>;
     @Input() filesById: Record<string, File>;
+    @Input() locationsByFileId: Record<string, string>;
     @Input() isComparing: boolean = false;
 
     @Input() disabledBarKeys = new Set<string>();
@@ -49,11 +54,13 @@ export class CoronaFileViewerComponent {
     @Output() isViewingLineChartChange = new EventEmitter<boolean>();
 
     public selectedFileIds$ = new BehaviorSubject<Set<string>>(undefined);
-    public locationsByFileId$ = new BehaviorSubject<Record<string, string>>(undefined);
     public filesById$ = new BehaviorSubject<Record<string, File>>(undefined);
+    public locationsByFileId$ = new BehaviorSubject<Record<string, string>>(undefined);
     public totalPopulation$: Observable<number>;
     public populationsByFileId$: Observable<any>;
+    public firstCoronaFile$: Observable<any>;
 
+    public locationsWithLatestPointData$: Observable<string[]>;
     public coronaFiles$: Observable<any>;
     public latestCoronaFilesWithFileId$: Observable<any>;
     public isLoading$: Observable<boolean>;
@@ -62,68 +69,102 @@ export class CoronaFileViewerComponent {
 
     constructor(public coronaService: CoronaService) {
 
-        // type: [location, fileId][]
-        const selectedlocationsWithFileId$: Observable<[string, string][]> = combineLatest(
+        const coronaDataByFileId$ = combineLatest(
             this.selectedFileIds$,
             this.locationsByFileId$,
-            this.filesById$,
-            (fileIds: Set<string>, locationsByFileId: Record<string, string>, filesById: Record<string, File>) => {
-                if (!fileIds || !locationsByFileId || !filesById) {
-                    return;
-                }
-
-                const locationsWithFileId = [];
-                Array.from(fileIds).forEach((fileId: string) => {
-                    const file = filesById[fileId];
-                    const location = locationsByFileId[fileId];
-                    if (location) {
-                        locationsWithFileId.push([location, file.id]);
-                    }
-                })
-                return locationsWithFileId;
-            },
-        );
-
-        const coronaFilesWithFileId$: Observable<[File, string][]> = selectedlocationsWithFileId$.pipe(
-            switchMap((locationsWithFileId: [string, string][]) => {
-                if (!locationsWithFileId) {
-                    return of(undefined);
-                }
-                const requests$ = locationsWithFileId.map((locationWithFileId: [string, string]) => {
-                   return this.coronaService.getCoronaFileByLocation(locationWithFileId[0]);
+        ).pipe(
+            switchMap(([fileIdSet, locationsByFileId]: [Set<string>, Record<string, string>]) => {
+                const fileIds = Array.from(fileIdSet);
+                const requests$ = fileIds.map((fileId: string) => {
+                   return this.coronaService.getCoronaFileByLocation(locationsByFileId[fileId]);
                 });
                 return forkJoin(requests$).pipe(
-                    map((files: File[]) => {
-                        return files.map((file: File, index: number) => [file, locationsWithFileId[index][1]]);
-                    }),
+                    map((files: File[]) => fromPairs(zip(fileIds, files))),
                     startWith(undefined),
                 );
             }),
             shareReplay(1),
         );
-        this.latestCoronaFilesWithFileId$ = coronaFilesWithFileId$.pipe(
-            filter(Boolean),
+        this.isLoading$ = combineLatest(
+            this.selectedFileIds$,
+            coronaDataByFileId$,
+            (selectedFileIds: Set<string>, coronaDataByFileId: Record<string, any>) => {
+                return Boolean(selectedFileIds && !coronaDataByFileId);
+            },
         );
-        this.populationsByFileId$ = selectedlocationsWithFileId$.pipe(
-            map((fileNamesWithFileId: [string, string][]) => {
-                const populationsByFileId = {};
-                fileNamesWithFileId.forEach(([coronaFileName, fileId]: [any, string]) => {
-                    populationsByFileId[fileId] = populationDataByFileName[coronaFileName];
+        this.latestCoronaFilesWithFileId$ = combineLatest(
+            this.selectedFileIds$,
+            coronaDataByFileId$,
+            (fileIdSet: Set<string>, coronaDataByFileId: Record<string, any>) => {
+                if (!fileIdSet || !coronaDataByFileId) {
+                    return;
+                }
+                return Array.from(fileIdSet).map((fileId) => [coronaDataByFileId[fileId], fileId])
+            }
+        ).pipe(filter(Boolean));
+        this.firstCoronaFile$ = combineLatest(
+            this.selectedFileIds$,
+            coronaDataByFileId$,
+            (fileIdSet: Set<string>, coronaDataByFileId: Record<string, any>) => {
+                const selectedFileId = Array.from(fileIdSet)[0];
+                return coronaDataByFileId && coronaDataByFileId[selectedFileId];
+            }
+        ).pipe(filter(Boolean));
+
+        this.populationsByFileId$ = this.locationsByFileId$.pipe(
+            map((locationsByFileId: Record<string, string>) => {
+                return mapValues(locationsByFileId, (location: string) => {
+                    return populationDataByLocation[location];
                 });
-                return populationsByFileId;
-            })
+            }),
+        );
+        this.totalPopulation$ = combineLatest(
+            this.selectedFileIds$,
+            this.populationsByFileId$,
+            (fileIdSet: Set<string>, populationByFileId: Record<string, number>) => {
+                return Array.from(fileIdSet).reduce((sum: number, fileId: string) => {
+                    return sum + Number((populationByFileId[fileId] || 0));
+                }, 0);
+            },
         );
 
-        this.totalPopulation$ = selectedlocationsWithFileId$.pipe(
-            map((fileNamesWithFileId: [string, string][]) => {
-                if (!fileNamesWithFileId) {
-                    return 0;
-                }
-                return fileNamesWithFileId.reduce((sum: number, [coronaFileName, fileId]: [any, string]) => {
-                    return sum + Number((populationDataByFileName[coronaFileName] || 0));
-                }, 0);
-            }),
-        )
+        this.locationsWithLatestPointData$ = combineLatest(
+            this.selectedFileIds$,
+            this.filesById$,
+            this.locationsByFileId$,
+            (
+                selectedFileIds: Set<string>,
+                filesById: Record<string, File>,
+                locationsByFileId: Record<string, string>,
+            ) => {
+                return Array.from(selectedFileIds)
+                    .filter((fileId: string) => filesById[fileId].childIds)
+                    .map((fileId: string) => locationsByFileId[fileId]);
+            }
+        );
+
+        // const latestPointDataByFileId$ = combineLatest(
+        //     this.selectedFileIds$,
+        //     this.filesById$,
+        //     this.locationsByFileId$,
+        // ).pipe(
+        //     filter((args: any[]) => every(args, Boolean)),
+        //     switchMap(([fileIdSet, filesById, locationsByFileId]: [Set<string>, Record<string, any>, Record<string, string>]) => {
+        //         const filesIds = Array.from(fileIdSet)
+        //             .filter((fileId: string) => filesById[fileId].childIds);
+
+        //         const requests$ = filesIds.map((fileId: string) => {
+        //            return this.coronaService.getCoronaLatestPoints(locationsByFileId[fileId]);
+        //         });
+        //         return forkJoin(requests$).pipe(
+        //             map((files: File[]) => fromPairs(zip(filesIds, files))),
+        //             startWith(undefined),
+        //         );
+        //     }),
+        //     shareReplay(1),
+        // );
+        // latestPointDataByFileId$.subscribe(console.log);
+
     }
 
     public ngOnChanges(changes) {
@@ -151,5 +192,7 @@ export class CoronaFileViewerComponent {
         const location = this.locationsByFileId && this.locationsByFileId[fileId];
         return this.lockdownDataByLocation && this.lockdownDataByLocation[location]
     }
+
+
 
 }

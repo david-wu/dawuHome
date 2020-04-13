@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.table-container {
+    max-height: 15rem;
+    overflow: auto;
+    mat-table {
+        width: 100%;
+    }
+}

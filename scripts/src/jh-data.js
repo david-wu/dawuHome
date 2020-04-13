@@ -417,7 +417,7 @@ module.exports = class JhData {
     }
 
     writeLastPointData(lastPointData) {
-        const dirPath = path.join(targetPath, 'lastest-points', );
+        const dirPath = path.join(targetPath, 'latest-points', );
         execSync(`mkdir -p ${dirPath}`);
         _.each(lastPointData, (lastPointIndex, indexFileName) => {
             const filePath = path.join(dirPath, `${indexFileName}.json`);

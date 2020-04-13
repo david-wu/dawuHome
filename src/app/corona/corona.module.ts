@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
@@ -14,16 +16,17 @@ import { CoronaRoutes } from '@src/app/corona/corona.routes';
 // import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
 import { CommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
-import { CoronaService } from './services/corona.service';
-import { LocalStorageService } from './services/localStorage.service';
 import { CoronaCompareDashboardComponent } from './corona-compare-dashboard/corona-compare-dashboard.component';
 import { CoronaDashboardComponent } from './corona-dashboard/corona-dashboard.component';
+import { LatestPointsViewerComponent } from './latest-points-viewer/latest-points-viewer.component';
+import { SERVICES } from './services/index';
 
 @NgModule({
     imports: [
         RouterModule.forChild(CoronaRoutes),
         FormsModule,
         // FuzzAppModule,
+        MatTableModule,
         HttpClientModule,
         BrowserModule,
         AppRoutingModule,
@@ -36,10 +39,10 @@ import { CoronaDashboardComponent } from './corona-dashboard/corona-dashboard.co
         CoronaFileViewerComponent,
         CoronaCompareDashboardComponent,
         CoronaDashboardComponent,
+        LatestPointsViewerComponent,
     ],
     providers: [
-        CoronaService,
-        LocalStorageService,
+        ...SERVICES,
     ],
 })
 export class CoronaModule { }

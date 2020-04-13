@@ -1,0 +1,14 @@
+
+import { CoronaStoreService } from './corona-store.service';
+import { CoronaService } from './corona.service';
+import { LocalStorageService } from './local-storage.service';
+
+export const SERVICES = [
+    CoronaStoreService,
+    CoronaService,
+    LocalStorageService,
+];
+
+export * from './corona-store.service';
+export * from './corona.service';
+export * from './local-storage.service';
