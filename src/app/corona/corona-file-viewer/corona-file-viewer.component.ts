@@ -140,31 +140,8 @@ export class CoronaFileViewerComponent {
                 return Array.from(selectedFileIds)
                     .filter((fileId: string) => filesById[fileId].childIds)
                     .map((fileId: string) => locationsByFileId[fileId]);
-            }
+            },
         );
-
-        // const latestPointDataByFileId$ = combineLatest(
-        //     this.selectedFileIds$,
-        //     this.filesById$,
-        //     this.locationsByFileId$,
-        // ).pipe(
-        //     filter((args: any[]) => every(args, Boolean)),
-        //     switchMap(([fileIdSet, filesById, locationsByFileId]: [Set<string>, Record<string, any>, Record<string, string>]) => {
-        //         const filesIds = Array.from(fileIdSet)
-        //             .filter((fileId: string) => filesById[fileId].childIds);
-
-        //         const requests$ = filesIds.map((fileId: string) => {
-        //            return this.coronaService.getCoronaLatestPoints(locationsByFileId[fileId]);
-        //         });
-        //         return forkJoin(requests$).pipe(
-        //             map((files: File[]) => fromPairs(zip(filesIds, files))),
-        //             startWith(undefined),
-        //         );
-        //     }),
-        //     shareReplay(1),
-        // );
-        // latestPointDataByFileId$.subscribe(console.log);
-
     }
 
     public ngOnChanges(changes) {

@@ -25,7 +25,6 @@ import {
 } from 'lodash';
 
 import populationDataByFileName from '@src/assets/jh-corona/population-by-file-name.json';
-// import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
 import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
@@ -42,7 +41,6 @@ import {
 export class LatestPointsViewerComponent {
 
     @Input() locations: string[];
-    // public latestPointDataByFileId$: Observable<string>;
 
     public tableData$: Observable<any[]>;
     public displayedColumns = ['location', 'cases', 'new', 'deaths', 'newDeaths'];

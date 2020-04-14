@@ -66,21 +66,21 @@
             ></dwu-corona-file-viewer>
         </ng-container>
     </div>
-    <ng-template #rowIconTemplate let-file="file">
-        <div
-            *ngIf="lockdownDataByLocation[locationsByFileId[file.id]]"
-            class="material-icons row-icon lock"
-        >
-            lock
-        </div>
-
-        <div
-            *ngIf="locationsByFileId[file.id]"
-            class="material-icons star clickable row-icon"
-            [class.active]="favoriteFileIds.has(file.id)"
-            (click)="toggleFavoriteFile(file, $event)"
-        >
-            grade
-        </div>
-    </ng-template>
 </div>
+
+<ng-template #rowIconTemplate let-file="file">
+    <div
+        *ngIf="lockdownDataByLocation[locationsByFileId[file.id]]"
+        class="material-icons row-icon lock"
+    >
+        lock
+    </div>
+    <div
+        *ngIf="locationsByFileId[file.id]"
+        class="material-icons star clickable row-icon"
+        [class.active]="favoriteFileIds.has(file.id)"
+        (click)="toggleFavoriteFile(file, $event)"
+    >
+        grade
+    </div>
+</ng-template>
