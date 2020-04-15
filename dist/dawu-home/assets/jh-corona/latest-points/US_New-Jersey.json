@@ -1,174 +1,174 @@
 {
   "Atlantic": {
-    "dateStr": "4/13/20",
-    "cases": 267,
-    "deaths": 8,
+    "dateStr": "4/14/20",
+    "cases": 284,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 17,
+    "newDeaths": 3
+  },
+  "Bergen": {
+    "dateStr": "4/14/20",
+    "cases": 10426,
+    "deaths": 550,
+    "recovered": 0,
+    "new": 334,
+    "newDeaths": 68
+  },
+  "Burlington": {
+    "dateStr": "4/14/20",
+    "cases": 1207,
+    "deaths": 28,
+    "recovered": 0,
+    "new": 52,
+    "newDeaths": 4
+  },
+  "Camden": {
+    "dateStr": "4/14/20",
+    "cases": 1477,
+    "deaths": 41,
+    "recovered": 0,
+    "new": 76,
+    "newDeaths": 6
+  },
+  "Cape May": {
+    "dateStr": "4/14/20",
+    "cases": 169,
+    "deaths": 10,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 1
+  },
+  "Cumberland": {
+    "dateStr": "4/14/20",
+    "cases": 201,
+    "deaths": 3,
     "recovered": 0,
     "new": 14,
     "newDeaths": 0
   },
-  "Bergen": {
-    "dateStr": "4/13/20",
-    "cases": 10092,
-    "deaths": 482,
-    "recovered": 0,
-    "new": 308,
-    "newDeaths": 29
-  },
-  "Burlington": {
-    "dateStr": "4/13/20",
-    "cases": 1155,
-    "deaths": 24,
-    "recovered": 0,
-    "new": 60,
-    "newDeaths": 1
-  },
-  "Camden": {
-    "dateStr": "4/13/20",
-    "cases": 1401,
-    "deaths": 35,
-    "recovered": 0,
-    "new": 131,
-    "newDeaths": 3
-  },
-  "Cape May": {
-    "dateStr": "4/13/20",
-    "cases": 164,
-    "deaths": 9,
-    "recovered": 0,
-    "new": 19,
-    "newDeaths": 0
-  },
-  "Cumberland": {
-    "dateStr": "4/13/20",
-    "cases": 187,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 22,
-    "newDeaths": 0
-  },
   "Essex": {
-    "dateStr": "4/13/20",
-    "cases": 7634,
-    "deaths": 433,
+    "dateStr": "4/14/20",
+    "cases": 8212,
+    "deaths": 535,
     "recovered": 0,
-    "new": 224,
-    "newDeaths": 5
+    "new": 578,
+    "newDeaths": 102
   },
   "Gloucester": {
-    "dateStr": "4/13/20",
-    "cases": 566,
-    "deaths": 9,
-    "recovered": 0,
-    "new": 34,
-    "newDeaths": 0
-  },
-  "Hudson": {
-    "dateStr": "4/13/20",
-    "cases": 7879,
-    "deaths": 236,
-    "recovered": 0,
-    "new": 410,
-    "newDeaths": 10
-  },
-  "Hunterdon": {
-    "dateStr": "4/13/20",
-    "cases": 325,
+    "dateStr": "4/14/20",
+    "cases": 587,
     "deaths": 11,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
-  },
-  "Mercer": {
-    "dateStr": "4/13/20",
-    "cases": 1646,
-    "deaths": 53,
-    "recovered": 0,
-    "new": 79,
-    "newDeaths": 3
-  },
-  "Middlesex": {
-    "dateStr": "4/13/20",
-    "cases": 5987,
-    "deaths": 204,
-    "recovered": 0,
-    "new": 294,
-    "newDeaths": 11
-  },
-  "Monmouth": {
-    "dateStr": "4/13/20",
-    "cases": 3875,
-    "deaths": 127,
-    "recovered": 0,
-    "new": 90,
-    "newDeaths": 4
-  },
-  "Morris": {
-    "dateStr": "4/13/20",
-    "cases": 3225,
-    "deaths": 162,
-    "recovered": 0,
-    "new": 126,
-    "newDeaths": 0
-  },
-  "Ocean": {
-    "dateStr": "4/13/20",
-    "cases": 3593,
-    "deaths": 141,
-    "recovered": 0,
-    "new": 39,
-    "newDeaths": 3
-  },
-  "Passaic": {
-    "dateStr": "4/13/20",
-    "cases": 5950,
-    "deaths": 136,
-    "recovered": 0,
-    "new": 360,
-    "newDeaths": 5
-  },
-  "Salem": {
-    "dateStr": "4/13/20",
-    "cases": 66,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Somerset": {
-    "dateStr": "4/13/20",
-    "cases": 1809,
-    "deaths": 85,
-    "recovered": 0,
-    "new": 77,
-    "newDeaths": 6
-  },
-  "Sussex": {
-    "dateStr": "4/13/20",
-    "cases": 508,
-    "deaths": 38,
-    "recovered": 0,
-    "new": 25,
-    "newDeaths": 3
-  },
-  "Union": {
-    "dateStr": "4/13/20",
-    "cases": 6636,
-    "deaths": 217,
-    "recovered": 0,
-    "new": 456,
-    "newDeaths": 8
-  },
-  "Warren": {
-    "dateStr": "4/13/20",
-    "cases": 416,
-    "deaths": 24,
     "recovered": 0,
     "new": 21,
     "newDeaths": 2
   },
+  "Hudson": {
+    "dateStr": "4/14/20",
+    "cases": 8242,
+    "deaths": 277,
+    "recovered": 0,
+    "new": 363,
+    "newDeaths": 41
+  },
+  "Hunterdon": {
+    "dateStr": "4/14/20",
+    "cases": 349,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 24,
+    "newDeaths": 0
+  },
+  "Mercer": {
+    "dateStr": "4/14/20",
+    "cases": 1731,
+    "deaths": 71,
+    "recovered": 0,
+    "new": 85,
+    "newDeaths": 18
+  },
+  "Middlesex": {
+    "dateStr": "4/14/20",
+    "cases": 6313,
+    "deaths": 216,
+    "recovered": 0,
+    "new": 326,
+    "newDeaths": 12
+  },
+  "Monmouth": {
+    "dateStr": "4/14/20",
+    "cases": 4003,
+    "deaths": 145,
+    "recovered": 0,
+    "new": 128,
+    "newDeaths": 18
+  },
+  "Morris": {
+    "dateStr": "4/14/20",
+    "cases": 3424,
+    "deaths": 192,
+    "recovered": 0,
+    "new": 199,
+    "newDeaths": 30
+  },
+  "Ocean": {
+    "dateStr": "4/14/20",
+    "cases": 3833,
+    "deaths": 149,
+    "recovered": 0,
+    "new": 240,
+    "newDeaths": 8
+  },
+  "Passaic": {
+    "dateStr": "4/14/20",
+    "cases": 6438,
+    "deaths": 156,
+    "recovered": 0,
+    "new": 488,
+    "newDeaths": 20
+  },
+  "Salem": {
+    "dateStr": "4/14/20",
+    "cases": 73,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Somerset": {
+    "dateStr": "4/14/20",
+    "cases": 1911,
+    "deaths": 91,
+    "recovered": 0,
+    "new": 102,
+    "newDeaths": 6
+  },
+  "Sussex": {
+    "dateStr": "4/14/20",
+    "cases": 535,
+    "deaths": 39,
+    "recovered": 0,
+    "new": 27,
+    "newDeaths": 1
+  },
+  "Union": {
+    "dateStr": "4/14/20",
+    "cases": 7265,
+    "deaths": 238,
+    "recovered": 0,
+    "new": 629,
+    "newDeaths": 21
+  },
+  "Warren": {
+    "dateStr": "4/14/20",
+    "cases": 442,
+    "deaths": 25,
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 1
+  },
   "Out of NJ": {
-    "dateStr": "4/13/20",
+    "dateStr": "4/14/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -176,7 +176,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "4/13/20",
+    "dateStr": "4/14/20",
     "cases": 4866,
     "deaths": 247,
     "recovered": 0,
