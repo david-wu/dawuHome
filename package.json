@@ -12,7 +12,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "corona": "node ./scripts/src/splitFile.js;"
+    "corona": "node ./scripts/src/splitFile.js;",
+    "pushMaster": "git subtree split --prefix dist/dawu-home -b master;git checkout master;git push --set-upstream prod master;git checkout develop;"
   },
   "private": true,
   "dependencies": {

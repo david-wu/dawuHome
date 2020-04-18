@@ -1,70 +1,70 @@
 {
   "Fairfield": {
-    "dateStr": "4/14/20",
-    "cases": 6213,
-    "deaths": 287,
+    "dateStr": "4/17/20",
+    "cases": 7146,
+    "deaths": 425,
     "recovered": 0,
-    "new": 209,
-    "newDeaths": 25
+    "new": 330,
+    "newDeaths": 19
   },
   "Hartford": {
-    "dateStr": "4/14/20",
-    "cases": 2370,
-    "deaths": 153,
+    "dateStr": "4/17/20",
+    "cases": 3015,
+    "deaths": 266,
     "recovered": 0,
-    "new": 127,
-    "newDeaths": 20
+    "new": 156,
+    "newDeaths": 23
   },
   "Litchfield": {
-    "dateStr": "4/14/20",
-    "cases": 460,
-    "deaths": 29,
+    "dateStr": "4/17/20",
+    "cases": 569,
+    "deaths": 46,
     "recovered": 0,
-    "new": 14,
-    "newDeaths": 5
+    "new": 34,
+    "newDeaths": 2
   },
   "Middlesex": {
-    "dateStr": "4/14/20",
-    "cases": 355,
-    "deaths": 21,
+    "dateStr": "4/17/20",
+    "cases": 422,
+    "deaths": 32,
     "recovered": 0,
-    "new": 16,
+    "new": 28,
     "newDeaths": 2
   },
   "New Haven": {
-    "dateStr": "4/14/20",
-    "cases": 3543,
-    "deaths": 151,
+    "dateStr": "4/17/20",
+    "cases": 4520,
+    "deaths": 229,
     "recovered": 0,
-    "new": 185,
-    "newDeaths": 16
+    "new": 357,
+    "newDeaths": 15
   },
   "New London": {
-    "dateStr": "4/14/20",
-    "cases": 227,
-    "deaths": 7,
+    "dateStr": "4/17/20",
+    "cases": 292,
+    "deaths": 10,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Tolland": {
-    "dateStr": "4/14/20",
-    "cases": 201,
-    "deaths": 18,
-    "recovered": 0,
-    "new": 6,
+    "new": 37,
     "newDeaths": 1
   },
-  "Windham": {
-    "dateStr": "4/14/20",
-    "cases": 87,
-    "deaths": 1,
+  "Tolland": {
+    "dateStr": "4/17/20",
+    "cases": 258,
+    "deaths": 24,
     "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
+    "new": 17,
+    "newDeaths": 2
+  },
+  "Windham": {
+    "dateStr": "4/17/20",
+    "cases": 92,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 1
   },
   "Out of CT": {
-    "dateStr": "4/14/20",
+    "dateStr": "4/17/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -72,11 +72,11 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "4/14/20",
-    "cases": 533,
+    "dateStr": "4/17/20",
+    "cases": 537,
     "deaths": 52,
     "recovered": 0,
-    "new": 32,
+    "new": 0,
     "newDeaths": 0
   }
 }
