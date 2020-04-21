@@ -681,18 +681,42 @@
   },
   {
     "dateStr": "4/16/20",
-    "cases": 1492,
+    "cases": 1349,
     "deaths": 19,
     "recovered": 0,
-    "new": 143,
+    "new": 0,
     "newDeaths": 1
   },
   {
     "dateStr": "4/17/20",
-    "cases": 1492,
+    "cases": 1349,
     "deaths": 19,
     "recovered": 0,
     "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "4/18/20",
+    "cases": 1465,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 116,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "4/19/20",
+    "cases": 1638,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 173,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "4/20/20",
+    "cases": 1675,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 37,
     "newDeaths": 0
   }
 ]
