@@ -561,74 +561,74 @@
   },
   {
     "dateStr": "4/1/20",
-    "cases": 340,
+    "cases": 327,
     "deaths": 5,
     "recovered": 0,
-    "new": 25,
+    "new": 12,
     "newDeaths": 1
   },
   {
     "dateStr": "4/2/20",
-    "cases": 388,
+    "cases": 373,
     "deaths": 6,
     "recovered": 0,
-    "new": 48,
+    "new": 46,
     "newDeaths": 1
   },
   {
     "dateStr": "4/3/20",
-    "cases": 534,
+    "cases": 490,
     "deaths": 10,
     "recovered": 0,
-    "new": 146,
+    "new": 117,
     "newDeaths": 4
   },
   {
     "dateStr": "4/4/20",
-    "cases": 534,
-    "deaths": 10,
+    "cases": 506,
+    "deaths": 11,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 16,
+    "newDeaths": 1
   },
   {
     "dateStr": "4/5/20",
-    "cases": 670,
+    "cases": 624,
     "deaths": 12,
     "recovered": 0,
-    "new": 136,
-    "newDeaths": 2
+    "new": 118,
+    "newDeaths": 1
   },
   {
     "dateStr": "4/6/20",
-    "cases": 757,
+    "cases": 686,
     "deaths": 12,
     "recovered": 0,
-    "new": 87,
+    "new": 62,
     "newDeaths": 0
   },
   {
     "dateStr": "4/7/20",
-    "cases": 876,
+    "cases": 794,
     "deaths": 13,
     "recovered": 0,
-    "new": 119,
+    "new": 108,
     "newDeaths": 1
   },
   {
     "dateStr": "4/8/20",
-    "cases": 902,
+    "cases": 821,
     "deaths": 13,
     "recovered": 0,
-    "new": 26,
+    "new": 27,
     "newDeaths": 0
   },
   {
     "dateStr": "4/9/20",
-    "cases": 902,
+    "cases": 865,
     "deaths": 16,
     "recovered": 0,
-    "new": 0,
+    "new": 44,
     "newDeaths": 3
   },
   {
@@ -636,7 +636,7 @@
     "cases": 1081,
     "deaths": 17,
     "recovered": 0,
-    "new": 179,
+    "new": 216,
     "newDeaths": 1
   },
   {
@@ -718,5 +718,21 @@
     "recovered": 0,
     "new": 126,
     "newDeaths": 3
+  },
+  {
+    "dateStr": "4/21/20",
+    "cases": 1971,
+    "deaths": 58,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "4/22/20",
+    "cases": 2210,
+    "deaths": 71,
+    "recovered": 0,
+    "new": 239,
+    "newDeaths": 13
   }
 ]
