@@ -665,39 +665,39 @@
   },
   {
     "dateStr": "4/14/20",
-    "cases": 130253,
+    "cases": 129257,
     "deaths": 15729,
     "recovered": 28805,
-    "new": 5955,
+    "new": 4959,
     "newDeaths": 762
   },
   {
     "dateStr": "4/15/20",
-    "cases": 133470,
+    "cases": 132473,
     "deaths": 17167,
     "recovered": 30955,
-    "new": 3217,
+    "new": 3216,
     "newDeaths": 1438
   },
   {
     "dateStr": "4/16/20",
-    "cases": 145960,
+    "cases": 144944,
     "deaths": 17920,
     "recovered": 32812,
-    "new": 12490,
+    "new": 12471,
     "newDeaths": 753
   },
   {
     "dateStr": "4/17/20",
-    "cases": 147969,
+    "cases": 146923,
     "deaths": 18681,
     "recovered": 34420,
-    "new": 2009,
+    "new": 1979,
     "newDeaths": 761
   },
   {
     "dateStr": "4/18/20",
-    "cases": 147969,
+    "cases": 146923,
     "deaths": 19323,
     "recovered": 35983,
     "new": 0,
@@ -705,34 +705,66 @@
   },
   {
     "dateStr": "4/19/20",
-    "cases": 152894,
+    "cases": 151808,
     "deaths": 19718,
     "recovered": 36578,
-    "new": 4925,
+    "new": 4885,
     "newDeaths": 395
   },
   {
     "dateStr": "4/20/20",
-    "cases": 155275,
+    "cases": 154188,
     "deaths": 20265,
     "recovered": 37409,
-    "new": 2381,
+    "new": 2380,
     "newDeaths": 547
   },
   {
     "dateStr": "4/21/20",
-    "cases": 158050,
+    "cases": 156921,
     "deaths": 20796,
     "recovered": 39181,
-    "new": 2775,
+    "new": 2733,
     "newDeaths": 531
   },
   {
     "dateStr": "4/22/20",
-    "cases": 158050,
+    "cases": 156921,
     "deaths": 21340,
     "recovered": 40657,
     "new": 0,
     "newDeaths": 544
+  },
+  {
+    "dateStr": "4/23/20",
+    "cases": 157026,
+    "deaths": 21856,
+    "recovered": 42088,
+    "new": 105,
+    "newDeaths": 516
+  },
+  {
+    "dateStr": "4/24/20",
+    "cases": 158636,
+    "deaths": 22245,
+    "recovered": 43493,
+    "new": 1610,
+    "newDeaths": 389
+  },
+  {
+    "dateStr": "4/25/20",
+    "cases": 160292,
+    "deaths": 22614,
+    "recovered": 44594,
+    "new": 1656,
+    "newDeaths": 369
+  },
+  {
+    "dateStr": "4/26/20",
+    "cases": 160847,
+    "deaths": 22856,
+    "recovered": 44903,
+    "new": 555,
+    "newDeaths": 242
   }
 ]
