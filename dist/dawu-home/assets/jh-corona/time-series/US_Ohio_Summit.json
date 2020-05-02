@@ -766,5 +766,37 @@
     "recovered": 0,
     "new": 10,
     "newDeaths": 3
+  },
+  {
+    "dateStr": "4/27/20",
+    "cases": 500,
+    "deaths": 39,
+    "recovered": 0,
+    "new": 15,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "4/28/20",
+    "cases": 542,
+    "deaths": 43,
+    "recovered": 0,
+    "new": 42,
+    "newDeaths": 4
+  },
+  {
+    "dateStr": "4/29/20",
+    "cases": 584,
+    "deaths": 49,
+    "recovered": 0,
+    "new": 42,
+    "newDeaths": 6
+  },
+  {
+    "dateStr": "4/30/20",
+    "cases": 608,
+    "deaths": 49,
+    "recovered": 0,
+    "new": 24,
+    "newDeaths": 0
   }
 ]

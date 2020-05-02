@@ -745,26 +745,58 @@
   },
   {
     "dateStr": "4/24/20",
-    "cases": 219764,
+    "cases": 213024,
     "deaths": 22524,
     "recovered": 92355,
-    "new": 6740,
+    "new": 0,
     "newDeaths": 367
   },
   {
     "dateStr": "4/25/20",
-    "cases": 223759,
+    "cases": 213024,
     "deaths": 22902,
     "recovered": 95708,
-    "new": 3995,
+    "new": 0,
     "newDeaths": 378
   },
   {
     "dateStr": "4/26/20",
-    "cases": 226629,
+    "cases": 213024,
     "deaths": 23190,
-    "recovered": 117727,
-    "new": 2870,
+    "recovered": 98372,
+    "new": 0,
     "newDeaths": 288
+  },
+  {
+    "dateStr": "4/27/20",
+    "cases": 213024,
+    "deaths": 23521,
+    "recovered": 100875,
+    "new": 0,
+    "newDeaths": 331
+  },
+  {
+    "dateStr": "4/28/20",
+    "cases": 213024,
+    "deaths": 23822,
+    "recovered": 102548,
+    "new": 0,
+    "newDeaths": 301
+  },
+  {
+    "dateStr": "4/29/20",
+    "cases": 213024,
+    "deaths": 24275,
+    "recovered": 108947,
+    "new": 0,
+    "newDeaths": 453
+  },
+  {
+    "dateStr": "4/30/20",
+    "cases": 213435,
+    "deaths": 24543,
+    "recovered": 112050,
+    "new": 411,
+    "newDeaths": 268
   }
 ]
