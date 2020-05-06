@@ -1,30 +1,30 @@
 {
   "Barbour": {
-    "dateStr": "4/30/20",
-    "cases": 5,
+    "dateStr": "5/5/20",
+    "cases": 6,
     "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Berkeley": {
+    "dateStr": "5/5/20",
+    "cases": 166,
+    "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Berkeley": {
-    "dateStr": "4/30/20",
-    "cases": 145,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
   "Boone": {
-    "dateStr": "4/30/20",
-    "cases": 3,
+    "dateStr": "5/5/20",
+    "cases": 6,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Braxton": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -32,7 +32,7 @@
     "newDeaths": 0
   },
   "Brooke": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -40,15 +40,15 @@
     "newDeaths": 0
   },
   "Cabell": {
-    "dateStr": "4/30/20",
-    "cases": 42,
+    "dateStr": "5/5/20",
+    "cases": 44,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Calhoun": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -56,7 +56,7 @@
     "newDeaths": 0
   },
   "Clay": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -64,7 +64,7 @@
     "newDeaths": 0
   },
   "Doddridge": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -72,95 +72,95 @@
     "newDeaths": 0
   },
   "Fayette": {
-    "dateStr": "4/30/20",
-    "cases": 13,
+    "dateStr": "5/5/20",
+    "cases": 20,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 4,
     "newDeaths": 0
   },
   "Gilmer": {
-    "dateStr": "4/30/20",
-    "cases": 2,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Grant": {
-    "dateStr": "4/30/20",
-    "cases": 1,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Greenbrier": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Hampshire": {
-    "dateStr": "4/30/20",
+  "Grant": {
+    "dateStr": "5/5/20",
+    "cases": 3,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Greenbrier": {
+    "dateStr": "5/5/20",
     "cases": 7,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Hampshire": {
+    "dateStr": "5/5/20",
+    "cases": 8,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Hancock": {
-    "dateStr": "4/30/20",
-    "cases": 10,
+    "dateStr": "5/5/20",
+    "cases": 11,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Hardy": {
-    "dateStr": "4/30/20",
-    "cases": 5,
+    "dateStr": "5/5/20",
+    "cases": 9,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Harrison": {
-    "dateStr": "4/30/20",
-    "cases": 30,
+    "dateStr": "5/5/20",
+    "cases": 31,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Jackson": {
-    "dateStr": "4/30/20",
-    "cases": 130,
-    "deaths": 13,
+    "dateStr": "5/5/20",
+    "cases": 135,
+    "deaths": 15,
     "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Jefferson": {
-    "dateStr": "4/30/20",
-    "cases": 79,
+    "dateStr": "5/5/20",
+    "cases": 83,
     "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Kanawha": {
+    "dateStr": "5/5/20",
+    "cases": 170,
+    "deaths": 9,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Kanawha": {
-    "dateStr": "4/30/20",
-    "cases": 160,
-    "deaths": 5,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 1
-  },
   "Lewis": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -168,23 +168,23 @@
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Logan": {
-    "dateStr": "4/30/20",
-    "cases": 13,
+    "dateStr": "5/5/20",
+    "cases": 14,
     "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "McDowell": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -192,23 +192,23 @@
     "newDeaths": 0
   },
   "Marion": {
-    "dateStr": "4/30/20",
-    "cases": 45,
+    "dateStr": "5/5/20",
+    "cases": 46,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Marshall": {
-    "dateStr": "4/30/20",
-    "cases": 12,
+    "dateStr": "5/5/20",
+    "cases": 19,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Mason": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 12,
     "deaths": 0,
     "recovered": 0,
@@ -216,23 +216,23 @@
     "newDeaths": 0
   },
   "Mercer": {
-    "dateStr": "4/30/20",
-    "cases": 10,
+    "dateStr": "5/5/20",
+    "cases": 11,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Mineral": {
-    "dateStr": "4/30/20",
-    "cases": 17,
+    "dateStr": "5/5/20",
+    "cases": 18,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Mingo": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 2,
     "deaths": 1,
     "recovered": 0,
@@ -240,55 +240,55 @@
     "newDeaths": 0
   },
   "Monongalia": {
-    "dateStr": "4/30/20",
-    "cases": 103,
+    "dateStr": "5/5/20",
+    "cases": 108,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Monroe": {
-    "dateStr": "4/30/20",
-    "cases": 5,
+    "dateStr": "5/5/20",
+    "cases": 6,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Morgan": {
-    "dateStr": "4/30/20",
-    "cases": 11,
+    "dateStr": "5/5/20",
+    "cases": 14,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Nicholas": {
-    "dateStr": "4/30/20",
-    "cases": 6,
+    "dateStr": "5/5/20",
+    "cases": 8,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Ohio": {
-    "dateStr": "4/30/20",
-    "cases": 27,
+    "dateStr": "5/5/20",
+    "cases": 34,
     "deaths": 1,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Pendleton": {
-    "dateStr": "4/30/20",
-    "cases": 3,
+    "dateStr": "5/5/20",
+    "cases": 5,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Pleasants": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -296,7 +296,7 @@
     "newDeaths": 0
   },
   "Pocahontas": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -304,7 +304,7 @@
     "newDeaths": 0
   },
   "Preston": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 0,
@@ -312,47 +312,47 @@
     "newDeaths": 0
   },
   "Putnam": {
-    "dateStr": "4/30/20",
-    "cases": 25,
+    "dateStr": "5/5/20",
+    "cases": 29,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Raleigh": {
-    "dateStr": "4/30/20",
-    "cases": 9,
+    "dateStr": "5/5/20",
+    "cases": 11,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Randolph": {
-    "dateStr": "4/30/20",
-    "cases": 4,
+    "dateStr": "5/5/20",
+    "cases": 5,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Ritchie": {
-    "dateStr": "4/30/20",
-    "cases": 0,
+    "dateStr": "5/5/20",
+    "cases": 1,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Roane": {
-    "dateStr": "4/30/20",
-    "cases": 6,
+    "dateStr": "5/5/20",
+    "cases": 7,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Summers": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -360,15 +360,15 @@
     "newDeaths": 0
   },
   "Taylor": {
-    "dateStr": "4/30/20",
-    "cases": 6,
+    "dateStr": "5/5/20",
+    "cases": 9,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Tucker": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -376,7 +376,7 @@
     "newDeaths": 0
   },
   "Tyler": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -384,23 +384,23 @@
     "newDeaths": 0
   },
   "Upshur": {
-    "dateStr": "4/30/20",
-    "cases": 4,
+    "dateStr": "5/5/20",
+    "cases": 5,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Wayne": {
-    "dateStr": "4/30/20",
-    "cases": 85,
+    "dateStr": "5/5/20",
+    "cases": 91,
     "deaths": 7,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
+    "new": 1,
+    "newDeaths": 0
   },
   "Webster": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -408,7 +408,7 @@
     "newDeaths": 0
   },
   "Wetzel": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -416,7 +416,7 @@
     "newDeaths": 0
   },
   "Wirt": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -424,15 +424,15 @@
     "newDeaths": 0
   },
   "Wood": {
-    "dateStr": "4/30/20",
-    "cases": 39,
+    "dateStr": "5/5/20",
+    "cases": 42,
     "deaths": 2,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Wyoming": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -440,7 +440,7 @@
     "newDeaths": 0
   },
   "Out of WV": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -448,7 +448,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "4/30/20",
+    "dateStr": "5/5/20",
     "cases": 21,
     "deaths": 20,
     "recovered": 0,
