@@ -14,7 +14,7 @@
     "e2e": "ng e2e",
     "corona": "node ./scripts/src/splitFile.js;",
     "pushMaster": "git subtree split --prefix dist/dawu-home -b master;git checkout master;git push --set-upstream prod master;git checkout develop;",
-    "everything": "cd ../COVID-19;git pull;cd -;npm run build; git add .;git commit -m 'data';git push; npm run pushMaster"
+    "everything": "cd ../COVID-19;git pull;cd -;npm run corona;npm run build; git add .;git commit -m 'data';git push; npm run pushMaster"
   },
   "private": true,
   "dependencies": {
