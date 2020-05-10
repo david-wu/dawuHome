@@ -841,10 +841,10 @@
   },
   {
     "dateStr": "5/6/20",
-    "cases": 201,
+    "cases": 209,
     "deaths": 3,
     "recovered": 0,
-    "new": 0,
+    "new": 8,
     "newDeaths": 0
   },
   {
@@ -852,7 +852,7 @@
     "cases": 217,
     "deaths": 4,
     "recovered": 0,
-    "new": 16,
+    "new": 8,
     "newDeaths": 1
   },
   {
@@ -862,5 +862,13 @@
     "recovered": 0,
     "new": 22,
     "newDeaths": 0
+  },
+  {
+    "dateStr": "5/9/20",
+    "cases": 253,
+    "deaths": 5,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 1
   }
 ]
