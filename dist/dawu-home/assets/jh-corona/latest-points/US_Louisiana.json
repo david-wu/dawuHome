@@ -1,86 +1,86 @@
 {
   "Acadia": {
-    "dateStr": "5/12/20",
-    "cases": 152,
+    "dateStr": "5/14/20",
+    "cases": 159,
     "deaths": 11,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Allen": {
+    "dateStr": "5/14/20",
+    "cases": 94,
+    "deaths": 10,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Allen": {
-    "dateStr": "5/12/20",
-    "cases": 90,
-    "deaths": 10,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
   "Ascension": {
-    "dateStr": "5/12/20",
-    "cases": 701,
+    "dateStr": "5/14/20",
+    "cases": 745,
     "deaths": 49,
     "recovered": 0,
-    "new": 6,
-    "newDeaths": 1
+    "new": 41,
+    "newDeaths": 0
   },
   "Assumption": {
-    "dateStr": "5/12/20",
-    "cases": 230,
+    "dateStr": "5/14/20",
+    "cases": 234,
     "deaths": 11,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Avoyelles": {
+    "dateStr": "5/14/20",
+    "cases": 79,
+    "deaths": 9,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Beauregard": {
+    "dateStr": "5/14/20",
+    "cases": 49,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Bienville": {
+    "dateStr": "5/14/20",
+    "cases": 81,
+    "deaths": 20,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Bossier": {
+    "dateStr": "5/14/20",
+    "cases": 327,
+    "deaths": 22,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Caddo": {
+    "dateStr": "5/14/20",
+    "cases": 1818,
+    "deaths": 143,
+    "recovered": 0,
+    "new": 18,
+    "newDeaths": 3
+  },
+  "Calcasieu": {
+    "dateStr": "5/14/20",
+    "cases": 507,
+    "deaths": 40,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Avoyelles": {
-    "dateStr": "5/12/20",
-    "cases": 76,
-    "deaths": 8,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
-  },
-  "Beauregard": {
-    "dateStr": "5/12/20",
-    "cases": 46,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Bienville": {
-    "dateStr": "5/12/20",
-    "cases": 78,
-    "deaths": 20,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Bossier": {
-    "dateStr": "5/12/20",
-    "cases": 313,
-    "deaths": 22,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
-  },
-  "Caddo": {
-    "dateStr": "5/12/20",
-    "cases": 1784,
-    "deaths": 135,
-    "recovered": 0,
-    "new": 19,
-    "newDeaths": 2
-  },
-  "Calcasieu": {
-    "dateStr": "5/12/20",
-    "cases": 496,
-    "deaths": 40,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 2
-  },
   "Caldwell": {
-    "dateStr": "5/12/20",
+    "dateStr": "5/14/20",
     "cases": 48,
     "deaths": 0,
     "recovered": 0,
@@ -88,7 +88,7 @@
     "newDeaths": 0
   },
   "Cameron": {
-    "dateStr": "5/12/20",
+    "dateStr": "5/14/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -96,335 +96,335 @@
     "newDeaths": 0
   },
   "Catahoula": {
-    "dateStr": "5/12/20",
-    "cases": 86,
+    "dateStr": "5/14/20",
+    "cases": 103,
     "deaths": 3,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Claiborne": {
-    "dateStr": "5/12/20",
+    "dateStr": "5/14/20",
     "cases": 59,
-    "deaths": 9,
+    "deaths": 10,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Concordia": {
-    "dateStr": "5/12/20",
-    "cases": 43,
+    "dateStr": "5/14/20",
+    "cases": 54,
     "deaths": 5,
     "recovered": 0,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "De Soto": {
-    "dateStr": "5/12/20",
-    "cases": 215,
+    "dateStr": "5/14/20",
+    "cases": 223,
     "deaths": 14,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "East Baton Rouge": {
-    "dateStr": "5/12/20",
-    "cases": 2445,
-    "deaths": 190,
+    "dateStr": "5/14/20",
+    "cases": 2898,
+    "deaths": 201,
     "recovered": 0,
-    "new": 47,
+    "new": 411,
     "newDeaths": 2
   },
   "East Carroll": {
-    "dateStr": "5/12/20",
-    "cases": 24,
+    "dateStr": "5/14/20",
+    "cases": 25,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "East Feliciana": {
-    "dateStr": "5/12/20",
-    "cases": 140,
+    "dateStr": "5/14/20",
+    "cases": 169,
     "deaths": 21,
     "recovered": 0,
-    "new": 4,
+    "new": 24,
     "newDeaths": 0
   },
   "Evangeline": {
-    "dateStr": "5/12/20",
-    "cases": 68,
+    "dateStr": "5/14/20",
+    "cases": 74,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Franklin": {
-    "dateStr": "5/12/20",
-    "cases": 208,
-    "deaths": 6,
+    "dateStr": "5/14/20",
+    "cases": 266,
+    "deaths": 8,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 2
+    "new": 10,
+    "newDeaths": 1
   },
   "Grant": {
-    "dateStr": "5/12/20",
+    "dateStr": "5/14/20",
     "cases": 18,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 1
-  },
-  "Iberia": {
-    "dateStr": "5/12/20",
-    "cases": 287,
-    "deaths": 26,
-    "recovered": 0,
-    "new": 1,
     "newDeaths": 0
   },
-  "Iberville": {
-    "dateStr": "5/12/20",
-    "cases": 504,
-    "deaths": 37,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 1
-  },
-  "Jackson": {
-    "dateStr": "5/12/20",
-    "cases": 67,
-    "deaths": 6,
+  "Iberia": {
+    "dateStr": "5/14/20",
+    "cases": 352,
+    "deaths": 33,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 1
+    "newDeaths": 7
+  },
+  "Iberville": {
+    "dateStr": "5/14/20",
+    "cases": 537,
+    "deaths": 38,
+    "recovered": 0,
+    "new": 30,
+    "newDeaths": 0
+  },
+  "Jackson": {
+    "dateStr": "5/14/20",
+    "cases": 70,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
   },
   "Jefferson": {
-    "dateStr": "5/12/20",
-    "cases": 6789,
-    "deaths": 405,
+    "dateStr": "5/14/20",
+    "cases": 6860,
+    "deaths": 423,
     "recovered": 0,
-    "new": 34,
-    "newDeaths": 3
+    "new": 27,
+    "newDeaths": 15
   },
   "Jefferson Davis": {
-    "dateStr": "5/12/20",
-    "cases": 68,
+    "dateStr": "5/14/20",
+    "cases": 69,
     "deaths": 7,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Lafayette": {
-    "dateStr": "5/12/20",
-    "cases": 512,
-    "deaths": 22,
+    "dateStr": "5/14/20",
+    "cases": 541,
+    "deaths": 23,
     "recovered": 0,
     "new": 4,
-    "newDeaths": 0
-  },
-  "Lafourche": {
-    "dateStr": "5/12/20",
-    "cases": 715,
-    "deaths": 60,
-    "recovered": 0,
-    "new": 2,
     "newDeaths": 1
   },
+  "Lafourche": {
+    "dateStr": "5/14/20",
+    "cases": 719,
+    "deaths": 60,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
   "LaSalle": {
-    "dateStr": "5/12/20",
-    "cases": 33,
+    "dateStr": "5/14/20",
+    "cases": 35,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "5/12/20",
-    "cases": 107,
-    "deaths": 12,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "Livingston": {
-    "dateStr": "5/12/20",
-    "cases": 283,
-    "deaths": 24,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Madison": {
-    "dateStr": "5/12/20",
-    "cases": 14,
-    "deaths": 0,
+    "dateStr": "5/14/20",
+    "cases": 116,
+    "deaths": 13,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "Livingston": {
+    "dateStr": "5/14/20",
+    "cases": 343,
+    "deaths": 24,
+    "recovered": 0,
+    "new": 50,
+    "newDeaths": 0
+  },
+  "Madison": {
+    "dateStr": "5/14/20",
+    "cases": 18,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
   "Morehouse": {
-    "dateStr": "5/12/20",
-    "cases": 67,
+    "dateStr": "5/14/20",
+    "cases": 89,
     "deaths": 5,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Natchitoches": {
-    "dateStr": "5/12/20",
-    "cases": 100,
-    "deaths": 9,
+    "dateStr": "5/14/20",
+    "cases": 102,
+    "deaths": 10,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 2,
+    "newDeaths": 1
   },
   "Orleans": {
-    "dateStr": "5/12/20",
-    "cases": 6718,
-    "deaths": 477,
+    "dateStr": "5/14/20",
+    "cases": 6768,
+    "deaths": 482,
     "recovered": 0,
-    "new": 25,
-    "newDeaths": 7
+    "new": 15,
+    "newDeaths": 1
   },
   "Ouachita": {
-    "dateStr": "5/12/20",
-    "cases": 856,
-    "deaths": 27,
+    "dateStr": "5/14/20",
+    "cases": 869,
+    "deaths": 31,
     "recovered": 0,
-    "new": 14,
-    "newDeaths": 2
+    "new": 8,
+    "newDeaths": 0
   },
   "Plaquemines": {
-    "dateStr": "5/12/20",
-    "cases": 191,
+    "dateStr": "5/14/20",
+    "cases": 192,
     "deaths": 19,
     "recovered": 0,
     "new": 1,
-    "newDeaths": 2
+    "newDeaths": 0
   },
   "Pointe Coupee": {
-    "dateStr": "5/12/20",
-    "cases": 138,
+    "dateStr": "5/14/20",
+    "cases": 152,
     "deaths": 17,
     "recovered": 0,
-    "new": 2,
+    "new": 13,
     "newDeaths": 0
   },
   "Rapides": {
-    "dateStr": "5/12/20",
-    "cases": 376,
+    "dateStr": "5/14/20",
+    "cases": 417,
     "deaths": 13,
     "recovered": 0,
-    "new": 6,
+    "new": 23,
     "newDeaths": 0
   },
   "Red River": {
-    "dateStr": "5/12/20",
-    "cases": 36,
+    "dateStr": "5/14/20",
+    "cases": 38,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Richland": {
-    "dateStr": "5/12/20",
-    "cases": 103,
+    "dateStr": "5/14/20",
+    "cases": 104,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Sabine": {
-    "dateStr": "5/12/20",
-    "cases": 19,
+    "dateStr": "5/14/20",
+    "cases": 29,
     "deaths": 1,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "St. Bernard": {
-    "dateStr": "5/12/20",
-    "cases": 515,
+    "dateStr": "5/14/20",
+    "cases": 516,
     "deaths": 20,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "St. Charles": {
-    "dateStr": "5/12/20",
-    "cases": 596,
+    "dateStr": "5/14/20",
+    "cases": 602,
     "deaths": 43,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "St. Helena": {
-    "dateStr": "5/12/20",
+    "dateStr": "5/14/20",
     "cases": 38,
     "deaths": 1,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "St. James": {
-    "dateStr": "5/12/20",
-    "cases": 257,
-    "deaths": 20,
+    "dateStr": "5/14/20",
+    "cases": 284,
+    "deaths": 22,
     "recovered": 0,
-    "new": 0,
+    "new": 16,
     "newDeaths": 0
   },
   "St. John the Baptist": {
-    "dateStr": "5/12/20",
-    "cases": 804,
-    "deaths": 77,
+    "dateStr": "5/14/20",
+    "cases": 820,
+    "deaths": 78,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 1
+  },
+  "St. Landry": {
+    "dateStr": "5/14/20",
+    "cases": 244,
+    "deaths": 51,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "St. Landry": {
-    "dateStr": "5/12/20",
-    "cases": 215,
-    "deaths": 51,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
   "St. Martin": {
-    "dateStr": "5/12/20",
-    "cases": 264,
-    "deaths": 21,
+    "dateStr": "5/14/20",
+    "cases": 278,
+    "deaths": 22,
     "recovered": 0,
-    "new": 4,
+    "new": 2,
     "newDeaths": 0
   },
   "St. Mary": {
-    "dateStr": "5/12/20",
-    "cases": 251,
-    "deaths": 26,
+    "dateStr": "5/14/20",
+    "cases": 263,
+    "deaths": 27,
     "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "St. Tammany": {
-    "dateStr": "5/12/20",
-    "cases": 1477,
-    "deaths": 141,
-    "recovered": 0,
-    "new": 14,
-    "newDeaths": 5
-  },
-  "Tangipahoa": {
-    "dateStr": "5/12/20",
-    "cases": 679,
-    "deaths": 29,
-    "recovered": 0,
-    "new": 9,
+    "new": 6,
     "newDeaths": 1
   },
+  "St. Tammany": {
+    "dateStr": "5/14/20",
+    "cases": 1511,
+    "deaths": 142,
+    "recovered": 0,
+    "new": 19,
+    "newDeaths": 0
+  },
+  "Tangipahoa": {
+    "dateStr": "5/14/20",
+    "cases": 696,
+    "deaths": 30,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 0
+  },
   "Tensas": {
-    "dateStr": "5/12/20",
+    "dateStr": "5/14/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -432,87 +432,87 @@
     "newDeaths": 0
   },
   "Terrebonne": {
-    "dateStr": "5/12/20",
-    "cases": 533,
-    "deaths": 39,
+    "dateStr": "5/14/20",
+    "cases": 550,
+    "deaths": 41,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
+    "new": 8,
+    "newDeaths": 2
   },
   "Union": {
-    "dateStr": "5/12/20",
-    "cases": 171,
+    "dateStr": "5/14/20",
+    "cases": 231,
     "deaths": 11,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 1
+    "new": 4,
+    "newDeaths": 0
   },
   "Vermilion": {
-    "dateStr": "5/12/20",
-    "cases": 41,
+    "dateStr": "5/14/20",
+    "cases": 42,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Vernon": {
-    "dateStr": "5/12/20",
-    "cases": 18,
+    "dateStr": "5/14/20",
+    "cases": 19,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "5/12/20",
-    "cases": 347,
-    "deaths": 26,
+    "dateStr": "5/14/20",
+    "cases": 356,
+    "deaths": 29,
     "recovered": 0,
-    "new": 5,
+    "new": 6,
     "newDeaths": 0
   },
   "Webster": {
-    "dateStr": "5/12/20",
-    "cases": 101,
-    "deaths": 4,
+    "dateStr": "5/14/20",
+    "cases": 112,
+    "deaths": 5,
     "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
+    "new": 0,
+    "newDeaths": 1
   },
   "West Baton Rouge": {
-    "dateStr": "5/12/20",
-    "cases": 124,
-    "deaths": 29,
+    "dateStr": "5/14/20",
+    "cases": 150,
+    "deaths": 30,
     "recovered": 0,
-    "new": 1,
+    "new": 26,
     "newDeaths": 0
   },
   "West Carroll": {
-    "dateStr": "5/12/20",
-    "cases": 5,
+    "dateStr": "5/14/20",
+    "cases": 6,
     "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "West Feliciana": {
+    "dateStr": "5/14/20",
+    "cases": 187,
+    "deaths": 8,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "West Feliciana": {
-    "dateStr": "5/12/20",
-    "cases": 186,
-    "deaths": 8,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 2
-  },
   "Winn": {
-    "dateStr": "5/12/20",
-    "cases": 54,
+    "dateStr": "5/14/20",
+    "cases": 66,
     "deaths": 2,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Out of LA": {
-    "dateStr": "5/12/20",
+    "dateStr": "5/14/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -520,11 +520,11 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "5/12/20",
-    "cases": 64,
+    "dateStr": "5/14/20",
+    "cases": 65,
     "deaths": 74,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   }
 }
