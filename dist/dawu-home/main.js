@@ -214,7 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"table-container\">\n    <mat-table [dataSource]=\"tableData$ | async\" matSort (matSortChange)=\"onSortChange($event)\">\n        <ng-container matColumnDef=\"location\">\n          <mat-header-cell *matHeaderCellDef mat-sort-header>\n              <div>Location</div>\n          </mat-header-cell>\n          <mat-cell *matCellDef=\"let element\">\n            <div> {{element.location}} </div>\n          </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"cases\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>Cases</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.cases.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"new\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>New</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.new.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"deaths\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>Deaths</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.deaths.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"newDeaths\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>New Deaths</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.newDeaths.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"table-container\">\n    <mat-table\n        [dataSource]=\"tableData$ | async\"\n        matSort\n        matSortActive=\"cases\"\n        matSortDirection=\"desc\"\n    >\n        <ng-container matColumnDef=\"location\">\n          <mat-header-cell *matHeaderCellDef mat-sort-header>\n              <div>Location</div>\n          </mat-header-cell>\n          <mat-cell *matCellDef=\"let element\">\n            <div> {{element.location}} </div>\n          </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"cases\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>Cases</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.cases.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"new\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>New</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.new.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"deaths\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>Deaths</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.deaths.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"newDeaths\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header>\n                <div>New Deaths</div>\n            </mat-header-cell>\n            <mat-cell *matCellDef=\"let element\">\n                <div>{{ element.newDeaths.toLocaleString() }}</div>\n            </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div>");
 
 /***/ }),
 
@@ -2962,17 +2962,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
-/* harmony import */ var _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @src/app/app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/corona/corona.component */ "./src/app/corona/corona.component.ts");
-/* harmony import */ var _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/corona/corona-file-viewer/corona-file-viewer.component */ "./src/app/corona/corona-file-viewer/corona-file-viewer.component.ts");
-/* harmony import */ var _src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @src/app/corona/corona.routes */ "./src/app/corona/corona.routes.ts");
-/* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
-/* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
-/* harmony import */ var _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./corona-compare-dashboard/corona-compare-dashboard.component */ "./src/app/corona/corona-compare-dashboard/corona-compare-dashboard.component.ts");
-/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
-/* harmony import */ var _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./latest-points-viewer/latest-points-viewer.component */ "./src/app/corona/latest-points-viewer/latest-points-viewer.component.ts");
-/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/index */ "./src/app/corona/services/index.ts");
+/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/sort */ "./node_modules/@angular/material/esm5/sort.es5.js");
+/* harmony import */ var _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/corona/corona.component */ "./src/app/corona/corona.component.ts");
+/* harmony import */ var _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @src/app/corona/corona-file-viewer/corona-file-viewer.component */ "./src/app/corona/corona-file-viewer/corona-file-viewer.component.ts");
+/* harmony import */ var _src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @src/app/corona/corona.routes */ "./src/app/corona/corona.routes.ts");
+/* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
+/* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
+/* harmony import */ var _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./corona-compare-dashboard/corona-compare-dashboard.component */ "./src/app/corona/corona-compare-dashboard/corona-compare-dashboard.component.ts");
+/* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
+/* harmony import */ var _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./latest-points-viewer/latest-points-viewer.component */ "./src/app/corona/latest-points-viewer/latest-points-viewer.component.ts");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/index */ "./src/app/corona/services/index.ts");
+
 
 
 
@@ -2998,25 +3000,26 @@ var CoronaModule = /** @class */ (function () {
     CoronaModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             imports: [
-                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_11__["CoronaRoutes"]),
+                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_12__["CoronaRoutes"]),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
                 // FuzzAppModule,
                 _angular_material_table__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"],
+                _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSortModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["NoopAnimationsModule"],
-                _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_12__["CommonModule"],
-                _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_13__["FileExplorerModule"],
+                _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["NoopAnimationsModule"],
+                _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_13__["CommonModule"],
+                _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_14__["FileExplorerModule"],
             ],
             declarations: [
-                _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_9__["CoronaComponent"],
-                _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_10__["CoronaFileViewerComponent"],
-                _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_14__["CoronaCompareDashboardComponent"],
-                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_15__["CoronaDashboardComponent"],
-                _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_16__["LatestPointsViewerComponent"],
+                _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_10__["CoronaComponent"],
+                _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_11__["CoronaFileViewerComponent"],
+                _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_15__["CoronaCompareDashboardComponent"],
+                _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_16__["CoronaDashboardComponent"],
+                _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_17__["LatestPointsViewerComponent"],
             ],
-            providers: tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](_services_index__WEBPACK_IMPORTED_MODULE_17__["SERVICES"]),
+            providers: tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](_services_index__WEBPACK_IMPORTED_MODULE_18__["SERVICES"]),
         })
     ], CoronaModule);
     return CoronaModule;
@@ -3080,11 +3083,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LatestPointsViewerComponent", function() { return LatestPointsViewerComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/index */ "./src/app/corona/services/index.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/index */ "./src/app/corona/services/index.ts");
+
 
 
 
@@ -3093,17 +3098,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var LatestPointsViewerComponent = /** @class */ (function () {
     function LatestPointsViewerComponent(coronaService, coronaStoreService) {
-        var _this = this;
         this.coronaService = coronaService;
         this.coronaStoreService = coronaStoreService;
         this.displayedColumns = ['location', 'cases', 'new', 'deaths', 'newDeaths'];
-        this.tableData$ = this.coronaStoreService.latestPointsByLocation$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (latestPointsByLocation) {
-            var latestPointData = latestPointsByLocation[_this.locations[0]] || {};
-            var locations = Object.keys(latestPointData);
-            return locations.map(function (location) {
-                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, latestPointData[location], { location: location });
-            });
-        }));
     }
     LatestPointsViewerComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
@@ -3111,21 +3108,34 @@ var LatestPointsViewerComponent = /** @class */ (function () {
             var requests$ = this.locations.map(function (location) {
                 return _this.coronaService.getCoronaLatestPoints(location);
             });
-            var sub = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["forkJoin"])(requests$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (files) { return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["fromPairs"])(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["zip"])(_this.locations, files)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["startWith"])(undefined)).subscribe(function (fileData) {
+            var sub = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["forkJoin"])(requests$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (files) { return Object(lodash__WEBPACK_IMPORTED_MODULE_5__["fromPairs"])(Object(lodash__WEBPACK_IMPORTED_MODULE_5__["zip"])(_this.locations, files)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["startWith"])(undefined)).subscribe(function (fileData) {
                 _this.coronaStoreService.setLastestPointsData(fileData);
             });
         }
     };
-    LatestPointsViewerComponent.prototype.onSortChange = function (sort) {
-        console.log('onSortChange', sort);
+    LatestPointsViewerComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.tableData$ = this.coronaStoreService.latestPointsByLocation$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (latestPointsByLocation) {
+            var latestPointData = latestPointsByLocation[_this.locations[0]] || {};
+            var locations = Object.keys(latestPointData);
+            var locationData = locations.map(function (location) {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, latestPointData[location], { location: location });
+            });
+            var dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](locationData);
+            dataSource.sort = _this.sort;
+            return dataSource;
+        }));
     };
     LatestPointsViewerComponent.ctorParameters = function () { return [
-        { type: _services_index__WEBPACK_IMPORTED_MODULE_5__["CoronaService"] },
-        { type: _services_index__WEBPACK_IMPORTED_MODULE_5__["CoronaStoreService"] }
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_6__["CoronaService"] },
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_6__["CoronaStoreService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], LatestPointsViewerComponent.prototype, "locations", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"], { static: true })
+    ], LatestPointsViewerComponent.prototype, "sort", void 0);
     LatestPointsViewerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-latest-points-viewer',
@@ -3536,7 +3546,7 @@ var CoronaService = /** @class */ (function () {
 /*!******************************************!*\
   !*** ./src/app/corona/services/index.ts ***!
   \******************************************/
-/*! exports provided: SERVICES, LocalStorageService, CoronaStoreService, CoronaService */
+/*! exports provided: SERVICES, CoronaStoreService, CoronaService, LocalStorageService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

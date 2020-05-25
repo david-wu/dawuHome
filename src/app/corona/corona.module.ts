@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
@@ -27,6 +28,7 @@ import { SERVICES } from './services/index';
         FormsModule,
         // FuzzAppModule,
         MatTableModule,
+        MatSortModule,
         HttpClientModule,
         BrowserModule,
         AppRoutingModule,

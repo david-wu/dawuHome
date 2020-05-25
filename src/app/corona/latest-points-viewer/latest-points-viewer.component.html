@@ -1,5 +1,10 @@
 <div class="table-container">
-    <mat-table [dataSource]="tableData$ | async" matSort (matSortChange)="onSortChange($event)">
+    <mat-table
+        [dataSource]="tableData$ | async"
+        matSort
+        matSortActive="cases"
+        matSortDirection="desc"
+    >
         <ng-container matColumnDef="location">
           <mat-header-cell *matHeaderCellDef mat-sort-header>
               <div>Location</div>

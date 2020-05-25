@@ -3,7 +3,12 @@ import {
     EventEmitter,
     Input,
     Output,
+    ViewChild,
 } from '@angular/core';
+import {
+    MatTableDataSource,
+    MatSort,
+} from '@angular/material';
 import {
     BehaviorSubject,
     Observable,
@@ -41,26 +46,16 @@ import {
 export class LatestPointsViewerComponent {
 
     @Input() locations: string[];
+    @ViewChild(MatSort, { static: true }) sort;
 
-    public tableData$: Observable<any[]>;
+    public dataSource$: Observable<MatTableDataSource<any>>
+    public tableData$: Observable<any>;
     public displayedColumns = ['location', 'cases', 'new', 'deaths', 'newDeaths'];
 
     constructor(
         public coronaService: CoronaService,
         public coronaStoreService: CoronaStoreService,
     ) {
-        this.tableData$ = this.coronaStoreService.latestPointsByLocation$.pipe(
-            map((latestPointsByLocation: Record<string, any>) => {
-                const latestPointData = latestPointsByLocation[this.locations[0]] || {};
-                const locations = Object.keys(latestPointData);
-                return locations.map((location: string) => {
-                    return {
-                        ...latestPointData[location],
-                        location,
-                    };
-                });
-            }),
-        );
     }
 
     public ngOnChanges(changes) {
@@ -76,9 +71,22 @@ export class LatestPointsViewerComponent {
             });
         }
     }
-
-    public onSortChange(sort) {
-        console.log('onSortChange', sort);
+    public ngOnInit() {
+        this.tableData$ = this.coronaStoreService.latestPointsByLocation$.pipe(
+            map((latestPointsByLocation: Record<string, any>) => {
+                const latestPointData = latestPointsByLocation[this.locations[0]] || {};
+                const locations = Object.keys(latestPointData);
+                const locationData = locations.map((location: string) => {
+                    return {
+                        ...latestPointData[location],
+                        location,
+                    };
+                });
+                const dataSource = new MatTableDataSource(locationData);
+                dataSource.sort = this.sort
+                return dataSource;
+            }),
+        );
     }
 
 }
