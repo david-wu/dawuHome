@@ -3536,7 +3536,7 @@ var CoronaService = /** @class */ (function () {
 /*!******************************************!*\
   !*** ./src/app/corona/services/index.ts ***!
   \******************************************/
-/*! exports provided: SERVICES, CoronaStoreService, CoronaService, LocalStorageService */
+/*! exports provided: SERVICES, LocalStorageService, CoronaStoreService, CoronaService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
