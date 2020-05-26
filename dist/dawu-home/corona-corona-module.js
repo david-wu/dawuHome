@@ -62184,11 +62184,6 @@ var CoronaDashboardComponent = /** @class */ (function () {
                         label: 'Start Lockdown',
                         color: '#164EB7',
                     },
-                    {
-                        value: +tenDaysLater,
-                        label: '10 days of Lockdown',
-                        color: '#729900',
-                    },
                 ];
             }
             else {

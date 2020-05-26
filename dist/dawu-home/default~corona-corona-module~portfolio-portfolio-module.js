@@ -63992,7 +63992,7 @@ var BarChartComponent = /** @class */ (function (_super) {
         _this.hoverIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         _this.barPadding = 0.05;
         // some extra margin on the chart itself
-        _this.chartMargin = 5;
+        _this.chartMargin = 8;
         return _this;
     }
     BarChartComponent.prototype.ngOnChanges = function (changes) {
