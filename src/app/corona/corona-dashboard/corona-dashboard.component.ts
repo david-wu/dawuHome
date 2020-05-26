@@ -118,6 +118,7 @@ export class CoronaDashboardComponent {
         if (changes.lockdownInfo) {
             if (this.lockdownInfo) {
                 const startDate = getDateFromLeadingYearStr(this.lockdownInfo.startDate);
+                const endDate = getDateFromLeadingYearStr(this.lockdownInfo.endDate);
                 const tenDaysLater = new Date(startDate);
                 tenDaysLater.setDate(startDate.getDate() + 10);
                 this.indicators = this.lockdownInfo && [
@@ -126,11 +127,11 @@ export class CoronaDashboardComponent {
                         label: 'Start Lockdown',
                         color: '#164EB7',
                     },
-                    // {
-                    //     value: +tenDaysLater,
-                    //     label: '10 days of Lockdown',
-                    //     color: '#729900',
-                    // },
+                    {
+                        value: +endDate,
+                        label: 'End Lockdown',
+                        color: '#729900',
+                    },
                 ];
             } else {
                 this.indicators = undefined;
