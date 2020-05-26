@@ -1,7 +1,5 @@
-
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule as NgCommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { TextDecoratorComponent } from './text-decorator/text-decorator.component';
@@ -10,9 +8,8 @@ import { ChartsModule } from './charts/charts.module';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    NgCommonModule,
     ChartsModule,
-    NoopAnimationsModule,
     FormsModule,
   ],
   declarations: [

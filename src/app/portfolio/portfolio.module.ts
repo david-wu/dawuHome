@@ -1,27 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DemoPageWrapperModule } from 'fuzz-demo-app';
 
-import { AppRoutingModule } from '@src/app/app-routing.module';
-import { AppComponent } from '@src/app/app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
-import { PortfolioRoutes } from '@src/app/portfolio/portfolio.routes';
-
-import { AppModule } from 'fuzz-demo-app';
-import { CommonModule } from '@src/app/common/common.module';
+import { PortfolioRoutingModule } from '@src/app/portfolio/portfolio.routes';
+import { CommonModule as MyCommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
 
 @NgModule({
   imports: [
-    RouterModule.forChild(PortfolioRoutes),
-    FormsModule,
-    AppModule,
-    BrowserModule,
-    AppRoutingModule,
-    NoopAnimationsModule,
+    PortfolioRoutingModule,
+    DemoPageWrapperModule,
     CommonModule,
+    MyCommonModule,
     FileExplorerModule,
   ],
   declarations: [

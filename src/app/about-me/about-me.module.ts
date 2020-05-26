@@ -1,25 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutMeComponent } from '@src/app/about-me/about-me.component';
-import { AboutMeRoutes } from '@src/app/about-me/about-me.routes';
-
-// import { AppModule as FuzzAppModule } from 'fuzz-demo-app';
+import { AboutMeRoutingModule } from '@src/app/about-me/about-me.routes';
 
 @NgModule({
   declarations: [
     AboutMeComponent,
   ],
   imports: [
-    RouterModule.forChild(AboutMeRoutes),
-    // FuzzAppModule,
-    BrowserModule,
-    AppRoutingModule,
-    NoopAnimationsModule,
+    AboutMeRoutingModule,
+    CommonModule,
   ],
   exports: [
     AboutMeComponent,

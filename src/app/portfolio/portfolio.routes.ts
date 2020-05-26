@@ -1,10 +1,8 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
-// import { DemoPageWrapperComponent as FuzzDemoPageComponent } from 'fuzz-demo-app';
 
-export const PortfolioRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: PortfolioComponent,
@@ -14,3 +12,9 @@ export const PortfolioRoutes: Routes = [
     redirectTo: '',
   },
 ];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class PortfolioRoutingModule { }

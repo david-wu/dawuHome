@@ -1,7 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DragulaModule } from 'ng2-dragula';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule as NgCommonModule } from '@angular/common';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { CommonModule } from '@src/app/common/common.module';
@@ -9,9 +8,8 @@ import { FileExplorerComponent } from './file-explorer.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    NgCommonModule,
     CommonModule,
-    NoopAnimationsModule,
     DragulaModule,
     ScrollingModule,
   ],

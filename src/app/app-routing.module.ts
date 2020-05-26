@@ -1,33 +1,35 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { AboutMeRoutes } from './about-me/about-me.routes';
-import { PortfolioRoutes } from './portfolio/portfolio.routes';
-import { CoronaRoutes } from './corona/corona.routes';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
+  {
+    path: 'about-me',
+    loadChildren: () => import('./about-me/about-me.module').then(m => m.AboutMeModule)
+  },
+  {
+    path: 'portfolio',
+    loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
+  },
+  {
+    path: 'corona',
+    loadChildren: () => import('./corona/corona.module').then(m => m.CoronaModule)
+  },
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'corona'
   },
-  {
-    path: 'about-me',
-    children: AboutMeRoutes,
-  },
-  {
-    path: 'portfolio',
-    children: PortfolioRoutes,
-  },
-  {
-    path: 'corona',
-    children: CoronaRoutes,
-  }
 ];
 
 @NgModule({
   imports: [
-      RouterModule.forRoot(routes, {useHash: true})
+      RouterModule.forRoot(
+        routes,
+        {
+          useHash: true,
+          preloadingStrategy: PreloadAllModules,
+        },
+      ),
   ],
   exports: [RouterModule],
 })

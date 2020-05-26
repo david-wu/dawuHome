@@ -1,28 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
-import { BarcelonaModule } from '@src/app/barcelona/barcelona.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { AboutMeModule } from '@src/app/about-me/about-me.module'
-import { PortfolioModule } from '@src/app/portfolio/portfolio.module';
-import { CoronaModule } from '@src/app/corona/corona.module';
-
-// import { AppModule2 } from 'fuzz-demo-app';
+// import { CoronaModule } from '@src/app/corona/corona.module';
 
 @NgModule({
   imports: [
-    AboutMeModule,
-    PortfolioModule,
-    CoronaModule,
-    // AppModule2,
-    BrowserModule,
-    AppRoutingModule,
-    BarcelonaModule,
     NoopAnimationsModule,
+    // CoronaModule,
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
