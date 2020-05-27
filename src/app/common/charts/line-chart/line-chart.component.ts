@@ -160,11 +160,10 @@ export class LineChartComponent extends BaseChartComponent {
     }
 
     public renderFor(width: number, height: number) {
-
         this.filteredKeys = this.keys.filter((key: string) => {
             return !(this.disabledKeys && this.disabledKeys.has(key));
         });
-        const reversedKeys = this.filteredKeys.reverse();
+        const reversedKeys = [...this.filteredKeys].reverse();
         const dataset = reversedKeys.map((key: string) => {
             const series = this.tableData.map((columnData: any) => {
                 const cellData = columnData[key];

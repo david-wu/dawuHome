@@ -112,10 +112,6 @@ export class BaseChartComponent {
 
     public render() {
         const { width, height } = this.getChartDim();
-        // const elDim = this.getElDim();
-
-        // const width = elDim.width - this.margins.left - this.margins.right;
-        // const height = elDim.height - this.margins.top - this.margins.bottom;
 
         this.svg
             .attr('width', width + this.margins.left + this.margins.right)
@@ -127,7 +123,6 @@ export class BaseChartComponent {
         this.clipPathRect
             .attr('width', width)
             .attr('height', height + this.margins.top);
-
 
         this.renderFor(width, height);
     }
