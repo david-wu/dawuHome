@@ -27,7 +27,7 @@
         "src/*"
       ],
       "@common/*": ["src/app/common/*"],
-      "@file-explorer/*": ["src/app/file-explorer/*"],
+      "@file-explorer/*": ["src/app/common/file-explorer/*"],
       "@utils/*": ["src/app/utils/*"]
     },
     "resolveJsonModule": true,

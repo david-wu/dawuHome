@@ -22,4 +22,3 @@ import { FileExplorerComponent } from './file-explorer.component';
   providers: [],
 })
 export class FileExplorerModule { }
-

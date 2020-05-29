@@ -5,7 +5,7 @@ import { DemoPageWrapperModule } from 'fuzz-demo-app';
 import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 import { PortfolioRoutingModule } from '@src/app/portfolio/portfolio.routes';
 import { CommonModule as MyCommonModule } from '@src/app/common/common.module';
-import { FileExplorerModule } from '@src/app/file-explorer/file-explorer.module';
+import { FileExplorerModule } from '@file-explorer/file-explorer.module';
 
 @NgModule({
   imports: [
