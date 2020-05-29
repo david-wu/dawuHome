@@ -62463,7 +62463,7 @@ var _src_assets_jh_corona_file_names_json__WEBPACK_IMPORTED_MODULE_4___namespace
 /* harmony import */ var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json");
 var _src_assets_jh_corona_lockdown_data_by_file_name_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpack_require__.t(/*! @src/assets/jh-corona/lockdown-data-by-file-name.json */ "./src/assets/jh-corona/lockdown-data-by-file-name.json", 1);
 /* harmony import */ var _src_app_corona_services_local_storage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/corona/services/local-storage.service */ "./src/app/corona/services/local-storage.service.ts");
-/* harmony import */ var _file_explorer_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @file-explorer/index */ "./src/app/file-explorer/index.ts");
+/* harmony import */ var _file_explorer_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @file-explorer/index */ "./src/app/common/file-explorer/index.ts");
 /* harmony import */ var _src_app_corona_models_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/corona/models/index */ "./src/app/corona/models/index.ts");
 
 
@@ -62704,7 +62704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_corona_corona_file_viewer_corona_file_viewer_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/corona/corona-file-viewer/corona-file-viewer.component */ "./src/app/corona/corona-file-viewer/corona-file-viewer.component.ts");
 /* harmony import */ var _src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/corona/corona.routes */ "./src/app/corona/corona.routes.ts");
 /* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
-/* harmony import */ var _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @src/app/file-explorer/file-explorer.module */ "./src/app/file-explorer/file-explorer.module.ts");
+/* harmony import */ var _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @file-explorer/file-explorer.module */ "./src/app/common/file-explorer/file-explorer.module.ts");
 /* harmony import */ var _corona_compare_dashboard_corona_compare_dashboard_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./corona-compare-dashboard/corona-compare-dashboard.component */ "./src/app/corona/corona-compare-dashboard/corona-compare-dashboard.component.ts");
 /* harmony import */ var _corona_dashboard_corona_dashboard_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./corona-dashboard/corona-dashboard.component */ "./src/app/corona/corona-dashboard/corona-dashboard.component.ts");
 /* harmony import */ var _latest_points_viewer_latest_points_viewer_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./latest-points-viewer/latest-points-viewer.component */ "./src/app/corona/latest-points-viewer/latest-points-viewer.component.ts");
@@ -62738,7 +62738,7 @@ var CoronaModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
                 _src_app_corona_corona_routes__WEBPACK_IMPORTED_MODULE_9__["CoronaRoutingModule"],
                 _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_10__["CommonModule"],
-                _src_app_file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_11__["FileExplorerModule"],
+                _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_11__["FileExplorerModule"],
             ],
             declarations: [
                 _src_app_corona_corona_component__WEBPACK_IMPORTED_MODULE_7__["CoronaComponent"],
