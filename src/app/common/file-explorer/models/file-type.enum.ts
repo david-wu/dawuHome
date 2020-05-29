@@ -1,4 +1,4 @@
 
 export enum FileType {
-    CUSTOM = 'CUSTOM',
+  CUSTOM = 'CUSTOM',
 }
