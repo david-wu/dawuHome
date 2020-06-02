@@ -1025,19 +1025,19 @@
   },
   {
     "dateStr": "5/29/20",
-    "cases": 5919381,
-    "deaths": 364712,
+    "cases": 5925887,
+    "deaths": 364843,
     "recovered": 2441760,
-    "new": 115273,
-    "newDeaths": 4559
+    "new": 121779,
+    "newDeaths": 4690
   },
   {
     "dateStr": "5/30/20",
     "cases": 6054085,
     "deaths": 368971,
     "recovered": 2512278,
-    "new": 134704,
-    "newDeaths": 4259
+    "new": 128198,
+    "newDeaths": 4128
   },
   {
     "dateStr": "5/31/20",
@@ -1046,5 +1046,13 @@
     "recovered": 2588200,
     "new": 107906,
     "newDeaths": 2909
+  },
+  {
+    "dateStr": "6/1/20",
+    "cases": 6260988,
+    "deaths": 375401,
+    "recovered": 2641882,
+    "new": 98997,
+    "newDeaths": 3521
   }
 ]
