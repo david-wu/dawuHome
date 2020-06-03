@@ -1,86 +1,86 @@
 {
   "Allegany": {
-    "dateStr": "6/1/20",
-    "cases": 180,
+    "dateStr": "6/2/20",
+    "cases": 181,
     "deaths": 17,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Anne Arundel": {
+    "dateStr": "6/2/20",
+    "cases": 3924,
+    "deaths": 178,
+    "recovered": 0,
+    "new": 82,
+    "newDeaths": 3
+  },
+  "Baltimore": {
+    "dateStr": "6/2/20",
+    "cases": 6385,
+    "deaths": 358,
+    "recovered": 0,
+    "new": 86,
+    "newDeaths": 9
+  },
+  "Calvert": {
+    "dateStr": "6/2/20",
+    "cases": 352,
+    "deaths": 18,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Caroline": {
+    "dateStr": "6/2/20",
+    "cases": 263,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Carroll": {
+    "dateStr": "6/2/20",
+    "cases": 927,
+    "deaths": 93,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 1
+  },
+  "Cecil": {
+    "dateStr": "6/2/20",
+    "cases": 377,
+    "deaths": 24,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 1
+  },
+  "Charles": {
+    "dateStr": "6/2/20",
+    "cases": 1133,
+    "deaths": 73,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 0
+  },
+  "Dorchester": {
+    "dateStr": "6/2/20",
+    "cases": 144,
+    "deaths": 3,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Anne Arundel": {
-    "dateStr": "6/1/20",
-    "cases": 3842,
-    "deaths": 175,
-    "recovered": 0,
-    "new": 57,
-    "newDeaths": 1
-  },
-  "Baltimore": {
-    "dateStr": "6/1/20",
-    "cases": 6299,
-    "deaths": 349,
-    "recovered": 0,
-    "new": 234,
-    "newDeaths": 5
-  },
-  "Calvert": {
-    "dateStr": "6/1/20",
-    "cases": 349,
-    "deaths": 18,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Caroline": {
-    "dateStr": "6/1/20",
-    "cases": 260,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Carroll": {
-    "dateStr": "6/1/20",
-    "cases": 914,
-    "deaths": 92,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 2
-  },
-  "Cecil": {
-    "dateStr": "6/1/20",
-    "cases": 371,
-    "deaths": 23,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Charles": {
-    "dateStr": "6/1/20",
-    "cases": 1120,
-    "deaths": 73,
-    "recovered": 0,
-    "new": 12,
-    "newDeaths": 1
-  },
-  "Dorchester": {
-    "dateStr": "6/1/20",
-    "cases": 142,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Frederick": {
-    "dateStr": "6/1/20",
-    "cases": 1928,
-    "deaths": 106,
+    "dateStr": "6/2/20",
+    "cases": 1961,
+    "deaths": 107,
     "recovered": 0,
-    "new": 17,
+    "new": 33,
     "newDeaths": 1
   },
   "Garrett": {
-    "dateStr": "6/1/20",
+    "dateStr": "6/2/20",
     "cases": 10,
     "deaths": 0,
     "recovered": 0,
@@ -88,111 +88,111 @@
     "newDeaths": 0
   },
   "Harford": {
-    "dateStr": "6/1/20",
-    "cases": 882,
+    "dateStr": "6/2/20",
+    "cases": 891,
     "deaths": 51,
     "recovered": 0,
-    "new": 0,
+    "new": 9,
     "newDeaths": 0
   },
   "Howard": {
-    "dateStr": "6/1/20",
-    "cases": 1944,
+    "dateStr": "6/2/20",
+    "cases": 1975,
     "deaths": 61,
     "recovered": 0,
-    "new": 16,
-    "newDeaths": 3
+    "new": 31,
+    "newDeaths": 0
   },
   "Kent": {
-    "dateStr": "6/1/20",
+    "dateStr": "6/2/20",
     "cases": 174,
     "deaths": 19,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Montgomery": {
-    "dateStr": "6/1/20",
-    "cases": 11476,
-    "deaths": 616,
+    "dateStr": "6/2/20",
+    "cases": 11731,
+    "deaths": 624,
     "recovered": 0,
-    "new": 115,
-    "newDeaths": 4
+    "new": 255,
+    "newDeaths": 8
   },
   "Prince George's": {
-    "dateStr": "6/1/20",
-    "cases": 15353,
-    "deaths": 545,
+    "dateStr": "6/2/20",
+    "cases": 15553,
+    "deaths": 552,
     "recovered": 0,
-    "new": 133,
-    "newDeaths": 4
+    "new": 200,
+    "newDeaths": 7
   },
   "Queen Anne's": {
-    "dateStr": "6/1/20",
+    "dateStr": "6/2/20",
     "cases": 161,
     "deaths": 13,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "St. Mary's": {
-    "dateStr": "6/1/20",
-    "cases": 505,
-    "deaths": 23,
+    "dateStr": "6/2/20",
+    "cases": 518,
+    "deaths": 24,
     "recovered": 0,
-    "new": 6,
+    "new": 13,
     "newDeaths": 1
   },
   "Somerset": {
-    "dateStr": "6/1/20",
-    "cases": 73,
-    "deaths": 2,
+    "dateStr": "6/2/20",
+    "cases": 74,
+    "deaths": 3,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 1,
+    "newDeaths": 1
   },
   "Talbot": {
-    "dateStr": "6/1/20",
+    "dateStr": "6/2/20",
     "cases": 101,
-    "deaths": 2,
+    "deaths": 3,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
+    "new": 0,
+    "newDeaths": 1
   },
   "Washington": {
-    "dateStr": "6/1/20",
-    "cases": 472,
-    "deaths": 14,
+    "dateStr": "6/2/20",
+    "cases": 480,
+    "deaths": 15,
     "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
+    "new": 8,
+    "newDeaths": 1
   },
   "Wicomico": {
-    "dateStr": "6/1/20",
+    "dateStr": "6/2/20",
     "cases": 955,
     "deaths": 30,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Worcester": {
-    "dateStr": "6/1/20",
-    "cases": 215,
+    "dateStr": "6/2/20",
+    "cases": 217,
     "deaths": 13,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Baltimore City": {
-    "dateStr": "6/1/20",
-    "cases": 5664,
-    "deaths": 261,
+    "dateStr": "6/2/20",
+    "cases": 5688,
+    "deaths": 263,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 3
+    "new": 24,
+    "newDeaths": 2
   },
   "Out of MD": {
-    "dateStr": "6/1/20",
+    "dateStr": "6/2/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -200,7 +200,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/1/20",
+    "dateStr": "6/2/20",
     "cases": 7,
     "deaths": 145,
     "recovered": 0,
