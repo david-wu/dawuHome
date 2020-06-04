@@ -1,38 +1,38 @@
 {
   "Alamance": {
-    "dateStr": "6/2/20",
-    "cases": 391,
-    "deaths": 26,
+    "dateStr": "6/3/20",
+    "cases": 413,
+    "deaths": 29,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 3
+  },
+  "Alexander": {
+    "dateStr": "6/3/20",
+    "cases": 38,
+    "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Alexander": {
-    "dateStr": "6/2/20",
-    "cases": 38,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
   "Alleghany": {
-    "dateStr": "6/2/20",
-    "cases": 18,
+    "dateStr": "6/3/20",
+    "cases": 24,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 6,
     "newDeaths": 0
   },
   "Anson": {
-    "dateStr": "6/2/20",
-    "cases": 66,
+    "dateStr": "6/3/20",
+    "cases": 68,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Ashe": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 37,
     "deaths": 0,
     "recovered": 0,
@@ -40,7 +40,7 @@
     "newDeaths": 0
   },
   "Avery": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -48,7 +48,7 @@
     "newDeaths": 0
   },
   "Beaufort": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 36,
     "deaths": 0,
     "recovered": 0,
@@ -56,63 +56,63 @@
     "newDeaths": 0
   },
   "Bertie": {
-    "dateStr": "6/2/20",
-    "cases": 125,
+    "dateStr": "6/3/20",
+    "cases": 126,
     "deaths": 4,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Bladen": {
+    "dateStr": "6/3/20",
+    "cases": 106,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Brunswick": {
+    "dateStr": "6/3/20",
+    "cases": 110,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 15,
+    "newDeaths": 0
+  },
+  "Buncombe": {
+    "dateStr": "6/3/20",
+    "cases": 361,
+    "deaths": 30,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 1
+  },
+  "Burke": {
+    "dateStr": "6/3/20",
+    "cases": 477,
+    "deaths": 16,
+    "recovered": 0,
+    "new": 38,
+    "newDeaths": 1
+  },
+  "Cabarrus": {
+    "dateStr": "6/3/20",
+    "cases": 511,
+    "deaths": 22,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Bladen": {
-    "dateStr": "6/2/20",
-    "cases": 105,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Brunswick": {
-    "dateStr": "6/2/20",
-    "cases": 95,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "Buncombe": {
-    "dateStr": "6/2/20",
-    "cases": 354,
-    "deaths": 29,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 5
-  },
-  "Burke": {
-    "dateStr": "6/2/20",
-    "cases": 439,
-    "deaths": 15,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Cabarrus": {
-    "dateStr": "6/2/20",
-    "cases": 508,
-    "deaths": 22,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Caldwell": {
-    "dateStr": "6/2/20",
-    "cases": 157,
+    "dateStr": "6/3/20",
+    "cases": 161,
     "deaths": 3,
     "recovered": 0,
-    "new": 2,
+    "new": 4,
     "newDeaths": 0
   },
   "Camden": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -120,7 +120,7 @@
     "newDeaths": 0
   },
   "Carteret": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 37,
     "deaths": 9,
     "recovered": 0,
@@ -128,31 +128,31 @@
     "newDeaths": 0
   },
   "Caswell": {
-    "dateStr": "6/2/20",
-    "cases": 93,
+    "dateStr": "6/3/20",
+    "cases": 94,
     "deaths": 1,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Catawba": {
-    "dateStr": "6/2/20",
-    "cases": 234,
-    "deaths": 7,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Chatham": {
-    "dateStr": "6/2/20",
-    "cases": 638,
-    "deaths": 26,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "Catawba": {
+    "dateStr": "6/3/20",
+    "cases": 255,
+    "deaths": 9,
+    "recovered": 0,
+    "new": 21,
+    "newDeaths": 2
+  },
+  "Chatham": {
+    "dateStr": "6/3/20",
+    "cases": 660,
+    "deaths": 27,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 1
+  },
   "Cherokee": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 30,
     "deaths": 1,
     "recovered": 0,
@@ -160,7 +160,7 @@
     "newDeaths": 0
   },
   "Chowan": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 17,
     "deaths": 0,
     "recovered": 0,
@@ -168,7 +168,7 @@
     "newDeaths": 0
   },
   "Clay": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 8,
     "deaths": 0,
     "recovered": 0,
@@ -176,39 +176,39 @@
     "newDeaths": 0
   },
   "Cleveland": {
-    "dateStr": "6/2/20",
-    "cases": 99,
+    "dateStr": "6/3/20",
+    "cases": 109,
     "deaths": 2,
     "recovered": 0,
-    "new": 5,
+    "new": 10,
     "newDeaths": 0
   },
   "Columbus": {
-    "dateStr": "6/2/20",
-    "cases": 338,
+    "dateStr": "6/3/20",
+    "cases": 349,
     "deaths": 27,
     "recovered": 0,
-    "new": 0,
+    "new": 11,
     "newDeaths": 0
   },
   "Craven": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 210,
     "deaths": 5,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Cumberland": {
-    "dateStr": "6/2/20",
-    "cases": 712,
-    "deaths": 24,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Cumberland": {
+    "dateStr": "6/3/20",
+    "cases": 721,
+    "deaths": 25,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 1
+  },
   "Currituck": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 15,
     "deaths": 0,
     "recovered": 0,
@@ -216,7 +216,7 @@
     "newDeaths": 0
   },
   "Dare": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 22,
     "deaths": 3,
     "recovered": 0,
@@ -224,71 +224,71 @@
     "newDeaths": 0
   },
   "Davidson": {
-    "dateStr": "6/2/20",
-    "cases": 434,
+    "dateStr": "6/3/20",
+    "cases": 446,
     "deaths": 13,
     "recovered": 0,
-    "new": 4,
+    "new": 12,
     "newDeaths": 0
   },
   "Davie": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 105,
     "deaths": 2,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Duplin": {
-    "dateStr": "6/2/20",
-    "cases": 870,
-    "deaths": 18,
+    "dateStr": "6/3/20",
+    "cases": 890,
+    "deaths": 20,
     "recovered": 0,
-    "new": 24,
-    "newDeaths": 0
-  },
-  "Durham": {
-    "dateStr": "6/2/20",
-    "cases": 1706,
-    "deaths": 47,
-    "recovered": 0,
-    "new": 29,
-    "newDeaths": 0
-  },
-  "Edgecombe": {
-    "dateStr": "6/2/20",
-    "cases": 208,
-    "deaths": 9,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Forsyth": {
-    "dateStr": "6/2/20",
-    "cases": 1441,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 0,
+    "new": 20,
     "newDeaths": 2
   },
-  "Franklin": {
-    "dateStr": "6/2/20",
-    "cases": 162,
-    "deaths": 22,
+  "Durham": {
+    "dateStr": "6/3/20",
+    "cases": 1828,
+    "deaths": 49,
     "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
+    "new": 122,
+    "newDeaths": 2
   },
-  "Gaston": {
-    "dateStr": "6/2/20",
-    "cases": 288,
-    "deaths": 8,
+  "Edgecombe": {
+    "dateStr": "6/3/20",
+    "cases": 210,
+    "deaths": 9,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Forsyth": {
+    "dateStr": "6/3/20",
+    "cases": 1517,
+    "deaths": 14,
+    "recovered": 0,
+    "new": 76,
+    "newDeaths": 1
+  },
+  "Franklin": {
+    "dateStr": "6/3/20",
+    "cases": 167,
+    "deaths": 22,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Gaston": {
+    "dateStr": "6/3/20",
+    "cases": 297,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 0
+  },
   "Gates": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 25,
     "deaths": 1,
     "recovered": 0,
@@ -296,7 +296,7 @@
     "newDeaths": 0
   },
   "Graham": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -304,79 +304,79 @@
     "newDeaths": 0
   },
   "Granville": {
-    "dateStr": "6/2/20",
-    "cases": 312,
-    "deaths": 10,
+    "dateStr": "6/3/20",
+    "cases": 324,
+    "deaths": 11,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 12,
+    "newDeaths": 1
   },
   "Greene": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 81,
     "deaths": 2,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Guilford": {
-    "dateStr": "6/2/20",
-    "cases": 1318,
-    "deaths": 65,
+    "dateStr": "6/3/20",
+    "cases": 1415,
+    "deaths": 71,
     "recovered": 0,
-    "new": 30,
-    "newDeaths": 0
+    "new": 97,
+    "newDeaths": 6
   },
   "Halifax": {
-    "dateStr": "6/2/20",
-    "cases": 183,
+    "dateStr": "6/3/20",
+    "cases": 197,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 14,
     "newDeaths": 0
   },
   "Harnett": {
-    "dateStr": "6/2/20",
-    "cases": 297,
+    "dateStr": "6/3/20",
+    "cases": 306,
     "deaths": 28,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
+    "new": 9,
+    "newDeaths": 0
   },
   "Haywood": {
-    "dateStr": "6/2/20",
-    "cases": 49,
+    "dateStr": "6/3/20",
+    "cases": 53,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 4,
     "newDeaths": 0
   },
   "Henderson": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 352,
     "deaths": 48,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Hertford": {
-    "dateStr": "6/2/20",
-    "cases": 128,
-    "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Hertford": {
+    "dateStr": "6/3/20",
+    "cases": 132,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 1
+  },
   "Hoke": {
-    "dateStr": "6/2/20",
-    "cases": 248,
+    "dateStr": "6/3/20",
+    "cases": 255,
     "deaths": 1,
     "recovered": 0,
-    "new": 5,
+    "new": 7,
     "newDeaths": 0
   },
   "Hyde": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -384,31 +384,31 @@
     "newDeaths": 0
   },
   "Iredell": {
-    "dateStr": "6/2/20",
-    "cases": 273,
+    "dateStr": "6/3/20",
+    "cases": 280,
     "deaths": 6,
     "recovered": 0,
-    "new": 5,
+    "new": 7,
     "newDeaths": 0
   },
   "Jackson": {
-    "dateStr": "6/2/20",
-    "cases": 34,
+    "dateStr": "6/3/20",
+    "cases": 38,
     "deaths": 1,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
   "Johnston": {
-    "dateStr": "6/2/20",
-    "cases": 471,
-    "deaths": 21,
+    "dateStr": "6/3/20",
+    "cases": 513,
+    "deaths": 23,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
+    "new": 42,
+    "newDeaths": 2
   },
   "Jones": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 28,
     "deaths": 3,
     "recovered": 0,
@@ -416,47 +416,47 @@
     "newDeaths": 0
   },
   "Lee": {
-    "dateStr": "6/2/20",
-    "cases": 466,
+    "dateStr": "6/3/20",
+    "cases": 486,
     "deaths": 4,
     "recovered": 0,
-    "new": 6,
+    "new": 20,
     "newDeaths": 0
   },
   "Lenoir": {
-    "dateStr": "6/2/20",
-    "cases": 217,
+    "dateStr": "6/3/20",
+    "cases": 222,
     "deaths": 7,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Lincoln": {
-    "dateStr": "6/2/20",
-    "cases": 72,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "McDowell": {
-    "dateStr": "6/2/20",
-    "cases": 82,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Macon": {
-    "dateStr": "6/2/20",
-    "cases": 89,
-    "deaths": 1,
     "recovered": 0,
     "new": 5,
     "newDeaths": 0
   },
+  "Lincoln": {
+    "dateStr": "6/3/20",
+    "cases": 78,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "McDowell": {
+    "dateStr": "6/3/20",
+    "cases": 82,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Macon": {
+    "dateStr": "6/3/20",
+    "cases": 89,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Madison": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -464,87 +464,87 @@
     "newDeaths": 0
   },
   "Martin": {
-    "dateStr": "6/2/20",
-    "cases": 73,
+    "dateStr": "6/3/20",
+    "cases": 74,
     "deaths": 4,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Mecklenburg": {
-    "dateStr": "6/2/20",
-    "cases": 4519,
-    "deaths": 95,
-    "recovered": 0,
-    "new": 107,
-    "newDeaths": 3
-  },
-  "Mitchell": {
-    "dateStr": "6/2/20",
-    "cases": 15,
-    "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Montgomery": {
-    "dateStr": "6/2/20",
-    "cases": 132,
-    "deaths": 4,
+  "Mecklenburg": {
+    "dateStr": "6/3/20",
+    "cases": 4670,
+    "deaths": 97,
     "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
+    "new": 151,
+    "newDeaths": 2
   },
-  "Moore": {
-    "dateStr": "6/2/20",
-    "cases": 224,
-    "deaths": 10,
+  "Mitchell": {
+    "dateStr": "6/3/20",
+    "cases": 15,
+    "deaths": 0,
     "recovered": 0,
     "new": 0,
+    "newDeaths": 0
+  },
+  "Montgomery": {
+    "dateStr": "6/3/20",
+    "cases": 162,
+    "deaths": 5,
+    "recovered": 0,
+    "new": 30,
+    "newDeaths": 1
+  },
+  "Moore": {
+    "dateStr": "6/3/20",
+    "cases": 235,
+    "deaths": 10,
+    "recovered": 0,
+    "new": 11,
     "newDeaths": 0
   },
   "Nash": {
-    "dateStr": "6/2/20",
-    "cases": 210,
+    "dateStr": "6/3/20",
+    "cases": 213,
     "deaths": 4,
     "recovered": 0,
-    "new": 4,
+    "new": 3,
     "newDeaths": 0
   },
   "New Hanover": {
-    "dateStr": "6/2/20",
-    "cases": 208,
+    "dateStr": "6/3/20",
+    "cases": 225,
     "deaths": 5,
     "recovered": 0,
-    "new": 0,
+    "new": 17,
     "newDeaths": 0
   },
   "Northampton": {
-    "dateStr": "6/2/20",
-    "cases": 156,
+    "dateStr": "6/3/20",
+    "cases": 165,
     "deaths": 14,
     "recovered": 0,
-    "new": 0,
+    "new": 9,
     "newDeaths": 0
   },
   "Onslow": {
-    "dateStr": "6/2/20",
-    "cases": 112,
+    "dateStr": "6/3/20",
+    "cases": 114,
     "deaths": 2,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Orange": {
-    "dateStr": "6/2/20",
-    "cases": 360,
+    "dateStr": "6/3/20",
+    "cases": 364,
     "deaths": 41,
     "recovered": 0,
-    "new": 3,
+    "new": 4,
     "newDeaths": 0
   },
   "Pamlico": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 10,
     "deaths": 0,
     "recovered": 0,
@@ -552,159 +552,159 @@
     "newDeaths": 0
   },
   "Pasquotank": {
-    "dateStr": "6/2/20",
-    "cases": 110,
-    "deaths": 12,
+    "dateStr": "6/3/20",
+    "cases": 112,
+    "deaths": 13,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 1
+  },
+  "Pender": {
+    "dateStr": "6/3/20",
+    "cases": 93,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Perquimans": {
+    "dateStr": "6/3/20",
+    "cases": 25,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Person": {
+    "dateStr": "6/3/20",
+    "cases": 54,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Pitt": {
+    "dateStr": "6/3/20",
+    "cases": 321,
+    "deaths": 2,
     "recovered": 0,
     "new": 5,
     "newDeaths": 0
   },
-  "Pender": {
-    "dateStr": "6/2/20",
-    "cases": 83,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Perquimans": {
-    "dateStr": "6/2/20",
-    "cases": 25,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Person": {
-    "dateStr": "6/2/20",
-    "cases": 50,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Pitt": {
-    "dateStr": "6/2/20",
-    "cases": 316,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
   "Polk": {
-    "dateStr": "6/2/20",
-    "cases": 37,
+    "dateStr": "6/3/20",
+    "cases": 39,
     "deaths": 4,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Randolph": {
-    "dateStr": "6/2/20",
-    "cases": 678,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Richmond": {
-    "dateStr": "6/2/20",
-    "cases": 165,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Robeson": {
-    "dateStr": "6/2/20",
-    "cases": 824,
-    "deaths": 23,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Rockingham": {
-    "dateStr": "6/2/20",
-    "cases": 100,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Rowan": {
-    "dateStr": "6/2/20",
-    "cases": 675,
-    "deaths": 37,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Randolph": {
+    "dateStr": "6/3/20",
+    "cases": 728,
+    "deaths": 14,
+    "recovered": 0,
+    "new": 50,
+    "newDeaths": 1
+  },
+  "Richmond": {
+    "dateStr": "6/3/20",
+    "cases": 170,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Robeson": {
+    "dateStr": "6/3/20",
+    "cases": 885,
+    "deaths": 26,
+    "recovered": 0,
+    "new": 61,
+    "newDeaths": 3
+  },
+  "Rockingham": {
+    "dateStr": "6/3/20",
+    "cases": 102,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Rowan": {
+    "dateStr": "6/3/20",
+    "cases": 688,
+    "deaths": 38,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 1
+  },
   "Rutherford": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 186,
     "deaths": 7,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Sampson": {
-    "dateStr": "6/2/20",
-    "cases": 499,
+    "dateStr": "6/3/20",
+    "cases": 510,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 11,
     "newDeaths": 0
   },
   "Scotland": {
-    "dateStr": "6/2/20",
-    "cases": 86,
+    "dateStr": "6/3/20",
+    "cases": 87,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Stanly": {
-    "dateStr": "6/2/20",
-    "cases": 86,
+    "dateStr": "6/3/20",
+    "cases": 92,
     "deaths": 4,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Stokes": {
-    "dateStr": "6/2/20",
-    "cases": 69,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Surry": {
-    "dateStr": "6/2/20",
-    "cases": 224,
-    "deaths": 2,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
-  "Swain": {
-    "dateStr": "6/2/20",
-    "cases": 13,
+  "Stokes": {
+    "dateStr": "6/3/20",
+    "cases": 75,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Surry": {
+    "dateStr": "6/3/20",
+    "cases": 231,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Swain": {
+    "dateStr": "6/3/20",
+    "cases": 21,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 8,
     "newDeaths": 0
   },
   "Transylvania": {
-    "dateStr": "6/2/20",
-    "cases": 14,
+    "dateStr": "6/3/20",
+    "cases": 15,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Tyrrell": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 5,
     "deaths": 0,
     "recovered": 0,
@@ -712,63 +712,63 @@
     "newDeaths": 0
   },
   "Union": {
-    "dateStr": "6/2/20",
-    "cases": 466,
-    "deaths": 20,
+    "dateStr": "6/3/20",
+    "cases": 506,
+    "deaths": 21,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 0
+    "new": 40,
+    "newDeaths": 1
   },
   "Vance": {
-    "dateStr": "6/2/20",
-    "cases": 323,
-    "deaths": 22,
+    "dateStr": "6/3/20",
+    "cases": 337,
+    "deaths": 23,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 14,
+    "newDeaths": 1
   },
   "Wake": {
-    "dateStr": "6/2/20",
-    "cases": 1841,
-    "deaths": 39,
+    "dateStr": "6/3/20",
+    "cases": 1901,
+    "deaths": 40,
     "recovered": 0,
-    "new": 68,
-    "newDeaths": 0
+    "new": 60,
+    "newDeaths": 1
   },
   "Warren": {
-    "dateStr": "6/2/20",
-    "cases": 64,
+    "dateStr": "6/3/20",
+    "cases": 70,
     "deaths": 2,
     "recovered": 0,
-    "new": 1,
+    "new": 6,
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "6/2/20",
-    "cases": 30,
+    "dateStr": "6/3/20",
+    "cases": 32,
     "deaths": 3,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Watauga": {
-    "dateStr": "6/2/20",
-    "cases": 27,
+    "dateStr": "6/3/20",
+    "cases": 31,
     "deaths": 0,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
   "Wayne": {
-    "dateStr": "6/2/20",
-    "cases": 1179,
+    "dateStr": "6/3/20",
+    "cases": 1188,
     "deaths": 22,
     "recovered": 0,
-    "new": 10,
+    "new": 9,
     "newDeaths": 0
   },
   "Wilkes": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 500,
     "deaths": 6,
     "recovered": 0,
@@ -776,31 +776,31 @@
     "newDeaths": 0
   },
   "Wilson": {
-    "dateStr": "6/2/20",
-    "cases": 363,
-    "deaths": 10,
+    "dateStr": "6/3/20",
+    "cases": 384,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 21,
+    "newDeaths": 1
+  },
+  "Yadkin": {
+    "dateStr": "6/3/20",
+    "cases": 203,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 0
+  },
+  "Yancey": {
+    "dateStr": "6/3/20",
+    "cases": 18,
+    "deaths": 0,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Yadkin": {
-    "dateStr": "6/2/20",
-    "cases": 181,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 1
-  },
-  "Yancey": {
-    "dateStr": "6/2/20",
-    "cases": 15,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Out of NC": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -808,7 +808,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/2/20",
+    "dateStr": "6/3/20",
     "cases": 3,
     "deaths": 2,
     "recovered": 0,
