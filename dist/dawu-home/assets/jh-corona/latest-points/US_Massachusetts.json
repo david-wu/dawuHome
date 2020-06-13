@@ -1,78 +1,86 @@
 {
   "Barnstable": {
-    "dateStr": "6/11/20",
-    "cases": 1474,
+    "dateStr": "6/12/20",
+    "cases": 1479,
     "deaths": 127,
     "recovered": 0,
-    "new": 7,
+    "new": 5,
     "newDeaths": 0
   },
   "Berkshire": {
-    "dateStr": "6/11/20",
+    "dateStr": "6/12/20",
     "cases": 575,
-    "deaths": 41,
+    "deaths": 42,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   "Bristol": {
-    "dateStr": "6/11/20",
-    "cases": 7793,
-    "deaths": 492,
+    "dateStr": "6/12/20",
+    "cases": 7872,
+    "deaths": 496,
     "recovered": 0,
-    "new": 39,
-    "newDeaths": 5
+    "new": 79,
+    "newDeaths": 4
   },
   "Dukes": {
-    "dateStr": "6/11/20",
+    "dateStr": "6/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Essex": {
-    "dateStr": "6/11/20",
-    "cases": 15465,
-    "deaths": 1031,
+  "Dukes and Nantucket": {
+    "dateStr": "6/12/20",
+    "cases": 56,
+    "deaths": 2,
     "recovered": 0,
-    "new": 100,
-    "newDeaths": 7
-  },
-  "Franklin": {
-    "dateStr": "6/11/20",
-    "cases": 348,
-    "deaths": 49,
-    "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
-  "Hampden": {
-    "dateStr": "6/11/20",
-    "cases": 6415,
-    "deaths": 633,
+  "Essex": {
+    "dateStr": "6/12/20",
+    "cases": 15518,
+    "deaths": 1035,
     "recovered": 0,
-    "new": 20,
+    "new": 53,
     "newDeaths": 4
   },
-  "Hampshire": {
-    "dateStr": "6/11/20",
-    "cases": 913,
-    "deaths": 100,
+  "Franklin": {
+    "dateStr": "6/12/20",
+    "cases": 348,
+    "deaths": 50,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
+    "newDeaths": 1
+  },
+  "Hampden": {
+    "dateStr": "6/12/20",
+    "cases": 6431,
+    "deaths": 633,
+    "recovered": 0,
+    "new": 16,
     "newDeaths": 0
   },
-  "Middlesex": {
-    "dateStr": "6/11/20",
-    "cases": 22996,
-    "deaths": 1733,
+  "Hampshire": {
+    "dateStr": "6/12/20",
+    "cases": 918,
+    "deaths": 103,
     "recovered": 0,
-    "new": 107,
-    "newDeaths": 8
+    "new": 5,
+    "newDeaths": 3
+  },
+  "Middlesex": {
+    "dateStr": "6/12/20",
+    "cases": 23075,
+    "deaths": 1744,
+    "recovered": 0,
+    "new": 79,
+    "newDeaths": 11
   },
   "Nantucket": {
-    "dateStr": "6/11/20",
+    "dateStr": "6/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -80,59 +88,51 @@
     "newDeaths": 0
   },
   "Norfolk": {
-    "dateStr": "6/11/20",
-    "cases": 8809,
-    "deaths": 876,
+    "dateStr": "6/12/20",
+    "cases": 8842,
+    "deaths": 882,
     "recovered": 0,
-    "new": 35,
-    "newDeaths": 3
-  },
-  "Plymouth": {
-    "dateStr": "6/11/20",
-    "cases": 8440,
-    "deaths": 612,
-    "recovered": 0,
-    "new": 22,
-    "newDeaths": 4
-  },
-  "Suffolk": {
-    "dateStr": "6/11/20",
-    "cases": 19195,
-    "deaths": 938,
-    "recovered": 0,
-    "new": 96,
-    "newDeaths": 2
-  },
-  "Worcester": {
-    "dateStr": "6/11/20",
-    "cases": 11885,
-    "deaths": 849,
-    "recovered": 0,
-    "new": 65,
-    "newDeaths": 5
+    "new": 33,
+    "newDeaths": 6
   },
   "Out of MA": {
-    "dateStr": "6/11/20",
+    "dateStr": "6/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Plymouth": {
+    "dateStr": "6/12/20",
+    "cases": 8462,
+    "deaths": 619,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 7
+  },
+  "Suffolk": {
+    "dateStr": "6/12/20",
+    "cases": 19249,
+    "deaths": 941,
+    "recovered": 0,
+    "new": 54,
+    "newDeaths": 3
+  },
   "Unassigned": {
-    "dateStr": "6/11/20",
-    "cases": 981,
+    "dateStr": "6/12/20",
+    "cases": 1014,
     "deaths": 603,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Dukes and Nantucket": {
-    "dateStr": "6/11/20",
-    "cases": 56,
-    "deaths": 2,
+  "Worcester": {
+    "dateStr": "6/12/20",
+    "cases": 11937,
+    "deaths": 856,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 52,
+    "newDeaths": 7
   }
 }

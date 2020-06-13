@@ -1,70 +1,70 @@
 {
   "Fairfield": {
-    "dateStr": "6/11/20",
-    "cases": 16155,
-    "deaths": 1333,
+    "dateStr": "6/12/20",
+    "cases": 16178,
+    "deaths": 1337,
     "recovered": 0,
-    "new": 21,
-    "newDeaths": 12
+    "new": 23,
+    "newDeaths": 4
   },
   "Hartford": {
-    "dateStr": "6/11/20",
-    "cases": 10967,
-    "deaths": 1308,
+    "dateStr": "6/12/20",
+    "cases": 11103,
+    "deaths": 1313,
     "recovered": 0,
-    "new": 43,
+    "new": 136,
     "newDeaths": 5
   },
   "Litchfield": {
-    "dateStr": "6/11/20",
+    "dateStr": "6/12/20",
     "cases": 1435,
     "deaths": 136,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Middlesex": {
+    "dateStr": "6/12/20",
+    "cases": 1216,
+    "deaths": 166,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 1
+  },
+  "New Haven": {
+    "dateStr": "6/12/20",
+    "cases": 11979,
+    "deaths": 1034,
+    "recovered": 0,
+    "new": 49,
+    "newDeaths": 3
+  },
+  "New London": {
+    "dateStr": "6/12/20",
+    "cases": 1150,
+    "deaths": 98,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Middlesex": {
-    "dateStr": "6/11/20",
-    "cases": 1210,
-    "deaths": 165,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 1
-  },
-  "New Haven": {
-    "dateStr": "6/11/20",
-    "cases": 11930,
-    "deaths": 1031,
-    "recovered": 0,
-    "new": 19,
-    "newDeaths": 7
-  },
-  "New London": {
-    "dateStr": "6/11/20",
-    "cases": 1147,
-    "deaths": 98,
-    "recovered": 0,
-    "new": 17,
-    "newDeaths": 1
-  },
   "Tolland": {
-    "dateStr": "6/11/20",
-    "cases": 883,
+    "dateStr": "6/12/20",
+    "cases": 886,
     "deaths": 62,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
+    "new": 3,
+    "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "6/11/20",
-    "cases": 441,
+    "dateStr": "6/12/20",
+    "cases": 453,
     "deaths": 15,
     "recovered": 0,
-    "new": 4,
+    "new": 12,
     "newDeaths": 0
   },
   "Out of CT": {
-    "dateStr": "6/11/20",
+    "dateStr": "6/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/11/20",
+    "dateStr": "6/12/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,
