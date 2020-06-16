@@ -1090,10 +1090,10 @@
   {
     "dateStr": "6/6/20",
     "cases": 1926538,
-    "deaths": 110123,
+    "deaths": 110124,
     "recovered": 500849,
     "new": 22684,
-    "newDeaths": 674
+    "newDeaths": 675
   },
   {
     "dateStr": "6/7/20",
@@ -1101,7 +1101,7 @@
     "deaths": 110575,
     "recovered": 506367,
     "new": 17771,
-    "newDeaths": 452
+    "newDeaths": 451
   },
   {
     "dateStr": "6/8/20",
@@ -1158,5 +1158,13 @@
     "recovered": 561816,
     "new": 19532,
     "newDeaths": 296
+  },
+  {
+    "dateStr": "6/15/20",
+    "cases": 2114026,
+    "deaths": 116127,
+    "recovered": 576334,
+    "new": 19968,
+    "newDeaths": 395
   }
 ]
