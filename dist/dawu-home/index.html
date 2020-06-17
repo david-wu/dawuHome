@@ -11,5 +11,37 @@
 </head>
 <body>
   <app-root></app-root>
+  <div id="firebaseui-auth-container"></div>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCNPiqa4cqnd_tnPwNigHHw7fREF6-R3Fw",
+      authDomain: "trendrunner-84e44.firebaseapp.com",
+      databaseURL: "https://trendrunner-84e44.firebaseio.com",
+      projectId: "trendrunner-84e44",
+      storageBucket: "trendrunner-84e44.appspot.com",
+      messagingSenderId: "456585926372",
+      appId: "1:456585926372:web:f2ef3c703e39ba8b173ef1",
+      measurementId: "G-6H11P5W2FP"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <!-- firebase auth -->
+  <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+
 <script src="runtime.js" defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills.js" defer></script><script src="styles.js" defer></script><script src="vendor.js" defer></script><script src="main.js" defer></script></body>
 </html>

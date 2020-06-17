@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n  <div class=\"right-side\">\n    <h3>Profile - David Wu</h3>\n    <p class=\"contact-info\">email | david.wuu@gmail.com</p>\n    <img class=\"img-md\" src=\"assets/images/me-point-arena.jpg\"/>\n    <h3>About me</h3>\n    <ul>\n      <li>I was born in Mountain View, CA</li>\n      <li>I split my time between San Francisco, Oakland, and Palo Alto</li>\n    </ul>\n    <h3>Recent Interests</h3>\n    <ul>\n      <li>Drinking smoothies</li>\n      <li>Throwing a frisbee around</li>\n      <li>Strolling around cities and lakes</li>\n      <li>Computer games</li>\n    </ul>\n    <img class=\"img-md\" src=\"assets/images/me-ukiah.jpg\"/>\n    <img class=\"img-md\" src=\"assets/images/me-bike-tour.jpg\"/>\n    <div class=\"footer\">\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n  <div class=\"right-side\">\n    <h3>Profile - David Wu</h3>\n    <p class=\"contact-info\">email | david.wuu@gmail.com</p>\n    <img class=\"img-md\" src=\"assets/images/me-point-arena.jpg\"/>\n    <h3>About me</h3>\n    <ul>\n      <li>I was born in Mountain View, CA</li>\n      <li>I split my time between San Francisco, Oakland, and Palo Alto</li>\n    </ul>\n    <h3>Recent Interests</h3>\n    <ul>\n      <li>Drinking smoothies</li>\n      <li>Throwing a frisbee around</li>\n      <li>Strolling around cities and lakes</li>\n      <li>Computer games</li>\n    </ul>\n    <img class=\"img-md\" src=\"assets/images/me-ukiah.jpg\"/>\n    <img class=\"img-md\" src=\"assets/images/me-bike-tour.jpg\"/>\n    <dwu-firebase-auth></dwu-firebase-auth>\n    <div class=\"footer\"></div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -72,6 +72,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @src/app/about-me/about-me.component */ "./src/app/about-me/about-me.component.ts");
 /* harmony import */ var _src_app_about_me_about_me_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @src/app/about-me/about-me.routes */ "./src/app/about-me/about-me.routes.ts");
+/* harmony import */ var _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth.module */ "./src/app/firebase-auth/firebase-auth.module.ts");
+
 
 
 
@@ -88,6 +90,7 @@ var AboutMeModule = /** @class */ (function () {
             imports: [
                 _src_app_about_me_about_me_routes__WEBPACK_IMPORTED_MODULE_4__["AboutMeRoutingModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthModule"],
             ],
             exports: [
                 _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__["AboutMeComponent"],

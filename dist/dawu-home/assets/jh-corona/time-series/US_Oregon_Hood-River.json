@@ -1153,10 +1153,10 @@
   },
   {
     "dateStr": "6/14/20",
-    "cases": 71,
+    "cases": 81,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 10,
     "newDeaths": 0
   },
   {
@@ -1164,7 +1164,15 @@
     "cases": 82,
     "deaths": 0,
     "recovered": 0,
-    "new": 11,
+    "new": 1,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "6/16/20",
+    "cases": 83,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
     "newDeaths": 0
   }
 ]
