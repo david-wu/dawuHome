@@ -61837,7 +61837,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <div class=\"radio-button-container\">\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingNormalized\"\n                    (click)=\"onChangeNormalized(false)\"\n                >Total</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingNormalized\"\n                    (click)=\"onChangeNormalized(true)\"\n                >Per 1M</div>\n            </div>\n            <div class=\"chart radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingLineChart\"\n                    (click)=\"onChangeViewingLineChart(false)\"\n                >\n                    <span class=\"material-icons\">\n                        insert_chart\n                    </span>\n                </div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingLineChart\"\n                    (click)=\"onChangeViewingLineChart(true)\"\n                >\n                    <span class=\"material-icons\">\n                    show_chart\n                    </span>\n                </div>\n            </div>\n        </div>\n        <dwu-stat-viewer\n            [columnData]=\"coronaData[hoverIndex]\"\n            [keys]=\"isViewingNormalized ? perMilViewKeys : coronaViewKeys\"\n            [disabledKeys]=\"disabledBarKeys\"\n            [labelsByKey]=\"Labels.corona\"\n            [rowCount]=\"3\"\n            [formattersByKeys]=\"formattersByKeys\"\n        ></dwu-stat-viewer>\n    </div>\n    <dwu-line-chart\n        *ngIf=\"isViewingLineChart\"\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"isViewingNormalized ? perMilKeys : coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n        [indicators]=\"indicators\"\n    ></dwu-line-chart>\n    <dwu-bar-chart\n        *ngIf=\"!isViewingLineChart\"\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"isViewingNormalized ? perMilKeys : coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n        [indicators]=\"indicators\"\n    ></dwu-bar-chart>\n    <dwu-chart-legend\n        [keys]=\"isViewingNormalized ? perMilKeys : coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [labelsByKey]=\"Labels.corona\"\n        (disabledKeysChange)=\"disabledBarKeysChange.emit($event)\"\n    ></dwu-chart-legend>\n</div>\n\n<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <dwu-stat-viewer\n            [columnData]=\"coronaData[hoverIndex]\"\n            [keys]=\"normalizedViewKeys\"\n            [disabledKeys]=\"disabledBarKeys\"\n            [labelsByKey]=\"Labels.corona\"\n            [rowCount]=\"2\"\n            [formattersByKeys]=\"formattersByKeys\"\n        ></dwu-stat-viewer>\n    </div>\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledNormalKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        [yAxisFormatter]=\"toPercentage\"\n        [indicators]=\"indicators\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledNormalKeys\"\n        [labelsByKey]=\"Labels.corona\"\n        (disabledKeysChange)=\"disabledNormalKeysChange.emit($event)\"\n    ></dwu-chart-legend>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <div class=\"radio-button-container\">\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingNormalized\"\n                    (click)=\"onChangeNormalized(false)\"\n                >Total</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingNormalized\"\n                    (click)=\"onChangeNormalized(true)\"\n                >Per 1M</div>\n            </div>\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"distanceFromPointToAvg === 0\"\n                    (click)=\"onChangeAvgedDays(0)\"\n                >1 Day</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"distanceFromPointToAvg === 1\"\n                    (click)=\"onChangeAvgedDays(1)\"\n                >3 Day</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"distanceFromPointToAvg === 3\"\n                    (click)=\"onChangeAvgedDays(3)\"\n                >7 Day</div>\n            </div>\n            <div class=\"chart radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingLineChart\"\n                    (click)=\"onChangeViewingLineChart(false)\"\n                >\n                    <span class=\"material-icons\">\n                        insert_chart\n                    </span>\n                </div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingLineChart\"\n                    (click)=\"onChangeViewingLineChart(true)\"\n                >\n                    <span class=\"material-icons\">\n                    show_chart\n                    </span>\n                </div>\n            </div>\n        </div>\n        <dwu-stat-viewer\n            [columnData]=\"coronaData[hoverIndex]\"\n            [keys]=\"isViewingNormalized ? perMilViewKeys : coronaViewKeys\"\n            [disabledKeys]=\"disabledBarKeys\"\n            [labelsByKey]=\"Labels.corona\"\n            [rowCount]=\"3\"\n            [formattersByKeys]=\"formattersByKeys\"\n        ></dwu-stat-viewer>\n    </div>\n    <dwu-line-chart\n        *ngIf=\"isViewingLineChart\"\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"isViewingNormalized ? perMilKeys : coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n        [indicators]=\"indicators\"\n    ></dwu-line-chart>\n    <dwu-bar-chart\n        *ngIf=\"!isViewingLineChart\"\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"isViewingNormalized ? perMilKeys : coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n        [indicators]=\"indicators\"\n    ></dwu-bar-chart>\n    <dwu-chart-legend\n        [keys]=\"isViewingNormalized ? perMilKeys : coronaKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledBarKeys\"\n        [labelsByKey]=\"Labels.corona\"\n        (disabledKeysChange)=\"disabledBarKeysChange.emit($event)\"\n    ></dwu-chart-legend>\n</div>\n\n<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <dwu-stat-viewer\n            [columnData]=\"coronaData[hoverIndex]\"\n            [keys]=\"normalizedViewKeys\"\n            [disabledKeys]=\"disabledBarKeys\"\n            [labelsByKey]=\"Labels.corona\"\n            [rowCount]=\"2\"\n            [formattersByKeys]=\"formattersByKeys\"\n        ></dwu-stat-viewer>\n    </div>\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"coronaData\"\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledNormalKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        [yAxisFormatter]=\"toPercentage\"\n        [indicators]=\"indicators\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"normalKeys\"\n        [colorsByKey]=\"coronaColorsByKey\"\n        [disabledKeys]=\"disabledNormalKeys\"\n        [labelsByKey]=\"Labels.corona\"\n        (disabledKeysChange)=\"disabledNormalKeysChange.emit($event)\"\n    ></dwu-chart-legend>\n</div>\n");
 
 /***/ }),
 
@@ -62102,6 +62102,7 @@ var CoronaDashboardComponent = /** @class */ (function () {
         this.isViewingLineChartChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.coronaExtractor = new _models_index__WEBPACK_IMPORTED_MODULE_4__["CoronaDataExtractor"]();
         this.hoverIndex = 0;
+        this.distanceFromPointToAvg = 0;
         this.CoronaKeys = _models_index__WEBPACK_IMPORTED_MODULE_4__["CoronaKeys"];
         this.NormalKeys = _models_index__WEBPACK_IMPORTED_MODULE_4__["NormalKeys"];
         this.Labels = _models_index__WEBPACK_IMPORTED_MODULE_4__["Labels"];
@@ -62170,7 +62171,7 @@ var CoronaDashboardComponent = /** @class */ (function () {
     }
     CoronaDashboardComponent.prototype.ngOnChanges = function (changes) {
         if (changes.coronaFile && this.coronaFile) {
-            this.coronaData = this.coronaExtractor.cleanJh(this.coronaFile, this.population);
+            this.coronaData = this.coronaExtractor.cleanJh(this.coronaFile, this.population, this.distanceFromPointToAvg);
             this.hoverIndex = this.coronaData.length - 1;
         }
         if (changes.lockdownInfo) {
@@ -62196,6 +62197,10 @@ var CoronaDashboardComponent = /** @class */ (function () {
                 this.indicators = undefined;
             }
         }
+    };
+    CoronaDashboardComponent.prototype.onChangeAvgedDays = function (distanceFromPointToAvg) {
+        this.distanceFromPointToAvg = distanceFromPointToAvg;
+        this.coronaData = this.coronaExtractor.cleanJh(this.coronaFile, this.population, distanceFromPointToAvg);
     };
     CoronaDashboardComponent.prototype.onChangeNormalized = function (isViewingNormalized) {
         this.disabledBarKeysChange.emit(new Set());
@@ -62918,8 +62923,9 @@ __webpack_require__.r(__webpack_exports__);
 var CoronaDataExtractor = /** @class */ (function () {
     function CoronaDataExtractor() {
     }
-    CoronaDataExtractor.prototype.cleanJh = function (fileData, population) {
+    CoronaDataExtractor.prototype.cleanJh = function (fileData, population, distanceFromPointToAvg) {
         if (population === void 0) { population = 1; }
+        if (distanceFromPointToAvg === void 0) { distanceFromPointToAvg = 0; }
         var cleanData = [];
         fileData.forEach(function (point) {
             var _a;
@@ -62967,77 +62973,18 @@ var CoronaDataExtractor = /** @class */ (function () {
             }
         }
         var coolData = oneLeadingZeroData.slice(boringDataClipIndex);
+        if (distanceFromPointToAvg) {
+            coolData = this.getAvgSeries(coolData, [
+                _corona_keys_enum__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].CASES,
+                _corona_keys_enum__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].DEATHS,
+                _corona_keys_enum__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].NEW_DEATHS,
+                _corona_keys_enum__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].RECOVERED,
+                _corona_keys_enum__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].NEW,
+            ], distanceFromPointToAvg);
+        }
+        ;
         return this.getNormalizedData(coolData, population);
     };
-    // public clean(file, population: number = 1) {
-    //     const cleanData = [];
-    //     // const dates = Object.keys(file.dates);
-    //     const columns = new Set();
-    //     const dateStrs = [];
-    //     each(file.dates, (row: any, date: string) => {
-    //         dateStrs.push(date);
-    //         Object.keys(row).forEach((columnName: string) => {
-    //             columns.add(columnName);
-    //         });
-    //     });
-    //     const sortedDateStrs = sortBy(dateStrs, (dateStr) => +getDateFromStr(dateStr))
-    //     let previousPoint = {
-    //         cases: sortedDateStrs[0].cases || 0,
-    //         new: sortedDateStrs[0].cases || 0,
-    //         deaths: sortedDateStrs[0].deaths || 0,
-    //         recovered: sortedDateStrs[0].recovered || 0,
-    //     };
-    //     sortedDateStrs.forEach((dateStr) => {
-    //         const point = file.dates[dateStr];
-    //         point[CoronaKeys.CASES] = point[CoronaKeys.CASES] || 0;
-    //         point[CoronaKeys.DEATHS] = point[CoronaKeys.DEATHS] || 0;
-    //         point[CoronaKeys.RECOVERED] = point[CoronaKeys.RECOVERED] || 0;
-    //         const cleanPoint = {
-    //             dateStr: dateStr,
-    //             date: getDateFromStr(dateStr),
-    //             timestamp: +getDateFromStr(dateStr),
-    //             [CoronaKeys.CASES]: Math.max(point[CoronaKeys.CASES], previousPoint[CoronaKeys.CASES]),
-    //             [CoronaKeys.DEATHS]: Math.max(point[CoronaKeys.DEATHS], previousPoint[CoronaKeys.DEATHS]),
-    //             [CoronaKeys.RECOVERED]: Math.max(point[CoronaKeys.RECOVERED], previousPoint[CoronaKeys.RECOVERED]),
-    //         } as any;
-    //         cleanPoint[CoronaKeys.NEW] = cleanPoint[CoronaKeys.CASES] - previousPoint[CoronaKeys.CASES];
-    //         cleanPoint[CoronaKeys.ACTIVE] = cleanPoint[CoronaKeys.CASES] - cleanPoint[CoronaKeys.NEW] - cleanPoint[CoronaKeys.DEATHS] - cleanPoint[CoronaKeys.RECOVERED];
-    //         cleanPoint[CoronaKeys.ACTIVE] = Math.max(0, cleanPoint[CoronaKeys.ACTIVE]);
-    //         cleanData.push(cleanPoint)
-    //         previousPoint = cleanPoint;
-    //     });
-    //     // if there is a hole in the data, this removes everything before that hole
-    //     let spottyDataClipIndex = 0;
-    //     const overOneDay = (1000 * 60 * 60 * 24) * 1.2;
-    //     for(let i = 1; i < cleanData.length; i++) {
-    //         const point = cleanData[i];
-    //         const previousPoint = cleanData[i - 1];
-    //         if (!previousPoint) {
-    //             break;
-    //         }
-    //         if ((previousPoint.timestamp + overOneDay) < point.timestamp) {
-    //             spottyDataClipIndex = i;
-    //         }
-    //     }
-    //     const unspottyData = cleanData.slice(spottyDataClipIndex);
-    //     // if there's a bunch leading 0's in the data, this removes them except the first 0
-    //     const firstNonZeroIndex = unspottyData.findIndex((point) => point[CoronaKeys.CASES] !== 0);
-    //     const clipIndex = Math.max(0, firstNonZeroIndex - 1);
-    //     const oneLeadingZeroData = unspottyData.slice(clipIndex);
-    //     let boringDataClipIndex = 0;
-    //     const lastCases = last(oneLeadingZeroData).cases;
-    //     for(let i = 1; i < oneLeadingZeroData.length; i++) {
-    //         const point = oneLeadingZeroData[i];
-    //         if ((point.cases < 100) && ((point.cases / lastCases) < 0.01)) {
-    //             boringDataClipIndex = i;
-    //         } else {
-    //             break;
-    //         }
-    //     }
-    //     const coolData = oneLeadingZeroData.slice(boringDataClipIndex);
-    //     return this.getNormalizedData(coolData, population);
-    //     // return oneLeadingZeroData;
-    // }
     CoronaDataExtractor.prototype.getNormalizedData = function (cleanData, population) {
         var _a;
         if (population === void 0) { population = 1; }
@@ -63067,6 +63014,39 @@ var CoronaDataExtractor = /** @class */ (function () {
             normalizedData[i][_normal_keys_enum__WEBPACK_IMPORTED_MODULE_2__["NormalKeys"].R_AVG] = clippedR;
         }
         return normalizedData;
+    };
+    CoronaDataExtractor.prototype.getAvgSeries = function (cleanData, keys, distanceFromPointToAvg) {
+        if (distanceFromPointToAvg === void 0) { distanceFromPointToAvg = 3; }
+        var avgSeries = [];
+        var _loop_1 = function (i) {
+            // points towards the ends of the series could be averaged over a smaller number of points
+            var startIndex = i - distanceFromPointToAvg;
+            var endIndex = i + distanceFromPointToAvg + 1;
+            while (startIndex < 0) {
+                startIndex++;
+                endIndex--;
+            }
+            while (endIndex > cleanData.length) {
+                startIndex++;
+                endIndex--;
+            }
+            var pointsToAvg = cleanData.slice(startIndex, endIndex);
+            var sums = {};
+            pointsToAvg.forEach(function (point) {
+                keys.forEach(function (key) {
+                    sums[key] = sums[key]
+                        ? sums[key] + point[key]
+                        : point[key];
+                });
+            });
+            var avgPoint = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["mapValues"])(sums, function (value) { return value / pointsToAvg.length; });
+            var newPoint = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, cleanData[i], avgPoint);
+            avgSeries.push(newPoint);
+        };
+        for (var i = 0; i < cleanData.length; i++) {
+            _loop_1(i);
+        }
+        return avgSeries;
     };
     return CoronaDataExtractor;
 }());
