@@ -42,6 +42,7 @@ export class CoronaDashboardComponent {
     public coronaExtractor = new CoronaDataExtractor();
     public hoverIndex = 0;
     public indicators;
+    public distanceFromPointToAvg = 0;
 
     public readonly CoronaKeys = CoronaKeys;
     public readonly NormalKeys = NormalKeys;
@@ -112,7 +113,11 @@ export class CoronaDashboardComponent {
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {
-            this.coronaData = this.coronaExtractor.cleanJh(this.coronaFile, this.population);
+            this.coronaData = this.coronaExtractor.cleanJh(
+              this.coronaFile,
+              this.population,
+              this.distanceFromPointToAvg,
+            );
             this.hoverIndex = this.coronaData.length - 1;
         }
         if (changes.lockdownInfo) {
@@ -137,6 +142,15 @@ export class CoronaDashboardComponent {
                 this.indicators = undefined;
             }
         }
+    }
+
+    public onChangeAvgedDays(distanceFromPointToAvg: number) {
+      this.distanceFromPointToAvg = distanceFromPointToAvg;
+      this.coronaData = this.coronaExtractor.cleanJh(
+        this.coronaFile,
+        this.population,
+        distanceFromPointToAvg,
+      );
     }
 
     public onChangeNormalized(isViewingNormalized: boolean) {
