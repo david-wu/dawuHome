@@ -1,22 +1,22 @@
 {
   "Belknap": {
-    "dateStr": "6/18/20",
-    "cases": 76,
+    "dateStr": "6/19/20",
+    "cases": 77,
     "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Carroll": {
+    "dateStr": "6/19/20",
+    "cases": 51,
+    "deaths": 0,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Carroll": {
-    "dateStr": "6/18/20",
-    "cases": 49,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Cheshire": {
-    "dateStr": "6/18/20",
+    "dateStr": "6/19/20",
     "cases": 63,
     "deaths": 2,
     "recovered": 0,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Coos": {
-    "dateStr": "6/18/20",
+    "dateStr": "6/19/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -32,7 +32,7 @@
     "newDeaths": 0
   },
   "Grafton": {
-    "dateStr": "6/18/20",
+    "dateStr": "6/19/20",
     "cases": 77,
     "deaths": 1,
     "recovered": 0,
@@ -40,39 +40,39 @@
     "newDeaths": 0
   },
   "Hillsborough": {
-    "dateStr": "6/18/20",
-    "cases": 3060,
-    "deaths": 214,
+    "dateStr": "6/19/20",
+    "cases": 3087,
+    "deaths": 218,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 1
+    "new": 27,
+    "newDeaths": 4
   },
   "Merrimack": {
-    "dateStr": "6/18/20",
-    "cases": 392,
+    "dateStr": "6/19/20",
+    "cases": 393,
     "deaths": 18,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Rockingham": {
-    "dateStr": "6/18/20",
-    "cases": 1424,
-    "deaths": 81,
+    "dateStr": "6/19/20",
+    "cases": 1427,
+    "deaths": 83,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
+    "new": 3,
+    "newDeaths": 2
   },
   "Strafford": {
-    "dateStr": "6/18/20",
-    "cases": 280,
+    "dateStr": "6/19/20",
+    "cases": 281,
     "deaths": 13,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Sullivan": {
-    "dateStr": "6/18/20",
+    "dateStr": "6/19/20",
     "cases": 25,
     "deaths": 1,
     "recovered": 0,
@@ -80,7 +80,7 @@
     "newDeaths": 0
   },
   "Out of NH": {
-    "dateStr": "6/18/20",
+    "dateStr": "6/19/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,7 +88,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/18/20",
+    "dateStr": "6/19/20",
     "cases": 85,
     "deaths": 64,
     "recovered": 0,
