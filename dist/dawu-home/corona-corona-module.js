@@ -61824,7 +61824,7 @@ MatTreeNestedDataSource = /** @class */ (function (_super) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <div class=\"radio-button-container\">\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingNormalized\"\n                    (click)=\"onChangeNormalized(false)\"\n                >Total</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingNormalized\"\n                    (click)=\"onChangeNormalized(true)\"\n                >Per 1M</div>\n            </div>\n            <div class=\"radio-buttons\">\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 0\"\n                    (click)=\"onSelectMetricIndex(0)\"\n                >{{ Labels.corona[CoronaKeys.CASES] }}</div>\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 1\"\n                    (click)=\"onSelectMetricIndex(1)\"\n                >{{ Labels.corona[CoronaKeys.NEW] }}</div>\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 2\"\n                    (click)=\"onSelectMetricIndex(2)\"\n                >{{ Labels.corona[CoronaKeys.ACTIVE] }}</div>\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 3\"\n                    (click)=\"onSelectMetricIndex(3)\"\n                >{{ Labels.corona[CoronaKeys.RECOVERED] }}</div>\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 4\"\n                    (click)=\"onSelectMetricIndex(4)\"\n                >{{ Labels.corona[CoronaKeys.DEATHS] }}</div>\n            </div>\n        </div>\n        <dwu-stat-viewer\n            [columnData]=\"compareData[hoverIndex]\"\n            [keys]=\"compareKeys\"\n            [disabledKeys]=\"disabledCompareKeys\"\n            [labelsByKey]=\"compareLabelsByKey\"\n            [rowCount]=\"3\"\n        ></dwu-stat-viewer>\n    </div>\n\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"compareData\"\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n        [indicators]=\"indicators\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [labelsByKey]=\"compareLabelsByKey\"\n        (disabledKeysChange)=\"disabledCompareKeys = $event\"\n    ></dwu-chart-legend>\n\n</div>\n\n<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <div class=\"radio-button-container\">\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingRAvg\"\n                    (click)=\"setViewingRAvg(false)\"\n                >{{ Labels.corona[NormalKeys.R] }}</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingRAvg\"\n                    (click)=\"setViewingRAvg(true)\"\n                >{{ Labels.corona[NormalKeys.R_AVG] }}</div>\n            </div>\n        </div>\n        <dwu-stat-viewer\n            [columnData]=\"compareRData[hoverIndex]\"\n            [keys]=\"compareKeys\"\n            [disabledKeys]=\"disabledCompareKeys\"\n            [labelsByKey]=\"compareLabelsByKey\"\n            [rowCount]=\"3\"\n            [formattersByKeys]=\"rFormattersByKeys\"\n        ></dwu-stat-viewer>\n    </div>\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"compareRData\"\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        [yAxisFormatter]=\"toPercentage\"\n        [indicators]=\"indicators\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [labelsByKey]=\"compareLabelsByKey\"\n        (disabledKeysChange)=\"disabledCompareKeys = $event\"\n    ></dwu-chart-legend>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <div class=\"radio-button-container\">\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingNormalized\"\n                    (click)=\"onChangeNormalized(false)\"\n                >Total</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingNormalized\"\n                    (click)=\"onChangeNormalized(true)\"\n                >Per 1M</div>\n            </div>\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"distanceFromPointToAvg === 0\"\n                    (click)=\"onChangeAvgedDays(0)\"\n                >1 Day</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"distanceFromPointToAvg === 1\"\n                    (click)=\"onChangeAvgedDays(1)\"\n                >3 Day</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"distanceFromPointToAvg === 3\"\n                    (click)=\"onChangeAvgedDays(3)\"\n                >7 Day</div>\n            </div>\n            <div class=\"radio-buttons\">\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 0\"\n                    (click)=\"onSelectMetricIndex(0)\"\n                >{{ Labels.corona[CoronaKeys.CASES] }}</div>\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 1\"\n                    (click)=\"onSelectMetricIndex(1)\"\n                >{{ Labels.corona[CoronaKeys.NEW] }}</div>\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 2\"\n                    (click)=\"onSelectMetricIndex(2)\"\n                >{{ Labels.corona[CoronaKeys.ACTIVE] }}</div>\n                <!-- <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 3\"\n                    (click)=\"onSelectMetricIndex(3)\"\n                >{{ Labels.corona[CoronaKeys.RECOVERED] }}</div> -->\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 5\"\n                    (click)=\"onSelectMetricIndex(5)\"\n                >{{ Labels.corona[CoronaKeys.NEW_DEATHS] }}</div>\n                <div\n                    class=\"radio-button\"\n                    [class.active]=\"selectedMetricIndex === 4\"\n                    (click)=\"onSelectMetricIndex(4)\"\n                >{{ Labels.corona[CoronaKeys.DEATHS] }}</div>\n            </div>\n        </div>\n        <dwu-stat-viewer\n            [columnData]=\"compareData[hoverIndex]\"\n            [keys]=\"compareKeys\"\n            [disabledKeys]=\"disabledCompareKeys\"\n            [labelsByKey]=\"compareLabelsByKey\"\n            [rowCount]=\"3\"\n        ></dwu-stat-viewer>\n    </div>\n\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"compareData\"\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n        [indicators]=\"indicators\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [labelsByKey]=\"compareLabelsByKey\"\n        (disabledKeysChange)=\"disabledCompareKeys = $event\"\n    ></dwu-chart-legend>\n\n</div>\n\n<div class=\"chart-container\">\n    <div class=\"chart-header\">\n        <div class=\"radio-button-container\">\n            <div class=\"radio-buttons\">\n                <div class=\"radio-button\"\n                    [class.active]=\"!isViewingRAvg\"\n                    (click)=\"setViewingRAvg(false)\"\n                >{{ Labels.corona[NormalKeys.R] }}</div>\n                <div class=\"radio-button\"\n                    [class.active]=\"isViewingRAvg\"\n                    (click)=\"setViewingRAvg(true)\"\n                >{{ Labels.corona[NormalKeys.R_AVG] }}</div>\n            </div>\n        </div>\n        <dwu-stat-viewer\n            [columnData]=\"compareRData[hoverIndex]\"\n            [keys]=\"compareKeys\"\n            [disabledKeys]=\"disabledCompareKeys\"\n            [labelsByKey]=\"compareLabelsByKey\"\n            [rowCount]=\"3\"\n            [formattersByKeys]=\"rFormattersByKeys\"\n        ></dwu-stat-viewer>\n    </div>\n    <dwu-line-chart\n        class=\"overview chart\"\n        [tableData]=\"compareRData\"\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [hoverIndex]=\"hoverIndex\"\n        [yAxisFormatter]=\"toPercentage\"\n        [indicators]=\"indicators\"\n        (hoverIndexChange)=\"hoverIndex = $event\"\n    ></dwu-line-chart>\n    <dwu-chart-legend\n        [keys]=\"compareKeys\"\n        [colorsByKey]=\"compareColorsByKey\"\n        [disabledKeys]=\"disabledCompareKeys\"\n        [labelsByKey]=\"compareLabelsByKey\"\n        (disabledKeysChange)=\"disabledCompareKeys = $event\"\n    ></dwu-chart-legend>\n</div>\n");
 
 /***/ }),
 
@@ -61916,6 +61916,7 @@ var CoronaCompareDashboardComponent = /** @class */ (function () {
     function CoronaCompareDashboardComponent() {
         this.coronaExtractor = new _models_index__WEBPACK_IMPORTED_MODULE_3__["CoronaDataExtractor"]();
         this.hoverIndex = 0;
+        this.distanceFromPointToAvg = 0;
         this.isViewingNormalized = true;
         this.selectedMetricIndex = 0;
         this.metricsByNormalized = {
@@ -61925,6 +61926,7 @@ var CoronaCompareDashboardComponent = /** @class */ (function () {
                 _models_index__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].ACTIVE,
                 _models_index__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].RECOVERED,
                 _models_index__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].DEATHS,
+                _models_index__WEBPACK_IMPORTED_MODULE_3__["CoronaKeys"].NEW_DEATHS,
             ],
             NORM: [
                 _models_index__WEBPACK_IMPORTED_MODULE_3__["NormalKeys"].CASES,
@@ -61932,6 +61934,7 @@ var CoronaCompareDashboardComponent = /** @class */ (function () {
                 _models_index__WEBPACK_IMPORTED_MODULE_3__["NormalKeys"].ACTIVE,
                 _models_index__WEBPACK_IMPORTED_MODULE_3__["NormalKeys"].RECOVERED,
                 _models_index__WEBPACK_IMPORTED_MODULE_3__["NormalKeys"].DEATHS,
+                _models_index__WEBPACK_IMPORTED_MODULE_3__["NormalKeys"].NEW_DEATHS,
             ],
         };
         this.isViewingRAvg = true;
@@ -61986,8 +61989,9 @@ var CoronaCompareDashboardComponent = /** @class */ (function () {
             _this.rFormattersByKeys[key] = function (d) { return _this.toPercentage(d); };
         });
     };
-    CoronaCompareDashboardComponent.prototype.getDataForMetric = function (coronaFilesWithFileId, metric) {
+    CoronaCompareDashboardComponent.prototype.getDataForMetric = function (coronaFilesWithFileId, metric, distanceFromPointToAvg) {
         var _this = this;
+        if (distanceFromPointToAvg === void 0) { distanceFromPointToAvg = 0; }
         var coronaFilesByFileId = {};
         coronaFilesWithFileId.forEach(function (_a) {
             var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_a, 2), file = _b[0], fileId = _b[1];
@@ -61997,7 +62001,7 @@ var CoronaCompareDashboardComponent = /** @class */ (function () {
         var fileIds = [];
         coronaFilesWithFileId.forEach(function (_a) {
             var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_a, 2), coronaFile = _b[0], fileId = _b[1];
-            var cleanData = _this.coronaExtractor.cleanJh(coronaFile, _this.populationsByFileId[fileId]);
+            var cleanData = _this.coronaExtractor.cleanJh(coronaFile, _this.populationsByFileId[fileId], _this.distanceFromPointToAvg);
             fileIds.push(fileId);
             cleanData.forEach(function (column) {
                 Object(lodash__WEBPACK_IMPORTED_MODULE_2__["set"])(dataByTimestamp, [column.timestamp, fileId], column[metric]);
@@ -62012,7 +62016,7 @@ var CoronaCompareDashboardComponent = /** @class */ (function () {
             return;
         }
         var selectedMetric = this.getSelectedMetric();
-        this.compareData = this.getDataForMetric(this.coronaFilesWithFileId, selectedMetric);
+        this.compareData = this.getDataForMetric(this.coronaFilesWithFileId, selectedMetric, this.distanceFromPointToAvg);
     };
     CoronaCompareDashboardComponent.prototype.refreshRTable = function () {
         if (!this.coronaFilesWithFileId) {
@@ -62024,6 +62028,10 @@ var CoronaCompareDashboardComponent = /** @class */ (function () {
         return this.isViewingNormalized
             ? this.metricsByNormalized.NORM[this.selectedMetricIndex]
             : this.metricsByNormalized.CASE[this.selectedMetricIndex];
+    };
+    CoronaCompareDashboardComponent.prototype.onChangeAvgedDays = function (distanceFromPointToAvg) {
+        this.distanceFromPointToAvg = distanceFromPointToAvg;
+        this.refreshCompareTable();
     };
     CoronaCompareDashboardComponent.prototype.toPercentage = function (d) {
         var roundedPercent = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["round"])(d * 100, 2);
