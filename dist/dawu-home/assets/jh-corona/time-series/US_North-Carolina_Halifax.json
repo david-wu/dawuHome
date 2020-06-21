@@ -1193,10 +1193,18 @@
   },
   {
     "dateStr": "6/19/20",
-    "cases": 244,
+    "cases": 253,
     "deaths": 3,
     "recovered": 0,
-    "new": 0,
+    "new": 9,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "6/20/20",
+    "cases": 259,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 6,
     "newDeaths": 0
   }
 ]

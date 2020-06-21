@@ -1,14 +1,14 @@
 {
   "Adams": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 102,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Asotin": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 20,
     "deaths": 2,
     "recovered": 0,
@@ -16,55 +16,55 @@
     "newDeaths": 0
   },
   "Benton": {
-    "dateStr": "6/19/20",
-    "cases": 1313,
-    "deaths": 75,
+    "dateStr": "6/20/20",
+    "cases": 1360,
+    "deaths": 76,
     "recovered": 0,
-    "new": 45,
-    "newDeaths": 0
+    "new": 47,
+    "newDeaths": 1
   },
   "Chelan": {
-    "dateStr": "6/19/20",
-    "cases": 279,
+    "dateStr": "6/20/20",
+    "cases": 280,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Clallam": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 33,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Clark": {
-    "dateStr": "6/19/20",
-    "cases": 638,
+    "dateStr": "6/20/20",
+    "cases": 642,
     "deaths": 29,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
+    "new": 4,
+    "newDeaths": 0
   },
   "Columbia": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Cowlitz": {
-    "dateStr": "6/19/20",
-    "cases": 130,
+    "dateStr": "6/20/20",
+    "cases": 136,
     "deaths": 0,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
   "Douglas": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 189,
     "deaths": 3,
     "recovered": 0,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "Ferry": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -80,15 +80,15 @@
     "newDeaths": 0
   },
   "Franklin": {
-    "dateStr": "6/19/20",
-    "cases": 1113,
+    "dateStr": "6/20/20",
+    "cases": 1193,
     "deaths": 29,
     "recovered": 0,
-    "new": 32,
-    "newDeaths": 1
+    "new": 80,
+    "newDeaths": 0
   },
   "Garfield": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 1,
     "deaths": 2,
     "recovered": 0,
@@ -96,63 +96,63 @@
     "newDeaths": 0
   },
   "Grant": {
-    "dateStr": "6/19/20",
-    "cases": 348,
+    "dateStr": "6/20/20",
+    "cases": 354,
     "deaths": 5,
     "recovered": 0,
-    "new": 20,
+    "new": 6,
     "newDeaths": 0
   },
   "Grays Harbor": {
-    "dateStr": "6/19/20",
-    "cases": 22,
+    "dateStr": "6/20/20",
+    "cases": 24,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Island": {
-    "dateStr": "6/19/20",
-    "cases": 186,
+    "dateStr": "6/20/20",
+    "cases": 188,
     "deaths": 12,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Jefferson": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 33,
     "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "King": {
+    "dateStr": "6/20/20",
+    "cases": 9154,
+    "deaths": 601,
+    "recovered": 0,
+    "new": 93,
+    "newDeaths": 1
+  },
+  "Kitsap": {
+    "dateStr": "6/20/20",
+    "cases": 189,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Kittitas": {
+    "dateStr": "6/20/20",
+    "cases": 95,
+    "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "King": {
-    "dateStr": "6/19/20",
-    "cases": 9061,
-    "deaths": 600,
-    "recovered": 0,
-    "new": 98,
-    "newDeaths": 3
-  },
-  "Kitsap": {
-    "dateStr": "6/19/20",
-    "cases": 185,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Kittitas": {
-    "dateStr": "6/19/20",
-    "cases": 94,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
   "Klickitat": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 52,
     "deaths": 3,
     "recovered": 0,
@@ -160,15 +160,15 @@
     "newDeaths": 0
   },
   "Lewis": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 47,
     "deaths": 3,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -176,23 +176,23 @@
     "newDeaths": 0
   },
   "Mason": {
-    "dateStr": "6/19/20",
-    "cases": 41,
+    "dateStr": "6/20/20",
+    "cases": 42,
     "deaths": 1,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Okanogan": {
-    "dateStr": "6/19/20",
-    "cases": 63,
-    "deaths": 2,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "Okanogan": {
+    "dateStr": "6/20/20",
+    "cases": 63,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Pacific": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 12,
     "deaths": 1,
     "recovered": 0,
@@ -200,7 +200,7 @@
     "newDeaths": 0
   },
   "Pend Oreille": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -208,55 +208,55 @@
     "newDeaths": 0
   },
   "Pierce": {
-    "dateStr": "6/19/20",
-    "cases": 2230,
-    "deaths": 89,
+    "dateStr": "6/20/20",
+    "cases": 2258,
+    "deaths": 92,
     "recovered": 0,
-    "new": 31,
-    "newDeaths": 0
+    "new": 28,
+    "newDeaths": 3
   },
   "San Juan": {
-    "dateStr": "6/19/20",
-    "cases": 16,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Skagit": {
-    "dateStr": "6/19/20",
-    "cases": 479,
-    "deaths": 15,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Skamania": {
-    "dateStr": "6/19/20",
-    "cases": 5,
+    "dateStr": "6/20/20",
+    "cases": 17,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Snohomish": {
-    "dateStr": "6/19/20",
-    "cases": 3208,
-    "deaths": 162,
+  "Skagit": {
+    "dateStr": "6/20/20",
+    "cases": 482,
+    "deaths": 15,
     "recovered": 0,
-    "new": 8,
-    "newDeaths": 2
-  },
-  "Spokane": {
-    "dateStr": "6/19/20",
-    "cases": 902,
-    "deaths": 37,
-    "recovered": 0,
-    "new": 22,
+    "new": 3,
     "newDeaths": 0
   },
+  "Skamania": {
+    "dateStr": "6/20/20",
+    "cases": 5,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Snohomish": {
+    "dateStr": "6/20/20",
+    "cases": 3226,
+    "deaths": 163,
+    "recovered": 0,
+    "new": 18,
+    "newDeaths": 1
+  },
+  "Spokane": {
+    "dateStr": "6/20/20",
+    "cases": 954,
+    "deaths": 38,
+    "recovered": 0,
+    "new": 52,
+    "newDeaths": 1
+  },
   "Stevens": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 16,
     "deaths": 1,
     "recovered": 0,
@@ -264,15 +264,15 @@
     "newDeaths": 0
   },
   "Thurston": {
-    "dateStr": "6/19/20",
-    "cases": 209,
+    "dateStr": "6/20/20",
+    "cases": 212,
     "deaths": 6,
     "recovered": 0,
-    "new": 8,
-    "newDeaths": 1
+    "new": 3,
+    "newDeaths": 0
   },
   "Wahkiakum": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -280,23 +280,23 @@
     "newDeaths": 0
   },
   "Walla Walla": {
-    "dateStr": "6/19/20",
-    "cases": 129,
+    "dateStr": "6/20/20",
+    "cases": 132,
     "deaths": 3,
     "recovered": 0,
-    "new": 2,
+    "new": 3,
     "newDeaths": 0
   },
   "Whatcom": {
-    "dateStr": "6/19/20",
-    "cases": 474,
+    "dateStr": "6/20/20",
+    "cases": 486,
     "deaths": 39,
     "recovered": 0,
-    "new": 7,
+    "new": 12,
     "newDeaths": 0
   },
   "Whitman": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 30,
     "deaths": 0,
     "recovered": 0,
@@ -304,15 +304,15 @@
     "newDeaths": 0
   },
   "Yakima": {
-    "dateStr": "6/19/20",
-    "cases": 5915,
-    "deaths": 131,
+    "dateStr": "6/20/20",
+    "cases": 6129,
+    "deaths": 136,
     "recovered": 0,
-    "new": 138,
-    "newDeaths": 3
+    "new": 214,
+    "newDeaths": 5
   },
   "Out of WA": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -320,7 +320,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/19/20",
+    "dateStr": "6/20/20",
     "cases": 915,
     "deaths": 0,
     "recovered": 0,
