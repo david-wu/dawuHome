@@ -42,6 +42,7 @@ export class CoronaCompareDashboardComponent {
     public indicators;
     public compareLabelsByKey;
     public rFormattersByKeys;
+    public distanceFromPointToAvg = 0;
 
     public isViewingNormalized = true;
     public selectedMetricIndex = 0;
@@ -52,6 +53,7 @@ export class CoronaCompareDashboardComponent {
             CoronaKeys.ACTIVE,
             CoronaKeys.RECOVERED,
             CoronaKeys.DEATHS,
+            CoronaKeys.NEW_DEATHS,
         ],
         NORM: [
             NormalKeys.CASES,
@@ -59,6 +61,7 @@ export class CoronaCompareDashboardComponent {
             NormalKeys.ACTIVE,
             NormalKeys.RECOVERED,
             NormalKeys.DEATHS,
+            NormalKeys.NEW_DEATHS,
         ],
     }
 
@@ -117,14 +120,22 @@ export class CoronaCompareDashboardComponent {
         });
     }
 
-    public getDataForMetric(coronaFilesWithFileId, metric) {
+    public getDataForMetric(
+      coronaFilesWithFileId,
+      metric,
+      distanceFromPointToAvg: number = 0,
+    ) {
         const coronaFilesByFileId = {}
         coronaFilesWithFileId.forEach(([file, fileId]: [any, string]) => coronaFilesByFileId[fileId] = file);
 
         const dataByTimestamp = {};
         const fileIds = [];
         coronaFilesWithFileId.forEach(([coronaFile, fileId]: [any, string]) => {
-            const cleanData = this.coronaExtractor.cleanJh(coronaFile, this.populationsByFileId[fileId]);
+            const cleanData = this.coronaExtractor.cleanJh(
+              coronaFile,
+              this.populationsByFileId[fileId],
+              this.distanceFromPointToAvg,
+            );
             fileIds.push(fileId);
             cleanData.forEach((column: any) => {
                 set(dataByTimestamp, [column.timestamp, fileId], column[metric]);
@@ -142,7 +153,12 @@ export class CoronaCompareDashboardComponent {
             return;
         }
         const selectedMetric = this.getSelectedMetric();
-        this.compareData = this.getDataForMetric(this.coronaFilesWithFileId, selectedMetric);
+
+        this.compareData = this.getDataForMetric(
+          this.coronaFilesWithFileId,
+          selectedMetric,
+          this.distanceFromPointToAvg,
+        );
     }
 
     public refreshRTable() {
@@ -159,7 +175,11 @@ export class CoronaCompareDashboardComponent {
         return this.isViewingNormalized
             ? this.metricsByNormalized.NORM[this.selectedMetricIndex]
             : this.metricsByNormalized.CASE[this.selectedMetricIndex];
+    }
 
+    public onChangeAvgedDays(distanceFromPointToAvg: number) {
+      this.distanceFromPointToAvg = distanceFromPointToAvg;
+      this.refreshCompareTable();
     }
 
     public toPercentage(d: number): string {
