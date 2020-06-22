@@ -1,46 +1,46 @@
 {
   "Fairfield": {
-    "dateStr": "6/20/20",
-    "cases": 16469,
+    "dateStr": "6/21/20",
+    "cases": 16475,
     "deaths": 1361,
     "recovered": 0,
-    "new": 44,
-    "newDeaths": 6
+    "new": 6,
+    "newDeaths": 0
   },
   "Hartford": {
-    "dateStr": "6/20/20",
-    "cases": 11392,
-    "deaths": 1344,
+    "dateStr": "6/21/20",
+    "cases": 11405,
+    "deaths": 1350,
     "recovered": 0,
-    "new": 34,
-    "newDeaths": 3
+    "new": 13,
+    "newDeaths": 6
   },
   "Litchfield": {
-    "dateStr": "6/20/20",
+    "dateStr": "6/21/20",
     "cases": 1467,
     "deaths": 136,
     "recovered": 0,
-    "new": 19,
+    "new": 0,
     "newDeaths": 0
   },
   "Middlesex": {
-    "dateStr": "6/20/20",
-    "cases": 1258,
-    "deaths": 172,
+    "dateStr": "6/21/20",
+    "cases": 1259,
+    "deaths": 174,
     "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
+    "new": 1,
+    "newDeaths": 2
   },
   "New Haven": {
-    "dateStr": "6/20/20",
-    "cases": 12174,
-    "deaths": 1060,
+    "dateStr": "6/21/20",
+    "cases": 12185,
+    "deaths": 1061,
     "recovered": 0,
-    "new": 38,
-    "newDeaths": 4
+    "new": 11,
+    "newDeaths": 1
   },
   "New London": {
-    "dateStr": "6/20/20",
+    "dateStr": "6/21/20",
     "cases": 1288,
     "deaths": 102,
     "recovered": 0,
@@ -48,23 +48,23 @@
     "newDeaths": 0
   },
   "Tolland": {
-    "dateStr": "6/20/20",
+    "dateStr": "6/21/20",
     "cases": 895,
     "deaths": 64,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "6/20/20",
-    "cases": 575,
+    "dateStr": "6/21/20",
+    "cases": 579,
     "deaths": 15,
     "recovered": 0,
-    "new": 8,
+    "new": 4,
     "newDeaths": 0
   },
   "Out of CT": {
-    "dateStr": "6/20/20",
+    "dateStr": "6/21/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/20/20",
+    "dateStr": "6/21/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,
