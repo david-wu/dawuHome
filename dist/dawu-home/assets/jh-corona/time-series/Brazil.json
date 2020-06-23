@@ -1201,10 +1201,10 @@
   },
   {
     "dateStr": "6/20/20",
-    "cases": 1032913,
+    "cases": 1067579,
     "deaths": 49976,
     "recovered": 576779,
-    "new": 0,
+    "new": 34666,
     "newDeaths": 1022
   },
   {
@@ -1212,7 +1212,15 @@
     "cases": 1083341,
     "deaths": 50591,
     "recovered": 588118,
-    "new": 50428,
+    "new": 15762,
     "newDeaths": 615
+  },
+  {
+    "dateStr": "6/22/20",
+    "cases": 1106470,
+    "deaths": 51271,
+    "recovered": 601736,
+    "new": 23129,
+    "newDeaths": 680
   }
 ]
