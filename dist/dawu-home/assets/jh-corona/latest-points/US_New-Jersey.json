@@ -1,150 +1,150 @@
 {
   "Atlantic": {
-    "dateStr": "6/22/20",
-    "cases": 2722,
-    "deaths": 189,
+    "dateStr": "6/23/20",
+    "cases": 2750,
+    "deaths": 190,
     "recovered": 0,
-    "new": 20,
-    "newDeaths": 0
+    "new": 28,
+    "newDeaths": 1
   },
   "Bergen": {
-    "dateStr": "6/22/20",
-    "cases": 19037,
-    "deaths": 1701,
+    "dateStr": "6/23/20",
+    "cases": 19069,
+    "deaths": 1706,
     "recovered": 0,
-    "new": 27,
+    "new": 32,
     "newDeaths": 5
   },
   "Burlington": {
-    "dateStr": "6/22/20",
-    "cases": 5046,
+    "dateStr": "6/23/20",
+    "cases": 5056,
     "deaths": 372,
     "recovered": 0,
-    "new": 23,
-    "newDeaths": 1
-  },
-  "Camden": {
-    "dateStr": "6/22/20",
-    "cases": 7153,
-    "deaths": 417,
-    "recovered": 0,
-    "new": 18,
+    "new": 10,
     "newDeaths": 0
   },
+  "Camden": {
+    "dateStr": "6/23/20",
+    "cases": 7163,
+    "deaths": 421,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 4
+  },
   "Cape May": {
-    "dateStr": "6/22/20",
+    "dateStr": "6/23/20",
     "cases": 705,
-    "deaths": 62,
+    "deaths": 63,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 1
+  },
+  "Cumberland": {
+    "dateStr": "6/23/20",
+    "cases": 2894,
+    "deaths": 126,
+    "recovered": 0,
+    "new": 18,
+    "newDeaths": 2
+  },
+  "Essex": {
+    "dateStr": "6/23/20",
+    "cases": 18592,
+    "deaths": 1765,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 4
+  },
+  "Gloucester": {
+    "dateStr": "6/23/20",
+    "cases": 2489,
+    "deaths": 172,
+    "recovered": 0,
+    "new": 18,
+    "newDeaths": 1
+  },
+  "Hudson": {
+    "dateStr": "6/23/20",
+    "cases": 19316,
+    "deaths": 1308,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Cumberland": {
-    "dateStr": "6/22/20",
-    "cases": 2876,
-    "deaths": 124,
-    "recovered": 0,
-    "new": 29,
-    "newDeaths": 0
-  },
-  "Essex": {
-    "dateStr": "6/22/20",
-    "cases": 18578,
-    "deaths": 1761,
-    "recovered": 0,
-    "new": 27,
-    "newDeaths": 1
-  },
-  "Gloucester": {
-    "dateStr": "6/22/20",
-    "cases": 2471,
-    "deaths": 171,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Hudson": {
-    "dateStr": "6/22/20",
-    "cases": 19316,
-    "deaths": 1308,
-    "recovered": 0,
-    "new": 36,
-    "newDeaths": 14
-  },
   "Hunterdon": {
-    "dateStr": "6/22/20",
-    "cases": 1060,
+    "dateStr": "6/23/20",
+    "cases": 1062,
     "deaths": 67,
     "recovered": 0,
-    "new": 6,
+    "new": 2,
     "newDeaths": 0
   },
   "Mercer": {
-    "dateStr": "6/22/20",
-    "cases": 7549,
-    "deaths": 525,
+    "dateStr": "6/23/20",
+    "cases": 7560,
+    "deaths": 530,
     "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
+    "new": 11,
+    "newDeaths": 5
   },
   "Middlesex": {
-    "dateStr": "6/22/20",
-    "cases": 16618,
-    "deaths": 1101,
+    "dateStr": "6/23/20",
+    "cases": 16640,
+    "deaths": 1104,
     "recovered": 0,
-    "new": 13,
-    "newDeaths": 0
-  },
-  "Monmouth": {
-    "dateStr": "6/22/20",
-    "cases": 8965,
-    "deaths": 696,
-    "recovered": 0,
-    "new": 23,
-    "newDeaths": 1
-  },
-  "Morris": {
-    "dateStr": "6/22/20",
-    "cases": 6718,
-    "deaths": 643,
-    "recovered": 0,
-    "new": 19,
-    "newDeaths": 2
-  },
-  "Ocean": {
-    "dateStr": "6/22/20",
-    "cases": 9440,
-    "deaths": 850,
-    "recovered": 0,
-    "new": 15,
+    "new": 22,
     "newDeaths": 3
   },
-  "Passaic": {
-    "dateStr": "6/22/20",
-    "cases": 16772,
-    "deaths": 1015,
+  "Monmouth": {
+    "dateStr": "6/23/20",
+    "cases": 8998,
+    "deaths": 700,
     "recovered": 0,
-    "new": 3,
-    "newDeaths": 1
+    "new": 33,
+    "newDeaths": 4
+  },
+  "Morris": {
+    "dateStr": "6/23/20",
+    "cases": 6727,
+    "deaths": 643,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 0
+  },
+  "Ocean": {
+    "dateStr": "6/23/20",
+    "cases": 9466,
+    "deaths": 860,
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 10
+  },
+  "Passaic": {
+    "dateStr": "6/23/20",
+    "cases": 16794,
+    "deaths": 1019,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 4
   },
   "Salem": {
-    "dateStr": "6/22/20",
+    "dateStr": "6/23/20",
     "cases": 752,
-    "deaths": 65,
+    "deaths": 67,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 2
   },
   "Somerset": {
-    "dateStr": "6/22/20",
+    "dateStr": "6/23/20",
     "cases": 4819,
-    "deaths": 440,
+    "deaths": 441,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 1
   },
   "Sussex": {
-    "dateStr": "6/22/20",
+    "dateStr": "6/23/20",
     "cases": 1220,
     "deaths": 189,
     "recovered": 0,
@@ -152,23 +152,23 @@
     "newDeaths": 0
   },
   "Union": {
-    "dateStr": "6/22/20",
+    "dateStr": "6/23/20",
     "cases": 16351,
-    "deaths": 1138,
+    "deaths": 1139,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 3
+    "newDeaths": 1
   },
   "Warren": {
-    "dateStr": "6/22/20",
-    "cases": 1218,
-    "deaths": 142,
+    "dateStr": "6/23/20",
+    "cases": 1221,
+    "deaths": 144,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
+    "new": 3,
+    "newDeaths": 2
   },
   "Out of NJ": {
-    "dateStr": "6/22/20",
+    "dateStr": "6/23/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -176,7 +176,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/22/20",
+    "dateStr": "6/23/20",
     "cases": 4866,
     "deaths": 247,
     "recovered": 0,
