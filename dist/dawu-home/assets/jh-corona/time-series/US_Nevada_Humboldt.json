@@ -1225,18 +1225,26 @@
   },
   {
     "dateStr": "6/23/20",
-    "cases": 79,
+    "cases": 80,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   {
     "dateStr": "6/24/20",
-    "cases": 79,
+    "cases": 81,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "6/25/20",
+    "cases": 82,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 1,
     "newDeaths": 0
   }
 ]
