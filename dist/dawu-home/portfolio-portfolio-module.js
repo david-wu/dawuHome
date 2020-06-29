@@ -96724,6 +96724,19 @@ module.exports = function(hljs) {
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip-demo/tooltip-demo.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip-demo/tooltip-demo.component.html ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>Tooltip Demo</h3>\n<div class=\"demo-container\">\n  <div class=\"vertical-container\">\n    <div class=\"horizontal-container\">\n      <div></div>\n      <dwu-tooltip [text]=\"'Add some tooltip text.'\">\n        <div><span class=\"material-icons\">help</span></div>\n      </dwu-tooltip>\n    </div>\n    <div class=\"center-container\">\n\n      <p>\n        Tooltips try to stay in viewport.\n      </p>\n      <dwu-tooltip [text]=\"'Add some tooltip text.'\">\n        <div>\n          <span class=\"material-icons\">help</span>\n        </div>\n      </dwu-tooltip>\n\n      <dwu-tooltip [text]=\"'Add some tooltip text.'\">\n        <div>\n          <span class=\"material-icons\">help</span>\n        </div>\n      </dwu-tooltip>\n\n      <dwu-tooltip [text]=\"'Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.'\">\n        <div>\n          <span class=\"material-icons\">help</span>\n        </div>\n      </dwu-tooltip>\n\n      <dwu-tooltip [template]=\"tooltipTemplate\">\n        <div class=\"material-icons\">\n          help\n        </div>\n      </dwu-tooltip>\n\n    </div>\n    <div class=\"horizontal-container\">\n      <dwu-tooltip [text]=\"'Add some tooltip text.'\">\n        <div><span class=\"material-icons\">help</span></div>\n      </dwu-tooltip>\n      <dwu-tooltip [text]=\"'Add some tooltip text.'\">\n        <div><span class=\"material-icons\">help</span></div>\n      </dwu-tooltip>\n    </div>\n  </div>\n</div>\n\n<ng-template #tooltipTemplate>\n  <div>\n    <div>tooltip using template!</div>\n    <div>new line!</div>\n    <div>\n      <span class=\"material-icons\">\n        help\n      </span>\n    </div>\n  </div>\n</ng-template>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/portfolio.component.html":
 /*!******************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/portfolio.component.html ***!
@@ -96733,7 +96746,95 @@ module.exports = function(hljs) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input [(searchText)]=\"filterStr\" [placeholder]=\"'search..'\"></dwu-search-input>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <app-demo-page-wrapper *ngSwitchCase=\"'FUZZ'\"></app-demo-page-wrapper>\n            <div *ngSwitchCase=\"'FILE_EXPLORER'\">\n                <div>\n                    future file explorer demo\n                </div>\n            </div>\n            <div *ngSwitchCase=\"'TEXT_DECORATOR'\">\n                <div>\n                    future text-decorator demo\n                </div>\n            </div>\n            <div *ngSwitchDefault>\n                <div>\n                    Nothing here yet\n                </div>\n            </div>\n        </ng-container>\n    </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input [(searchText)]=\"filterStr\" [placeholder]=\"'search..'\"></dwu-search-input>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <app-demo-page-wrapper *ngSwitchCase=\"'FUZZ'\"></app-demo-page-wrapper>\n            <dwu-tooltip-demo *ngSwitchCase=\"'TOOLTIP'\"></dwu-tooltip-demo>\n            <div *ngSwitchCase=\"'FILE_EXPLORER'\">\n                <div>\n                    future file explorer demo\n                </div>\n            </div>\n            <div *ngSwitchCase=\"'TEXT_DECORATOR'\">\n                <div>\n                    future text-decorator demo\n                </div>\n            </div>\n            <div *ngSwitchDefault>\n                <div>\n                    Nothing here yet\n                </div>\n            </div>\n        </ng-container>\n    </div>\n</div>");
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip-demo/tooltip-demo.component.scss":
+/*!*****************************************************************!*\
+  !*** ./src/app/common/tooltip-demo/tooltip-demo.component.scss ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n\n.demo-container {\n  flex: 1 1 0;\n}\n\n.vertical-container {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n\n.vertical-container .horizontal-container {\n  display: flex;\n  justify-content: space-between;\n}\n\n.vertical-container .center-container {\n  flex: 1 1 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC1kZW1vL3Rvb2x0aXAtZGVtby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tbW9uL3Rvb2x0aXAtZGVtby90b29sdGlwLWRlbW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxZQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0FDRkY7O0FESUE7RUFDRSxXQUFBO0FDREY7O0FER0E7RUFDRSxZQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsOEJBQUE7QUNBRjs7QURDRTtFQUNFLGFBQUE7RUFDQSw4QkFBQTtBQ0NKOztBRENFO0VBQ0UsV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL3Rvb2x0aXAtZGVtby90b29sdGlwLWRlbW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLmRlbW8tY29udGFpbmVyIHtcbiAgZmxleDogMSAxIDA7XG59XG4udmVydGljYWwtY29udGFpbmVyIHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIC5ob3Jpem9udGFsLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIH1cbiAgLmNlbnRlci1jb250YWluZXIge1xuICAgIGZsZXg6IDEgMSAwO1xuICB9XG59IiwiOmhvc3Qge1xuICBoZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbi5kZW1vLWNvbnRhaW5lciB7XG4gIGZsZXg6IDEgMSAwO1xufVxuXG4udmVydGljYWwtY29udGFpbmVyIHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59XG4udmVydGljYWwtY29udGFpbmVyIC5ob3Jpem9udGFsLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cbi52ZXJ0aWNhbC1jb250YWluZXIgLmNlbnRlci1jb250YWluZXIge1xuICBmbGV4OiAxIDEgMDtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip-demo/tooltip-demo.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/common/tooltip-demo/tooltip-demo.component.ts ***!
+  \***************************************************************/
+/*! exports provided: TooltipDemoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipDemoComponent", function() { return TooltipDemoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TooltipDemoComponent = /** @class */ (function () {
+    function TooltipDemoComponent() {
+    }
+    TooltipDemoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-tooltip-demo',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./tooltip-demo.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip-demo/tooltip-demo.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tooltip-demo.component.scss */ "./src/app/common/tooltip-demo/tooltip-demo.component.scss")).default]
+        })
+    ], TooltipDemoComponent);
+    return TooltipDemoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip-demo/tooltip-demo.module.ts":
+/*!************************************************************!*\
+  !*** ./src/app/common/tooltip-demo/tooltip-demo.module.ts ***!
+  \************************************************************/
+/*! exports provided: TooltipDemoModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipDemoModule", function() { return TooltipDemoModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tooltip-demo.component */ "./src/app/common/tooltip-demo/tooltip-demo.component.ts");
+/* harmony import */ var _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @common/tooltip/tooltip.module */ "./src/app/common/tooltip/tooltip.module.ts");
+
+
+
+
+
+var TooltipDemoModule = /** @class */ (function () {
+    function TooltipDemoModule() {
+    }
+    TooltipDemoModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_4__["TooltipModule"],
+            ],
+            declarations: [
+                _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__["TooltipDemoComponent"],
+            ],
+            exports: [
+                _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__["TooltipDemoComponent"],
+            ],
+        })
+    ], TooltipDemoModule);
+    return TooltipDemoModule;
+}());
+
+
 
 /***/ }),
 
@@ -96798,6 +96899,7 @@ var PortfolioComponent = /** @class */ (function () {
                 COMPONENTS: {
                     label: 'components',
                     childrenById: {
+                        TOOLTIP: { label: 'tooltip' },
                         FILE_EXPLORER: { label: 'file-explorer' },
                         TEXT_DECORATOR: { label: 'text-decorator' },
                     },
@@ -96807,7 +96909,7 @@ var PortfolioComponent = /** @class */ (function () {
         var files = this.fileGroup.filesByIdFromJson(fileDataById);
         this.filesById = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["keyBy"])(files, 'id');
         this.fileGroup.setRootFile(this.filesById.PROJECTS);
-        this.fileGroup.selectedFileIds = new Set([this.filesById['FUZZ'].id]);
+        this.fileGroup.selectedFileIds = new Set([this.filesById['TOOLTIP'].id]);
     };
     PortfolioComponent.prototype.getSelectedFileId = function () {
         var selectedFileIds = Array.from(this.fileGroup.selectedFileIds || []);
@@ -96846,6 +96948,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_portfolio_portfolio_routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/app/portfolio/portfolio.routes */ "./src/app/portfolio/portfolio.routes.ts");
 /* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
 /* harmony import */ var _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @file-explorer/file-explorer.module */ "./src/app/common/file-explorer/file-explorer.module.ts");
+/* harmony import */ var _common_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @common/tooltip-demo/tooltip-demo.module */ "./src/app/common/tooltip-demo/tooltip-demo.module.ts");
+
 
 
 
@@ -96865,6 +96969,7 @@ var PortfolioModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_6__["CommonModule"],
                 _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_7__["FileExplorerModule"],
+                _common_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__["TooltipDemoModule"],
             ],
             declarations: [
                 _src_app_portfolio_portfolio_component__WEBPACK_IMPORTED_MODULE_4__["PortfolioComponent"],

@@ -1065,87 +1065,87 @@
   },
   {
     "dateStr": "6/3/20",
-    "cases": 188836,
+    "cases": 185952,
     "deaths": 28967,
     "recovered": 67031,
-    "new": 2884,
+    "new": 0,
     "newDeaths": 81
   },
   {
     "dateStr": "6/4/20",
-    "cases": 188836,
+    "cases": 186118,
     "deaths": 29010,
     "recovered": 67510,
-    "new": 0,
+    "new": 166,
     "newDeaths": 43
   },
   {
     "dateStr": "6/5/20",
-    "cases": 188836,
+    "cases": 186670,
     "deaths": 29056,
     "recovered": 68007,
-    "new": 0,
+    "new": 552,
     "newDeaths": 46
   },
   {
     "dateStr": "6/6/20",
-    "cases": 188836,
+    "cases": 187199,
     "deaths": 29087,
     "recovered": 68282,
-    "new": 0,
+    "new": 529,
     "newDeaths": 31
   },
   {
     "dateStr": "6/7/20",
-    "cases": 188836,
+    "cases": 187492,
     "deaths": 29100,
     "recovered": 68283,
-    "new": 0,
+    "new": 293,
     "newDeaths": 13
   },
   {
     "dateStr": "6/8/20",
-    "cases": 188836,
+    "cases": 187590,
     "deaths": 29153,
     "recovered": 68319,
-    "new": 0,
+    "new": 98,
     "newDeaths": 53
   },
   {
     "dateStr": "6/9/20",
-    "cases": 188836,
+    "cases": 187925,
     "deaths": 29237,
     "recovered": 68736,
-    "new": 0,
+    "new": 335,
     "newDeaths": 84
   },
   {
     "dateStr": "6/10/20",
-    "cases": 188836,
+    "cases": 188322,
     "deaths": 29260,
     "recovered": 69032,
-    "new": 0,
+    "new": 397,
     "newDeaths": 23
   },
   {
     "dateStr": "6/11/20",
-    "cases": 188836,
+    "cases": 188680,
     "deaths": 29287,
     "recovered": 69344,
-    "new": 0,
+    "new": 358,
     "newDeaths": 27
   },
   {
     "dateStr": "6/12/20",
-    "cases": 188918,
+    "cases": 189244,
     "deaths": 29315,
     "recovered": 69578,
-    "new": 82,
+    "new": 564,
     "newDeaths": 28
   },
   {
     "dateStr": "6/13/20",
-    "cases": 189311,
+    "cases": 189637,
     "deaths": 29339,
     "recovered": 69783,
     "new": 393,
@@ -1153,7 +1153,7 @@
   },
   {
     "dateStr": "6/14/20",
-    "cases": 189602,
+    "cases": 189928,
     "deaths": 29346,
     "recovered": 69820,
     "new": 291,
@@ -1161,7 +1161,7 @@
   },
   {
     "dateStr": "6/15/20",
-    "cases": 189670,
+    "cases": 189996,
     "deaths": 29375,
     "recovered": 69820,
     "new": 68,
@@ -1169,23 +1169,23 @@
   },
   {
     "dateStr": "6/16/20",
-    "cases": 189670,
+    "cases": 190223,
     "deaths": 29484,
     "recovered": 69943,
-    "new": 0,
+    "new": 227,
     "newDeaths": 109
   },
   {
     "dateStr": "6/17/20",
-    "cases": 189906,
+    "cases": 190534,
     "deaths": 29512,
     "recovered": 70223,
-    "new": 236,
+    "new": 311,
     "newDeaths": 28
   },
   {
     "dateStr": "6/18/20",
-    "cases": 190107,
+    "cases": 190735,
     "deaths": 29540,
     "recovered": 70322,
     "new": 201,
@@ -1193,7 +1193,7 @@
   },
   {
     "dateStr": "6/19/20",
-    "cases": 190676,
+    "cases": 191304,
     "deaths": 29554,
     "recovered": 70496,
     "new": 569,
@@ -1201,7 +1201,7 @@
   },
   {
     "dateStr": "6/20/20",
-    "cases": 191112,
+    "cases": 191740,
     "deaths": 29568,
     "recovered": 70641,
     "new": 436,
@@ -1209,7 +1209,7 @@
   },
   {
     "dateStr": "6/21/20",
-    "cases": 191117,
+    "cases": 191745,
     "deaths": 29574,
     "recovered": 70661,
     "new": 5,
@@ -1217,7 +1217,7 @@
   },
   {
     "dateStr": "6/22/20",
-    "cases": 191442,
+    "cases": 192070,
     "deaths": 29595,
     "recovered": 70737,
     "new": 325,
@@ -1225,15 +1225,15 @@
   },
   {
     "dateStr": "6/23/20",
-    "cases": 191730,
+    "cases": 192452,
     "deaths": 29652,
     "recovered": 70952,
-    "new": 288,
+    "new": 382,
     "newDeaths": 57
   },
   {
     "dateStr": "6/24/20",
-    "cases": 191730,
+    "cases": 192452,
     "deaths": 29661,
     "recovered": 71138,
     "new": 0,
@@ -1241,7 +1241,7 @@
   },
   {
     "dateStr": "6/25/20",
-    "cases": 191730,
+    "cases": 192452,
     "deaths": 29680,
     "recovered": 71322,
     "new": 0,
@@ -1249,7 +1249,7 @@
   },
   {
     "dateStr": "6/26/20",
-    "cases": 192624,
+    "cases": 193346,
     "deaths": 29705,
     "recovered": 71550,
     "new": 894,
@@ -1257,7 +1257,15 @@
   },
   {
     "dateStr": "6/27/20",
-    "cases": 192624,
+    "cases": 193346,
+    "deaths": 29705,
+    "recovered": 71550,
+    "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "6/28/20",
+    "cases": 193346,
     "deaths": 29705,
     "recovered": 71550,
     "new": 0,

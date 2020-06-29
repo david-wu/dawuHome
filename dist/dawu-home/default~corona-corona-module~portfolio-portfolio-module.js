@@ -63900,6 +63900,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip/tooltip-view.component.html":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip/tooltip-view.component.html ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div\n  *ngIf=\"template\"\n  class=\"tooltip-container\"\n  [style.transform]=\"transform\"\n>\n  <ng-container\n     *ngTemplateOutlet=\"template\">\n  </ng-container>\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip/tooltip.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip/tooltip.component.html ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-content></ng-content>\n\n<ng-template #defaultTemplate>\n  <div *ngIf=\"text\" class=\"default-template\">\n    <div class=\"text-container\">\n      {{ text }}\n    </div>\n    <div class=\"text-space-maker\">\n      {{ text }}\n    </div>\n  </div>\n  <div *ngIf=\"template\" class=\"default-template\">\n    <ng-container\n       *ngTemplateOutlet=\"template\">\n    </ng-container>\n  </div>\n</ng-template>\n");
+
+/***/ }),
+
 /***/ "./node_modules/ticky/ticky-browser.js":
 /*!*********************************************!*\
   !*** ./node_modules/ticky/ticky-browser.js ***!
@@ -63978,16 +64004,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
 /* harmony import */ var _base_chart_base_chart_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../base-chart/base-chart.component */ "./src/app/common/charts/base-chart/base-chart.component.ts");
+/* harmony import */ var _common_tooltip_tooltip_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @common/tooltip/tooltip.service */ "./src/app/common/tooltip/tooltip.service.ts");
+
 
 
 
 
 var BarChartComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](BarChartComponent, _super);
-    function BarChartComponent(hostEl, zone) {
+    function BarChartComponent(hostEl, zone, tts) {
         var _this = _super.call(this, hostEl, zone) || this;
         _this.hostEl = hostEl;
         _this.zone = zone;
+        _this.tts = tts;
         _this.disabledKeys = new Set();
         _this.hoverIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         _this.barPadding = 0.05;
@@ -64054,6 +64083,16 @@ var BarChartComponent = /** @class */ (function (_super) {
             .attr('y', this.yScale(this.maxY))
             .attr('width', this.xScale.bandwidth)
             .attr('height', this.yScale(0) - this.yScale(this.maxY));
+        if (this.mouseIn) {
+            console.log('tooltipTemplate', this.tooltipTemplate);
+            this.tts.renderTooltip(this.hoverBox.node(), this.tooltipTemplate, true);
+        }
+    };
+    BarChartComponent.prototype.onMouseEnter = function () {
+        this.tts.renderTooltip(this.hoverBox.node(), this.tooltipTemplate, true);
+    };
+    BarChartComponent.prototype.onMouseLeave = function () {
+        this.tts.renderTooltip(this.hoverBox.node(), undefined);
     };
     BarChartComponent.prototype.onZoom = function (event, width, height) {
         var _this = this;
@@ -64127,7 +64166,8 @@ var BarChartComponent = /** @class */ (function (_super) {
     };
     BarChartComponent.ctorParameters = function () { return [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
+        { type: _common_tooltip_tooltip_service__WEBPACK_IMPORTED_MODULE_4__["TooltipService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
@@ -64153,10 +64193,14 @@ var BarChartComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], BarChartComponent.prototype, "indicators", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], BarChartComponent.prototype, "tooltipTemplate", void 0);
     BarChartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-bar-chart',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./bar-chart.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/charts/bar-chart/bar-chart.component.html")).default,
+            providers: [_common_tooltip_tooltip_service__WEBPACK_IMPORTED_MODULE_4__["TooltipService"]],
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./bar-chart.component.scss */ "./src/app/common/charts/bar-chart/bar-chart.component.scss")).default]
         })
     ], BarChartComponent);
@@ -64216,6 +64260,9 @@ var BaseChartComponent = /** @class */ (function () {
                 .on('touchstart', function () { return _this.touchmove(); })
                 .on('touchmove', function () { return _this.touchmove(); });
         });
+        this.svg
+            .on('mouseenter', function () { return _this._onMouseEnter(); })
+            .on('mouseleave', function () { return _this._onMouseLeave(); });
         this.rootG = this.svg.append('g');
         this.yAxisG = this.rootG.append('g')
             .attr('class', 'y axis');
@@ -64244,6 +64291,18 @@ var BaseChartComponent = /** @class */ (function () {
         var touch = d3__WEBPACK_IMPORTED_MODULE_1__["touches"](this.svg.node());
         var _a = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](touch[0], 2), x = _a[0], y = _a[1];
         this.onXYHover(x, y);
+    };
+    BaseChartComponent.prototype._onMouseEnter = function () {
+        this.mouseIn = true;
+        this.onMouseEnter();
+    };
+    BaseChartComponent.prototype._onMouseLeave = function () {
+        this.mouseIn = false;
+        this.onMouseLeave();
+    };
+    BaseChartComponent.prototype.onMouseEnter = function () {
+    };
+    BaseChartComponent.prototype.onMouseLeave = function () {
     };
     BaseChartComponent.prototype.onMouseMove = function () {
         var _a = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](d3__WEBPACK_IMPORTED_MODULE_1__["mouse"](this.svg.node()), 2), x = _a[0], y = _a[1];
@@ -64576,6 +64635,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
 /* harmony import */ var _base_chart_base_chart_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../base-chart/base-chart.component */ "./src/app/common/charts/base-chart/base-chart.component.ts");
+/* harmony import */ var _common_tooltip_tooltip_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @common/tooltip/tooltip.service */ "./src/app/common/tooltip/tooltip.service.ts");
+
 
 
 
@@ -64583,10 +64644,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var LineChartComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](LineChartComponent, _super);
-    function LineChartComponent(hostEl, zone) {
+    function LineChartComponent(hostEl, zone, tts) {
         var _this = _super.call(this, hostEl, zone) || this;
         _this.hostEl = hostEl;
         _this.zone = zone;
+        _this.tts = tts;
         _this.disabledKeys = new Set();
         _this.hoverIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         // some extra margin on the chart itself
@@ -64682,6 +64744,15 @@ var LineChartComponent = /** @class */ (function (_super) {
             .attr('x2', this.xScale(hoverLineTimestamp) || 0)
             .attr('y1', this.yScale(this.maxY || 1) - 3)
             .attr('y2', this.yScale(0) + 3);
+        if (this.mouseIn) {
+            this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
+        }
+    };
+    LineChartComponent.prototype.onMouseEnter = function () {
+        this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
+    };
+    LineChartComponent.prototype.onMouseLeave = function () {
+        this.tts.renderTooltip(this.hoverLine.node(), undefined);
     };
     LineChartComponent.prototype.onZoom = function (event, width, height) {
         var _this = this;
@@ -64757,7 +64828,8 @@ var LineChartComponent = /** @class */ (function (_super) {
     };
     LineChartComponent.ctorParameters = function () { return [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
+        { type: _common_tooltip_tooltip_service__WEBPACK_IMPORTED_MODULE_5__["TooltipService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
@@ -64783,10 +64855,14 @@ var LineChartComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], LineChartComponent.prototype, "indicators", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], LineChartComponent.prototype, "tooltipTemplate", void 0);
     LineChartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-line-chart',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./line-chart.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/charts/line-chart/line-chart.component.html")).default,
+            providers: [_common_tooltip_tooltip_service__WEBPACK_IMPORTED_MODULE_5__["TooltipService"]],
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./line-chart.component.scss */ "./src/app/common/charts/line-chart/line-chart.component.scss")).default]
         })
     ], LineChartComponent);
@@ -64914,6 +64990,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _text_decorator_text_decorator_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./text-decorator/text-decorator.component */ "./src/app/common/text-decorator/text-decorator.component.ts");
 /* harmony import */ var _search_input_search_input_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search-input/search-input.component */ "./src/app/common/search-input/search-input.component.ts");
 /* harmony import */ var _charts_charts_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./charts/charts.module */ "./src/app/common/charts/charts.module.ts");
+/* harmony import */ var _tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./tooltip/tooltip.module */ "./src/app/common/tooltip/tooltip.module.ts");
+
 
 
 
@@ -64930,6 +65008,7 @@ var CommonModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _charts_charts_module__WEBPACK_IMPORTED_MODULE_6__["ChartsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_7__["TooltipModule"],
             ],
             declarations: [
                 _text_decorator_text_decorator_component__WEBPACK_IMPORTED_MODULE_4__["TextDecoratorComponent"],
@@ -65940,6 +66019,350 @@ var TextDecoratorComponent = /** @class */ (function () {
         })
     ], TextDecoratorComponent);
     return TextDecoratorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip/tooltip-view.component.scss":
+/*!************************************************************!*\
+  !*** ./src/app/common/tooltip/tooltip-view.component.scss ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  position: absolute;\n  z-index: 100;\n  top: 0;\n  left: 0;\n}\n:host .tooltip-container {\n  position: absolute;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbW1vbi90b29sdGlwL3Rvb2x0aXAtdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0FDRkY7QURHRTtFQUNFLGtCQUFBO0FDREoiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB6LWluZGV4OiAxMDA7XG4gIHRvcDogMDtcbiAgbGVmdDogMDtcbiAgLnRvb2x0aXAtY29udGFpbmVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIH1cbn0iLCI6aG9zdCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgei1pbmRleDogMTAwO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG59XG46aG9zdCAudG9vbHRpcC1jb250YWluZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip/tooltip-view.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/common/tooltip/tooltip-view.component.ts ***!
+  \**********************************************************/
+/*! exports provided: TooltipViewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipViewComponent", function() { return TooltipViewComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TooltipViewComponent = /** @class */ (function () {
+    function TooltipViewComponent(hostEl) {
+        this.hostEl = hostEl;
+        // public top: number;
+        // public left: number;
+        this.top = '0';
+        this.left = '0';
+    }
+    TooltipViewComponent.ctorParameters = function () { return [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.top')
+    ], TooltipViewComponent.prototype, "top", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.left')
+    ], TooltipViewComponent.prototype, "left", void 0);
+    TooltipViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-tooltip-view',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./tooltip-view.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip/tooltip-view.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tooltip-view.component.scss */ "./src/app/common/tooltip/tooltip-view.component.scss")).default]
+        })
+    ], TooltipViewComponent);
+    return TooltipViewComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip/tooltip.component.scss":
+/*!*******************************************************!*\
+  !*** ./src/app/common/tooltip/tooltip.component.scss ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: inline-block;\n  line-height: 0;\n}\n\n.default-template {\n  padding: 0.25rem;\n  background-color: rgba(255, 255, 255, 0.85);\n  border: 1px solid;\n  border-radius: 0.25rem;\n}\n\n.text-container {\n  max-width: 20rem;\n}\n\n.text-space-maker {\n  max-width: 20rem;\n  height: 0;\n  visibility: hidden;\n  white-space: nowrap;\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUdBO0VBQ0UscUJBQUE7RUFDQSxjQUFBO0FDRkY7O0FES0E7RUFDRSxnQkFBQTtFQUNBLDJDQUFBO0VBQ0EsaUJBQUE7RUFDQSxzQkFBQTtBQ0ZGOztBREtBO0VBQ0UsZ0JBQUE7QUNGRjs7QURJQTtFQUNFLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtBQ0RGIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL3Rvb2x0aXAvdG9vbHRpcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGxpbmUtaGVpZ2h0OiAwO1xufVxuXG4uZGVmYXVsdC10ZW1wbGF0ZSB7XG4gIHBhZGRpbmc6IDAuMjVyZW07XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44NSk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiAwLjI1cmVtO1xufVxuXG4udGV4dC1jb250YWluZXIge1xuICBtYXgtd2lkdGg6IDIwcmVtO1xufVxuLnRleHQtc3BhY2UtbWFrZXIge1xuICBtYXgtd2lkdGg6IDIwcmVtO1xuICBoZWlnaHQ6IDA7XG4gIHZpc2liaWxpdHk6IGhpZGRlbjtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn0iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbGluZS1oZWlnaHQ6IDA7XG59XG5cbi5kZWZhdWx0LXRlbXBsYXRlIHtcbiAgcGFkZGluZzogMC4yNXJlbTtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjg1KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDAuMjVyZW07XG59XG5cbi50ZXh0LWNvbnRhaW5lciB7XG4gIG1heC13aWR0aDogMjByZW07XG59XG5cbi50ZXh0LXNwYWNlLW1ha2VyIHtcbiAgbWF4LXdpZHRoOiAyMHJlbTtcbiAgaGVpZ2h0OiAwO1xuICB2aXNpYmlsaXR5OiBoaWRkZW47XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip/tooltip.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/common/tooltip/tooltip.component.ts ***!
+  \*****************************************************/
+/*! exports provided: TooltipComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipComponent", function() { return TooltipComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _tooltip_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tooltip.service */ "./src/app/common/tooltip/tooltip.service.ts");
+
+
+
+var TooltipComponent = /** @class */ (function () {
+    function TooltipComponent(hostEl, tts) {
+        this.hostEl = hostEl;
+        this.tts = tts;
+        this.tabIndex = '0';
+    }
+    TooltipComponent.prototype.ngAfterViewInit = function () {
+        this.tts.registerTooltip(this.hostEl.nativeElement, this.customTemplate || this.defaultTemplate);
+    };
+    TooltipComponent.ctorParameters = function () { return [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+        { type: _tooltip_service__WEBPACK_IMPORTED_MODULE_2__["TooltipService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], TooltipComponent.prototype, "text", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], TooltipComponent.prototype, "template", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], TooltipComponent.prototype, "customTemplate", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('defaultTemplate', { static: false })
+    ], TooltipComponent.prototype, "defaultTemplate", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('attr.tabindex')
+    ], TooltipComponent.prototype, "tabIndex", void 0);
+    TooltipComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-tooltip',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./tooltip.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip/tooltip.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tooltip.component.scss */ "./src/app/common/tooltip/tooltip.component.scss")).default]
+        })
+    ], TooltipComponent);
+    return TooltipComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip/tooltip.module.ts":
+/*!**************************************************!*\
+  !*** ./src/app/common/tooltip/tooltip.module.ts ***!
+  \**************************************************/
+/*! exports provided: TooltipModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipModule", function() { return TooltipModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _tooltip_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tooltip.component */ "./src/app/common/tooltip/tooltip.component.ts");
+/* harmony import */ var _tooltip_view_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tooltip-view.component */ "./src/app/common/tooltip/tooltip-view.component.ts");
+/* harmony import */ var _tooltip_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tooltip.service */ "./src/app/common/tooltip/tooltip.service.ts");
+
+
+
+
+
+
+var TooltipModule = /** @class */ (function () {
+    function TooltipModule() {
+    }
+    TooltipModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            ],
+            entryComponents: [_tooltip_view_component__WEBPACK_IMPORTED_MODULE_4__["TooltipViewComponent"]],
+            declarations: [
+                _tooltip_component__WEBPACK_IMPORTED_MODULE_3__["TooltipComponent"],
+                _tooltip_view_component__WEBPACK_IMPORTED_MODULE_4__["TooltipViewComponent"],
+            ],
+            exports: [
+                _tooltip_component__WEBPACK_IMPORTED_MODULE_3__["TooltipComponent"],
+                _tooltip_view_component__WEBPACK_IMPORTED_MODULE_4__["TooltipViewComponent"],
+            ],
+            providers: [
+                _tooltip_service__WEBPACK_IMPORTED_MODULE_5__["TooltipService"],
+            ],
+        })
+    ], TooltipModule);
+    return TooltipModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/tooltip/tooltip.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/common/tooltip/tooltip.service.ts ***!
+  \***************************************************/
+/*! exports provided: TooltipService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipService", function() { return TooltipService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _common_tooltip_tooltip_view_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @common/tooltip/tooltip-view.component */ "./src/app/common/tooltip/tooltip-view.component.ts");
+
+
+
+
+
+var TooltipService = /** @class */ (function () {
+    function TooltipService(componentFactoryResolver, appRef, injector) {
+        var _this = this;
+        this.componentFactoryResolver = componentFactoryResolver;
+        this.appRef = appRef;
+        this.injector = injector;
+        this.rootElement = document && document.body;
+        this.hoverEl$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](undefined);
+        this.templatesByEl$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](new Map());
+        this.arrowSize = 10;
+        this.approxTooltipWidth = 250;
+        this.approxTooltipHeight = 150;
+        this.tooltipViewRef = this.appendComponentToDocBody(_common_tooltip_tooltip_view_component__WEBPACK_IMPORTED_MODULE_4__["TooltipViewComponent"]);
+        this.tooltipView = this.tooltipViewRef.instance;
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["combineLatest"])(this.hoverEl$, this.templatesByEl$)
+            .subscribe(function (_a) {
+            var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_a, 2), hoverEl = _b[0], templatesByEl = _b[1];
+            var template = templatesByEl.get(hoverEl);
+            _this.renderTooltip(hoverEl, template);
+        });
+    }
+    TooltipService.prototype.renderTooltip = function (hoverEl, template, horizontalOnly) {
+        if (horizontalOnly === void 0) { horizontalOnly = false; }
+        var hoverComponent = this.tooltipView;
+        if (!hoverEl) {
+            this.tooltipView.template = undefined;
+            return;
+        }
+        var boundingRect = hoverEl.getBoundingClientRect();
+        var viewPortDim = this.getDocumentViewportDim();
+        var protrudingBy = this.getProtrudingBy(boundingRect, viewPortDim);
+        var tooltipDirection = this.getTooltipDirection(protrudingBy, horizontalOnly);
+        var tooltipPositions = this.getTooltipPositions(boundingRect, tooltipDirection);
+        this.tooltipView.template = template;
+        this.tooltipView.top = tooltipPositions.top;
+        this.tooltipView.left = tooltipPositions.left;
+        this.tooltipView.transform = tooltipPositions.transform;
+    };
+    TooltipService.prototype.getDocumentViewportDim = function () {
+        return {
+            width: Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0),
+            height: Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0),
+        };
+    };
+    TooltipService.prototype.getProtrudingBy = function (boundingRect, viewPortDim) {
+        return {
+            BOTTOM: this.approxTooltipHeight - boundingRect.top,
+            LEFT: boundingRect.left + boundingRect.width + this.approxTooltipWidth - viewPortDim.width,
+            TOP: boundingRect.top + boundingRect.height + this.approxTooltipHeight - viewPortDim.height,
+            RIGHT: this.approxTooltipWidth - boundingRect.left,
+        };
+        return [
+            this.approxTooltipHeight - boundingRect.top,
+            boundingRect.left + boundingRect.width + this.approxTooltipWidth - viewPortDim.width,
+            boundingRect.top + boundingRect.height + this.approxTooltipHeight - viewPortDim.height,
+            this.approxTooltipWidth - boundingRect.left,
+        ];
+    };
+    TooltipService.prototype.getTooltipDirection = function (protrudingBy, horizontalOnly) {
+        var protrudingList = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["map"])(protrudingBy, function (value, key) { return [key, value]; });
+        if (horizontalOnly) {
+            protrudingList = protrudingList.filter(function (d) {
+                return (d[0] === 'RIGHT') || (d[0] === 'LEFT');
+            });
+        }
+        protrudingList.sort(function (a, b) { return b[1] - a[1]; });
+        return protrudingList[0][0];
+    };
+    TooltipService.prototype.getTooltipPositions = function (boundingRect, direction) {
+        if (direction === 'TOP') {
+            return {
+                top: boundingRect.top - this.arrowSize + "px",
+                left: boundingRect.left + (boundingRect.width / 2) + "px",
+                transform: "translate(-50%, -100%)",
+            };
+        }
+        if (direction === 'LEFT') {
+            return {
+                top: boundingRect.top + (boundingRect.height / 2) + "px",
+                left: boundingRect.left - this.arrowSize + "px",
+                transform: "translate(-100%, -50%)",
+            };
+        }
+        if (direction === 'RIGHT') {
+            return {
+                top: boundingRect.top + (boundingRect.height / 2) + "px",
+                left: boundingRect.left + boundingRect.width + this.arrowSize + "px",
+                transform: "translate(0, -50%)",
+            };
+        }
+        if (direction === 'BOTTOM') {
+            return {
+                top: boundingRect.top + boundingRect.height + this.arrowSize + "px",
+                left: boundingRect.left + (boundingRect.width / 2) + "px",
+                transform: "translate(-50%, 0)",
+            };
+        }
+    };
+    TooltipService.prototype.registerTooltip = function (tooltipEl, tooltipTemplate) {
+        var _this = this;
+        var nextTemplatesByEl = new Map(this.templatesByEl$.value);
+        nextTemplatesByEl.set(tooltipEl, tooltipTemplate);
+        this.templatesByEl$.next(nextTemplatesByEl);
+        var enterHandler = function () {
+            _this.hoverEl$.next(tooltipEl);
+        };
+        var leaveHandler = function () {
+            _this.hoverEl$.next(undefined);
+        };
+        tooltipEl.addEventListener('mouseenter', enterHandler);
+        tooltipEl.addEventListener('focus', enterHandler);
+        tooltipEl.addEventListener('mouseleave', leaveHandler);
+        tooltipEl.addEventListener('blur', leaveHandler);
+    };
+    TooltipService.prototype.appendComponentToDocBody = function (component) {
+        var componentRef = this.componentFactoryResolver
+            .resolveComponentFactory(component)
+            .create(this.injector);
+        // Attach component to appRef for change detection
+        this.appRef.attachView(componentRef.hostView);
+        var domElem = componentRef.hostView.rootNodes[0];
+        document.body.appendChild(domElem);
+        return componentRef;
+    };
+    TooltipService.prototype.ngOnDestroy = function () {
+        this.appRef.detachView(this.tooltipViewRef.hostView);
+        this.tooltipViewRef.destroy();
+    };
+    TooltipService.ctorParameters = function () { return [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationRef"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"] }
+    ]; };
+    TooltipService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], TooltipService);
+    return TooltipService;
 }());
 
 
