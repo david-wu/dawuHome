@@ -1,4 +1,61 @@
 <h3>Tooltip Demo</h3>
-<dwu-tooltip [text]="'fake text here'">
-  |hover here|
-</dwu-tooltip>
+<div class="demo-container">
+  <div class="vertical-container">
+    <div class="horizontal-container">
+      <div></div>
+      <dwu-tooltip [text]="'Add some tooltip text.'">
+        <div><span class="material-icons">help</span></div>
+      </dwu-tooltip>
+    </div>
+    <div class="center-container">
+
+      <p>
+        Tooltips try to stay in viewport.
+      </p>
+      <dwu-tooltip [text]="'Add some tooltip text.'">
+        <div>
+          <span class="material-icons">help</span>
+        </div>
+      </dwu-tooltip>
+
+      <dwu-tooltip [text]="'Add some tooltip text.'">
+        <div>
+          <span class="material-icons">help</span>
+        </div>
+      </dwu-tooltip>
+
+      <dwu-tooltip [text]="'Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.Add some tooltip text.'">
+        <div>
+          <span class="material-icons">help</span>
+        </div>
+      </dwu-tooltip>
+
+      <dwu-tooltip [template]="tooltipTemplate">
+        <div class="material-icons">
+          help
+        </div>
+      </dwu-tooltip>
+
+    </div>
+    <div class="horizontal-container">
+      <dwu-tooltip [text]="'Add some tooltip text.'">
+        <div><span class="material-icons">help</span></div>
+      </dwu-tooltip>
+      <dwu-tooltip [text]="'Add some tooltip text.'">
+        <div><span class="material-icons">help</span></div>
+      </dwu-tooltip>
+    </div>
+  </div>
+</div>
+
+<ng-template #tooltipTemplate>
+  <div>
+    <div>tooltip using template!</div>
+    <div>new line!</div>
+    <div>
+      <span class="material-icons">
+        help
+      </span>
+    </div>
+  </div>
+</ng-template>

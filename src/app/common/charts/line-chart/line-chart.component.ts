@@ -5,16 +5,20 @@ import {
     Input,
     NgZone,
     Output,
+    TemplateRef,
+    ViewChild,
 } from '@angular/core';
 import { isUndefined, first, filter, last } from 'lodash';
 import * as d3 from 'd3';
 
 import { BaseChartComponent } from '../base-chart/base-chart.component';
+import { TooltipService } from '@common/tooltip/tooltip.service';
 
 @Component({
   selector: 'dwu-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss'],
+  providers: [TooltipService],
 })
 export class LineChartComponent extends BaseChartComponent {
 
@@ -27,6 +31,9 @@ export class LineChartComponent extends BaseChartComponent {
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
     @Input() indicators: any[];
 
+    @Input() tooltipTemplate: TemplateRef<any>;
+
+
     public filteredKeys;
     public hoverLine;
     public bubblesG;
@@ -38,6 +45,7 @@ export class LineChartComponent extends BaseChartComponent {
     constructor(
         public hostEl: ElementRef,
         public zone: NgZone,
+        public tts: TooltipService,
     ) {
         super(hostEl, zone);
     }
@@ -136,6 +144,19 @@ export class LineChartComponent extends BaseChartComponent {
             .attr('x2', this.xScale(hoverLineTimestamp) || 0)
             .attr('y1', this.yScale(this.maxY || 1) - 3)
             .attr('y2', this.yScale(0) + 3)
+
+      if (this.mouseIn) {
+        this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
+      }
+
+    }
+
+    public onMouseEnter() {
+      this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
+    }
+
+    public onMouseLeave() {
+      this.tts.renderTooltip(this.hoverLine.node(), undefined);
     }
 
     public onZoom(event, width, height) {

@@ -5,15 +5,19 @@ import {
     Input,
     NgZone,
     Output,
+    TemplateRef,
+    ViewChild,
 } from '@angular/core';
 import * as d3 from 'd3';
 
 import { BaseChartComponent } from '../base-chart/base-chart.component';
+import { TooltipService } from '@common/tooltip/tooltip.service';
 
 @Component({
   selector: 'dwu-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss'],
+  providers: [TooltipService],
 })
 export class BarChartComponent extends BaseChartComponent {
 
@@ -26,6 +30,8 @@ export class BarChartComponent extends BaseChartComponent {
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
     @Input() indicators: any[];
 
+    @Input() tooltipTemplate: TemplateRef<any>;
+
     public barPadding = 0.05
     public hoverBox;
     public maxY;
@@ -36,6 +42,7 @@ export class BarChartComponent extends BaseChartComponent {
     constructor(
         public hostEl: ElementRef,
         public zone: NgZone,
+        public tts: TooltipService,
     ) {
         super(hostEl, zone);
     }
@@ -97,29 +104,42 @@ export class BarChartComponent extends BaseChartComponent {
     }
 
     public positionHoverBox() {
-        const hoverBoxTimestamp = this.tableData[this.hoverIndex].timestamp;
-        this.hoverBox
-            .attr('x', this.xScale(hoverBoxTimestamp))
-            .attr('y', this.yScale(this.maxY))
-            .attr('width', this.xScale.bandwidth)
-            .attr('height', this.yScale(0) - this.yScale(this.maxY))
+      const hoverBoxTimestamp = this.tableData[this.hoverIndex].timestamp;
+      this.hoverBox
+        .attr('x', this.xScale(hoverBoxTimestamp))
+        .attr('y', this.yScale(this.maxY))
+        .attr('width', this.xScale.bandwidth)
+        .attr('height', this.yScale(0) - this.yScale(this.maxY))
+
+      if (this.mouseIn) {
+        console.log('tooltipTemplate', this.tooltipTemplate)
+        this.tts.renderTooltip(this.hoverBox.node(), this.tooltipTemplate, true);
+      }
+    }
+
+    public onMouseEnter() {
+      this.tts.renderTooltip(this.hoverBox.node(), this.tooltipTemplate, true);
+    }
+
+    public onMouseLeave() {
+      this.tts.renderTooltip(this.hoverBox.node(), undefined);
     }
 
     public onZoom(event, width, height) {
-        const nextRange = [this.chartMargin, width - this.chartMargin]
-            .map(d => d3.event.transform.applyX(d));
+      const nextRange = [this.chartMargin, width - this.chartMargin]
+        .map(d => d3.event.transform.applyX(d));
 
-        this.xScale.range(nextRange);
+      this.xScale.range(nextRange);
 
-        const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
-        const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
-        super.applyXAxis(this.xAxisG, xAxis, height);
+      const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
+      const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
+      super.applyXAxis(this.xAxisG, xAxis, height);
 
-        this.seriesG.selectAll('g.series').selectAll('rect')
-            .attr('x', (d) => this.xScale(d.data.timestamp))
-            .attr('width', this.xScale.bandwidth());
+      this.seriesG.selectAll('g.series').selectAll('rect')
+        .attr('x', (d) => this.xScale(d.data.timestamp))
+        .attr('width', this.xScale.bandwidth());
 
-        this.positionHoverBox();
+      this.positionHoverBox();
     }
 
     public renderFor(width: number, height: number) {

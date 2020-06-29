@@ -29,6 +29,7 @@ export class BaseChartComponent {
     public yAxisG;
     public indicatorsG;
     public clipPathRect;
+    public mouseIn: boolean;
     // public clipPathRectAxis;
 
     constructor(
@@ -53,6 +54,10 @@ export class BaseChartComponent {
                 .on('touchstart', () => this.touchmove())
                 .on('touchmove', () => this.touchmove());
         });
+
+        this.svg
+          .on('mouseenter', () => this._onMouseEnter())
+          .on('mouseleave', () => this._onMouseLeave())
 
         this.rootG = this.svg.append('g');
         this.yAxisG = this.rootG.append('g')
@@ -88,6 +93,22 @@ export class BaseChartComponent {
         const touch = d3.touches(this.svg.node());
         const [x, y] = touch[0];
         this.onXYHover(x, y);
+    }
+
+    public _onMouseEnter() {
+      this.mouseIn = true;
+      this.onMouseEnter();
+    }
+
+    public _onMouseLeave() {
+      this.mouseIn = false;
+      this.onMouseLeave();
+    }
+
+    public onMouseEnter() {
+    }
+
+    public onMouseLeave() {
     }
 
     public onMouseMove() {

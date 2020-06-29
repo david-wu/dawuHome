@@ -53,6 +53,18 @@
             [formattersByKeys]="formattersByKeys"
         ></dwu-stat-viewer>
     </div>
+    <!-- <ng-template #overViewTooltipTemplate>
+      <div>
+        <dwu-stat-viewer
+            [columnData]="coronaData[hoverIndex]"
+            [keys]="isViewingNormalized ? perMilViewKeys : coronaViewKeys"
+            [disabledKeys]="disabledBarKeys"
+            [labelsByKey]="Labels.corona"
+            [rowCount]="3"
+            [formattersByKeys]="formattersByKeys"
+        ></dwu-stat-viewer>
+      </div>
+    </ng-template> -->
     <dwu-line-chart
         *ngIf="isViewingLineChart"
         class="overview chart"
@@ -63,6 +75,7 @@
         [hoverIndex]="hoverIndex"
         (hoverIndexChange)="hoverIndex = $event"
         [indicators]="indicators"
+        [tooltipTemplate]="overViewTooltipTemplate"
     ></dwu-line-chart>
     <dwu-bar-chart
         *ngIf="!isViewingLineChart"
@@ -74,6 +87,7 @@
         [hoverIndex]="hoverIndex"
         (hoverIndexChange)="hoverIndex = $event"
         [indicators]="indicators"
+        [tooltipTemplate]="overViewTooltipTemplate"
     ></dwu-bar-chart>
     <dwu-chart-legend
         [keys]="isViewingNormalized ? perMilKeys : coronaKeys"

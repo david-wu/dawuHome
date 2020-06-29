@@ -18,6 +18,9 @@ export class TooltipComponent {
   @Input() text: string;
   @Input() template?: TemplateRef<any>;
 
+  // Full template override
+  @Input() customTemplate?: TemplateRef<any>;
+
   @ViewChild('defaultTemplate', { static: false }) defaultTemplate: TemplateRef<any>;
   @HostBinding('attr.tabindex') tabIndex = '0';
 
@@ -29,7 +32,7 @@ export class TooltipComponent {
   public ngAfterViewInit() {
     this.tts.registerTooltip(
       this.hostEl.nativeElement,
-      this.template || this.defaultTemplate,
+      this.customTemplate || this.defaultTemplate,
     );
   }
 }
