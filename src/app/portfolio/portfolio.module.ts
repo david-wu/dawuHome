@@ -6,6 +6,7 @@ import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 import { PortfolioRoutingModule } from '@src/app/portfolio/portfolio.routes';
 import { CommonModule as MyCommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@file-explorer/file-explorer.module';
+import { TooltipDemoModule } from '@common/tooltip-demo/tooltip-demo.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { FileExplorerModule } from '@file-explorer/file-explorer.module';
     CommonModule,
     MyCommonModule,
     FileExplorerModule,
+    TooltipDemoModule,
   ],
   declarations: [
     PortfolioComponent,

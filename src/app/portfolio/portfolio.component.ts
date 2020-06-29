@@ -38,6 +38,7 @@ export class PortfolioComponent {
                 COMPONENTS: {
                     label: 'components',
                     childrenById: {
+                        TOOLTIP: { label: 'tooltip' },
                         FILE_EXPLORER: { label: 'file-explorer' },
                         TEXT_DECORATOR: { label: 'text-decorator' },
                     },
@@ -49,7 +50,7 @@ export class PortfolioComponent {
         this.filesById = keyBy(files, 'id');
 
         this.fileGroup.setRootFile(this.filesById.PROJECTS);
-        this.fileGroup.selectedFileIds = new Set([this.filesById['FUZZ'].id]);
+        this.fileGroup.selectedFileIds = new Set([this.filesById['TOOLTIP'].id]);
     }
 
     public getSelectedFileId() {
