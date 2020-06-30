@@ -64084,7 +64084,6 @@ var BarChartComponent = /** @class */ (function (_super) {
             .attr('width', this.xScale.bandwidth)
             .attr('height', this.yScale(0) - this.yScale(this.maxY));
         if (this.mouseIn) {
-            console.log('tooltipTemplate', this.tooltipTemplate);
             this.tts.renderTooltip(this.hoverBox.node(), this.tooltipTemplate, true);
         }
     };
@@ -65006,8 +65005,8 @@ var CommonModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _charts_charts_module__WEBPACK_IMPORTED_MODULE_6__["ChartsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _charts_charts_module__WEBPACK_IMPORTED_MODULE_6__["ChartsModule"],
                 _tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_7__["TooltipModule"],
             ],
             declarations: [
@@ -65016,6 +65015,7 @@ var CommonModule = /** @class */ (function () {
             ],
             exports: [
                 _charts_charts_module__WEBPACK_IMPORTED_MODULE_6__["ChartsModule"],
+                _tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_7__["TooltipModule"],
                 _text_decorator_text_decorator_component__WEBPACK_IMPORTED_MODULE_4__["TextDecoratorComponent"],
                 _search_input_search_input_component__WEBPACK_IMPORTED_MODULE_5__["SearchInputComponent"],
             ],
@@ -66034,7 +66034,7 @@ var TextDecoratorComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  position: absolute;\n  z-index: 100;\n  top: 0;\n  left: 0;\n}\n:host .tooltip-container {\n  position: absolute;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbW1vbi90b29sdGlwL3Rvb2x0aXAtdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0FDRkY7QURHRTtFQUNFLGtCQUFBO0FDREoiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB6LWluZGV4OiAxMDA7XG4gIHRvcDogMDtcbiAgbGVmdDogMDtcbiAgLnRvb2x0aXAtY29udGFpbmVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIH1cbn0iLCI6aG9zdCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgei1pbmRleDogMTAwO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG59XG46aG9zdCAudG9vbHRpcC1jb250YWluZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  position: absolute;\n  z-index: 100;\n  top: 0;\n  left: 0;\n  pointer-events: none;\n}\n:host .tooltip-container {\n  position: absolute;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbW1vbi90b29sdGlwL3Rvb2x0aXAtdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0Esb0JBQUE7QUNGRjtBREdFO0VBQ0Usa0JBQUE7QUNESiIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi90b29sdGlwL3Rvb2x0aXAtdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHotaW5kZXg6IDEwMDtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgLnRvb2x0aXAtY29udGFpbmVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIH1cbn0iLCI6aG9zdCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgei1pbmRleDogMTAwO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHBvaW50ZXItZXZlbnRzOiBub25lO1xufVxuOmhvc3QgLnRvb2x0aXAtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -66092,7 +66092,7 @@ var TooltipViewComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: inline-block;\n  line-height: 0;\n}\n\n.default-template {\n  padding: 0.25rem;\n  background-color: rgba(255, 255, 255, 0.85);\n  border: 1px solid;\n  border-radius: 0.25rem;\n}\n\n.text-container {\n  max-width: 20rem;\n}\n\n.text-space-maker {\n  max-width: 20rem;\n  height: 0;\n  visibility: hidden;\n  white-space: nowrap;\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUdBO0VBQ0UscUJBQUE7RUFDQSxjQUFBO0FDRkY7O0FES0E7RUFDRSxnQkFBQTtFQUNBLDJDQUFBO0VBQ0EsaUJBQUE7RUFDQSxzQkFBQTtBQ0ZGOztBREtBO0VBQ0UsZ0JBQUE7QUNGRjs7QURJQTtFQUNFLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtBQ0RGIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL3Rvb2x0aXAvdG9vbHRpcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGxpbmUtaGVpZ2h0OiAwO1xufVxuXG4uZGVmYXVsdC10ZW1wbGF0ZSB7XG4gIHBhZGRpbmc6IDAuMjVyZW07XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44NSk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiAwLjI1cmVtO1xufVxuXG4udGV4dC1jb250YWluZXIge1xuICBtYXgtd2lkdGg6IDIwcmVtO1xufVxuLnRleHQtc3BhY2UtbWFrZXIge1xuICBtYXgtd2lkdGg6IDIwcmVtO1xuICBoZWlnaHQ6IDA7XG4gIHZpc2liaWxpdHk6IGhpZGRlbjtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn0iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbGluZS1oZWlnaHQ6IDA7XG59XG5cbi5kZWZhdWx0LXRlbXBsYXRlIHtcbiAgcGFkZGluZzogMC4yNXJlbTtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjg1KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDAuMjVyZW07XG59XG5cbi50ZXh0LWNvbnRhaW5lciB7XG4gIG1heC13aWR0aDogMjByZW07XG59XG5cbi50ZXh0LXNwYWNlLW1ha2VyIHtcbiAgbWF4LXdpZHRoOiAyMHJlbTtcbiAgaGVpZ2h0OiAwO1xuICB2aXNpYmlsaXR5OiBoaWRkZW47XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: inline-block;\n  line-height: inherit;\n  vertical-align: text-top;\n}\n\n.default-template {\n  padding: 0.25rem;\n  background-color: rgba(255, 255, 255, 0.85);\n  border: 1px solid;\n  border-radius: 0.25rem;\n}\n\n.text-container {\n  max-width: 15rem;\n}\n\n.text-space-maker {\n  max-width: 15rem;\n  height: 0;\n  visibility: hidden;\n  white-space: nowrap;\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21tb24vdG9vbHRpcC90b29sdGlwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUdBO0VBQ0UscUJBQUE7RUFDQSxvQkFBQTtFQUNBLHdCQUFBO0FDRkY7O0FES0E7RUFDRSxnQkFBQTtFQUNBLDJDQUFBO0VBQ0EsaUJBQUE7RUFDQSxzQkFBQTtBQ0ZGOztBREtBO0VBQ0UsZ0JBQUE7QUNGRjs7QURJQTtFQUNFLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtBQ0RGIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL3Rvb2x0aXAvdG9vbHRpcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGxpbmUtaGVpZ2h0OiBpbmhlcml0O1xuICB2ZXJ0aWNhbC1hbGlnbjogdGV4dC10b3A7XG59XG5cbi5kZWZhdWx0LXRlbXBsYXRlIHtcbiAgcGFkZGluZzogMC4yNXJlbTtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjg1KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDAuMjVyZW07XG59XG5cbi50ZXh0LWNvbnRhaW5lciB7XG4gIG1heC13aWR0aDogMTVyZW07XG59XG4udGV4dC1zcGFjZS1tYWtlciB7XG4gIG1heC13aWR0aDogMTVyZW07XG4gIGhlaWdodDogMDtcbiAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufSIsIjpob3N0IHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBsaW5lLWhlaWdodDogaW5oZXJpdDtcbiAgdmVydGljYWwtYWxpZ246IHRleHQtdG9wO1xufVxuXG4uZGVmYXVsdC10ZW1wbGF0ZSB7XG4gIHBhZGRpbmc6IDAuMjVyZW07XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44NSk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiAwLjI1cmVtO1xufVxuXG4udGV4dC1jb250YWluZXIge1xuICBtYXgtd2lkdGg6IDE1cmVtO1xufVxuXG4udGV4dC1zcGFjZS1tYWtlciB7XG4gIG1heC13aWR0aDogMTVyZW07XG4gIGhlaWdodDogMDtcbiAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -66236,8 +66236,8 @@ var TooltipService = /** @class */ (function () {
         this.hoverEl$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](undefined);
         this.templatesByEl$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](new Map());
         this.arrowSize = 10;
-        this.approxTooltipWidth = 250;
-        this.approxTooltipHeight = 150;
+        this.approxTooltipWidth = 200;
+        this.approxTooltipHeight = 125;
         this.tooltipViewRef = this.appendComponentToDocBody(_common_tooltip_tooltip_view_component__WEBPACK_IMPORTED_MODULE_4__["TooltipViewComponent"]);
         this.tooltipView = this.tooltipViewRef.instance;
         Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["combineLatest"])(this.hoverEl$, this.templatesByEl$)
@@ -66286,6 +66286,12 @@ var TooltipService = /** @class */ (function () {
     };
     TooltipService.prototype.getTooltipDirection = function (protrudingBy, horizontalOnly) {
         var protrudingList = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["map"])(protrudingBy, function (value, key) { return [key, value]; });
+        if (!Object(lodash__WEBPACK_IMPORTED_MODULE_2__["some"])(protrudingList, function (_a) {
+            var _b = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](_a, 2), direction = _b[0], protrudingBy = _b[1];
+            return protrudingBy > 0;
+        })) {
+            return horizontalOnly ? 'LEFT' : 'TOP';
+        }
         if (horizontalOnly) {
             protrudingList = protrudingList.filter(function (d) {
                 return (d[0] === 'RIGHT') || (d[0] === 'LEFT');
