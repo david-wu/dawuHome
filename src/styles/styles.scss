@@ -22,6 +22,11 @@ html body {
   font: 100% sans-serif;
 }
 
+// Prevent tooltips from triggering scrollbars
+html {
+  overflow: hidden;
+}
+
 h2 {
   font-size: 1.75rem;
   font-weight: 700;

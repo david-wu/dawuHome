@@ -10,8 +10,8 @@ import { TooltipModule } from './tooltip/tooltip.module';
 @NgModule({
   imports: [
     NgCommonModule,
-    ChartsModule,
     FormsModule,
+    ChartsModule,
     TooltipModule,
   ],
   declarations: [
@@ -20,6 +20,7 @@ import { TooltipModule } from './tooltip/tooltip.module';
   ],
   exports: [
     ChartsModule,
+    TooltipModule,
     TextDecoratorComponent,
     SearchInputComponent,
   ],

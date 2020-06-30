@@ -5,20 +5,27 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-.demo-container {
-  flex: 1 1 0;
-}
-.vertical-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  .horizontal-container {
-    display: flex;
-    justify-content: space-between;
+  h3 {
+    margin: 1rem 2rem;
   }
-  .center-container {
+  .demo-container {
     flex: 1 1 0;
+    margin: 1rem 2rem;
+    padding-bottom: 5rem;
   }
+}
+.horizontal-container {
+  display: flex;
+  justify-content: space-between;
+}
+.hover-text {
+  color: purple;
+}
+.material-icons {
+  display: block;
+  font-size: inherit;
+}
+
+p {
+  margin-bottom: 1rem;
 }

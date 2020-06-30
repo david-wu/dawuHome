@@ -3,7 +3,8 @@
 
 :host {
   display: inline-block;
-  line-height: 0;
+  line-height: inherit;
+  vertical-align: text-top;
 }
 
 .default-template {
@@ -14,10 +15,10 @@
 }
 
 .text-container {
-  max-width: 20rem;
+  max-width: 15rem;
 }
 .text-space-maker {
-  max-width: 20rem;
+  max-width: 15rem;
   height: 0;
   visibility: hidden;
   white-space: nowrap;

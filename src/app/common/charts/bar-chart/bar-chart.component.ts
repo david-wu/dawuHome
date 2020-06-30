@@ -112,7 +112,6 @@ export class BarChartComponent extends BaseChartComponent {
         .attr('height', this.yScale(0) - this.yScale(this.maxY))
 
       if (this.mouseIn) {
-        console.log('tooltipTemplate', this.tooltipTemplate)
         this.tts.renderTooltip(this.hoverBox.node(), this.tooltipTemplate, true);
       }
     }

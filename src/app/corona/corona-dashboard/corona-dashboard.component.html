@@ -1,6 +1,7 @@
 <div class="chart-container">
     <div class="chart-header">
         <div class="radio-button-container">
+          <dwu-tooltip text="'View original values or normalize them by population'">
             <div class="radio-buttons">
                 <div class="radio-button"
                     [class.active]="!isViewingNormalized"
@@ -11,6 +12,7 @@
                     (click)="onChangeNormalized(true)"
                 >Per 1M</div>
             </div>
+          </dwu-tooltip>
             <div class="radio-buttons">
                 <div class="radio-button"
                     [class.active]="distanceFromPointToAvg === 0"
@@ -53,18 +55,18 @@
             [formattersByKeys]="formattersByKeys"
         ></dwu-stat-viewer>
     </div>
-    <!-- <ng-template #overViewTooltipTemplate>
-      <div>
+    <ng-template #overViewTooltipTemplate>
+      <div class="tooltip-container">
         <dwu-stat-viewer
             [columnData]="coronaData[hoverIndex]"
             [keys]="isViewingNormalized ? perMilViewKeys : coronaViewKeys"
             [disabledKeys]="disabledBarKeys"
             [labelsByKey]="Labels.corona"
-            [rowCount]="3"
+            [rowCount]="7"
             [formattersByKeys]="formattersByKeys"
         ></dwu-stat-viewer>
       </div>
-    </ng-template> -->
+    </ng-template>
     <dwu-line-chart
         *ngIf="isViewingLineChart"
         class="overview chart"

@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {
   map,
+  some,
   sortBy,
 } from 'lodash';
 import {
@@ -30,8 +31,8 @@ export class TooltipService {
   public hoverEl$: BehaviorSubject<HTMLElement> = new BehaviorSubject(undefined);
   public templatesByEl$: BehaviorSubject<Map<HTMLElement, TemplateRef<any>>> = new BehaviorSubject(new Map());
   public readonly arrowSize: number = 10;
-  public approxTooltipWidth = 250;
-  public approxTooltipHeight = 150;
+  public approxTooltipWidth = 200;
+  public approxTooltipHeight = 125;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -94,6 +95,9 @@ export class TooltipService {
 
   public getTooltipDirection(protrudingBy, horizontalOnly) {
     let protrudingList = map(protrudingBy, (value, key) => [key, value]);
+    if (!some(protrudingList, ([direction, protrudingBy]) => protrudingBy > 0)) {
+      return horizontalOnly ? 'LEFT': 'TOP';
+    }
 
     if (horizontalOnly) {
       protrudingList = protrudingList.filter((d) => {
