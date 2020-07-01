@@ -333,11 +333,15 @@ var routes = [
     },
     {
         path: 'portfolio',
-        loadChildren: function () { return Promise.all(/*! import() | portfolio-portfolio-module */[__webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("portfolio-portfolio-module")]).then(__webpack_require__.bind(null, /*! ./portfolio/portfolio.module */ "./src/app/portfolio/portfolio.module.ts")).then(function (m) { return m.PortfolioModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | portfolio-portfolio-module */[__webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("portfolio-portfolio-module")]).then(__webpack_require__.bind(null, /*! ./portfolio/portfolio.module */ "./src/app/portfolio/portfolio.module.ts")).then(function (m) { return m.PortfolioModule; }); }
     },
     {
         path: 'corona',
-        loadChildren: function () { return Promise.all(/*! import() | corona-corona-module */[__webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("corona-corona-module")]).then(__webpack_require__.bind(null, /*! ./corona/corona.module */ "./src/app/corona/corona.module.ts")).then(function (m) { return m.CoronaModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | corona-corona-module */[__webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~poe-poe-module"), __webpack_require__.e("corona-corona-module")]).then(__webpack_require__.bind(null, /*! ./corona/corona.module */ "./src/app/corona/corona.module.ts")).then(function (m) { return m.CoronaModule; }); }
+    },
+    {
+        path: 'poe',
+        loadChildren: function () { return Promise.all(/*! import() | poe-poe-module */[__webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~poe-poe-module"), __webpack_require__.e("poe-poe-module")]).then(__webpack_require__.bind(null, /*! ./poe/poe.module */ "./src/app/poe/poe.module.ts")).then(function (m) { return m.PoeModule; }); }
     },
     {
         path: '',
