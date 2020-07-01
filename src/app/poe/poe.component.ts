@@ -17,9 +17,14 @@ export class PoeComponent {
     // this.poeService.getPublicStashes('dawu').subscribe((poeResponse) => {
     //   console.log('poeResponse', poeResponse)
     // });
+    // this.parseJsonStr(jsonStr);
   }
 
   public onJsonChange(jsonStr: string) {
+    this.parseJsonStr(jsonStr);
+  }
+
+  public parseJsonStr(jsonStr: string) {
     let json;
     try{
       json = JSON.parse(jsonStr);
@@ -28,5 +33,28 @@ export class PoeComponent {
       return;
     }
     console.log('json', json)
+    const explicitModifiersByItemId = {};
+    const itemNamesById = {};
+
+    const modifierStrings = []
+
+
+    json.items.forEach((item) => {
+      const explicitMods = item.explicitMods || [];
+      explicitModifiersByItemId[item.id] = explicitMods;
+      itemNamesById[item.id] = item.name;
+
+      explicitMods.forEach((mod: string) => {
+        const splitMods = mod.split(' ');
+        const firstMod = splitMods.shift();
+        const remaining = splitMods.join(' ');
+        modifierStrings.push(remaining);
+      });
+    });
+
+    console.log('modifierStrings', modifierStrings)
   }
 }
+
+
+
