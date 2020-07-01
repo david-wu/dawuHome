@@ -1,46 +1,46 @@
 {
   "Fairfield": {
-    "dateStr": "6/29/20",
-    "cases": 16664,
+    "dateStr": "6/30/20",
+    "cases": 16703,
     "deaths": 1376,
     "recovered": 0,
-    "new": 31,
-    "newDeaths": 1
+    "new": 39,
+    "newDeaths": 0
   },
   "Hartford": {
-    "dateStr": "6/29/20",
-    "cases": 11623,
+    "dateStr": "6/30/20",
+    "cases": 11662,
     "deaths": 1370,
     "recovered": 0,
-    "new": 36,
-    "newDeaths": 1
+    "new": 39,
+    "newDeaths": 0
   },
   "Litchfield": {
-    "dateStr": "6/29/20",
-    "cases": 1487,
-    "deaths": 136,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Middlesex": {
-    "dateStr": "6/29/20",
-    "cases": 1295,
-    "deaths": 183,
+    "dateStr": "6/30/20",
+    "cases": 1490,
+    "deaths": 137,
     "recovered": 0,
     "new": 3,
-    "newDeaths": 0
+    "newDeaths": 1
+  },
+  "Middlesex": {
+    "dateStr": "6/30/20",
+    "cases": 1305,
+    "deaths": 184,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 1
   },
   "New Haven": {
-    "dateStr": "6/29/20",
-    "cases": 12318,
+    "dateStr": "6/30/20",
+    "cases": 12359,
     "deaths": 1075,
     "recovered": 0,
-    "new": 19,
-    "newDeaths": 2
+    "new": 41,
+    "newDeaths": 0
   },
   "New London": {
-    "dateStr": "6/29/20",
+    "dateStr": "6/30/20",
     "cases": 1288,
     "deaths": 102,
     "recovered": 0,
@@ -48,23 +48,23 @@
     "newDeaths": 0
   },
   "Tolland": {
-    "dateStr": "6/29/20",
-    "cases": 910,
+    "dateStr": "6/30/20",
+    "cases": 913,
     "deaths": 64,
     "recovered": 0,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "6/29/20",
-    "cases": 606,
+    "dateStr": "6/30/20",
+    "cases": 610,
     "deaths": 15,
     "recovered": 0,
-    "new": 1,
+    "new": 4,
     "newDeaths": 0
   },
   "Out of CT": {
-    "dateStr": "6/29/20",
+    "dateStr": "6/30/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "6/29/20",
+    "dateStr": "6/30/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,

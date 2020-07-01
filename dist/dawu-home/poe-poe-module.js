@@ -50,8 +50,12 @@ var PoeComponent = /** @class */ (function () {
         // this.poeService.getPublicStashes('dawu').subscribe((poeResponse) => {
         //   console.log('poeResponse', poeResponse)
         // });
+        // this.parseJsonStr(jsonStr);
     };
     PoeComponent.prototype.onJsonChange = function (jsonStr) {
+        this.parseJsonStr(jsonStr);
+    };
+    PoeComponent.prototype.parseJsonStr = function (jsonStr) {
         var json;
         try {
             json = JSON.parse(jsonStr);
@@ -61,6 +65,21 @@ var PoeComponent = /** @class */ (function () {
             return;
         }
         console.log('json', json);
+        var explicitModifiersByItemId = {};
+        var itemNamesById = {};
+        var modifierStrings = [];
+        json.items.forEach(function (item) {
+            var explicitMods = item.explicitMods || [];
+            explicitModifiersByItemId[item.id] = explicitMods;
+            itemNamesById[item.id] = item.name;
+            explicitMods.forEach(function (mod) {
+                var splitMods = mod.split(' ');
+                var firstMod = splitMods.shift();
+                var remaining = splitMods.join(' ');
+                modifierStrings.push(remaining);
+            });
+        });
+        console.log('modifierStrings', modifierStrings);
     };
     PoeComponent.ctorParameters = function () { return [
         { type: _src_app_poe_services_poe_service__WEBPACK_IMPORTED_MODULE_2__["PoeService"] }
