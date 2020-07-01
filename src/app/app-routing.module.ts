@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./corona/corona.module').then(m => m.CoronaModule)
   },
   {
+    path: 'poe',
+    loadChildren: () => import('./poe/poe.module').then(m => m.PoeModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'corona'

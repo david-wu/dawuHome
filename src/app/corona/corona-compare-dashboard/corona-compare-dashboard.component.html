@@ -58,13 +58,6 @@
                 >{{ Labels.corona[CoronaKeys.DEATHS] }}</div>
             </div>
         </div>
-        <dwu-stat-viewer
-            [columnData]="compareData[hoverIndex]"
-            [keys]="compareKeys"
-            [disabledKeys]="disabledCompareKeys"
-            [labelsByKey]="compareLabelsByKey"
-            [rowCount]="3"
-        ></dwu-stat-viewer>
     </div>
 
     <dwu-line-chart
@@ -76,6 +69,7 @@
         [hoverIndex]="hoverIndex"
         (hoverIndexChange)="hoverIndex = $event"
         [indicators]="indicators"
+        [tooltipTemplate]="compareTooltipTemplate"
     ></dwu-line-chart>
     <dwu-chart-legend
         [keys]="compareKeys"
@@ -101,14 +95,6 @@
                 >{{ Labels.corona[NormalKeys.R_AVG] }}</div>
             </div>
         </div>
-        <dwu-stat-viewer
-            [columnData]="compareRData[hoverIndex]"
-            [keys]="compareKeys"
-            [disabledKeys]="disabledCompareKeys"
-            [labelsByKey]="compareLabelsByKey"
-            [rowCount]="3"
-            [formattersByKeys]="rFormattersByKeys"
-        ></dwu-stat-viewer>
     </div>
     <dwu-line-chart
         class="overview chart"
@@ -120,6 +106,7 @@
         [yAxisFormatter]="toPercentage"
         [indicators]="indicators"
         (hoverIndexChange)="hoverIndex = $event"
+        [tooltipTemplate]="growthTooltipTemplate"
     ></dwu-line-chart>
     <dwu-chart-legend
         [keys]="compareKeys"
@@ -129,3 +116,29 @@
         (disabledKeysChange)="disabledCompareKeys = $event"
     ></dwu-chart-legend>
 </div>
+
+
+<ng-template #compareTooltipTemplate>
+  <div class="tooltip-container">
+    <dwu-stat-viewer
+        [columnData]="compareData[hoverIndex]"
+        [keys]="compareKeys"
+        [disabledKeys]="disabledCompareKeys"
+        [labelsByKey]="compareLabelsByKey"
+        [rowCount]="10"
+    ></dwu-stat-viewer>
+  </div>
+</ng-template>
+
+<ng-template #growthTooltipTemplate>
+  <div class="tooltip-container">
+        <dwu-stat-viewer
+            [columnData]="compareRData[hoverIndex]"
+            [keys]="compareKeys"
+            [disabledKeys]="disabledCompareKeys"
+            [labelsByKey]="compareLabelsByKey"
+            [rowCount]="10"
+            [formattersByKeys]="rFormattersByKeys"
+        ></dwu-stat-viewer>
+  </div>
+</ng-template>
