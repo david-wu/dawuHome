@@ -1273,26 +1273,34 @@
   },
   {
     "dateStr": "6/29/20",
-    "cases": 414,
-    "deaths": 10,
+    "cases": 443,
+    "deaths": 11,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 29,
+    "newDeaths": 1
   },
   {
     "dateStr": "6/30/20",
-    "cases": 414,
-    "deaths": 10,
+    "cases": 454,
+    "deaths": 11,
     "recovered": 0,
-    "new": 0,
+    "new": 11,
     "newDeaths": 0
   },
   {
     "dateStr": "7/1/20",
-    "cases": 414,
-    "deaths": 10,
+    "cases": 460,
+    "deaths": 11,
     "recovered": 0,
-    "new": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "7/2/20",
+    "cases": 472,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 12,
     "newDeaths": 0
   }
 ]

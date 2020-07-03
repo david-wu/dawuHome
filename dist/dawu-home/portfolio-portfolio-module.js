@@ -96724,19 +96724,6 @@ module.exports = function(hljs) {
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip-demo/tooltip-demo.component.html":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip-demo/tooltip-demo.component.html ***!
-  \*******************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>Tooltip Demo</h3>\n<div class=\"demo-container\">\n  <p>\n    <span>Tooltips try to stay in viewport. They can be added onto any element. For example hover </span>\n    <dwu-tooltip [text]=\"'some tooltip text'\">\n      <a class=\"hover-text\">here.</a>\n    </dwu-tooltip>\n  </p>\n  <p>\n    <span>Tooltips are typically used on icons like this: </span>\n    <dwu-tooltip\n      [text]=\"'Here\\'s a really really really really really really really really really really really really really really really really really really really really really long tooltip.'\"\n    >\n      <div class=\"material-icons\">help</div>\n    </dwu-tooltip>\n  </p>\n  <p>\n    Tooltips be provided with templates that allow for more control over their appearance.\n  </p>\n  <p>\n    Tooltips near the edges will try to avoid spilling outside the viewport.\n  </p>\n  <div class=\"horizontal-container\">\n    <dwu-tooltip [text]=\"'Tooltip shows on the right side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n    <dwu-tooltip [text]=\"'Tooltip shows on the left side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n  </div>\n</div>\n\n<ng-template #tooltipTemplate>\n  <div>\n    <div>tooltip using template!</div>\n    <div>new line!</div>\n    <div>\n      <div class=\"material-icons\">\n        help\n      </div>\n    </div>\n  </div>\n</ng-template>");
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/portfolio.component.html":
 /*!******************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/portfolio.component.html ***!
@@ -96750,91 +96737,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/app/common/tooltip-demo/tooltip-demo.component.scss":
-/*!*****************************************************************!*\
-  !*** ./src/app/common/tooltip-demo/tooltip-demo.component.scss ***!
-  \*****************************************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/tooltip-demo/tooltip-demo.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/tooltip-demo/tooltip-demo.component.html ***!
+  \**********************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n:host h3 {\n  margin: 1rem 2rem;\n}\n:host .demo-container {\n  flex: 1 1 0;\n  margin: 1rem 2rem;\n  padding-bottom: 5rem;\n}\n.horizontal-container {\n  display: flex;\n  justify-content: space-between;\n}\n.hover-text {\n  color: purple;\n}\n.material-icons {\n  display: block;\n  font-size: inherit;\n}\np {\n  margin-bottom: 1rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vdG9vbHRpcC1kZW1vL3Rvb2x0aXAtZGVtby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tbW9uL3Rvb2x0aXAtZGVtby90b29sdGlwLWRlbW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxZQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0FDRkY7QURHRTtFQUNFLGlCQUFBO0FDREo7QURHRTtFQUNFLFdBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBO0FDREo7QURJQTtFQUNFLGFBQUE7RUFDQSw4QkFBQTtBQ0RGO0FER0E7RUFDRSxhQUFBO0FDQUY7QURFQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtBQ0NGO0FERUE7RUFDRSxtQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL3Rvb2x0aXAtZGVtby90b29sdGlwLWRlbW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoMyB7XG4gICAgbWFyZ2luOiAxcmVtIDJyZW07XG4gIH1cbiAgLmRlbW8tY29udGFpbmVyIHtcbiAgICBmbGV4OiAxIDEgMDtcbiAgICBtYXJnaW46IDFyZW0gMnJlbTtcbiAgICBwYWRkaW5nLWJvdHRvbTogNXJlbTtcbiAgfVxufVxuLmhvcml6b250YWwtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuLmhvdmVyLXRleHQge1xuICBjb2xvcjogcHVycGxlO1xufVxuLm1hdGVyaWFsLWljb25zIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGZvbnQtc2l6ZTogaW5oZXJpdDtcbn1cblxucCB7XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG59IiwiOmhvc3Qge1xuICBoZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG46aG9zdCBoMyB7XG4gIG1hcmdpbjogMXJlbSAycmVtO1xufVxuOmhvc3QgLmRlbW8tY29udGFpbmVyIHtcbiAgZmxleDogMSAxIDA7XG4gIG1hcmdpbjogMXJlbSAycmVtO1xuICBwYWRkaW5nLWJvdHRvbTogNXJlbTtcbn1cblxuLmhvcml6b250YWwtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuXG4uaG92ZXItdGV4dCB7XG4gIGNvbG9yOiBwdXJwbGU7XG59XG5cbi5tYXRlcmlhbC1pY29ucyB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmb250LXNpemU6IGluaGVyaXQ7XG59XG5cbnAge1xuICBtYXJnaW4tYm90dG9tOiAxcmVtO1xufSJdfQ== */");
-
-/***/ }),
-
-/***/ "./src/app/common/tooltip-demo/tooltip-demo.component.ts":
-/*!***************************************************************!*\
-  !*** ./src/app/common/tooltip-demo/tooltip-demo.component.ts ***!
-  \***************************************************************/
-/*! exports provided: TooltipDemoComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipDemoComponent", function() { return TooltipDemoComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var TooltipDemoComponent = /** @class */ (function () {
-    function TooltipDemoComponent() {
-    }
-    TooltipDemoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'dwu-tooltip-demo',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./tooltip-demo.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/tooltip-demo/tooltip-demo.component.html")).default,
-            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tooltip-demo.component.scss */ "./src/app/common/tooltip-demo/tooltip-demo.component.scss")).default]
-        })
-    ], TooltipDemoComponent);
-    return TooltipDemoComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/common/tooltip-demo/tooltip-demo.module.ts":
-/*!************************************************************!*\
-  !*** ./src/app/common/tooltip-demo/tooltip-demo.module.ts ***!
-  \************************************************************/
-/*! exports provided: TooltipDemoModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipDemoModule", function() { return TooltipDemoModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tooltip-demo.component */ "./src/app/common/tooltip-demo/tooltip-demo.component.ts");
-/* harmony import */ var _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @common/tooltip/tooltip.module */ "./src/app/common/tooltip/tooltip.module.ts");
-
-
-
-
-
-var TooltipDemoModule = /** @class */ (function () {
-    function TooltipDemoModule() {
-    }
-    TooltipDemoModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_4__["TooltipModule"],
-            ],
-            declarations: [
-                _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__["TooltipDemoComponent"],
-            ],
-            exports: [
-                _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__["TooltipDemoComponent"],
-            ],
-        })
-    ], TooltipDemoModule);
-    return TooltipDemoModule;
-}());
-
-
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>Tooltip Demo</h3>\n<div class=\"demo-container\">\n  <p>\n    <span>Tooltips try to stay in viewport. They can be added onto any element. For example hover </span>\n    <dwu-tooltip [text]=\"'some tooltip text'\">\n      <a class=\"hover-text\">here.</a>\n    </dwu-tooltip>\n  </p>\n  <p>\n    <span>Tooltips are typically used on icons like this: </span>\n    <dwu-tooltip\n      [text]=\"'Here\\'s a really really really really really really really really really really really really really really really really really really really really really long tooltip.'\"\n    >\n      <div class=\"material-icons\">help</div>\n    </dwu-tooltip>\n  </p>\n  <p>\n    Tooltips be provided with templates that allow for more control over their appearance.\n  </p>\n  <p>\n    Tooltips near the edges will try to avoid spilling outside the viewport.\n  </p>\n  <div class=\"horizontal-container\">\n    <dwu-tooltip [text]=\"'Tooltip shows on the right side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n    <dwu-tooltip [text]=\"'Tooltip shows on the left side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n  </div>\n</div>\n\n<ng-template #tooltipTemplate>\n  <div>\n    <div>tooltip using template!</div>\n    <div>new line!</div>\n    <div>\n      <div class=\"material-icons\">\n        help\n      </div>\n    </div>\n  </div>\n</ng-template>");
 
 /***/ }),
 
@@ -96885,23 +96797,29 @@ var PortfolioComponent = /** @class */ (function () {
             id: 'PROJECTS',
             label: 'Projects',
             childrenById: {
-                FUZZ: { label: 'fuzz-demo' },
-                TODOS: {
-                    label: 'todos',
-                    childrenById: {
-                        TODO_LIST: { label: 'implement todo list' },
-                        MARKDOWN: { label: 'support markdown-editor' },
-                        FAVICON: { label: 'favicon' },
-                        COMMON: { label: 'common components' },
-                        ABOUT_ME: { label: 'about me page' },
-                    },
-                },
                 COMPONENTS: {
                     label: 'components',
                     childrenById: {
+                        FUZZ: { label: 'fuzz-js' },
                         TOOLTIP: { label: 'tooltip' },
                         FILE_EXPLORER: { label: 'file-explorer' },
                         TEXT_DECORATOR: { label: 'text-decorator' },
+                        CHARTS_DIR: {
+                            label: 'charts',
+                            childrenById: {
+                                FLEX_CHART: { label: 'flex chart' },
+                                LINE_CHART: { label: 'line chart' },
+                                VERTICAL_CHART: { label: 'vertical chart' },
+                            },
+                        },
+                    },
+                },
+                TODOS: {
+                    label: 'todos',
+                    childrenById: {
+                        MARKDOWN: { label: 'support markdown-editor' },
+                        FAVICON: { label: 'make a favicon' },
+                        COMMON: { label: 'components demos' },
                     },
                 },
             },
@@ -96948,7 +96866,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_portfolio_portfolio_routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/app/portfolio/portfolio.routes */ "./src/app/portfolio/portfolio.routes.ts");
 /* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
 /* harmony import */ var _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @file-explorer/file-explorer.module */ "./src/app/common/file-explorer/file-explorer.module.ts");
-/* harmony import */ var _common_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @common/tooltip-demo/tooltip-demo.module */ "./src/app/common/tooltip-demo/tooltip-demo.module.ts");
+/* harmony import */ var _src_app_portfolio_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/portfolio/tooltip-demo/tooltip-demo.module */ "./src/app/portfolio/tooltip-demo/tooltip-demo.module.ts");
 
 
 
@@ -96969,7 +96887,7 @@ var PortfolioModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_6__["CommonModule"],
                 _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_7__["FileExplorerModule"],
-                _common_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__["TooltipDemoModule"],
+                _src_app_portfolio_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__["TooltipDemoModule"],
             ],
             declarations: [
                 _src_app_portfolio_portfolio_component__WEBPACK_IMPORTED_MODULE_4__["PortfolioComponent"],
@@ -97022,6 +96940,94 @@ var PortfolioRoutingModule = /** @class */ (function () {
         })
     ], PortfolioRoutingModule);
     return PortfolioRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/portfolio/tooltip-demo/tooltip-demo.component.scss":
+/*!********************************************************************!*\
+  !*** ./src/app/portfolio/tooltip-demo/tooltip-demo.component.scss ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n:host h3 {\n  margin: 1rem 2rem;\n}\n:host .demo-container {\n  flex: 1 1 0;\n  margin: 1rem 2rem;\n  padding-bottom: 5rem;\n}\n.horizontal-container {\n  display: flex;\n  justify-content: space-between;\n}\n.hover-text {\n  color: purple;\n}\n.material-icons {\n  display: block;\n  font-size: inherit;\n}\np {\n  margin-bottom: 1rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9wb3J0Zm9saW8vdG9vbHRpcC1kZW1vL3Rvb2x0aXAtZGVtby5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvcG9ydGZvbGlvL3Rvb2x0aXAtZGVtby90b29sdGlwLWRlbW8uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxZQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0FDRkY7QURHRTtFQUNFLGlCQUFBO0FDREo7QURHRTtFQUNFLFdBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBO0FDREo7QURJQTtFQUNFLGFBQUE7RUFDQSw4QkFBQTtBQ0RGO0FER0E7RUFDRSxhQUFBO0FDQUY7QURFQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtBQ0NGO0FERUE7RUFDRSxtQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcG9ydGZvbGlvL3Rvb2x0aXAtZGVtby90b29sdGlwLWRlbW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoMyB7XG4gICAgbWFyZ2luOiAxcmVtIDJyZW07XG4gIH1cbiAgLmRlbW8tY29udGFpbmVyIHtcbiAgICBmbGV4OiAxIDEgMDtcbiAgICBtYXJnaW46IDFyZW0gMnJlbTtcbiAgICBwYWRkaW5nLWJvdHRvbTogNXJlbTtcbiAgfVxufVxuLmhvcml6b250YWwtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuLmhvdmVyLXRleHQge1xuICBjb2xvcjogcHVycGxlO1xufVxuLm1hdGVyaWFsLWljb25zIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGZvbnQtc2l6ZTogaW5oZXJpdDtcbn1cblxucCB7XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG59IiwiOmhvc3Qge1xuICBoZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG46aG9zdCBoMyB7XG4gIG1hcmdpbjogMXJlbSAycmVtO1xufVxuOmhvc3QgLmRlbW8tY29udGFpbmVyIHtcbiAgZmxleDogMSAxIDA7XG4gIG1hcmdpbjogMXJlbSAycmVtO1xuICBwYWRkaW5nLWJvdHRvbTogNXJlbTtcbn1cblxuLmhvcml6b250YWwtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuXG4uaG92ZXItdGV4dCB7XG4gIGNvbG9yOiBwdXJwbGU7XG59XG5cbi5tYXRlcmlhbC1pY29ucyB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmb250LXNpemU6IGluaGVyaXQ7XG59XG5cbnAge1xuICBtYXJnaW4tYm90dG9tOiAxcmVtO1xufSJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/portfolio/tooltip-demo/tooltip-demo.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/portfolio/tooltip-demo/tooltip-demo.component.ts ***!
+  \******************************************************************/
+/*! exports provided: TooltipDemoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipDemoComponent", function() { return TooltipDemoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TooltipDemoComponent = /** @class */ (function () {
+    function TooltipDemoComponent() {
+    }
+    TooltipDemoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-tooltip-demo',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./tooltip-demo.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/tooltip-demo/tooltip-demo.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tooltip-demo.component.scss */ "./src/app/portfolio/tooltip-demo/tooltip-demo.component.scss")).default]
+        })
+    ], TooltipDemoComponent);
+    return TooltipDemoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/portfolio/tooltip-demo/tooltip-demo.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/portfolio/tooltip-demo/tooltip-demo.module.ts ***!
+  \***************************************************************/
+/*! exports provided: TooltipDemoModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TooltipDemoModule", function() { return TooltipDemoModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tooltip-demo.component */ "./src/app/portfolio/tooltip-demo/tooltip-demo.component.ts");
+/* harmony import */ var _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @common/tooltip/tooltip.module */ "./src/app/common/tooltip/tooltip.module.ts");
+
+
+
+
+
+var TooltipDemoModule = /** @class */ (function () {
+    function TooltipDemoModule() {
+    }
+    TooltipDemoModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_4__["TooltipModule"],
+            ],
+            declarations: [
+                _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__["TooltipDemoComponent"],
+            ],
+            exports: [
+                _tooltip_demo_component__WEBPACK_IMPORTED_MODULE_3__["TooltipDemoComponent"],
+            ],
+        })
+    ], TooltipDemoModule);
+    return TooltipDemoModule;
 }());
 
 

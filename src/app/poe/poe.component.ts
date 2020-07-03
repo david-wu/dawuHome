@@ -14,6 +14,7 @@ export class PoeComponent {
   constructor(public poeService: PoeService) {}
 
   public ngOnInit() {
+    // https://www.pathofexile.com/character-window/get-stash-items?league=Harvest&tabs=1&tabIndex=18&accountName=Dawu
     // this.poeService.getPublicStashes('dawu').subscribe((poeResponse) => {
     //   console.log('poeResponse', poeResponse)
     // });
@@ -35,9 +36,7 @@ export class PoeComponent {
     console.log('json', json)
     const explicitModifiersByItemId = {};
     const itemNamesById = {};
-
-    const modifierStrings = []
-
+    const modNames = []
 
     json.items.forEach((item) => {
       const explicitMods = item.explicitMods || [];
@@ -45,14 +44,17 @@ export class PoeComponent {
       itemNamesById[item.id] = item.name;
 
       explicitMods.forEach((mod: string) => {
-        const splitMods = mod.split(' ');
-        const firstMod = splitMods.shift();
-        const remaining = splitMods.join(' ');
-        modifierStrings.push(remaining);
+        const matchedValues = [];
+        const regex = /[0-9]+/ig;
+        const modName = mod.replace(regex, (matchVal: string) => {
+          matchedValues.push(matchVal);
+          return '_';
+        });
+        modNames.push(modName);
       });
     });
 
-    console.log('modifierStrings', modifierStrings)
+    console.log('modNames', modNames)
   }
 }
 

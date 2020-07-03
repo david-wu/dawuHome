@@ -47,6 +47,7 @@ var PoeComponent = /** @class */ (function () {
         this.poeService = poeService;
     }
     PoeComponent.prototype.ngOnInit = function () {
+        // https://www.pathofexile.com/character-window/get-stash-items?league=Harvest&tabs=1&tabIndex=18&accountName=Dawu
         // this.poeService.getPublicStashes('dawu').subscribe((poeResponse) => {
         //   console.log('poeResponse', poeResponse)
         // });
@@ -67,19 +68,22 @@ var PoeComponent = /** @class */ (function () {
         console.log('json', json);
         var explicitModifiersByItemId = {};
         var itemNamesById = {};
-        var modifierStrings = [];
+        var modNames = [];
         json.items.forEach(function (item) {
             var explicitMods = item.explicitMods || [];
             explicitModifiersByItemId[item.id] = explicitMods;
             itemNamesById[item.id] = item.name;
             explicitMods.forEach(function (mod) {
-                var splitMods = mod.split(' ');
-                var firstMod = splitMods.shift();
-                var remaining = splitMods.join(' ');
-                modifierStrings.push(remaining);
+                var matchedValues = [];
+                var regex = /[0-9]+/ig;
+                var modName = mod.replace(regex, function (matchVal) {
+                    matchedValues.push(matchVal);
+                    return '_';
+                });
+                modNames.push(modName);
             });
         });
-        console.log('modifierStrings', modifierStrings);
+        console.log('modNames', modNames);
     };
     PoeComponent.ctorParameters = function () { return [
         { type: _src_app_poe_services_poe_service__WEBPACK_IMPORTED_MODULE_2__["PoeService"] }

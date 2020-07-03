@@ -1273,15 +1273,15 @@
   },
   {
     "dateStr": "6/29/20",
-    "cases": 38,
+    "cases": 42,
     "deaths": 2,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
   {
     "dateStr": "6/30/20",
-    "cases": 38,
+    "cases": 42,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
@@ -1289,10 +1289,18 @@
   },
   {
     "dateStr": "7/1/20",
-    "cases": 38,
+    "cases": 42,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "7/2/20",
+    "cases": 43,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 1,
     "newDeaths": 0
   }
 ]

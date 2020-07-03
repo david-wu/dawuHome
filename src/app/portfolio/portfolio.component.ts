@@ -10,52 +10,58 @@ import { FileGroup, FileType, File } from '@file-explorer/index';
 })
 export class PortfolioComponent {
 
-    public filesById: Record<string, File> = {};
-    public filesByLabel: Record<string, File> = {};
-    public fileGroup: FileGroup = new FileGroup();
-    public filterStr: string = '';
+  public filesById: Record<string, File> = {};
+  public filesByLabel: Record<string, File> = {};
+  public fileGroup: FileGroup = new FileGroup();
+  public filterStr: string = '';
 
-    public ngOnInit() {
-        this.populateFileGroup();
-    }
+  public ngOnInit() {
+    this.populateFileGroup();
+  }
 
-    public populateFileGroup() {
-        const fileDataById = {
-            id: 'PROJECTS',
-            label: 'Projects',
-            childrenById: {
-                FUZZ: { label: 'fuzz-demo' },
-                TODOS: {
-                    label: 'todos',
-                    childrenById: {
-                        TODO_LIST: { label: 'implement todo list' },
-                        MARKDOWN: { label: 'support markdown-editor' },
-                        FAVICON: { label: 'favicon' },
-                        COMMON: { label: 'common components' },
-                        ABOUT_ME: { label: 'about me page' },
-                    },
-                },
-                COMPONENTS: {
-                    label: 'components',
-                    childrenById: {
-                        TOOLTIP: { label: 'tooltip' },
-                        FILE_EXPLORER: { label: 'file-explorer' },
-                        TEXT_DECORATOR: { label: 'text-decorator' },
-                    },
-                },
+  public populateFileGroup() {
+    const fileDataById = {
+      id: 'PROJECTS',
+      label: 'Projects',
+      childrenById: {
+        COMPONENTS: {
+          label: 'components',
+          childrenById: {
+            FUZZ: { label: 'fuzz-js' },
+            TOOLTIP: { label: 'tooltip' },
+            FILE_EXPLORER: { label: 'file-explorer' },
+            TEXT_DECORATOR: { label: 'text-decorator' },
+            CHARTS_DIR: {
+              label: 'charts',
+              childrenById: {
+                FLEX_CHART: { label: 'flex chart' },
+                LINE_CHART: { label: 'line chart' },
+                VERTICAL_CHART: { label: 'vertical chart' },
+              },
             },
-        };
+          },
+        },
+        TODOS: {
+          label: 'todos',
+          childrenById: {
+            MARKDOWN: { label: 'support markdown-editor' },
+            FAVICON: { label: 'make a favicon' },
+            COMMON: { label: 'components demos' },
+          },
+        },
+      },
+    };
 
-        const files = this.fileGroup.filesByIdFromJson(fileDataById);
-        this.filesById = keyBy(files, 'id');
+    const files = this.fileGroup.filesByIdFromJson(fileDataById);
+    this.filesById = keyBy(files, 'id');
 
-        this.fileGroup.setRootFile(this.filesById.PROJECTS);
-        this.fileGroup.selectedFileIds = new Set([this.filesById['TOOLTIP'].id]);
-    }
+    this.fileGroup.setRootFile(this.filesById.PROJECTS);
+    this.fileGroup.selectedFileIds = new Set([this.filesById['TOOLTIP'].id]);
+  }
 
-    public getSelectedFileId() {
-        const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
-        return (selectedFileIds.length === 1) && selectedFileIds[0];
-    }
+  public getSelectedFileId() {
+    const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
+    return (selectedFileIds.length === 1) && selectedFileIds[0];
+  }
 
 }

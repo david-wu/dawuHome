@@ -31,7 +31,7 @@ export class TooltipService {
   public hoverEl$: BehaviorSubject<HTMLElement> = new BehaviorSubject(undefined);
   public templatesByEl$: BehaviorSubject<Map<HTMLElement, TemplateRef<any>>> = new BehaviorSubject(new Map());
   public readonly arrowSize: number = 10;
-  public approxTooltipWidth = 200;
+  public approxTooltipWidth = 250;
   public approxTooltipHeight = 125;
 
   constructor(
