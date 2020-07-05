@@ -1,0 +1,12 @@
+<h3>Bar Chart</h3>
+<div class="demo-container">
+  <p>
+    Bar charts are great for visualizing data with two discrete groupings.
+  </p>
+  <dwu-bar-chart
+    [tableData]="demoData"
+    [keys]="demoKeys"
+    [hoverIndex]="hoverIndex"
+    (hoverIndexChange)="hoverIndex = $event"
+  ></dwu-bar-chart>
+</div>

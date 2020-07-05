@@ -17,6 +17,7 @@
         <ng-container  *ngIf="getSelectedFileId() as selectedFileId" [ngSwitch]="selectedFileId">
             <app-demo-page-wrapper *ngSwitchCase="'FUZZ'"></app-demo-page-wrapper>
             <dwu-tooltip-demo *ngSwitchCase="'TOOLTIP'"></dwu-tooltip-demo>
+            <dwu-bar-chart-demo *ngSwitchCase="'BAR_CHART'"></dwu-bar-chart-demo>
             <div *ngSwitchCase="'FILE_EXPLORER'">
                 <div>
                     future file explorer demo

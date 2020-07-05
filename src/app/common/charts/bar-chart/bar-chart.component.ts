@@ -23,9 +23,16 @@ export class BarChartComponent extends BaseChartComponent {
 
     @Input() tableData: any;
     @Input() keys: string[];
-    @Input() colorsByKey: Record<string, string>;
+    @Input() colorsByKey: Record<string, string> = {};
+    @Input() colorScheme: string[] = [
+      '#ED9797',
+      '#AD3E3E',
+      '#34A2AA',
+      '#2B1919',
+      '#65635F',
+    ];
     @Input() disabledKeys: Set<string> = new Set();
-    @Input() hoverIndex: number;
+    @Input() hoverIndex: number = 0;
     @Input() yAxisFormatter: any;
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
     @Input() indicators: any[];
@@ -104,7 +111,7 @@ export class BarChartComponent extends BaseChartComponent {
     }
 
     public positionHoverBox() {
-      const hoverBoxTimestamp = this.tableData[this.hoverIndex].timestamp;
+      const hoverBoxTimestamp = this.tableData[this.hoverIndex || 0].timestamp;
       this.hoverBox
         .attr('x', this.xScale(hoverBoxTimestamp))
         .attr('y', this.yScale(this.maxY))
@@ -181,7 +188,7 @@ export class BarChartComponent extends BaseChartComponent {
             .append('g')
             .attr('class', (d) => `series ${d.key}`)
             .merge(groups)
-            .style('fill', (d) => this.colorsByKey[d.key]);
+            .style('fill', (d, i) => this.colorsByKey[d.key] || this.colorScheme[i]);
         groups.exit().remove();
 
         // reusing "groups" selection doesn't work, not sure why

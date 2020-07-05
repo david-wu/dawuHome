@@ -57018,7 +57018,7 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  width: 100%;\n  height: 100%;\n  display: block;\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vY2hhcnRzL2Jhci1jaGFydC9iYXItY2hhcnQuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbW1vbi9jaGFydHMvYmFyLWNoYXJ0L2Jhci1jaGFydC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY2hhcnRzL2Jhci1jaGFydC9iYXItY2hhcnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG59IiwiOmhvc3Qge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBibG9jaztcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  width: 100%;\n  height: 100%;\n  display: block;\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vY2hhcnRzL2Jhci1jaGFydC9iYXItY2hhcnQuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbW1vbi9jaGFydHMvYmFyLWNoYXJ0L2Jhci1jaGFydC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0FDQUYiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY2hhcnRzL2Jhci1jaGFydC9iYXItY2hhcnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbjpob3N0IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG4iLCI6aG9zdCB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -57049,7 +57049,16 @@ var BarChartComponent = /** @class */ (function (_super) {
         _this.hostEl = hostEl;
         _this.zone = zone;
         _this.tts = tts;
+        _this.colorsByKey = {};
+        _this.colorScheme = [
+            '#ED9797',
+            '#AD3E3E',
+            '#34A2AA',
+            '#2B1919',
+            '#65635F',
+        ];
         _this.disabledKeys = new Set();
+        _this.hoverIndex = 0;
         _this.hoverIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         _this.barPadding = 0.05;
         // some extra margin on the chart itself
@@ -57109,7 +57118,7 @@ var BarChartComponent = /** @class */ (function (_super) {
         }
     };
     BarChartComponent.prototype.positionHoverBox = function () {
-        var hoverBoxTimestamp = this.tableData[this.hoverIndex].timestamp;
+        var hoverBoxTimestamp = this.tableData[this.hoverIndex || 0].timestamp;
         this.hoverBox
             .attr('x', this.xScale(hoverBoxTimestamp))
             .attr('y', this.yScale(this.maxY))
@@ -57173,7 +57182,7 @@ var BarChartComponent = /** @class */ (function (_super) {
             .append('g')
             .attr('class', function (d) { return "series " + d.key; })
             .merge(groups)
-            .style('fill', function (d) { return _this.colorsByKey[d.key]; });
+            .style('fill', function (d, i) { return _this.colorsByKey[d.key] || _this.colorScheme[i]; });
         groups.exit().remove();
         // reusing "groups" selection doesn't work, not sure why
         // explicitly selectAll again before rebinding works
@@ -57211,6 +57220,9 @@ var BarChartComponent = /** @class */ (function (_super) {
     ], BarChartComponent.prototype, "colorsByKey", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], BarChartComponent.prototype, "colorScheme", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], BarChartComponent.prototype, "disabledKeys", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
@@ -57237,6 +57249,47 @@ var BarChartComponent = /** @class */ (function (_super) {
     ], BarChartComponent);
     return BarChartComponent;
 }(_base_chart_base_chart_component__WEBPACK_IMPORTED_MODULE_3__["BaseChartComponent"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/charts/bar-chart/bar-chart.module.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/common/charts/bar-chart/bar-chart.module.ts ***!
+  \*************************************************************/
+/*! exports provided: BarChartModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BarChartModule", function() { return BarChartModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _bar_chart_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bar-chart.component */ "./src/app/common/charts/bar-chart/bar-chart.component.ts");
+
+
+
+
+var BarChartModule = /** @class */ (function () {
+    function BarChartModule() {
+    }
+    BarChartModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            ],
+            declarations: [
+                _bar_chart_component__WEBPACK_IMPORTED_MODULE_3__["BarChartComponent"],
+            ],
+            exports: [
+                _bar_chart_component__WEBPACK_IMPORTED_MODULE_3__["BarChartComponent"],
+            ],
+        })
+    ], BarChartModule);
+    return BarChartModule;
+}());
 
 
 
@@ -57287,6 +57340,7 @@ var BaseChartComponent = /** @class */ (function () {
         var _this = this;
         this.ngZone.runOutsideAngular(function () {
             _this.svg = d3__WEBPACK_IMPORTED_MODULE_1__["select"](_this.hostEl.nativeElement).append('svg')
+                .style('position', 'absolute')
                 .on('mousemove', function () { return _this.onMouseMove(); })
                 .on('touchstart', function () { return _this.touchmove(); })
                 .on('touchmove', function () { return _this.touchmove(); });
@@ -57596,10 +57650,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bar-chart/bar-chart.component */ "./src/app/common/charts/bar-chart/bar-chart.component.ts");
-/* harmony import */ var _line_chart_line_chart_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./line-chart/line-chart.component */ "./src/app/common/charts/line-chart/line-chart.component.ts");
-/* harmony import */ var _chart_legend_chart_legend_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./chart-legend/chart-legend.component */ "./src/app/common/charts/chart-legend/chart-legend.component.ts");
-/* harmony import */ var _stat_viewer_stat_viewer_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./stat-viewer/stat-viewer.component */ "./src/app/common/charts/stat-viewer/stat-viewer.component.ts");
+/* harmony import */ var _line_chart_line_chart_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./line-chart/line-chart.component */ "./src/app/common/charts/line-chart/line-chart.component.ts");
+/* harmony import */ var _chart_legend_chart_legend_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./chart-legend/chart-legend.component */ "./src/app/common/charts/chart-legend/chart-legend.component.ts");
+/* harmony import */ var _stat_viewer_stat_viewer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stat-viewer/stat-viewer.component */ "./src/app/common/charts/stat-viewer/stat-viewer.component.ts");
+/* harmony import */ var _bar_chart_bar_chart_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./bar-chart/bar-chart.module */ "./src/app/common/charts/bar-chart/bar-chart.module.ts");
 
 
 
@@ -57614,18 +57668,18 @@ var ChartsModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _bar_chart_bar_chart_module__WEBPACK_IMPORTED_MODULE_6__["BarChartModule"],
             ],
             declarations: [
-                _bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_3__["BarChartComponent"],
-                _line_chart_line_chart_component__WEBPACK_IMPORTED_MODULE_4__["LineChartComponent"],
-                _chart_legend_chart_legend_component__WEBPACK_IMPORTED_MODULE_5__["ChartLegendComponent"],
-                _stat_viewer_stat_viewer_component__WEBPACK_IMPORTED_MODULE_6__["StatViewerComponent"],
+                _line_chart_line_chart_component__WEBPACK_IMPORTED_MODULE_3__["LineChartComponent"],
+                _chart_legend_chart_legend_component__WEBPACK_IMPORTED_MODULE_4__["ChartLegendComponent"],
+                _stat_viewer_stat_viewer_component__WEBPACK_IMPORTED_MODULE_5__["StatViewerComponent"],
             ],
             exports: [
-                _bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_3__["BarChartComponent"],
-                _line_chart_line_chart_component__WEBPACK_IMPORTED_MODULE_4__["LineChartComponent"],
-                _chart_legend_chart_legend_component__WEBPACK_IMPORTED_MODULE_5__["ChartLegendComponent"],
-                _stat_viewer_stat_viewer_component__WEBPACK_IMPORTED_MODULE_6__["StatViewerComponent"],
+                _bar_chart_bar_chart_module__WEBPACK_IMPORTED_MODULE_6__["BarChartModule"],
+                _line_chart_line_chart_component__WEBPACK_IMPORTED_MODULE_3__["LineChartComponent"],
+                _chart_legend_chart_legend_component__WEBPACK_IMPORTED_MODULE_4__["ChartLegendComponent"],
+                _stat_viewer_stat_viewer_component__WEBPACK_IMPORTED_MODULE_5__["StatViewerComponent"],
             ],
             providers: [],
         })

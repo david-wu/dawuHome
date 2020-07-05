@@ -96724,6 +96724,19 @@ module.exports = function(hljs) {
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.html":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.html ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>Bar Chart</h3>\n<div class=\"demo-container\">\n  <p>\n    Bar charts are great for visualizing data with two discrete groupings.\n  </p>\n  <dwu-bar-chart\n    [tableData]=\"demoData\"\n    [keys]=\"demoKeys\"\n    [hoverIndex]=\"hoverIndex\"\n    (hoverIndexChange)=\"hoverIndex = $event\"\n  ></dwu-bar-chart>\n</div>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/portfolio.component.html":
 /*!******************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/portfolio.component.html ***!
@@ -96733,7 +96746,7 @@ module.exports = function(hljs) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input [(searchText)]=\"filterStr\" [placeholder]=\"'search..'\"></dwu-search-input>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <app-demo-page-wrapper *ngSwitchCase=\"'FUZZ'\"></app-demo-page-wrapper>\n            <dwu-tooltip-demo *ngSwitchCase=\"'TOOLTIP'\"></dwu-tooltip-demo>\n            <div *ngSwitchCase=\"'FILE_EXPLORER'\">\n                <div>\n                    future file explorer demo\n                </div>\n            </div>\n            <div *ngSwitchCase=\"'TEXT_DECORATOR'\">\n                <div>\n                    future text-decorator demo\n                </div>\n            </div>\n            <div *ngSwitchDefault>\n                <div>\n                    Nothing here yet\n                </div>\n            </div>\n        </ng-container>\n    </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input [(searchText)]=\"filterStr\" [placeholder]=\"'search..'\"></dwu-search-input>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <app-demo-page-wrapper *ngSwitchCase=\"'FUZZ'\"></app-demo-page-wrapper>\n            <dwu-tooltip-demo *ngSwitchCase=\"'TOOLTIP'\"></dwu-tooltip-demo>\n            <dwu-bar-chart-demo *ngSwitchCase=\"'BAR_CHART'\"></dwu-bar-chart-demo>\n            <div *ngSwitchCase=\"'FILE_EXPLORER'\">\n                <div>\n                    future file explorer demo\n                </div>\n            </div>\n            <div *ngSwitchCase=\"'TEXT_DECORATOR'\">\n                <div>\n                    future text-decorator demo\n                </div>\n            </div>\n            <div *ngSwitchDefault>\n                <div>\n                    Nothing here yet\n                </div>\n            </div>\n        </ng-container>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -96747,6 +96760,113 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<h3>Tooltip Demo</h3>\n<div class=\"demo-container\">\n  <p>\n    <span>Tooltips try to stay in viewport. They can be added onto any element. For example hover </span>\n    <dwu-tooltip [text]=\"'some tooltip text'\">\n      <a class=\"hover-text\">here.</a>\n    </dwu-tooltip>\n  </p>\n  <p>\n    <span>Tooltips are typically used on icons like this: </span>\n    <dwu-tooltip\n      [text]=\"'Here\\'s a really really really really really really really really really really really really really really really really really really really really really long tooltip.'\"\n    >\n      <div class=\"material-icons\">help</div>\n    </dwu-tooltip>\n  </p>\n  <p>\n    Tooltips be provided with templates that allow for more control over their appearance.\n  </p>\n  <p>\n    Tooltips near the edges will try to avoid spilling outside the viewport.\n  </p>\n  <div class=\"horizontal-container\">\n    <dwu-tooltip [text]=\"'Tooltip shows on the right side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n    <dwu-tooltip [text]=\"'Tooltip shows on the left side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n  </div>\n</div>\n\n<ng-template #tooltipTemplate>\n  <div>\n    <div>tooltip using template!</div>\n    <div>new line!</div>\n    <div>\n      <div class=\"material-icons\">\n        help\n      </div>\n    </div>\n  </div>\n</ng-template>");
+
+/***/ }),
+
+/***/ "./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.scss":
+/*!************************************************************************!*\
+  !*** ./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.scss ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n:host h3 {\n  flex: 0 0 auto;\n  margin: 1rem 2rem;\n}\n:host .demo-container {\n  flex: 1 1 0;\n  margin: 1rem 2rem;\n  padding-bottom: 5rem;\n}\np {\n  margin-bottom: 1rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9wb3J0Zm9saW8vYmFyLWNoYXJ0LWRlbW8vYmFyLWNoYXJ0LWRlbW8uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BvcnRmb2xpby9iYXItY2hhcnQtZGVtby9iYXItY2hhcnQtZGVtby5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLFlBQUE7RUFDQSxhQUFBO0VBQ0Esc0JBQUE7QUNGRjtBREdFO0VBQ0UsY0FBQTtFQUNBLGlCQUFBO0FDREo7QURHRTtFQUNFLFdBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBO0FDREo7QURPQTtFQUNFLG1CQUFBO0FDTEYiLCJmaWxlIjoic3JjL2FwcC9wb3J0Zm9saW8vYmFyLWNoYXJ0LWRlbW8vYmFyLWNoYXJ0LWRlbW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoMyB7XG4gICAgZmxleDogMCAwIGF1dG87XG4gICAgbWFyZ2luOiAxcmVtIDJyZW07XG4gIH1cbiAgLmRlbW8tY29udGFpbmVyIHtcbiAgICBmbGV4OiAxIDEgMDtcbiAgICBtYXJnaW46IDFyZW0gMnJlbTtcbiAgICBwYWRkaW5nLWJvdHRvbTogNXJlbTtcbiAgICBkd3UtYmFyLWNoYXJ0IHtcbiAgICB9XG4gIH1cbn1cblxucCB7XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG59XG4iLCI6aG9zdCB7XG4gIGhlaWdodDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbn1cbjpob3N0IGgzIHtcbiAgZmxleDogMCAwIGF1dG87XG4gIG1hcmdpbjogMXJlbSAycmVtO1xufVxuOmhvc3QgLmRlbW8tY29udGFpbmVyIHtcbiAgZmxleDogMSAxIDA7XG4gIG1hcmdpbjogMXJlbSAycmVtO1xuICBwYWRkaW5nLWJvdHRvbTogNXJlbTtcbn1cbnAge1xuICBtYXJnaW4tYm90dG9tOiAxcmVtO1xufSJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: BarChartDemoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BarChartDemoComponent", function() { return BarChartDemoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var BarChartDemoComponent = /** @class */ (function () {
+    function BarChartDemoComponent() {
+        this.demoKeys = [
+            'dogs',
+        ];
+        this.demoData = this.generateDemoData();
+    }
+    BarChartDemoComponent.prototype.generateDemoData = function () {
+        var now = Date.now();
+        var demoData = [];
+        var period = 1000 * 60 * 60 * 24;
+        for (var i = 0; i < 20; i++) {
+            demoData.push({
+                timestamp: now - (i * period),
+                dogs: Math.floor(Math.random() * 10) + 3,
+            });
+        }
+        return demoData;
+    };
+    BarChartDemoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-bar-chart-demo',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./bar-chart-demo.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./bar-chart-demo.component.scss */ "./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.scss")).default]
+        })
+    ], BarChartDemoComponent);
+    return BarChartDemoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/portfolio/bar-chart-demo/bar-chart-demo.module.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/portfolio/bar-chart-demo/bar-chart-demo.module.ts ***!
+  \*******************************************************************/
+/*! exports provided: BarChartDemoModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BarChartDemoModule", function() { return BarChartDemoModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _common_charts_bar_chart_bar_chart_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @common/charts/bar-chart/bar-chart.module */ "./src/app/common/charts/bar-chart/bar-chart.module.ts");
+/* harmony import */ var _bar_chart_demo_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bar-chart-demo.component */ "./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.ts");
+/* harmony import */ var _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @common/tooltip/tooltip.module */ "./src/app/common/tooltip/tooltip.module.ts");
+
+
+
+
+
+
+var BarChartDemoModule = /** @class */ (function () {
+    function BarChartDemoModule() {
+    }
+    BarChartDemoModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _common_tooltip_tooltip_module__WEBPACK_IMPORTED_MODULE_5__["TooltipModule"],
+                _common_charts_bar_chart_bar_chart_module__WEBPACK_IMPORTED_MODULE_3__["BarChartModule"],
+            ],
+            declarations: [
+                _bar_chart_demo_component__WEBPACK_IMPORTED_MODULE_4__["BarChartDemoComponent"],
+            ],
+            exports: [
+                _bar_chart_demo_component__WEBPACK_IMPORTED_MODULE_4__["BarChartDemoComponent"],
+            ],
+        })
+    ], BarChartDemoModule);
+    return BarChartDemoModule;
+}());
+
+
 
 /***/ }),
 
@@ -96809,7 +96929,8 @@ var PortfolioComponent = /** @class */ (function () {
                             childrenById: {
                                 FLEX_CHART: { label: 'flex chart' },
                                 LINE_CHART: { label: 'line chart' },
-                                VERTICAL_CHART: { label: 'vertical chart' },
+                                BAR_CHART: { label: 'bar chart' },
+                                CHART_LEGEND: { label: 'chart legend' },
                             },
                         },
                     },
@@ -96867,6 +96988,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/common/common.module */ "./src/app/common/common.module.ts");
 /* harmony import */ var _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @file-explorer/file-explorer.module */ "./src/app/common/file-explorer/file-explorer.module.ts");
 /* harmony import */ var _src_app_portfolio_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/portfolio/tooltip-demo/tooltip-demo.module */ "./src/app/portfolio/tooltip-demo/tooltip-demo.module.ts");
+/* harmony import */ var _src_app_portfolio_bar_chart_demo_bar_chart_demo_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/portfolio/bar-chart-demo/bar-chart-demo.module */ "./src/app/portfolio/bar-chart-demo/bar-chart-demo.module.ts");
+
 
 
 
@@ -96888,6 +97011,7 @@ var PortfolioModule = /** @class */ (function () {
                 _src_app_common_common_module__WEBPACK_IMPORTED_MODULE_6__["CommonModule"],
                 _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_7__["FileExplorerModule"],
                 _src_app_portfolio_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__["TooltipDemoModule"],
+                _src_app_portfolio_bar_chart_demo_bar_chart_demo_module__WEBPACK_IMPORTED_MODULE_9__["BarChartDemoModule"],
             ],
             declarations: [
                 _src_app_portfolio_portfolio_component__WEBPACK_IMPORTED_MODULE_4__["PortfolioComponent"],

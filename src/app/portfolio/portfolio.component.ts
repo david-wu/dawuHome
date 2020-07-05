@@ -36,7 +36,8 @@ export class PortfolioComponent {
               childrenById: {
                 FLEX_CHART: { label: 'flex chart' },
                 LINE_CHART: { label: 'line chart' },
-                VERTICAL_CHART: { label: 'vertical chart' },
+                BAR_CHART: { label: 'bar chart' },
+                CHART_LEGEND: { label: 'chart legend' },
               },
             },
           },
