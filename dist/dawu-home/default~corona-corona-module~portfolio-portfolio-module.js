@@ -56889,7 +56889,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"selected-stats\">\n    <div *ngFor=\"let statCols of statTable; let columnIndex = index\" class=\"stats-column-container\">\n        <div class=\"stats-column\">\n            <div *ngFor=\"let columnKey of statCols.columnKeys\">{{ labelsByKey[columnKey] }}:</div>\n        </div>\n        <div class=\"stats-column stats\">\n            <div\n                *ngFor=\"let columnValue of statCols.columnValues; let valueIndex = index\"\n                [class.first-val]=\"(columnIndex === 0) && (valueIndex === 0)\"\n            >{{ columnValue }}</div>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<table>\n  <tr *ngFor=\"let key of keys\" [class.focused]=\"isFocused(key)\">\n    <td class=\"column-name\">{{ labelsByKey[key] }}:</td>\n    <td>{{ getFormattedValue(key) }}</td>\n  </tr>\n</table>\n\n<!-- <div class=\"selected-stats\">\n    <div *ngFor=\"let statCols of statTable; let columnIndex = index\" class=\"stats-column-container\">\n        <div class=\"stats-column\">\n            <div *ngFor=\"let columnKey of statCols.columnKeys\">{{ labelsByKey[columnKey] }}:</div>\n        </div>\n        <div class=\"stats-column stats\">\n            <div\n                *ngFor=\"let columnValue of statCols.columnValues; let valueIndex = index\"\n                [class.first-val]=\"(columnIndex === 0) && (valueIndex === 0)\"\n            >{{ columnValue }}</div>\n        </div>\n    </div>\n</div>\n -->");
 
 /***/ }),
 
@@ -57736,6 +57736,7 @@ var LineChartComponent = /** @class */ (function (_super) {
         _this.tts = tts;
         _this.disabledKeys = new Set();
         _this.hoverIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        _this.hoverSeriesChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         // some extra margin on the chart itself
         _this.chartMargin = 10;
         return _this;
@@ -57751,6 +57752,9 @@ var LineChartComponent = /** @class */ (function (_super) {
         }
         if (changes.hoverIndex) {
             this.positionHoverLine();
+        }
+        if (changes.hoverSeries) {
+            this.renderHoverEffect();
         }
         if (changes.indicators) {
             this.renderIndicators(this.indicators, this.tableData, this.maxY);
@@ -57768,7 +57772,7 @@ var LineChartComponent = /** @class */ (function (_super) {
             .attr('class', 'hover-line')
             .style('stroke', '#8A9A5B')
             .style('stroke-opacity', '0.8')
-            .style('stroke-width', '3')
+            .style('stroke-width', '1')
             .style('shape-rendering', 'crispEdges');
         this.bubblesG = this.rootG.append('g');
     };
@@ -57779,7 +57783,7 @@ var LineChartComponent = /** @class */ (function (_super) {
             return;
         }
         var xDomain = this.xScale.domain();
-        var range = this.xScale.range();
+        // const range = this.xScale.range();
         var width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
         var startingPx = this.xScale(this.tableData[0].timestamp);
         var distanceBetweenPoints = width / (numberOfXDataPoints - 1);
@@ -57787,12 +57791,50 @@ var LineChartComponent = /** @class */ (function (_super) {
         var valueOnChart = this.xScale.invert(xOnChart);
         var rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
         var hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
+        var hoverSeries = this.findClosestSeries(hoverIndex, y);
         if (hoverIndex !== this.hoverIndex) {
             this.ngZone.run(function () {
                 _this.hoverIndex = hoverIndex;
                 _this.hoverIndexChange.emit(hoverIndex);
             });
         }
+        if (hoverSeries !== this.hoverSeries) {
+            this.ngZone.run(function () {
+                _this.hoverSeries = hoverSeries;
+                _this.hoverSeriesChange.emit(hoverSeries);
+            });
+        }
+    };
+    LineChartComponent.prototype.findClosestSeries = function (hoverIndex, y) {
+        var _this = this;
+        y = y - this.margins.top;
+        var yDomain = this.yScale.domain();
+        if (y > this.yScale(yDomain[0])) {
+            return;
+        }
+        var hoverSeries = '';
+        var dataPoint = this.tableData[hoverIndex];
+        var keyVals = this.keys.map(function (key) {
+            return {
+                key: key,
+                yVal: _this.yScale(dataPoint[key]),
+            };
+        });
+        keyVals.sort(function (a, b) { return a.yVal - b.yVal; });
+        var distanceFrom = Math.abs(y - keyVals[0].yVal);
+        var closestSeries = keyVals[0];
+        for (var i = 1; i < keyVals.length; i++) {
+            var nextDistanceFrom = Math.abs(y - keyVals[i].yVal);
+            if (nextDistanceFrom < distanceFrom) {
+                closestSeries = keyVals[i];
+                distanceFrom = nextDistanceFrom;
+            }
+        }
+        // if mouse isn't close enough to a series
+        if (distanceFrom > 15) {
+            return;
+        }
+        return closestSeries.key;
     };
     LineChartComponent.prototype.positionHoverLine = function () {
         var _this = this;
@@ -57906,10 +57948,30 @@ var LineChartComponent = /** @class */ (function (_super) {
             .merge(paths)
             .attr('class', function (d) { return "series " + d.key; })
             .attr('d', pathLineDrawer)
-            .style('stroke', function (d) { return _this.colorsByKey[d.key]; });
+            .style('stroke', function (d) { return _this.colorsByKey[d.key]; })
+            .style('stroke-opacity', function (d) {
+            if (_this.hoverSeries && (_this.hoverSeries !== d.key)) {
+                return 0.3;
+            }
+            else {
+                return 1;
+            }
+        });
         paths.exit().remove();
         this.positionHoverLine();
         this.renderIndicators(this.indicators, this.tableData, this.maxY);
+    };
+    LineChartComponent.prototype.renderHoverEffect = function () {
+        var _this = this;
+        this.seriesG.selectAll('path.series')
+            .style('stroke-opacity', function (d) {
+            if (_this.hoverSeries && (_this.hoverSeries !== d.key)) {
+                return 0.3;
+            }
+            else {
+                return 1;
+            }
+        });
     };
     LineChartComponent.ctorParameters = function () { return [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
@@ -57932,11 +57994,17 @@ var LineChartComponent = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], LineChartComponent.prototype, "hoverIndex", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-    ], LineChartComponent.prototype, "yAxisFormatter", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
     ], LineChartComponent.prototype, "hoverIndexChange", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], LineChartComponent.prototype, "hoverSeries", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], LineChartComponent.prototype, "hoverSeriesChange", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], LineChartComponent.prototype, "yAxisFormatter", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], LineChartComponent.prototype, "indicators", void 0);
@@ -57967,7 +58035,7 @@ var LineChartComponent = /** @class */ (function (_super) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: block;\n}\n:host .selected-stats {\n  padding: 0 1rem;\n  font-size: 0.75rem;\n  display: flex;\n  flex-wrap: wrap;\n}\n:host .selected-stats .stats-column-container {\n  display: flex;\n  padding: 0 1.25rem;\n}\n:host .selected-stats .stats-column-container .stats-column {\n  display: flex;\n  flex-direction: column;\n  text-align: right;\n  flex-wrap: nowrap;\n  white-space: nowrap;\n}\n:host .selected-stats .stats-column-container .stats-column:first-child {\n  margin-right: 0.25rem;\n}\n:host .selected-stats .stats-column-container .stats-column.stats {\n  min-width: 3rem;\n}\n:host .selected-stats .stats-column-container .stats-column .first-val {\n  font-weight: 600;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vY2hhcnRzL3N0YXQtdmlld2VyL3N0YXQtdmlld2VyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21tb24vY2hhcnRzL3N0YXQtdmlld2VyL3N0YXQtdmlld2VyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0ksY0FBQTtBQ0RKO0FERUk7RUFDSSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsZUFBQTtBQ0FSO0FEQ1E7RUFDSSxhQUFBO0VBQ0Esa0JBQUE7QUNDWjtBREdZO0VBQ0ksYUFBQTtFQUNBLHNCQUFBO0VBQ0EsaUJBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0FDRGhCO0FERWdCO0VBQ0kscUJBQUE7QUNBcEI7QURFZ0I7RUFDSSxlQUFBO0FDQXBCO0FERWdCO0VBQ0ksZ0JBQUE7QUNBcEIiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY2hhcnRzL3N0YXQtdmlld2VyL3N0YXQtdmlld2VyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIC5zZWxlY3RlZC1zdGF0cyB7XG4gICAgICAgIHBhZGRpbmc6IDAgMXJlbTtcbiAgICAgICAgZm9udC1zaXplOiAwLjc1cmVtO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgICAgIC5zdGF0cy1jb2x1bW4tY29udGFpbmVyIHtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBwYWRkaW5nOiAwIDEuMjVyZW07XG4gICAgICAgICAgICAvLyAmOm5vdCg6Zmlyc3QtY2hpbGQpIHtcbiAgICAgICAgICAgIC8vICAgICBtYXJnaW4tbGVmdDogMi41cmVtO1xuICAgICAgICAgICAgLy8gfVxuICAgICAgICAgICAgLnN0YXRzLWNvbHVtbiB7XG4gICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IHJpZ2h0O1xuICAgICAgICAgICAgICAgIGZsZXgtd3JhcDogbm93cmFwO1xuICAgICAgICAgICAgICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgICAgICAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICAgICAgICAgIG1hcmdpbi1yaWdodDogMC4yNXJlbTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgJi5zdGF0cyB7XG4gICAgICAgICAgICAgICAgICAgIG1pbi13aWR0aDogM3JlbTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgLmZpcnN0LXZhbCB7XG4gICAgICAgICAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgfVxufVxuIiwiOmhvc3Qge1xuICBkaXNwbGF5OiBibG9jaztcbn1cbjpob3N0IC5zZWxlY3RlZC1zdGF0cyB7XG4gIHBhZGRpbmc6IDAgMXJlbTtcbiAgZm9udC1zaXplOiAwLjc1cmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG46aG9zdCAuc2VsZWN0ZWQtc3RhdHMgLnN0YXRzLWNvbHVtbi1jb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBwYWRkaW5nOiAwIDEuMjVyZW07XG59XG46aG9zdCAuc2VsZWN0ZWQtc3RhdHMgLnN0YXRzLWNvbHVtbi1jb250YWluZXIgLnN0YXRzLWNvbHVtbiB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xuICBmbGV4LXdyYXA6IG5vd3JhcDtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbn1cbjpob3N0IC5zZWxlY3RlZC1zdGF0cyAuc3RhdHMtY29sdW1uLWNvbnRhaW5lciAuc3RhdHMtY29sdW1uOmZpcnN0LWNoaWxkIHtcbiAgbWFyZ2luLXJpZ2h0OiAwLjI1cmVtO1xufVxuOmhvc3QgLnNlbGVjdGVkLXN0YXRzIC5zdGF0cy1jb2x1bW4tY29udGFpbmVyIC5zdGF0cy1jb2x1bW4uc3RhdHMge1xuICBtaW4td2lkdGg6IDNyZW07XG59XG46aG9zdCAuc2VsZWN0ZWQtc3RhdHMgLnN0YXRzLWNvbHVtbi1jb250YWluZXIgLnN0YXRzLWNvbHVtbiAuZmlyc3QtdmFsIHtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: block;\n}\n:host table {\n  font-size: 0.75rem;\n  padding: 0.5rem 0.25rem;\n}\n:host table tr {\n  padding: 0.125rem;\n  opacity: 0.3;\n  white-space: nowrap;\n}\n:host table tr.focused {\n  opacity: 1;\n}\n:host table td {\n  padding: 0.125rem;\n}\n:host .selected-stats {\n  padding: 0 1rem;\n  font-size: 0.75rem;\n  display: flex;\n  flex-wrap: wrap;\n}\n:host .selected-stats .stats-column-container {\n  display: flex;\n  padding: 0 1.25rem;\n}\n:host .selected-stats .stats-column-container .stats-column {\n  display: flex;\n  flex-direction: column;\n  text-align: right;\n  flex-wrap: nowrap;\n  white-space: nowrap;\n}\n:host .selected-stats .stats-column-container .stats-column:first-child {\n  margin-right: 0.25rem;\n}\n:host .selected-stats .stats-column-container .stats-column.stats {\n  min-width: 3rem;\n}\n:host .selected-stats .stats-column-container .stats-column .first-val {\n  font-weight: 600;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9jb21tb24vY2hhcnRzL3N0YXQtdmlld2VyL3N0YXQtdmlld2VyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21tb24vY2hhcnRzL3N0YXQtdmlld2VyL3N0YXQtdmlld2VyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0ksY0FBQTtBQ0RKO0FERUk7RUFDRSxrQkFBQTtFQUNBLHVCQUFBO0FDQU47QURDTTtFQUNFLGlCQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0FDQ1I7QURBUTtFQUNFLFVBQUE7QUNFVjtBRENNO0VBQ0UsaUJBQUE7QUNDUjtBRE1JO0VBQ0ksZUFBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUNKUjtBREtRO0VBQ0ksYUFBQTtFQUNBLGtCQUFBO0FDSFo7QURPWTtFQUNJLGFBQUE7RUFDQSxzQkFBQTtFQUNBLGlCQUFBO0VBQ0EsaUJBQUE7RUFDQSxtQkFBQTtBQ0xoQjtBRE1nQjtFQUNJLHFCQUFBO0FDSnBCO0FETWdCO0VBQ0ksZUFBQTtBQ0pwQjtBRE1nQjtFQUNJLGdCQUFBO0FDSnBCIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL2NoYXJ0cy9zdGF0LXZpZXdlci9zdGF0LXZpZXdlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICB0YWJsZSB7XG4gICAgICBmb250LXNpemU6IDAuNzVyZW07XG4gICAgICBwYWRkaW5nOiAwLjVyZW0gMC4yNXJlbTtcbiAgICAgIHRyIHtcbiAgICAgICAgcGFkZGluZzogMC4xMjVyZW07XG4gICAgICAgIG9wYWNpdHk6IDAuMztcbiAgICAgICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICAgICAgJi5mb2N1c2VkIHtcbiAgICAgICAgICBvcGFjaXR5OiAxO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgICB0ZCB7XG4gICAgICAgIHBhZGRpbmc6IDAuMTI1cmVtO1xuICAgICAgfVxuICAgIH1cbiAgICAvLyAuY29sdW1uLW5hbWUge1xuICAgIC8vICAgcGFkZGluZy1yaWdodDogMC4yNXJlbTtcbiAgICAvLyB9XG5cbiAgICAuc2VsZWN0ZWQtc3RhdHMge1xuICAgICAgICBwYWRkaW5nOiAwIDFyZW07XG4gICAgICAgIGZvbnQtc2l6ZTogMC43NXJlbTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgZmxleC13cmFwOiB3cmFwO1xuICAgICAgICAuc3RhdHMtY29sdW1uLWNvbnRhaW5lciB7XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgcGFkZGluZzogMCAxLjI1cmVtO1xuICAgICAgICAgICAgLy8gJjpub3QoOmZpcnN0LWNoaWxkKSB7XG4gICAgICAgICAgICAvLyAgICAgbWFyZ2luLWxlZnQ6IDIuNXJlbTtcbiAgICAgICAgICAgIC8vIH1cbiAgICAgICAgICAgIC5zdGF0cy1jb2x1bW4ge1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgICAgICAgICB0ZXh0LWFsaWduOiByaWdodDtcbiAgICAgICAgICAgICAgICBmbGV4LXdyYXA6IG5vd3JhcDtcbiAgICAgICAgICAgICAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgICAgICAgICAgICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgICAgICAgICAgICAgICBtYXJnaW4tcmlnaHQ6IDAuMjVyZW07XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICYuc3RhdHMge1xuICAgICAgICAgICAgICAgICAgICBtaW4td2lkdGg6IDNyZW07XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIC5maXJzdC12YWwge1xuICAgICAgICAgICAgICAgICAgICBmb250LXdlaWdodDogNjAwO1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgIH1cbn1cbiIsIjpob3N0IHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG46aG9zdCB0YWJsZSB7XG4gIGZvbnQtc2l6ZTogMC43NXJlbTtcbiAgcGFkZGluZzogMC41cmVtIDAuMjVyZW07XG59XG46aG9zdCB0YWJsZSB0ciB7XG4gIHBhZGRpbmc6IDAuMTI1cmVtO1xuICBvcGFjaXR5OiAwLjM7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59XG46aG9zdCB0YWJsZSB0ci5mb2N1c2VkIHtcbiAgb3BhY2l0eTogMTtcbn1cbjpob3N0IHRhYmxlIHRkIHtcbiAgcGFkZGluZzogMC4xMjVyZW07XG59XG46aG9zdCAuc2VsZWN0ZWQtc3RhdHMge1xuICBwYWRkaW5nOiAwIDFyZW07XG4gIGZvbnQtc2l6ZTogMC43NXJlbTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuOmhvc3QgLnNlbGVjdGVkLXN0YXRzIC5zdGF0cy1jb2x1bW4tY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZzogMCAxLjI1cmVtO1xufVxuOmhvc3QgLnNlbGVjdGVkLXN0YXRzIC5zdGF0cy1jb2x1bW4tY29udGFpbmVyIC5zdGF0cy1jb2x1bW4ge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB0ZXh0LWFsaWduOiByaWdodDtcbiAgZmxleC13cmFwOiBub3dyYXA7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59XG46aG9zdCAuc2VsZWN0ZWQtc3RhdHMgLnN0YXRzLWNvbHVtbi1jb250YWluZXIgLnN0YXRzLWNvbHVtbjpmaXJzdC1jaGlsZCB7XG4gIG1hcmdpbi1yaWdodDogMC4yNXJlbTtcbn1cbjpob3N0IC5zZWxlY3RlZC1zdGF0cyAuc3RhdHMtY29sdW1uLWNvbnRhaW5lciAuc3RhdHMtY29sdW1uLnN0YXRzIHtcbiAgbWluLXdpZHRoOiAzcmVtO1xufVxuOmhvc3QgLnNlbGVjdGVkLXN0YXRzIC5zdGF0cy1jb2x1bW4tY29udGFpbmVyIC5zdGF0cy1jb2x1bW4gLmZpcnN0LXZhbCB7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59Il19 */");
 
 /***/ }),
 
@@ -58026,6 +58094,20 @@ var StatViewerComponent = /** @class */ (function () {
             });
         }
     };
+    StatViewerComponent.prototype.getFormattedValue = function (key) {
+        var formatter = this.formattersByKeys[key];
+        var unformattedValue = this.columnData[key];
+        if (formatter) {
+            return formatter(unformattedValue);
+        }
+        if (typeof unformattedValue === 'number') {
+            return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["round"])(unformattedValue, 2).toLocaleString();
+        }
+        return unformattedValue;
+    };
+    StatViewerComponent.prototype.isFocused = function (key) {
+        return !this.hoverSeries || (this.hoverSeries === key);
+    };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], StatViewerComponent.prototype, "columnData", void 0);
@@ -58044,6 +58126,9 @@ var StatViewerComponent = /** @class */ (function () {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
     ], StatViewerComponent.prototype, "formattersByKeys", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], StatViewerComponent.prototype, "hoverSeries", void 0);
     StatViewerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-stat-viewer',

@@ -1,22 +1,22 @@
 {
   "Alberta": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 8259,
     "deaths": 155,
     "recovered": 0,
-    "new": 57,
+    "new": 0,
     "newDeaths": 0
   },
   "British Columbia": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 2947,
     "deaths": 177,
     "recovered": 0,
-    "new": 7,
+    "new": 0,
     "newDeaths": 0
   },
   "Grand Princess": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 0,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Manitoba": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 325,
     "deaths": 7,
     "recovered": 0,
@@ -32,7 +32,7 @@
     "newDeaths": 0
   },
   "New Brunswick": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 165,
     "deaths": 2,
     "recovered": 0,
@@ -40,7 +40,7 @@
     "newDeaths": 0
   },
   "Newfoundland and Labrador": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 261,
     "deaths": 3,
     "recovered": 0,
@@ -48,7 +48,7 @@
     "newDeaths": 0
   },
   "Nova Scotia": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 1064,
     "deaths": 63,
     "recovered": 0,
@@ -56,39 +56,39 @@
     "newDeaths": 0
   },
   "Ontario": {
-    "dateStr": "7/3/20",
-    "cases": 37407,
-    "deaths": 2740,
+    "dateStr": "7/4/20",
+    "cases": 37525,
+    "deaths": 2744,
     "recovered": 0,
-    "new": 165,
-    "newDeaths": 3
+    "new": 118,
+    "newDeaths": 4
   },
   "Prince Edward Island": {
-    "dateStr": "7/3/20",
-    "cases": 27,
+    "dateStr": "7/4/20",
+    "cases": 30,
     "deaths": 1,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Quebec": {
+    "dateStr": "7/4/20",
+    "cases": 55784,
+    "deaths": 5566,
+    "recovered": 0,
+    "new": 102,
+    "newDeaths": 6
+  },
+  "Saskatchewan": {
+    "dateStr": "7/4/20",
+    "cases": 796,
+    "deaths": 14,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Quebec": {
-    "dateStr": "7/3/20",
-    "cases": 55682,
-    "deaths": 5560,
-    "recovered": 0,
-    "new": 89,
-    "newDeaths": 19
-  },
-  "Saskatchewan": {
-    "dateStr": "7/3/20",
-    "cases": 796,
-    "deaths": 14,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Diamond Princess": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 1,
     "deaths": 1,
     "recovered": 0,
@@ -96,7 +96,7 @@
     "newDeaths": 0
   },
   "Northwest Territories": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 5,
     "deaths": 0,
     "recovered": 0,
@@ -104,7 +104,7 @@
     "newDeaths": 0
   },
   "Yukon": {
-    "dateStr": "7/3/20",
+    "dateStr": "7/4/20",
     "cases": 11,
     "deaths": 0,
     "recovered": 0,
