@@ -149,7 +149,7 @@ export class LineChartComponent extends BaseChartComponent {
     }
 
     // if mouse isn't close enough to a series
-    if (distanceFrom > 15) {
+    if (distanceFrom > 12) {
       return;
     }
     return closestSeries.key;
@@ -287,7 +287,7 @@ export class LineChartComponent extends BaseChartComponent {
       .style('stroke', (d) => this.colorsByKey[d.key])
       .style('stroke-opacity', (d) => {
         if (this.hoverSeries && (this.hoverSeries !== d.key)) {
-          return 0.3;
+          return 0.25;
         } else {
           return 1;
         }
@@ -302,7 +302,7 @@ export class LineChartComponent extends BaseChartComponent {
     this.seriesG.selectAll('path.series')
       .style('stroke-opacity', (d) => {
         if (this.hoverSeries && (this.hoverSeries !== d.key)) {
-          return 0.3;
+          return 0.25;
         } else {
           return 1;
         }
