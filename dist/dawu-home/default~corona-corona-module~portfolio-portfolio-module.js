@@ -57831,7 +57831,7 @@ var LineChartComponent = /** @class */ (function (_super) {
             }
         }
         // if mouse isn't close enough to a series
-        if (distanceFrom > 15) {
+        if (distanceFrom > 12) {
             return;
         }
         return closestSeries.key;
@@ -57951,7 +57951,7 @@ var LineChartComponent = /** @class */ (function (_super) {
             .style('stroke', function (d) { return _this.colorsByKey[d.key]; })
             .style('stroke-opacity', function (d) {
             if (_this.hoverSeries && (_this.hoverSeries !== d.key)) {
-                return 0.3;
+                return 0.25;
             }
             else {
                 return 1;
@@ -57966,7 +57966,7 @@ var LineChartComponent = /** @class */ (function (_super) {
         this.seriesG.selectAll('path.series')
             .style('stroke-opacity', function (d) {
             if (_this.hoverSeries && (_this.hoverSeries !== d.key)) {
-                return 0.3;
+                return 0.25;
             }
             else {
                 return 1;
