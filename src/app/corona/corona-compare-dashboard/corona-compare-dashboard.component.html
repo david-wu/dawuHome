@@ -70,6 +70,8 @@
         (hoverIndexChange)="hoverIndex = $event"
         [indicators]="indicators"
         [tooltipTemplate]="compareTooltipTemplate"
+        [hoverSeries]="hoverSeries"
+        (hoverSeriesChange)="hoverSeries = $event"
     ></dwu-line-chart>
     <dwu-chart-legend
         [keys]="compareKeys"
@@ -126,6 +128,7 @@
         [disabledKeys]="disabledCompareKeys"
         [labelsByKey]="compareLabelsByKey"
         [rowCount]="10"
+        [hoverSeries]="hoverSeries"
     ></dwu-stat-viewer>
   </div>
 </ng-template>

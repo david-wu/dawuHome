@@ -54,6 +54,8 @@
         [disabledKeys]="disabledBarKeys"
         [hoverIndex]="hoverIndex"
         (hoverIndexChange)="hoverIndex = $event"
+        [hoverSeries]="hoverSeries"
+        (hoverSeriesChange)="hoverSeries = $event"
         [indicators]="indicators"
         [tooltipTemplate]="overViewTooltipTemplate"
     ></dwu-line-chart>
@@ -87,10 +89,10 @@
         [keys]="normalKeys"
         [colorsByKey]="coronaColorsByKey"
         [disabledKeys]="disabledNormalKeys"
-        [hoverIndex]="hoverIndex"
         [yAxisFormatter]="toPercentage"
         [indicators]="indicators"
         [tooltipTemplate]="growthTooltipTemplate"
+        [hoverIndex]="hoverIndex"
         (hoverIndexChange)="hoverIndex = $event"
     ></dwu-line-chart>
     <dwu-chart-legend
@@ -111,6 +113,7 @@
         [labelsByKey]="Labels.corona"
         [rowCount]="10"
         [formattersByKeys]="formattersByKeys"
+        [hoverSeries]="hoverSeries"
     ></dwu-stat-viewer>
   </div>
 </ng-template>

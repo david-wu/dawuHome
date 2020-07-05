@@ -19,6 +19,7 @@ export class StatViewerComponent {
     @Input() labelsByKey: Record<string, string>;
     @Input() rowCount = 2;
     @Input() formattersByKeys: Record<string, Function> = {};
+    @Input() hoverSeries: string;
 
     public statTable = [];
 
@@ -51,6 +52,22 @@ export class StatViewerComponent {
                 columnValues,
             });
         }
+    }
+
+    public getFormattedValue(key: string) {
+      const formatter = this.formattersByKeys[key];
+      const unformattedValue = this.columnData[key];
+      if (formatter) {
+        return formatter(unformattedValue);
+      }
+      if (typeof unformattedValue === 'number') {
+        return round(unformattedValue, 2).toLocaleString();
+      }
+      return unformattedValue;
+    }
+
+    public isFocused(key: string): boolean {
+      return !this.hoverSeries || (this.hoverSeries === key);
     }
 
 }

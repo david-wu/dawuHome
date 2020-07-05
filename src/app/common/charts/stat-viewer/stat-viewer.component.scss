@@ -2,6 +2,25 @@
 
 :host {
     display: block;
+    table {
+      font-size: 0.75rem;
+      padding: 0.5rem 0.25rem;
+      tr {
+        padding: 0.125rem;
+        opacity: 0.3;
+        white-space: nowrap;
+        &.focused {
+          opacity: 1;
+        }
+      }
+      td {
+        padding: 0.125rem;
+      }
+    }
+    // .column-name {
+    //   padding-right: 0.25rem;
+    // }
+
     .selected-stats {
         padding: 0 1rem;
         font-size: 0.75rem;

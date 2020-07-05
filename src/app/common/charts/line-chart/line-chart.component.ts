@@ -1,12 +1,12 @@
 import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    Input,
-    NgZone,
-    Output,
-    TemplateRef,
-    ViewChild,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  NgZone,
+  Output,
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
 import { isUndefined, first, filter, last } from 'lodash';
 import * as d3 from 'd3';
@@ -22,226 +22,292 @@ import { TooltipService } from '@common/tooltip/tooltip.service';
 })
 export class LineChartComponent extends BaseChartComponent {
 
-    @Input() tableData: any;
-    @Input() keys: string[];
-    @Input() colorsByKey: Record<string, string>;
-    @Input() disabledKeys: Set<string> = new Set();
-    @Input() hoverIndex: number;
-    @Input() yAxisFormatter: any;
-    @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
-    @Input() indicators: any[];
+  @Input() tableData: any;
+  @Input() keys: string[];
+  @Input() colorsByKey: Record<string, string>;
+  @Input() disabledKeys: Set<string> = new Set();
+  @Input() hoverIndex: number;
+  @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
+  @Input() hoverSeries: string;
+  @Output() hoverSeriesChange: EventEmitter<string> = new EventEmitter<string>();
+  @Input() yAxisFormatter: any;
+  @Input() indicators: any[];
 
-    @Input() tooltipTemplate: TemplateRef<any>;
+  @Input() tooltipTemplate: TemplateRef<any>;
 
+  public filteredKeys;
+  public hoverLine;
+  public bubblesG;
+  public maxY;
 
-    public filteredKeys;
-    public hoverLine;
-    public bubblesG;
-    public maxY;
+  // some extra margin on the chart itself
+  public chartMargin = 10;
 
-    // some extra margin on the chart itself
-    public chartMargin = 10;
+  constructor(
+    public hostEl: ElementRef,
+    public zone: NgZone,
+    public tts: TooltipService,
+  ) {
+    super(hostEl, zone);
+  }
 
-    constructor(
-        public hostEl: ElementRef,
-        public zone: NgZone,
-        public tts: TooltipService,
-    ) {
-        super(hostEl, zone);
+  public ngOnChanges(changes) {
+    if (changes.tableData && changes.tableData.firstChange && this.tableData) {
+      this.initializeSvg();
     }
-
-    public ngOnChanges(changes) {
-        if (changes.tableData && changes.tableData.firstChange && this.tableData) {
-            this.initializeSvg();
-        }
-        if (changes.tableData || changes.disabledKeys) {
-            if (this.tableData) {
-                this.render();
-            }
-        }
-        if(changes.hoverIndex) {
-            this.positionHoverLine();
-        }
-        if (changes.indicators) {
-            this.renderIndicators(this.indicators, this.tableData, this.maxY);
-        }
-    }
-
-    public ngAfterViewInit() {
-        super.ngAfterViewInit();
-    }
-
-    public ngOnDestroy() {
-        super.ngOnDestroy();
-    }
-
-    public initializeSvg() {
-        super.initializeSvg();
-        this.hoverLine = this.rootG.append('line')
-            .attr('class', 'hover-line')
-            .style('stroke', '#8A9A5B')
-            .style('stroke-opacity', '0.8')
-            .style('stroke-width', '3')
-            .style('shape-rendering', 'crispEdges');
-        this.bubblesG = this.rootG.append('g');
-    }
-
-    public onXYHover(x: number, y: number) {
-        const numberOfXDataPoints = this.tableData && this.tableData.length;
-        if (!numberOfXDataPoints) {
-            return;
-        }
-        const xDomain = this.xScale.domain();
-        const range = this.xScale.range();
-        const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
-        const startingPx = this.xScale(this.tableData[0].timestamp);
-        const distanceBetweenPoints = width / (numberOfXDataPoints - 1)
-        const xOnChart =  x - this.margins.left - this.chartMargin;
-        const valueOnChart = this.xScale.invert(xOnChart);
-        const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
-        const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
-        if (hoverIndex !== this.hoverIndex) {
-            this.ngZone.run(() => {
-                this.hoverIndex = hoverIndex;
-                this.hoverIndexChange.emit(hoverIndex);
-            });
-        }
-    }
-
-    public positionHoverLine() {
-        if (!this.tableData || !this.tableData.length) {
-            return;
-        }
-        const tableColumnData = this.tableData[this.hoverIndex];
-        const hoverLineTimestamp = tableColumnData.timestamp;
-        const tableColumnValues = this.filteredKeys.map((key: string) => {
-            if (isUndefined(tableColumnData[key])) {
-                return;
-            }
-            return {
-                value: tableColumnData[key],
-                key: key,
-            };
-        }).filter(Boolean);
-
-        this.bubblesG.attr('transform', `translate(${this.xScale(hoverLineTimestamp)},0)`);
-        const bubbles = this.bubblesG.selectAll('circle.bubble')
-            .data(tableColumnValues);
-        bubbles.enter()
-            .append('circle')
-            .attr('r', 3)
-            .attr('cx', 0)
-            .attr('class', 'bubble')
-            .style('fill', 'white')
-            .attr('stroke-width', '1px')
-            .merge(bubbles)
-            .attr('stroke', (d) => this.colorsByKey[d.key])
-            .attr('cy', (d) => this.yScale(d.value))
-        bubbles.exit().remove();
-
-        this.hoverLine
-            .attr('x1', this.xScale(hoverLineTimestamp) || 0)
-            .attr('x2', this.xScale(hoverLineTimestamp) || 0)
-            .attr('y1', this.yScale(this.maxY || 1) - 3)
-            .attr('y2', this.yScale(0) + 3)
-
-      if (this.mouseIn) {
-        this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
+    if (changes.tableData || changes.disabledKeys) {
+      if (this.tableData) {
+        this.render();
       }
+    }
+    if(changes.hoverIndex) {
+      this.positionHoverLine();
+    }
+    if (changes.hoverSeries) {
+      this.renderHoverEffect();
+    }
+    if (changes.indicators) {
+      this.renderIndicators(this.indicators, this.tableData, this.maxY);
+    }
+  }
 
+  public ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  public ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+
+  public initializeSvg() {
+    super.initializeSvg();
+    this.hoverLine = this.rootG.append('line')
+      .attr('class', 'hover-line')
+      .style('stroke', '#8A9A5B')
+      .style('stroke-opacity', '0.8')
+      .style('stroke-width', '1')
+      .style('shape-rendering', 'crispEdges');
+    this.bubblesG = this.rootG.append('g');
+  }
+
+  public onXYHover(x: number, y: number) {
+    const numberOfXDataPoints = this.tableData && this.tableData.length;
+    if (!numberOfXDataPoints) {
+      return;
+    }
+    const xDomain = this.xScale.domain();
+    // const range = this.xScale.range();
+    const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
+    const startingPx = this.xScale(this.tableData[0].timestamp);
+    const distanceBetweenPoints = width / (numberOfXDataPoints - 1)
+    const xOnChart =  x - this.margins.left - this.chartMargin;
+    const valueOnChart = this.xScale.invert(xOnChart);
+    const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
+    const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
+
+    const hoverSeries = this.findClosestSeries(hoverIndex, y);
+
+    if (hoverIndex !== this.hoverIndex) {
+      this.ngZone.run(() => {
+        this.hoverIndex = hoverIndex;
+        this.hoverIndexChange.emit(hoverIndex);
+      });
+    }
+    if (hoverSeries !== this.hoverSeries) {
+      this.ngZone.run(() => {
+        this.hoverSeries = hoverSeries;
+        this.hoverSeriesChange.emit(hoverSeries);
+      });
+    }
+  }
+
+  public findClosestSeries(hoverIndex, y): string {
+    y = y - this.margins.top;
+    const yDomain = this.yScale.domain();
+    if (y > this.yScale(yDomain[0])) {
+      return;
     }
 
-    public onMouseEnter() {
+    let hoverSeries = '';
+    const dataPoint = this.tableData[hoverIndex];
+    const keyVals = this.keys.map((key: string) => {
+      return {
+        key: key,
+        yVal: this.yScale(dataPoint[key]),
+      };
+    });
+    keyVals.sort((a, b) => a.yVal - b.yVal);
+
+    let distanceFrom = Math.abs(y - keyVals[0].yVal);
+    let closestSeries = keyVals[0];
+    for(let i = 1; i < keyVals.length; i++) {
+      const nextDistanceFrom = Math.abs(y - keyVals[i].yVal);
+      if (nextDistanceFrom < distanceFrom) {
+        closestSeries = keyVals[i]
+        distanceFrom = nextDistanceFrom;
+      }
+    }
+
+    // if mouse isn't close enough to a series
+    if (distanceFrom > 15) {
+      return;
+    }
+    return closestSeries.key;
+  }
+
+  public positionHoverLine() {
+    if (!this.tableData || !this.tableData.length) {
+      return;
+    }
+    const tableColumnData = this.tableData[this.hoverIndex];
+    const hoverLineTimestamp = tableColumnData.timestamp;
+    const tableColumnValues = this.filteredKeys.map((key: string) => {
+      if (isUndefined(tableColumnData[key])) {
+        return;
+      }
+      return {
+        value: tableColumnData[key],
+        key: key,
+      };
+    }).filter(Boolean);
+
+    this.bubblesG.attr('transform', `translate(${this.xScale(hoverLineTimestamp)},0)`);
+    const bubbles = this.bubblesG.selectAll('circle.bubble')
+      .data(tableColumnValues);
+    bubbles.enter()
+      .append('circle')
+      .attr('r', 3)
+      .attr('cx', 0)
+      .attr('class', 'bubble')
+      .style('fill', 'white')
+      .attr('stroke-width', '1px')
+      .merge(bubbles)
+      .attr('stroke', (d) => this.colorsByKey[d.key])
+      .attr('cy', (d) => this.yScale(d.value))
+    bubbles.exit().remove();
+
+    this.hoverLine
+      .attr('x1', this.xScale(hoverLineTimestamp) || 0)
+      .attr('x2', this.xScale(hoverLineTimestamp) || 0)
+      .attr('y1', this.yScale(this.maxY || 1) - 3)
+      .attr('y2', this.yScale(0) + 3)
+
+    if (this.mouseIn) {
       this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
     }
 
-    public onMouseLeave() {
-      this.tts.renderTooltip(this.hoverLine.node(), undefined);
-    }
+  }
 
-    public onZoom(event, width, height) {
-        const nextRange = [this.chartMargin, width - this.chartMargin]
-            .map(d => d3.event.transform.applyX(d));
+  public onMouseEnter() {
+    this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
+  }
 
-        this.xScale.range(nextRange);
+  public onMouseLeave() {
+    this.tts.renderTooltip(this.hoverLine.node(), undefined);
+  }
 
-        const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
-        const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
-        const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
-        super.applyXAxis(this.xAxisG, xAxis, height);
+  public onZoom(event, width, height) {
+    const nextRange = [this.chartMargin, width - this.chartMargin]
+      .map(d => d3.event.transform.applyX(d));
 
-        const pathLineDrawer = d3.line()
-            .x((d) => this.xScale(d.x))
-            .y((d) => this.yScale(d.y));
+    this.xScale.range(nextRange);
 
-        this.seriesG.selectAll('path.series')
-            .attr('d', pathLineDrawer);
+    const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
+    const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
+    const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
+    super.applyXAxis(this.xAxisG, xAxis, height);
 
-        this.positionHoverLine();
-    }
+    const pathLineDrawer = d3.line()
+      .x((d) => this.xScale(d.x))
+      .y((d) => this.yScale(d.y));
 
-    public renderFor(width: number, height: number) {
-        this.filteredKeys = this.keys.filter((key: string) => {
-            return !(this.disabledKeys && this.disabledKeys.has(key));
-        });
-        const reversedKeys = [...this.filteredKeys].reverse();
-        const dataset = reversedKeys.map((key: string) => {
-            const series = this.tableData.map((columnData: any) => {
-                const cellData = columnData[key];
-                return !isUndefined(cellData) && {
-                    key: key,
-                    y: cellData,
-                    x: columnData.timestamp,
-                    data: columnData,
-                };
-            }).filter(Boolean);
-            series.key = key;
-            return series;
-        });
+    this.seriesG.selectAll('path.series')
+      .attr('d', pathLineDrawer);
 
-        const domain = this.tableData.length ? [first(this.tableData).timestamp, last(this.tableData).timestamp] : [];
+    this.positionHoverLine();
+  }
 
-        this.xScale = d3.scaleTime()
-          .domain(domain)
-          .range([this.chartMargin, width - this.chartMargin]);
+  public renderFor(width: number, height: number) {
+    this.filteredKeys = this.keys.filter((key: string) => {
+      return !(this.disabledKeys && this.disabledKeys.has(key));
+    });
+    const reversedKeys = [...this.filteredKeys].reverse();
+    const dataset = reversedKeys.map((key: string) => {
+      const series = this.tableData.map((columnData: any) => {
+        const cellData = columnData[key];
+        return !isUndefined(cellData) && {
+          key: key,
+          y: cellData,
+          x: columnData.timestamp,
+          data: columnData,
+        };
+      }).filter(Boolean);
+      series.key = key;
+      return series;
+    });
 
-        this.maxY = dataset.reduce((currentMax: number, series: any[]) => {
-            const seriesMax = series.reduce((currentSeriesMax: number, cell: any) => {
-                return Math.max(currentSeriesMax, cell.y);
-            }, 0);
-            return Math.max(currentMax, seriesMax)
-        }, 0);
+    const domain = this.tableData.length ? [first(this.tableData).timestamp, last(this.tableData).timestamp] : [];
 
-        this.yScale = d3.scaleLinear()
-          .domain([0, this.maxY || 1])
-          .range([height, 0]);
+    this.xScale = d3.scaleTime()
+      .domain(domain)
+      .range([this.chartMargin, width - this.chartMargin]);
 
-        const numberOfXDataPoints = this.tableData.length || 0;
-        const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
-        const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
-        super.applyXAxis(this.xAxisG, xAxis, height);
-        const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);
-        super.applyYAxis(this.yAxisG, yAxis);
+    this.maxY = dataset.reduce((currentMax: number, series: any[]) => {
+      const seriesMax = series.reduce((currentSeriesMax: number, cell: any) => {
+        return Math.max(currentSeriesMax, cell.y);
+      }, 0);
+      return Math.max(currentMax, seriesMax)
+    }, 0);
 
-        const pathLineDrawer = d3.line()
-            .x((d) => this.xScale(d.x))
-            .y((d) => this.yScale(d.y));
+    this.yScale = d3.scaleLinear()
+      .domain([0, this.maxY || 1])
+      .range([height, 0]);
 
-        // Create groups for each series, rects for each segment
-        const paths = this.seriesG.selectAll('path.series')
-          .data(dataset);
-        paths.enter()
-            .append('path')
-            .style('fill', 'none')
-            .style('stroke-width', '2px')
-            .merge(paths)
-            .attr('class', (d) => `series ${d.key}`)
-            .attr('d', pathLineDrawer)
-            .style('stroke', (d) => this.colorsByKey[d.key]);
-        paths.exit().remove();
+    const numberOfXDataPoints = this.tableData.length || 0;
+    const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
+    const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
+    super.applyXAxis(this.xAxisG, xAxis, height);
+    const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);
+    super.applyYAxis(this.yAxisG, yAxis);
 
-        this.positionHoverLine();
-        this.renderIndicators(this.indicators, this.tableData, this.maxY);
-    }
+    const pathLineDrawer = d3.line()
+      .x((d) => this.xScale(d.x))
+      .y((d) => this.yScale(d.y));
+
+    // Create groups for each series, rects for each segment
+    const paths = this.seriesG.selectAll('path.series')
+      .data(dataset);
+    paths.enter()
+      .append('path')
+      .style('fill', 'none')
+      .style('stroke-width', '2px')
+    .merge(paths)
+      .attr('class', (d) => `series ${d.key}`)
+      .attr('d', pathLineDrawer)
+      .style('stroke', (d) => this.colorsByKey[d.key])
+      .style('stroke-opacity', (d) => {
+        if (this.hoverSeries && (this.hoverSeries !== d.key)) {
+          return 0.3;
+        } else {
+          return 1;
+        }
+      });
+    paths.exit().remove();
+
+    this.positionHoverLine();
+    this.renderIndicators(this.indicators, this.tableData, this.maxY);
+  }
+
+  public renderHoverEffect() {
+    this.seriesG.selectAll('path.series')
+      .style('stroke-opacity', (d) => {
+        if (this.hoverSeries && (this.hoverSeries !== d.key)) {
+          return 0.3;
+        } else {
+          return 1;
+        }
+      });
+
+  }
 
 }
