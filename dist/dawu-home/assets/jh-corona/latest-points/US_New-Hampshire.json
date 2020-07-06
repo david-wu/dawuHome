@@ -1,14 +1,14 @@
 {
   "Belknap": {
-    "dateStr": "7/4/20",
+    "dateStr": "7/5/20",
     "cases": 82,
-    "deaths": 1,
+    "deaths": 2,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   "Carroll": {
-    "dateStr": "7/4/20",
+    "dateStr": "7/5/20",
     "cases": 61,
     "deaths": 0,
     "recovered": 0,
@@ -16,15 +16,15 @@
     "newDeaths": 0
   },
   "Cheshire": {
-    "dateStr": "7/4/20",
-    "cases": 72,
+    "dateStr": "7/5/20",
+    "cases": 73,
     "deaths": 2,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Coos": {
-    "dateStr": "7/4/20",
+    "dateStr": "7/5/20",
     "cases": 7,
     "deaths": 0,
     "recovered": 0,
@@ -32,55 +32,55 @@
     "newDeaths": 0
   },
   "Grafton": {
-    "dateStr": "7/4/20",
-    "cases": 87,
+    "dateStr": "7/5/20",
+    "cases": 88,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Hillsborough": {
+    "dateStr": "7/5/20",
+    "cases": 3341,
+    "deaths": 253,
+    "recovered": 0,
+    "new": 19,
+    "newDeaths": 0
+  },
+  "Merrimack": {
+    "dateStr": "7/5/20",
+    "cases": 418,
+    "deaths": 18,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Rockingham": {
+    "dateStr": "7/5/20",
+    "cases": 1494,
+    "deaths": 91,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 1
+  },
+  "Strafford": {
+    "dateStr": "7/5/20",
+    "cases": 295,
+    "deaths": 13,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Sullivan": {
+    "dateStr": "7/5/20",
+    "cases": 35,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Hillsborough": {
-    "dateStr": "7/4/20",
-    "cases": 3322,
-    "deaths": 253,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 2
-  },
-  "Merrimack": {
-    "dateStr": "7/4/20",
-    "cases": 418,
-    "deaths": 18,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Rockingham": {
-    "dateStr": "7/4/20",
-    "cases": 1492,
-    "deaths": 90,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 1
-  },
-  "Strafford": {
-    "dateStr": "7/4/20",
-    "cases": 295,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Sullivan": {
-    "dateStr": "7/4/20",
-    "cases": 35,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Out of NH": {
-    "dateStr": "7/4/20",
+    "dateStr": "7/5/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,7 +88,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "7/4/20",
+    "dateStr": "7/5/20",
     "cases": 85,
     "deaths": 64,
     "recovered": 0,
