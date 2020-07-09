@@ -193,6 +193,7 @@ export class LineChartComponent extends BaseChartComponent {
       .attr('y2', this.yScale(0) + 3)
 
     if (this.mouseIn) {
+      console.log('rendering')
       this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
     }
 
