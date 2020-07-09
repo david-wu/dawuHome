@@ -114,6 +114,7 @@ export class BaseChartComponent {
 
   public onMouseMove() {
     const [x, y] = d3.mouse(this.svg.node());
+    this.mouseIn = true;
     this.onXYHover(x, y);
   }
 

@@ -57391,6 +57391,7 @@ var BaseChartComponent = /** @class */ (function () {
     };
     BaseChartComponent.prototype.onMouseMove = function () {
         var _a = tslib__WEBPACK_IMPORTED_MODULE_0__["__read"](d3__WEBPACK_IMPORTED_MODULE_1__["mouse"](this.svg.node()), 2), x = _a[0], y = _a[1];
+        this.mouseIn = true;
         this.onXYHover(x, y);
     };
     BaseChartComponent.prototype.onXYHover = function (x, y) {
