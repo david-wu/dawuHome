@@ -48,6 +48,7 @@ export class FirebaseAuthService {
     this.canLogin$ = this.user$.pipe(
       map((user: User) => user === null),
     )
+    this.user$.subscribe(console.log);
   }
 
   public initialize() {

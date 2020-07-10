@@ -46,5 +46,6 @@ export class UserLoginComponent {
 
   public signOut() {
     this.firebaseAuthService.signOut();
+    this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
   }
 }

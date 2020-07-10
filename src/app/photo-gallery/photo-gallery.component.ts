@@ -25,4 +25,12 @@ export class PhotoGalleryComponent {
     this.pgs.uploadFile(file, user);
   }
 
+  public onDeleteFile(file: any, user: User) {
+    this.pgs.deleteFile(file.id, user);
+  }
+
+  public trackById(file: any) {
+    return file.id;
+  }
+
 }

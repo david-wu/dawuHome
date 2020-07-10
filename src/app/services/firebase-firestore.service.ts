@@ -20,6 +20,11 @@ export class FirebaseFirestoreService {
     userDoc.set({ ...user });
   }
 
+  public unregisterFile(fileId: string, user: User) {
+    const doc = this.firestore.doc(`users/${user.uid}/uploads/${fileId}`);
+    return doc.delete();
+  }
+
   public registerFileId(file: File, user: User) {
     const collection = this.firestore.doc(`users/${user.uid}`).collection('uploads');
     return collection.add({
@@ -43,7 +48,8 @@ export class FirebaseFirestoreService {
   public getUploadedFiles$(user: User): Observable<any[]> {
     const collection = this.firestore.doc(`users/${user.uid}`).collection('uploads');
     const uploadedFiles$ = new Subject();
-    collection.where('isUploaded', "==", true).onSnapshot((querySnapshot) => {
+    // collection.where('isUploaded', "==", true)
+    collection.onSnapshot((querySnapshot) => {
       const docs = querySnapshot.docs.map((doc) => {
         return {
           ...doc.data(),

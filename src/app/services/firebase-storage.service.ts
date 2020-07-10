@@ -18,4 +18,10 @@ export class FirebaseStorageService {
     return imageRef.put(file);
   }
 
+  public deleteFile(fileName: string= 'image.jpg') {
+    const storageRef = this.firebaseStorage.ref();
+    const imageRef = storageRef.child(`uploads/${fileName}`);
+    return imageRef.delete();
+  }
+
 }

@@ -26,6 +26,11 @@ export class PhotoGalleryService {
     public fss: FirebaseStorageService,
   ) {}
 
+  public async deleteFile(fileId: string, user: User) {
+    await this.fss.deleteFile(fileId);
+    await this.ffs.unregisterFile(fileId, user);
+    console.log('fileDeleted', fileId);
+  }
 
   public async uploadFile(file: File, user: User) {
     const registrationResponse = await this.ffs.registerFileId(file, user);
