@@ -18,7 +18,6 @@ export class FileUploaderComponent {
   @Output() fileChange = new EventEmitter<File>()
 
   public file: File;
-  public fileUrl$ = this.fss.getFileUrl$();
 
   constructor(
     public fss: FirebaseStorageService,

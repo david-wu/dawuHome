@@ -44,14 +44,12 @@ export class FirebaseFirestoreService {
     const collection = this.firestore.doc(`users/${user.uid}`).collection('uploads');
     const uploadedFiles$ = new Subject();
     collection.where('isUploaded', "==", true).onSnapshot((querySnapshot) => {
-      console.log('querySnapshot', querySnapshot)
       const docs = querySnapshot.docs.map((doc) => {
         return {
           ...doc.data(),
           id: doc.id,
         };
       });
-      console.log('docs', docs)
       uploadedFiles$.next(docs);
     });
     return uploadedFiles$ as Observable<any[]>;

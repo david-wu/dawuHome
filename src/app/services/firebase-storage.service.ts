@@ -18,12 +18,4 @@ export class FirebaseStorageService {
     return imageRef.put(file);
   }
 
-  public getFileUrl$() {
-    const storageRef = this.firebaseStorage.ref();
-    const uploadsRef = storageRef.child('uploads');
-    const imageRef = uploadsRef.child('image.jpg');
-    const urlPromise = imageRef.getDownloadURL();
-    return from(urlPromise);
-  }
-
 }

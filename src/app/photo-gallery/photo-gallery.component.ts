@@ -19,7 +19,6 @@ export class PhotoGalleryComponent {
     public pgs: PhotoGalleryService,
   ) {
     this.uploadedFiles$ = this.pgs.getUploadedFiles$();
-    this.uploadedFiles$.subscribe(console.log);
   }
 
   public onFileChange(file: File, user: User) {
