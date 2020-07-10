@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div #loginRef></div>\n<div class=\"button\" (click)=\"signOut()\">signOut</div>\n");
 
 /***/ }),
 
@@ -549,77 +549,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthComponent", function() { return FirebaseAuthComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase-auth/firebase-auth.service */ "./src/app/firebase-auth/firebase-auth.service.ts");
+
 
 
 var FirebaseAuthComponent = /** @class */ (function () {
-    function FirebaseAuthComponent(hostEl) {
+    function FirebaseAuthComponent(hostEl, firebaseAuthService) {
         this.hostEl = hostEl;
+        this.firebaseAuthService = firebaseAuthService;
     }
     FirebaseAuthComponent.prototype.ngOnInit = function () {
-        var uiConfig = {
-            signInSuccessUrl: '#/auth-success',
-            signInOptions: [
-                // Leave the lines as is for the providers you want to offer your users.
-                window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            ],
-            // tosUrl and privacyPolicyUrl accept either url string or a callback
-            // function.
-            // Terms of service url/callback.
-            tosUrl: '<your-tos-url>',
-            // Privacy policy url/callback.
-            privacyPolicyUrl: function () {
-                window.location.assign('<your-privacy-policy-url>');
-            }
-        };
-        // Initialize the FirebaseUI Widget using Firebase.
-        this.ui = window.firebaseui.auth.AuthUI.getInstance()
-            || new window.firebaseui.auth.AuthUI(window.firebase.auth());
-        // The start method will wait until the DOM is loaded.
-        var handle = this.ui.start(this.hostEl.nativeElement, uiConfig);
-        console.log('handle', handle);
-        window.firebase.auth().onAuthStateChanged(function (user) {
+        this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
+        this.firebaseAuthService.user$.subscribe(function (user) {
+            console.log('user', user);
             if (user) {
-                // User is signed in.
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var uid = user.uid;
-                var phoneNumber = user.phoneNumber;
-                var providerData = user.providerData;
-                user.getIdToken().then(function (accessToken) {
-                    var data = JSON.stringify({
-                        displayName: displayName,
-                        email: email,
-                        emailVerified: emailVerified,
-                        phoneNumber: phoneNumber,
-                        photoURL: photoURL,
-                        uid: uid,
-                        accessToken: accessToken,
-                        providerData: providerData
-                    }, null, '  ');
-                    console.log('data', data);
+                var fireStore = window.firebase.firestore();
+                var userDoc_1 = fireStore.doc("users/" + user.uid);
+                // console.log('userDoc', `users/${user.uid}`, userDoc);
+                userDoc_1.get().then(function (doc) {
+                    if (doc && doc.exists) {
+                        var data = doc.data();
+                        console.log('data', data);
+                    }
+                    else {
+                        console.log('doc not found');
+                        userDoc_1.set({})
+                            .then(function (res) {
+                            console.log('set response', res);
+                        });
+                    }
                 });
             }
-            else {
-                console.log('signed out');
-                // // User is signed out.
-                // document.getElementById('sign-in-status').textContent = 'Signed out';
-                // document.getElementById('sign-in').textContent = 'Sign in';
-                // document.getElementById('account-details').textContent = 'null';
-            }
-        }, function (error) {
-            console.log(error);
         });
     };
     FirebaseAuthComponent.prototype.ngOnDestroy = function () {
-        if (window.firebaseui.auth.AuthUI.getInstance()) {
-            this.ui.delete();
-        }
+        // if (window.firebaseui.auth.AuthUI.getInstance()) {
+        //   this.ui.delete();
+        // }
+    };
+    FirebaseAuthComponent.prototype.signOut = function () {
+        this.firebaseAuthService.signOut();
     };
     FirebaseAuthComponent.ctorParameters = function () { return [
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+        { type: _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('loginRef', { static: true })
+    ], FirebaseAuthComponent.prototype, "loginRef", void 0);
     FirebaseAuthComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-firebase-auth',
@@ -648,9 +625,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _src_app_firebase_auth_firebase_auth_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth.routes */ "./src/app/firebase-auth/firebase-auth.routes.ts");
-/* harmony import */ var _src_app_firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth.component */ "./src/app/firebase-auth/firebase-auth.component.ts");
-/* harmony import */ var _src_app_firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component */ "./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.ts");
+/* harmony import */ var _firebase_auth_firebase_auth_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @firebase-auth/firebase-auth.routes */ "./src/app/firebase-auth/firebase-auth.routes.ts");
+/* harmony import */ var _firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @firebase-auth/firebase-auth.component */ "./src/app/firebase-auth/firebase-auth.component.ts");
+/* harmony import */ var _firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @firebase-auth/firebase-auth-success/firebase-auth-success.component */ "./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.ts");
+/* harmony import */ var _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @firebase-auth/firebase-auth.service */ "./src/app/firebase-auth/firebase-auth.service.ts");
+
 
 
 
@@ -663,15 +642,15 @@ var FirebaseAuthModule = /** @class */ (function () {
     FirebaseAuthModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _src_app_firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthComponent"],
-                _src_app_firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthSuccessComponent"],
+                _firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthComponent"],
+                _firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthSuccessComponent"],
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
             ],
             exports: [
-                _src_app_firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthComponent"],
-                _src_app_firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthSuccessComponent"],
+                _firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthComponent"],
+                _firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthSuccessComponent"],
             ],
             providers: [],
         })
@@ -687,10 +666,12 @@ var FirebaseAuthWithRoutesModule = /** @class */ (function () {
             declarations: [],
             imports: [
                 FirebaseAuthModule,
-                _src_app_firebase_auth_firebase_auth_routes__WEBPACK_IMPORTED_MODULE_3__["FirebaseAuthRoutingModule"],
+                _firebase_auth_firebase_auth_routes__WEBPACK_IMPORTED_MODULE_3__["FirebaseAuthRoutingModule"],
             ],
             exports: [],
-            providers: [],
+            providers: [
+                _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_6__["FirebaseAuthService"],
+            ],
         })
     ], FirebaseAuthWithRoutesModule);
     return FirebaseAuthWithRoutesModule;
@@ -738,6 +719,101 @@ var FirebaseAuthRoutingModule = /** @class */ (function () {
         })
     ], FirebaseAuthRoutingModule);
     return FirebaseAuthRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/firebase-auth/firebase-auth.service.ts":
+/*!********************************************************!*\
+  !*** ./src/app/firebase-auth/firebase-auth.service.ts ***!
+  \********************************************************/
+/*! exports provided: FirebaseAuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthService", function() { return FirebaseAuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _firebase_auth_user_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @firebase-auth/user.model */ "./src/app/firebase-auth/user.model.ts");
+
+
+
+
+var FirebaseAuthService = /** @class */ (function () {
+    function FirebaseAuthService() {
+        this.firebaseAuth = window.firebase.auth();
+        this.FirebaseAuthUI = window.firebaseui.auth.AuthUI;
+        this.defaultUiConfig = {
+            // signInSuccessUrl: '#/auth-success',
+            signInSuccessUrl: '#/auth-success',
+            callbacks: {
+                signInSuccess: function () { return false; },
+            },
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            ],
+        };
+        this.user$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
+        this.initializing$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](true);
+        this.initialize();
+    }
+    FirebaseAuthService.prototype.initialize = function () {
+        var _this = this;
+        if (!this.firebaseAuthUI) {
+            this.firebaseAuthUI = new this.FirebaseAuthUI(this.firebaseAuth);
+        }
+        this.firebaseAuth.onAuthStateChanged(function (userData) {
+            // this.initializing$.next(false);
+            if (!userData) {
+                return;
+            }
+            userData.getIdToken().then(function (accessToken) {
+                var user = Object.assign(new _firebase_auth_user_model__WEBPACK_IMPORTED_MODULE_3__["User"](), userData, { accessToken: accessToken });
+                _this.user$.next(user);
+            });
+        });
+    };
+    FirebaseAuthService.prototype.renderLogin = function (hostEl) {
+        this.firebaseAuthUI.start(hostEl, tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.defaultUiConfig));
+    };
+    FirebaseAuthService.prototype.signOut = function () {
+        var _this = this;
+        return this.firebaseAuth.signOut()
+            .then(function () {
+            _this.user$.next(undefined);
+        });
+    };
+    FirebaseAuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], FirebaseAuthService);
+    return FirebaseAuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/firebase-auth/user.model.ts":
+/*!*********************************************!*\
+  !*** ./src/app/firebase-auth/user.model.ts ***!
+  \*********************************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+var User = /** @class */ (function () {
+    function User() {
+    }
+    return User;
 }());
 
 

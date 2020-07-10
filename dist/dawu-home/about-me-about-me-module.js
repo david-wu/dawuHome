@@ -9,7 +9,20 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n  <div class=\"right-side\">\n    <h3>Profile - David Wu</h3>\n    <p class=\"contact-info\">email | david.wuu@gmail.com</p>\n    <img class=\"img-md\" src=\"assets/images/me-point-arena.jpg\"/>\n    <h3>About me</h3>\n    <ul>\n      <li>I was born in Mountain View, CA</li>\n      <li>I split my time between San Francisco, Oakland, and Palo Alto</li>\n    </ul>\n    <h3>Recent Interests</h3>\n    <ul>\n      <li>Throwing a frisbee around</li>\n      <li>Gardening</li>\n      <li>Computer games</li>\n      <li>Drinking smoothies</li>\n      <li>Strolling around cities and lakes</li>\n    </ul>\n    <img class=\"img-md\" src=\"assets/images/me-ukiah.jpg\"/>\n    <img class=\"img-md\" src=\"assets/images/me-bike-tour.jpg\"/>\n    <dwu-firebase-auth></dwu-firebase-auth>\n    <div class=\"footer\"></div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n  <div class=\"right-side\">\n    <h3>Profile - David Wu</h3>\n    <p class=\"contact-info\">email | david.wuu@gmail.com</p>\n    <img class=\"img-md\" src=\"assets/images/me-point-arena.jpg\"/>\n    <h3>About me</h3>\n    <ul>\n      <li>I was born in Mountain View, CA</li>\n      <li>I split my time between San Francisco, Oakland, and Palo Alto</li>\n    </ul>\n    <h3>Recent Interests</h3>\n    <ul>\n      <li>Throwing a frisbee around</li>\n      <li>Gardening</li>\n      <li>Computer games</li>\n      <li>Drinking smoothies</li>\n      <li>Strolling around cities and lakes</li>\n    </ul>\n    <img class=\"img-md\" src=\"assets/images/me-ukiah.jpg\"/>\n    <img class=\"img-md\" src=\"assets/images/me-bike-tour.jpg\"/>\n    <dwu-firebase-auth></dwu-firebase-auth>\n    <dwu-file-uploader></dwu-file-uploader>\n    <div class=\"footer\"></div>\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-storage/file-uploader/file-uploader.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-storage/file-uploader/file-uploader.component.html ***!
+  \*******************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("fileUploader\n<input\n  type=\"file\"\n  accept=\"image/*\"\n  (change)=\"onFileChange($event)\"\n>\n<div (click)=\"upload()\">\n  Upload\n</div>\n\n<img\n  *ngIf=\"fileUrl$ | async as fileUrl\"\n  [src]=\"fileUrl\"\n>");
 
 /***/ }),
 
@@ -73,6 +86,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @src/app/about-me/about-me.component */ "./src/app/about-me/about-me.component.ts");
 /* harmony import */ var _src_app_about_me_about_me_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @src/app/about-me/about-me.routes */ "./src/app/about-me/about-me.routes.ts");
 /* harmony import */ var _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth.module */ "./src/app/firebase-auth/firebase-auth.module.ts");
+/* harmony import */ var _src_app_firebase_storage_firebase_storage_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/firebase-storage/firebase-storage.module */ "./src/app/firebase-storage/firebase-storage.module.ts");
+
 
 
 
@@ -84,13 +99,14 @@ var AboutMeModule = /** @class */ (function () {
     }
     AboutMeModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-            declarations: [
-                _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__["AboutMeComponent"],
-            ],
             imports: [
                 _src_app_about_me_about_me_routes__WEBPACK_IMPORTED_MODULE_4__["AboutMeRoutingModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                _src_app_firebase_storage_firebase_storage_module__WEBPACK_IMPORTED_MODULE_6__["FirebaseStorageModule"],
                 _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthModule"],
+            ],
+            declarations: [
+                _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__["AboutMeComponent"],
             ],
             exports: [
                 _src_app_about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__["AboutMeComponent"],
@@ -139,6 +155,173 @@ var AboutMeRoutingModule = /** @class */ (function () {
         })
     ], AboutMeRoutingModule);
     return AboutMeRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/firebase-storage/file-uploader/file-uploader.component.scss":
+/*!*****************************************************************************!*\
+  !*** ./src/app/firebase-storage/file-uploader/file-uploader.component.scss ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZpcmViYXNlLXN0b3JhZ2UvZmlsZS11cGxvYWRlci9maWxlLXVwbG9hZGVyLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/firebase-storage/file-uploader/file-uploader.component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/firebase-storage/file-uploader/file-uploader.component.ts ***!
+  \***************************************************************************/
+/*! exports provided: FileUploaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FileUploaderComponent", function() { return FileUploaderComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _src_app_firebase_storage_firebase_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @src/app/firebase-storage/firebase-storage.service */ "./src/app/firebase-storage/firebase-storage.service.ts");
+
+
+
+var FileUploaderComponent = /** @class */ (function () {
+    function FileUploaderComponent(fss) {
+        this.fss = fss;
+        this.fileUrl$ = this.fss.getFileUrl$();
+    }
+    FileUploaderComponent.prototype.onFileChange = function (fileEvent) {
+        if (fileEvent.target.files) {
+            this.file = fileEvent.target.files[0];
+        }
+        console.log('this.file', this.file);
+    };
+    FileUploaderComponent.prototype.upload = function () {
+        console.log('upload', this.file);
+        this.fss.uploadFile(this.file);
+    };
+    FileUploaderComponent.ctorParameters = function () { return [
+        { type: _src_app_firebase_storage_firebase_storage_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseStorageService"] }
+    ]; };
+    FileUploaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-file-uploader',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./file-uploader.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-storage/file-uploader/file-uploader.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./file-uploader.component.scss */ "./src/app/firebase-storage/file-uploader/file-uploader.component.scss")).default]
+        })
+    ], FileUploaderComponent);
+    return FileUploaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/firebase-storage/firebase-storage.module.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/firebase-storage/firebase-storage.module.ts ***!
+  \*************************************************************/
+/*! exports provided: FirebaseStorageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseStorageModule", function() { return FirebaseStorageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth.module */ "./src/app/firebase-auth/firebase-auth.module.ts");
+/* harmony import */ var _src_app_firebase_storage_file_uploader_file_uploader_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @src/app/firebase-storage/file-uploader/file-uploader.component */ "./src/app/firebase-storage/file-uploader/file-uploader.component.ts");
+/* harmony import */ var _src_app_firebase_storage_firebase_storage_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/app/firebase-storage/firebase-storage.service */ "./src/app/firebase-storage/firebase-storage.service.ts");
+
+
+
+
+
+
+var FirebaseStorageModule = /** @class */ (function () {
+    function FirebaseStorageModule() {
+    }
+    FirebaseStorageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+            declarations: [
+                _src_app_firebase_storage_file_uploader_file_uploader_component__WEBPACK_IMPORTED_MODULE_4__["FileUploaderComponent"],
+            ],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_3__["FirebaseAuthModule"],
+            ],
+            exports: [
+                _src_app_firebase_storage_file_uploader_file_uploader_component__WEBPACK_IMPORTED_MODULE_4__["FileUploaderComponent"],
+            ],
+            providers: [
+                _src_app_firebase_storage_firebase_storage_service__WEBPACK_IMPORTED_MODULE_5__["FirebaseStorageService"],
+            ],
+        })
+    ], FirebaseStorageModule);
+    return FirebaseStorageModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/firebase-storage/firebase-storage.service.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/firebase-storage/firebase-storage.service.ts ***!
+  \**************************************************************/
+/*! exports provided: FirebaseStorageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseStorageService", function() { return FirebaseStorageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+var FirebaseStorageService = /** @class */ (function () {
+    function FirebaseStorageService() {
+        this.firebaseStorage = window.firebase.storage();
+        // public FirebaseAuthUI = window.firebaseui.auth.AuthUI;
+        // public firebaseAuthUI: any;
+        this.defaultUiConfig = {};
+        this.user$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
+        this.initializing$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](true);
+        this.initialize();
+    }
+    FirebaseStorageService.prototype.initialize = function () {
+    };
+    FirebaseStorageService.prototype.uploadFile = function (file) {
+        var storageRef = this.firebaseStorage.ref();
+        var imageRef = storageRef.child('image.jpg');
+        console.log('storageRef', storageRef, imageRef);
+        return imageRef.put(file)
+            .then(function (snapshot) {
+            console.log('put success snapshot:', snapshot);
+        })
+            .catch(function (err) {
+            console.log('err', err);
+        });
+    };
+    FirebaseStorageService.prototype.getFileUrl$ = function () {
+        var storageRef = this.firebaseStorage.ref();
+        var imageRef = storageRef.child('image.jpg');
+        var urlPromise = imageRef.getDownloadURL();
+        urlPromise.then(console.log);
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(urlPromise);
+    };
+    FirebaseStorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], FirebaseStorageService);
+    return FirebaseStorageService;
 }());
 
 
