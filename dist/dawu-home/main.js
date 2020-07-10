@@ -606,6 +606,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseFirestoreService", function() { return FirebaseFirestoreService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
 
 
 var FirebaseFirestoreService = /** @class */ (function () {
@@ -615,6 +617,37 @@ var FirebaseFirestoreService = /** @class */ (function () {
     FirebaseFirestoreService.prototype.updateUser = function (user) {
         var userDoc = this.firestore.doc("users/" + user.uid);
         userDoc.set(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, user));
+    };
+    FirebaseFirestoreService.prototype.registerFileId = function (file, user) {
+        var collection = this.firestore.doc("users/" + user.uid).collection('uploads');
+        return collection.add({
+            fileName: file.name,
+        })
+            .then(function (doc) {
+            return {
+                id: doc.id
+            };
+        });
+    };
+    FirebaseFirestoreService.prototype.registerFileUploaded = function (fileId, uploadMeta, user) {
+        var doc = this.firestore.doc("users/" + user.uid + "/uploads/" + fileId);
+        return doc.update({
+            isUploaded: true,
+            uploadMeta: uploadMeta,
+        });
+    };
+    FirebaseFirestoreService.prototype.getUploadedFiles$ = function (user) {
+        var collection = this.firestore.doc("users/" + user.uid).collection('uploads');
+        var uploadedFiles$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        collection.where('isUploaded', "==", true).onSnapshot(function (querySnapshot) {
+            console.log('querySnapshot', querySnapshot);
+            var docs = querySnapshot.docs.map(function (doc) {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, doc.data(), { id: doc.id });
+            });
+            console.log('docs', docs);
+            uploadedFiles$.next(docs);
+        });
+        return uploadedFiles$;
     };
     FirebaseFirestoreService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -652,20 +685,13 @@ var FirebaseStorageService = /** @class */ (function () {
         if (fileName === void 0) { fileName = 'image.jpg'; }
         var storageRef = this.firebaseStorage.ref();
         var imageRef = storageRef.child('uploads').child(fileName);
-        return imageRef.put(file)
-            .then(function (snapshot) {
-            console.log('put success snapshot:', snapshot);
-        })
-            .catch(function (err) {
-            console.log('err', err);
-        });
+        return imageRef.put(file);
     };
     FirebaseStorageService.prototype.getFileUrl$ = function () {
         var storageRef = this.firebaseStorage.ref();
         var uploadsRef = storageRef.child('uploads');
         var imageRef = uploadsRef.child('image.jpg');
         var urlPromise = imageRef.getDownloadURL();
-        urlPromise.then(console.log);
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(urlPromise);
     };
     FirebaseStorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
