@@ -64,7 +64,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"about-me-about-me-module":"about-me-about-me-module","default~corona-corona-module~poe-poe-module~portfolio-portfolio-module":"default~corona-corona-module~poe-poe-module~portfolio-portfolio-module","default~corona-corona-module~poe-poe-module":"default~corona-corona-module~poe-poe-module","poe-poe-module":"poe-poe-module","default~corona-corona-module~portfolio-portfolio-module":"default~corona-corona-module~portfolio-portfolio-module","corona-corona-module":"corona-corona-module","portfolio-portfolio-module":"portfolio-portfolio-module"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"about-me-about-me-module":"about-me-about-me-module","default~corona-corona-module~poe-poe-module~portfolio-portfolio-module":"default~corona-corona-module~poe-poe-module~portfolio-portfolio-module","default~corona-corona-module~poe-poe-module":"default~corona-corona-module~poe-poe-module","poe-poe-module":"poe-poe-module","default~corona-corona-module~portfolio-portfolio-module":"default~corona-corona-module~portfolio-portfolio-module","corona-corona-module":"corona-corona-module","portfolio-portfolio-module":"portfolio-portfolio-module","photo-gallery-photo-gallery-module":"photo-gallery-photo-gallery-module"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function

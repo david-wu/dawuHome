@@ -36,10 +36,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.html":
-/*!********************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.html ***!
-  \********************************************************************************************************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-login/user-login-success/user-login-success.component.html":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/user-login/user-login-success/user-login-success.component.html ***!
+  \***********************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -49,16 +49,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-auth/firebase-auth.component.html":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-auth/firebase-auth.component.html ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-login/user-login.component.html":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/user-login/user-login.component.html ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<div #loginRef></div>\n<div class=\"button\" (click)=\"signOut()\">signOut</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div [class.invisible]=\"!(firebaseAuthService.authLoading$ | async)\">\n  loading..\n</div>\n<div [class.invisible]=\"firebaseAuthService.authLoading$ | async\">\n  <div\n    #loginRef\n    [class.invisible]=\"!(firebaseAuthService.canLogin$ | async)\"\n  ></div>\n  <div\n    *ngIf=\"firebaseAuthService.user$ | async\"\n    class=\"sign-out-button\"\n    (click)=\"signOut()\"\n  >Sign Out</div>\n</div>\n");
 
 /***/ }),
 
@@ -344,6 +344,10 @@ var routes = [
         loadChildren: function () { return Promise.all(/*! import() | poe-poe-module */[__webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~poe-poe-module"), __webpack_require__.e("poe-poe-module")]).then(__webpack_require__.bind(null, /*! ./poe/poe.module */ "./src/app/poe/poe.module.ts")).then(function (m) { return m.PoeModule; }); }
     },
     {
+        path: 'photos',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | photo-gallery-photo-gallery-module */ "photo-gallery-photo-gallery-module").then(__webpack_require__.bind(null, /*! ./photo-gallery/photo-gallery.module */ "./src/app/photo-gallery/photo-gallery.module.ts")).then(function (m) { return m.PhotoGalleryModule; }); }
+    },
+    {
         path: '',
         pathMatch: 'full',
         redirectTo: 'corona'
@@ -379,7 +383,7 @@ var AppRoutingModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  height: 100%;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n}\n:host .main-content {\n  flex: 1 1 0;\n  overflow: auto;\n}\n:host .main-content {\n  color: #202124;\n  background-color: #fff;\n}\n:host .top-nav {\n  display: flex;\n  background-color: #3F4038;\n  color: #FCFCF9;\n  height: 2.5rem;\n}\n:host .top-nav .page-title-container {\n  flex: 0 0 auto;\n  padding: 0.5rem 1.25rem;\n  font-size: 1.25rem;\n  display: flex;\n  align-items: center;\n}\n@media only screen and (max-width: 550px) {\n  :host .top-nav .page-title-container {\n    display: none;\n  }\n}\n:host .top-nav .right-section {\n  flex: 1 1 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  overflow: hidden;\n}\n:host .top-nav .right-section .nav-items-container {\n  display: flex;\n  justify-content: flex-end;\n  margin: 0 3rem;\n}\n@media only screen and (max-width: 550px) {\n  :host .top-nav .right-section .nav-items-container {\n    margin: 0 0.25rem;\n    justify-content: center;\n  }\n}\n:host .top-nav .right-section .nav-items-container .nav-item {\n  flex: 0 1 auto;\n  background-color: #3F4038;\n  color: #FCFCF9;\n  width: 8rem;\n  padding: 0.5rem;\n  cursor: pointer;\n  text-align: center;\n  outline: none;\n  white-space: nowrap;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin: 0 0.25rem;\n  border-radius: 4px 4px 0 0;\n}\n:host .top-nav .right-section .nav-items-container .nav-item:hover {\n  background-color: #4B5320;\n  color: #FCFCF9;\n}\n:host .top-nav .right-section .nav-items-container .nav-item.active {\n  background-color: #708238;\n  color: #FCFCF9;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvYWRtaW4vcHJvamVjdHMvZGF3dS1ob21lL3NyYy9zdHlsZXMvbWl4aW5zLnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy92YXJpYWJsZXMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQzZOSSxZQUFBO0VBQ0EsV0FBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtBQzlOSjtBRCtOSTtFQUNJLFdBQUE7RUFDQSxjQUFBO0FDN05SO0FGSkk7RUFDSSxjR2VVO0VIZFYsc0JHa0JBO0FEWlI7QUZKSTtFQUNJLGFBQUE7RUFDQSx5QkdXTTtFSFZOLGNBQUE7RUFDQSxjQUFBO0FFTVI7QUZMUTtFQUNJLGNBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0FFT1o7QURrTkk7RUQ5Tkk7SUFPTSxhQUFBO0VFU1o7QUFDRjtBRk5RO0VBQ0ksV0FBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtFQUNBLHlCQUFBO0VBQ0EsZ0JBQUE7QUVRWjtBRlBZO0VBQ0ksYUFBQTtFQUNBLHlCQUFBO0VBQ0EsY0FBQTtBRVNoQjtBRGlNSTtFRDdNUTtJQUtNLGlCQUFBO0lBQ0EsdUJBQUE7RUVXaEI7QUFDRjtBRlZnQjtFQUNJLGNBQUE7RUMyS2hCLHlCRTdMVTtFRjhMVixjRXhNYTtFRmtMYixXQUFBO0VBQ0EsZUFBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHlCQUFBO0tBQUEsc0JBQUE7TUFBQSxxQkFBQTtVQUFBLGlCQUFBO0VEMUpnQixpQkFBQTtFQUNBLDBCQUFBO0FFb0JwQjtBRHNKSTtFQUNJLHlCRXBOSztFRnFOTCxjRTNNUztBRHVEakI7QURzSkk7RUFDSSx5QkV2Tk07RUZ3Tk4sY0UvTVM7QUQyRGpCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCAnbWl4aW5zJztcbkBpbXBvcnQgJ3ZhcmlhYmxlcyc7XG5cbjpob3N0IHtcbiAgICBAaW5jbHVkZSB0b3AtbmF2LXBhZ2U7XG4gICAgLm1haW4tY29udGVudCB7XG4gICAgICAgIGNvbG9yOiAkYmFzaWNhbGx5LWJsYWNrO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkd2hpdGU7XG4gICAgfVxuICAgIC50b3AtbmF2IHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICAgICAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAgICAgICBoZWlnaHQ6IDIuNXJlbTtcbiAgICAgICAgLnBhZ2UtdGl0bGUtY29udGFpbmVyIHtcbiAgICAgICAgICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgICAgICAgICAgcGFkZGluZzogMC41cmVtIDEuMjVyZW07XG4gICAgICAgICAgICBmb250LXNpemU6IDEuMjVyZW07XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICAgIEBpbmNsdWRlIHJlc3BvbmQtdG8oc21hbGwpIHtcbiAgICAgICAgICAgICAgZGlzcGxheTogbm9uZTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuXG4gICAgICAgIC5yaWdodC1zZWN0aW9uIHtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgIC5uYXYtaXRlbXMtY29udGFpbmVyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgICAgICAgbWFyZ2luOiAwIDNyZW07XG4gICAgICAgICAgICAgICAgQGluY2x1ZGUgcmVzcG9uZC10byhzbWFsbCkge1xuICAgICAgICAgICAgICAgICAgbWFyZ2luOiAwIDAuMjVyZW07XG4gICAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgLm5hdi1pdGVtIHtcbiAgICAgICAgICAgICAgICAgICAgZmxleDogMCAxIGF1dG87XG4gICAgICAgICAgICAgICAgICAgIEBpbmNsdWRlIGRhcmstYnV0dG9uO1xuICAgICAgICAgICAgICAgICAgICBtYXJnaW46IDAgMC4yNXJlbTtcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4IDRweCAwIDA7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgfVxufVxuIiwiQGltcG9ydCAndmFyaWFibGVzJztcblxuQG1peGluIGJhc2UtY29yb25hLWRhc2hib2FyZCB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgcGFkZGluZy1ib3R0b206IDJyZW07XG4gICAgLmNoYXJ0LWNvbnRhaW5lciB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIC5jaGFydC1oZWFkZXIge1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgcGFkZGluZzogMCAxLjVyZW07XG4gICAgICAgICAgICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XG4gICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuXG4gICAgICAgICAgICAucmFkaW8tYnV0dG9uLWNvbnRhaW5lcntcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgICAgICAgICAgICAgICBmbGV4LXdyYXA6IHdyYXA7XG5cbiAgICAgICAgICAgICAgICAucmFkaW8tYnV0dG9ucyB7XG4gICAgICAgICAgICAgICAgICAgIEBpbmNsdWRlIHJhZGlvLWJ1dHRvbi1jb250YWluZXI7XG4gICAgICAgICAgICAgICAgICAgICY6bm90KDpmaXJzdC1jaGlsZCkge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luLWxlZnQ6IDFyZW07XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgJi5jaGFydCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBtaW4td2lkdGg6IGF1dG87XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgcGFkZGluZzogM3B4O1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAubWF0ZXJpYWwtaWNvbnMge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmbGV4OiAxIDAgYXV0bztcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxLjI1cmVtO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcmdpbi10b3A6IDAuNXJlbTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIGR3dS1zdGF0LXZpZXdlciB7XG4gICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgICAgIGZsZXg6IDEgMCBhdXRvO1xuICAgICAgICAgICAgICAgIG1hcmdpbi10b3A6IDFyZW07XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgICAgLm92ZXJ2aWV3LmNoYXJ0IHtcbiAgICAgICAgICAgIGhlaWdodDogMTIuNXJlbTtcbiAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICB9XG4gICAgICAgIGR3dS1jaGFydC1sZWdlbmQge1xuICAgICAgICAgICAgZmxleDogMCAwIGF1dG87XG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAwLjI1cmVtO1xuICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMnJlbTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuQG1peGluIHJhZGlvLWJ1dHRvbi1jb250YWluZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgLnJhZGlvLWJ1dHRvbiB7XG4gICAgICAgIEBpbmNsdWRlIGxpZ2h0LW1pbmktYnV0dG9uO1xuICAgICAgICBAaW5jbHVkZSBzaGFkb3c7XG4gICAgICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4IDAgMCA1cHg7XG4gICAgICAgIH1cbiAgICAgICAgJjpsYXN0LWNoaWxkIHtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDAgNXB4IDVweCAwO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5AbWl4aW4gc2hhZG93IHtcbiAgICB0cmFuc2l0aW9uLWR1cmF0aW9uOiBib3gtc2hhZG93IDI1bXMsIHRyYW5zZm9ybSwgMjVtcztcbiAgICBib3gtc2hhZG93OiAxcHggMXB4IDJweCAwICRsaWdodGVyLWdyYXk7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDApO1xuICAgICY6YWN0aXZlIHtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIGJveC1zaGFkb3c6IG5vbmU7XG4gICAgfVxuICAgICYuYWN0aXZlIHtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIGJveC1zaGFkb3c6IG5vbmU7XG4gICAgfVxufVxuXG5AbWl4aW4gcmVzcG9uc2l2ZS1wYWdlIHtcbiAgICBAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NTBweCkge1xuICAgICAgICBkaXYucGFnZS1jb250YWluZXIge1xuICAgICAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgICAgIC5sZWZ0LXNpZGUge1xuICAgICAgICAgICAgICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgICAgICAgICAgICAgIGhlaWdodDogMTMuMjVyZW07XG4gICAgICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICAgICAgICAgIC8vIG1pbi13aWR0aDogbm9uZTtcbiAgICAgICAgICAgICAgICB0cmFuc2l0aW9uOiBoZWlnaHQgNTBtcztcbiAgICAgICAgICAgICAgICAmLmV4cGFuZGVkIHtcbiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiA4NSU7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIC5leHBhbmRlciB7XG4gICAgICAgICAgICAgICAgICAgIEBpbmNsdWRlIGRhcmstdGhlbWU7XG4gICAgICAgICAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgICAgICAgICAgYm90dG9tOiAwO1xuICAgICAgICAgICAgICAgICAgICBsZWZ0OiA1MCU7XG4gICAgICAgICAgICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDMuNXJlbTtcbiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxcmVtO1xuICAgICAgICAgICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAkbW9zcy1ncmVlbjtcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4IDVweCAwIDAgO1xuICAgICAgICAgICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICAgICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIC5leHBhbmRlci1pY29uIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgICAgICAgICAgICAgICAgICYuZmxpcHBlZCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMTgwZGVnKTtcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgfVxuICAgIC5wYWdlLWNvbnRhaW5lciB7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG5cbiAgICAgICAgLmxlZnQtc2lkZSB7XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgICAgICBmbGV4OiAxIDEgMDtcbiAgICAgICAgICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgICAgICAgICBtYXgtd2lkdGg6IDI3LjUlO1xuICAgICAgICAgICAgbWluLXdpZHRoOiAyMHJlbTtcbiAgICAgICAgICAgIC5leHBhbmRlciB7XG4gICAgICAgICAgICAgICAgZGlzcGxheTogbm9uZTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAucmlnaHQtc2lkZSB7XG4gICAgICAgICAgICBmbGV4OiAxIDEgMDtcbiAgICAgICAgICAgIG92ZXJmbG93OiBhdXRvO1xuICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICB9XG4gICAgfVxuXG59XG5AbWl4aW4gbGlnaHQtbWluaS1idXR0b24ge1xuICAgIEBpbmNsdWRlIGxpZ2h0LXRoZW1lO1xuICAgIEBpbmNsdWRlIGJ1dHRvbi14cztcbn1cblxuQG1peGluIGxpZ2h0LXNtYWxsLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgbGlnaHQtdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLXNtO1xufVxuXG5AbWl4aW4gZGFyay1idXR0b24ge1xuICAgIEBpbmNsdWRlIGRhcmstdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLW1kO1xufVxuXG5AbWl4aW4gYnV0dG9uLXhzIHtcbiAgICBtaW4td2lkdGg6IDJyZW07XG4gICAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gICAgZm9udC1zaXplOiAxcmVtO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG5AbWl4aW4gYnV0dG9uLXNtIHtcbiAgICBtaW4td2lkdGg6IDNyZW07XG4gICAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbkBtaXhpbiBidXR0b24tbWQge1xuICAgIHdpZHRoOiA4cmVtO1xuICAgIHBhZGRpbmc6IDAuNXJlbTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cblxuQG1peGluIGxpZ2h0LXRoZW1lIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGVnZ3NoZWxsLWRhcms7XG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRsYXVyZWwtZ3JlZW47XG4gICAgfVxuICAgICYuYWN0aXZlIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJG9saXZlLWdyZWVuO1xuICAgICAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAgIH1cbn1cblxuQG1peGluIGRhcmstdGhlbWUge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRibGFjay1vbGl2ZTtcbiAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAgICY6aG92ZXIge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkYXJteS1ncmVlbjtcbiAgICAgICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgICB9XG4gICAgJi5hY3RpdmUge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkb2xpdmUtZ3JlZW47XG4gICAgICAgIGNvbG9yOiAkbGlnaHRlc3QtZ3JlZW47XG4gICAgfVxufVxuXG5AbWl4aW4gdG9wLW5hdi1wYWdlIHtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIC5tYWluLWNvbnRlbnQge1xuICAgICAgICBmbGV4OiAxIDEgMDtcbiAgICAgICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgfVxufVxuXG5AbWl4aW4gcmVzcG9uZC10bygkbWVkaWEpIHtcbiAgQGlmICRtZWRpYSA9PSBzbWFsbCB7XG4gICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAkYnJlYWstc21hbGwpIHsgQGNvbnRlbnQ7IH1cbiAgfVxuICBAZWxzZSBpZiAkbWVkaWEgPT0gbWVkaXVtIHtcbiAgICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6ICRicmVhay1zbWFsbCArIDEpIGFuZCAobWF4LXdpZHRoOiAkYnJlYWstbGFyZ2UgLSAxKSB7IEBjb250ZW50OyB9XG4gIH1cbiAgQGVsc2UgaWYgJG1lZGlhID09IHdpZGUge1xuICAgIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDogJGJyZWFrLWxhcmdlKSB7IEBjb250ZW50OyB9XG4gIH1cbn1cbiIsIjpob3N0IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICB3aWR0aDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbn1cbjpob3N0IC5tYWluLWNvbnRlbnQge1xuICBmbGV4OiAxIDEgMDtcbiAgb3ZlcmZsb3c6IGF1dG87XG59XG46aG9zdCAubWFpbi1jb250ZW50IHtcbiAgY29sb3I6ICMyMDIxMjQ7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG59XG46aG9zdCAudG9wLW5hdiB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzRjQwMzg7XG4gIGNvbG9yOiAjRkNGQ0Y5O1xuICBoZWlnaHQ6IDIuNXJlbTtcbn1cbjpob3N0IC50b3AtbmF2IC5wYWdlLXRpdGxlLWNvbnRhaW5lciB7XG4gIGZsZXg6IDAgMCBhdXRvO1xuICBwYWRkaW5nOiAwLjVyZW0gMS4yNXJlbTtcbiAgZm9udC1zaXplOiAxLjI1cmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA1NTBweCkge1xuICA6aG9zdCAudG9wLW5hdiAucGFnZS10aXRsZS1jb250YWluZXIge1xuICAgIGRpc3BsYXk6IG5vbmU7XG4gIH1cbn1cbjpob3N0IC50b3AtbmF2IC5yaWdodC1zZWN0aW9uIHtcbiAgZmxleDogMSAxIDA7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG46aG9zdCAudG9wLW5hdiAucmlnaHQtc2VjdGlvbiAubmF2LWl0ZW1zLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gIG1hcmdpbjogMCAzcmVtO1xufVxuQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA1NTBweCkge1xuICA6aG9zdCAudG9wLW5hdiAucmlnaHQtc2VjdGlvbiAubmF2LWl0ZW1zLWNvbnRhaW5lciB7XG4gICAgbWFyZ2luOiAwIDAuMjVyZW07XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIH1cbn1cbjpob3N0IC50b3AtbmF2IC5yaWdodC1zZWN0aW9uIC5uYXYtaXRlbXMtY29udGFpbmVyIC5uYXYtaXRlbSB7XG4gIGZsZXg6IDAgMSBhdXRvO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0Y0MDM4O1xuICBjb2xvcjogI0ZDRkNGOTtcbiAgd2lkdGg6IDhyZW07XG4gIHBhZGRpbmc6IDAuNXJlbTtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG91dGxpbmU6IG5vbmU7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBtYXJnaW46IDAgMC4yNXJlbTtcbiAgYm9yZGVyLXJhZGl1czogNHB4IDRweCAwIDA7XG59XG46aG9zdCAudG9wLW5hdiAucmlnaHQtc2VjdGlvbiAubmF2LWl0ZW1zLWNvbnRhaW5lciAubmF2LWl0ZW06aG92ZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNEI1MzIwO1xuICBjb2xvcjogI0ZDRkNGOTtcbn1cbjpob3N0IC50b3AtbmF2IC5yaWdodC1zZWN0aW9uIC5uYXYtaXRlbXMtY29udGFpbmVyIC5uYXYtaXRlbS5hY3RpdmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNzA4MjM4O1xuICBjb2xvcjogI0ZDRkNGOTtcbn0iLCJcbiRkYXJrLWdyZWVuOiAjMjkyRTEyO1xuJGFybXktZ3JlZW46ICM0QjUzMjA7XG4kb2xpdmUtZ3JlZW46ICM3MDgyMzg7XG4kbW9zcy1ncmVlbjogIzhBOUE1QjtcbiRsYXVyZWwtZ3JlZW46ICNCQUMzOUY7XG5cbiRzYXR1cmF0ZWQtb2xpdmU6ICM3Mjk5MDA7XG4kc2F0dXJhdGVkLWJsdWU6ICMxNjRFQjc7XG5cbi8vIG5pY2UgZm9yIHRleHQgYWdhaW5zdCBkYXJrIGJhY2tncm91bmRcbiRsaWdodC1ncmVlbjogI0Y0RjdFQTtcbiRsaWdodGVzdC1ncmVlbjogI0ZDRkNGOTtcblxuLy8gVXNlZCBmb3IgZmlsZSBzZWxlY3RvclxuJGVnZ3NoZWxsLWRhcmtlcjogI0RERDlDRjtcbiRlZ2dzaGVsbC1kYXJrOiAjRUFFNkRBO1xuJGVnZ3NoZWxsOiAjRUZFQkRGO1xuJGVnZ3NoZWxsLWxpZ2h0OiAjRjJFRUUxO1xuXG4vLyBncmF5c1xuJGJhc2ljYWxseS1ibGFjazogIzIwMjEyNDtcbiRibGFjay1vbGl2ZTogIzNGNDAzODtcbiRncmFuaXRlOiAjNjU2MzVGO1xuJGxpZ2h0ZXItZ3JheTogIzlEOUI5OTtcbiR3aGl0ZTogI2ZmZjtcblxuJGdvbGQ6ICNENkI5MDI7XG4kc3Rhci1ibHVlOiAjMUQ2MkM0O1xuXG4kYnJlYWstc21hbGw6IDU1MHB4O1xuJGJyZWFrLW1kOiA4MDBweDtcbiRicmVhay1sYXJnZTogMTAyNHB4O1xuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  height: 100%;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n}\n:host .main-content {\n  flex: 1 1 0;\n  overflow: auto;\n}\n:host .main-content {\n  color: #202124;\n  background-color: #fff;\n}\n:host .top-nav {\n  display: flex;\n  background-color: #3F4038;\n  color: #FCFCF9;\n  height: 2.5rem;\n}\n:host .top-nav .page-title-container {\n  flex: 0 0 auto;\n  padding: 0.5rem 1.25rem;\n  font-size: 1.25rem;\n  display: flex;\n  align-items: center;\n}\n@media only screen and (max-width: 550px) {\n  :host .top-nav .page-title-container {\n    display: none;\n  }\n}\n:host .top-nav .right-section {\n  flex: 1 1 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  overflow: hidden;\n}\n:host .top-nav .right-section .nav-items-container {\n  display: flex;\n  justify-content: flex-end;\n  margin: 0 3rem;\n}\n@media only screen and (max-width: 550px) {\n  :host .top-nav .right-section .nav-items-container {\n    margin: 0 0.25rem;\n    justify-content: center;\n  }\n}\n:host .top-nav .right-section .nav-items-container .nav-item {\n  flex: 0 1 auto;\n  background-color: #3F4038;\n  color: #FCFCF9;\n  width: 8rem;\n  padding: 0.5rem;\n  cursor: pointer;\n  text-align: center;\n  outline: none;\n  white-space: nowrap;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin: 0 0.25rem;\n  border-radius: 4px 4px 0 0;\n}\n:host .top-nav .right-section .nav-items-container .nav-item:hover:not([disabled]) {\n  background-color: #4B5320;\n  color: #FCFCF9;\n}\n:host .top-nav .right-section .nav-items-container .nav-item.active:not([disabled]) {\n  background-color: #708238;\n  color: #FCFCF9;\n}\n:host .top-nav .right-section .nav-items-container .nav-item[disabled] {\n  pointer-events: none;\n  opacity: 0.3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvYWRtaW4vcHJvamVjdHMvZGF3dS1ob21lL3NyYy9zdHlsZXMvbWl4aW5zLnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy92YXJpYWJsZXMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQ3FPSSxZQUFBO0VBQ0EsV0FBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtBQ3RPSjtBRHVPSTtFQUNJLFdBQUE7RUFDQSxjQUFBO0FDck9SO0FGSkk7RUFDSSxjR2VVO0VIZFYsc0JHa0JBO0FEWlI7QUZKSTtFQUNJLGFBQUE7RUFDQSx5QkdXTTtFSFZOLGNBQUE7RUFDQSxjQUFBO0FFTVI7QUZMUTtFQUNJLGNBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0FFT1o7QUQwTkk7RUR0T0k7SUFPTSxhQUFBO0VFU1o7QUFDRjtBRk5RO0VBQ0ksV0FBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtFQUNBLHlCQUFBO0VBQ0EsZ0JBQUE7QUVRWjtBRlBZO0VBQ0ksYUFBQTtFQUNBLHlCQUFBO0VBQ0EsY0FBQTtBRVNoQjtBRHlNSTtFRHJOUTtJQUtNLGlCQUFBO0lBQ0EsdUJBQUE7RUVXaEI7QUFDRjtBRlZnQjtFQUNJLGNBQUE7RUMrS2xCLHlCRWpNWTtFRmtNWixjRTVNZTtFRmtMYixXQUFBO0VBQ0EsZUFBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHlCQUFBO0tBQUEsc0JBQUE7TUFBQSxxQkFBQTtVQUFBLGlCQUFBO0VEMUpnQixpQkFBQTtFQUNBLDBCQUFBO0FFb0JwQjtBRDBKRTtFQUNFLHlCRXhOUztFRnlOVCxjRS9NYTtBRHVEakI7QUQwSkU7RUFDRSx5QkUzTlU7RUY0TlYsY0VuTmE7QUQyRGpCO0FEMEpFO0VBQ0Usb0JBQUE7RUFDQSxZQUFBO0FDeEpKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCAnbWl4aW5zJztcbkBpbXBvcnQgJ3ZhcmlhYmxlcyc7XG5cbjpob3N0IHtcbiAgICBAaW5jbHVkZSB0b3AtbmF2LXBhZ2U7XG4gICAgLm1haW4tY29udGVudCB7XG4gICAgICAgIGNvbG9yOiAkYmFzaWNhbGx5LWJsYWNrO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkd2hpdGU7XG4gICAgfVxuICAgIC50b3AtbmF2IHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICAgICAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAgICAgICBoZWlnaHQ6IDIuNXJlbTtcbiAgICAgICAgLnBhZ2UtdGl0bGUtY29udGFpbmVyIHtcbiAgICAgICAgICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgICAgICAgICAgcGFkZGluZzogMC41cmVtIDEuMjVyZW07XG4gICAgICAgICAgICBmb250LXNpemU6IDEuMjVyZW07XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICAgIEBpbmNsdWRlIHJlc3BvbmQtdG8oc21hbGwpIHtcbiAgICAgICAgICAgICAgZGlzcGxheTogbm9uZTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuXG4gICAgICAgIC5yaWdodC1zZWN0aW9uIHtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgIC5uYXYtaXRlbXMtY29udGFpbmVyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgICAgICAgbWFyZ2luOiAwIDNyZW07XG4gICAgICAgICAgICAgICAgQGluY2x1ZGUgcmVzcG9uZC10byhzbWFsbCkge1xuICAgICAgICAgICAgICAgICAgbWFyZ2luOiAwIDAuMjVyZW07XG4gICAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgLm5hdi1pdGVtIHtcbiAgICAgICAgICAgICAgICAgICAgZmxleDogMCAxIGF1dG87XG4gICAgICAgICAgICAgICAgICAgIEBpbmNsdWRlIGRhcmstYnV0dG9uO1xuICAgICAgICAgICAgICAgICAgICBtYXJnaW46IDAgMC4yNXJlbTtcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4IDRweCAwIDA7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgfVxufVxuIiwiQGltcG9ydCAndmFyaWFibGVzJztcblxuQG1peGluIGJhc2UtY29yb25hLWRhc2hib2FyZCB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgcGFkZGluZy1ib3R0b206IDJyZW07XG4gICAgLmNoYXJ0LWNvbnRhaW5lciB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIC5jaGFydC1oZWFkZXIge1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgcGFkZGluZzogMCAxLjVyZW07XG4gICAgICAgICAgICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XG4gICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuXG4gICAgICAgICAgICAucmFkaW8tYnV0dG9uLWNvbnRhaW5lcntcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgICAgICAgICAgICAgICBmbGV4LXdyYXA6IHdyYXA7XG5cbiAgICAgICAgICAgICAgICAucmFkaW8tYnV0dG9ucyB7XG4gICAgICAgICAgICAgICAgICAgIEBpbmNsdWRlIHJhZGlvLWJ1dHRvbi1jb250YWluZXI7XG4gICAgICAgICAgICAgICAgICAgICY6bm90KDpmaXJzdC1jaGlsZCkge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luLWxlZnQ6IDFyZW07XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgJi5jaGFydCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBtaW4td2lkdGg6IGF1dG87XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgcGFkZGluZzogM3B4O1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAubWF0ZXJpYWwtaWNvbnMge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmbGV4OiAxIDAgYXV0bztcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxLjI1cmVtO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcmdpbi10b3A6IDAuNXJlbTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIGR3dS1zdGF0LXZpZXdlciB7XG4gICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgICAgIGZsZXg6IDEgMCBhdXRvO1xuICAgICAgICAgICAgICAgIG1hcmdpbi10b3A6IDFyZW07XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgICAgLm92ZXJ2aWV3LmNoYXJ0IHtcbiAgICAgICAgICAgIGhlaWdodDogMTIuNXJlbTtcbiAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICB9XG4gICAgICAgIGR3dS1jaGFydC1sZWdlbmQge1xuICAgICAgICAgICAgZmxleDogMCAwIGF1dG87XG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAwLjI1cmVtO1xuICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMnJlbTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuQG1peGluIHJhZGlvLWJ1dHRvbi1jb250YWluZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgLnJhZGlvLWJ1dHRvbiB7XG4gICAgICAgIEBpbmNsdWRlIGxpZ2h0LW1pbmktYnV0dG9uO1xuICAgICAgICBAaW5jbHVkZSBzaGFkb3c7XG4gICAgICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4IDAgMCA1cHg7XG4gICAgICAgIH1cbiAgICAgICAgJjpsYXN0LWNoaWxkIHtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDAgNXB4IDVweCAwO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5AbWl4aW4gc2hhZG93IHtcbiAgICB0cmFuc2l0aW9uLWR1cmF0aW9uOiBib3gtc2hhZG93IDI1bXMsIHRyYW5zZm9ybSwgMjVtcztcbiAgICBib3gtc2hhZG93OiAxcHggMXB4IDJweCAwICRsaWdodGVyLWdyYXk7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDApO1xuICAgICY6YWN0aXZlIHtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIGJveC1zaGFkb3c6IG5vbmU7XG4gICAgfVxuICAgICYuYWN0aXZlIHtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIGJveC1zaGFkb3c6IG5vbmU7XG4gICAgfVxufVxuXG5AbWl4aW4gcmVzcG9uc2l2ZS1wYWdlIHtcbiAgICBAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NTBweCkge1xuICAgICAgICBkaXYucGFnZS1jb250YWluZXIge1xuICAgICAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgICAgIC5sZWZ0LXNpZGUge1xuICAgICAgICAgICAgICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgICAgICAgICAgICAgIGhlaWdodDogMTMuMjVyZW07XG4gICAgICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICAgICAgICAgIC8vIG1pbi13aWR0aDogbm9uZTtcbiAgICAgICAgICAgICAgICB0cmFuc2l0aW9uOiBoZWlnaHQgNTBtcztcbiAgICAgICAgICAgICAgICAmLmV4cGFuZGVkIHtcbiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiA4NSU7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIC5leHBhbmRlciB7XG4gICAgICAgICAgICAgICAgICAgIEBpbmNsdWRlIGRhcmstdGhlbWU7XG4gICAgICAgICAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgICAgICAgICAgYm90dG9tOiAwO1xuICAgICAgICAgICAgICAgICAgICBsZWZ0OiA1MCU7XG4gICAgICAgICAgICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDMuNXJlbTtcbiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxcmVtO1xuICAgICAgICAgICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAkbW9zcy1ncmVlbjtcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4IDVweCAwIDAgO1xuICAgICAgICAgICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICAgICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIC5leHBhbmRlci1pY29uIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgICAgICAgICAgICAgICAgICYuZmxpcHBlZCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMTgwZGVnKTtcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgfVxuICAgIC5wYWdlLWNvbnRhaW5lciB7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG5cbiAgICAgICAgLmxlZnQtc2lkZSB7XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgICAgICBmbGV4OiAxIDEgMDtcbiAgICAgICAgICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgICAgICAgICBtYXgtd2lkdGg6IDI3LjUlO1xuICAgICAgICAgICAgbWluLXdpZHRoOiAyMHJlbTtcbiAgICAgICAgICAgIC5leHBhbmRlciB7XG4gICAgICAgICAgICAgICAgZGlzcGxheTogbm9uZTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAucmlnaHQtc2lkZSB7XG4gICAgICAgICAgICBmbGV4OiAxIDEgMDtcbiAgICAgICAgICAgIG92ZXJmbG93OiBhdXRvO1xuICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICB9XG4gICAgfVxuXG59XG5AbWl4aW4gbGlnaHQtbWluaS1idXR0b24ge1xuICAgIEBpbmNsdWRlIGxpZ2h0LXRoZW1lO1xuICAgIEBpbmNsdWRlIGJ1dHRvbi14cztcbn1cblxuQG1peGluIGxpZ2h0LXNtYWxsLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgbGlnaHQtdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLXNtO1xufVxuXG5AbWl4aW4gZGFyay1idXR0b24ge1xuICAgIEBpbmNsdWRlIGRhcmstdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLW1kO1xufVxuXG5AbWl4aW4gYnV0dG9uLXhzIHtcbiAgICBtaW4td2lkdGg6IDJyZW07XG4gICAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gICAgZm9udC1zaXplOiAxcmVtO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG5AbWl4aW4gYnV0dG9uLXNtIHtcbiAgICBtaW4td2lkdGg6IDNyZW07XG4gICAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbkBtaXhpbiBidXR0b24tbWQge1xuICAgIHdpZHRoOiA4cmVtO1xuICAgIHBhZGRpbmc6IDAuNXJlbTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cblxuQG1peGluIGxpZ2h0LXRoZW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGVnZ3NoZWxsLWRhcms7XG4gICY6aG92ZXI6bm90KFtkaXNhYmxlZF0pIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkbGF1cmVsLWdyZWVuO1xuICB9XG4gICYuYWN0aXZlOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogJG9saXZlLWdyZWVuO1xuICAgIGNvbG9yOiAkbGlnaHRlc3QtZ3JlZW47XG4gIH1cbiAgJltkaXNhYmxlZF0ge1xuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xuICAgIG9wYWNpdHk6IDAuMztcbiAgfVxufVxuXG5AbWl4aW4gZGFyay10aGVtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRibGFjay1vbGl2ZTtcbiAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgJjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRhcm15LWdyZWVuO1xuICAgIGNvbG9yOiAkbGlnaHRlc3QtZ3JlZW47XG4gIH1cbiAgJi5hY3RpdmU6bm90KFtkaXNhYmxlZF0pIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkb2xpdmUtZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG59XG5cbkBtaXhpbiB0b3AtbmF2LXBhZ2Uge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgLm1haW4tY29udGVudCB7XG4gICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICBvdmVyZmxvdzogYXV0bztcbiAgICB9XG59XG5cbkBtaXhpbiByZXNwb25kLXRvKCRtZWRpYSkge1xuICBAaWYgJG1lZGlhID09IHNtYWxsIHtcbiAgICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6ICRicmVhay1zbWFsbCkgeyBAY29udGVudDsgfVxuICB9XG4gIEBlbHNlIGlmICRtZWRpYSA9PSBtZWRpdW0ge1xuICAgIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDogJGJyZWFrLXNtYWxsICsgMSkgYW5kIChtYXgtd2lkdGg6ICRicmVhay1sYXJnZSAtIDEpIHsgQGNvbnRlbnQ7IH1cbiAgfVxuICBAZWxzZSBpZiAkbWVkaWEgPT0gd2lkZSB7XG4gICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAkYnJlYWstbGFyZ2UpIHsgQGNvbnRlbnQ7IH1cbiAgfVxufVxuIiwiOmhvc3Qge1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuOmhvc3QgLm1haW4tY29udGVudCB7XG4gIGZsZXg6IDEgMSAwO1xuICBvdmVyZmxvdzogYXV0bztcbn1cbjpob3N0IC5tYWluLWNvbnRlbnQge1xuICBjb2xvcjogIzIwMjEyNDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbn1cbjpob3N0IC50b3AtbmF2IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNGNDAzODtcbiAgY29sb3I6ICNGQ0ZDRjk7XG4gIGhlaWdodDogMi41cmVtO1xufVxuOmhvc3QgLnRvcC1uYXYgLnBhZ2UtdGl0bGUtY29udGFpbmVyIHtcbiAgZmxleDogMCAwIGF1dG87XG4gIHBhZGRpbmc6IDAuNXJlbSAxLjI1cmVtO1xuICBmb250LXNpemU6IDEuMjVyZW07XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDU1MHB4KSB7XG4gIDpob3N0IC50b3AtbmF2IC5wYWdlLXRpdGxlLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogbm9uZTtcbiAgfVxufVxuOmhvc3QgLnRvcC1uYXYgLnJpZ2h0LXNlY3Rpb24ge1xuICBmbGV4OiAxIDEgMDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cbjpob3N0IC50b3AtbmF2IC5yaWdodC1zZWN0aW9uIC5uYXYtaXRlbXMtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgbWFyZ2luOiAwIDNyZW07XG59XG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDU1MHB4KSB7XG4gIDpob3N0IC50b3AtbmF2IC5yaWdodC1zZWN0aW9uIC5uYXYtaXRlbXMtY29udGFpbmVyIHtcbiAgICBtYXJnaW46IDAgMC4yNXJlbTtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgfVxufVxuOmhvc3QgLnRvcC1uYXYgLnJpZ2h0LXNlY3Rpb24gLm5hdi1pdGVtcy1jb250YWluZXIgLm5hdi1pdGVtIHtcbiAgZmxleDogMCAxIGF1dG87XG4gIGJhY2tncm91bmQtY29sb3I6ICMzRjQwMzg7XG4gIGNvbG9yOiAjRkNGQ0Y5O1xuICB3aWR0aDogOHJlbTtcbiAgcGFkZGluZzogMC41cmVtO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgb3V0bGluZTogbm9uZTtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gIG1hcmdpbjogMCAwLjI1cmVtO1xuICBib3JkZXItcmFkaXVzOiA0cHggNHB4IDAgMDtcbn1cbjpob3N0IC50b3AtbmF2IC5yaWdodC1zZWN0aW9uIC5uYXYtaXRlbXMtY29udGFpbmVyIC5uYXYtaXRlbTpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNEI1MzIwO1xuICBjb2xvcjogI0ZDRkNGOTtcbn1cbjpob3N0IC50b3AtbmF2IC5yaWdodC1zZWN0aW9uIC5uYXYtaXRlbXMtY29udGFpbmVyIC5uYXYtaXRlbS5hY3RpdmU6bm90KFtkaXNhYmxlZF0pIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzcwODIzODtcbiAgY29sb3I6ICNGQ0ZDRjk7XG59XG46aG9zdCAudG9wLW5hdiAucmlnaHQtc2VjdGlvbiAubmF2LWl0ZW1zLWNvbnRhaW5lciAubmF2LWl0ZW1bZGlzYWJsZWRdIHtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gIG9wYWNpdHk6IDAuMztcbn0iLCJcbiRkYXJrLWdyZWVuOiAjMjkyRTEyO1xuJGFybXktZ3JlZW46ICM0QjUzMjA7XG4kb2xpdmUtZ3JlZW46ICM3MDgyMzg7XG4kbW9zcy1ncmVlbjogIzhBOUE1QjtcbiRsYXVyZWwtZ3JlZW46ICNCQUMzOUY7XG5cbiRzYXR1cmF0ZWQtb2xpdmU6ICM3Mjk5MDA7XG4kc2F0dXJhdGVkLWJsdWU6ICMxNjRFQjc7XG5cbi8vIG5pY2UgZm9yIHRleHQgYWdhaW5zdCBkYXJrIGJhY2tncm91bmRcbiRsaWdodC1ncmVlbjogI0Y0RjdFQTtcbiRsaWdodGVzdC1ncmVlbjogI0ZDRkNGOTtcblxuLy8gVXNlZCBmb3IgZmlsZSBzZWxlY3RvclxuJGVnZ3NoZWxsLWRhcmtlcjogI0RERDlDRjtcbiRlZ2dzaGVsbC1kYXJrOiAjRUFFNkRBO1xuJGVnZ3NoZWxsOiAjRUZFQkRGO1xuJGVnZ3NoZWxsLWxpZ2h0OiAjRjJFRUUxO1xuXG4vLyBncmF5c1xuJGJhc2ljYWxseS1ibGFjazogIzIwMjEyNDtcbiRibGFjay1vbGl2ZTogIzNGNDAzODtcbiRncmFuaXRlOiAjNjU2MzVGO1xuJGxpZ2h0ZXItZ3JheTogIzlEOUI5OTtcbiR3aGl0ZTogI2ZmZjtcblxuJGdvbGQ6ICNENkI5MDI7XG4kc3Rhci1ibHVlOiAjMUQ2MkM0O1xuXG4kYnJlYWstc21hbGw6IDU1MHB4O1xuJGJyZWFrLW1kOiA4MDBweDtcbiRicmVhay1sYXJnZTogMTAyNHB4O1xuIl19 */");
 
 /***/ }),
 
@@ -428,9 +432,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth.module */ "./src/app/firebase-auth/firebase-auth.module.ts");
+/* harmony import */ var _src_app_user_login_user_login_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @src/app/user-login/user-login.module */ "./src/app/user-login/user-login.module.ts");
 /* harmony import */ var _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @src/app/app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _src_app_app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @src/app/app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
+
 
 
 
@@ -446,7 +452,7 @@ var AppModule = /** @class */ (function () {
             imports: [
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["NoopAnimationsModule"],
                 _src_app_app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
-                _src_app_firebase_auth_firebase_auth_module__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthWithRoutesModule"],
+                _src_app_user_login_user_login_module__WEBPACK_IMPORTED_MODULE_4__["UserLoginModule"],
             ],
             declarations: [
                 _src_app_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
@@ -454,6 +460,9 @@ var AppModule = /** @class */ (function () {
             providers: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"],
                 { provide: _angular_common__WEBPACK_IMPORTED_MODULE_3__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_3__["HashLocationStrategy"] },
+                _services_index__WEBPACK_IMPORTED_MODULE_7__["FirebaseAuthService"],
+                _services_index__WEBPACK_IMPORTED_MODULE_7__["FirebaseFirestoreService"],
+                _services_index__WEBPACK_IMPORTED_MODULE_7__["FirebaseStorageService"],
             ],
             bootstrap: [_src_app_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
@@ -465,343 +474,29 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.scss":
-/*!******************************************************************************************!*\
-  !*** ./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.scss ***!
-  \******************************************************************************************/
-/*! exports provided: default */
+/***/ "./src/app/models/index.ts":
+/*!*********************************!*\
+  !*** ./src/app/models/index.ts ***!
+  \*********************************/
+/*! exports provided: User */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZpcmViYXNlLWF1dGgvZmlyZWJhc2UtYXV0aC1zdWNjZXNzL2ZpcmViYXNlLWF1dGgtc3VjY2Vzcy5jb21wb25lbnQuc2NzcyJ9 */");
-
-/***/ }),
-
-/***/ "./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.ts":
-/*!****************************************************************************************!*\
-  !*** ./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.ts ***!
-  \****************************************************************************************/
-/*! exports provided: FirebaseAuthSuccessComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthSuccessComponent", function() { return FirebaseAuthSuccessComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user.model */ "./src/app/models/user.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "User", function() { return _user_model__WEBPACK_IMPORTED_MODULE_1__["User"]; });
 
 
-
-// declare global {
-//   interface Window {
-//     firebase: any;
-//     firebaseui: any;
-//   }
-// }
-var FirebaseAuthSuccessComponent = /** @class */ (function () {
-    function FirebaseAuthSuccessComponent(route) {
-        this.route = route;
-    }
-    FirebaseAuthSuccessComponent.prototype.ngOnInit = function () {
-        console.log('route', this.route);
-    };
-    FirebaseAuthSuccessComponent.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
-    ]; };
-    FirebaseAuthSuccessComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'dwu-firebase-auth-success',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./firebase-auth-success.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.html")).default,
-            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./firebase-auth-success.component.scss */ "./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.scss")).default]
-        })
-    ], FirebaseAuthSuccessComponent);
-    return FirebaseAuthSuccessComponent;
-}());
 
 
 
 /***/ }),
 
-/***/ "./src/app/firebase-auth/firebase-auth.component.scss":
-/*!************************************************************!*\
-  !*** ./src/app/firebase-auth/firebase-auth.component.scss ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZpcmViYXNlLWF1dGgvZmlyZWJhc2UtYXV0aC5jb21wb25lbnQuc2NzcyJ9 */");
-
-/***/ }),
-
-/***/ "./src/app/firebase-auth/firebase-auth.component.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/firebase-auth/firebase-auth.component.ts ***!
-  \**********************************************************/
-/*! exports provided: FirebaseAuthComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthComponent", function() { return FirebaseAuthComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase-auth/firebase-auth.service */ "./src/app/firebase-auth/firebase-auth.service.ts");
-
-
-
-var FirebaseAuthComponent = /** @class */ (function () {
-    function FirebaseAuthComponent(hostEl, firebaseAuthService) {
-        this.hostEl = hostEl;
-        this.firebaseAuthService = firebaseAuthService;
-    }
-    FirebaseAuthComponent.prototype.ngOnInit = function () {
-        this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
-        this.firebaseAuthService.user$.subscribe(function (user) {
-            console.log('user', user);
-            if (user) {
-                var fireStore = window.firebase.firestore();
-                var userDoc_1 = fireStore.doc("users/" + user.uid);
-                // console.log('userDoc', `users/${user.uid}`, userDoc);
-                userDoc_1.get().then(function (doc) {
-                    if (doc && doc.exists) {
-                        var data = doc.data();
-                        console.log('data', data);
-                    }
-                    else {
-                        console.log('doc not found');
-                        userDoc_1.set({})
-                            .then(function (res) {
-                            console.log('set response', res);
-                        });
-                    }
-                });
-            }
-        });
-    };
-    FirebaseAuthComponent.prototype.ngOnDestroy = function () {
-        // if (window.firebaseui.auth.AuthUI.getInstance()) {
-        //   this.ui.delete();
-        // }
-    };
-    FirebaseAuthComponent.prototype.signOut = function () {
-        this.firebaseAuthService.signOut();
-    };
-    FirebaseAuthComponent.ctorParameters = function () { return [
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
-        { type: _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] }
-    ]; };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('loginRef', { static: true })
-    ], FirebaseAuthComponent.prototype, "loginRef", void 0);
-    FirebaseAuthComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'dwu-firebase-auth',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./firebase-auth.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/firebase-auth/firebase-auth.component.html")).default,
-            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./firebase-auth.component.scss */ "./src/app/firebase-auth/firebase-auth.component.scss")).default]
-        })
-    ], FirebaseAuthComponent);
-    return FirebaseAuthComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/firebase-auth/firebase-auth.module.ts":
-/*!*******************************************************!*\
-  !*** ./src/app/firebase-auth/firebase-auth.module.ts ***!
-  \*******************************************************/
-/*! exports provided: FirebaseAuthModule, FirebaseAuthWithRoutesModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthModule", function() { return FirebaseAuthModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthWithRoutesModule", function() { return FirebaseAuthWithRoutesModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _firebase_auth_firebase_auth_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @firebase-auth/firebase-auth.routes */ "./src/app/firebase-auth/firebase-auth.routes.ts");
-/* harmony import */ var _firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @firebase-auth/firebase-auth.component */ "./src/app/firebase-auth/firebase-auth.component.ts");
-/* harmony import */ var _firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @firebase-auth/firebase-auth-success/firebase-auth-success.component */ "./src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component.ts");
-/* harmony import */ var _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @firebase-auth/firebase-auth.service */ "./src/app/firebase-auth/firebase-auth.service.ts");
-
-
-
-
-
-
-
-var FirebaseAuthModule = /** @class */ (function () {
-    function FirebaseAuthModule() {
-    }
-    FirebaseAuthModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-            declarations: [
-                _firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthComponent"],
-                _firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthSuccessComponent"],
-            ],
-            imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-            ],
-            exports: [
-                _firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthComponent"],
-                _firebase_auth_firebase_auth_success_firebase_auth_success_component__WEBPACK_IMPORTED_MODULE_5__["FirebaseAuthSuccessComponent"],
-            ],
-            providers: [],
-        })
-    ], FirebaseAuthModule);
-    return FirebaseAuthModule;
-}());
-
-var FirebaseAuthWithRoutesModule = /** @class */ (function () {
-    function FirebaseAuthWithRoutesModule() {
-    }
-    FirebaseAuthWithRoutesModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-            declarations: [],
-            imports: [
-                FirebaseAuthModule,
-                _firebase_auth_firebase_auth_routes__WEBPACK_IMPORTED_MODULE_3__["FirebaseAuthRoutingModule"],
-            ],
-            exports: [],
-            providers: [
-                _firebase_auth_firebase_auth_service__WEBPACK_IMPORTED_MODULE_6__["FirebaseAuthService"],
-            ],
-        })
-    ], FirebaseAuthWithRoutesModule);
-    return FirebaseAuthWithRoutesModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/firebase-auth/firebase-auth.routes.ts":
-/*!*******************************************************!*\
-  !*** ./src/app/firebase-auth/firebase-auth.routes.ts ***!
-  \*******************************************************/
-/*! exports provided: FirebaseAuthRoutingModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthRoutingModule", function() { return FirebaseAuthRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _src_app_firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @src/app/firebase-auth/firebase-auth.component */ "./src/app/firebase-auth/firebase-auth.component.ts");
-
-
-
-
-var routes = [
-    {
-        path: 'auth',
-        component: _src_app_firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_3__["FirebaseAuthComponent"]
-    },
-    {
-        path: 'auth-success',
-        component: _src_app_firebase_auth_firebase_auth_component__WEBPACK_IMPORTED_MODULE_3__["FirebaseAuthComponent"]
-    },
-];
-var FirebaseAuthRoutingModule = /** @class */ (function () {
-    function FirebaseAuthRoutingModule() {
-    }
-    FirebaseAuthRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-        })
-    ], FirebaseAuthRoutingModule);
-    return FirebaseAuthRoutingModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/firebase-auth/firebase-auth.service.ts":
-/*!********************************************************!*\
-  !*** ./src/app/firebase-auth/firebase-auth.service.ts ***!
-  \********************************************************/
-/*! exports provided: FirebaseAuthService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthService", function() { return FirebaseAuthService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _firebase_auth_user_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @firebase-auth/user.model */ "./src/app/firebase-auth/user.model.ts");
-
-
-
-
-var FirebaseAuthService = /** @class */ (function () {
-    function FirebaseAuthService() {
-        this.firebaseAuth = window.firebase.auth();
-        this.FirebaseAuthUI = window.firebaseui.auth.AuthUI;
-        this.defaultUiConfig = {
-            // signInSuccessUrl: '#/auth-success',
-            signInSuccessUrl: '#/auth-success',
-            callbacks: {
-                signInSuccess: function () { return false; },
-            },
-            signInOptions: [
-                // Leave the lines as is for the providers you want to offer your users.
-                window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            ],
-        };
-        this.user$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
-        this.initializing$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](true);
-        this.initialize();
-    }
-    FirebaseAuthService.prototype.initialize = function () {
-        var _this = this;
-        if (!this.firebaseAuthUI) {
-            this.firebaseAuthUI = new this.FirebaseAuthUI(this.firebaseAuth);
-        }
-        this.firebaseAuth.onAuthStateChanged(function (userData) {
-            // this.initializing$.next(false);
-            if (!userData) {
-                return;
-            }
-            userData.getIdToken().then(function (accessToken) {
-                var user = Object.assign(new _firebase_auth_user_model__WEBPACK_IMPORTED_MODULE_3__["User"](), userData, { accessToken: accessToken });
-                _this.user$.next(user);
-            });
-        });
-    };
-    FirebaseAuthService.prototype.renderLogin = function (hostEl) {
-        this.firebaseAuthUI.start(hostEl, tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.defaultUiConfig));
-    };
-    FirebaseAuthService.prototype.signOut = function () {
-        var _this = this;
-        return this.firebaseAuth.signOut()
-            .then(function () {
-            _this.user$.next(undefined);
-        });
-    };
-    FirebaseAuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
-    ], FirebaseAuthService);
-    return FirebaseAuthService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/firebase-auth/user.model.ts":
-/*!*********************************************!*\
-  !*** ./src/app/firebase-auth/user.model.ts ***!
-  \*********************************************/
+/***/ "./src/app/models/user.model.ts":
+/*!**************************************!*\
+  !*** ./src/app/models/user.model.ts ***!
+  \**************************************/
 /*! exports provided: User */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -814,6 +509,445 @@ var User = /** @class */ (function () {
     function User() {
     }
     return User;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/firebase-auth.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/firebase-auth.service.ts ***!
+  \***************************************************/
+/*! exports provided: FirebaseAuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthService", function() { return FirebaseAuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _models_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @models/index */ "./src/app/models/index.ts");
+
+
+
+
+
+var FirebaseAuthService = /** @class */ (function () {
+    function FirebaseAuthService() {
+        this.firebaseAuth = window.firebase.auth();
+        this.FirebaseAuthUI = window.firebaseui.auth.AuthUI;
+        this.defaultUiConfig = {
+            signInSuccessUrl: '#/auth-success',
+            callbacks: {
+                signInSuccess: function () { return false; },
+            },
+            signInOptions: [
+                window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            ],
+        };
+        this.user$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);
+        this.initialize();
+        this.authLoading$ = this.user$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) { return user === undefined; }));
+        this.canLogin$ = this.user$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) { return user === null; }));
+    }
+    FirebaseAuthService.prototype.initialize = function () {
+        var _this = this;
+        if (!this.firebaseAuthUI) {
+            this.firebaseAuthUI = new this.FirebaseAuthUI(this.firebaseAuth);
+        }
+        this.firebaseAuth.onAuthStateChanged(function (userData) {
+            if (userData === null) {
+                _this.user$.next(null);
+                return;
+            }
+            var user = Object.assign(new _models_index__WEBPACK_IMPORTED_MODULE_4__["User"](), {
+                uid: userData.uid,
+                displayName: userData.displayName,
+                email: userData.email,
+                emailVerified: userData.emailVerified,
+                photoURL: userData.photoURL,
+            });
+            _this.user$.next(user);
+        });
+    };
+    FirebaseAuthService.prototype.renderLogin = function (hostEl) {
+        this.firebaseAuthUI.start(hostEl, tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.defaultUiConfig));
+    };
+    FirebaseAuthService.prototype.signOut = function () {
+        return this.firebaseAuth.signOut();
+        //   .then(() => {
+        //     this.user$.next(undefined);
+        //   })
+    };
+    FirebaseAuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root',
+        })
+    ], FirebaseAuthService);
+    return FirebaseAuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/firebase-firestore.service.ts":
+/*!********************************************************!*\
+  !*** ./src/app/services/firebase-firestore.service.ts ***!
+  \********************************************************/
+/*! exports provided: FirebaseFirestoreService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseFirestoreService", function() { return FirebaseFirestoreService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var FirebaseFirestoreService = /** @class */ (function () {
+    function FirebaseFirestoreService() {
+        this.firestore = window.firebase.firestore();
+    }
+    FirebaseFirestoreService.prototype.updateUser = function (user) {
+        var userDoc = this.firestore.doc("users/" + user.uid);
+        userDoc.set(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, user));
+    };
+    FirebaseFirestoreService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root',
+        })
+    ], FirebaseFirestoreService);
+    return FirebaseFirestoreService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/firebase-storage.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/services/firebase-storage.service.ts ***!
+  \******************************************************/
+/*! exports provided: FirebaseStorageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseStorageService", function() { return FirebaseStorageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+var FirebaseStorageService = /** @class */ (function () {
+    function FirebaseStorageService() {
+        this.firebaseStorage = window.firebase.storage();
+    }
+    FirebaseStorageService.prototype.uploadFile = function (file, fileName) {
+        if (fileName === void 0) { fileName = 'image.jpg'; }
+        var storageRef = this.firebaseStorage.ref();
+        var imageRef = storageRef.child('uploads').child(fileName);
+        return imageRef.put(file)
+            .then(function (snapshot) {
+            console.log('put success snapshot:', snapshot);
+        })
+            .catch(function (err) {
+            console.log('err', err);
+        });
+    };
+    FirebaseStorageService.prototype.getFileUrl$ = function () {
+        var storageRef = this.firebaseStorage.ref();
+        var uploadsRef = storageRef.child('uploads');
+        var imageRef = uploadsRef.child('image.jpg');
+        var urlPromise = imageRef.getDownloadURL();
+        urlPromise.then(console.log);
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(urlPromise);
+    };
+    FirebaseStorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root',
+        })
+    ], FirebaseStorageService);
+    return FirebaseStorageService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/index.ts":
+/*!***********************************!*\
+  !*** ./src/app/services/index.ts ***!
+  \***********************************/
+/*! exports provided: FirebaseAuthService, FirebaseStorageService, FirebaseFirestoreService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _firebase_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./firebase-auth.service */ "./src/app/services/firebase-auth.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FirebaseAuthService", function() { return _firebase_auth_service__WEBPACK_IMPORTED_MODULE_1__["FirebaseAuthService"]; });
+
+/* harmony import */ var _firebase_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./firebase-storage.service */ "./src/app/services/firebase-storage.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FirebaseStorageService", function() { return _firebase_storage_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseStorageService"]; });
+
+/* harmony import */ var _firebase_firestore_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./firebase-firestore.service */ "./src/app/services/firebase-firestore.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FirebaseFirestoreService", function() { return _firebase_firestore_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseFirestoreService"]; });
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/user-login/user-login-success/user-login-success.component.scss":
+/*!*********************************************************************************!*\
+  !*** ./src/app/user-login/user-login-success/user-login-success.component.scss ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItbG9naW4vdXNlci1sb2dpbi1zdWNjZXNzL3VzZXItbG9naW4tc3VjY2Vzcy5jb21wb25lbnQuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/user-login/user-login-success/user-login-success.component.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/user-login/user-login-success/user-login-success.component.ts ***!
+  \*******************************************************************************/
+/*! exports provided: UserLoginSuccessComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserLoginSuccessComponent", function() { return UserLoginSuccessComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+// declare global {
+//   interface Window {
+//     firebase: any;
+//     firebaseui: any;
+//   }
+// }
+var UserLoginSuccessComponent = /** @class */ (function () {
+    function UserLoginSuccessComponent(route) {
+        this.route = route;
+    }
+    UserLoginSuccessComponent.prototype.ngOnInit = function () {
+        console.log('route', this.route);
+    };
+    UserLoginSuccessComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+    ]; };
+    UserLoginSuccessComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-user-login-success',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./user-login-success.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-login/user-login-success/user-login-success.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./user-login-success.component.scss */ "./src/app/user-login/user-login-success/user-login-success.component.scss")).default]
+        })
+    ], UserLoginSuccessComponent);
+    return UserLoginSuccessComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user-login/user-login.component.scss":
+/*!******************************************************!*\
+  !*** ./src/app/user-login/user-login.component.scss ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".invisible {\n  display: none;\n}\n\n.sign-out-button {\n  background-color: #3F4038;\n  color: #FCFCF9;\n  width: 8rem;\n  padding: 0.5rem;\n  cursor: pointer;\n  text-align: center;\n  outline: none;\n  white-space: nowrap;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.sign-out-button:hover:not([disabled]) {\n  background-color: #4B5320;\n  color: #FCFCF9;\n}\n\n.sign-out-button.active:not([disabled]) {\n  background-color: #708238;\n  color: #FCFCF9;\n}\n\n.sign-out-button[disabled] {\n  pointer-events: none;\n  opacity: 0.3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC91c2VyLWxvZ2luL3VzZXItbG9naW4uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3VzZXItbG9naW4vdXNlci1sb2dpbi5jb21wb25lbnQuc2NzcyIsIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy9taXhpbnMuc2NzcyIsIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy92YXJpYWJsZXMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLGFBQUE7QUNERjs7QURHQTtFRWtORSx5QkNqTVk7RURrTVosY0M1TWU7RURrTGIsV0FBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtLQUFBLHNCQUFBO01BQUEscUJBQUE7VUFBQSxpQkFBQTtBRHRMSjs7QUMyTUU7RUFDRSx5QkN4TlM7RUR5TlQsY0MvTWE7QUZNakI7O0FDMk1FO0VBQ0UseUJDM05VO0VENE5WLGNDbk5hO0FGVWpCOztBQzJNRTtFQUNFLG9CQUFBO0VBQ0EsWUFBQTtBRHpNSiIsImZpbGUiOiJzcmMvYXBwL3VzZXItbG9naW4vdXNlci1sb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgJ21peGlucyc7XG5cbi5pbnZpc2libGUge1xuICBkaXNwbGF5OiBub25lO1xufVxuLnNpZ24tb3V0LWJ1dHRvbiB7XG4gIEBpbmNsdWRlIGRhcmstYnV0dG9uO1xufSIsIi5pbnZpc2libGUge1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4uc2lnbi1vdXQtYnV0dG9uIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNGNDAzODtcbiAgY29sb3I6ICNGQ0ZDRjk7XG4gIHdpZHRoOiA4cmVtO1xuICBwYWRkaW5nOiAwLjVyZW07XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBvdXRsaW5lOiBub25lO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cbi5zaWduLW91dC1idXR0b246aG92ZXI6bm90KFtkaXNhYmxlZF0pIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzRCNTMyMDtcbiAgY29sb3I6ICNGQ0ZDRjk7XG59XG4uc2lnbi1vdXQtYnV0dG9uLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNzA4MjM4O1xuICBjb2xvcjogI0ZDRkNGOTtcbn1cbi5zaWduLW91dC1idXR0b25bZGlzYWJsZWRdIHtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gIG9wYWNpdHk6IDAuMztcbn0iLCJAaW1wb3J0ICd2YXJpYWJsZXMnO1xuXG5AbWl4aW4gYmFzZS1jb3JvbmEtZGFzaGJvYXJkIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBwYWRkaW5nLWJvdHRvbTogMnJlbTtcbiAgICAuY2hhcnQtY29udGFpbmVyIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgLmNoYXJ0LWhlYWRlciB7XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBwYWRkaW5nOiAwIDEuNXJlbTtcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBmbGV4LWVuZDtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG5cbiAgICAgICAgICAgIC5yYWRpby1idXR0b24tY29udGFpbmVye1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgICAgIGZsZXgtd3JhcDogd3JhcDtcblxuICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b25zIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgcmFkaW8tYnV0dG9uLWNvbnRhaW5lcjtcbiAgICAgICAgICAgICAgICAgICAgJjpub3QoOmZpcnN0LWNoaWxkKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMXJlbTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAmLmNoYXJ0IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbi13aWR0aDogYXV0bztcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOiAzcHg7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5tYXRlcmlhbC1pY29ucyB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZsZXg6IDEgMCBhdXRvO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmb250LXNpemU6IDEuMjVyZW07XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMC41cmVtO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICAgICAgZHd1LXN0YXQtdmlld2VyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgICAgICAgZmxleDogMSAwIGF1dG87XG4gICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMXJlbTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAub3ZlcnZpZXcuY2hhcnQge1xuICAgICAgICAgICAgaGVpZ2h0OiAxMi41cmVtO1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIH1cbiAgICAgICAgZHd1LWNoYXJ0LWxlZ2VuZCB7XG4gICAgICAgICAgICBmbGV4OiAwIDAgYXV0bztcbiAgICAgICAgICAgIG1hcmdpbi10b3A6IDAuMjVyZW07XG4gICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAycmVtO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5AbWl4aW4gcmFkaW8tYnV0dG9uLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgQGluY2x1ZGUgbGlnaHQtbWluaS1idXR0b247XG4gICAgICAgIEBpbmNsdWRlIHNoYWRvdztcbiAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggMCAwIDVweDtcbiAgICAgICAgfVxuICAgICAgICAmOmxhc3QtY2hpbGQge1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMCA1cHggNXB4IDA7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbkBtaXhpbiBzaGFkb3cge1xuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IGJveC1zaGFkb3cgMjVtcywgdHJhbnNmb3JtLCAyNW1zO1xuICAgIGJveC1zaGFkb3c6IDFweCAxcHggMnB4IDAgJGxpZ2h0ZXItZ3JheTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCk7XG4gICAgJjphY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG4gICAgJi5hY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG59XG5cbkBtaXhpbiByZXNwb25zaXZlLXBhZ2Uge1xuICAgIEBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc1MHB4KSB7XG4gICAgICAgIGRpdi5wYWdlLWNvbnRhaW5lciB7XG4gICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgLmxlZnQtc2lkZSB7XG4gICAgICAgICAgICAgICAgZmxleDogMCAwIGF1dG87XG4gICAgICAgICAgICAgICAgaGVpZ2h0OiAxMy4yNXJlbTtcbiAgICAgICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgICAgICAgICAgLy8gbWluLXdpZHRoOiBub25lO1xuICAgICAgICAgICAgICAgIHRyYW5zaXRpb246IGhlaWdodCA1MG1zO1xuICAgICAgICAgICAgICAgICYuZXhwYW5kZWQge1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDg1JTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgICAgICAgICAgICBib3R0b206IDA7XG4gICAgICAgICAgICAgICAgICAgIGxlZnQ6IDUwJTtcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgICAgICAgICAgICAgICAgICB3aWR0aDogMy41cmVtO1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDFyZW07XG4gICAgICAgICAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICRtb3NzLWdyZWVuO1xuICAgICAgICAgICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggNXB4IDAgMCA7XG4gICAgICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgLmV4cGFuZGVyLWljb24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICAgICAgICAgICAgICAgICAgJi5mbGlwcGVkIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG4gICAgLnBhZ2UtY29udGFpbmVyIHtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcblxuICAgICAgICAubGVmdC1zaWRlIHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgIG1heC13aWR0aDogMjcuNSU7XG4gICAgICAgICAgICBtaW4td2lkdGg6IDIwcmVtO1xuICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBub25lO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5yaWdodC1zaWRlIHtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgIH1cbiAgICB9XG5cbn1cbkBtaXhpbiBsaWdodC1taW5pLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgbGlnaHQtdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLXhzO1xufVxuXG5AbWl4aW4gbGlnaHQtc21hbGwtYnV0dG9uIHtcbiAgICBAaW5jbHVkZSBsaWdodC10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tc207XG59XG5cbkBtaXhpbiBkYXJrLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tbWQ7XG59XG5cbkBtaXhpbiBidXR0b24teHMge1xuICAgIG1pbi13aWR0aDogMnJlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBmb250LXNpemU6IDFyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbkBtaXhpbiBidXR0b24tc20ge1xuICAgIG1pbi13aWR0aDogM3JlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cblxuQG1peGluIGJ1dHRvbi1tZCB7XG4gICAgd2lkdGg6IDhyZW07XG4gICAgcGFkZGluZzogMC41cmVtO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG5AbWl4aW4gbGlnaHQtdGhlbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkZWdnc2hlbGwtZGFyaztcbiAgJjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRsYXVyZWwtZ3JlZW47XG4gIH1cbiAgJi5hY3RpdmU6bm90KFtkaXNhYmxlZF0pIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkb2xpdmUtZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG59XG5cbkBtaXhpbiBkYXJrLXRoZW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAmOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogJGFybXktZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRvbGl2ZS1ncmVlbjtcbiAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICB9XG4gICZbZGlzYWJsZWRdIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBvcGFjaXR5OiAwLjM7XG4gIH1cbn1cblxuQG1peGluIHRvcC1uYXYtcGFnZSB7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAubWFpbi1jb250ZW50IHtcbiAgICAgICAgZmxleDogMSAxIDA7XG4gICAgICAgIG92ZXJmbG93OiBhdXRvO1xuICAgIH1cbn1cblxuQG1peGluIHJlc3BvbmQtdG8oJG1lZGlhKSB7XG4gIEBpZiAkbWVkaWEgPT0gc21hbGwge1xuICAgIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogJGJyZWFrLXNtYWxsKSB7IEBjb250ZW50OyB9XG4gIH1cbiAgQGVsc2UgaWYgJG1lZGlhID09IG1lZGl1bSB7XG4gICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAkYnJlYWstc21hbGwgKyAxKSBhbmQgKG1heC13aWR0aDogJGJyZWFrLWxhcmdlIC0gMSkgeyBAY29udGVudDsgfVxuICB9XG4gIEBlbHNlIGlmICRtZWRpYSA9PSB3aWRlIHtcbiAgICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6ICRicmVhay1sYXJnZSkgeyBAY29udGVudDsgfVxuICB9XG59XG4iLCJcbiRkYXJrLWdyZWVuOiAjMjkyRTEyO1xuJGFybXktZ3JlZW46ICM0QjUzMjA7XG4kb2xpdmUtZ3JlZW46ICM3MDgyMzg7XG4kbW9zcy1ncmVlbjogIzhBOUE1QjtcbiRsYXVyZWwtZ3JlZW46ICNCQUMzOUY7XG5cbiRzYXR1cmF0ZWQtb2xpdmU6ICM3Mjk5MDA7XG4kc2F0dXJhdGVkLWJsdWU6ICMxNjRFQjc7XG5cbi8vIG5pY2UgZm9yIHRleHQgYWdhaW5zdCBkYXJrIGJhY2tncm91bmRcbiRsaWdodC1ncmVlbjogI0Y0RjdFQTtcbiRsaWdodGVzdC1ncmVlbjogI0ZDRkNGOTtcblxuLy8gVXNlZCBmb3IgZmlsZSBzZWxlY3RvclxuJGVnZ3NoZWxsLWRhcmtlcjogI0RERDlDRjtcbiRlZ2dzaGVsbC1kYXJrOiAjRUFFNkRBO1xuJGVnZ3NoZWxsOiAjRUZFQkRGO1xuJGVnZ3NoZWxsLWxpZ2h0OiAjRjJFRUUxO1xuXG4vLyBncmF5c1xuJGJhc2ljYWxseS1ibGFjazogIzIwMjEyNDtcbiRibGFjay1vbGl2ZTogIzNGNDAzODtcbiRncmFuaXRlOiAjNjU2MzVGO1xuJGxpZ2h0ZXItZ3JheTogIzlEOUI5OTtcbiR3aGl0ZTogI2ZmZjtcblxuJGdvbGQ6ICNENkI5MDI7XG4kc3Rhci1ibHVlOiAjMUQ2MkM0O1xuXG4kYnJlYWstc21hbGw6IDU1MHB4O1xuJGJyZWFrLW1kOiA4MDBweDtcbiRicmVhay1sYXJnZTogMTAyNHB4O1xuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/user-login/user-login.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/user-login/user-login.component.ts ***!
+  \****************************************************/
+/*! exports provided: UserLoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserLoginComponent", function() { return UserLoginComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
+
+
+
+var UserLoginComponent = /** @class */ (function () {
+    function UserLoginComponent(hostEl, firebaseAuthService, firestoreService) {
+        this.hostEl = hostEl;
+        this.firebaseAuthService = firebaseAuthService;
+        this.firestoreService = firestoreService;
+    }
+    UserLoginComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
+        this.firebaseAuthService.user$.subscribe(function (user) {
+            console.log('user', user);
+            if (user) {
+                // const fireStore = window.firebase.firestore();
+                // const userDoc = fireStore.doc(`users/${user.uid}`);
+                // console.log('userDoc', `users/${user.uid}`, userDoc);
+                _this.firestoreService.updateUser(user);
+                // userDoc.get().then((doc) => {
+                //   if (doc && doc.exists) {
+                //     const data = doc.data();
+                //     console.log('data', data);
+                //   } else {
+                //     console.log('doc not found')
+                //     userDoc.set({})
+                //       .then((res) => {
+                //         console.log('set response', res);
+                //       })
+                //   }
+                // });
+            }
+        });
+    };
+    UserLoginComponent.prototype.ngOnDestroy = function () {
+        // if (window.firebaseui.auth.AuthUI.getInstance()) {
+        //   this.ui.delete();
+        // }
+    };
+    UserLoginComponent.prototype.signOut = function () {
+        this.firebaseAuthService.signOut();
+    };
+    UserLoginComponent.ctorParameters = function () { return [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] },
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["FirebaseFirestoreService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('loginRef', { static: true })
+    ], UserLoginComponent.prototype, "loginRef", void 0);
+    UserLoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-user-login',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./user-login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-login/user-login.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./user-login.component.scss */ "./src/app/user-login/user-login.component.scss")).default]
+        })
+    ], UserLoginComponent);
+    return UserLoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user-login/user-login.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/user-login/user-login.module.ts ***!
+  \*************************************************/
+/*! exports provided: UserLoginModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserLoginModule", function() { return UserLoginModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_user_login_user_login_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @app/user-login/user-login.routes */ "./src/app/user-login/user-login.routes.ts");
+/* harmony import */ var _app_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @app/user-login/user-login.component */ "./src/app/user-login/user-login.component.ts");
+/* harmony import */ var _app_user_login_user_login_success_user_login_success_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @app/user-login/user-login-success/user-login-success.component */ "./src/app/user-login/user-login-success/user-login-success.component.ts");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
+
+
+
+
+
+
+
+var UserLoginModule = /** @class */ (function () {
+    function UserLoginModule() {
+    }
+    UserLoginModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+            declarations: [
+                _app_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_4__["UserLoginComponent"],
+                _app_user_login_user_login_success_user_login_success_component__WEBPACK_IMPORTED_MODULE_5__["UserLoginSuccessComponent"],
+            ],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                _app_user_login_user_login_routes__WEBPACK_IMPORTED_MODULE_3__["UserLoginRoutingModule"],
+            ],
+            exports: [
+                _app_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_4__["UserLoginComponent"],
+                _app_user_login_user_login_success_user_login_success_component__WEBPACK_IMPORTED_MODULE_5__["UserLoginSuccessComponent"],
+            ],
+            providers: [
+                _services_index__WEBPACK_IMPORTED_MODULE_6__["FirebaseAuthService"],
+                _services_index__WEBPACK_IMPORTED_MODULE_6__["FirebaseFirestoreService"],
+            ],
+        })
+    ], UserLoginModule);
+    return UserLoginModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user-login/user-login.routes.ts":
+/*!*************************************************!*\
+  !*** ./src/app/user-login/user-login.routes.ts ***!
+  \*************************************************/
+/*! exports provided: UserLoginRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserLoginRoutingModule", function() { return UserLoginRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _app_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @app/user-login/user-login.component */ "./src/app/user-login/user-login.component.ts");
+
+
+
+
+var routes = [
+    {
+        path: 'auth',
+        component: _app_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_3__["UserLoginComponent"]
+    },
+    {
+        path: 'auth-success',
+        component: _app_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_3__["UserLoginComponent"]
+    },
+];
+var UserLoginRoutingModule = /** @class */ (function () {
+    function UserLoginRoutingModule() {
+    }
+    UserLoginRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], UserLoginRoutingModule);
+    return UserLoginRoutingModule;
 }());
 
 
