@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { FirebaseAuthService } from '@services/index';
+import { PhotoGalleryService } from '@app/photo-gallery/services/photo-gallery.service';
+import { User } from '@models/index';
 
 @Component({
   selector: 'photo-gallery',
@@ -9,8 +12,18 @@ import { FirebaseAuthService } from '@services/index';
 })
 export class PhotoGalleryComponent {
 
-  constructor(public firebaseAuthService: FirebaseAuthService) {
+  public uploadedFiles$: Observable<any[]>;
 
+  constructor(
+    public firebaseAuthService: FirebaseAuthService,
+    public pgs: PhotoGalleryService,
+  ) {
+    this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+    this.uploadedFiles$.subscribe(console.log);
+  }
+
+  public onFileChange(file: File, user: User) {
+    this.pgs.uploadFile(file, user);
   }
 
 }

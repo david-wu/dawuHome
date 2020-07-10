@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from '@src/app/app.component';
-import { PhotoGalleryComponent } from '@src/app/photo-gallery/photo-gallery.component';
-import { PhotoGalleryRoutingModule } from '@src/app/photo-gallery/photo-gallery.routes';
-import { UserLoginModule } from '@src/app/user-login/user-login.module';
-import { FileUploaderModule } from '@src/app/file-uploader/file-uploader.module';
+import { AppComponent } from '@app/app.component';
+import { PhotoGalleryComponent } from '@app/photo-gallery/photo-gallery.component';
+import { PhotoGalleryRoutingModule } from '@app/photo-gallery/photo-gallery.routes';
+import { UserLoginModule } from '@app/user-login/user-login.module';
+import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
+import { PhotoGalleryService } from '@app/photo-gallery/services/photo-gallery.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,8 @@ import { FileUploaderModule } from '@src/app/file-uploader/file-uploader.module'
   exports: [
     PhotoGalleryComponent,
   ],
-  providers: [],
+  providers: [
+    PhotoGalleryService,
+  ],
 })
 export class PhotoGalleryModule { }

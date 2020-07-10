@@ -1,7 +1,25 @@
 <div class="page-container">
   <div class="right-side">
     <dwu-user-login></dwu-user-login>
-    <dwu-file-uploader *ngIf="firebaseAuthService.user$ | async"></dwu-file-uploader>
+    <dwu-file-uploader
+      *ngIf="firebaseAuthService.user$ | async as user"
+      (fileChange)="onFileChange($event, user)"
+    ></dwu-file-uploader>
+    <div
+      *ngIf="(uploadedFiles$ | async) as uploadedFiles"
+      class="uploaded-file-container"
+    >
+      <div
+        *ngFor="let uploadedFile of uploadedFiles"
+        class="uploaded-file"
+      >
+        <div class="file-name">
+          {{ uploadedFile.fileName }}
+        </div>
+        <img [src]="uploadedFile.uploadMeta.downloadUrl" class="file-pic">
+      </div>
+    </div>
     <div class="footer"></div>
   </div>
 </div>
+

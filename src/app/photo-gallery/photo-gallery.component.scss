@@ -9,3 +9,22 @@
     }
   }
 }
+.uploaded-file-container {
+  display: flex;
+  padding: 0.5rem;
+  .uploaded-file {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    .file-name {
+      color: $light-green;
+      background-color: $black-olive;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem 0.25rem 0 0;
+    }
+    .file-pic {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
