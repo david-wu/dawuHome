@@ -552,6 +552,7 @@ var FirebaseAuthService = /** @class */ (function () {
         this.initialize();
         this.authLoading$ = this.user$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) { return user === undefined; }));
         this.canLogin$ = this.user$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) { return user === null; }));
+        this.user$.subscribe(console.log);
     }
     FirebaseAuthService.prototype.initialize = function () {
         var _this = this;
@@ -618,6 +619,10 @@ var FirebaseFirestoreService = /** @class */ (function () {
         var userDoc = this.firestore.doc("users/" + user.uid);
         userDoc.set(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, user));
     };
+    FirebaseFirestoreService.prototype.unregisterFile = function (fileId, user) {
+        var doc = this.firestore.doc("users/" + user.uid + "/uploads/" + fileId);
+        return doc.delete();
+    };
     FirebaseFirestoreService.prototype.registerFileId = function (file, user) {
         var collection = this.firestore.doc("users/" + user.uid).collection('uploads');
         return collection.add({
@@ -639,7 +644,8 @@ var FirebaseFirestoreService = /** @class */ (function () {
     FirebaseFirestoreService.prototype.getUploadedFiles$ = function (user) {
         var collection = this.firestore.doc("users/" + user.uid).collection('uploads');
         var uploadedFiles$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        collection.where('isUploaded', "==", true).onSnapshot(function (querySnapshot) {
+        // collection.where('isUploaded', "==", true)
+        collection.onSnapshot(function (querySnapshot) {
             var docs = querySnapshot.docs.map(function (doc) {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, doc.data(), { id: doc.id });
             });
@@ -682,6 +688,12 @@ var FirebaseStorageService = /** @class */ (function () {
         var storageRef = this.firebaseStorage.ref();
         var imageRef = storageRef.child('uploads').child(fileName);
         return imageRef.put(file);
+    };
+    FirebaseStorageService.prototype.deleteFile = function (fileName) {
+        if (fileName === void 0) { fileName = 'image.jpg'; }
+        var storageRef = this.firebaseStorage.ref();
+        var imageRef = storageRef.child("uploads/" + fileName);
+        return imageRef.delete();
     };
     FirebaseStorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -827,6 +839,7 @@ var UserLoginComponent = /** @class */ (function () {
     };
     UserLoginComponent.prototype.signOut = function () {
         this.firebaseAuthService.signOut();
+        this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
     };
     UserLoginComponent.ctorParameters = function () { return [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
