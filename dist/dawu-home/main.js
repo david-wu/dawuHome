@@ -640,11 +640,9 @@ var FirebaseFirestoreService = /** @class */ (function () {
         var collection = this.firestore.doc("users/" + user.uid).collection('uploads');
         var uploadedFiles$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         collection.where('isUploaded', "==", true).onSnapshot(function (querySnapshot) {
-            console.log('querySnapshot', querySnapshot);
             var docs = querySnapshot.docs.map(function (doc) {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, doc.data(), { id: doc.id });
             });
-            console.log('docs', docs);
             uploadedFiles$.next(docs);
         });
         return uploadedFiles$;
@@ -673,8 +671,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseStorageService", function() { return FirebaseStorageService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-
 
 
 var FirebaseStorageService = /** @class */ (function () {
@@ -686,13 +682,6 @@ var FirebaseStorageService = /** @class */ (function () {
         var storageRef = this.firebaseStorage.ref();
         var imageRef = storageRef.child('uploads').child(fileName);
         return imageRef.put(file);
-    };
-    FirebaseStorageService.prototype.getFileUrl$ = function () {
-        var storageRef = this.firebaseStorage.ref();
-        var uploadsRef = storageRef.child('uploads');
-        var imageRef = uploadsRef.child('image.jpg');
-        var urlPromise = imageRef.getDownloadURL();
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(urlPromise);
     };
     FirebaseStorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -831,31 +820,10 @@ var UserLoginComponent = /** @class */ (function () {
         var _this = this;
         this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
         this.firebaseAuthService.user$.subscribe(function (user) {
-            console.log('user', user);
             if (user) {
-                // const fireStore = window.firebase.firestore();
-                // const userDoc = fireStore.doc(`users/${user.uid}`);
-                // console.log('userDoc', `users/${user.uid}`, userDoc);
                 _this.firestoreService.updateUser(user);
-                // userDoc.get().then((doc) => {
-                //   if (doc && doc.exists) {
-                //     const data = doc.data();
-                //     console.log('data', data);
-                //   } else {
-                //     console.log('doc not found')
-                //     userDoc.set({})
-                //       .then((res) => {
-                //         console.log('set response', res);
-                //       })
-                //   }
-                // });
             }
         });
-    };
-    UserLoginComponent.prototype.ngOnDestroy = function () {
-        // if (window.firebaseui.auth.AuthUI.getInstance()) {
-        //   this.ui.delete();
-        // }
     };
     UserLoginComponent.prototype.signOut = function () {
         this.firebaseAuthService.signOut();
