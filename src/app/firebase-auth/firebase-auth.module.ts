@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FirebaseAuthRoutingModule } from '@src/app/firebase-auth/firebase-auth.routes';
 
-import { FirebaseAuthComponent } from '@src/app/firebase-auth/firebase-auth.component';
-import { FirebaseAuthSuccessComponent } from '@src/app/firebase-auth/firebase-auth-success/firebase-auth-success.component';
+import { FirebaseAuthRoutingModule } from '@firebase-auth/firebase-auth.routes';
+import { FirebaseAuthComponent } from '@firebase-auth/firebase-auth.component';
+import { FirebaseAuthSuccessComponent } from '@firebase-auth/firebase-auth-success/firebase-auth-success.component';
+import { FirebaseAuthService } from '@firebase-auth/firebase-auth.service'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ export class FirebaseAuthModule { }
     FirebaseAuthRoutingModule,
   ],
   exports: [],
-  providers: [],
+  providers: [
+    FirebaseAuthService,
+  ],
 })
 export class FirebaseAuthWithRoutesModule { }

@@ -8,9 +8,11 @@
         "src/*.web",
         "src/*"
       ],
+      "@app/*": ["src/app/*"],
       "@common/*": ["src/app/common/*"],
       "@file-explorer/*": ["src/app/common/file-explorer/*"],
-      "@utils/*": ["src/app/utils/*"]
+      "@utils/*": ["src/app/utils/*"],
+      "@firebase-auth/*": ["src/app/firebase-auth/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true

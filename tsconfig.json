@@ -26,9 +26,11 @@
         "src/*.web.ts",
         "src/*"
       ],
-      "@common/*": ["src/app/common/*"],
-      "@file-explorer/*": ["src/app/common/file-explorer/*"],
-      "@utils/*": ["src/app/utils/*"]
+      "@app/*": ["src/app/*"],
+      "@common/*": ["@app/common/*"],
+      "@file-explorer/*": ["@app/common/file-explorer/*"],
+      "@utils/*": ["@app/utils/*"],
+      "@firebase-auth/*": ["@app/firebase-auth/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true

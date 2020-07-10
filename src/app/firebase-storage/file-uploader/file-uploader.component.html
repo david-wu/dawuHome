@@ -1,0 +1,14 @@
+fileUploader
+<input
+  type="file"
+  accept="image/*"
+  (change)="onFileChange($event)"
+>
+<div (click)="upload()">
+  Upload
+</div>
+
+<img
+  *ngIf="fileUrl$ | async as fileUrl"
+  [src]="fileUrl"
+>
