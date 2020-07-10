@@ -1,0 +1,7 @@
+<div class="page-container">
+  <div class="right-side">
+    <dwu-user-login></dwu-user-login>
+    <dwu-file-uploader *ngIf="firebaseAuthService.user$ | async"></dwu-file-uploader>
+    <div class="footer"></div>
+  </div>
+</div>

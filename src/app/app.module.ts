@@ -5,6 +5,11 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
 import { UserLoginModule } from '@src/app/user-login/user-login.module';
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
+import {
+  FirebaseAuthService,
+  FirebaseFirestoreService,
+  FirebaseStorageService,
+} from '@services/index';
 
 @NgModule({
   imports: [
@@ -16,8 +21,11 @@ import { AppComponent } from '@src/app/app.component';
     AppComponent,
   ],
   providers: [
-      Location,
-      { provide: LocationStrategy, useClass: HashLocationStrategy },
+    Location,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    FirebaseAuthService,
+    FirebaseFirestoreService,
+    FirebaseStorageService,
   ],
   bootstrap: [AppComponent]
 })

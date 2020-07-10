@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { FirebaseStorageService } from '@services/firebase-storage.service';
 
@@ -8,6 +13,9 @@ import { FirebaseStorageService } from '@services/firebase-storage.service';
   styleUrls: ['./file-uploader.component.scss']
 })
 export class FileUploaderComponent {
+
+  @Input() showUploadButton: boolean = false;
+  @Output() fileChange = new EventEmitter<File>()
 
   public file: File;
   public fileUrl$ = this.fss.getFileUrl$();
@@ -20,8 +28,8 @@ export class FileUploaderComponent {
   public onFileChange(fileEvent: any) {
     if (fileEvent.target.files) {
       this.file = fileEvent.target.files[0];
+      this.fileChange.emit(this.file);
     }
-    console.log('this.file', this.file)
   }
 
   public upload() {

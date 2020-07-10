@@ -5,9 +5,9 @@ import {
   from,
 } from 'rxjs';
 
-import { User } from '@firebase-auth/user.model';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class FirebaseStorageService {
 
   public firebaseStorage = window.firebase.storage();

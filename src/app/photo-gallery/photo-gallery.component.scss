@@ -1,0 +1,11 @@
+@import 'mixins';
+
+:host {
+  @include responsive-page;
+  .page-container {
+    padding-left: 1rem;
+    .footer {
+      padding-bottom: 15rem;
+    }
+  }
+}

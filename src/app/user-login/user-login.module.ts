@@ -5,7 +5,10 @@ import { RouterModule } from '@angular/router';
 import { UserLoginRoutingModule } from '@app/user-login/user-login.routes';
 import { UserLoginComponent } from '@app/user-login/user-login.component';
 import { UserLoginSuccessComponent } from '@app/user-login/user-login-success/user-login-success.component';
-import { FirebaseAuthService } from '@services/firebase-auth.service'
+import {
+  FirebaseAuthService,
+  FirebaseFirestoreService,
+} from '@services/index';
 
 @NgModule({
   declarations: [
@@ -22,35 +25,7 @@ import { FirebaseAuthService } from '@services/firebase-auth.service'
   ],
   providers: [
     FirebaseAuthService,
+    FirebaseFirestoreService,
   ],
 })
 export class UserLoginModule { }
-
-// @NgModule({
-//   declarations: [
-//     UserLoginComponent,
-//     UserLoginSuccessComponent,
-//   ],
-//   imports: [
-//     CommonModule,
-//   ],
-//   exports: [
-//     UserLoginComponent,
-//     UserLoginSuccessComponent,
-//   ],
-//   providers: [],
-// })
-// export class FirebaseAuthModule { }
-
-// @NgModule({
-//   declarations: [],
-//   imports: [
-//     FirebaseAuthModule,
-//     UserLoginRoutingModule,
-//   ],
-//   exports: [],
-//   providers: [
-//     FirebaseAuthService,
-//   ],
-// })
-// export class FirebaseAuthWithRoutesModule { }

@@ -198,27 +198,35 @@
 }
 
 @mixin light-theme {
-        background-color: $eggshell-dark;
-    &:hover {
-        background-color: $laurel-green;
-    }
-    &.active {
-        background-color: $olive-green;
-        color: $lightest-green;
-    }
+  background-color: $eggshell-dark;
+  &:hover:not([disabled]) {
+    background-color: $laurel-green;
+  }
+  &.active:not([disabled]) {
+    background-color: $olive-green;
+    color: $lightest-green;
+  }
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.3;
+  }
 }
 
 @mixin dark-theme {
-    background-color: $black-olive;
+  background-color: $black-olive;
+  color: $lightest-green;
+  &:hover:not([disabled]) {
+    background-color: $army-green;
     color: $lightest-green;
-    &:hover {
-        background-color: $army-green;
-        color: $lightest-green;
-    }
-    &.active {
-        background-color: $olive-green;
-        color: $lightest-green;
-    }
+  }
+  &.active:not([disabled]) {
+    background-color: $olive-green;
+    color: $lightest-green;
+  }
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.3;
+  }
 }
 
 @mixin top-nav-page {

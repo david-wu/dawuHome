@@ -1,1 +1,8 @@
 @import 'mixins';
+
+.invisible {
+  display: none;
+}
+.sign-out-button {
+  @include dark-button;
+}

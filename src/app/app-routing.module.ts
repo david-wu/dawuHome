@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./poe/poe.module').then(m => m.PoeModule)
   },
   {
+    path: 'photos',
+    loadChildren: () => import('./photo-gallery/photo-gallery.module').then(m => m.PhotoGalleryModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'corona'

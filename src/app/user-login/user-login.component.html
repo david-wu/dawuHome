@@ -1,3 +1,15 @@
 
-<div #loginRef></div>
-<div class="button" (click)="signOut()">signOut</div>
+<div [class.invisible]="!(firebaseAuthService.authLoading$ | async)">
+  loading..
+</div>
+<div [class.invisible]="firebaseAuthService.authLoading$ | async">
+  <div
+    #loginRef
+    [class.invisible]="!(firebaseAuthService.canLogin$ | async)"
+  ></div>
+  <div
+    *ngIf="firebaseAuthService.user$ | async"
+    class="sign-out-button"
+    (click)="signOut()"
+  >Sign Out</div>
+</div>

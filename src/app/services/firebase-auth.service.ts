@@ -3,10 +3,13 @@ import {
   Observable,
   BehaviorSubject,
 } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { User } from '@firebase-auth/user.model';
+import { User } from '@models/index';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class FirebaseAuthService {
 
   public firebaseAuth = window.firebase.auth();
@@ -14,13 +17,11 @@ export class FirebaseAuthService {
   public firebaseAuthUI: any;
 
   public defaultUiConfig = {
-    // signInSuccessUrl: '#/auth-success',
     signInSuccessUrl: '#/auth-success',
     callbacks: {
       signInSuccess: () => false,
     },
     signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
       window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       // window.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
       // window.firebase.auth.TwitterAuthProvider.PROVIDER_ID,
@@ -29,20 +30,24 @@ export class FirebaseAuthService {
       // window.firebase.auth.PhoneAuthProvider.PROVIDER_ID,
       // window.firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
     ],
-    // tosUrl and privacyPolicyUrl accept either url string or a callback
-    // function.
-    // Terms of service url/callback.
+    // Terms of service and privacy url/callback.
     // tosUrl: '<your-tos-url>',
-    // Privacy policy url/callback.
     // privacyPolicyUrl: function() {
     //   window.location.assign('<your-privacy-policy-url>');
     // },
   };
   public user$ = new BehaviorSubject<User>(undefined);
-  public initializing$ = new BehaviorSubject<boolean>(true);
+  public authLoading$: Observable<boolean>;
+  public canLogin$: Observable<boolean>;
 
   constructor() {
     this.initialize();
+    this.authLoading$ = this.user$.pipe(
+      map((user: User) => user === undefined),
+    );
+    this.canLogin$ = this.user$.pipe(
+      map((user: User) => user === null),
+    )
   }
 
   public initialize() {
@@ -50,18 +55,18 @@ export class FirebaseAuthService {
       this.firebaseAuthUI = new this.FirebaseAuthUI(this.firebaseAuth);
     }
     this.firebaseAuth.onAuthStateChanged((userData) => {
-      // this.initializing$.next(false);
-      if (!userData) {
+      if (userData === null) {
+        this.user$.next(null);
         return;
       }
-      userData.getIdToken().then((accessToken: string) => {
-        const user = Object.assign(
-          new User(),
-          userData,
-          { accessToken },
-        );
-        this.user$.next(user);
+      const user = Object.assign(new User(), {
+        uid: userData.uid,
+        displayName: userData.displayName,
+        email: userData.email,
+        emailVerified: userData.emailVerified,
+        photoURL: userData.photoURL,
       });
+      this.user$.next(user);
     })
   }
 
@@ -72,10 +77,10 @@ export class FirebaseAuthService {
   }
 
   public signOut() {
-    return this.firebaseAuth.signOut()
-      .then(() => {
-        this.user$.next(undefined);
-      })
+    return this.firebaseAuth.signOut();
+    //   .then(() => {
+    //     this.user$.next(undefined);
+    //   })
   }
 
 }
