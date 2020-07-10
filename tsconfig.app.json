@@ -12,7 +12,8 @@
       "@common/*": ["src/app/common/*"],
       "@file-explorer/*": ["src/app/common/file-explorer/*"],
       "@utils/*": ["src/app/utils/*"],
-      "@firebase-auth/*": ["src/app/firebase-auth/*"]
+      "@firebase-auth/*": ["src/app/firebase-auth/*"],
+      "@services/*": ["src/app/services/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true

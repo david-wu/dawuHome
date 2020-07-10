@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FirebaseStorageService } from '@src/app/firebase-storage/firebase-storage.service';
+import { FirebaseStorageService } from '@services/firebase-storage.service';
 
 @Component({
   selector: 'dwu-file-uploader',

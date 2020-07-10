@@ -1,26 +1,39 @@
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  forkJoin,
+  Observable,
+} from 'rxjs';
 import { HttpClient } from '@angular/common/http'
-import { share } from 'rxjs/operators';
+import {
+  share,
+  map,
+} from 'rxjs/operators';
 
 @Injectable()
 export class CoronaService {
 
-    public latestPointsPath = '/assets/jh-corona/latest-points';
+  public latestPointsPath = '/assets/jh-corona/latest-points';
 
-    constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
-    public getCoronaFileUrl(location: string): string {
-        return `/assets/jh-corona/time-series/${location}.json`
-    }
+  public getCoronaFileUrl(location: string): string {
+    return `/assets/jh-corona/time-series/${location}.json`
+  }
 
-    public getCoronaFileByLocation(location: string): Observable<any> {
-        return this.http.get(this.getCoronaFileUrl(location));
-    }
+  public getCoronaFileByLocation(location: string): Observable<any> {
+    return this.http.get(this.getCoronaFileUrl(location));
+  }
 
-    public getCoronaLatestPoints(location: string): Observable<any> {
-        return this.http.get(`${this.latestPointsPath}/${location}.json`);
-    }
+  public getCoronaLatestPoints(location: string): Observable<any> {
+    return this.http.get(`${this.latestPointsPath}/${location}.json`);
+  }
+
+  public getCoronaLatestPointsMultiple(locations: string[]): Observable<any[]> {
+    const requests$ = locations.map((location: string) => {
+      return this.getCoronaLatestPoints(location);
+    });
+    return forkJoin(requests$);
+  }
 
 }

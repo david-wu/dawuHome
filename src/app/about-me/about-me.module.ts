@@ -5,15 +5,15 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from '@src/app/app.component';
 import { AboutMeComponent } from '@src/app/about-me/about-me.component';
 import { AboutMeRoutingModule } from '@src/app/about-me/about-me.routes';
-import { FirebaseAuthModule } from '@src/app/firebase-auth/firebase-auth.module';
-import { FirebaseStorageModule } from '@src/app/firebase-storage/firebase-storage.module';
+import { UserLoginModule } from '@src/app/user-login/user-login.module';
+import { FileUploaderModule } from '@src/app/file-uploader/file-uploader.module';
 
 @NgModule({
   imports: [
     AboutMeRoutingModule,
     CommonModule,
-    FirebaseStorageModule,
-    FirebaseAuthModule,
+    FileUploaderModule,
+    UserLoginModule,
   ],
   declarations: [
     AboutMeComponent,

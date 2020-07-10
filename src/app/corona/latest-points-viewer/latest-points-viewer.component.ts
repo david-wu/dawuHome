@@ -1,32 +1,31 @@
 import {
-    Component,
-    EventEmitter,
-    Input,
-    Output,
-    ViewChild,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
 } from '@angular/core';
 import {
-    MatTableDataSource,
-    MatSort,
+  MatTableDataSource,
+  MatSort,
 } from '@angular/material';
 import {
-    BehaviorSubject,
-    Observable,
-    of,
-    forkJoin,
-    combineLatest,
+  BehaviorSubject,
+  Observable,
+  of,
+  combineLatest,
 } from 'rxjs';
 import {
-    filter,
-    startWith,
-    switchMap,
-    map,
-    shareReplay,
+  filter,
+  startWith,
+  switchMap,
+  map,
+  shareReplay,
 } from 'rxjs/operators';
 import {
-    mapValues,
-    fromPairs,
-    zip,
+  mapValues,
+  fromPairs,
+  zip,
 } from 'lodash';
 
 import populationDataByFileName from '@src/assets/jh-corona/population-by-file-name.json';
@@ -34,8 +33,8 @@ import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
 import {
-    CoronaService,
-    CoronaStoreService,
+  CoronaService,
+  CoronaStoreService,
 } from '../services/index';
 
 @Component({
@@ -45,48 +44,45 @@ import {
 })
 export class LatestPointsViewerComponent {
 
-    @Input() locations: string[];
-    @ViewChild(MatSort, { static: true }) sort;
+  @Input() locations: string[];
+  @ViewChild(MatSort, { static: true }) sort;
 
-    public dataSource$: Observable<MatTableDataSource<any>>
-    public tableData$: Observable<any>;
-    public displayedColumns = ['location', 'cases', 'new', 'deaths', 'newDeaths'];
+  public dataSource$: Observable<MatTableDataSource<any>>
+  public tableData$: Observable<any>;
+  public displayedColumns = ['location', 'cases', 'new', 'deaths', 'newDeaths'];
 
-    constructor(
-        public coronaService: CoronaService,
-        public coronaStoreService: CoronaStoreService,
-    ) {
+  constructor(
+    public coronaService: CoronaService,
+    public coronaStoreService: CoronaStoreService,
+  ) {}
+
+  public ngOnChanges(changes) {
+    if (changes.locations && this.locations) {
+      const locations$ = this.coronaService.getCoronaLatestPointsMultiple(this.locations);
+      const sub = locations$.pipe(
+        map((files: File[]) => fromPairs(zip(this.locations, files))),
+        startWith(undefined),
+      ).subscribe((fileData: Record<string, any>) => {
+        this.coronaStoreService.setLastestPointsData(fileData);
+      });
     }
+  }
 
-    public ngOnChanges(changes) {
-        if (changes.locations && this.locations) {
-            const requests$ = this.locations.map((location: string) => {
-                return this.coronaService.getCoronaLatestPoints(location);
-            });
-            const sub = forkJoin(requests$).pipe(
-                map((files: File[]) => fromPairs(zip(this.locations, files))),
-                startWith(undefined),
-            ).subscribe((fileData: Record<string, any>) => {
-                this.coronaStoreService.setLastestPointsData(fileData);
-            });
-        }
-    }
-    public ngOnInit() {
-        this.tableData$ = this.coronaStoreService.latestPointsByLocation$.pipe(
-            map((latestPointsByLocation: Record<string, any>) => {
-                const latestPointData = latestPointsByLocation[this.locations[0]] || {};
-                const locations = Object.keys(latestPointData);
-                const locationData = locations.map((location: string) => {
-                    return {
-                        ...latestPointData[location],
-                        location,
-                    };
-                });
-                const dataSource = new MatTableDataSource(locationData);
-                dataSource.sort = this.sort
-                return dataSource;
-            }),
-        );
-    }
-
+  public ngOnInit() {
+    this.tableData$ = this.coronaStoreService.latestPointsByLocation$.pipe(
+      map((latestPointsByLocation: Record<string, any>) => {
+        const latestPointData = latestPointsByLocation[this.locations[0]] || {};
+        const locations = Object.keys(latestPointData);
+        const locationData = locations.map((location: string) => {
+          return {
+            ...latestPointData[location],
+            location,
+          };
+        });
+        const dataSource = new MatTableDataSource(locationData);
+        dataSource.sort = this.sort
+        return dataSource;
+      }),
+      );
+  }
 }

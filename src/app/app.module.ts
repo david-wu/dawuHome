@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-import { FirebaseAuthWithRoutesModule } from '@src/app/firebase-auth/firebase-auth.module';
+import { UserLoginModule } from '@src/app/user-login/user-login.module';
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
 
@@ -10,7 +10,7 @@ import { AppComponent } from '@src/app/app.component';
   imports: [
     NoopAnimationsModule,
     AppRoutingModule,
-    FirebaseAuthWithRoutesModule,
+    UserLoginModule,
   ],
   declarations: [
     AppComponent,
