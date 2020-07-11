@@ -623,6 +623,12 @@ var FirebaseFirestoreService = /** @class */ (function () {
         var doc = this.firestore.doc("users/" + user.uid + "/uploads/" + fileId);
         return doc.delete();
     };
+    /**
+     * registerFileId
+     * Initial creation of file that provides a fileId
+     * @param {File} file
+     * @param {User} user
+     */
     FirebaseFirestoreService.prototype.registerFileId = function (file, user) {
         var collection = this.firestore.doc("users/" + user.uid).collection('uploads');
         return collection.add({
