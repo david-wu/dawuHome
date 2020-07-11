@@ -25,6 +25,12 @@ export class FirebaseFirestoreService {
     return doc.delete();
   }
 
+  /**
+   * registerFileId
+   * Initial creation of file that provides a fileId
+   * @param {File} file
+   * @param {User} user
+   */
   public registerFileId(file: File, user: User) {
     const collection = this.firestore.doc(`users/${user.uid}`).collection('uploads');
     return collection.add({

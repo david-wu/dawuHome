@@ -32,7 +32,7 @@ export class PhotoGalleryService {
     console.log('fileDeleted', fileId);
   }
 
-  public async uploadFile(file: File, user: User) {
+  public async uploadFile(file: File, user: User, fileMeta: any = {}) {
     const registrationResponse = await this.ffs.registerFileId(file, user);
     const registeredFileId = registrationResponse.id;
     const fileUploadResponse = await this.fss.uploadFile(file, registeredFileId)
