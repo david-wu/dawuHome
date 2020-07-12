@@ -1069,6 +1069,260 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function() {
 
 /***/ }),
 
+/***/ "./node_modules/latlon-geohash/latlon-geohash.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/latlon-geohash/latlon-geohash.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+/* Geohash encoding/decoding and associated functions   (c) Chris Veness 2014-2019 / MIT Licence  */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+const base32 = '0123456789bcdefghjkmnpqrstuvwxyz'; // (geohash-specific) Base32 map
+
+
+/**
+ * Geohash: Gustavo Niemeyer’s geocoding system.
+ */
+class Geohash {
+
+    /**
+     * Encodes latitude/longitude to geohash, either to specified precision or to automatically
+     * evaluated precision.
+     *
+     * @param   {number} lat - Latitude in degrees.
+     * @param   {number} lon - Longitude in degrees.
+     * @param   {number} [precision] - Number of characters in resulting geohash.
+     * @returns {string} Geohash of supplied latitude/longitude.
+     * @throws  Invalid geohash.
+     *
+     * @example
+     *     const geohash = Geohash.encode(52.205, 0.119, 7); // => 'u120fxw'
+     */
+    static encode(lat, lon, precision) {
+        // infer precision?
+        if (typeof precision == 'undefined') {
+            // refine geohash until it matches precision of supplied lat/lon
+            for (let p=1; p<=12; p++) {
+                const hash = Geohash.encode(lat, lon, p);
+                const posn = Geohash.decode(hash);
+                if (posn.lat==lat && posn.lon==lon) return hash;
+            }
+            precision = 12; // set to maximum
+        }
+
+        lat = Number(lat);
+        lon = Number(lon);
+        precision = Number(precision);
+
+        if (isNaN(lat) || isNaN(lon) || isNaN(precision)) throw new Error('Invalid geohash');
+
+        let idx = 0; // index into base32 map
+        let bit = 0; // each char holds 5 bits
+        let evenBit = true;
+        let geohash = '';
+
+        let latMin =  -90, latMax =  90;
+        let lonMin = -180, lonMax = 180;
+
+        while (geohash.length < precision) {
+            if (evenBit) {
+                // bisect E-W longitude
+                const lonMid = (lonMin + lonMax) / 2;
+                if (lon >= lonMid) {
+                    idx = idx*2 + 1;
+                    lonMin = lonMid;
+                } else {
+                    idx = idx*2;
+                    lonMax = lonMid;
+                }
+            } else {
+                // bisect N-S latitude
+                const latMid = (latMin + latMax) / 2;
+                if (lat >= latMid) {
+                    idx = idx*2 + 1;
+                    latMin = latMid;
+                } else {
+                    idx = idx*2;
+                    latMax = latMid;
+                }
+            }
+            evenBit = !evenBit;
+
+            if (++bit == 5) {
+                // 5 bits gives us a character: append it and start over
+                geohash += base32.charAt(idx);
+                bit = 0;
+                idx = 0;
+            }
+        }
+
+        return geohash;
+    }
+
+
+    /**
+     * Decode geohash to latitude/longitude (location is approximate centre of geohash cell,
+     *     to reasonable precision).
+     *
+     * @param   {string} geohash - Geohash string to be converted to latitude/longitude.
+     * @returns {{lat:number, lon:number}} (Center of) geohashed location.
+     * @throws  Invalid geohash.
+     *
+     * @example
+     *     const latlon = Geohash.decode('u120fxw'); // => { lat: 52.205, lon: 0.1188 }
+     */
+    static decode(geohash) {
+
+        const bounds = Geohash.bounds(geohash); // <-- the hard work
+        // now just determine the centre of the cell...
+
+        const latMin = bounds.sw.lat, lonMin = bounds.sw.lon;
+        const latMax = bounds.ne.lat, lonMax = bounds.ne.lon;
+
+        // cell centre
+        let lat = (latMin + latMax)/2;
+        let lon = (lonMin + lonMax)/2;
+
+        // round to close to centre without excessive precision: ⌊2-log10(Δ°)⌋ decimal places
+        lat = lat.toFixed(Math.floor(2-Math.log(latMax-latMin)/Math.LN10));
+        lon = lon.toFixed(Math.floor(2-Math.log(lonMax-lonMin)/Math.LN10));
+
+        return { lat: Number(lat), lon: Number(lon) };
+    }
+
+
+    /**
+     * Returns SW/NE latitude/longitude bounds of specified geohash.
+     *
+     * @param   {string} geohash - Cell that bounds are required of.
+     * @returns {{sw: {lat: number, lon: number}, ne: {lat: number, lon: number}}}
+     * @throws  Invalid geohash.
+     */
+    static bounds(geohash) {
+        if (geohash.length == 0) throw new Error('Invalid geohash');
+
+        geohash = geohash.toLowerCase();
+
+        let evenBit = true;
+        let latMin =  -90, latMax =  90;
+        let lonMin = -180, lonMax = 180;
+
+        for (let i=0; i<geohash.length; i++) {
+            const chr = geohash.charAt(i);
+            const idx = base32.indexOf(chr);
+            if (idx == -1) throw new Error('Invalid geohash');
+
+            for (let n=4; n>=0; n--) {
+                const bitN = idx >> n & 1;
+                if (evenBit) {
+                    // longitude
+                    const lonMid = (lonMin+lonMax) / 2;
+                    if (bitN == 1) {
+                        lonMin = lonMid;
+                    } else {
+                        lonMax = lonMid;
+                    }
+                } else {
+                    // latitude
+                    const latMid = (latMin+latMax) / 2;
+                    if (bitN == 1) {
+                        latMin = latMid;
+                    } else {
+                        latMax = latMid;
+                    }
+                }
+                evenBit = !evenBit;
+            }
+        }
+
+        const bounds = {
+            sw: { lat: latMin, lon: lonMin },
+            ne: { lat: latMax, lon: lonMax },
+        };
+
+        return bounds;
+    }
+
+
+    /**
+     * Determines adjacent cell in given direction.
+     *
+     * @param   geohash - Cell to which adjacent cell is required.
+     * @param   direction - Direction from geohash (N/S/E/W).
+     * @returns {string} Geocode of adjacent cell.
+     * @throws  Invalid geohash.
+     */
+    static adjacent(geohash, direction) {
+        // based on github.com/davetroy/geohash-js
+
+        geohash = geohash.toLowerCase();
+        direction = direction.toLowerCase();
+
+        if (geohash.length == 0) throw new Error('Invalid geohash');
+        if ('nsew'.indexOf(direction) == -1) throw new Error('Invalid direction');
+
+        const neighbour = {
+            n: [ 'p0r21436x8zb9dcf5h7kjnmqesgutwvy', 'bc01fg45238967deuvhjyznpkmstqrwx' ],
+            s: [ '14365h7k9dcfesgujnmqp0r2twvyx8zb', '238967debc01fg45kmstqrwxuvhjyznp' ],
+            e: [ 'bc01fg45238967deuvhjyznpkmstqrwx', 'p0r21436x8zb9dcf5h7kjnmqesgutwvy' ],
+            w: [ '238967debc01fg45kmstqrwxuvhjyznp', '14365h7k9dcfesgujnmqp0r2twvyx8zb' ],
+        };
+        const border = {
+            n: [ 'prxz',     'bcfguvyz' ],
+            s: [ '028b',     '0145hjnp' ],
+            e: [ 'bcfguvyz', 'prxz'     ],
+            w: [ '0145hjnp', '028b'     ],
+        };
+
+        const lastCh = geohash.slice(-1);    // last character of hash
+        let parent = geohash.slice(0, -1); // hash without last character
+
+        const type = geohash.length % 2;
+
+        // check for edge-cases which don't share common prefix
+        if (border[direction][type].indexOf(lastCh) != -1 && parent != '') {
+            parent = Geohash.adjacent(parent, direction);
+        }
+
+        // append letter for direction to parent
+        return parent + base32.charAt(neighbour[direction][type].indexOf(lastCh));
+    }
+
+
+    /**
+     * Returns all 8 adjacent cells to specified geohash.
+     *
+     * @param   {string} geohash - Geohash neighbours are required of.
+     * @returns {{n,ne,e,se,s,sw,w,nw: string}}
+     * @throws  Invalid geohash.
+     */
+    static neighbours(geohash) {
+        return {
+            'n':  Geohash.adjacent(geohash, 'n'),
+            'ne': Geohash.adjacent(Geohash.adjacent(geohash, 'n'), 'e'),
+            'e':  Geohash.adjacent(geohash, 'e'),
+            'se': Geohash.adjacent(Geohash.adjacent(geohash, 's'), 'e'),
+            's':  Geohash.adjacent(geohash, 's'),
+            'sw': Geohash.adjacent(Geohash.adjacent(geohash, 's'), 'w'),
+            'w':  Geohash.adjacent(geohash, 'w'),
+            'nw': Geohash.adjacent(Geohash.adjacent(geohash, 'n'), 'w'),
+        };
+    }
+
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+/* harmony default export */ __webpack_exports__["default"] = (Geohash);
+
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/file-uploader/file-uploader.component.html":
 /*!**************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/file-uploader/file-uploader.component.html ***!
@@ -1082,6 +1336,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/my-uploads/my-uploads.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/my-uploads/my-uploads.component.html ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<dwu-user-login></dwu-user-login>\n<dwu-file-uploader\n  *ngIf=\"firebaseAuthService.user$ | async as user\"\n  (fileChange)=\"onFileChange($event, user)\"\n></dwu-file-uploader>\n<div\n  *ngIf=\"(uploadedFiles$ | async) as uploadedFiles\"\n  class=\"uploaded-file-container\"\n>\n  <div\n    *ngFor=\"let uploadedFile of uploadedFiles; trackBy: trackById\"\n    class=\"uploaded-file\"\n  >\n    <div class=\"file-name\">\n      <div>{{ uploadedFile.fileName }}</div>\n      <span\n        *ngIf=\"firebaseAuthService.user$ | async as user\"\n        class=\"material-icons\"\n        (click)=\"onDeleteFile(uploadedFile, user)\"\n      >delete</span>\n    </div>\n    <img\n      *ngIf=\"uploadedFile.uploadMeta\"\n      [src]=\"uploadedFile.uploadMeta.downloadUrl\"\n      class=\"file-pic\"\n    >\n    <div\n      *ngIf=\"!uploadedFile.uploadMeta\"\n      class=\"file-pic\"\n    >\n      <div class=\"dwu-loader\"></div>\n    </div>\n  </div>\n</div>\n<div class=\"footer\"></div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/near-me/near-me.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/near-me/near-me.component.html ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"nearByUploads$ | async as nearByUploads\" class=\"uploaded-file-container\">\n  <div\n    *ngFor=\"let uploadedFile of nearByUploads; trackBy: trackById\"\n    class=\"uploaded-file\"\n  >\n    <div class=\"file-name\">\n      <div>{{ uploadedFile.fileName }}</div>\n      <span\n        *ngIf=\"firebaseAuthService.user$ | async as user\"\n        class=\"material-icons\"\n        (click)=\"onDeleteFile(uploadedFile, user)\"\n      >delete</span>\n    </div>\n    <img\n      *ngIf=\"uploadedFile.uploadMeta\"\n      [src]=\"uploadedFile.uploadMeta.downloadUrl\"\n      class=\"file-pic\"\n    >\n    <div\n      *ngIf=\"!uploadedFile.uploadMeta\"\n      class=\"file-pic\"\n    >\n      <div class=\"dwu-loader\"></div>\n    </div>\n  </div>\n</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/photo-gallery.component.html":
 /*!**************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/photo-gallery.component.html ***!
@@ -1091,7 +1371,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n  <div class=\"right-side\">\n    <dwu-user-login></dwu-user-login>\n    <dwu-file-uploader\n      *ngIf=\"firebaseAuthService.user$ | async as user\"\n      (fileChange)=\"onFileChange($event, user)\"\n    ></dwu-file-uploader>\n    <div\n      *ngIf=\"(uploadedFiles$ | async) as uploadedFiles\"\n      class=\"uploaded-file-container\"\n    >\n      <div\n        *ngFor=\"let uploadedFile of uploadedFiles; trackBy: trackById\"\n        class=\"uploaded-file\"\n      >\n        <div class=\"file-name\">\n          <div>{{ uploadedFile.fileName }}</div>\n          <span\n            *ngIf=\"firebaseAuthService.user$ | async as user\"\n            class=\"material-icons\"\n            (click)=\"onDeleteFile(uploadedFile, user)\"\n          >delete</span>\n        </div>\n        <img\n          *ngIf=\"uploadedFile.uploadMeta\"\n          [src]=\"uploadedFile.uploadMeta.downloadUrl\"\n          class=\"file-pic\"\n        >\n        <div\n          *ngIf=\"!uploadedFile.uploadMeta\"\n          class=\"file-pic\"\n        >\n          <div class=\"loader\"></div>\n        </div>\n      </div>\n    </div>\n    <div class=\"footer\"></div>\n  </div>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n\n  <div class=\"nav-items-container\">\n    <div\n      class=\"nav-item\"\n      [routerLinkActive]=\"['active']\"\n      [routerLink]=\"['./near-me']\"\n    >Near Me</div>\n    <div\n      class=\"nav-item\"\n      [routerLinkActive]=\"['active']\"\n      [routerLink]=\"['./my-uploads']\"\n    >My Uploads</div>\n  </div>\n  <div class=\"page-content\">\n    <router-outlet></router-outlet>\n    <div class=\"footer\"></div>\n  </div>\n</div>\n\n");
 
 /***/ }),
 
@@ -1210,6 +1490,151 @@ var FileUploaderModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/photo-gallery/my-uploads/my-uploads.component.scss":
+/*!********************************************************************!*\
+  !*** ./src/app/photo-gallery/my-uploads/my-uploads.component.scss ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("dwu-user-login, dwu-file-uploader {\n  margin: 0.25rem;\n  display: block;\n}\n\n.uploaded-file-container {\n  padding: 0.5rem;\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.uploaded-file-container .uploaded-file {\n  margin: 0.5rem;\n  width: 20rem;\n  display: flex;\n  flex-direction: column;\n}\n\n.uploaded-file-container .uploaded-file .file-name {\n  color: #F4F7EA;\n  background-color: #3F4038;\n  padding: 0.25rem 0.5rem;\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n\n.uploaded-file-container .uploaded-file .file-pic {\n  width: 20rem;\n  height: 15rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9waG90by1nYWxsZXJ5L215LXVwbG9hZHMvbXktdXBsb2Fkcy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvcGhvdG8tZ2FsbGVyeS9teS11cGxvYWRzL215LXVwbG9hZHMuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvYWRtaW4vcHJvamVjdHMvZGF3dS1ob21lL3NyYy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSxlQUFBO0VBQ0EsY0FBQTtBQ0RGOztBRElBO0VBQ0UsZUFBQTtFQUNBLGFBQUE7RUFDQSxlQUFBO0FDREY7O0FERUU7RUFDRSxjQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtBQ0FKOztBRENJO0VBQ0UsY0VOUTtFRk9SLHlCRUlRO0VGSFIsdUJBQUE7RUFDQSxrQ0FBQTtBQ0NOOztBRENJO0VBQ0UsWUFBQTtFQUNBLGFBQUE7QUNDTiIsImZpbGUiOiJzcmMvYXBwL3Bob3RvLWdhbGxlcnkvbXktdXBsb2Fkcy9teS11cGxvYWRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCAnbWl4aW5zJztcblxuZHd1LXVzZXItbG9naW4sIGR3dS1maWxlLXVwbG9hZGVyIHtcbiAgbWFyZ2luOiAwLjI1cmVtO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnVwbG9hZGVkLWZpbGUtY29udGFpbmVyIHtcbiAgcGFkZGluZzogMC41cmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LXdyYXA6IHdyYXA7XG4gIC51cGxvYWRlZC1maWxlIHtcbiAgICBtYXJnaW46IDAuNXJlbTtcbiAgICB3aWR0aDogMjByZW07XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIC5maWxlLW5hbWUge1xuICAgICAgY29sb3I6ICRsaWdodC1ncmVlbjtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICRibGFjay1vbGl2ZTtcbiAgICAgIHBhZGRpbmc6IDAuMjVyZW0gMC41cmVtO1xuICAgICAgYm9yZGVyLXJhZGl1czogMC4yNXJlbSAwLjI1cmVtIDAgMDtcbiAgICB9XG4gICAgLmZpbGUtcGljIHtcbiAgICAgIHdpZHRoOiAyMHJlbTtcbiAgICAgIGhlaWdodDogMTVyZW07XG4gICAgfVxuICB9XG59XG5cbiIsImR3dS11c2VyLWxvZ2luLCBkd3UtZmlsZS11cGxvYWRlciB7XG4gIG1hcmdpbjogMC4yNXJlbTtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbi51cGxvYWRlZC1maWxlLWNvbnRhaW5lciB7XG4gIHBhZGRpbmc6IDAuNXJlbTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuLnVwbG9hZGVkLWZpbGUtY29udGFpbmVyIC51cGxvYWRlZC1maWxlIHtcbiAgbWFyZ2luOiAwLjVyZW07XG4gIHdpZHRoOiAyMHJlbTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbn1cbi51cGxvYWRlZC1maWxlLWNvbnRhaW5lciAudXBsb2FkZWQtZmlsZSAuZmlsZS1uYW1lIHtcbiAgY29sb3I6ICNGNEY3RUE7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzRjQwMzg7XG4gIHBhZGRpbmc6IDAuMjVyZW0gMC41cmVtO1xuICBib3JkZXItcmFkaXVzOiAwLjI1cmVtIDAuMjVyZW0gMCAwO1xufVxuLnVwbG9hZGVkLWZpbGUtY29udGFpbmVyIC51cGxvYWRlZC1maWxlIC5maWxlLXBpYyB7XG4gIHdpZHRoOiAyMHJlbTtcbiAgaGVpZ2h0OiAxNXJlbTtcbn0iLCJcbiRkYXJrLWdyZWVuOiAjMjkyRTEyO1xuJGFybXktZ3JlZW46ICM0QjUzMjA7XG4kb2xpdmUtZ3JlZW46ICM3MDgyMzg7XG4kbW9zcy1ncmVlbjogIzhBOUE1QjtcbiRsYXVyZWwtZ3JlZW46ICNCQUMzOUY7XG5cbiRzYXR1cmF0ZWQtb2xpdmU6ICM3Mjk5MDA7XG4kc2F0dXJhdGVkLWJsdWU6ICMxNjRFQjc7XG5cbi8vIG5pY2UgZm9yIHRleHQgYWdhaW5zdCBkYXJrIGJhY2tncm91bmRcbiRsaWdodC1ncmVlbjogI0Y0RjdFQTtcbiRsaWdodGVzdC1ncmVlbjogI0ZDRkNGOTtcblxuLy8gVXNlZCBmb3IgZmlsZSBzZWxlY3RvclxuJGVnZ3NoZWxsLWRhcmtlcjogI0RERDlDRjtcbiRlZ2dzaGVsbC1kYXJrOiAjRUFFNkRBO1xuJGVnZ3NoZWxsOiAjRUZFQkRGO1xuJGVnZ3NoZWxsLWxpZ2h0OiAjRjJFRUUxO1xuXG4vLyBncmF5c1xuJGJhc2ljYWxseS1ibGFjazogIzIwMjEyNDtcbiRibGFjay1vbGl2ZTogIzNGNDAzODtcbiRncmFuaXRlOiAjNjU2MzVGO1xuJGxpZ2h0ZXItZ3JheTogIzlEOUI5OTtcbiR3aGl0ZTogI2ZmZjtcblxuJGdvbGQ6ICNENkI5MDI7XG4kc3Rhci1ibHVlOiAjMUQ2MkM0O1xuXG4kYnJlYWstc21hbGw6IDU1MHB4O1xuJGJyZWFrLW1kOiA4MDBweDtcbiRicmVhay1sYXJnZTogMTAyNHB4O1xuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/photo-gallery/my-uploads/my-uploads.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/photo-gallery/my-uploads/my-uploads.component.ts ***!
+  \******************************************************************/
+/*! exports provided: MyUploadsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyUploadsComponent", function() { return MyUploadsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
+/* harmony import */ var _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @photo-gallery/services/index */ "./src/app/photo-gallery/services/index.ts");
+
+
+
+
+// import * as EXIFStatic from 'exif-js';
+var MyUploadsComponent = /** @class */ (function () {
+    function MyUploadsComponent(firebaseAuthService, pgs, exifService, userLocationService) {
+        this.firebaseAuthService = firebaseAuthService;
+        this.pgs = pgs;
+        this.exifService = exifService;
+        this.userLocationService = userLocationService;
+        this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+    }
+    MyUploadsComponent.prototype.onFileChange = function (file, user) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var fileMetadata;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.exifService.getMetaData(file)];
+                    case 1:
+                        fileMetadata = _a.sent();
+                        this.pgs.uploadFile(file, user, fileMetadata);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MyUploadsComponent.prototype.onDeleteFile = function (file, user) {
+        this.pgs.deleteFile(file.id, user);
+    };
+    MyUploadsComponent.prototype.trackById = function (file) {
+        return file.id;
+    };
+    MyUploadsComponent.ctorParameters = function () { return [
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["ExifService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["UserLocationService"] }
+    ]; };
+    MyUploadsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-my-uploads',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./my-uploads.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/my-uploads/my-uploads.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./my-uploads.component.scss */ "./src/app/photo-gallery/my-uploads/my-uploads.component.scss")).default]
+        })
+    ], MyUploadsComponent);
+    return MyUploadsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/photo-gallery/near-me/near-me.component.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/photo-gallery/near-me/near-me.component.scss ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".uploaded-file-container {\n  padding: 0.5rem;\n  display: flex;\n  flex-wrap: wrap;\n}\n.uploaded-file-container .uploaded-file {\n  margin: 0.5rem;\n  width: 20rem;\n  display: flex;\n  flex-direction: column;\n}\n.uploaded-file-container .uploaded-file .file-name {\n  color: #F4F7EA;\n  background-color: #3F4038;\n  padding: 0.25rem 0.5rem;\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.uploaded-file-container .uploaded-file .file-pic {\n  width: 20rem;\n  height: 15rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9waG90by1nYWxsZXJ5L25lYXItbWUvbmVhci1tZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvcGhvdG8tZ2FsbGVyeS9uZWFyLW1lL25lYXItbWUuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvYWRtaW4vcHJvamVjdHMvZGF3dS1ob21lL3NyYy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSxlQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUNERjtBREVFO0VBQ0UsY0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0Esc0JBQUE7QUNBSjtBRENJO0VBQ0UsY0VEUTtFRkVSLHlCRVNRO0VGUlIsdUJBQUE7RUFDQSxrQ0FBQTtBQ0NOO0FEQ0k7RUFDRSxZQUFBO0VBQ0EsYUFBQTtBQ0NOIiwiZmlsZSI6InNyYy9hcHAvcGhvdG8tZ2FsbGVyeS9uZWFyLW1lL25lYXItbWUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0ICdtaXhpbnMnO1xuXG4udXBsb2FkZWQtZmlsZS1jb250YWluZXIge1xuICBwYWRkaW5nOiAwLjVyZW07XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAgLnVwbG9hZGVkLWZpbGUge1xuICAgIG1hcmdpbjogMC41cmVtO1xuICAgIHdpZHRoOiAyMHJlbTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgLmZpbGUtbmFtZSB7XG4gICAgICBjb2xvcjogJGxpZ2h0LWdyZWVuO1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICAgICAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gICAgICBib3JkZXItcmFkaXVzOiAwLjI1cmVtIDAuMjVyZW0gMCAwO1xuICAgIH1cbiAgICAuZmlsZS1waWMge1xuICAgICAgd2lkdGg6IDIwcmVtO1xuICAgICAgaGVpZ2h0OiAxNXJlbTtcbiAgICB9XG4gIH1cbn1cblxuIiwiLnVwbG9hZGVkLWZpbGUtY29udGFpbmVyIHtcbiAgcGFkZGluZzogMC41cmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG4udXBsb2FkZWQtZmlsZS1jb250YWluZXIgLnVwbG9hZGVkLWZpbGUge1xuICBtYXJnaW46IDAuNXJlbTtcbiAgd2lkdGg6IDIwcmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLnVwbG9hZGVkLWZpbGUtY29udGFpbmVyIC51cGxvYWRlZC1maWxlIC5maWxlLW5hbWUge1xuICBjb2xvcjogI0Y0RjdFQTtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNGNDAzODtcbiAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gIGJvcmRlci1yYWRpdXM6IDAuMjVyZW0gMC4yNXJlbSAwIDA7XG59XG4udXBsb2FkZWQtZmlsZS1jb250YWluZXIgLnVwbG9hZGVkLWZpbGUgLmZpbGUtcGljIHtcbiAgd2lkdGg6IDIwcmVtO1xuICBoZWlnaHQ6IDE1cmVtO1xufSIsIlxuJGRhcmstZ3JlZW46ICMyOTJFMTI7XG4kYXJteS1ncmVlbjogIzRCNTMyMDtcbiRvbGl2ZS1ncmVlbjogIzcwODIzODtcbiRtb3NzLWdyZWVuOiAjOEE5QTVCO1xuJGxhdXJlbC1ncmVlbjogI0JBQzM5RjtcblxuJHNhdHVyYXRlZC1vbGl2ZTogIzcyOTkwMDtcbiRzYXR1cmF0ZWQtYmx1ZTogIzE2NEVCNztcblxuLy8gbmljZSBmb3IgdGV4dCBhZ2FpbnN0IGRhcmsgYmFja2dyb3VuZFxuJGxpZ2h0LWdyZWVuOiAjRjRGN0VBO1xuJGxpZ2h0ZXN0LWdyZWVuOiAjRkNGQ0Y5O1xuXG4vLyBVc2VkIGZvciBmaWxlIHNlbGVjdG9yXG4kZWdnc2hlbGwtZGFya2VyOiAjREREOUNGO1xuJGVnZ3NoZWxsLWRhcms6ICNFQUU2REE7XG4kZWdnc2hlbGw6ICNFRkVCREY7XG4kZWdnc2hlbGwtbGlnaHQ6ICNGMkVFRTE7XG5cbi8vIGdyYXlzXG4kYmFzaWNhbGx5LWJsYWNrOiAjMjAyMTI0O1xuJGJsYWNrLW9saXZlOiAjM0Y0MDM4O1xuJGdyYW5pdGU6ICM2NTYzNUY7XG4kbGlnaHRlci1ncmF5OiAjOUQ5Qjk5O1xuJHdoaXRlOiAjZmZmO1xuXG4kZ29sZDogI0Q2QjkwMjtcbiRzdGFyLWJsdWU6ICMxRDYyQzQ7XG5cbiRicmVhay1zbWFsbDogNTUwcHg7XG4kYnJlYWstbWQ6IDgwMHB4O1xuJGJyZWFrLWxhcmdlOiAxMDI0cHg7XG4iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/photo-gallery/near-me/near-me.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/photo-gallery/near-me/near-me.component.ts ***!
+  \************************************************************/
+/*! exports provided: NearMeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NearMeComponent", function() { return NearMeComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
+/* harmony import */ var _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @photo-gallery/services/index */ "./src/app/photo-gallery/services/index.ts");
+
+
+
+
+var NearMeComponent = /** @class */ (function () {
+    function NearMeComponent(firebaseAuthService, pgs, exifService, userLocationService) {
+        this.firebaseAuthService = firebaseAuthService;
+        this.pgs = pgs;
+        this.exifService = exifService;
+        this.userLocationService = userLocationService;
+        // this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+        this.nearByUploads$ = this.pgs.getNearByUploads$();
+        console.log('this.nearByUploads$', this.nearByUploads$);
+        this.nearByUploads$.subscribe(console.log);
+    }
+    NearMeComponent.prototype.trackById = function (file) {
+        return file.id;
+    };
+    NearMeComponent.ctorParameters = function () { return [
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["ExifService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["UserLocationService"] }
+    ]; };
+    NearMeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-near-me',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./near-me.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/near-me/near-me.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./near-me.component.scss */ "./src/app/photo-gallery/near-me/near-me.component.scss")).default]
+        })
+    ], NearMeComponent);
+    return NearMeComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/photo-gallery/photo-gallery.component.scss":
 /*!************************************************************!*\
   !*** ./src/app/photo-gallery/photo-gallery.component.scss ***!
@@ -1219,7 +1644,7 @@ var FileUploaderModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("@media screen and (max-width: 750px) {\n  :host div.page-container {\n    flex-direction: column;\n  }\n  :host div.page-container .left-side {\n    flex: 0 0 auto;\n    height: 13.25rem;\n    width: 100%;\n    max-width: none;\n    transition: height 50ms;\n  }\n  :host div.page-container .left-side.expanded {\n    height: 85%;\n  }\n  :host div.page-container .left-side .expander {\n    background-color: #3F4038;\n    color: #FCFCF9;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    width: 3.5rem;\n    height: 1rem;\n    border: 1px solid #8A9A5B;\n    border-radius: 5px 5px 0 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    cursor: pointer;\n  }\n  :host div.page-container .left-side .expander:hover:not([disabled]) {\n    background-color: #4B5320;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander.active:not([disabled]) {\n    background-color: #708238;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander[disabled] {\n    pointer-events: none;\n    opacity: 0.3;\n  }\n  :host div.page-container .left-side .expander .expander-icon {\n    font-size: 16px;\n  }\n  :host div.page-container .left-side .expander .expander-icon.flipped {\n    transform: rotate(180deg);\n  }\n}\n:host .page-container {\n  height: 100%;\n  width: 100%;\n  display: flex;\n}\n:host .page-container .left-side {\n  position: relative;\n  flex: 1 1 0;\n  overflow: hidden;\n  max-width: 27.5%;\n  min-width: 20rem;\n}\n:host .page-container .left-side .expander {\n  display: none;\n}\n:host .page-container .right-side {\n  flex: 1 1 0;\n  overflow: auto;\n  position: relative;\n}\n:host .page-container {\n  padding-left: 1rem;\n}\n:host .page-container .footer {\n  padding-bottom: 15rem;\n}\ndwu-user-login, dwu-file-uploader {\n  margin: 0.25rem;\n  display: block;\n}\n.uploaded-file-container {\n  padding: 0.5rem;\n  display: flex;\n  flex-wrap: wrap;\n}\n.uploaded-file-container .uploaded-file {\n  margin: 0.5rem;\n  width: 20rem;\n  display: flex;\n  flex-direction: column;\n}\n.uploaded-file-container .uploaded-file .file-name {\n  color: #F4F7EA;\n  background-color: #3F4038;\n  padding: 0.25rem 0.5rem;\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.uploaded-file-container .uploaded-file .file-pic {\n  width: 20rem;\n  height: 15rem;\n}\n.loader, .loader:before, .loader:after {\n  background: #3F4038;\n  -webkit-animation: load1 1s infinite ease-in-out;\n  animation: load1 1s infinite ease-in-out;\n  width: 1em;\n  height: 4em;\n}\n.loader {\n  color: #3F4038;\n  text-indent: -9999em;\n  margin: 88px auto;\n  position: relative;\n  font-size: 11px;\n  transform: translateZ(0);\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n.loader:before, .loader:after {\n  position: absolute;\n  top: 0;\n  content: \"\";\n}\n.loader:before {\n  left: -1.5em;\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n.loader:after {\n  left: 1.5em;\n}\n@-webkit-keyframes load1 {\n  0%, 80%, 100% {\n    box-shadow: 0 0;\n    height: 3em;\n  }\n  40% {\n    box-shadow: 0 -2em;\n    height: 4em;\n  }\n}\n@keyframes load1 {\n  0%, 80%, 100% {\n    box-shadow: 0 0;\n    height: 3em;\n  }\n  40% {\n    box-shadow: 0 -2em;\n    height: 4em;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy9taXhpbnMuc2NzcyIsInNyYy9hcHAvcGhvdG8tZ2FsbGVyeS9waG90by1nYWxsZXJ5LmNvbXBvbmVudC5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvc3R5bGVzL3ZhcmlhYmxlcy5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvYXBwL3Bob3RvLWdhbGxlcnkvcGhvdG8tZ2FsbGVyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUE0Rkk7RUFDSTtJQUNJLHNCQUFBO0VDM0ZWO0VENEZVO0lBQ0ksY0FBQTtJQUNBLGdCQUFBO0lBQ0EsV0FBQTtJQUNBLGVBQUE7SUFFQSx1QkFBQTtFQzNGZDtFRDRGYztJQUNJLFdBQUE7RUMxRmxCO0VENEZjO0lBOEdkLHlCRWpNWTtJRmtNWixjRTVNZTtJRitGRyxrQkFBQTtJQUNBLFNBQUE7SUFDQSxTQUFBO0lBQ0EsMkJBQUE7SUFDQSxhQUFBO0lBQ0EsWUFBQTtJQUNBLHlCQUFBO0lBQ0EsMEJBQUE7SUFDQSxrQkFBQTtJQUNBLGFBQUE7SUFDQSx1QkFBQTtJQUNBLGVBQUE7RUN6RmxCO0VENExBO0lBQ0UseUJFeE5TO0lGeU5ULGNFL01hO0VEcUJmO0VENExBO0lBQ0UseUJFM05VO0lGNE5WLGNFbk5hO0VEeUJmO0VENExBO0lBQ0Usb0JBQUE7SUFDQSxZQUFBO0VDMUxGO0VEOEVrQjtJQUNJLGVBQUE7RUM1RXRCO0VENkVzQjtJQUNJLHlCQUFBO0VDM0UxQjtBQUNGO0FEa0ZJO0VBQ0ksWUFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDaEZSO0FEa0ZRO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FDaEZaO0FEaUZZO0VBQ0ksYUFBQTtBQy9FaEI7QURrRlE7RUFDSSxXQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0FDaEZaO0FFaEVFO0VBQ0Usa0JBQUE7QUZrRUo7QUVqRUk7RUFDRSxxQkFBQTtBRm1FTjtBRTlEQTtFQUNFLGVBQUE7RUFDQSxjQUFBO0FGaUVGO0FFOURBO0VBQ0UsZUFBQTtFQUNBLGFBQUE7RUFDQSxlQUFBO0FGaUVGO0FFaEVFO0VBQ0UsY0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0Esc0JBQUE7QUZrRUo7QUVqRUk7RUFDRSxjRGhCUTtFQ2lCUix5QkROUTtFQ09SLHVCQUFBO0VBQ0Esa0NBQUE7QUZtRU47QUVqRUk7RUFDRSxZQUFBO0VBQ0EsYUFBQTtBRm1FTjtBRTVEQTtFQUNFLG1CRHBCWTtFQ3FCWixnREFBQTtFQUNBLHdDQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7QUYrREY7QUU3REE7RUFDRSxjRDNCWTtFQzRCWixvQkFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBR0Esd0JBQUE7RUFDQSwrQkFBQTtFQUNBLHVCQUFBO0FGZ0VGO0FFOURBO0VBQ0Usa0JBQUE7RUFDQSxNQUFBO0VBQ0EsV0FBQTtBRmlFRjtBRS9EQTtFQUNFLFlBQUE7RUFDQSwrQkFBQTtFQUNBLHVCQUFBO0FGa0VGO0FFaEVBO0VBQ0UsV0FBQTtBRm1FRjtBRWpFQTtFQUNFO0lBR0UsZUFBQTtJQUNBLFdBQUE7RUZrRUY7RUVoRUE7SUFDRSxrQkFBQTtJQUNBLFdBQUE7RUZrRUY7QUFDRjtBRWhFQTtFQUNFO0lBR0UsZUFBQTtJQUNBLFdBQUE7RUZnRUY7RUU5REE7SUFDRSxrQkFBQTtJQUNBLFdBQUE7RUZnRUY7QUFDRiIsImZpbGUiOiJzcmMvYXBwL3Bob3RvLWdhbGxlcnkvcGhvdG8tZ2FsbGVyeS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgJ3ZhcmlhYmxlcyc7XG5cbkBtaXhpbiBiYXNlLWNvcm9uYS1kYXNoYm9hcmQge1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHBhZGRpbmctYm90dG9tOiAycmVtO1xuICAgIC5jaGFydC1jb250YWluZXIge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICAuY2hhcnQtaGVhZGVyIHtcbiAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgIHBhZGRpbmc6IDAgMS41cmVtO1xuICAgICAgICAgICAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xuICAgICAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcblxuICAgICAgICAgICAgLnJhZGlvLWJ1dHRvbi1jb250YWluZXJ7XG4gICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgICAgICAgZmxleC13cmFwOiB3cmFwO1xuXG4gICAgICAgICAgICAgICAgLnJhZGlvLWJ1dHRvbnMge1xuICAgICAgICAgICAgICAgICAgICBAaW5jbHVkZSByYWRpby1idXR0b24tY29udGFpbmVyO1xuICAgICAgICAgICAgICAgICAgICAmOm5vdCg6Zmlyc3QtY2hpbGQpIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcmdpbi1sZWZ0OiAxcmVtO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICYuY2hhcnQge1xuICAgICAgICAgICAgICAgICAgICAgICAgLnJhZGlvLWJ1dHRvbiB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluLXdpZHRoOiBhdXRvO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBhZGRpbmc6IDNweDtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgLm1hdGVyaWFsLWljb25zIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZmxleDogMSAwIGF1dG87XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtc2l6ZTogMS4yNXJlbTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgLnJhZGlvLWJ1dHRvbiB7XG4gICAgICAgICAgICAgICAgICAgICAgICBtYXJnaW4tdG9wOiAwLjVyZW07XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBkd3Utc3RhdC12aWV3ZXIge1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgICAgICAgICAgICAgICBmbGV4OiAxIDAgYXV0bztcbiAgICAgICAgICAgICAgICBtYXJnaW4tdG9wOiAxcmVtO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5vdmVydmlldy5jaGFydCB7XG4gICAgICAgICAgICBoZWlnaHQ6IDEyLjVyZW07XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgfVxuICAgICAgICBkd3UtY2hhcnQtbGVnZW5kIHtcbiAgICAgICAgICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgICAgICAgICAgbWFyZ2luLXRvcDogMC4yNXJlbTtcbiAgICAgICAgICAgIG1hcmdpbi1ib3R0b206IDJyZW07XG4gICAgICAgIH1cbiAgICB9XG59XG5cbkBtaXhpbiByYWRpby1idXR0b24tY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICBAaW5jbHVkZSBsaWdodC1taW5pLWJ1dHRvbjtcbiAgICAgICAgQGluY2x1ZGUgc2hhZG93O1xuICAgICAgICAmOmZpcnN0LWNoaWxkIHtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDVweCAwIDAgNXB4O1xuICAgICAgICB9XG4gICAgICAgICY6bGFzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAwIDVweCA1cHggMDtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuQG1peGluIHNoYWRvdyB7XG4gICAgdHJhbnNpdGlvbi1kdXJhdGlvbjogYm94LXNoYWRvdyAyNW1zLCB0cmFuc2Zvcm0sIDI1bXM7XG4gICAgYm94LXNoYWRvdzogMXB4IDFweCAycHggMCAkbGlnaHRlci1ncmF5O1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwKTtcbiAgICAmOmFjdGl2ZSB7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICBib3gtc2hhZG93OiBub25lO1xuICAgIH1cbiAgICAmLmFjdGl2ZSB7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICBib3gtc2hhZG93OiBub25lO1xuICAgIH1cbn1cblxuQG1peGluIHJlc3BvbnNpdmUtcGFnZSB7XG4gICAgQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNzUwcHgpIHtcbiAgICAgICAgZGl2LnBhZ2UtY29udGFpbmVyIHtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICAgICAgICAubGVmdC1zaWRlIHtcbiAgICAgICAgICAgICAgICBmbGV4OiAwIDAgYXV0bztcbiAgICAgICAgICAgICAgICBoZWlnaHQ6IDEzLjI1cmVtO1xuICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgICAgICAgICAvLyBtaW4td2lkdGg6IG5vbmU7XG4gICAgICAgICAgICAgICAgdHJhbnNpdGlvbjogaGVpZ2h0IDUwbXM7XG4gICAgICAgICAgICAgICAgJi5leHBhbmRlZCB7XG4gICAgICAgICAgICAgICAgICAgIGhlaWdodDogODUlO1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAuZXhwYW5kZXIge1xuICAgICAgICAgICAgICAgICAgICBAaW5jbHVkZSBkYXJrLXRoZW1lO1xuICAgICAgICAgICAgICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgICAgICAgICAgICAgIGJvdHRvbTogMDtcbiAgICAgICAgICAgICAgICAgICAgbGVmdDogNTAlO1xuICAgICAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XG4gICAgICAgICAgICAgICAgICAgIHdpZHRoOiAzLjVyZW07XG4gICAgICAgICAgICAgICAgICAgIGhlaWdodDogMXJlbTtcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgJG1vc3MtZ3JlZW47XG4gICAgICAgICAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDVweCA1cHggMCAwIDtcbiAgICAgICAgICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICAgICAgICAgICAgICAuZXhwYW5kZXItaWNvbiB7XG4gICAgICAgICAgICAgICAgICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgICAgICAgICAgICAgICAgICAmLmZsaXBwZWQge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDE4MGRlZyk7XG4gICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgIH1cbiAgICAucGFnZS1jb250YWluZXIge1xuICAgICAgICBoZWlnaHQ6IDEwMCU7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuXG4gICAgICAgIC5sZWZ0LXNpZGUge1xuICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICAgICAgZmxleDogMSAxIDA7XG4gICAgICAgICAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgICAgICAgICAgbWF4LXdpZHRoOiAyNy41JTtcbiAgICAgICAgICAgIG1pbi13aWR0aDogMjByZW07XG4gICAgICAgICAgICAuZXhwYW5kZXIge1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgICAgLnJpZ2h0LXNpZGUge1xuICAgICAgICAgICAgZmxleDogMSAxIDA7XG4gICAgICAgICAgICBvdmVyZmxvdzogYXV0bztcbiAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgfVxuICAgIH1cblxufVxuQG1peGluIGxpZ2h0LW1pbmktYnV0dG9uIHtcbiAgICBAaW5jbHVkZSBsaWdodC10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24teHM7XG59XG5cbkBtaXhpbiBsaWdodC1zbWFsbC1idXR0b24ge1xuICAgIEBpbmNsdWRlIGxpZ2h0LXRoZW1lO1xuICAgIEBpbmNsdWRlIGJ1dHRvbi1zbTtcbn1cblxuQG1peGluIGRhcmstYnV0dG9uIHtcbiAgICBAaW5jbHVkZSBkYXJrLXRoZW1lO1xuICAgIEBpbmNsdWRlIGJ1dHRvbi1tZDtcbn1cblxuQG1peGluIGJ1dHRvbi14cyB7XG4gICAgbWluLXdpZHRoOiAycmVtO1xuICAgIHBhZGRpbmc6IDAuMjVyZW0gMC41cmVtO1xuICAgIGZvbnQtc2l6ZTogMXJlbTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cblxuQG1peGluIGJ1dHRvbi1zbSB7XG4gICAgbWluLXdpZHRoOiAzcmVtO1xuICAgIHBhZGRpbmc6IDAuMjVyZW0gMC41cmVtO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG5AbWl4aW4gYnV0dG9uLW1kIHtcbiAgICB3aWR0aDogOHJlbTtcbiAgICBwYWRkaW5nOiAwLjVyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbkBtaXhpbiBsaWdodC10aGVtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRlZ2dzaGVsbC1kYXJrO1xuICAmOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogJGxhdXJlbC1ncmVlbjtcbiAgfVxuICAmLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRvbGl2ZS1ncmVlbjtcbiAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICB9XG4gICZbZGlzYWJsZWRdIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBvcGFjaXR5OiAwLjM7XG4gIH1cbn1cblxuQG1peGluIGRhcmstdGhlbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkYmxhY2stb2xpdmU7XG4gIGNvbG9yOiAkbGlnaHRlc3QtZ3JlZW47XG4gICY6aG92ZXI6bm90KFtkaXNhYmxlZF0pIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkYXJteS1ncmVlbjtcbiAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICB9XG4gICYuYWN0aXZlOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogJG9saXZlLWdyZWVuO1xuICAgIGNvbG9yOiAkbGlnaHRlc3QtZ3JlZW47XG4gIH1cbiAgJltkaXNhYmxlZF0ge1xuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xuICAgIG9wYWNpdHk6IDAuMztcbiAgfVxufVxuXG5AbWl4aW4gdG9wLW5hdi1wYWdlIHtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIC5tYWluLWNvbnRlbnQge1xuICAgICAgICBmbGV4OiAxIDEgMDtcbiAgICAgICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgfVxufVxuXG5AbWl4aW4gcmVzcG9uZC10bygkbWVkaWEpIHtcbiAgQGlmICRtZWRpYSA9PSBzbWFsbCB7XG4gICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAkYnJlYWstc21hbGwpIHsgQGNvbnRlbnQ7IH1cbiAgfVxuICBAZWxzZSBpZiAkbWVkaWEgPT0gbWVkaXVtIHtcbiAgICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6ICRicmVhay1zbWFsbCArIDEpIGFuZCAobWF4LXdpZHRoOiAkYnJlYWstbGFyZ2UgLSAxKSB7IEBjb250ZW50OyB9XG4gIH1cbiAgQGVsc2UgaWYgJG1lZGlhID09IHdpZGUge1xuICAgIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDogJGJyZWFrLWxhcmdlKSB7IEBjb250ZW50OyB9XG4gIH1cbn1cbiIsIkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc1MHB4KSB7XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciB7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgfVxuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSB7XG4gICAgZmxleDogMCAwIGF1dG87XG4gICAgaGVpZ2h0OiAxMy4yNXJlbTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgdHJhbnNpdGlvbjogaGVpZ2h0IDUwbXM7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUuZXhwYW5kZWQge1xuICAgIGhlaWdodDogODUlO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlciB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzNGNDAzODtcbiAgICBjb2xvcjogI0ZDRkNGOTtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgYm90dG9tOiAwO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XG4gICAgd2lkdGg6IDMuNXJlbTtcbiAgICBoZWlnaHQ6IDFyZW07XG4gICAgYm9yZGVyOiAxcHggc29saWQgIzhBOUE1QjtcbiAgICBib3JkZXItcmFkaXVzOiA1cHggNXB4IDAgMDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzRCNTMyMDtcbiAgICBjb2xvcjogI0ZDRkNGOTtcbiAgfVxuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSAuZXhwYW5kZXIuYWN0aXZlOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzcwODIzODtcbiAgICBjb2xvcjogI0ZDRkNGOTtcbiAgfVxuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSAuZXhwYW5kZXJbZGlzYWJsZWRdIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBvcGFjaXR5OiAwLjM7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyIC5leHBhbmRlci1pY29uIHtcbiAgICBmb250LXNpemU6IDE2cHg7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyIC5leHBhbmRlci1pY29uLmZsaXBwZWQge1xuICAgIHRyYW5zZm9ybTogcm90YXRlKDE4MGRlZyk7XG4gIH1cbn1cbjpob3N0IC5wYWdlLWNvbnRhaW5lciB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG46aG9zdCAucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgZmxleDogMSAxIDA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIG1heC13aWR0aDogMjcuNSU7XG4gIG1pbi13aWR0aDogMjByZW07XG59XG46aG9zdCAucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSAuZXhwYW5kZXIge1xuICBkaXNwbGF5OiBub25lO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5yaWdodC1zaWRlIHtcbiAgZmxleDogMSAxIDA7XG4gIG92ZXJmbG93OiBhdXRvO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG46aG9zdCAucGFnZS1jb250YWluZXIge1xuICBwYWRkaW5nLWxlZnQ6IDFyZW07XG59XG46aG9zdCAucGFnZS1jb250YWluZXIgLmZvb3RlciB7XG4gIHBhZGRpbmctYm90dG9tOiAxNXJlbTtcbn1cblxuZHd1LXVzZXItbG9naW4sIGR3dS1maWxlLXVwbG9hZGVyIHtcbiAgbWFyZ2luOiAwLjI1cmVtO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnVwbG9hZGVkLWZpbGUtY29udGFpbmVyIHtcbiAgcGFkZGluZzogMC41cmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG4udXBsb2FkZWQtZmlsZS1jb250YWluZXIgLnVwbG9hZGVkLWZpbGUge1xuICBtYXJnaW46IDAuNXJlbTtcbiAgd2lkdGg6IDIwcmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLnVwbG9hZGVkLWZpbGUtY29udGFpbmVyIC51cGxvYWRlZC1maWxlIC5maWxlLW5hbWUge1xuICBjb2xvcjogI0Y0RjdFQTtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNGNDAzODtcbiAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gIGJvcmRlci1yYWRpdXM6IDAuMjVyZW0gMC4yNXJlbSAwIDA7XG59XG4udXBsb2FkZWQtZmlsZS1jb250YWluZXIgLnVwbG9hZGVkLWZpbGUgLmZpbGUtcGljIHtcbiAgd2lkdGg6IDIwcmVtO1xuICBoZWlnaHQ6IDE1cmVtO1xufVxuXG4ubG9hZGVyLCAubG9hZGVyOmJlZm9yZSwgLmxvYWRlcjphZnRlciB7XG4gIGJhY2tncm91bmQ6ICMzRjQwMzg7XG4gIC13ZWJraXQtYW5pbWF0aW9uOiBsb2FkMSAxcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcbiAgYW5pbWF0aW9uOiBsb2FkMSAxcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcbiAgd2lkdGg6IDFlbTtcbiAgaGVpZ2h0OiA0ZW07XG59XG5cbi5sb2FkZXIge1xuICBjb2xvcjogIzNGNDAzODtcbiAgdGV4dC1pbmRlbnQ6IC05OTk5ZW07XG4gIG1hcmdpbjogODhweCBhdXRvO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XG4gIC1tcy10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IC0wLjE2cztcbiAgYW5pbWF0aW9uLWRlbGF5OiAtMC4xNnM7XG59XG5cbi5sb2FkZXI6YmVmb3JlLCAubG9hZGVyOmFmdGVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGNvbnRlbnQ6IFwiXCI7XG59XG5cbi5sb2FkZXI6YmVmb3JlIHtcbiAgbGVmdDogLTEuNWVtO1xuICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogLTAuMzJzO1xuICBhbmltYXRpb24tZGVsYXk6IC0wLjMycztcbn1cblxuLmxvYWRlcjphZnRlciB7XG4gIGxlZnQ6IDEuNWVtO1xufVxuXG5ALXdlYmtpdC1rZXlmcmFtZXMgbG9hZDEge1xuICAwJSwgODAlLCAxMDAlIHtcbiAgICBib3gtc2hhZG93OiAwIDA7XG4gICAgaGVpZ2h0OiAzZW07XG4gIH1cbiAgNDAlIHtcbiAgICBib3gtc2hhZG93OiAwIC0yZW07XG4gICAgaGVpZ2h0OiA0ZW07XG4gIH1cbn1cbkBrZXlmcmFtZXMgbG9hZDEge1xuICAwJSwgODAlLCAxMDAlIHtcbiAgICBib3gtc2hhZG93OiAwIDA7XG4gICAgaGVpZ2h0OiAzZW07XG4gIH1cbiAgNDAlIHtcbiAgICBib3gtc2hhZG93OiAwIC0yZW07XG4gICAgaGVpZ2h0OiA0ZW07XG4gIH1cbn0iLCJcbiRkYXJrLWdyZWVuOiAjMjkyRTEyO1xuJGFybXktZ3JlZW46ICM0QjUzMjA7XG4kb2xpdmUtZ3JlZW46ICM3MDgyMzg7XG4kbW9zcy1ncmVlbjogIzhBOUE1QjtcbiRsYXVyZWwtZ3JlZW46ICNCQUMzOUY7XG5cbiRzYXR1cmF0ZWQtb2xpdmU6ICM3Mjk5MDA7XG4kc2F0dXJhdGVkLWJsdWU6ICMxNjRFQjc7XG5cbi8vIG5pY2UgZm9yIHRleHQgYWdhaW5zdCBkYXJrIGJhY2tncm91bmRcbiRsaWdodC1ncmVlbjogI0Y0RjdFQTtcbiRsaWdodGVzdC1ncmVlbjogI0ZDRkNGOTtcblxuLy8gVXNlZCBmb3IgZmlsZSBzZWxlY3RvclxuJGVnZ3NoZWxsLWRhcmtlcjogI0RERDlDRjtcbiRlZ2dzaGVsbC1kYXJrOiAjRUFFNkRBO1xuJGVnZ3NoZWxsOiAjRUZFQkRGO1xuJGVnZ3NoZWxsLWxpZ2h0OiAjRjJFRUUxO1xuXG4vLyBncmF5c1xuJGJhc2ljYWxseS1ibGFjazogIzIwMjEyNDtcbiRibGFjay1vbGl2ZTogIzNGNDAzODtcbiRncmFuaXRlOiAjNjU2MzVGO1xuJGxpZ2h0ZXItZ3JheTogIzlEOUI5OTtcbiR3aGl0ZTogI2ZmZjtcblxuJGdvbGQ6ICNENkI5MDI7XG4kc3Rhci1ibHVlOiAjMUQ2MkM0O1xuXG4kYnJlYWstc21hbGw6IDU1MHB4O1xuJGJyZWFrLW1kOiA4MDBweDtcbiRicmVhay1sYXJnZTogMTAyNHB4O1xuIiwiQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICBAaW5jbHVkZSByZXNwb25zaXZlLXBhZ2U7XG4gIC5wYWdlLWNvbnRhaW5lciB7XG4gICAgcGFkZGluZy1sZWZ0OiAxcmVtO1xuICAgIC5mb290ZXIge1xuICAgICAgcGFkZGluZy1ib3R0b206IDE1cmVtO1xuICAgIH1cbiAgfVxufVxuXG5kd3UtdXNlci1sb2dpbiwgZHd1LWZpbGUtdXBsb2FkZXIge1xuICBtYXJnaW46IDAuMjVyZW07XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuXG4udXBsb2FkZWQtZmlsZS1jb250YWluZXIge1xuICBwYWRkaW5nOiAwLjVyZW07XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAgLnVwbG9hZGVkLWZpbGUge1xuICAgIG1hcmdpbjogMC41cmVtO1xuICAgIHdpZHRoOiAyMHJlbTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgLmZpbGUtbmFtZSB7XG4gICAgICBjb2xvcjogJGxpZ2h0LWdyZWVuO1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICAgICAgcGFkZGluZzogMC4yNXJlbSAwLjVyZW07XG4gICAgICBib3JkZXItcmFkaXVzOiAwLjI1cmVtIDAuMjVyZW0gMCAwO1xuICAgIH1cbiAgICAuZmlsZS1waWMge1xuICAgICAgd2lkdGg6IDIwcmVtO1xuICAgICAgaGVpZ2h0OiAxNXJlbTtcbiAgICB9XG4gIH1cbn1cblxuXG5cbi5sb2FkZXIsIC5sb2FkZXI6YmVmb3JlLCAubG9hZGVyOmFmdGVyIHtcbiAgYmFja2dyb3VuZDogJGJsYWNrLW9saXZlO1xuICAtd2Via2l0LWFuaW1hdGlvbjogbG9hZDEgMXMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG4gIGFuaW1hdGlvbjogbG9hZDEgMXMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG4gIHdpZHRoOiAxZW07XG4gIGhlaWdodDogNGVtO1xufVxuLmxvYWRlciB7XG4gIGNvbG9yOiAkYmxhY2stb2xpdmU7XG4gIHRleHQtaW5kZW50OiAtOTk5OWVtO1xuICBtYXJnaW46IDg4cHggYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBmb250LXNpemU6IDExcHg7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAtbXMtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XG4gIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAtMC4xNnM7XG4gIGFuaW1hdGlvbi1kZWxheTogLTAuMTZzO1xufVxuLmxvYWRlcjpiZWZvcmUsIC5sb2FkZXI6YWZ0ZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMDtcbiAgY29udGVudDogJyc7XG59XG4ubG9hZGVyOmJlZm9yZSB7XG4gIGxlZnQ6IC0xLjVlbTtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IC0wLjMycztcbiAgYW5pbWF0aW9uLWRlbGF5OiAtMC4zMnM7XG59XG4ubG9hZGVyOmFmdGVyIHtcbiAgbGVmdDogMS41ZW07XG59XG5ALXdlYmtpdC1rZXlmcmFtZXMgbG9hZDEge1xuICAwJSxcbiAgODAlLFxuICAxMDAlIHtcbiAgICBib3gtc2hhZG93OiAwIDA7XG4gICAgaGVpZ2h0OiAzZW07XG4gIH1cbiAgNDAlIHtcbiAgICBib3gtc2hhZG93OiAwIC0yZW07XG4gICAgaGVpZ2h0OiA0ZW07XG4gIH1cbn1cbkBrZXlmcmFtZXMgbG9hZDEge1xuICAwJSxcbiAgODAlLFxuICAxMDAlIHtcbiAgICBib3gtc2hhZG93OiAwIDA7XG4gICAgaGVpZ2h0OiAzZW07XG4gIH1cbiAgNDAlIHtcbiAgICBib3gtc2hhZG93OiAwIC0yZW07XG4gICAgaGVpZ2h0OiA0ZW07XG4gIH1cbn1cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("@media screen and (max-width: 750px) {\n  :host div.page-container {\n    flex-direction: column;\n  }\n  :host div.page-container .left-side {\n    flex: 0 0 auto;\n    height: 13.25rem;\n    width: 100%;\n    max-width: none;\n    transition: height 50ms;\n  }\n  :host div.page-container .left-side.expanded {\n    height: 85%;\n  }\n  :host div.page-container .left-side .expander {\n    background-color: #3F4038;\n    color: #FCFCF9;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    width: 3.5rem;\n    height: 1rem;\n    border: 1px solid #8A9A5B;\n    border-radius: 5px 5px 0 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    cursor: pointer;\n  }\n  :host div.page-container .left-side .expander:hover:not([disabled]) {\n    background-color: #4B5320;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander.active:not([disabled]) {\n    background-color: #708238;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander[disabled] {\n    pointer-events: none;\n    opacity: 0.3;\n  }\n  :host div.page-container .left-side .expander .expander-icon {\n    font-size: 16px;\n  }\n  :host div.page-container .left-side .expander .expander-icon.flipped {\n    transform: rotate(180deg);\n  }\n}\n:host .page-container {\n  height: 100%;\n  width: 100%;\n  display: flex;\n}\n:host .page-container .left-side {\n  position: relative;\n  flex: 1 1 0;\n  overflow: hidden;\n  max-width: 27.5%;\n  min-width: 20rem;\n}\n:host .page-container .left-side .expander {\n  display: none;\n}\n:host .page-container .right-side {\n  flex: 1 1 0;\n  overflow: auto;\n  position: relative;\n}\n:host .page-container {\n  display: flex;\n  flex-direction: column;\n  padding-left: 1rem;\n}\n:host .page-container .footer {\n  padding-bottom: 15rem;\n}\n.nav-items-container {\n  display: flex;\n  justify-content: flex-start;\n  margin: 1rem 2rem 0 2rem;\n  height: 2rem;\n}\n@media only screen and (max-width: 550px) {\n  .nav-items-container {\n    margin: 0 0.25rem;\n    justify-content: center;\n  }\n}\n.nav-items-container .nav-item {\n  background-color: #3F4038;\n  color: #FCFCF9;\n  width: 8rem;\n  padding: 0.5rem;\n  cursor: pointer;\n  text-align: center;\n  outline: none;\n  white-space: nowrap;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  flex: 0 1 auto;\n  margin: 0 0.25rem;\n  border-radius: 4px 4px 0 0;\n}\n.nav-items-container .nav-item:hover:not([disabled]) {\n  background-color: #4B5320;\n  color: #FCFCF9;\n}\n.nav-items-container .nav-item.active:not([disabled]) {\n  background-color: #708238;\n  color: #FCFCF9;\n}\n.nav-items-container .nav-item[disabled] {\n  pointer-events: none;\n  opacity: 0.3;\n}\n.page-content {\n  background-color: #EFEBDF;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy9taXhpbnMuc2NzcyIsInNyYy9hcHAvcGhvdG8tZ2FsbGVyeS9waG90by1nYWxsZXJ5LmNvbXBvbmVudC5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvc3R5bGVzL3ZhcmlhYmxlcy5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvYXBwL3Bob3RvLWdhbGxlcnkvcGhvdG8tZ2FsbGVyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUE0Rkk7RUFDSTtJQUNJLHNCQUFBO0VDM0ZWO0VENEZVO0lBQ0ksY0FBQTtJQUNBLGdCQUFBO0lBQ0EsV0FBQTtJQUNBLGVBQUE7SUFFQSx1QkFBQTtFQzNGZDtFRDRGYztJQUNJLFdBQUE7RUMxRmxCO0VENEZjO0lBOEdkLHlCRWpNWTtJRmtNWixjRTVNZTtJRitGRyxrQkFBQTtJQUNBLFNBQUE7SUFDQSxTQUFBO0lBQ0EsMkJBQUE7SUFDQSxhQUFBO0lBQ0EsWUFBQTtJQUNBLHlCQUFBO0lBQ0EsMEJBQUE7SUFDQSxrQkFBQTtJQUNBLGFBQUE7SUFDQSx1QkFBQTtJQUNBLGVBQUE7RUN6RmxCO0VENExBO0lBQ0UseUJFeE5TO0lGeU5ULGNFL01hO0VEcUJmO0VENExBO0lBQ0UseUJFM05VO0lGNE5WLGNFbk5hO0VEeUJmO0VENExBO0lBQ0Usb0JBQUE7SUFDQSxZQUFBO0VDMUxGO0VEOEVrQjtJQUNJLGVBQUE7RUM1RXRCO0VENkVzQjtJQUNJLHlCQUFBO0VDM0UxQjtBQUNGO0FEa0ZJO0VBQ0ksWUFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDaEZSO0FEa0ZRO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FDaEZaO0FEaUZZO0VBQ0ksYUFBQTtBQy9FaEI7QURrRlE7RUFDSSxXQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0FDaEZaO0FFaEVFO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7QUZrRUo7QUVqRUk7RUFDRSxxQkFBQTtBRm1FTjtBRTlEQTtFQUNFLGFBQUE7RUFDQSwyQkFBQTtFQUNBLHdCQUFBO0VBQ0EsWUFBQTtBRmlFRjtBRGlLSTtFR3RPSjtJQU1JLGlCQUFBO0lBQ0EsdUJBQUE7RUZtRUY7QUFDRjtBRWxFRTtFSGdNQSx5QkVqTVk7RUZrTVosY0U1TWU7RUZrTGIsV0FBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtLQUFBLHNCQUFBO01BQUEscUJBQUE7VUFBQSxpQkFBQTtFRzNLQSxjQUFBO0VBQ0EsaUJBQUE7RUFDQSwwQkFBQTtBRjRFSjtBRGtIRTtFQUNFLHlCRXhOUztFRnlOVCxjRS9NYTtBRCtGakI7QURrSEU7RUFDRSx5QkUzTlU7RUY0TlYsY0VuTmE7QURtR2pCO0FEa0hFO0VBQ0Usb0JBQUE7RUFDQSxZQUFBO0FDaEhKO0FFcEZBO0VBQ0UseUJEZlM7QURzR1giLCJmaWxlIjoic3JjL2FwcC9waG90by1nYWxsZXJ5L3Bob3RvLWdhbGxlcnkuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0ICd2YXJpYWJsZXMnO1xuXG5AbWl4aW4gYmFzZS1jb3JvbmEtZGFzaGJvYXJkIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBwYWRkaW5nLWJvdHRvbTogMnJlbTtcbiAgICAuY2hhcnQtY29udGFpbmVyIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgLmNoYXJ0LWhlYWRlciB7XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBwYWRkaW5nOiAwIDEuNXJlbTtcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBmbGV4LWVuZDtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG5cbiAgICAgICAgICAgIC5yYWRpby1idXR0b24tY29udGFpbmVye1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgICAgIGZsZXgtd3JhcDogd3JhcDtcblxuICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b25zIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgcmFkaW8tYnV0dG9uLWNvbnRhaW5lcjtcbiAgICAgICAgICAgICAgICAgICAgJjpub3QoOmZpcnN0LWNoaWxkKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMXJlbTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAmLmNoYXJ0IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbi13aWR0aDogYXV0bztcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOiAzcHg7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5tYXRlcmlhbC1pY29ucyB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZsZXg6IDEgMCBhdXRvO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmb250LXNpemU6IDEuMjVyZW07XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMC41cmVtO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICAgICAgZHd1LXN0YXQtdmlld2VyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgICAgICAgZmxleDogMSAwIGF1dG87XG4gICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMXJlbTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAub3ZlcnZpZXcuY2hhcnQge1xuICAgICAgICAgICAgaGVpZ2h0OiAxMi41cmVtO1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIH1cbiAgICAgICAgZHd1LWNoYXJ0LWxlZ2VuZCB7XG4gICAgICAgICAgICBmbGV4OiAwIDAgYXV0bztcbiAgICAgICAgICAgIG1hcmdpbi10b3A6IDAuMjVyZW07XG4gICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAycmVtO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5AbWl4aW4gcmFkaW8tYnV0dG9uLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgQGluY2x1ZGUgbGlnaHQtbWluaS1idXR0b247XG4gICAgICAgIEBpbmNsdWRlIHNoYWRvdztcbiAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggMCAwIDVweDtcbiAgICAgICAgfVxuICAgICAgICAmOmxhc3QtY2hpbGQge1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMCA1cHggNXB4IDA7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbkBtaXhpbiBzaGFkb3cge1xuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IGJveC1zaGFkb3cgMjVtcywgdHJhbnNmb3JtLCAyNW1zO1xuICAgIGJveC1zaGFkb3c6IDFweCAxcHggMnB4IDAgJGxpZ2h0ZXItZ3JheTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCk7XG4gICAgJjphY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG4gICAgJi5hY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG59XG5cbkBtaXhpbiByZXNwb25zaXZlLXBhZ2Uge1xuICAgIEBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc1MHB4KSB7XG4gICAgICAgIGRpdi5wYWdlLWNvbnRhaW5lciB7XG4gICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgLmxlZnQtc2lkZSB7XG4gICAgICAgICAgICAgICAgZmxleDogMCAwIGF1dG87XG4gICAgICAgICAgICAgICAgaGVpZ2h0OiAxMy4yNXJlbTtcbiAgICAgICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgICAgICAgICAgLy8gbWluLXdpZHRoOiBub25lO1xuICAgICAgICAgICAgICAgIHRyYW5zaXRpb246IGhlaWdodCA1MG1zO1xuICAgICAgICAgICAgICAgICYuZXhwYW5kZWQge1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDg1JTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgICAgICAgICAgICBib3R0b206IDA7XG4gICAgICAgICAgICAgICAgICAgIGxlZnQ6IDUwJTtcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgICAgICAgICAgICAgICAgICB3aWR0aDogMy41cmVtO1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDFyZW07XG4gICAgICAgICAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICRtb3NzLWdyZWVuO1xuICAgICAgICAgICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggNXB4IDAgMCA7XG4gICAgICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgLmV4cGFuZGVyLWljb24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICAgICAgICAgICAgICAgICAgJi5mbGlwcGVkIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG4gICAgLnBhZ2UtY29udGFpbmVyIHtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcblxuICAgICAgICAubGVmdC1zaWRlIHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgIG1heC13aWR0aDogMjcuNSU7XG4gICAgICAgICAgICBtaW4td2lkdGg6IDIwcmVtO1xuICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBub25lO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5yaWdodC1zaWRlIHtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgIH1cbiAgICB9XG5cbn1cbkBtaXhpbiBsaWdodC1taW5pLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgbGlnaHQtdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLXhzO1xufVxuXG5AbWl4aW4gbGlnaHQtc21hbGwtYnV0dG9uIHtcbiAgICBAaW5jbHVkZSBsaWdodC10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tc207XG59XG5cbkBtaXhpbiBkYXJrLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tbWQ7XG59XG5cbkBtaXhpbiBidXR0b24teHMge1xuICAgIG1pbi13aWR0aDogMnJlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBmb250LXNpemU6IDFyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbkBtaXhpbiBidXR0b24tc20ge1xuICAgIG1pbi13aWR0aDogM3JlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cblxuQG1peGluIGJ1dHRvbi1tZCB7XG4gICAgd2lkdGg6IDhyZW07XG4gICAgcGFkZGluZzogMC41cmVtO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG5AbWl4aW4gbGlnaHQtdGhlbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkZWdnc2hlbGwtZGFyaztcbiAgJjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRsYXVyZWwtZ3JlZW47XG4gIH1cbiAgJi5hY3RpdmU6bm90KFtkaXNhYmxlZF0pIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkb2xpdmUtZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG59XG5cbkBtaXhpbiBkYXJrLXRoZW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAmOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogJGFybXktZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRvbGl2ZS1ncmVlbjtcbiAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICB9XG4gICZbZGlzYWJsZWRdIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBvcGFjaXR5OiAwLjM7XG4gIH1cbn1cblxuQG1peGluIHRvcC1uYXYtcGFnZSB7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAubWFpbi1jb250ZW50IHtcbiAgICAgICAgZmxleDogMSAxIDA7XG4gICAgICAgIG92ZXJmbG93OiBhdXRvO1xuICAgIH1cbn1cblxuQG1peGluIHJlc3BvbmQtdG8oJG1lZGlhKSB7XG4gIEBpZiAkbWVkaWEgPT0gc21hbGwge1xuICAgIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogJGJyZWFrLXNtYWxsKSB7IEBjb250ZW50OyB9XG4gIH1cbiAgQGVsc2UgaWYgJG1lZGlhID09IG1lZGl1bSB7XG4gICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAkYnJlYWstc21hbGwgKyAxKSBhbmQgKG1heC13aWR0aDogJGJyZWFrLWxhcmdlIC0gMSkgeyBAY29udGVudDsgfVxuICB9XG4gIEBlbHNlIGlmICRtZWRpYSA9PSB3aWRlIHtcbiAgICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6ICRicmVhay1sYXJnZSkgeyBAY29udGVudDsgfVxuICB9XG59XG4iLCJAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NTBweCkge1xuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIge1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUge1xuICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgIGhlaWdodDogMTMuMjVyZW07XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWF4LXdpZHRoOiBub25lO1xuICAgIHRyYW5zaXRpb246IGhlaWdodCA1MG1zO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlLmV4cGFuZGVkIHtcbiAgICBoZWlnaHQ6IDg1JTtcbiAgfVxuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSAuZXhwYW5kZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzRjQwMzg7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogMDtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgIHdpZHRoOiAzLjVyZW07XG4gICAgaGVpZ2h0OiAxcmVtO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICM4QTlBNUI7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4IDVweCAwIDA7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlcjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM0QjUzMjA7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM3MDgyMzg7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlciAuZXhwYW5kZXItaWNvbiB7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlciAuZXhwYW5kZXItaWNvbi5mbGlwcGVkIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICB9XG59XG46aG9zdCAucGFnZS1jb250YWluZXIge1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGZsZXg6IDEgMSAwO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBtYXgtd2lkdGg6IDI3LjUlO1xuICBtaW4td2lkdGg6IDIwcmVtO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cbjpob3N0IC5wYWdlLWNvbnRhaW5lciAucmlnaHQtc2lkZSB7XG4gIGZsZXg6IDEgMSAwO1xuICBvdmVyZmxvdzogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgcGFkZGluZy1sZWZ0OiAxcmVtO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5mb290ZXIge1xuICBwYWRkaW5nLWJvdHRvbTogMTVyZW07XG59XG5cbi5uYXYtaXRlbXMtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xuICBtYXJnaW46IDFyZW0gMnJlbSAwIDJyZW07XG4gIGhlaWdodDogMnJlbTtcbn1cbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogNTUwcHgpIHtcbiAgLm5hdi1pdGVtcy1jb250YWluZXIge1xuICAgIG1hcmdpbjogMCAwLjI1cmVtO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB9XG59XG4ubmF2LWl0ZW1zLWNvbnRhaW5lciAubmF2LWl0ZW0ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0Y0MDM4O1xuICBjb2xvcjogI0ZDRkNGOTtcbiAgd2lkdGg6IDhyZW07XG4gIHBhZGRpbmc6IDAuNXJlbTtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG91dGxpbmU6IG5vbmU7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBmbGV4OiAwIDEgYXV0bztcbiAgbWFyZ2luOiAwIDAuMjVyZW07XG4gIGJvcmRlci1yYWRpdXM6IDRweCA0cHggMCAwO1xufVxuLm5hdi1pdGVtcy1jb250YWluZXIgLm5hdi1pdGVtOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM0QjUzMjA7XG4gIGNvbG9yOiAjRkNGQ0Y5O1xufVxuLm5hdi1pdGVtcy1jb250YWluZXIgLm5hdi1pdGVtLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNzA4MjM4O1xuICBjb2xvcjogI0ZDRkNGOTtcbn1cbi5uYXYtaXRlbXMtY29udGFpbmVyIC5uYXYtaXRlbVtkaXNhYmxlZF0ge1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgb3BhY2l0eTogMC4zO1xufVxuXG4ucGFnZS1jb250ZW50IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0VGRUJERjtcbn0iLCJcbiRkYXJrLWdyZWVuOiAjMjkyRTEyO1xuJGFybXktZ3JlZW46ICM0QjUzMjA7XG4kb2xpdmUtZ3JlZW46ICM3MDgyMzg7XG4kbW9zcy1ncmVlbjogIzhBOUE1QjtcbiRsYXVyZWwtZ3JlZW46ICNCQUMzOUY7XG5cbiRzYXR1cmF0ZWQtb2xpdmU6ICM3Mjk5MDA7XG4kc2F0dXJhdGVkLWJsdWU6ICMxNjRFQjc7XG5cbi8vIG5pY2UgZm9yIHRleHQgYWdhaW5zdCBkYXJrIGJhY2tncm91bmRcbiRsaWdodC1ncmVlbjogI0Y0RjdFQTtcbiRsaWdodGVzdC1ncmVlbjogI0ZDRkNGOTtcblxuLy8gVXNlZCBmb3IgZmlsZSBzZWxlY3RvclxuJGVnZ3NoZWxsLWRhcmtlcjogI0RERDlDRjtcbiRlZ2dzaGVsbC1kYXJrOiAjRUFFNkRBO1xuJGVnZ3NoZWxsOiAjRUZFQkRGO1xuJGVnZ3NoZWxsLWxpZ2h0OiAjRjJFRUUxO1xuXG4vLyBncmF5c1xuJGJhc2ljYWxseS1ibGFjazogIzIwMjEyNDtcbiRibGFjay1vbGl2ZTogIzNGNDAzODtcbiRncmFuaXRlOiAjNjU2MzVGO1xuJGxpZ2h0ZXItZ3JheTogIzlEOUI5OTtcbiR3aGl0ZTogI2ZmZjtcblxuJGdvbGQ6ICNENkI5MDI7XG4kc3Rhci1ibHVlOiAjMUQ2MkM0O1xuXG4kYnJlYWstc21hbGw6IDU1MHB4O1xuJGJyZWFrLW1kOiA4MDBweDtcbiRicmVhay1sYXJnZTogMTAyNHB4O1xuIiwiQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICBAaW5jbHVkZSByZXNwb25zaXZlLXBhZ2U7XG4gIC5wYWdlLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIHBhZGRpbmctbGVmdDogMXJlbTtcbiAgICAuZm9vdGVyIHtcbiAgICAgIHBhZGRpbmctYm90dG9tOiAxNXJlbTtcbiAgICB9XG4gIH1cbn1cblxuLm5hdi1pdGVtcy1jb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIG1hcmdpbjogMXJlbSAycmVtIDAgMnJlbTtcbiAgaGVpZ2h0OiAycmVtO1xuICBAaW5jbHVkZSByZXNwb25kLXRvKHNtYWxsKSB7XG4gICAgbWFyZ2luOiAwIDAuMjVyZW07XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIH1cbiAgLm5hdi1pdGVtIHtcbiAgICBAaW5jbHVkZSBkYXJrLWJ1dHRvbjtcbiAgICBmbGV4OiAwIDEgYXV0bztcbiAgICBtYXJnaW46IDAgMC4yNXJlbTtcbiAgICBib3JkZXItcmFkaXVzOiA0cHggNHB4IDAgMDtcbiAgfVxufVxuXG4ucGFnZS1jb250ZW50IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGVnZ3NoZWxsO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1236,76 +1661,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
-/* harmony import */ var _app_photo_gallery_services_photo_gallery_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @app/photo-gallery/services/photo-gallery.service */ "./src/app/photo-gallery/services/photo-gallery.service.ts");
-/* harmony import */ var exif_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! exif-js */ "./node_modules/exif-js/exif.js");
-/* harmony import */ var exif_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(exif_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @photo-gallery/services/index */ "./src/app/photo-gallery/services/index.ts");
 
 
 
 
-
+// import * as EXIFStatic from 'exif-js';
 var PhotoGalleryComponent = /** @class */ (function () {
-    function PhotoGalleryComponent(firebaseAuthService, pgs) {
+    function PhotoGalleryComponent(firebaseAuthService, pgs, exifService, userLocationService) {
         this.firebaseAuthService = firebaseAuthService;
         this.pgs = pgs;
-        this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+        this.exifService = exifService;
+        this.userLocationService = userLocationService;
+        // this.uploadedFiles$ = this.pgs.getUploadedFiles$();
     }
-    PhotoGalleryComponent.prototype.onFileChange = function (file, user) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var reader;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                reader = new FileReader();
-                console.log('reader', reader);
-                // debugger;
-                reader.onloadend = function (e) {
-                    console.log('e', e);
-                    var arrayBuffer = reader.result;
-                    console.log('arrayBuffer', arrayBuffer);
-                    debugger;
-                    var exif = exif_js__WEBPACK_IMPORTED_MODULE_4__["EXIF"].readFromBinaryFile(arrayBuffer);
-                    var latitudeMag = exif.GPSLatitude[0] + (exif.GPSLatitude[1] / 60) + (exif.GPSLatitude[2] / 3600);
-                    var latitude = (exif.GPSLatitudeRef === 'N') ? latitudeMag : -latitudeMag;
-                    var longitudeMag = exif.GPSLongitude[0] + (exif.GPSLongitude[1] / 60) + (exif.GPSLongitude[2] / 3600);
-                    var longitude = (exif.GPSLongitudeRef === 'E') ? longitudeMag : -longitudeMag;
-                    console.log('lat, long', latitude, longitude);
-                    console.log('exif', exif);
-                    // return ProgressEvent
-                };
-                reader.readAsArrayBuffer(file);
-                // const arrayBuffer = await file.arrayBuffer();
-                // const exif = (EXIFStatic as any).EXIF.readFromBinaryFile(arrayBuffer);
-                // const latitudeMag = exif.GPSLatitude[0] + (exif.GPSLatitude[1] / 60) + (exif.GPSLatitude[2] / 3600);
-                // const latitude = (exif.GPSLatitudeRef === 'N') ? latitudeMag : -latitudeMag;
-                // const longitudeMag = exif.GPSLongitude[0] + (exif.GPSLongitude[1] / 60) + (exif.GPSLongitude[2] / 3600);
-                // const longitude = (exif.GPSLongitudeRef === 'E') ? longitudeMag : -longitudeMag;
-                // console.log('lat, long', latitude, longitude);
-                // console.log('exif', exif)
-                // debugger;
-                // const fr = new FileReader(); // to read file contents
-                // fr.onloadend = function() {
-                //     const exif = EXIF.readFromBinaryFile(file);
-                //     // alert a value
-                //     alert(exif.Make);
-                // };
-                // fr.readAsBinaryString(file); // read the file
-                this.pgs.uploadFile(file, user);
-                return [2 /*return*/];
-            });
-        });
-    };
-    PhotoGalleryComponent.prototype.onDeleteFile = function (file, user) {
-        this.pgs.deleteFile(file.id, user);
-    };
-    PhotoGalleryComponent.prototype.trackById = function (file) {
-        return file.id;
-    };
     PhotoGalleryComponent.ctorParameters = function () { return [
         { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] },
-        { type: _app_photo_gallery_services_photo_gallery_service__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryService"] }
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["ExifService"] },
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["UserLocationService"] }
     ]; };
     PhotoGalleryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'photo-gallery',
+            selector: 'dwu-photo-gallery',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./photo-gallery.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/photo-gallery/photo-gallery.component.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./photo-gallery.component.scss */ "./src/app/photo-gallery/photo-gallery.component.scss")).default]
         })
@@ -1330,11 +1708,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @app/photo-gallery/photo-gallery.component */ "./src/app/photo-gallery/photo-gallery.component.ts");
-/* harmony import */ var _app_photo_gallery_photo_gallery_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @app/photo-gallery/photo-gallery.routes */ "./src/app/photo-gallery/photo-gallery.routes.ts");
-/* harmony import */ var _app_user_login_user_login_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @app/user-login/user-login.module */ "./src/app/user-login/user-login.module.ts");
-/* harmony import */ var _app_file_uploader_file_uploader_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @app/file-uploader/file-uploader.module */ "./src/app/file-uploader/file-uploader.module.ts");
-/* harmony import */ var _app_photo_gallery_services_photo_gallery_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @app/photo-gallery/services/photo-gallery.service */ "./src/app/photo-gallery/services/photo-gallery.service.ts");
+/* harmony import */ var _photo_gallery_near_me_near_me_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @photo-gallery/near-me/near-me.component */ "./src/app/photo-gallery/near-me/near-me.component.ts");
+/* harmony import */ var _photo_gallery_my_uploads_my_uploads_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @photo-gallery/my-uploads/my-uploads.component */ "./src/app/photo-gallery/my-uploads/my-uploads.component.ts");
+/* harmony import */ var _photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @photo-gallery/photo-gallery.component */ "./src/app/photo-gallery/photo-gallery.component.ts");
+/* harmony import */ var _photo_gallery_photo_gallery_routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @photo-gallery/photo-gallery.routes */ "./src/app/photo-gallery/photo-gallery.routes.ts");
+/* harmony import */ var _app_user_login_user_login_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @app/user-login/user-login.module */ "./src/app/user-login/user-login.module.ts");
+/* harmony import */ var _app_file_uploader_file_uploader_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @app/file-uploader/file-uploader.module */ "./src/app/file-uploader/file-uploader.module.ts");
+/* harmony import */ var _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @photo-gallery/services/index */ "./src/app/photo-gallery/services/index.ts");
+
+
 
 
 
@@ -1349,20 +1731,22 @@ var PhotoGalleryModule = /** @class */ (function () {
     PhotoGalleryModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             imports: [
-                _app_photo_gallery_photo_gallery_routes__WEBPACK_IMPORTED_MODULE_4__["PhotoGalleryRoutingModule"],
+                _photo_gallery_photo_gallery_routes__WEBPACK_IMPORTED_MODULE_6__["PhotoGalleryRoutingModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                _app_file_uploader_file_uploader_module__WEBPACK_IMPORTED_MODULE_6__["FileUploaderModule"],
-                _app_user_login_user_login_module__WEBPACK_IMPORTED_MODULE_5__["UserLoginModule"],
+                _app_file_uploader_file_uploader_module__WEBPACK_IMPORTED_MODULE_8__["FileUploaderModule"],
+                _app_user_login_user_login_module__WEBPACK_IMPORTED_MODULE_7__["UserLoginModule"],
             ],
             declarations: [
-                _app_photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryComponent"],
+                _photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_5__["PhotoGalleryComponent"],
+                _photo_gallery_my_uploads_my_uploads_component__WEBPACK_IMPORTED_MODULE_4__["MyUploadsComponent"],
+                _photo_gallery_near_me_near_me_component__WEBPACK_IMPORTED_MODULE_3__["NearMeComponent"],
             ],
             exports: [
-                _app_photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryComponent"],
+                _photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_5__["PhotoGalleryComponent"],
+                _photo_gallery_my_uploads_my_uploads_component__WEBPACK_IMPORTED_MODULE_4__["MyUploadsComponent"],
+                _photo_gallery_near_me_near_me_component__WEBPACK_IMPORTED_MODULE_3__["NearMeComponent"],
             ],
-            providers: [
-                _app_photo_gallery_services_photo_gallery_service__WEBPACK_IMPORTED_MODULE_7__["PhotoGalleryService"],
-            ],
+            providers: tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"](_photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_9__["PHOTO_GALLERY_SERVICES"]),
         })
     ], PhotoGalleryModule);
     return PhotoGalleryModule;
@@ -1386,6 +1770,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _src_app_photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @src/app/photo-gallery/photo-gallery.component */ "./src/app/photo-gallery/photo-gallery.component.ts");
+/* harmony import */ var _photo_gallery_near_me_near_me_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @photo-gallery/near-me/near-me.component */ "./src/app/photo-gallery/near-me/near-me.component.ts");
+/* harmony import */ var _photo_gallery_my_uploads_my_uploads_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @photo-gallery/my-uploads/my-uploads.component */ "./src/app/photo-gallery/my-uploads/my-uploads.component.ts");
+
+
 
 
 
@@ -1393,8 +1781,23 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     {
         path: '',
-        component: _src_app_photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryComponent"]
-    }
+        component: _src_app_photo_gallery_photo_gallery_component__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryComponent"],
+        children: [
+            {
+                path: 'near-me',
+                component: _photo_gallery_near_me_near_me_component__WEBPACK_IMPORTED_MODULE_4__["NearMeComponent"],
+            },
+            {
+                path: 'my-uploads',
+                component: _photo_gallery_my_uploads_my_uploads_component__WEBPACK_IMPORTED_MODULE_5__["MyUploadsComponent"],
+            },
+            {
+                path: '',
+                redirectTo: 'near-me',
+                pathMatch: 'full',
+            },
+        ],
+    },
 ];
 var PhotoGalleryRoutingModule = /** @class */ (function () {
     function PhotoGalleryRoutingModule() {
@@ -1407,6 +1810,99 @@ var PhotoGalleryRoutingModule = /** @class */ (function () {
     ], PhotoGalleryRoutingModule);
     return PhotoGalleryRoutingModule;
 }());
+
+
+
+/***/ }),
+
+/***/ "./src/app/photo-gallery/services/exif.service.ts":
+/*!********************************************************!*\
+  !*** ./src/app/photo-gallery/services/exif.service.ts ***!
+  \********************************************************/
+/*! exports provided: ExifService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExifService", function() { return ExifService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var exif_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! exif-js */ "./node_modules/exif-js/exif.js");
+/* harmony import */ var exif_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(exif_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var latlon_geohash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! latlon-geohash */ "./node_modules/latlon-geohash/latlon-geohash.js");
+
+
+
+
+var ExifService = /** @class */ (function () {
+    function ExifService() {
+    }
+    ExifService.prototype.getMetaData = function (file) {
+        return new Promise(function (resolve, reject) {
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                var arrayBuffer = reader.result;
+                var exif = exif_js__WEBPACK_IMPORTED_MODULE_2__["EXIF"].readFromBinaryFile(arrayBuffer);
+                if (!exif || !exif.GPSLatitude) {
+                    resolve({});
+                    return;
+                }
+                console.log('exif', exif);
+                var latitudeMag = exif.GPSLatitude[0] + (exif.GPSLatitude[1] / 60) + (exif.GPSLatitude[2] / 3600);
+                var longitudeMag = exif.GPSLongitude[0] + (exif.GPSLongitude[1] / 60) + (exif.GPSLongitude[2] / 3600);
+                var latitude = (exif.GPSLatitudeRef === 'N') ? latitudeMag : -latitudeMag;
+                var longitude = (exif.GPSLongitudeRef === 'E') ? longitudeMag : -longitudeMag;
+                var geohash = latlon_geohash__WEBPACK_IMPORTED_MODULE_3__["default"].encode(latitude, longitude, 12);
+                resolve({
+                    latitude: latitude,
+                    longitude: longitude,
+                    geohash: geohash,
+                });
+            };
+            reader.readAsArrayBuffer(file);
+        });
+    };
+    ExifService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], ExifService);
+    return ExifService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/photo-gallery/services/index.ts":
+/*!*************************************************!*\
+  !*** ./src/app/photo-gallery/services/index.ts ***!
+  \*************************************************/
+/*! exports provided: PHOTO_GALLERY_SERVICES, ExifService, PhotoGalleryService, UserLocationService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PHOTO_GALLERY_SERVICES", function() { return PHOTO_GALLERY_SERVICES; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _exif_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exif.service */ "./src/app/photo-gallery/services/exif.service.ts");
+/* harmony import */ var _photo_gallery_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./photo-gallery.service */ "./src/app/photo-gallery/services/photo-gallery.service.ts");
+/* harmony import */ var _user_location_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user-location.service */ "./src/app/photo-gallery/services/user-location.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ExifService", function() { return _exif_service__WEBPACK_IMPORTED_MODULE_1__["ExifService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PhotoGalleryService", function() { return _photo_gallery_service__WEBPACK_IMPORTED_MODULE_2__["PhotoGalleryService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UserLocationService", function() { return _user_location_service__WEBPACK_IMPORTED_MODULE_3__["UserLocationService"]; });
+
+
+
+
+
+var PHOTO_GALLERY_SERVICES = [
+    _exif_service__WEBPACK_IMPORTED_MODULE_1__["ExifService"],
+    _photo_gallery_service__WEBPACK_IMPORTED_MODULE_2__["PhotoGalleryService"],
+    _user_location_service__WEBPACK_IMPORTED_MODULE_3__["UserLocationService"],
+];
+
+
 
 
 
@@ -1427,16 +1923,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
+/* harmony import */ var _user_location_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user-location.service */ "./src/app/photo-gallery/services/user-location.service.ts");
+
 
 
 
 
 
 var PhotoGalleryService = /** @class */ (function () {
-    function PhotoGalleryService(fas, ffs, fss) {
+    function PhotoGalleryService(fas, ffs, fss, userLocationService) {
         this.fas = fas;
         this.ffs = ffs;
         this.fss = fss;
+        this.userLocationService = userLocationService;
     }
     PhotoGalleryService.prototype.deleteFile = function (fileId, user) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -1457,13 +1956,12 @@ var PhotoGalleryService = /** @class */ (function () {
     PhotoGalleryService.prototype.uploadFile = function (file, user, fileMeta) {
         if (fileMeta === void 0) { fileMeta = {}; }
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var registrationResponse, registeredFileId, fileUploadResponse, downloadUrl, uploadMeta;
+            var registeredFileId, fileUploadResponse, downloadUrl, uploadMeta;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.ffs.registerFileId(file, user)];
+                    case 0: return [4 /*yield*/, this.ffs.registerFileId(file, user, fileMeta)];
                     case 1:
-                        registrationResponse = _a.sent();
-                        registeredFileId = registrationResponse.id;
+                        registeredFileId = _a.sent();
                         return [4 /*yield*/, this.fss.uploadFile(file, registeredFileId)];
                     case 2:
                         fileUploadResponse = _a.sent();
@@ -1492,15 +1990,71 @@ var PhotoGalleryService = /** @class */ (function () {
             }
         }));
     };
+    PhotoGalleryService.prototype.getNearByUploads$ = function () {
+        var _this = this;
+        var nearByUploadStreams$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        var userLocation = this.userLocationService.getUserLocation()
+            .then(function (userLocation) {
+            nearByUploadStreams$.next(_this.ffs.getNearbyUploads$(userLocation));
+        });
+        return nearByUploadStreams$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (nearbyUploads$) {
+            return nearbyUploads$;
+        }));
+    };
     PhotoGalleryService.ctorParameters = function () { return [
         { type: _services_index__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthService"] },
         { type: _services_index__WEBPACK_IMPORTED_MODULE_4__["FirebaseFirestoreService"] },
-        { type: _services_index__WEBPACK_IMPORTED_MODULE_4__["FirebaseStorageService"] }
+        { type: _services_index__WEBPACK_IMPORTED_MODULE_4__["FirebaseStorageService"] },
+        { type: _user_location_service__WEBPACK_IMPORTED_MODULE_5__["UserLocationService"] }
     ]; };
     PhotoGalleryService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
     ], PhotoGalleryService);
     return PhotoGalleryService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/photo-gallery/services/user-location.service.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/photo-gallery/services/user-location.service.ts ***!
+  \*****************************************************************/
+/*! exports provided: UserLocationService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserLocationService", function() { return UserLocationService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var latlon_geohash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! latlon-geohash */ "./node_modules/latlon-geohash/latlon-geohash.js");
+
+
+
+var UserLocationService = /** @class */ (function () {
+    function UserLocationService() {
+    }
+    UserLocationService.prototype.getUserLocation = function () {
+        return new Promise(function (resolve, reject) {
+            navigator.geolocation.getCurrentPosition(function (userLocation) {
+                console.log('userLocation', userLocation);
+                var latitude = userLocation.coords.latitude;
+                var longitude = userLocation.coords.longitude;
+                var geohash = latlon_geohash__WEBPACK_IMPORTED_MODULE_2__["default"].encode(latitude, longitude, 12);
+                resolve({
+                    geohash: geohash,
+                    latitude: latitude,
+                    longitude: longitude,
+                });
+            });
+        });
+    };
+    UserLocationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], UserLocationService);
+    return UserLocationService;
 }());
 
 

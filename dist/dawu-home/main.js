@@ -620,31 +620,73 @@ var FirebaseFirestoreService = /** @class */ (function () {
         userDoc.set(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, user));
     };
     FirebaseFirestoreService.prototype.unregisterFile = function (fileId, user) {
-        var doc = this.firestore.doc("users/" + user.uid + "/uploads/" + fileId);
-        return doc.delete();
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var userDoc, uploadDoc;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        userDoc = this.firestore.doc("users/" + user.uid + "/uploads/" + fileId);
+                        return [4 /*yield*/, userDoc.delete()];
+                    case 1:
+                        _a.sent();
+                        uploadDoc = this.firestore.doc("uploads/" + fileId);
+                        return [4 /*yield*/, uploadDoc.delete()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     /**
      * registerFileId
-     * Initial creation of file that provides a fileId
+     * Initial creation of upload document
      * @param {File} file
      * @param {User} user
+     * @return {Promise<string>} id
      */
-    FirebaseFirestoreService.prototype.registerFileId = function (file, user) {
-        var collection = this.firestore.doc("users/" + user.uid).collection('uploads');
-        return collection.add({
-            fileName: file.name,
-        })
-            .then(function (doc) {
-            return {
-                id: doc.id
-            };
+    FirebaseFirestoreService.prototype.registerFileId = function (file, user, fileMeta) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var upload, collection, uploadDoc, userUploadDoc;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        upload = {
+                            userId: user.uid,
+                            fileName: file.name,
+                            fileMeta: fileMeta,
+                        };
+                        collection = this.firestore.collection('uploads');
+                        return [4 /*yield*/, collection.add(upload)];
+                    case 1:
+                        uploadDoc = _a.sent();
+                        userUploadDoc = this.firestore.doc("users/" + user.uid + "/uploads/" + uploadDoc.id);
+                        return [4 /*yield*/, userUploadDoc.set(upload)];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/, uploadDoc.id];
+                }
+            });
         });
     };
     FirebaseFirestoreService.prototype.registerFileUploaded = function (fileId, uploadMeta, user) {
-        var doc = this.firestore.doc("users/" + user.uid + "/uploads/" + fileId);
-        return doc.update({
-            isUploaded: true,
-            uploadMeta: uploadMeta,
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var uploadIndexDoc, uploadDoc;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        uploadIndexDoc = this.firestore.doc("uploads/" + fileId);
+                        return [4 /*yield*/, uploadIndexDoc.update({
+                                isUploaded: true,
+                                uploadMeta: uploadMeta,
+                            })];
+                    case 1:
+                        _a.sent();
+                        uploadDoc = this.firestore.doc("users/" + user.uid + "/uploads/" + fileId);
+                        return [2 /*return*/, uploadDoc.update({
+                                isUploaded: true,
+                                uploadMeta: uploadMeta,
+                            })];
+                }
+            });
         });
     };
     FirebaseFirestoreService.prototype.getUploadedFiles$ = function (user) {
@@ -658,6 +700,52 @@ var FirebaseFirestoreService = /** @class */ (function () {
             uploadedFiles$.next(docs);
         });
         return uploadedFiles$;
+    };
+    FirebaseFirestoreService.prototype.getNearbyUploads$ = function (userLocation) {
+        console.log('userLocation', userLocation);
+        var walkingRange = userLocation.geohash.slice(0, 5);
+        var lastGeohashChar = walkingRange[walkingRange.length - 1];
+        var nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
+        var walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
+        console.log('range', [walkingRange, walkingRangeEnd]);
+        //     if (nextGeohashChar === 'i') {
+        // nextGeohashChar = 'j'
+        //     }
+        //     if (nextGeohashChar === 'l') {
+        // nextGeohashChar = 'm'
+        //     }
+        //     if (nextGeohashChar === '{') {
+        // nextGeohashChar = 'p'
+        //     }
+        var collection = this.firestore.collection("uploads")
+            .where('fileMeta.geohash', ">=", walkingRange)
+            .where('fileMeta.geohash', "<=", walkingRangeEnd);
+        // .where('fileMeta.longitude', ">", uploadLongitudeBounds[0])
+        // .where('fileMeta.longitude', "<", uploadLongitudeBounds[1]);
+        // client filtering
+        // const userLoc = [
+        //   userLocation.latitude,
+        //   userLocation.longitude,
+        // ];
+        // const milesAway = 0.5;
+        // const degreesAway = milesAway / 69;
+        // const uploadLatitudeBounds = [
+        //   userLoc[0] - milesAway,
+        //   userLoc[0] + milesAway,
+        // ];
+        // const uploadLongitudeBounds = [
+        //   userLoc[1] - milesAway,
+        //   userLoc[1] + milesAway,
+        // ];
+        var nearbyUploads$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        collection.onSnapshot(function (querySnapshot) {
+            console.log('querySnapshot', querySnapshot);
+            var docs = querySnapshot.docs.map(function (doc) {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, doc.data(), { id: doc.id });
+            });
+            nearbyUploads$.next(docs);
+        });
+        return nearbyUploads$;
     };
     FirebaseFirestoreService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
