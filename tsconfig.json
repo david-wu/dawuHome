@@ -27,10 +27,11 @@
         "src/*"
       ],
       "@app/*": ["src/app/*"],
-      "@common/*": ["@app/common/*"],
-      "@file-explorer/*": ["@app/common/file-explorer/*"],
-      "@utils/*": ["@app/utils/*"],
-      "@firebase-auth/*": ["@app/firebase-auth/*"],
+      "@common/*": ["src/app/common/*"],
+      "@file-explorer/*": ["src/app/common/file-explorer/*"],
+      "@photo-gallery/*": ["src/app/photo-gallery/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@firebase-auth/*": ["src/app/firebase-auth/*"],
       "@services/*": ["src/app/services/*"],
       "@models/*": ["src/app/models/*"]
    },

@@ -1,0 +1,29 @@
+@import 'mixins';
+
+dwu-user-login, dwu-file-uploader {
+  margin: 0.25rem;
+  display: block;
+}
+
+.uploaded-file-container {
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  .uploaded-file {
+    margin: 0.5rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    .file-name {
+      color: $light-green;
+      background-color: $black-olive;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem 0.25rem 0 0;
+    }
+    .file-pic {
+      width: 20rem;
+      height: 15rem;
+    }
+  }
+}
+

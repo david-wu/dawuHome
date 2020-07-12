@@ -11,11 +11,11 @@ import { User } from '@models/index';
 // import * as EXIFStatic from 'exif-js';
 
 @Component({
-  selector: 'dwu-photo-gallery',
-  templateUrl: './photo-gallery.component.html',
-  styleUrls: ['./photo-gallery.component.scss']
+  selector: 'dwu-my-uploads',
+  templateUrl: './my-uploads.component.html',
+  styleUrls: ['./my-uploads.component.scss']
 })
-export class PhotoGalleryComponent {
+export class MyUploadsComponent {
 
   public uploadedFiles$: Observable<any[]>;
 
@@ -25,20 +25,20 @@ export class PhotoGalleryComponent {
     public exifService: ExifService,
     public userLocationService: UserLocationService,
   ) {
-    // this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+    this.uploadedFiles$ = this.pgs.getUploadedFiles$();
   }
 
-  // public async onFileChange(file: File, user: User) {
-  //   const fileMetadata = await this.exifService.getMetaData();
-  //   this.pgs.uploadFile(file, user, fileMetadata);
-  // }
+  public async onFileChange(file: File, user: User) {
+    const fileMetadata = await this.exifService.getMetaData(file);
+    this.pgs.uploadFile(file, user, fileMetadata);
+  }
 
-  // public onDeleteFile(file: any, user: User) {
-  //   this.pgs.deleteFile(file.id, user);
-  // }
+  public onDeleteFile(file: any, user: User) {
+    this.pgs.deleteFile(file.id, user);
+  }
 
-  // public trackById(file: any) {
-  //   return file.id;
-  // }
+  public trackById(file: any) {
+    return file.id;
+  }
 
 }

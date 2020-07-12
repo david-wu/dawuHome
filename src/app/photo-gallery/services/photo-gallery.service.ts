@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import {
   Observable,
   BehaviorSubject,
+  Subject,
   of,
 } from 'rxjs';
 import {
   map,
   switchMap,
 } from 'rxjs/operators';
+import Geohash from 'latlon-geohash';
 
 import { User } from '@models/index';
 import {
@@ -15,7 +17,7 @@ import {
   FirebaseFirestoreService,
   FirebaseStorageService,
 } from '@services/index';
-
+import { UserLocationService } from './user-location.service';
 
 @Injectable()
 export class PhotoGalleryService {
@@ -24,6 +26,7 @@ export class PhotoGalleryService {
     public fas: FirebaseAuthService,
     public ffs: FirebaseFirestoreService,
     public fss: FirebaseStorageService,
+    public userLocationService: UserLocationService,
   ) {}
 
   public async deleteFile(fileId: string, user: User) {
@@ -33,8 +36,8 @@ export class PhotoGalleryService {
   }
 
   public async uploadFile(file: File, user: User, fileMeta: any = {}) {
-    const registrationResponse = await this.ffs.registerFileId(file, user);
-    const registeredFileId = registrationResponse.id;
+    const registeredFileId = await this.ffs.registerFileId(file, user, fileMeta);
+    // const registeredFileId = registrationResponse.id;
     const fileUploadResponse = await this.fss.uploadFile(file, registeredFileId)
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
     const uploadMeta = {
@@ -53,6 +56,20 @@ export class PhotoGalleryService {
         }
       })
     );
+  }
+
+  public getNearByUploads$(): Observable<any[]> {
+    const nearByUploadStreams$ = new Subject<any>();
+    const userLocation = this.userLocationService.getUserLocation()
+      .then((userLocation: any) => {
+        nearByUploadStreams$.next(this.ffs.getNearbyUploads$(userLocation));
+      });
+    return nearByUploadStreams$.pipe(
+      switchMap((nearbyUploads$) => {
+        return nearbyUploads$
+      })
+    ) as Observable<any[]>;
+
   }
 
 }

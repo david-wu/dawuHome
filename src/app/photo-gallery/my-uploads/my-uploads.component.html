@@ -1,0 +1,35 @@
+<dwu-user-login></dwu-user-login>
+<dwu-file-uploader
+  *ngIf="firebaseAuthService.user$ | async as user"
+  (fileChange)="onFileChange($event, user)"
+></dwu-file-uploader>
+<div
+  *ngIf="(uploadedFiles$ | async) as uploadedFiles"
+  class="uploaded-file-container"
+>
+  <div
+    *ngFor="let uploadedFile of uploadedFiles; trackBy: trackById"
+    class="uploaded-file"
+  >
+    <div class="file-name">
+      <div>{{ uploadedFile.fileName }}</div>
+      <span
+        *ngIf="firebaseAuthService.user$ | async as user"
+        class="material-icons"
+        (click)="onDeleteFile(uploadedFile, user)"
+      >delete</span>
+    </div>
+    <img
+      *ngIf="uploadedFile.uploadMeta"
+      [src]="uploadedFile.uploadMeta.downloadUrl"
+      class="file-pic"
+    >
+    <div
+      *ngIf="!uploadedFile.uploadMeta"
+      class="file-pic"
+    >
+      <div class="dwu-loader"></div>
+    </div>
+  </div>
+</div>
+<div class="footer"></div>

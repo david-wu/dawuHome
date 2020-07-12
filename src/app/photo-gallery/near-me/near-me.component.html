@@ -1,0 +1,26 @@
+<div *ngIf="nearByUploads$ | async as nearByUploads" class="uploaded-file-container">
+  <div
+    *ngFor="let uploadedFile of nearByUploads; trackBy: trackById"
+    class="uploaded-file"
+  >
+    <div class="file-name">
+      <div>{{ uploadedFile.fileName }}</div>
+      <span
+        *ngIf="firebaseAuthService.user$ | async as user"
+        class="material-icons"
+        (click)="onDeleteFile(uploadedFile, user)"
+      >delete</span>
+    </div>
+    <img
+      *ngIf="uploadedFile.uploadMeta"
+      [src]="uploadedFile.uploadMeta.downloadUrl"
+      class="file-pic"
+    >
+    <div
+      *ngIf="!uploadedFile.uploadMeta"
+      class="file-pic"
+    >
+      <div class="dwu-loader"></div>
+    </div>
+  </div>
+</div>
