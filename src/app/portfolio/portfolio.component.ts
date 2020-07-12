@@ -48,6 +48,17 @@ export class PortfolioComponent {
             MARKDOWN: { label: 'support markdown-editor' },
             FAVICON: { label: 'make a favicon' },
             COMMON: { label: 'components demos' },
+            PHOTOS: {
+              label: 'photos app',
+              childrenById: {
+                TD1: { label: 'upload photo transaction' },
+                TD2: { label: 'service worker' },
+                TD3: { label: 'walk/bike/car distance' },
+                TD4: { label: 'better models/interfaces' },
+                TD5: { label: 's2' },
+                TD6: { label: 's4' },
+              },
+            },
           },
         },
       },
