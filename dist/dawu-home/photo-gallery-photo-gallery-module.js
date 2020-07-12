@@ -1323,6 +1323,1226 @@ class Geohash {
 
 /***/ }),
 
+/***/ "./node_modules/long/dist/long.js":
+/*!****************************************!*\
+  !*** ./node_modules/long/dist/long.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+ Copyright 2013 Daniel Wirtz <dcode@dcode.io>
+ Copyright 2009 The Closure Library Authors. All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS-IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+
+/**
+ * @license long.js (c) 2013 Daniel Wirtz <dcode@dcode.io>
+ * Released under the Apache License, Version 2.0
+ * see: https://github.com/dcodeIO/long.js for details
+ */
+(function(global, factory) {
+
+    /* AMD */ if (true)
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    /* CommonJS */ else {}
+
+})(this, function() {
+    "use strict";
+
+    /**
+     * Constructs a 64 bit two's-complement integer, given its low and high 32 bit values as *signed* integers.
+     *  See the from* functions below for more convenient ways of constructing Longs.
+     * @exports Long
+     * @class A Long class for representing a 64 bit two's-complement integer value.
+     * @param {number} low The low (signed) 32 bits of the long
+     * @param {number} high The high (signed) 32 bits of the long
+     * @param {boolean=} unsigned Whether unsigned or not, defaults to `false` for signed
+     * @constructor
+     */
+    function Long(low, high, unsigned) {
+
+        /**
+         * The low 32 bits as a signed value.
+         * @type {number}
+         */
+        this.low = low | 0;
+
+        /**
+         * The high 32 bits as a signed value.
+         * @type {number}
+         */
+        this.high = high | 0;
+
+        /**
+         * Whether unsigned or not.
+         * @type {boolean}
+         */
+        this.unsigned = !!unsigned;
+    }
+
+    // The internal representation of a long is the two given signed, 32-bit values.
+    // We use 32-bit pieces because these are the size of integers on which
+    // Javascript performs bit-operations.  For operations like addition and
+    // multiplication, we split each number into 16 bit pieces, which can easily be
+    // multiplied within Javascript's floating-point representation without overflow
+    // or change in sign.
+    //
+    // In the algorithms below, we frequently reduce the negative case to the
+    // positive case by negating the input(s) and then post-processing the result.
+    // Note that we must ALWAYS check specially whether those values are MIN_VALUE
+    // (-2^63) because -MIN_VALUE == MIN_VALUE (since 2^63 cannot be represented as
+    // a positive number, it overflows back into a negative).  Not handling this
+    // case would often result in infinite recursion.
+    //
+    // Common constant values ZERO, ONE, NEG_ONE, etc. are defined below the from*
+    // methods on which they depend.
+
+    /**
+     * An indicator used to reliably determine if an object is a Long or not.
+     * @type {boolean}
+     * @const
+     * @private
+     */
+    Long.prototype.__isLong__;
+
+    Object.defineProperty(Long.prototype, "__isLong__", {
+        value: true,
+        enumerable: false,
+        configurable: false
+    });
+
+    /**
+     * @function
+     * @param {*} obj Object
+     * @returns {boolean}
+     * @inner
+     */
+    function isLong(obj) {
+        return (obj && obj["__isLong__"]) === true;
+    }
+
+    /**
+     * Tests if the specified object is a Long.
+     * @function
+     * @param {*} obj Object
+     * @returns {boolean}
+     */
+    Long.isLong = isLong;
+
+    /**
+     * A cache of the Long representations of small integer values.
+     * @type {!Object}
+     * @inner
+     */
+    var INT_CACHE = {};
+
+    /**
+     * A cache of the Long representations of small unsigned integer values.
+     * @type {!Object}
+     * @inner
+     */
+    var UINT_CACHE = {};
+
+    /**
+     * @param {number} value
+     * @param {boolean=} unsigned
+     * @returns {!Long}
+     * @inner
+     */
+    function fromInt(value, unsigned) {
+        var obj, cachedObj, cache;
+        if (unsigned) {
+            value >>>= 0;
+            if (cache = (0 <= value && value < 256)) {
+                cachedObj = UINT_CACHE[value];
+                if (cachedObj)
+                    return cachedObj;
+            }
+            obj = fromBits(value, (value | 0) < 0 ? -1 : 0, true);
+            if (cache)
+                UINT_CACHE[value] = obj;
+            return obj;
+        } else {
+            value |= 0;
+            if (cache = (-128 <= value && value < 128)) {
+                cachedObj = INT_CACHE[value];
+                if (cachedObj)
+                    return cachedObj;
+            }
+            obj = fromBits(value, value < 0 ? -1 : 0, false);
+            if (cache)
+                INT_CACHE[value] = obj;
+            return obj;
+        }
+    }
+
+    /**
+     * Returns a Long representing the given 32 bit integer value.
+     * @function
+     * @param {number} value The 32 bit integer in question
+     * @param {boolean=} unsigned Whether unsigned or not, defaults to `false` for signed
+     * @returns {!Long} The corresponding Long value
+     */
+    Long.fromInt = fromInt;
+
+    /**
+     * @param {number} value
+     * @param {boolean=} unsigned
+     * @returns {!Long}
+     * @inner
+     */
+    function fromNumber(value, unsigned) {
+        if (isNaN(value) || !isFinite(value))
+            return unsigned ? UZERO : ZERO;
+        if (unsigned) {
+            if (value < 0)
+                return UZERO;
+            if (value >= TWO_PWR_64_DBL)
+                return MAX_UNSIGNED_VALUE;
+        } else {
+            if (value <= -TWO_PWR_63_DBL)
+                return MIN_VALUE;
+            if (value + 1 >= TWO_PWR_63_DBL)
+                return MAX_VALUE;
+        }
+        if (value < 0)
+            return fromNumber(-value, unsigned).neg();
+        return fromBits((value % TWO_PWR_32_DBL) | 0, (value / TWO_PWR_32_DBL) | 0, unsigned);
+    }
+
+    /**
+     * Returns a Long representing the given value, provided that it is a finite number. Otherwise, zero is returned.
+     * @function
+     * @param {number} value The number in question
+     * @param {boolean=} unsigned Whether unsigned or not, defaults to `false` for signed
+     * @returns {!Long} The corresponding Long value
+     */
+    Long.fromNumber = fromNumber;
+
+    /**
+     * @param {number} lowBits
+     * @param {number} highBits
+     * @param {boolean=} unsigned
+     * @returns {!Long}
+     * @inner
+     */
+    function fromBits(lowBits, highBits, unsigned) {
+        return new Long(lowBits, highBits, unsigned);
+    }
+
+    /**
+     * Returns a Long representing the 64 bit integer that comes by concatenating the given low and high bits. Each is
+     *  assumed to use 32 bits.
+     * @function
+     * @param {number} lowBits The low 32 bits
+     * @param {number} highBits The high 32 bits
+     * @param {boolean=} unsigned Whether unsigned or not, defaults to `false` for signed
+     * @returns {!Long} The corresponding Long value
+     */
+    Long.fromBits = fromBits;
+
+    /**
+     * @function
+     * @param {number} base
+     * @param {number} exponent
+     * @returns {number}
+     * @inner
+     */
+    var pow_dbl = Math.pow; // Used 4 times (4*8 to 15+4)
+
+    /**
+     * @param {string} str
+     * @param {(boolean|number)=} unsigned
+     * @param {number=} radix
+     * @returns {!Long}
+     * @inner
+     */
+    function fromString(str, unsigned, radix) {
+        if (str.length === 0)
+            throw Error('empty string');
+        if (str === "NaN" || str === "Infinity" || str === "+Infinity" || str === "-Infinity")
+            return ZERO;
+        if (typeof unsigned === 'number') {
+            // For goog.math.long compatibility
+            radix = unsigned,
+            unsigned = false;
+        } else {
+            unsigned = !! unsigned;
+        }
+        radix = radix || 10;
+        if (radix < 2 || 36 < radix)
+            throw RangeError('radix');
+
+        var p;
+        if ((p = str.indexOf('-')) > 0)
+            throw Error('interior hyphen');
+        else if (p === 0) {
+            return fromString(str.substring(1), unsigned, radix).neg();
+        }
+
+        // Do several (8) digits each time through the loop, so as to
+        // minimize the calls to the very expensive emulated div.
+        var radixToPower = fromNumber(pow_dbl(radix, 8));
+
+        var result = ZERO;
+        for (var i = 0; i < str.length; i += 8) {
+            var size = Math.min(8, str.length - i),
+                value = parseInt(str.substring(i, i + size), radix);
+            if (size < 8) {
+                var power = fromNumber(pow_dbl(radix, size));
+                result = result.mul(power).add(fromNumber(value));
+            } else {
+                result = result.mul(radixToPower);
+                result = result.add(fromNumber(value));
+            }
+        }
+        result.unsigned = unsigned;
+        return result;
+    }
+
+    /**
+     * Returns a Long representation of the given string, written using the specified radix.
+     * @function
+     * @param {string} str The textual representation of the Long
+     * @param {(boolean|number)=} unsigned Whether unsigned or not, defaults to `false` for signed
+     * @param {number=} radix The radix in which the text is written (2-36), defaults to 10
+     * @returns {!Long} The corresponding Long value
+     */
+    Long.fromString = fromString;
+
+    /**
+     * @function
+     * @param {!Long|number|string|!{low: number, high: number, unsigned: boolean}} val
+     * @returns {!Long}
+     * @inner
+     */
+    function fromValue(val) {
+        if (val /* is compatible */ instanceof Long)
+            return val;
+        if (typeof val === 'number')
+            return fromNumber(val);
+        if (typeof val === 'string')
+            return fromString(val);
+        // Throws for non-objects, converts non-instanceof Long:
+        return fromBits(val.low, val.high, val.unsigned);
+    }
+
+    /**
+     * Converts the specified value to a Long.
+     * @function
+     * @param {!Long|number|string|!{low: number, high: number, unsigned: boolean}} val Value
+     * @returns {!Long}
+     */
+    Long.fromValue = fromValue;
+
+    // NOTE: the compiler should inline these constant values below and then remove these variables, so there should be
+    // no runtime penalty for these.
+
+    /**
+     * @type {number}
+     * @const
+     * @inner
+     */
+    var TWO_PWR_16_DBL = 1 << 16;
+
+    /**
+     * @type {number}
+     * @const
+     * @inner
+     */
+    var TWO_PWR_24_DBL = 1 << 24;
+
+    /**
+     * @type {number}
+     * @const
+     * @inner
+     */
+    var TWO_PWR_32_DBL = TWO_PWR_16_DBL * TWO_PWR_16_DBL;
+
+    /**
+     * @type {number}
+     * @const
+     * @inner
+     */
+    var TWO_PWR_64_DBL = TWO_PWR_32_DBL * TWO_PWR_32_DBL;
+
+    /**
+     * @type {number}
+     * @const
+     * @inner
+     */
+    var TWO_PWR_63_DBL = TWO_PWR_64_DBL / 2;
+
+    /**
+     * @type {!Long}
+     * @const
+     * @inner
+     */
+    var TWO_PWR_24 = fromInt(TWO_PWR_24_DBL);
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var ZERO = fromInt(0);
+
+    /**
+     * Signed zero.
+     * @type {!Long}
+     */
+    Long.ZERO = ZERO;
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var UZERO = fromInt(0, true);
+
+    /**
+     * Unsigned zero.
+     * @type {!Long}
+     */
+    Long.UZERO = UZERO;
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var ONE = fromInt(1);
+
+    /**
+     * Signed one.
+     * @type {!Long}
+     */
+    Long.ONE = ONE;
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var UONE = fromInt(1, true);
+
+    /**
+     * Unsigned one.
+     * @type {!Long}
+     */
+    Long.UONE = UONE;
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var NEG_ONE = fromInt(-1);
+
+    /**
+     * Signed negative one.
+     * @type {!Long}
+     */
+    Long.NEG_ONE = NEG_ONE;
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var MAX_VALUE = fromBits(0xFFFFFFFF|0, 0x7FFFFFFF|0, false);
+
+    /**
+     * Maximum signed value.
+     * @type {!Long}
+     */
+    Long.MAX_VALUE = MAX_VALUE;
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var MAX_UNSIGNED_VALUE = fromBits(0xFFFFFFFF|0, 0xFFFFFFFF|0, true);
+
+    /**
+     * Maximum unsigned value.
+     * @type {!Long}
+     */
+    Long.MAX_UNSIGNED_VALUE = MAX_UNSIGNED_VALUE;
+
+    /**
+     * @type {!Long}
+     * @inner
+     */
+    var MIN_VALUE = fromBits(0, 0x80000000|0, false);
+
+    /**
+     * Minimum signed value.
+     * @type {!Long}
+     */
+    Long.MIN_VALUE = MIN_VALUE;
+
+    /**
+     * @alias Long.prototype
+     * @inner
+     */
+    var LongPrototype = Long.prototype;
+
+    /**
+     * Converts the Long to a 32 bit integer, assuming it is a 32 bit integer.
+     * @returns {number}
+     */
+    LongPrototype.toInt = function toInt() {
+        return this.unsigned ? this.low >>> 0 : this.low;
+    };
+
+    /**
+     * Converts the Long to a the nearest floating-point representation of this value (double, 53 bit mantissa).
+     * @returns {number}
+     */
+    LongPrototype.toNumber = function toNumber() {
+        if (this.unsigned)
+            return ((this.high >>> 0) * TWO_PWR_32_DBL) + (this.low >>> 0);
+        return this.high * TWO_PWR_32_DBL + (this.low >>> 0);
+    };
+
+    /**
+     * Converts the Long to a string written in the specified radix.
+     * @param {number=} radix Radix (2-36), defaults to 10
+     * @returns {string}
+     * @override
+     * @throws {RangeError} If `radix` is out of range
+     */
+    LongPrototype.toString = function toString(radix) {
+        radix = radix || 10;
+        if (radix < 2 || 36 < radix)
+            throw RangeError('radix');
+        if (this.isZero())
+            return '0';
+        if (this.isNegative()) { // Unsigned Longs are never negative
+            if (this.eq(MIN_VALUE)) {
+                // We need to change the Long value before it can be negated, so we remove
+                // the bottom-most digit in this base and then recurse to do the rest.
+                var radixLong = fromNumber(radix),
+                    div = this.div(radixLong),
+                    rem1 = div.mul(radixLong).sub(this);
+                return div.toString(radix) + rem1.toInt().toString(radix);
+            } else
+                return '-' + this.neg().toString(radix);
+        }
+
+        // Do several (6) digits each time through the loop, so as to
+        // minimize the calls to the very expensive emulated div.
+        var radixToPower = fromNumber(pow_dbl(radix, 6), this.unsigned),
+            rem = this;
+        var result = '';
+        while (true) {
+            var remDiv = rem.div(radixToPower),
+                intval = rem.sub(remDiv.mul(radixToPower)).toInt() >>> 0,
+                digits = intval.toString(radix);
+            rem = remDiv;
+            if (rem.isZero())
+                return digits + result;
+            else {
+                while (digits.length < 6)
+                    digits = '0' + digits;
+                result = '' + digits + result;
+            }
+        }
+    };
+
+    /**
+     * Gets the high 32 bits as a signed integer.
+     * @returns {number} Signed high bits
+     */
+    LongPrototype.getHighBits = function getHighBits() {
+        return this.high;
+    };
+
+    /**
+     * Gets the high 32 bits as an unsigned integer.
+     * @returns {number} Unsigned high bits
+     */
+    LongPrototype.getHighBitsUnsigned = function getHighBitsUnsigned() {
+        return this.high >>> 0;
+    };
+
+    /**
+     * Gets the low 32 bits as a signed integer.
+     * @returns {number} Signed low bits
+     */
+    LongPrototype.getLowBits = function getLowBits() {
+        return this.low;
+    };
+
+    /**
+     * Gets the low 32 bits as an unsigned integer.
+     * @returns {number} Unsigned low bits
+     */
+    LongPrototype.getLowBitsUnsigned = function getLowBitsUnsigned() {
+        return this.low >>> 0;
+    };
+
+    /**
+     * Gets the number of bits needed to represent the absolute value of this Long.
+     * @returns {number}
+     */
+    LongPrototype.getNumBitsAbs = function getNumBitsAbs() {
+        if (this.isNegative()) // Unsigned Longs are never negative
+            return this.eq(MIN_VALUE) ? 64 : this.neg().getNumBitsAbs();
+        var val = this.high != 0 ? this.high : this.low;
+        for (var bit = 31; bit > 0; bit--)
+            if ((val & (1 << bit)) != 0)
+                break;
+        return this.high != 0 ? bit + 33 : bit + 1;
+    };
+
+    /**
+     * Tests if this Long's value equals zero.
+     * @returns {boolean}
+     */
+    LongPrototype.isZero = function isZero() {
+        return this.high === 0 && this.low === 0;
+    };
+
+    /**
+     * Tests if this Long's value is negative.
+     * @returns {boolean}
+     */
+    LongPrototype.isNegative = function isNegative() {
+        return !this.unsigned && this.high < 0;
+    };
+
+    /**
+     * Tests if this Long's value is positive.
+     * @returns {boolean}
+     */
+    LongPrototype.isPositive = function isPositive() {
+        return this.unsigned || this.high >= 0;
+    };
+
+    /**
+     * Tests if this Long's value is odd.
+     * @returns {boolean}
+     */
+    LongPrototype.isOdd = function isOdd() {
+        return (this.low & 1) === 1;
+    };
+
+    /**
+     * Tests if this Long's value is even.
+     * @returns {boolean}
+     */
+    LongPrototype.isEven = function isEven() {
+        return (this.low & 1) === 0;
+    };
+
+    /**
+     * Tests if this Long's value equals the specified's.
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.equals = function equals(other) {
+        if (!isLong(other))
+            other = fromValue(other);
+        if (this.unsigned !== other.unsigned && (this.high >>> 31) === 1 && (other.high >>> 31) === 1)
+            return false;
+        return this.high === other.high && this.low === other.low;
+    };
+
+    /**
+     * Tests if this Long's value equals the specified's. This is an alias of {@link Long#equals}.
+     * @function
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.eq = LongPrototype.equals;
+
+    /**
+     * Tests if this Long's value differs from the specified's.
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.notEquals = function notEquals(other) {
+        return !this.eq(/* validates */ other);
+    };
+
+    /**
+     * Tests if this Long's value differs from the specified's. This is an alias of {@link Long#notEquals}.
+     * @function
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.neq = LongPrototype.notEquals;
+
+    /**
+     * Tests if this Long's value is less than the specified's.
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.lessThan = function lessThan(other) {
+        return this.comp(/* validates */ other) < 0;
+    };
+
+    /**
+     * Tests if this Long's value is less than the specified's. This is an alias of {@link Long#lessThan}.
+     * @function
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.lt = LongPrototype.lessThan;
+
+    /**
+     * Tests if this Long's value is less than or equal the specified's.
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.lessThanOrEqual = function lessThanOrEqual(other) {
+        return this.comp(/* validates */ other) <= 0;
+    };
+
+    /**
+     * Tests if this Long's value is less than or equal the specified's. This is an alias of {@link Long#lessThanOrEqual}.
+     * @function
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.lte = LongPrototype.lessThanOrEqual;
+
+    /**
+     * Tests if this Long's value is greater than the specified's.
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.greaterThan = function greaterThan(other) {
+        return this.comp(/* validates */ other) > 0;
+    };
+
+    /**
+     * Tests if this Long's value is greater than the specified's. This is an alias of {@link Long#greaterThan}.
+     * @function
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.gt = LongPrototype.greaterThan;
+
+    /**
+     * Tests if this Long's value is greater than or equal the specified's.
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.greaterThanOrEqual = function greaterThanOrEqual(other) {
+        return this.comp(/* validates */ other) >= 0;
+    };
+
+    /**
+     * Tests if this Long's value is greater than or equal the specified's. This is an alias of {@link Long#greaterThanOrEqual}.
+     * @function
+     * @param {!Long|number|string} other Other value
+     * @returns {boolean}
+     */
+    LongPrototype.gte = LongPrototype.greaterThanOrEqual;
+
+    /**
+     * Compares this Long's value with the specified's.
+     * @param {!Long|number|string} other Other value
+     * @returns {number} 0 if they are the same, 1 if the this is greater and -1
+     *  if the given one is greater
+     */
+    LongPrototype.compare = function compare(other) {
+        if (!isLong(other))
+            other = fromValue(other);
+        if (this.eq(other))
+            return 0;
+        var thisNeg = this.isNegative(),
+            otherNeg = other.isNegative();
+        if (thisNeg && !otherNeg)
+            return -1;
+        if (!thisNeg && otherNeg)
+            return 1;
+        // At this point the sign bits are the same
+        if (!this.unsigned)
+            return this.sub(other).isNegative() ? -1 : 1;
+        // Both are positive if at least one is unsigned
+        return (other.high >>> 0) > (this.high >>> 0) || (other.high === this.high && (other.low >>> 0) > (this.low >>> 0)) ? -1 : 1;
+    };
+
+    /**
+     * Compares this Long's value with the specified's. This is an alias of {@link Long#compare}.
+     * @function
+     * @param {!Long|number|string} other Other value
+     * @returns {number} 0 if they are the same, 1 if the this is greater and -1
+     *  if the given one is greater
+     */
+    LongPrototype.comp = LongPrototype.compare;
+
+    /**
+     * Negates this Long's value.
+     * @returns {!Long} Negated Long
+     */
+    LongPrototype.negate = function negate() {
+        if (!this.unsigned && this.eq(MIN_VALUE))
+            return MIN_VALUE;
+        return this.not().add(ONE);
+    };
+
+    /**
+     * Negates this Long's value. This is an alias of {@link Long#negate}.
+     * @function
+     * @returns {!Long} Negated Long
+     */
+    LongPrototype.neg = LongPrototype.negate;
+
+    /**
+     * Returns the sum of this and the specified Long.
+     * @param {!Long|number|string} addend Addend
+     * @returns {!Long} Sum
+     */
+    LongPrototype.add = function add(addend) {
+        if (!isLong(addend))
+            addend = fromValue(addend);
+
+        // Divide each number into 4 chunks of 16 bits, and then sum the chunks.
+
+        var a48 = this.high >>> 16;
+        var a32 = this.high & 0xFFFF;
+        var a16 = this.low >>> 16;
+        var a00 = this.low & 0xFFFF;
+
+        var b48 = addend.high >>> 16;
+        var b32 = addend.high & 0xFFFF;
+        var b16 = addend.low >>> 16;
+        var b00 = addend.low & 0xFFFF;
+
+        var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
+        c00 += a00 + b00;
+        c16 += c00 >>> 16;
+        c00 &= 0xFFFF;
+        c16 += a16 + b16;
+        c32 += c16 >>> 16;
+        c16 &= 0xFFFF;
+        c32 += a32 + b32;
+        c48 += c32 >>> 16;
+        c32 &= 0xFFFF;
+        c48 += a48 + b48;
+        c48 &= 0xFFFF;
+        return fromBits((c16 << 16) | c00, (c48 << 16) | c32, this.unsigned);
+    };
+
+    /**
+     * Returns the difference of this and the specified Long.
+     * @param {!Long|number|string} subtrahend Subtrahend
+     * @returns {!Long} Difference
+     */
+    LongPrototype.subtract = function subtract(subtrahend) {
+        if (!isLong(subtrahend))
+            subtrahend = fromValue(subtrahend);
+        return this.add(subtrahend.neg());
+    };
+
+    /**
+     * Returns the difference of this and the specified Long. This is an alias of {@link Long#subtract}.
+     * @function
+     * @param {!Long|number|string} subtrahend Subtrahend
+     * @returns {!Long} Difference
+     */
+    LongPrototype.sub = LongPrototype.subtract;
+
+    /**
+     * Returns the product of this and the specified Long.
+     * @param {!Long|number|string} multiplier Multiplier
+     * @returns {!Long} Product
+     */
+    LongPrototype.multiply = function multiply(multiplier) {
+        if (this.isZero())
+            return ZERO;
+        if (!isLong(multiplier))
+            multiplier = fromValue(multiplier);
+        if (multiplier.isZero())
+            return ZERO;
+        if (this.eq(MIN_VALUE))
+            return multiplier.isOdd() ? MIN_VALUE : ZERO;
+        if (multiplier.eq(MIN_VALUE))
+            return this.isOdd() ? MIN_VALUE : ZERO;
+
+        if (this.isNegative()) {
+            if (multiplier.isNegative())
+                return this.neg().mul(multiplier.neg());
+            else
+                return this.neg().mul(multiplier).neg();
+        } else if (multiplier.isNegative())
+            return this.mul(multiplier.neg()).neg();
+
+        // If both longs are small, use float multiplication
+        if (this.lt(TWO_PWR_24) && multiplier.lt(TWO_PWR_24))
+            return fromNumber(this.toNumber() * multiplier.toNumber(), this.unsigned);
+
+        // Divide each long into 4 chunks of 16 bits, and then add up 4x4 products.
+        // We can skip products that would overflow.
+
+        var a48 = this.high >>> 16;
+        var a32 = this.high & 0xFFFF;
+        var a16 = this.low >>> 16;
+        var a00 = this.low & 0xFFFF;
+
+        var b48 = multiplier.high >>> 16;
+        var b32 = multiplier.high & 0xFFFF;
+        var b16 = multiplier.low >>> 16;
+        var b00 = multiplier.low & 0xFFFF;
+
+        var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
+        c00 += a00 * b00;
+        c16 += c00 >>> 16;
+        c00 &= 0xFFFF;
+        c16 += a16 * b00;
+        c32 += c16 >>> 16;
+        c16 &= 0xFFFF;
+        c16 += a00 * b16;
+        c32 += c16 >>> 16;
+        c16 &= 0xFFFF;
+        c32 += a32 * b00;
+        c48 += c32 >>> 16;
+        c32 &= 0xFFFF;
+        c32 += a16 * b16;
+        c48 += c32 >>> 16;
+        c32 &= 0xFFFF;
+        c32 += a00 * b32;
+        c48 += c32 >>> 16;
+        c32 &= 0xFFFF;
+        c48 += a48 * b00 + a32 * b16 + a16 * b32 + a00 * b48;
+        c48 &= 0xFFFF;
+        return fromBits((c16 << 16) | c00, (c48 << 16) | c32, this.unsigned);
+    };
+
+    /**
+     * Returns the product of this and the specified Long. This is an alias of {@link Long#multiply}.
+     * @function
+     * @param {!Long|number|string} multiplier Multiplier
+     * @returns {!Long} Product
+     */
+    LongPrototype.mul = LongPrototype.multiply;
+
+    /**
+     * Returns this Long divided by the specified. The result is signed if this Long is signed or
+     *  unsigned if this Long is unsigned.
+     * @param {!Long|number|string} divisor Divisor
+     * @returns {!Long} Quotient
+     */
+    LongPrototype.divide = function divide(divisor) {
+        if (!isLong(divisor))
+            divisor = fromValue(divisor);
+        if (divisor.isZero())
+            throw Error('division by zero');
+        if (this.isZero())
+            return this.unsigned ? UZERO : ZERO;
+        var approx, rem, res;
+        if (!this.unsigned) {
+            // This section is only relevant for signed longs and is derived from the
+            // closure library as a whole.
+            if (this.eq(MIN_VALUE)) {
+                if (divisor.eq(ONE) || divisor.eq(NEG_ONE))
+                    return MIN_VALUE;  // recall that -MIN_VALUE == MIN_VALUE
+                else if (divisor.eq(MIN_VALUE))
+                    return ONE;
+                else {
+                    // At this point, we have |other| >= 2, so |this/other| < |MIN_VALUE|.
+                    var halfThis = this.shr(1);
+                    approx = halfThis.div(divisor).shl(1);
+                    if (approx.eq(ZERO)) {
+                        return divisor.isNegative() ? ONE : NEG_ONE;
+                    } else {
+                        rem = this.sub(divisor.mul(approx));
+                        res = approx.add(rem.div(divisor));
+                        return res;
+                    }
+                }
+            } else if (divisor.eq(MIN_VALUE))
+                return this.unsigned ? UZERO : ZERO;
+            if (this.isNegative()) {
+                if (divisor.isNegative())
+                    return this.neg().div(divisor.neg());
+                return this.neg().div(divisor).neg();
+            } else if (divisor.isNegative())
+                return this.div(divisor.neg()).neg();
+            res = ZERO;
+        } else {
+            // The algorithm below has not been made for unsigned longs. It's therefore
+            // required to take special care of the MSB prior to running it.
+            if (!divisor.unsigned)
+                divisor = divisor.toUnsigned();
+            if (divisor.gt(this))
+                return UZERO;
+            if (divisor.gt(this.shru(1))) // 15 >>> 1 = 7 ; with divisor = 8 ; true
+                return UONE;
+            res = UZERO;
+        }
+
+        // Repeat the following until the remainder is less than other:  find a
+        // floating-point that approximates remainder / other *from below*, add this
+        // into the result, and subtract it from the remainder.  It is critical that
+        // the approximate value is less than or equal to the real value so that the
+        // remainder never becomes negative.
+        rem = this;
+        while (rem.gte(divisor)) {
+            // Approximate the result of division. This may be a little greater or
+            // smaller than the actual value.
+            approx = Math.max(1, Math.floor(rem.toNumber() / divisor.toNumber()));
+
+            // We will tweak the approximate result by changing it in the 48-th digit or
+            // the smallest non-fractional digit, whichever is larger.
+            var log2 = Math.ceil(Math.log(approx) / Math.LN2),
+                delta = (log2 <= 48) ? 1 : pow_dbl(2, log2 - 48),
+
+            // Decrease the approximation until it is smaller than the remainder.  Note
+            // that if it is too large, the product overflows and is negative.
+                approxRes = fromNumber(approx),
+                approxRem = approxRes.mul(divisor);
+            while (approxRem.isNegative() || approxRem.gt(rem)) {
+                approx -= delta;
+                approxRes = fromNumber(approx, this.unsigned);
+                approxRem = approxRes.mul(divisor);
+            }
+
+            // We know the answer can't be zero... and actually, zero would cause
+            // infinite recursion since we would make no progress.
+            if (approxRes.isZero())
+                approxRes = ONE;
+
+            res = res.add(approxRes);
+            rem = rem.sub(approxRem);
+        }
+        return res;
+    };
+
+    /**
+     * Returns this Long divided by the specified. This is an alias of {@link Long#divide}.
+     * @function
+     * @param {!Long|number|string} divisor Divisor
+     * @returns {!Long} Quotient
+     */
+    LongPrototype.div = LongPrototype.divide;
+
+    /**
+     * Returns this Long modulo the specified.
+     * @param {!Long|number|string} divisor Divisor
+     * @returns {!Long} Remainder
+     */
+    LongPrototype.modulo = function modulo(divisor) {
+        if (!isLong(divisor))
+            divisor = fromValue(divisor);
+        return this.sub(this.div(divisor).mul(divisor));
+    };
+
+    /**
+     * Returns this Long modulo the specified. This is an alias of {@link Long#modulo}.
+     * @function
+     * @param {!Long|number|string} divisor Divisor
+     * @returns {!Long} Remainder
+     */
+    LongPrototype.mod = LongPrototype.modulo;
+
+    /**
+     * Returns the bitwise NOT of this Long.
+     * @returns {!Long}
+     */
+    LongPrototype.not = function not() {
+        return fromBits(~this.low, ~this.high, this.unsigned);
+    };
+
+    /**
+     * Returns the bitwise AND of this Long and the specified.
+     * @param {!Long|number|string} other Other Long
+     * @returns {!Long}
+     */
+    LongPrototype.and = function and(other) {
+        if (!isLong(other))
+            other = fromValue(other);
+        return fromBits(this.low & other.low, this.high & other.high, this.unsigned);
+    };
+
+    /**
+     * Returns the bitwise OR of this Long and the specified.
+     * @param {!Long|number|string} other Other Long
+     * @returns {!Long}
+     */
+    LongPrototype.or = function or(other) {
+        if (!isLong(other))
+            other = fromValue(other);
+        return fromBits(this.low | other.low, this.high | other.high, this.unsigned);
+    };
+
+    /**
+     * Returns the bitwise XOR of this Long and the given one.
+     * @param {!Long|number|string} other Other Long
+     * @returns {!Long}
+     */
+    LongPrototype.xor = function xor(other) {
+        if (!isLong(other))
+            other = fromValue(other);
+        return fromBits(this.low ^ other.low, this.high ^ other.high, this.unsigned);
+    };
+
+    /**
+     * Returns this Long with bits shifted to the left by the given amount.
+     * @param {number|!Long} numBits Number of bits
+     * @returns {!Long} Shifted Long
+     */
+    LongPrototype.shiftLeft = function shiftLeft(numBits) {
+        if (isLong(numBits))
+            numBits = numBits.toInt();
+        if ((numBits &= 63) === 0)
+            return this;
+        else if (numBits < 32)
+            return fromBits(this.low << numBits, (this.high << numBits) | (this.low >>> (32 - numBits)), this.unsigned);
+        else
+            return fromBits(0, this.low << (numBits - 32), this.unsigned);
+    };
+
+    /**
+     * Returns this Long with bits shifted to the left by the given amount. This is an alias of {@link Long#shiftLeft}.
+     * @function
+     * @param {number|!Long} numBits Number of bits
+     * @returns {!Long} Shifted Long
+     */
+    LongPrototype.shl = LongPrototype.shiftLeft;
+
+    /**
+     * Returns this Long with bits arithmetically shifted to the right by the given amount.
+     * @param {number|!Long} numBits Number of bits
+     * @returns {!Long} Shifted Long
+     */
+    LongPrototype.shiftRight = function shiftRight(numBits) {
+        if (isLong(numBits))
+            numBits = numBits.toInt();
+        if ((numBits &= 63) === 0)
+            return this;
+        else if (numBits < 32)
+            return fromBits((this.low >>> numBits) | (this.high << (32 - numBits)), this.high >> numBits, this.unsigned);
+        else
+            return fromBits(this.high >> (numBits - 32), this.high >= 0 ? 0 : -1, this.unsigned);
+    };
+
+    /**
+     * Returns this Long with bits arithmetically shifted to the right by the given amount. This is an alias of {@link Long#shiftRight}.
+     * @function
+     * @param {number|!Long} numBits Number of bits
+     * @returns {!Long} Shifted Long
+     */
+    LongPrototype.shr = LongPrototype.shiftRight;
+
+    /**
+     * Returns this Long with bits logically shifted to the right by the given amount.
+     * @param {number|!Long} numBits Number of bits
+     * @returns {!Long} Shifted Long
+     */
+    LongPrototype.shiftRightUnsigned = function shiftRightUnsigned(numBits) {
+        if (isLong(numBits))
+            numBits = numBits.toInt();
+        numBits &= 63;
+        if (numBits === 0)
+            return this;
+        else {
+            var high = this.high;
+            if (numBits < 32) {
+                var low = this.low;
+                return fromBits((low >>> numBits) | (high << (32 - numBits)), high >>> numBits, this.unsigned);
+            } else if (numBits === 32)
+                return fromBits(high, 0, this.unsigned);
+            else
+                return fromBits(high >>> (numBits - 32), 0, this.unsigned);
+        }
+    };
+
+    /**
+     * Returns this Long with bits logically shifted to the right by the given amount. This is an alias of {@link Long#shiftRightUnsigned}.
+     * @function
+     * @param {number|!Long} numBits Number of bits
+     * @returns {!Long} Shifted Long
+     */
+    LongPrototype.shru = LongPrototype.shiftRightUnsigned;
+
+    /**
+     * Converts this Long to signed.
+     * @returns {!Long} Signed long
+     */
+    LongPrototype.toSigned = function toSigned() {
+        if (!this.unsigned)
+            return this;
+        return fromBits(this.low, this.high, false);
+    };
+
+    /**
+     * Converts this Long to unsigned.
+     * @returns {!Long} Unsigned long
+     */
+    LongPrototype.toUnsigned = function toUnsigned() {
+        if (this.unsigned)
+            return this;
+        return fromBits(this.low, this.high, true);
+    };
+
+    /**
+     * Converts this Long to its byte representation.
+     * @param {boolean=} le Whether little or big endian, defaults to big endian
+     * @returns {!Array.<number>} Byte representation
+     */
+    LongPrototype.toBytes = function(le) {
+        return le ? this.toBytesLE() : this.toBytesBE();
+    }
+
+    /**
+     * Converts this Long to its little endian byte representation.
+     * @returns {!Array.<number>} Little endian byte representation
+     */
+    LongPrototype.toBytesLE = function() {
+        var hi = this.high,
+            lo = this.low;
+        return [
+             lo         & 0xff,
+            (lo >>>  8) & 0xff,
+            (lo >>> 16) & 0xff,
+            (lo >>> 24) & 0xff,
+             hi         & 0xff,
+            (hi >>>  8) & 0xff,
+            (hi >>> 16) & 0xff,
+            (hi >>> 24) & 0xff
+        ];
+    }
+
+    /**
+     * Converts this Long to its big endian byte representation.
+     * @returns {!Array.<number>} Big endian byte representation
+     */
+    LongPrototype.toBytesBE = function() {
+        var hi = this.high,
+            lo = this.low;
+        return [
+            (hi >>> 24) & 0xff,
+            (hi >>> 16) & 0xff,
+            (hi >>>  8) & 0xff,
+             hi         & 0xff,
+            (lo >>> 24) & 0xff,
+            (lo >>> 16) & 0xff,
+            (lo >>>  8) & 0xff,
+             lo         & 0xff
+        ];
+    }
+
+    return Long;
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/file-uploader/file-uploader.component.html":
 /*!**************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/file-uploader/file-uploader.component.html ***!
@@ -1372,6 +2592,611 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n\n  <div class=\"nav-items-container\">\n    <div\n      class=\"nav-item\"\n      [routerLinkActive]=\"['active']\"\n      [routerLink]=\"['./near-me']\"\n    >Near Me</div>\n    <div\n      class=\"nav-item\"\n      [routerLinkActive]=\"['active']\"\n      [routerLink]=\"['./my-uploads']\"\n    >My Uploads</div>\n  </div>\n  <div class=\"page-content\">\n    <router-outlet></router-outlet>\n    <div class=\"footer\"></div>\n  </div>\n</div>\n\n");
+
+/***/ }),
+
+/***/ "./node_modules/s2-geometry/src/s2geometry.js":
+/*!****************************************************!*\
+  !*** ./node_modules/s2-geometry/src/s2geometry.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/// S2 Geometry functions
+// the regional scoreboard is based on a level 6 S2 Cell
+// - https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view?pli=1#slide=id.i22
+// at the time of writing there's no actual API for the intel map to retrieve scoreboard data,
+// but it's still useful to plot the score cells on the intel map
+
+
+// the S2 geometry is based on projecting the earth sphere onto a cube, with some scaling of face coordinates to
+// keep things close to approximate equal area for adjacent cells
+// to convert a lat,lng into a cell id:
+// - convert lat,lng to x,y,z
+// - convert x,y,z into face,u,v
+// - u,v scaled to s,t with quadratic formula
+// - s,t converted to integer i,j offsets
+// - i,j converted to a position along a Hubbert space-filling curve
+// - combine face,position to get the cell id
+
+//NOTE: compared to the google S2 geometry library, we vary from their code in the following ways
+// - cell IDs: they combine face and the hilbert curve position into a single 64 bit number. this gives efficient space
+//             and speed. javascript doesn't have appropriate data types, and speed is not cricical, so we use
+//             as [face,[bitpair,bitpair,...]] instead
+// - i,j: they always use 30 bits, adjusting as needed. we use 0 to (1<<level)-1 instead
+//        (so GetSizeIJ for a cell is always 1)
+
+(function (exports) {
+'use strict';
+
+var S2 = exports.S2 = { L: {} };
+
+S2.L.LatLng = function (/*Number*/ rawLat, /*Number*/ rawLng, /*Boolean*/ noWrap) {
+  var lat = parseFloat(rawLat, 10);
+  var lng = parseFloat(rawLng, 10);
+
+  if (isNaN(lat) || isNaN(lng)) {
+    throw new Error('Invalid LatLng object: (' + rawLat + ', ' + rawLng + ')');
+  }
+
+  if (noWrap !== true) {
+    lat = Math.max(Math.min(lat, 90), -90);                 // clamp latitude into -90..90
+    lng = (lng + 180) % 360 + ((lng < -180 || lng === 180) ? 180 : -180);   // wrap longtitude into -180..180
+  }
+
+  return { lat: lat, lng: lng };
+};
+
+S2.L.LatLng.DEG_TO_RAD = Math.PI / 180;
+S2.L.LatLng.RAD_TO_DEG = 180 / Math.PI;
+
+/*
+S2.LatLngToXYZ = function(latLng) {
+  // http://stackoverflow.com/questions/8981943/lat-long-to-x-y-z-position-in-js-not-working
+  var lat = latLng.lat;
+  var lon = latLng.lng;
+  var DEG_TO_RAD = Math.PI / 180.0;
+
+  var phi = lat * DEG_TO_RAD;
+  var theta = lon * DEG_TO_RAD;
+
+  var cosLat = Math.cos(phi);
+  var sinLat = Math.sin(phi);
+  var cosLon = Math.cos(theta);
+  var sinLon = Math.sin(theta);
+  var rad = 500.0;
+
+  return [
+    rad * cosLat * cosLon
+  , rad * cosLat * sinLon
+  , rad * sinLat
+  ];
+};
+*/
+S2.LatLngToXYZ = function(latLng) {
+  var d2r = S2.L.LatLng.DEG_TO_RAD;
+
+  var phi = latLng.lat*d2r;
+  var theta = latLng.lng*d2r;
+
+  var cosphi = Math.cos(phi);
+
+  return [Math.cos(theta)*cosphi, Math.sin(theta)*cosphi, Math.sin(phi)];
+};
+
+S2.XYZToLatLng = function(xyz) {
+  var r2d = S2.L.LatLng.RAD_TO_DEG;
+
+  var lat = Math.atan2(xyz[2], Math.sqrt(xyz[0]*xyz[0]+xyz[1]*xyz[1]));
+  var lng = Math.atan2(xyz[1], xyz[0]);
+
+  return S2.L.LatLng(lat*r2d, lng*r2d);
+};
+
+var largestAbsComponent = function(xyz) {
+  var temp = [Math.abs(xyz[0]), Math.abs(xyz[1]), Math.abs(xyz[2])];
+
+  if (temp[0] > temp[1]) {
+    if (temp[0] > temp[2]) {
+      return 0;
+    } else {
+      return 2;
+    }
+  } else {
+    if (temp[1] > temp[2]) {
+      return 1;
+    } else {
+      return 2;
+    }
+  }
+
+};
+
+var faceXYZToUV = function(face,xyz) {
+  var u,v;
+
+  switch (face) {
+    case 0: u =  xyz[1]/xyz[0]; v =  xyz[2]/xyz[0]; break;
+    case 1: u = -xyz[0]/xyz[1]; v =  xyz[2]/xyz[1]; break;
+    case 2: u = -xyz[0]/xyz[2]; v = -xyz[1]/xyz[2]; break;
+    case 3: u =  xyz[2]/xyz[0]; v =  xyz[1]/xyz[0]; break;
+    case 4: u =  xyz[2]/xyz[1]; v = -xyz[0]/xyz[1]; break;
+    case 5: u = -xyz[1]/xyz[2]; v = -xyz[0]/xyz[2]; break;
+    default: throw {error: 'Invalid face'};
+  }
+
+  return [u,v];
+};
+
+
+
+
+S2.XYZToFaceUV = function(xyz) {
+  var face = largestAbsComponent(xyz);
+
+  if (xyz[face] < 0) {
+    face += 3;
+  }
+
+  var uv = faceXYZToUV (face,xyz);
+
+  return [face, uv];
+};
+
+S2.FaceUVToXYZ = function(face,uv) {
+  var u = uv[0];
+  var v = uv[1];
+
+  switch (face) {
+    case 0: return [ 1, u, v];
+    case 1: return [-u, 1, v];
+    case 2: return [-u,-v, 1];
+    case 3: return [-1,-v,-u];
+    case 4: return [ v,-1,-u];
+    case 5: return [ v, u,-1];
+    default: throw {error: 'Invalid face'};
+  }
+};
+
+var singleSTtoUV = function(st) {
+  if (st >= 0.5) {
+    return (1/3.0) * (4*st*st - 1);
+  } else {
+    return (1/3.0) * (1 - (4*(1-st)*(1-st)));
+  }
+};
+
+S2.STToUV = function(st) {
+  return [singleSTtoUV(st[0]), singleSTtoUV(st[1])];
+};
+
+
+var singleUVtoST = function(uv) {
+  if (uv >= 0) {
+    return 0.5 * Math.sqrt (1 + 3*uv);
+  } else {
+    return 1 - 0.5 * Math.sqrt (1 - 3*uv);
+  }
+};
+S2.UVToST = function(uv) {
+  return [singleUVtoST(uv[0]), singleUVtoST(uv[1])];
+};
+
+
+S2.STToIJ = function(st,order) {
+  var maxSize = (1<<order);
+
+  var singleSTtoIJ = function(st) {
+    var ij = Math.floor(st * maxSize);
+    return Math.max(0, Math.min(maxSize-1, ij));
+  };
+
+  return [singleSTtoIJ(st[0]), singleSTtoIJ(st[1])];
+};
+
+
+S2.IJToST = function(ij,order,offsets) {
+  var maxSize = (1<<order);
+
+  return [
+    (ij[0]+offsets[0])/maxSize,
+    (ij[1]+offsets[1])/maxSize
+  ];
+};
+
+
+
+var rotateAndFlipQuadrant = function(n, point, rx, ry)
+{
+	var newX, newY;
+	if(ry == 0)
+	{
+		if(rx == 1){
+			point.x = n - 1 - point.x;
+			point.y = n - 1 - point.y
+
+		}
+
+    var x = point.x;
+		point.x = point.y
+		point.y = x;
+	}
+
+}
+
+
+
+
+
+// hilbert space-filling curve
+// based on http://blog.notdot.net/2009/11/Damn-Cool-Algorithms-Spatial-indexing-with-Quadtrees-and-Hilbert-Curves
+// note: rather then calculating the final integer hilbert position, we just return the list of quads
+// this ensures no precision issues whth large orders (S3 cell IDs use up to 30), and is more
+// convenient for pulling out the individual bits as needed later
+var pointToHilbertQuadList = function(x,y,order,face) {
+  var hilbertMap = {
+    'a': [ [0,'d'], [1,'a'], [3,'b'], [2,'a'] ],
+    'b': [ [2,'b'], [1,'b'], [3,'a'], [0,'c'] ],
+    'c': [ [2,'c'], [3,'d'], [1,'c'], [0,'b'] ],
+    'd': [ [0,'a'], [3,'c'], [1,'d'], [2,'d'] ]
+  };
+
+  if ('number' !== typeof face) {
+    console.warn(new Error("called pointToHilbertQuadList without face value, defaulting to '0'").stack);
+  }
+  var currentSquare = (face % 2) ? 'd' : 'a';
+  var positions = [];
+
+  for (var i=order-1; i>=0; i--) {
+
+    var mask = 1<<i;
+
+    var quad_x = x&mask ? 1 : 0;
+    var quad_y = y&mask ? 1 : 0;
+
+    var t = hilbertMap[currentSquare][quad_x*2+quad_y];
+
+    positions.push(t[0]);
+
+    currentSquare = t[1];
+  }
+
+  return positions;
+};
+
+// S2Cell class
+
+S2.S2Cell = function(){};
+
+S2.S2Cell.FromHilbertQuadKey = function(hilbertQuadkey) {
+  var parts = hilbertQuadkey.split('/');
+  var face = parseInt(parts[0]);
+  var position = parts[1];
+  var maxLevel = position.length;
+  var point = {
+    x : 0,
+    y: 0
+  };
+  var i;
+  var level;
+  var bit;
+  var rx, ry;
+  var val;
+
+	for(i = maxLevel - 1; i >= 0; i--) {
+
+		level = maxLevel - i;
+		bit = position[i];
+		rx = 0;
+    ry = 0;
+		if (bit === '1') {
+			ry = 1;
+		}
+		else if (bit === '2') {
+			rx = 1;
+			ry = 1;
+		}
+		else if (bit === '3') {
+			rx = 1;
+		}
+
+		val = Math.pow(2, level - 1);
+		rotateAndFlipQuadrant(val, point, rx, ry);
+
+		point.x += val * rx;
+		point.y += val * ry;
+
+	}
+
+  if (face % 2 === 1) {
+    var t = point.x;
+    point.x = point.y;
+    point.y = t;
+  }
+
+
+  return S2.S2Cell.FromFaceIJ(parseInt(face), [point.x, point.y], level);
+};
+
+//static method to construct
+S2.S2Cell.FromLatLng = function(latLng, level) {
+  if ((!latLng.lat && latLng.lat !== 0) || (!latLng.lng && latLng.lng !== 0)) {
+    throw new Error("Pass { lat: lat, lng: lng } to S2.S2Cell.FromLatLng");
+  }
+  var xyz = S2.LatLngToXYZ(latLng);
+
+  var faceuv = S2.XYZToFaceUV(xyz);
+  var st = S2.UVToST(faceuv[1]);
+
+  var ij = S2.STToIJ(st,level);
+
+  return S2.S2Cell.FromFaceIJ (faceuv[0], ij, level);
+};
+
+/*
+S2.faceIjLevelToXyz = function (face, ij, level) {
+  var st = S2.IJToST(ij, level, [0.5, 0.5]);
+  var uv = S2.STToUV(st);
+  var xyz = S2.FaceUVToXYZ(face, uv);
+
+  return S2.XYZToLatLng(xyz);
+  return xyz;
+};
+*/
+
+S2.S2Cell.FromFaceIJ = function(face,ij,level) {
+  var cell = new S2.S2Cell();
+  cell.face = face;
+  cell.ij = ij;
+  cell.level = level;
+
+  return cell;
+};
+
+
+S2.S2Cell.prototype.toString = function() {
+  return 'F'+this.face+'ij['+this.ij[0]+','+this.ij[1]+']@'+this.level;
+};
+
+S2.S2Cell.prototype.getLatLng = function() {
+  var st = S2.IJToST(this.ij,this.level, [0.5,0.5]);
+  var uv = S2.STToUV(st);
+  var xyz = S2.FaceUVToXYZ(this.face, uv);
+
+  return S2.XYZToLatLng(xyz);
+};
+
+S2.S2Cell.prototype.getCornerLatLngs = function() {
+  var result = [];
+  var offsets = [
+    [ 0.0, 0.0 ],
+    [ 0.0, 1.0 ],
+    [ 1.0, 1.0 ],
+    [ 1.0, 0.0 ]
+  ];
+
+  for (var i=0; i<4; i++) {
+    var st = S2.IJToST(this.ij, this.level, offsets[i]);
+    var uv = S2.STToUV(st);
+    var xyz = S2.FaceUVToXYZ(this.face, uv);
+
+    result.push ( S2.XYZToLatLng(xyz) );
+  }
+  return result;
+};
+
+
+S2.S2Cell.prototype.getFaceAndQuads = function () {
+  var quads = pointToHilbertQuadList(this.ij[0], this.ij[1], this.level, this.face);
+
+  return [this.face,quads];
+};
+S2.S2Cell.prototype.toHilbertQuadkey = function () {
+  var quads = pointToHilbertQuadList(this.ij[0], this.ij[1], this.level, this.face);
+
+  return this.face.toString(10) + '/' + quads.join('');
+};
+
+S2.latLngToNeighborKeys = S2.S2Cell.latLngToNeighborKeys = function (lat, lng, level) {
+  return S2.S2Cell.FromLatLng({ lat: lat, lng: lng }, level).getNeighbors().map(function (cell) {
+    return cell.toHilbertQuadkey();
+  });
+};
+S2.S2Cell.prototype.getNeighbors = function() {
+
+  var fromFaceIJWrap = function(face,ij,level) {
+    var maxSize = (1<<level);
+    if (ij[0]>=0 && ij[1]>=0 && ij[0]<maxSize && ij[1]<maxSize) {
+      // no wrapping out of bounds
+      return S2.S2Cell.FromFaceIJ(face,ij,level);
+    } else {
+      // the new i,j are out of range.
+      // with the assumption that they're only a little past the borders we can just take the points as
+      // just beyond the cube face, project to XYZ, then re-create FaceUV from the XYZ vector
+
+      var st = S2.IJToST(ij,level,[0.5,0.5]);
+      var uv = S2.STToUV(st);
+      var xyz = S2.FaceUVToXYZ(face,uv);
+      var faceuv = S2.XYZToFaceUV(xyz);
+      face = faceuv[0];
+      uv = faceuv[1];
+      st = S2.UVToST(uv);
+      ij = S2.STToIJ(st,level);
+      return S2.S2Cell.FromFaceIJ (face, ij, level);
+    }
+  };
+
+  var face = this.face;
+  var i = this.ij[0];
+  var j = this.ij[1];
+  var level = this.level;
+
+
+  return [
+    fromFaceIJWrap(face, [i-1,j], level),
+    fromFaceIJWrap(face, [i,j-1], level),
+    fromFaceIJWrap(face, [i+1,j], level),
+    fromFaceIJWrap(face, [i,j+1], level)
+  ];
+
+};
+
+//
+// Functional Style
+//
+S2.FACE_BITS = 3;
+S2.MAX_LEVEL = 30;
+S2.POS_BITS = (2 * S2.MAX_LEVEL) + 1; // 61 (60 bits of data, 1 bit lsb marker)
+
+S2.facePosLevelToId = S2.S2Cell.facePosLevelToId = S2.fromFacePosLevel = function (faceN, posS, levelN) {
+  var Long = exports.dcodeIO && exports.dcodeIO.Long || __webpack_require__(/*! long */ "./node_modules/long/dist/long.js");
+  var faceB;
+  var posB;
+  var bin;
+
+  if (!levelN) {
+    levelN = posS.length;
+  }
+  if (posS.length > levelN) {
+    posS = posS.substr(0, levelN);
+  }
+
+  // 3-bit face value
+  faceB = Long.fromString(faceN.toString(10), true, 10).toString(2);
+  while (faceB.length < S2.FACE_BITS) {
+    faceB = '0' + faceB;
+  }
+
+  // 60-bit position value
+  posB = Long.fromString(posS, true, 4).toString(2);
+  while (posB.length < (2 * levelN)) {
+    posB = '0' + posB;
+  }
+
+  bin = faceB + posB;
+  // 1-bit lsb marker
+  bin += '1';
+  // n-bit padding to 64-bits
+  while (bin.length < (S2.FACE_BITS + S2.POS_BITS)) {
+    bin += '0';
+  }
+
+  return Long.fromString(bin, true, 2).toString(10);
+};
+
+S2.keyToId = S2.S2Cell.keyToId
+= S2.toId = S2.toCellId = S2.fromKey
+= function (key) {
+  var parts = key.split('/');
+
+  return S2.fromFacePosLevel(parts[0], parts[1], parts[1].length);
+};
+
+S2.idToKey = S2.S2Cell.idToKey
+= S2.S2Cell.toKey = S2.toKey
+= S2.fromId = S2.fromCellId
+= S2.S2Cell.toHilbertQuadkey  = S2.toHilbertQuadkey
+= function (idS) {
+  var Long = exports.dcodeIO && exports.dcodeIO.Long || __webpack_require__(/*! long */ "./node_modules/long/dist/long.js");
+  var bin = Long.fromString(idS, true, 10).toString(2);
+
+  while (bin.length < (S2.FACE_BITS + S2.POS_BITS)) {
+    bin = '0' + bin;
+  }
+
+  // MUST come AFTER binstr has been left-padded with '0's
+  var lsbIndex = bin.lastIndexOf('1');
+  // substr(start, len)
+  // substring(start, end) // includes start, does not include end
+  var faceB = bin.substring(0, 3);
+  // posB will always be a multiple of 2 (or it's invalid)
+  var posB = bin.substring(3, lsbIndex);
+  var levelN = posB.length / 2;
+
+  var faceS = Long.fromString(faceB, true, 2).toString(10);
+  var posS = Long.fromString(posB, true, 2).toString(4);
+
+  while (posS.length < levelN) {
+    posS = '0' + posS;
+  }
+
+  return faceS + '/' + posS;
+};
+
+S2.keyToLatLng = S2.S2Cell.keyToLatLng = function (key) {
+  var cell2 = S2.S2Cell.FromHilbertQuadKey(key);
+  return cell2.getLatLng();
+};
+
+S2.idToLatLng = S2.S2Cell.idToLatLng = function (id) {
+  var key = S2.idToKey(id);
+  return S2.keyToLatLng(key);
+};
+
+S2.S2Cell.latLngToKey = S2.latLngToKey
+= S2.latLngToQuadkey = function (lat, lng, level) {
+  if (isNaN(level) || level < 1 || level > 30) {
+    throw new Error("'level' is not a number between 1 and 30 (but it should be)");
+  }
+  // TODO
+  //
+  // S2.idToLatLng(id)
+  // S2.keyToLatLng(key)
+  // S2.nextFace(key)     // prevent wrapping on nextKey
+  // S2.prevFace(key)     // prevent wrapping on prevKey
+  //
+  // .toKeyArray(id)  // face,quadtree
+  // .toKey(id)       // hilbert
+  // .toPoint(id)     // ij
+  // .toId(key)       // uint64 (as string)
+  // .toLong(key)     // long.js
+  // .toLatLng(id)    // object? or array?, or string (with comma)?
+  //
+  // maybe S2.HQ.x, S2.GPS.x, S2.CI.x?
+  return S2.S2Cell.FromLatLng({ lat: lat, lng: lng }, level).toHilbertQuadkey();
+};
+
+S2.stepKey = function (key, num) {
+  var Long = exports.dcodeIO && exports.dcodeIO.Long || __webpack_require__(/*! long */ "./node_modules/long/dist/long.js");
+  var parts = key.split('/');
+
+  var faceS = parts[0];
+  var posS = parts[1];
+  var level = parts[1].length;
+
+  var posL = Long.fromString(posS, true, 4);
+  // TODO handle wrapping (0 === pos + 1)
+  // (only on the 12 edges of the globe)
+  var otherL;
+  if (num > 0) {
+    otherL = posL.add(Math.abs(num));
+  }
+  else if (num < 0) {
+    otherL = posL.subtract(Math.abs(num));
+  }
+  var otherS = otherL.toString(4);
+
+  if ('0' === otherS) {
+    console.warning(new Error("face/position wrapping is not yet supported"));
+  }
+
+  while (otherS.length < level) {
+    otherS = '0' + otherS;
+  }
+
+  return faceS + '/' + otherS;
+};
+
+S2.S2Cell.prevKey = S2.prevKey = function (key) {
+  return S2.stepKey(key, -1);
+};
+
+S2.S2Cell.nextKey = S2.nextKey = function (key) {
+  return S2.stepKey(key, 1);
+};
+
+})( true ? module.exports : undefined);
+
 
 /***/ }),
 
@@ -1632,7 +3457,7 @@ var NearMeComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("@media screen and (max-width: 750px) {\n  :host div.page-container {\n    flex-direction: column;\n  }\n  :host div.page-container .left-side {\n    flex: 0 0 auto;\n    height: 13.25rem;\n    width: 100%;\n    max-width: none;\n    transition: height 50ms;\n  }\n  :host div.page-container .left-side.expanded {\n    height: 85%;\n  }\n  :host div.page-container .left-side .expander {\n    background-color: #3F4038;\n    color: #FCFCF9;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    width: 3.5rem;\n    height: 1rem;\n    border: 1px solid #8A9A5B;\n    border-radius: 5px 5px 0 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    cursor: pointer;\n  }\n  :host div.page-container .left-side .expander:hover:not([disabled]) {\n    background-color: #4B5320;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander.active:not([disabled]) {\n    background-color: #708238;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander[disabled] {\n    pointer-events: none;\n    opacity: 0.3;\n  }\n  :host div.page-container .left-side .expander .expander-icon {\n    font-size: 16px;\n  }\n  :host div.page-container .left-side .expander .expander-icon.flipped {\n    transform: rotate(180deg);\n  }\n}\n:host .page-container {\n  height: 100%;\n  width: 100%;\n  display: flex;\n}\n:host .page-container .left-side {\n  position: relative;\n  flex: 1 1 0;\n  overflow: hidden;\n  max-width: 27.5%;\n  min-width: 20rem;\n}\n:host .page-container .left-side .expander {\n  display: none;\n}\n:host .page-container .right-side {\n  flex: 1 1 0;\n  overflow: auto;\n  position: relative;\n}\n:host .page-container {\n  display: flex;\n  flex-direction: column;\n  padding-left: 1rem;\n}\n:host .page-container .footer {\n  padding-bottom: 15rem;\n}\n.nav-items-container {\n  display: flex;\n  justify-content: flex-start;\n  margin: 1rem 2rem 0 2rem;\n  height: 2rem;\n}\n@media only screen and (max-width: 550px) {\n  .nav-items-container {\n    margin: 0 0.25rem;\n    justify-content: center;\n  }\n}\n.nav-items-container .nav-item {\n  background-color: #3F4038;\n  color: #FCFCF9;\n  width: 8rem;\n  padding: 0.5rem;\n  cursor: pointer;\n  text-align: center;\n  outline: none;\n  white-space: nowrap;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  flex: 0 1 auto;\n  margin: 0 0.25rem;\n  border-radius: 4px 4px 0 0;\n}\n.nav-items-container .nav-item:hover:not([disabled]) {\n  background-color: #4B5320;\n  color: #FCFCF9;\n}\n.nav-items-container .nav-item.active:not([disabled]) {\n  background-color: #708238;\n  color: #FCFCF9;\n}\n.nav-items-container .nav-item[disabled] {\n  pointer-events: none;\n  opacity: 0.3;\n}\n.page-content {\n  background-color: #EFEBDF;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy9taXhpbnMuc2NzcyIsInNyYy9hcHAvcGhvdG8tZ2FsbGVyeS9waG90by1nYWxsZXJ5LmNvbXBvbmVudC5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvc3R5bGVzL3ZhcmlhYmxlcy5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvYXBwL3Bob3RvLWdhbGxlcnkvcGhvdG8tZ2FsbGVyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUE0Rkk7RUFDSTtJQUNJLHNCQUFBO0VDM0ZWO0VENEZVO0lBQ0ksY0FBQTtJQUNBLGdCQUFBO0lBQ0EsV0FBQTtJQUNBLGVBQUE7SUFFQSx1QkFBQTtFQzNGZDtFRDRGYztJQUNJLFdBQUE7RUMxRmxCO0VENEZjO0lBOEdkLHlCRWpNWTtJRmtNWixjRTVNZTtJRitGRyxrQkFBQTtJQUNBLFNBQUE7SUFDQSxTQUFBO0lBQ0EsMkJBQUE7SUFDQSxhQUFBO0lBQ0EsWUFBQTtJQUNBLHlCQUFBO0lBQ0EsMEJBQUE7SUFDQSxrQkFBQTtJQUNBLGFBQUE7SUFDQSx1QkFBQTtJQUNBLGVBQUE7RUN6RmxCO0VENExBO0lBQ0UseUJFeE5TO0lGeU5ULGNFL01hO0VEcUJmO0VENExBO0lBQ0UseUJFM05VO0lGNE5WLGNFbk5hO0VEeUJmO0VENExBO0lBQ0Usb0JBQUE7SUFDQSxZQUFBO0VDMUxGO0VEOEVrQjtJQUNJLGVBQUE7RUM1RXRCO0VENkVzQjtJQUNJLHlCQUFBO0VDM0UxQjtBQUNGO0FEa0ZJO0VBQ0ksWUFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDaEZSO0FEa0ZRO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FDaEZaO0FEaUZZO0VBQ0ksYUFBQTtBQy9FaEI7QURrRlE7RUFDSSxXQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0FDaEZaO0FFaEVFO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7QUZrRUo7QUVqRUk7RUFDRSxxQkFBQTtBRm1FTjtBRTlEQTtFQUNFLGFBQUE7RUFDQSwyQkFBQTtFQUNBLHdCQUFBO0VBQ0EsWUFBQTtBRmlFRjtBRGlLSTtFR3RPSjtJQU1JLGlCQUFBO0lBQ0EsdUJBQUE7RUZtRUY7QUFDRjtBRWxFRTtFSGdNQSx5QkVqTVk7RUZrTVosY0U1TWU7RUZrTGIsV0FBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtLQUFBLHNCQUFBO01BQUEscUJBQUE7VUFBQSxpQkFBQTtFRzNLQSxjQUFBO0VBQ0EsaUJBQUE7RUFDQSwwQkFBQTtBRjRFSjtBRGtIRTtFQUNFLHlCRXhOUztFRnlOVCxjRS9NYTtBRCtGakI7QURrSEU7RUFDRSx5QkUzTlU7RUY0TlYsY0VuTmE7QURtR2pCO0FEa0hFO0VBQ0Usb0JBQUE7RUFDQSxZQUFBO0FDaEhKO0FFcEZBO0VBQ0UseUJEZlM7QURzR1giLCJmaWxlIjoic3JjL2FwcC9waG90by1nYWxsZXJ5L3Bob3RvLWdhbGxlcnkuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0ICd2YXJpYWJsZXMnO1xuXG5AbWl4aW4gYmFzZS1jb3JvbmEtZGFzaGJvYXJkIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBwYWRkaW5nLWJvdHRvbTogMnJlbTtcbiAgICAuY2hhcnQtY29udGFpbmVyIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgLmNoYXJ0LWhlYWRlciB7XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBwYWRkaW5nOiAwIDEuNXJlbTtcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBmbGV4LWVuZDtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG5cbiAgICAgICAgICAgIC5yYWRpby1idXR0b24tY29udGFpbmVye1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgICAgIGZsZXgtd3JhcDogd3JhcDtcblxuICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b25zIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgcmFkaW8tYnV0dG9uLWNvbnRhaW5lcjtcbiAgICAgICAgICAgICAgICAgICAgJjpub3QoOmZpcnN0LWNoaWxkKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMXJlbTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAmLmNoYXJ0IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbi13aWR0aDogYXV0bztcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOiAzcHg7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5tYXRlcmlhbC1pY29ucyB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZsZXg6IDEgMCBhdXRvO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmb250LXNpemU6IDEuMjVyZW07XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMC41cmVtO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICAgICAgZHd1LXN0YXQtdmlld2VyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgICAgICAgZmxleDogMSAwIGF1dG87XG4gICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMXJlbTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAub3ZlcnZpZXcuY2hhcnQge1xuICAgICAgICAgICAgaGVpZ2h0OiAxMi41cmVtO1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIH1cbiAgICAgICAgZHd1LWNoYXJ0LWxlZ2VuZCB7XG4gICAgICAgICAgICBmbGV4OiAwIDAgYXV0bztcbiAgICAgICAgICAgIG1hcmdpbi10b3A6IDAuMjVyZW07XG4gICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAycmVtO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5AbWl4aW4gcmFkaW8tYnV0dG9uLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgQGluY2x1ZGUgbGlnaHQtbWluaS1idXR0b247XG4gICAgICAgIEBpbmNsdWRlIHNoYWRvdztcbiAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggMCAwIDVweDtcbiAgICAgICAgfVxuICAgICAgICAmOmxhc3QtY2hpbGQge1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMCA1cHggNXB4IDA7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbkBtaXhpbiBzaGFkb3cge1xuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IGJveC1zaGFkb3cgMjVtcywgdHJhbnNmb3JtLCAyNW1zO1xuICAgIGJveC1zaGFkb3c6IDFweCAxcHggMnB4IDAgJGxpZ2h0ZXItZ3JheTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCk7XG4gICAgJjphY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG4gICAgJi5hY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG59XG5cbkBtaXhpbiByZXNwb25zaXZlLXBhZ2Uge1xuICAgIEBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc1MHB4KSB7XG4gICAgICAgIGRpdi5wYWdlLWNvbnRhaW5lciB7XG4gICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgLmxlZnQtc2lkZSB7XG4gICAgICAgICAgICAgICAgZmxleDogMCAwIGF1dG87XG4gICAgICAgICAgICAgICAgaGVpZ2h0OiAxMy4yNXJlbTtcbiAgICAgICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgICAgICAgICAgLy8gbWluLXdpZHRoOiBub25lO1xuICAgICAgICAgICAgICAgIHRyYW5zaXRpb246IGhlaWdodCA1MG1zO1xuICAgICAgICAgICAgICAgICYuZXhwYW5kZWQge1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDg1JTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgICAgICAgICAgICBib3R0b206IDA7XG4gICAgICAgICAgICAgICAgICAgIGxlZnQ6IDUwJTtcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgICAgICAgICAgICAgICAgICB3aWR0aDogMy41cmVtO1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDFyZW07XG4gICAgICAgICAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICRtb3NzLWdyZWVuO1xuICAgICAgICAgICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggNXB4IDAgMCA7XG4gICAgICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgLmV4cGFuZGVyLWljb24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICAgICAgICAgICAgICAgICAgJi5mbGlwcGVkIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG4gICAgLnBhZ2UtY29udGFpbmVyIHtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcblxuICAgICAgICAubGVmdC1zaWRlIHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgIG1heC13aWR0aDogMjcuNSU7XG4gICAgICAgICAgICBtaW4td2lkdGg6IDIwcmVtO1xuICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBub25lO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5yaWdodC1zaWRlIHtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgIH1cbiAgICB9XG5cbn1cbkBtaXhpbiBsaWdodC1taW5pLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgbGlnaHQtdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLXhzO1xufVxuXG5AbWl4aW4gbGlnaHQtc21hbGwtYnV0dG9uIHtcbiAgICBAaW5jbHVkZSBsaWdodC10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tc207XG59XG5cbkBtaXhpbiBkYXJrLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tbWQ7XG59XG5cbkBtaXhpbiBidXR0b24teHMge1xuICAgIG1pbi13aWR0aDogMnJlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBmb250LXNpemU6IDFyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbkBtaXhpbiBidXR0b24tc20ge1xuICAgIG1pbi13aWR0aDogM3JlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cblxuQG1peGluIGJ1dHRvbi1tZCB7XG4gICAgd2lkdGg6IDhyZW07XG4gICAgcGFkZGluZzogMC41cmVtO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG5AbWl4aW4gbGlnaHQtdGhlbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkZWdnc2hlbGwtZGFyaztcbiAgJjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRsYXVyZWwtZ3JlZW47XG4gIH1cbiAgJi5hY3RpdmU6bm90KFtkaXNhYmxlZF0pIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkb2xpdmUtZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG59XG5cbkBtaXhpbiBkYXJrLXRoZW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAmOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogJGFybXktZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRvbGl2ZS1ncmVlbjtcbiAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICB9XG4gICZbZGlzYWJsZWRdIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBvcGFjaXR5OiAwLjM7XG4gIH1cbn1cblxuQG1peGluIHRvcC1uYXYtcGFnZSB7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAubWFpbi1jb250ZW50IHtcbiAgICAgICAgZmxleDogMSAxIDA7XG4gICAgICAgIG92ZXJmbG93OiBhdXRvO1xuICAgIH1cbn1cblxuQG1peGluIHJlc3BvbmQtdG8oJG1lZGlhKSB7XG4gIEBpZiAkbWVkaWEgPT0gc21hbGwge1xuICAgIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogJGJyZWFrLXNtYWxsKSB7IEBjb250ZW50OyB9XG4gIH1cbiAgQGVsc2UgaWYgJG1lZGlhID09IG1lZGl1bSB7XG4gICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAkYnJlYWstc21hbGwgKyAxKSBhbmQgKG1heC13aWR0aDogJGJyZWFrLWxhcmdlIC0gMSkgeyBAY29udGVudDsgfVxuICB9XG4gIEBlbHNlIGlmICRtZWRpYSA9PSB3aWRlIHtcbiAgICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6ICRicmVhay1sYXJnZSkgeyBAY29udGVudDsgfVxuICB9XG59XG4iLCJAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NTBweCkge1xuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIge1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUge1xuICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgIGhlaWdodDogMTMuMjVyZW07XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWF4LXdpZHRoOiBub25lO1xuICAgIHRyYW5zaXRpb246IGhlaWdodCA1MG1zO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlLmV4cGFuZGVkIHtcbiAgICBoZWlnaHQ6IDg1JTtcbiAgfVxuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSAuZXhwYW5kZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzRjQwMzg7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogMDtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgIHdpZHRoOiAzLjVyZW07XG4gICAgaGVpZ2h0OiAxcmVtO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICM4QTlBNUI7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4IDVweCAwIDA7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlcjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM0QjUzMjA7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM3MDgyMzg7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlciAuZXhwYW5kZXItaWNvbiB7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlciAuZXhwYW5kZXItaWNvbi5mbGlwcGVkIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICB9XG59XG46aG9zdCAucGFnZS1jb250YWluZXIge1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGZsZXg6IDEgMSAwO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBtYXgtd2lkdGg6IDI3LjUlO1xuICBtaW4td2lkdGg6IDIwcmVtO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cbjpob3N0IC5wYWdlLWNvbnRhaW5lciAucmlnaHQtc2lkZSB7XG4gIGZsZXg6IDEgMSAwO1xuICBvdmVyZmxvdzogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgcGFkZGluZy1sZWZ0OiAxcmVtO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5mb290ZXIge1xuICBwYWRkaW5nLWJvdHRvbTogMTVyZW07XG59XG5cbi5uYXYtaXRlbXMtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xuICBtYXJnaW46IDFyZW0gMnJlbSAwIDJyZW07XG4gIGhlaWdodDogMnJlbTtcbn1cbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogNTUwcHgpIHtcbiAgLm5hdi1pdGVtcy1jb250YWluZXIge1xuICAgIG1hcmdpbjogMCAwLjI1cmVtO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB9XG59XG4ubmF2LWl0ZW1zLWNvbnRhaW5lciAubmF2LWl0ZW0ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0Y0MDM4O1xuICBjb2xvcjogI0ZDRkNGOTtcbiAgd2lkdGg6IDhyZW07XG4gIHBhZGRpbmc6IDAuNXJlbTtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG91dGxpbmU6IG5vbmU7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBmbGV4OiAwIDEgYXV0bztcbiAgbWFyZ2luOiAwIDAuMjVyZW07XG4gIGJvcmRlci1yYWRpdXM6IDRweCA0cHggMCAwO1xufVxuLm5hdi1pdGVtcy1jb250YWluZXIgLm5hdi1pdGVtOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM0QjUzMjA7XG4gIGNvbG9yOiAjRkNGQ0Y5O1xufVxuLm5hdi1pdGVtcy1jb250YWluZXIgLm5hdi1pdGVtLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNzA4MjM4O1xuICBjb2xvcjogI0ZDRkNGOTtcbn1cbi5uYXYtaXRlbXMtY29udGFpbmVyIC5uYXYtaXRlbVtkaXNhYmxlZF0ge1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgb3BhY2l0eTogMC4zO1xufVxuXG4ucGFnZS1jb250ZW50IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0VGRUJERjtcbn0iLCJcbiRkYXJrLWdyZWVuOiAjMjkyRTEyO1xuJGFybXktZ3JlZW46ICM0QjUzMjA7XG4kb2xpdmUtZ3JlZW46ICM3MDgyMzg7XG4kbW9zcy1ncmVlbjogIzhBOUE1QjtcbiRsYXVyZWwtZ3JlZW46ICNCQUMzOUY7XG5cbiRzYXR1cmF0ZWQtb2xpdmU6ICM3Mjk5MDA7XG4kc2F0dXJhdGVkLWJsdWU6ICMxNjRFQjc7XG5cbi8vIG5pY2UgZm9yIHRleHQgYWdhaW5zdCBkYXJrIGJhY2tncm91bmRcbiRsaWdodC1ncmVlbjogI0Y0RjdFQTtcbiRsaWdodGVzdC1ncmVlbjogI0ZDRkNGOTtcblxuLy8gVXNlZCBmb3IgZmlsZSBzZWxlY3RvclxuJGVnZ3NoZWxsLWRhcmtlcjogI0RERDlDRjtcbiRlZ2dzaGVsbC1kYXJrOiAjRUFFNkRBO1xuJGVnZ3NoZWxsOiAjRUZFQkRGO1xuJGVnZ3NoZWxsLWxpZ2h0OiAjRjJFRUUxO1xuXG4vLyBncmF5c1xuJGJhc2ljYWxseS1ibGFjazogIzIwMjEyNDtcbiRibGFjay1vbGl2ZTogIzNGNDAzODtcbiRncmFuaXRlOiAjNjU2MzVGO1xuJGxpZ2h0ZXItZ3JheTogIzlEOUI5OTtcbiR3aGl0ZTogI2ZmZjtcblxuJGdvbGQ6ICNENkI5MDI7XG4kc3Rhci1ibHVlOiAjMUQ2MkM0O1xuXG4kYnJlYWstc21hbGw6IDU1MHB4O1xuJGJyZWFrLW1kOiA4MDBweDtcbiRicmVhay1sYXJnZTogMTAyNHB4O1xuIiwiQGltcG9ydCAnbWl4aW5zJztcblxuOmhvc3Qge1xuICBAaW5jbHVkZSByZXNwb25zaXZlLXBhZ2U7XG4gIC5wYWdlLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIHBhZGRpbmctbGVmdDogMXJlbTtcbiAgICAuZm9vdGVyIHtcbiAgICAgIHBhZGRpbmctYm90dG9tOiAxNXJlbTtcbiAgICB9XG4gIH1cbn1cblxuLm5hdi1pdGVtcy1jb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIG1hcmdpbjogMXJlbSAycmVtIDAgMnJlbTtcbiAgaGVpZ2h0OiAycmVtO1xuICBAaW5jbHVkZSByZXNwb25kLXRvKHNtYWxsKSB7XG4gICAgbWFyZ2luOiAwIDAuMjVyZW07XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIH1cbiAgLm5hdi1pdGVtIHtcbiAgICBAaW5jbHVkZSBkYXJrLWJ1dHRvbjtcbiAgICBmbGV4OiAwIDEgYXV0bztcbiAgICBtYXJnaW46IDAgMC4yNXJlbTtcbiAgICBib3JkZXItcmFkaXVzOiA0cHggNHB4IDAgMDtcbiAgfVxufVxuXG4ucGFnZS1jb250ZW50IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGVnZ3NoZWxsO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("@media screen and (max-width: 750px) {\n  :host div.page-container {\n    flex-direction: column;\n  }\n  :host div.page-container .left-side {\n    flex: 0 0 auto;\n    height: 13.25rem;\n    width: 100%;\n    max-width: none;\n    transition: height 50ms;\n  }\n  :host div.page-container .left-side.expanded {\n    height: 85%;\n  }\n  :host div.page-container .left-side .expander {\n    background-color: #3F4038;\n    color: #FCFCF9;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    width: 3.5rem;\n    height: 1rem;\n    border: 1px solid #8A9A5B;\n    border-radius: 5px 5px 0 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    cursor: pointer;\n  }\n  :host div.page-container .left-side .expander:hover:not([disabled]) {\n    background-color: #4B5320;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander.active:not([disabled]) {\n    background-color: #708238;\n    color: #FCFCF9;\n  }\n  :host div.page-container .left-side .expander[disabled] {\n    pointer-events: none;\n    opacity: 0.3;\n  }\n  :host div.page-container .left-side .expander .expander-icon {\n    font-size: 16px;\n  }\n  :host div.page-container .left-side .expander .expander-icon.flipped {\n    transform: rotate(180deg);\n  }\n}\n:host .page-container {\n  height: 100%;\n  width: 100%;\n  display: flex;\n}\n:host .page-container .left-side {\n  position: relative;\n  flex: 1 1 0;\n  overflow: hidden;\n  max-width: 27.5%;\n  min-width: 20rem;\n}\n:host .page-container .left-side .expander {\n  display: none;\n}\n:host .page-container .right-side {\n  flex: 1 1 0;\n  overflow: auto;\n  position: relative;\n}\n:host .page-container {\n  display: flex;\n  flex-direction: column;\n  padding: 0 0.5rem;\n}\n:host .page-container .footer {\n  padding-bottom: 15rem;\n}\n.nav-items-container {\n  display: flex;\n  justify-content: flex-start;\n  margin: 1rem 2rem 0 2rem;\n  height: 2rem;\n}\n@media only screen and (max-width: 550px) {\n  .nav-items-container {\n    margin: 0 0.25rem;\n    justify-content: center;\n  }\n}\n.nav-items-container .nav-item {\n  background-color: #3F4038;\n  color: #FCFCF9;\n  width: 8rem;\n  padding: 0.5rem;\n  cursor: pointer;\n  text-align: center;\n  outline: none;\n  white-space: nowrap;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  flex: 0 1 auto;\n  margin: 0 0.25rem;\n  border-radius: 4px 4px 0 0;\n}\n.nav-items-container .nav-item:hover:not([disabled]) {\n  background-color: #4B5320;\n  color: #FCFCF9;\n}\n.nav-items-container .nav-item.active:not([disabled]) {\n  background-color: #708238;\n  color: #FCFCF9;\n}\n.nav-items-container .nav-item[disabled] {\n  pointer-events: none;\n  opacity: 0.3;\n}\n.page-content {\n  background-color: #EFEBDF;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL3N0eWxlcy9taXhpbnMuc2NzcyIsInNyYy9hcHAvcGhvdG8tZ2FsbGVyeS9waG90by1nYWxsZXJ5LmNvbXBvbmVudC5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvc3R5bGVzL3ZhcmlhYmxlcy5zY3NzIiwiL1VzZXJzL2FkbWluL3Byb2plY3RzL2Rhd3UtaG9tZS9zcmMvYXBwL3Bob3RvLWdhbGxlcnkvcGhvdG8tZ2FsbGVyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUE0Rkk7RUFDSTtJQUNJLHNCQUFBO0VDM0ZWO0VENEZVO0lBQ0ksY0FBQTtJQUNBLGdCQUFBO0lBQ0EsV0FBQTtJQUNBLGVBQUE7SUFFQSx1QkFBQTtFQzNGZDtFRDRGYztJQUNJLFdBQUE7RUMxRmxCO0VENEZjO0lBOEdkLHlCRWpNWTtJRmtNWixjRTVNZTtJRitGRyxrQkFBQTtJQUNBLFNBQUE7SUFDQSxTQUFBO0lBQ0EsMkJBQUE7SUFDQSxhQUFBO0lBQ0EsWUFBQTtJQUNBLHlCQUFBO0lBQ0EsMEJBQUE7SUFDQSxrQkFBQTtJQUNBLGFBQUE7SUFDQSx1QkFBQTtJQUNBLGVBQUE7RUN6RmxCO0VENExBO0lBQ0UseUJFeE5TO0lGeU5ULGNFL01hO0VEcUJmO0VENExBO0lBQ0UseUJFM05VO0lGNE5WLGNFbk5hO0VEeUJmO0VENExBO0lBQ0Usb0JBQUE7SUFDQSxZQUFBO0VDMUxGO0VEOEVrQjtJQUNJLGVBQUE7RUM1RXRCO0VENkVzQjtJQUNJLHlCQUFBO0VDM0UxQjtBQUNGO0FEa0ZJO0VBQ0ksWUFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDaEZSO0FEa0ZRO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FDaEZaO0FEaUZZO0VBQ0ksYUFBQTtBQy9FaEI7QURrRlE7RUFDSSxXQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0FDaEZaO0FFaEVFO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsaUJBQUE7QUZrRUo7QUVqRUk7RUFDRSxxQkFBQTtBRm1FTjtBRTlEQTtFQUNFLGFBQUE7RUFDQSwyQkFBQTtFQUNBLHdCQUFBO0VBQ0EsWUFBQTtBRmlFRjtBRGlLSTtFR3RPSjtJQU1JLGlCQUFBO0lBQ0EsdUJBQUE7RUZtRUY7QUFDRjtBRWxFRTtFSGdNQSx5QkVqTVk7RUZrTVosY0U1TWU7RUZrTGIsV0FBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtLQUFBLHNCQUFBO01BQUEscUJBQUE7VUFBQSxpQkFBQTtFRzNLQSxjQUFBO0VBQ0EsaUJBQUE7RUFDQSwwQkFBQTtBRjRFSjtBRGtIRTtFQUNFLHlCRXhOUztFRnlOVCxjRS9NYTtBRCtGakI7QURrSEU7RUFDRSx5QkUzTlU7RUY0TlYsY0VuTmE7QURtR2pCO0FEa0hFO0VBQ0Usb0JBQUE7RUFDQSxZQUFBO0FDaEhKO0FFcEZBO0VBQ0UseUJEZlM7QURzR1giLCJmaWxlIjoic3JjL2FwcC9waG90by1nYWxsZXJ5L3Bob3RvLWdhbGxlcnkuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0ICd2YXJpYWJsZXMnO1xuXG5AbWl4aW4gYmFzZS1jb3JvbmEtZGFzaGJvYXJkIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBwYWRkaW5nLWJvdHRvbTogMnJlbTtcbiAgICAuY2hhcnQtY29udGFpbmVyIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgLmNoYXJ0LWhlYWRlciB7XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBwYWRkaW5nOiAwIDEuNXJlbTtcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBmbGV4LWVuZDtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG5cbiAgICAgICAgICAgIC5yYWRpby1idXR0b24tY29udGFpbmVye1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgICAgICAgICAgICAgIGZsZXgtd3JhcDogd3JhcDtcblxuICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b25zIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgcmFkaW8tYnV0dG9uLWNvbnRhaW5lcjtcbiAgICAgICAgICAgICAgICAgICAgJjpub3QoOmZpcnN0LWNoaWxkKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMXJlbTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAmLmNoYXJ0IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbi13aWR0aDogYXV0bztcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOiAzcHg7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5tYXRlcmlhbC1pY29ucyB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZsZXg6IDEgMCBhdXRvO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmb250LXNpemU6IDEuMjVyZW07XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIC5yYWRpby1idXR0b24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMC41cmVtO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICAgICAgZHd1LXN0YXQtdmlld2VyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgICAgICAgZmxleDogMSAwIGF1dG87XG4gICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogMXJlbTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAub3ZlcnZpZXcuY2hhcnQge1xuICAgICAgICAgICAgaGVpZ2h0OiAxMi41cmVtO1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIH1cbiAgICAgICAgZHd1LWNoYXJ0LWxlZ2VuZCB7XG4gICAgICAgICAgICBmbGV4OiAwIDAgYXV0bztcbiAgICAgICAgICAgIG1hcmdpbi10b3A6IDAuMjVyZW07XG4gICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAycmVtO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5AbWl4aW4gcmFkaW8tYnV0dG9uLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICAucmFkaW8tYnV0dG9uIHtcbiAgICAgICAgQGluY2x1ZGUgbGlnaHQtbWluaS1idXR0b247XG4gICAgICAgIEBpbmNsdWRlIHNoYWRvdztcbiAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggMCAwIDVweDtcbiAgICAgICAgfVxuICAgICAgICAmOmxhc3QtY2hpbGQge1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMCA1cHggNXB4IDA7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbkBtaXhpbiBzaGFkb3cge1xuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IGJveC1zaGFkb3cgMjVtcywgdHJhbnNmb3JtLCAyNW1zO1xuICAgIGJveC1zaGFkb3c6IDFweCAxcHggMnB4IDAgJGxpZ2h0ZXItZ3JheTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCk7XG4gICAgJjphY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG4gICAgJi5hY3RpdmUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgYm94LXNoYWRvdzogbm9uZTtcbiAgICB9XG59XG5cbkBtaXhpbiByZXNwb25zaXZlLXBhZ2Uge1xuICAgIEBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc1MHB4KSB7XG4gICAgICAgIGRpdi5wYWdlLWNvbnRhaW5lciB7XG4gICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgICAgLmxlZnQtc2lkZSB7XG4gICAgICAgICAgICAgICAgZmxleDogMCAwIGF1dG87XG4gICAgICAgICAgICAgICAgaGVpZ2h0OiAxMy4yNXJlbTtcbiAgICAgICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgICAgICAgICAgLy8gbWluLXdpZHRoOiBub25lO1xuICAgICAgICAgICAgICAgIHRyYW5zaXRpb246IGhlaWdodCA1MG1zO1xuICAgICAgICAgICAgICAgICYuZXhwYW5kZWQge1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDg1JTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICAgICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgICAgICAgICAgICBib3R0b206IDA7XG4gICAgICAgICAgICAgICAgICAgIGxlZnQ6IDUwJTtcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgICAgICAgICAgICAgICAgICB3aWR0aDogMy41cmVtO1xuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDFyZW07XG4gICAgICAgICAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICRtb3NzLWdyZWVuO1xuICAgICAgICAgICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHggNXB4IDAgMCA7XG4gICAgICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgICAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgLmV4cGFuZGVyLWljb24ge1xuICAgICAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICAgICAgICAgICAgICAgICAgJi5mbGlwcGVkIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG4gICAgLnBhZ2UtY29udGFpbmVyIHtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcblxuICAgICAgICAubGVmdC1zaWRlIHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgIG1heC13aWR0aDogMjcuNSU7XG4gICAgICAgICAgICBtaW4td2lkdGg6IDIwcmVtO1xuICAgICAgICAgICAgLmV4cGFuZGVyIHtcbiAgICAgICAgICAgICAgICBkaXNwbGF5OiBub25lO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5yaWdodC1zaWRlIHtcbiAgICAgICAgICAgIGZsZXg6IDEgMSAwO1xuICAgICAgICAgICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgIH1cbiAgICB9XG5cbn1cbkBtaXhpbiBsaWdodC1taW5pLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgbGlnaHQtdGhlbWU7XG4gICAgQGluY2x1ZGUgYnV0dG9uLXhzO1xufVxuXG5AbWl4aW4gbGlnaHQtc21hbGwtYnV0dG9uIHtcbiAgICBAaW5jbHVkZSBsaWdodC10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tc207XG59XG5cbkBtaXhpbiBkYXJrLWJ1dHRvbiB7XG4gICAgQGluY2x1ZGUgZGFyay10aGVtZTtcbiAgICBAaW5jbHVkZSBidXR0b24tbWQ7XG59XG5cbkBtaXhpbiBidXR0b24teHMge1xuICAgIG1pbi13aWR0aDogMnJlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBmb250LXNpemU6IDFyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XG59XG5cbkBtaXhpbiBidXR0b24tc20ge1xuICAgIG1pbi13aWR0aDogM3JlbTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDAuNXJlbTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbn1cblxuQG1peGluIGJ1dHRvbi1tZCB7XG4gICAgd2lkdGg6IDhyZW07XG4gICAgcGFkZGluZzogMC41cmVtO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xufVxuXG5AbWl4aW4gbGlnaHQtdGhlbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkZWdnc2hlbGwtZGFyaztcbiAgJjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRsYXVyZWwtZ3JlZW47XG4gIH1cbiAgJi5hY3RpdmU6bm90KFtkaXNhYmxlZF0pIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkb2xpdmUtZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG59XG5cbkBtaXhpbiBkYXJrLXRoZW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGJsYWNrLW9saXZlO1xuICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICAmOmhvdmVyOm5vdChbZGlzYWJsZWRdKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogJGFybXktZ3JlZW47XG4gICAgY29sb3I6ICRsaWdodGVzdC1ncmVlbjtcbiAgfVxuICAmLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRvbGl2ZS1ncmVlbjtcbiAgICBjb2xvcjogJGxpZ2h0ZXN0LWdyZWVuO1xuICB9XG4gICZbZGlzYWJsZWRdIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBvcGFjaXR5OiAwLjM7XG4gIH1cbn1cblxuQG1peGluIHRvcC1uYXYtcGFnZSB7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAubWFpbi1jb250ZW50IHtcbiAgICAgICAgZmxleDogMSAxIDA7XG4gICAgICAgIG92ZXJmbG93OiBhdXRvO1xuICAgIH1cbn1cblxuQG1peGluIHJlc3BvbmQtdG8oJG1lZGlhKSB7XG4gIEBpZiAkbWVkaWEgPT0gc21hbGwge1xuICAgIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogJGJyZWFrLXNtYWxsKSB7IEBjb250ZW50OyB9XG4gIH1cbiAgQGVsc2UgaWYgJG1lZGlhID09IG1lZGl1bSB7XG4gICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAkYnJlYWstc21hbGwgKyAxKSBhbmQgKG1heC13aWR0aDogJGJyZWFrLWxhcmdlIC0gMSkgeyBAY29udGVudDsgfVxuICB9XG4gIEBlbHNlIGlmICRtZWRpYSA9PSB3aWRlIHtcbiAgICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6ICRicmVhay1sYXJnZSkgeyBAY29udGVudDsgfVxuICB9XG59XG4iLCJAbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NTBweCkge1xuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIge1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUge1xuICAgIGZsZXg6IDAgMCBhdXRvO1xuICAgIGhlaWdodDogMTMuMjVyZW07XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWF4LXdpZHRoOiBub25lO1xuICAgIHRyYW5zaXRpb246IGhlaWdodCA1MG1zO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlLmV4cGFuZGVkIHtcbiAgICBoZWlnaHQ6IDg1JTtcbiAgfVxuICA6aG9zdCBkaXYucGFnZS1jb250YWluZXIgLmxlZnQtc2lkZSAuZXhwYW5kZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzRjQwMzg7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogMDtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgIHdpZHRoOiAzLjVyZW07XG4gICAgaGVpZ2h0OiAxcmVtO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICM4QTlBNUI7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4IDVweCAwIDA7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlcjpob3Zlcjpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM0QjUzMjA7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyLmFjdGl2ZTpub3QoW2Rpc2FibGVkXSkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM3MDgyMzg7XG4gICAgY29sb3I6ICNGQ0ZDRjk7XG4gIH1cbiAgOmhvc3QgZGl2LnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyW2Rpc2FibGVkXSB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgb3BhY2l0eTogMC4zO1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlciAuZXhwYW5kZXItaWNvbiB7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICB9XG4gIDpob3N0IGRpdi5wYWdlLWNvbnRhaW5lciAubGVmdC1zaWRlIC5leHBhbmRlciAuZXhwYW5kZXItaWNvbi5mbGlwcGVkIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICB9XG59XG46aG9zdCAucGFnZS1jb250YWluZXIge1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGZsZXg6IDEgMSAwO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBtYXgtd2lkdGg6IDI3LjUlO1xuICBtaW4td2lkdGg6IDIwcmVtO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIC5sZWZ0LXNpZGUgLmV4cGFuZGVyIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cbjpob3N0IC5wYWdlLWNvbnRhaW5lciAucmlnaHQtc2lkZSB7XG4gIGZsZXg6IDEgMSAwO1xuICBvdmVyZmxvdzogYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuOmhvc3QgLnBhZ2UtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgcGFkZGluZzogMCAwLjVyZW07XG59XG46aG9zdCAucGFnZS1jb250YWluZXIgLmZvb3RlciB7XG4gIHBhZGRpbmctYm90dG9tOiAxNXJlbTtcbn1cblxuLm5hdi1pdGVtcy1jb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIG1hcmdpbjogMXJlbSAycmVtIDAgMnJlbTtcbiAgaGVpZ2h0OiAycmVtO1xufVxuQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA1NTBweCkge1xuICAubmF2LWl0ZW1zLWNvbnRhaW5lciB7XG4gICAgbWFyZ2luOiAwIDAuMjVyZW07XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIH1cbn1cbi5uYXYtaXRlbXMtY29udGFpbmVyIC5uYXYtaXRlbSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzRjQwMzg7XG4gIGNvbG9yOiAjRkNGQ0Y5O1xuICB3aWR0aDogOHJlbTtcbiAgcGFkZGluZzogMC41cmVtO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgb3V0bGluZTogbm9uZTtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gIGZsZXg6IDAgMSBhdXRvO1xuICBtYXJnaW46IDAgMC4yNXJlbTtcbiAgYm9yZGVyLXJhZGl1czogNHB4IDRweCAwIDA7XG59XG4ubmF2LWl0ZW1zLWNvbnRhaW5lciAubmF2LWl0ZW06aG92ZXI6bm90KFtkaXNhYmxlZF0pIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzRCNTMyMDtcbiAgY29sb3I6ICNGQ0ZDRjk7XG59XG4ubmF2LWl0ZW1zLWNvbnRhaW5lciAubmF2LWl0ZW0uYWN0aXZlOm5vdChbZGlzYWJsZWRdKSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM3MDgyMzg7XG4gIGNvbG9yOiAjRkNGQ0Y5O1xufVxuLm5hdi1pdGVtcy1jb250YWluZXIgLm5hdi1pdGVtW2Rpc2FibGVkXSB7XG4gIHBvaW50ZXItZXZlbnRzOiBub25lO1xuICBvcGFjaXR5OiAwLjM7XG59XG5cbi5wYWdlLWNvbnRlbnQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRUZFQkRGO1xufSIsIlxuJGRhcmstZ3JlZW46ICMyOTJFMTI7XG4kYXJteS1ncmVlbjogIzRCNTMyMDtcbiRvbGl2ZS1ncmVlbjogIzcwODIzODtcbiRtb3NzLWdyZWVuOiAjOEE5QTVCO1xuJGxhdXJlbC1ncmVlbjogI0JBQzM5RjtcblxuJHNhdHVyYXRlZC1vbGl2ZTogIzcyOTkwMDtcbiRzYXR1cmF0ZWQtYmx1ZTogIzE2NEVCNztcblxuLy8gbmljZSBmb3IgdGV4dCBhZ2FpbnN0IGRhcmsgYmFja2dyb3VuZFxuJGxpZ2h0LWdyZWVuOiAjRjRGN0VBO1xuJGxpZ2h0ZXN0LWdyZWVuOiAjRkNGQ0Y5O1xuXG4vLyBVc2VkIGZvciBmaWxlIHNlbGVjdG9yXG4kZWdnc2hlbGwtZGFya2VyOiAjREREOUNGO1xuJGVnZ3NoZWxsLWRhcms6ICNFQUU2REE7XG4kZWdnc2hlbGw6ICNFRkVCREY7XG4kZWdnc2hlbGwtbGlnaHQ6ICNGMkVFRTE7XG5cbi8vIGdyYXlzXG4kYmFzaWNhbGx5LWJsYWNrOiAjMjAyMTI0O1xuJGJsYWNrLW9saXZlOiAjM0Y0MDM4O1xuJGdyYW5pdGU6ICM2NTYzNUY7XG4kbGlnaHRlci1ncmF5OiAjOUQ5Qjk5O1xuJHdoaXRlOiAjZmZmO1xuXG4kZ29sZDogI0Q2QjkwMjtcbiRzdGFyLWJsdWU6ICMxRDYyQzQ7XG5cbiRicmVhay1zbWFsbDogNTUwcHg7XG4kYnJlYWstbWQ6IDgwMHB4O1xuJGJyZWFrLWxhcmdlOiAxMDI0cHg7XG4iLCJAaW1wb3J0ICdtaXhpbnMnO1xuXG46aG9zdCB7XG4gIEBpbmNsdWRlIHJlc3BvbnNpdmUtcGFnZTtcbiAgLnBhZ2UtY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgcGFkZGluZzogMCAwLjVyZW07XG4gICAgLmZvb3RlciB7XG4gICAgICBwYWRkaW5nLWJvdHRvbTogMTVyZW07XG4gICAgfVxuICB9XG59XG5cbi5uYXYtaXRlbXMtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xuICBtYXJnaW46IDFyZW0gMnJlbSAwIDJyZW07XG4gIGhlaWdodDogMnJlbTtcbiAgQGluY2x1ZGUgcmVzcG9uZC10byhzbWFsbCkge1xuICAgIG1hcmdpbjogMCAwLjI1cmVtO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB9XG4gIC5uYXYtaXRlbSB7XG4gICAgQGluY2x1ZGUgZGFyay1idXR0b247XG4gICAgZmxleDogMCAxIGF1dG87XG4gICAgbWFyZ2luOiAwIDAuMjVyZW07XG4gICAgYm9yZGVyLXJhZGl1czogNHB4IDRweCAwIDA7XG4gIH1cbn1cblxuLnBhZ2UtY29udGVudCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRlZ2dzaGVsbDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1802,6 +3627,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var exif_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! exif-js */ "./node_modules/exif-js/exif.js");
 /* harmony import */ var exif_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(exif_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var latlon_geohash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! latlon-geohash */ "./node_modules/latlon-geohash/latlon-geohash.js");
+/* harmony import */ var s2_geometry__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! s2-geometry */ "./node_modules/s2-geometry/src/s2geometry.js");
+/* harmony import */ var s2_geometry__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(s2_geometry__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -1824,10 +3652,14 @@ var ExifService = /** @class */ (function () {
                 var latitude = (exif.GPSLatitudeRef === 'N') ? latitudeMag : -latitudeMag;
                 var longitude = (exif.GPSLongitudeRef === 'E') ? longitudeMag : -longitudeMag;
                 var geohash = latlon_geohash__WEBPACK_IMPORTED_MODULE_3__["default"].encode(latitude, longitude, 12);
+                var s2Key = s2_geometry__WEBPACK_IMPORTED_MODULE_4__["S2"].latLngToKey(latitude, longitude, 30);
+                var s2Id = s2_geometry__WEBPACK_IMPORTED_MODULE_4__["S2"].keyToId(s2Key);
                 resolve({
                     latitude: latitude,
                     longitude: longitude,
                     geohash: geohash,
+                    s2Id: s2Id,
+                    s2Key: s2Key,
                 });
             };
             reader.readAsArrayBuffer(file);
@@ -1998,6 +3830,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var latlon_geohash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! latlon-geohash */ "./node_modules/latlon-geohash/latlon-geohash.js");
+/* harmony import */ var s2_geometry__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! s2-geometry */ "./node_modules/s2-geometry/src/s2geometry.js");
+/* harmony import */ var s2_geometry__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(s2_geometry__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -2010,8 +3845,12 @@ var UserLocationService = /** @class */ (function () {
                 var latitude = userLocation.coords.latitude;
                 var longitude = userLocation.coords.longitude;
                 var geohash = latlon_geohash__WEBPACK_IMPORTED_MODULE_2__["default"].encode(latitude, longitude, 12);
+                var s2Key = s2_geometry__WEBPACK_IMPORTED_MODULE_3__["S2"].latLngToKey(latitude, longitude, 30);
+                var s2Id = s2_geometry__WEBPACK_IMPORTED_MODULE_3__["S2"].keyToId(s2Key);
                 resolve({
                     geohash: geohash,
+                    s2Id: s2Id,
+                    // s2Key,
                     latitude: latitude,
                     longitude: longitude,
                 });

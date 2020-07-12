@@ -698,13 +698,35 @@ var FirebaseFirestoreService = /** @class */ (function () {
         return uploadedFiles$;
     };
     FirebaseFirestoreService.prototype.getNearbyUploads$ = function (userLocation) {
-        var walkingRange = userLocation.geohash.slice(0, 5);
-        var lastGeohashChar = walkingRange[walkingRange.length - 1];
-        var nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
-        var walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
+        // const walkingRange = userLocation.geohash.slice(0, 5);
+        // const lastGeohashChar = walkingRange[walkingRange.length - 1];
+        // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
+        // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
+        // const collection = this.firestore.collection(`uploads`)
+        //   .where('fileMeta.geohash', ">=", walkingRange)
+        //   .where('fileMeta.geohash', "<=", walkingRangeEnd);
+        // lake merritt
+        // const walkingDistanceInS2 = Math.pow(10, 12);
+        // oakland
+        var walkingDistanceInS2 = Math.pow(10, 13);
+        // ignore first 4 chars to avoid big math
+        var preKeyStr = userLocation.s2Id.slice(0, 4);
+        var keyNum = Number(userLocation.s2Id.slice(4));
+        var walkingRange = [
+            preKeyStr + String(keyNum - walkingDistanceInS2),
+            preKeyStr + String(keyNum + walkingDistanceInS2),
+        ];
+        // const walkingRange = [
+        //   String(Number(userLocation.s2Id) - walkingDistanceInS2),
+        //   String(Number(userLocation.s2Id) + walkingDistanceInS2),
+        // ];
+        // const lastGeohashChar = walkingRange[walkingRange.length - 1];
+        // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
+        // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
+        console.log('walkingRange', walkingRange);
         var collection = this.firestore.collection("uploads")
-            .where('fileMeta.geohash', ">=", walkingRange)
-            .where('fileMeta.geohash', "<=", walkingRangeEnd);
+            .where('fileMeta.s2Id', ">=", walkingRange[0])
+            .where('fileMeta.s2Id', "<=", walkingRange[1]);
         // client filtering
         // const userLoc = [
         //   userLocation.latitude,
