@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Geohash from 'latlon-geohash';
+import { S2 } from 's2-geometry';
 
 @Injectable()
 export class UserLocationService {
@@ -15,8 +16,12 @@ export class UserLocationService {
           longitude,
           12,
         );
+        const s2Key = S2.latLngToKey(latitude, longitude, 30);
+        const s2Id = S2.keyToId(s2Key);
         resolve({
           geohash,
+          s2Id,
+          // s2Key,
           latitude,
           longitude,
         })

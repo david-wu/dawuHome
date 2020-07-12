@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as EXIFStatic from 'exif-js';
 import Geohash from 'latlon-geohash';
+import { S2 } from 's2-geometry';
 
 @Injectable()
 export class ExifService {
@@ -20,10 +21,15 @@ export class ExifService {
         const latitude = (exif.GPSLatitudeRef === 'N') ? latitudeMag : -latitudeMag;
         const longitude = (exif.GPSLongitudeRef === 'E') ? longitudeMag : -longitudeMag;
         const geohash = Geohash.encode(latitude, longitude, 12);
+
+        const s2Key = S2.latLngToKey(latitude, longitude, 30);
+        const s2Id = S2.keyToId(s2Key);
         resolve({
           latitude,
           longitude,
           geohash,
+          s2Id,
+          s2Key,
         });
       }
       reader.readAsArrayBuffer(file);

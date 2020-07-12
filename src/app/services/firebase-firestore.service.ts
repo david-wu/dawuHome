@@ -79,14 +79,39 @@ export class FirebaseFirestoreService {
   }
 
   public getNearbyUploads$(userLocation) {
-    const walkingRange = userLocation.geohash.slice(0, 5);
-    const lastGeohashChar = walkingRange[walkingRange.length - 1];
-    const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
-    const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
+    // const walkingRange = userLocation.geohash.slice(0, 5);
+    // const lastGeohashChar = walkingRange[walkingRange.length - 1];
+    // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
+    // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
 
+    // const collection = this.firestore.collection(`uploads`)
+    //   .where('fileMeta.geohash', ">=", walkingRange)
+    //   .where('fileMeta.geohash', "<=", walkingRangeEnd);
+
+    // lake merritt
+    // const walkingDistanceInS2 = Math.pow(10, 12);
+
+    // oakland
+    const walkingDistanceInS2 = Math.pow(10, 13);
+    // ignore first 4 chars to avoid big math
+    const preKeyStr = userLocation.s2Id.slice(0, 4);
+    const keyNum = Number(userLocation.s2Id.slice(4));
+
+    const walkingRange = [
+      preKeyStr + String(keyNum - walkingDistanceInS2),
+      preKeyStr + String(keyNum + walkingDistanceInS2),
+    ];
+    // const walkingRange = [
+    //   String(Number(userLocation.s2Id) - walkingDistanceInS2),
+    //   String(Number(userLocation.s2Id) + walkingDistanceInS2),
+    // ];
+    // const lastGeohashChar = walkingRange[walkingRange.length - 1];
+    // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
+    // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
+console.log('walkingRange', walkingRange)
     const collection = this.firestore.collection(`uploads`)
-      .where('fileMeta.geohash', ">=", walkingRange)
-      .where('fileMeta.geohash', "<=", walkingRangeEnd);
+      .where('fileMeta.s2Id', ">=", walkingRange[0])
+      .where('fileMeta.s2Id', "<=", walkingRange[1]);
 
     // client filtering
     // const userLoc = [
