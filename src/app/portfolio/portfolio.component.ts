@@ -57,7 +57,7 @@ export class PortfolioComponent {
                 TD4: { label: 'better models/interfaces' },
                 TD5: { label: 's2' },
                 TD6: { label: 's4' },
-                TD6: { label: 'sort by distance' },
+                TD7: { label: 'sort by distance' },
               },
             },
           },
