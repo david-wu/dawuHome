@@ -552,7 +552,6 @@ var FirebaseAuthService = /** @class */ (function () {
         this.initialize();
         this.authLoading$ = this.user$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) { return user === undefined; }));
         this.canLogin$ = this.user$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) { return user === null; }));
-        this.user$.subscribe(console.log);
     }
     FirebaseAuthService.prototype.initialize = function () {
         var _this = this;
@@ -579,9 +578,6 @@ var FirebaseAuthService = /** @class */ (function () {
     };
     FirebaseAuthService.prototype.signOut = function () {
         return this.firebaseAuth.signOut();
-        //   .then(() => {
-        //     this.user$.next(undefined);
-        //   })
     };
     FirebaseAuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -702,26 +698,13 @@ var FirebaseFirestoreService = /** @class */ (function () {
         return uploadedFiles$;
     };
     FirebaseFirestoreService.prototype.getNearbyUploads$ = function (userLocation) {
-        console.log('userLocation', userLocation);
         var walkingRange = userLocation.geohash.slice(0, 5);
         var lastGeohashChar = walkingRange[walkingRange.length - 1];
         var nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
         var walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
-        console.log('range', [walkingRange, walkingRangeEnd]);
-        //     if (nextGeohashChar === 'i') {
-        // nextGeohashChar = 'j'
-        //     }
-        //     if (nextGeohashChar === 'l') {
-        // nextGeohashChar = 'm'
-        //     }
-        //     if (nextGeohashChar === '{') {
-        // nextGeohashChar = 'p'
-        //     }
         var collection = this.firestore.collection("uploads")
             .where('fileMeta.geohash', ">=", walkingRange)
             .where('fileMeta.geohash', "<=", walkingRangeEnd);
-        // .where('fileMeta.longitude', ">", uploadLongitudeBounds[0])
-        // .where('fileMeta.longitude', "<", uploadLongitudeBounds[1]);
         // client filtering
         // const userLoc = [
         //   userLocation.latitude,
@@ -739,7 +722,6 @@ var FirebaseFirestoreService = /** @class */ (function () {
         // ];
         var nearbyUploads$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         collection.onSnapshot(function (querySnapshot) {
-            console.log('querySnapshot', querySnapshot);
             var docs = querySnapshot.docs.map(function (doc) {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, doc.data(), { id: doc.id });
             });

@@ -1358,7 +1358,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"nearByUploads$ | async as nearByUploads\" class=\"uploaded-file-container\">\n  <div\n    *ngFor=\"let uploadedFile of nearByUploads; trackBy: trackById\"\n    class=\"uploaded-file\"\n  >\n    <div class=\"file-name\">\n      <div>{{ uploadedFile.fileName }}</div>\n      <span\n        *ngIf=\"firebaseAuthService.user$ | async as user\"\n        class=\"material-icons\"\n        (click)=\"onDeleteFile(uploadedFile, user)\"\n      >delete</span>\n    </div>\n    <img\n      *ngIf=\"uploadedFile.uploadMeta\"\n      [src]=\"uploadedFile.uploadMeta.downloadUrl\"\n      class=\"file-pic\"\n    >\n    <div\n      *ngIf=\"!uploadedFile.uploadMeta\"\n      class=\"file-pic\"\n    >\n      <div class=\"dwu-loader\"></div>\n    </div>\n  </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"nearByUploads$ | async as nearByUploads\" class=\"uploaded-file-container\">\n  <div\n    *ngFor=\"let uploadedFile of nearByUploads; trackBy: trackById\"\n    class=\"uploaded-file\"\n  >\n    <div class=\"file-name\">\n      <div>{{ uploadedFile.fileName }}</div>\n    </div>\n    <img\n      *ngIf=\"uploadedFile.uploadMeta\"\n      [src]=\"uploadedFile.uploadMeta.downloadUrl\"\n      class=\"file-pic\"\n    >\n    <div\n      *ngIf=\"!uploadedFile.uploadMeta\"\n      class=\"file-pic\"\n    >\n      <div class=\"dwu-loader\"></div>\n    </div>\n  </div>\n</div>");
 
 /***/ }),
 
@@ -1417,7 +1417,6 @@ var FileUploaderComponent = /** @class */ (function () {
         }
     };
     FileUploaderComponent.prototype.upload = function () {
-        console.log('upload', this.file);
         this.fss.uploadFile(this.file);
     };
     FileUploaderComponent.ctorParameters = function () { return [
@@ -1595,31 +1594,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NearMeComponent", function() { return NearMeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
-/* harmony import */ var _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @photo-gallery/services/index */ "./src/app/photo-gallery/services/index.ts");
-
+/* harmony import */ var _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @photo-gallery/services/index */ "./src/app/photo-gallery/services/index.ts");
 
 
 
 var NearMeComponent = /** @class */ (function () {
-    function NearMeComponent(firebaseAuthService, pgs, exifService, userLocationService) {
-        this.firebaseAuthService = firebaseAuthService;
+    function NearMeComponent(pgs) {
         this.pgs = pgs;
-        this.exifService = exifService;
-        this.userLocationService = userLocationService;
-        // this.uploadedFiles$ = this.pgs.getUploadedFiles$();
         this.nearByUploads$ = this.pgs.getNearByUploads$();
-        console.log('this.nearByUploads$', this.nearByUploads$);
-        this.nearByUploads$.subscribe(console.log);
     }
     NearMeComponent.prototype.trackById = function (file) {
         return file.id;
     };
     NearMeComponent.ctorParameters = function () { return [
-        { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] },
-        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryService"] },
-        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["ExifService"] },
-        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["UserLocationService"] }
+        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_2__["PhotoGalleryService"] }
     ]; };
     NearMeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1660,27 +1648,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoGalleryComponent", function() { return PhotoGalleryComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @services/index */ "./src/app/services/index.ts");
-/* harmony import */ var _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @photo-gallery/services/index */ "./src/app/photo-gallery/services/index.ts");
 
 
-
-
-// import * as EXIFStatic from 'exif-js';
 var PhotoGalleryComponent = /** @class */ (function () {
-    function PhotoGalleryComponent(firebaseAuthService, pgs, exifService, userLocationService) {
-        this.firebaseAuthService = firebaseAuthService;
-        this.pgs = pgs;
-        this.exifService = exifService;
-        this.userLocationService = userLocationService;
-        // this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+    function PhotoGalleryComponent() {
     }
-    PhotoGalleryComponent.ctorParameters = function () { return [
-        { type: _services_index__WEBPACK_IMPORTED_MODULE_2__["FirebaseAuthService"] },
-        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["PhotoGalleryService"] },
-        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["ExifService"] },
-        { type: _photo_gallery_services_index__WEBPACK_IMPORTED_MODULE_3__["UserLocationService"] }
-    ]; };
     PhotoGalleryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'dwu-photo-gallery',
@@ -1847,7 +1819,6 @@ var ExifService = /** @class */ (function () {
                     resolve({});
                     return;
                 }
-                console.log('exif', exif);
                 var latitudeMag = exif.GPSLatitude[0] + (exif.GPSLatitude[1] / 60) + (exif.GPSLatitude[2] / 3600);
                 var longitudeMag = exif.GPSLongitude[0] + (exif.GPSLongitude[1] / 60) + (exif.GPSLongitude[2] / 3600);
                 var latitude = (exif.GPSLatitudeRef === 'N') ? latitudeMag : -latitudeMag;
@@ -1947,7 +1918,6 @@ var PhotoGalleryService = /** @class */ (function () {
                         return [4 /*yield*/, this.ffs.unregisterFile(fileId, user)];
                     case 2:
                         _a.sent();
-                        console.log('fileDeleted', fileId);
                         return [2 /*return*/];
                 }
             });
@@ -1997,9 +1967,7 @@ var PhotoGalleryService = /** @class */ (function () {
             .then(function (userLocation) {
             nearByUploadStreams$.next(_this.ffs.getNearbyUploads$(userLocation));
         });
-        return nearByUploadStreams$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (nearbyUploads$) {
-            return nearbyUploads$;
-        }));
+        return nearByUploadStreams$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (nearbyUploads$) { return nearbyUploads$; }));
     };
     PhotoGalleryService.ctorParameters = function () { return [
         { type: _services_index__WEBPACK_IMPORTED_MODULE_4__["FirebaseAuthService"] },
@@ -2039,7 +2007,6 @@ var UserLocationService = /** @class */ (function () {
     UserLocationService.prototype.getUserLocation = function () {
         return new Promise(function (resolve, reject) {
             navigator.geolocation.getCurrentPosition(function (userLocation) {
-                console.log('userLocation', userLocation);
                 var latitude = userLocation.coords.latitude;
                 var longitude = userLocation.coords.longitude;
                 var geohash = latlon_geohash__WEBPACK_IMPORTED_MODULE_2__["default"].encode(latitude, longitude, 12);
