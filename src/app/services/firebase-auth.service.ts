@@ -48,7 +48,6 @@ export class FirebaseAuthService {
     this.canLogin$ = this.user$.pipe(
       map((user: User) => user === null),
     )
-    this.user$.subscribe(console.log);
   }
 
   public initialize() {
@@ -79,9 +78,6 @@ export class FirebaseAuthService {
 
   public signOut() {
     return this.firebaseAuth.signOut();
-    //   .then(() => {
-    //     this.user$.next(undefined);
-    //   })
   }
 
 }

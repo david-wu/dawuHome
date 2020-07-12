@@ -1,14 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-
-import { FirebaseAuthService } from '@services/index';
-import {
-  ExifService,
-  PhotoGalleryService,
-  UserLocationService,
-} from '@photo-gallery/services/index';
-import { User } from '@models/index';
-// import * as EXIFStatic from 'exif-js';
 
 @Component({
   selector: 'dwu-photo-gallery',
@@ -16,29 +6,5 @@ import { User } from '@models/index';
   styleUrls: ['./photo-gallery.component.scss']
 })
 export class PhotoGalleryComponent {
-
-  public uploadedFiles$: Observable<any[]>;
-
-  constructor(
-    public firebaseAuthService: FirebaseAuthService,
-    public pgs: PhotoGalleryService,
-    public exifService: ExifService,
-    public userLocationService: UserLocationService,
-  ) {
-    // this.uploadedFiles$ = this.pgs.getUploadedFiles$();
-  }
-
-  // public async onFileChange(file: File, user: User) {
-  //   const fileMetadata = await this.exifService.getMetaData();
-  //   this.pgs.uploadFile(file, user, fileMetadata);
-  // }
-
-  // public onDeleteFile(file: any, user: User) {
-  //   this.pgs.deleteFile(file.id, user);
-  // }
-
-  // public trackById(file: any) {
-  //   return file.id;
-  // }
 
 }

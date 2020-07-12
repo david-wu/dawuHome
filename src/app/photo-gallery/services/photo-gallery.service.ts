@@ -32,12 +32,10 @@ export class PhotoGalleryService {
   public async deleteFile(fileId: string, user: User) {
     await this.fss.deleteFile(fileId);
     await this.ffs.unregisterFile(fileId, user);
-    console.log('fileDeleted', fileId);
   }
 
   public async uploadFile(file: File, user: User, fileMeta: any = {}) {
     const registeredFileId = await this.ffs.registerFileId(file, user, fileMeta);
-    // const registeredFileId = registrationResponse.id;
     const fileUploadResponse = await this.fss.uploadFile(file, registeredFileId)
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
     const uploadMeta = {
@@ -65,9 +63,7 @@ export class PhotoGalleryService {
         nearByUploadStreams$.next(this.ffs.getNearbyUploads$(userLocation));
       });
     return nearByUploadStreams$.pipe(
-      switchMap((nearbyUploads$) => {
-        return nearbyUploads$
-      })
+      switchMap((nearbyUploads$) => nearbyUploads$)
     ) as Observable<any[]>;
 
   }

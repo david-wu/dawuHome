@@ -79,28 +79,14 @@ export class FirebaseFirestoreService {
   }
 
   public getNearbyUploads$(userLocation) {
-    console.log('userLocation', userLocation);
     const walkingRange = userLocation.geohash.slice(0, 5);
     const lastGeohashChar = walkingRange[walkingRange.length - 1];
     const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
     const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
 
-    console.log('range', [walkingRange, walkingRangeEnd])
-//     if (nextGeohashChar === 'i') {
-// nextGeohashChar = 'j'
-//     }
-//     if (nextGeohashChar === 'l') {
-// nextGeohashChar = 'm'
-//     }
-//     if (nextGeohashChar === '{') {
-// nextGeohashChar = 'p'
-//     }
-
     const collection = this.firestore.collection(`uploads`)
       .where('fileMeta.geohash', ">=", walkingRange)
       .where('fileMeta.geohash', "<=", walkingRangeEnd);
-      // .where('fileMeta.longitude', ">", uploadLongitudeBounds[0])
-      // .where('fileMeta.longitude', "<", uploadLongitudeBounds[1]);
 
     // client filtering
     // const userLoc = [
@@ -120,7 +106,6 @@ export class FirebaseFirestoreService {
 
     const nearbyUploads$ = new Subject<any[]>();
     collection.onSnapshot((querySnapshot) => {
-      console.log('querySnapshot', querySnapshot)
       const docs = querySnapshot.docs.map((doc) => {
         return {
           ...doc.data(),

@@ -7,7 +7,6 @@ export class UserLocationService {
   public getUserLocation() {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition((userLocation: any) => {
-        console.log('userLocation', userLocation);
         const latitude = userLocation.coords.latitude;
         const longitude = userLocation.coords.longitude;
 

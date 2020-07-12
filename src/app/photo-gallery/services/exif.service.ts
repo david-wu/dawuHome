@@ -5,9 +5,6 @@ import Geohash from 'latlon-geohash';
 @Injectable()
 export class ExifService {
 
-  constructor(
-  ) {}
-
   public getMetaData(file: File) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -18,7 +15,6 @@ export class ExifService {
           resolve({});
           return;
         }
-        console.log('exif', exif)
         const latitudeMag = exif.GPSLatitude[0] + (exif.GPSLatitude[1] / 60) + (exif.GPSLatitude[2] / 3600);
         const longitudeMag = exif.GPSLongitude[0] + (exif.GPSLongitude[1] / 60) + (exif.GPSLongitude[2] / 3600);
         const latitude = (exif.GPSLatitudeRef === 'N') ? latitudeMag : -latitudeMag;

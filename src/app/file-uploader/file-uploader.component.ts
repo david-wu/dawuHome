@@ -32,7 +32,6 @@ export class FileUploaderComponent {
   }
 
   public upload() {
-    console.log('upload', this.file)
     this.fss.uploadFile(this.file);
   }
 }
