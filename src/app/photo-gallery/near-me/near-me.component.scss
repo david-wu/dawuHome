@@ -22,3 +22,6 @@
   }
 }
 
+.radio-buttons {
+  @include radio-button-container;
+}

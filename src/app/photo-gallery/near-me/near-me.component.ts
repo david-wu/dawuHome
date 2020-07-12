@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  Observable,
+  BehaviorSubject,
+} from 'rxjs';
 
 import { PhotoGalleryService } from '@photo-gallery/services/index';
 
@@ -11,6 +14,7 @@ import { PhotoGalleryService } from '@photo-gallery/services/index';
 export class NearMeComponent {
 
   public nearByUploads$: Observable<any[]>;
+  public distanceType$ = BehaviorSubject<string>('WALK');
 
   constructor(
     public pgs: PhotoGalleryService,

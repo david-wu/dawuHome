@@ -7,6 +7,7 @@ import {
 } from 'rxjs';
 
 import { User } from '@models/index';
+import { LocationData } from '@photo-gallery/models/index';
 
 @Injectable({
   providedIn: 'root',
@@ -34,11 +35,11 @@ export class FirebaseFirestoreService {
    * @param {User} user
    * @return {Promise<string>} id
    */
-  public async registerFileId(file: File, user: User, fileMeta: any): Promise<string> {
+  public async registerFileId(file: File, user: User, locationData: LocationData): Promise<string> {
     const upload = {
       userId: user.uid,
       fileName: file.name,
-      fileMeta: fileMeta,
+      locationData: { ...locationData },
     };
     const collection = this.firestore.collection('uploads');
     const uploadDoc = await collection.add(upload);
@@ -85,8 +86,8 @@ export class FirebaseFirestoreService {
     // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
 
     // const collection = this.firestore.collection(`uploads`)
-    //   .where('fileMeta.geohash', ">=", walkingRange)
-    //   .where('fileMeta.geohash', "<=", walkingRangeEnd);
+    //   .where('locationData.geohash', ">=", walkingRange)
+    //   .where('locationData.geohash', "<=", walkingRangeEnd);
 
     // lake merritt
     // const walkingDistanceInS2 = Math.pow(10, 12);
@@ -109,8 +110,8 @@ export class FirebaseFirestoreService {
     // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
     // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
     const collection = this.firestore.collection(`uploads`)
-      .where('fileMeta.s2Id', ">=", walkingRange[0])
-      .where('fileMeta.s2Id', "<=", walkingRange[1]);
+      .where('locationData.s2Id', ">=", walkingRange[0])
+      .where('locationData.s2Id', "<=", walkingRange[1]);
 
     // client filtering
     // const userLoc = [

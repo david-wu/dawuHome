@@ -1,3 +1,18 @@
+<div class="radio-buttons">
+  <div class="radio-button"
+    [class.active]="distanceType$.value === 'WALK'"
+    (click)="distanceType$.next('WALK')"
+  >Walk</div>
+  <div class="radio-button"
+    [class.active]="distanceType$.value === 'BIKE'"
+    (click)="distanceType$.next('BIKE')"
+  >Bike</div>
+  <div class="radio-button"
+    [class.active]="distanceType$.value === 'DRIVE'"
+    (click)="distanceType$.next('DRIVE')"
+  >Drive</div>
+</div>
+
 <div *ngIf="nearByUploads$ | async as nearByUploads" class="uploaded-file-container">
   <div
     *ngFor="let uploadedFile of nearByUploads; trackBy: trackById"

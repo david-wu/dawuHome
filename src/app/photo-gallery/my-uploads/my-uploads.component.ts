@@ -29,8 +29,9 @@ export class MyUploadsComponent {
   }
 
   public async onFileChange(file: File, user: User) {
-    const fileMetadata = await this.exifService.getMetaData(file);
-    this.pgs.uploadFile(file, user, fileMetadata);
+    const exifLocationData = await this.exifService.getMetaData(file);
+    const myLocationData = await this.userLocationService.getUserLocation();
+    this.pgs.uploadFile(file, user, exifLocationData || myLocationData);
   }
 
   public onDeleteFile(file: any, user: User) {
