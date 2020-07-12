@@ -108,7 +108,6 @@ export class FirebaseFirestoreService {
     // const lastGeohashChar = walkingRange[walkingRange.length - 1];
     // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
     // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
-console.log('walkingRange', walkingRange)
     const collection = this.firestore.collection(`uploads`)
       .where('fileMeta.s2Id', ">=", walkingRange[0])
       .where('fileMeta.s2Id', "<=", walkingRange[1]);
