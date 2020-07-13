@@ -58,6 +58,8 @@ export class PortfolioComponent {
                 TD5: { label: 's2' },
                 TD6: { label: 's4' },
                 TD7: { label: 'sort by distance' },
+                TD8: { label: 'map with nearby pics' },
+                TD9: { label: 'tensorflow, auto label pics' },
               },
             },
           },

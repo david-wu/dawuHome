@@ -15,6 +15,7 @@ export class ExifService {
         const arrayBuffer = reader.result
         const exif = (EXIFStatic as any).EXIF.readFromBinaryFile(arrayBuffer);
         if (!exif || !exif.GPSLatitude) {
+          console.log('missing exif?.GPSLatitude', exif)
           resolve();
           return;
         }

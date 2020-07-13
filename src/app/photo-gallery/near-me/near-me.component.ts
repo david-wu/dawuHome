@@ -20,7 +20,6 @@ export class NearMeComponent {
     public pgs: PhotoGalleryService,
   ) {
     this.nearByUploads$ = this.pgs.getNearByUploadsForDistanceType$(this.distanceType$);
-    this.nearByUploads$.subscribe(console.log);
   }
 
   public trackById(file: any) {

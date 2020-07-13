@@ -63,7 +63,6 @@ export class PhotoGalleryService {
   }
 
   public getNearByUploads$(distanceType: string = 'WALK'): Observable<any[]> {
-    console.log('getNearByUploads$ distanceType', distanceType)
     const nearByUploadStreams$ = new Subject<any>();
     const userLocation = this.userLocationService.getUserLocation()
       .then((userLocation: any) => {
