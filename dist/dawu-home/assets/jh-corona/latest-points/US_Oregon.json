@@ -1,30 +1,30 @@
 {
   "Baker": {
-    "dateStr": "7/11/20",
-    "cases": 11,
+    "dateStr": "7/12/20",
+    "cases": 12,
     "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Benton": {
+    "dateStr": "7/12/20",
+    "cases": 114,
+    "deaths": 6,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Benton": {
-    "dateStr": "7/11/20",
-    "cases": 112,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
   "Clackamas": {
-    "dateStr": "7/11/20",
-    "cases": 955,
+    "dateStr": "7/12/20",
+    "cases": 987,
     "deaths": 27,
     "recovered": 0,
-    "new": 30,
+    "new": 32,
     "newDeaths": 0
   },
   "Clatsop": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 55,
     "deaths": 0,
     "recovered": 0,
@@ -32,23 +32,23 @@
     "newDeaths": 0
   },
   "Columbia": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 48,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Coos": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 54,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Crook": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 18,
     "deaths": 1,
     "recovered": 0,
@@ -56,7 +56,7 @@
     "newDeaths": 0
   },
   "Curry": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 9,
     "deaths": 0,
     "recovered": 0,
@@ -64,23 +64,23 @@
     "newDeaths": 0
   },
   "Deschutes": {
-    "dateStr": "7/11/20",
-    "cases": 252,
+    "dateStr": "7/12/20",
+    "cases": 268,
     "deaths": 0,
     "recovered": 0,
-    "new": 15,
+    "new": 16,
     "newDeaths": 0
   },
   "Douglas": {
-    "dateStr": "7/11/20",
-    "cases": 60,
+    "dateStr": "7/12/20",
+    "cases": 64,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 4,
     "newDeaths": 0
   },
   "Gilliam": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -88,7 +88,7 @@
     "newDeaths": 0
   },
   "Grant": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -96,7 +96,7 @@
     "newDeaths": 0
   },
   "Harney": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -104,31 +104,31 @@
     "newDeaths": 0
   },
   "Hood River": {
-    "dateStr": "7/11/20",
-    "cases": 104,
+    "dateStr": "7/12/20",
+    "cases": 105,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Jackson": {
-    "dateStr": "7/11/20",
-    "cases": 178,
+    "dateStr": "7/12/20",
+    "cases": 179,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Jefferson": {
+    "dateStr": "7/12/20",
+    "cases": 168,
     "deaths": 0,
     "recovered": 0,
     "new": 5,
     "newDeaths": 0
   },
-  "Jefferson": {
-    "dateStr": "7/11/20",
-    "cases": 163,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
   "Josephine": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 61,
     "deaths": 1,
     "recovered": 0,
@@ -136,15 +136,15 @@
     "newDeaths": 0
   },
   "Klamath": {
-    "dateStr": "7/11/20",
-    "cases": 135,
+    "dateStr": "7/12/20",
+    "cases": 137,
     "deaths": 1,
     "recovered": 0,
-    "new": 4,
+    "new": 2,
     "newDeaths": 0
   },
   "Lake": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 24,
     "deaths": 0,
     "recovered": 0,
@@ -152,15 +152,15 @@
     "newDeaths": 0
   },
   "Lane": {
-    "dateStr": "7/11/20",
-    "cases": 294,
+    "dateStr": "7/12/20",
+    "cases": 305,
     "deaths": 3,
     "recovered": 0,
-    "new": 13,
+    "new": 11,
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 363,
     "deaths": 5,
     "recovered": 0,
@@ -168,63 +168,63 @@
     "newDeaths": 0
   },
   "Linn": {
-    "dateStr": "7/11/20",
-    "cases": 174,
+    "dateStr": "7/12/20",
+    "cases": 181,
     "deaths": 10,
     "recovered": 0,
-    "new": 2,
+    "new": 7,
     "newDeaths": 0
   },
   "Malheur": {
-    "dateStr": "7/11/20",
-    "cases": 302,
-    "deaths": 1,
+    "dateStr": "7/12/20",
+    "cases": 373,
+    "deaths": 2,
     "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
+    "new": 71,
+    "newDeaths": 1
   },
   "Marion": {
-    "dateStr": "7/11/20",
-    "cases": 1831,
+    "dateStr": "7/12/20",
+    "cases": 1859,
     "deaths": 53,
     "recovered": 0,
-    "new": 61,
+    "new": 28,
     "newDeaths": 0
   },
   "Morrow": {
-    "dateStr": "7/11/20",
-    "cases": 138,
+    "dateStr": "7/12/20",
+    "cases": 145,
     "deaths": 2,
     "recovered": 0,
-    "new": 6,
+    "new": 7,
     "newDeaths": 0
   },
   "Multnomah": {
-    "dateStr": "7/11/20",
-    "cases": 2824,
+    "dateStr": "7/12/20",
+    "cases": 2888,
     "deaths": 72,
     "recovered": 0,
-    "new": 94,
+    "new": 64,
     "newDeaths": 0
   },
   "Polk": {
-    "dateStr": "7/11/20",
-    "cases": 173,
+    "dateStr": "7/12/20",
+    "cases": 177,
     "deaths": 12,
     "recovered": 0,
-    "new": 2,
+    "new": 4,
     "newDeaths": 0
   },
   "Sherman": {
-    "dateStr": "7/11/20",
-    "cases": 4,
+    "dateStr": "7/12/20",
+    "cases": 5,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Tillamook": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 16,
     "deaths": 0,
     "recovered": 0,
@@ -232,47 +232,47 @@
     "newDeaths": 0
   },
   "Umatilla": {
-    "dateStr": "7/11/20",
-    "cases": 987,
+    "dateStr": "7/12/20",
+    "cases": 1013,
     "deaths": 7,
     "recovered": 0,
-    "new": 50,
+    "new": 26,
     "newDeaths": 0
   },
   "Union": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 369,
     "deaths": 2,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Wallowa": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 14,
     "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Wasco": {
+    "dateStr": "7/12/20",
+    "cases": 117,
+    "deaths": 2,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Wasco": {
-    "dateStr": "7/11/20",
-    "cases": 116,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
   "Washington": {
-    "dateStr": "7/11/20",
-    "cases": 1815,
-    "deaths": 20,
+    "dateStr": "7/12/20",
+    "cases": 1847,
+    "deaths": 21,
     "recovered": 0,
-    "new": 51,
-    "newDeaths": 0
+    "new": 32,
+    "newDeaths": 1
   },
   "Wheeler": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -280,15 +280,15 @@
     "newDeaths": 0
   },
   "Yamhill": {
-    "dateStr": "7/11/20",
-    "cases": 194,
+    "dateStr": "7/12/20",
+    "cases": 198,
     "deaths": 9,
     "recovered": 0,
-    "new": 15,
+    "new": 4,
     "newDeaths": 0
   },
   "Out of OR": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -296,7 +296,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "7/11/20",
+    "dateStr": "7/12/20",
     "cases": 1,
     "deaths": 1,
     "recovered": 0,

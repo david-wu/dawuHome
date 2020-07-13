@@ -3489,7 +3489,6 @@ var NearMeComponent = /** @class */ (function () {
         this.pgs = pgs;
         this.distanceType$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]('WALK');
         this.nearByUploads$ = this.pgs.getNearByUploadsForDistanceType$(this.distanceType$);
-        this.nearByUploads$.subscribe(console.log);
     }
     NearMeComponent.prototype.trackById = function (file) {
         return file.id;
@@ -3704,6 +3703,7 @@ var ExifService = /** @class */ (function () {
                 var arrayBuffer = reader.result;
                 var exif = exif_js__WEBPACK_IMPORTED_MODULE_2__["EXIF"].readFromBinaryFile(arrayBuffer);
                 if (!exif || !exif.GPSLatitude) {
+                    console.log('missing exif?.GPSLatitude', exif);
                     resolve();
                     return;
                 }
@@ -3851,7 +3851,6 @@ var PhotoGalleryService = /** @class */ (function () {
     PhotoGalleryService.prototype.getNearByUploads$ = function (distanceType) {
         var _this = this;
         if (distanceType === void 0) { distanceType = 'WALK'; }
-        console.log('getNearByUploads$ distanceType', distanceType);
         var nearByUploadStreams$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         var userLocation = this.userLocationService.getUserLocation()
             .then(function (userLocation) {
