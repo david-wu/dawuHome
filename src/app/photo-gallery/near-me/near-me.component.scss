@@ -22,6 +22,7 @@
   }
 }
 
-.radio-buttons {
+.radio-buttons.distance-type {
   @include radio-button-container;
+  margin: 0.25rem 0.5rem;
 }

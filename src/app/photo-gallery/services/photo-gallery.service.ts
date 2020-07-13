@@ -56,11 +56,18 @@ export class PhotoGalleryService {
     );
   }
 
-  public getNearByUploads$(): Observable<any[]> {
+  public getNearByUploadsForDistanceType$(distanceType$: any): Observable<any[]> {
+    return distanceType$.pipe(
+      switchMap((distanceType: string) => this.getNearByUploads$(distanceType)),
+    );
+  }
+
+  public getNearByUploads$(distanceType: string = 'WALK'): Observable<any[]> {
+    console.log('getNearByUploads$ distanceType', distanceType)
     const nearByUploadStreams$ = new Subject<any>();
     const userLocation = this.userLocationService.getUserLocation()
       .then((userLocation: any) => {
-        nearByUploadStreams$.next(this.ffs.getNearbyUploads$(userLocation));
+        nearByUploadStreams$.next(this.ffs.getNearbyUploads$(userLocation, distanceType));
       });
     return nearByUploadStreams$.pipe(
       switchMap((nearbyUploads$) => nearbyUploads$)

@@ -79,7 +79,7 @@ export class FirebaseFirestoreService {
     return uploadedFiles$ as Observable<any[]>;
   }
 
-  public getNearbyUploads$(userLocation) {
+  public getNearbyUploads$(userLocation: any, distanceType: string) {
     // const walkingRange = userLocation.geohash.slice(0, 5);
     // const lastGeohashChar = walkingRange[walkingRange.length - 1];
     // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
@@ -93,14 +93,20 @@ export class FirebaseFirestoreService {
     // const walkingDistanceInS2 = Math.pow(10, 12);
 
     // oakland
-    const walkingDistanceInS2 = Math.pow(10, 13);
+    // const walkingDistanceInS2 = Math.pow(10, 13);
+    const distanceTargetsByType = {
+      WALK: Math.pow(10, 12) * 4,
+      BIKE: Math.pow(10, 12) * 4 * 2,
+      DRIVE: Math.pow(10, 12) * 4 * 2 * 3,
+    }
+    const distanceTargetInS2 = distanceTargetsByType[distanceType];
     // ignore first 4 chars to avoid big math
     const preKeyStr = userLocation.s2Id.slice(0, 4);
     const keyNum = Number(userLocation.s2Id.slice(4));
 
     const walkingRange = [
-      preKeyStr + String(keyNum - walkingDistanceInS2),
-      preKeyStr + String(keyNum + walkingDistanceInS2),
+      preKeyStr + String(keyNum - distanceTargetInS2),
+      preKeyStr + String(keyNum + distanceTargetInS2),
     ];
     // const walkingRange = [
     //   String(Number(userLocation.s2Id) - walkingDistanceInS2),

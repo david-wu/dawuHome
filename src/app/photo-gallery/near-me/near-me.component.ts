@@ -14,12 +14,13 @@ import { PhotoGalleryService } from '@photo-gallery/services/index';
 export class NearMeComponent {
 
   public nearByUploads$: Observable<any[]>;
-  public distanceType$ = BehaviorSubject<string>('WALK');
+  public distanceType$ = new BehaviorSubject<string>('WALK');
 
   constructor(
     public pgs: PhotoGalleryService,
   ) {
-    this.nearByUploads$ = this.pgs.getNearByUploads$();
+    this.nearByUploads$ = this.pgs.getNearByUploadsForDistanceType$(this.distanceType$);
+    this.nearByUploads$.subscribe(console.log);
   }
 
   public trackById(file: any) {
