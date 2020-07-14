@@ -96953,6 +96953,7 @@ var PortfolioComponent = /** @class */ (function () {
                                 TD7: { label: 'sort by distance' },
                                 TD8: { label: 'map with nearby pics' },
                                 TD9: { label: 'tensorflow, auto label pics' },
+                                TD10: { label: 'oaktown pics' },
                             },
                         },
                     },
