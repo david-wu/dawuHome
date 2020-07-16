@@ -1,6 +1,6 @@
 {
   "Australian Capital Territory": {
-    "dateStr": "7/14/20",
+    "dateStr": "7/15/20",
     "cases": 113,
     "deaths": 3,
     "recovered": 105,
@@ -8,15 +8,15 @@
     "newDeaths": 0
   },
   "New South Wales": {
-    "dateStr": "7/14/20",
-    "cases": 3517,
+    "dateStr": "7/15/20",
+    "cases": 3527,
     "deaths": 49,
     "recovered": 2997,
-    "new": 12,
+    "new": 10,
     "newDeaths": 0
   },
   "Northern Territory": {
-    "dateStr": "7/14/20",
+    "dateStr": "7/15/20",
     "cases": 31,
     "deaths": 0,
     "recovered": 29,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Queensland": {
-    "dateStr": "7/14/20",
+    "dateStr": "7/15/20",
     "cases": 1071,
     "deaths": 7,
     "recovered": 1058,
@@ -32,15 +32,15 @@
     "newDeaths": 0
   },
   "South Australia": {
-    "dateStr": "7/14/20",
-    "cases": 443,
+    "dateStr": "7/15/20",
+    "cases": 444,
     "deaths": 4,
     "recovered": 439,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Tasmania": {
-    "dateStr": "7/14/20",
+    "dateStr": "7/15/20",
     "cases": 228,
     "deaths": 13,
     "recovered": 215,
@@ -48,19 +48,19 @@
     "newDeaths": 0
   },
   "Victoria": {
-    "dateStr": "7/14/20",
-    "cases": 4448,
-    "deaths": 27,
-    "recovered": 2488,
-    "new": 224,
-    "newDeaths": 3
+    "dateStr": "7/15/20",
+    "cases": 4750,
+    "deaths": 29,
+    "recovered": 2591,
+    "new": 302,
+    "newDeaths": 2
   },
   "Western Australia": {
-    "dateStr": "7/14/20",
-    "cases": 636,
+    "dateStr": "7/15/20",
+    "cases": 646,
     "deaths": 9,
-    "recovered": 606,
-    "new": 0,
+    "recovered": 610,
+    "new": 10,
     "newDeaths": 0
   }
 }

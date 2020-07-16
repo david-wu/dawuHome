@@ -34,3 +34,6 @@
     </div>
   </div>
 </div>
+<div *ngIf="!(nearByUploads$ | async)" class="loader-container">
+  <div class="dwu-loader"></div>
+</div>
