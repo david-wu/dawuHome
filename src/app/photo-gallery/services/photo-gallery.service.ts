@@ -9,6 +9,7 @@ import {
   map,
   switchMap,
 } from 'rxjs/operators';
+import { sortBy } from 'lodash';
 import Geohash from 'latlon-geohash';
 
 import { User } from '@models/index';
@@ -66,8 +67,16 @@ export class PhotoGalleryService {
     const nearByUploadStreams$ = new Subject<any>();
     const userLocation = this.userLocationService.getUserLocation()
       .then((userLocation: any) => {
-        nearByUploadStreams$.next(this.ffs.getNearbyUploads$(userLocation, distanceType));
+        const nearbyUploads$ = this.ffs.getNearbyUploads$(userLocation, distanceType).pipe(
+          map((uploads: any[]) => {
+            return sortBy(uploads, (upload) => {
+              return Math.pow(userLocation.latitude - upload.locationData.latitude, 2) + Math.pow(userLocation.longitude - upload.locationData.longitude, 2);
+            });
+          }),
+        );
+        nearByUploadStreams$.next(nearbyUploads$);
       });
+
     return nearByUploadStreams$.pipe(
       switchMap((nearbyUploads$) => nearbyUploads$)
     ) as Observable<any[]>;

@@ -26,10 +26,13 @@
     >
     <div
       *ngIf="!uploadedFile.uploadMeta"
-      class="file-pic"
+      class="loader-container centered"
     >
       <div class="dwu-loader"></div>
     </div>
   </div>
+</div>
+<div *ngIf="!(uploadedFiles$ | async)" class="loader-container for-page">
+  <div class="dwu-loader"></div>
 </div>
 <div class="footer"></div>

@@ -95,9 +95,9 @@ export class FirebaseFirestoreService {
     // oakland
     // const walkingDistanceInS2 = Math.pow(10, 13);
     const distanceTargetsByType = {
-      WALK: Math.pow(10, 12) * 4,
-      BIKE: Math.pow(10, 12) * 4 * 2,
-      DRIVE: Math.pow(10, 12) * 4 * 2 * 3,
+      WALK: Math.pow(10, 12) * 5,
+      BIKE: Math.pow(10, 12) * 5 * 2,
+      DRIVE: Math.pow(10, 12) * 5 * 2 * 3,
     }
     const distanceTargetInS2 = distanceTargetsByType[distanceType];
     // ignore first 4 chars to avoid big math
