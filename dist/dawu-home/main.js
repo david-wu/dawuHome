@@ -333,11 +333,11 @@ var routes = [
     },
     {
         path: 'portfolio',
-        loadChildren: function () { return Promise.all(/*! import() | portfolio-portfolio-module */[__webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("portfolio-portfolio-module")]).then(__webpack_require__.bind(null, /*! ./portfolio/portfolio.module */ "./src/app/portfolio/portfolio.module.ts")).then(function (m) { return m.PortfolioModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | portfolio-portfolio-module */[__webpack_require__.e("default~corona-corona-module~photo-gallery-photo-gallery-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("portfolio-portfolio-module")]).then(__webpack_require__.bind(null, /*! ./portfolio/portfolio.module */ "./src/app/portfolio/portfolio.module.ts")).then(function (m) { return m.PortfolioModule; }); }
     },
     {
         path: 'corona',
-        loadChildren: function () { return Promise.all(/*! import() | corona-corona-module */[__webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~poe-poe-module"), __webpack_require__.e("corona-corona-module")]).then(__webpack_require__.bind(null, /*! ./corona/corona.module */ "./src/app/corona/corona.module.ts")).then(function (m) { return m.CoronaModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | corona-corona-module */[__webpack_require__.e("default~corona-corona-module~photo-gallery-photo-gallery-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~poe-poe-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~portfolio-portfolio-module"), __webpack_require__.e("default~corona-corona-module~poe-poe-module"), __webpack_require__.e("corona-corona-module")]).then(__webpack_require__.bind(null, /*! ./corona/corona.module */ "./src/app/corona/corona.module.ts")).then(function (m) { return m.CoronaModule; }); }
     },
     {
         path: 'poe',
@@ -345,7 +345,7 @@ var routes = [
     },
     {
         path: 'photos',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | photo-gallery-photo-gallery-module */ "photo-gallery-photo-gallery-module").then(__webpack_require__.bind(null, /*! ./photo-gallery/photo-gallery.module */ "./src/app/photo-gallery/photo-gallery.module.ts")).then(function (m) { return m.PhotoGalleryModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | photo-gallery-photo-gallery-module */[__webpack_require__.e("default~corona-corona-module~photo-gallery-photo-gallery-module~portfolio-portfolio-module"), __webpack_require__.e("photo-gallery-photo-gallery-module")]).then(__webpack_require__.bind(null, /*! ./photo-gallery/photo-gallery.module */ "./src/app/photo-gallery/photo-gallery.module.ts")).then(function (m) { return m.PhotoGalleryModule; }); }
     },
     {
         path: '',
@@ -710,9 +710,9 @@ var FirebaseFirestoreService = /** @class */ (function () {
         // oakland
         // const walkingDistanceInS2 = Math.pow(10, 13);
         var distanceTargetsByType = {
-            WALK: Math.pow(10, 12) * 4,
-            BIKE: Math.pow(10, 12) * 4 * 2,
-            DRIVE: Math.pow(10, 12) * 4 * 2 * 3,
+            WALK: Math.pow(10, 12) * 5,
+            BIKE: Math.pow(10, 12) * 5 * 2,
+            DRIVE: Math.pow(10, 12) * 5 * 2 * 3,
         };
         var distanceTargetInS2 = distanceTargetsByType[distanceType];
         // ignore first 4 chars to avoid big math
