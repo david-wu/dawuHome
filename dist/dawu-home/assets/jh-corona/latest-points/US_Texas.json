@@ -1,22 +1,22 @@
 {
   "Anderson": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 2017,
     "deaths": 4,
     "recovered": 0,
-    "new": 14,
+    "new": 0,
     "newDeaths": 0
   },
   "Andrews": {
-    "dateStr": "7/18/20",
-    "cases": 187,
+    "dateStr": "7/19/20",
+    "cases": 189,
     "deaths": 2,
     "recovered": 0,
-    "new": 6,
+    "new": 2,
     "newDeaths": 0
   },
   "Angelina": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1000,
     "deaths": 12,
     "recovered": 0,
@@ -24,15 +24,15 @@
     "newDeaths": 0
   },
   "Aransas": {
-    "dateStr": "7/18/20",
-    "cases": 85,
+    "dateStr": "7/19/20",
+    "cases": 91,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 6,
     "newDeaths": 0
   },
   "Archer": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 12,
     "deaths": 0,
     "recovered": 0,
@@ -40,7 +40,7 @@
     "newDeaths": 0
   },
   "Armstrong": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -48,47 +48,47 @@
     "newDeaths": 0
   },
   "Atascosa": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 355,
     "deaths": 2,
     "recovered": 0,
-    "new": 55,
+    "new": 0,
     "newDeaths": 0
   },
   "Austin": {
-    "dateStr": "7/18/20",
-    "cases": 155,
+    "dateStr": "7/19/20",
+    "cases": 157,
     "deaths": 0,
     "recovered": 0,
-    "new": 5,
+    "new": 2,
     "newDeaths": 0
   },
   "Bailey": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 120,
     "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Bandera": {
+    "dateStr": "7/19/20",
+    "cases": 48,
+    "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Bandera": {
-    "dateStr": "7/18/20",
-    "cases": 47,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Bastrop": {
-    "dateStr": "7/18/20",
-    "cases": 952,
+    "dateStr": "7/19/20",
+    "cases": 1001,
     "deaths": 12,
     "recovered": 0,
-    "new": 0,
+    "new": 49,
     "newDeaths": 0
   },
   "Baylor": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -96,39 +96,39 @@
     "newDeaths": 0
   },
   "Bee": {
-    "dateStr": "7/18/20",
-    "cases": 218,
+    "dateStr": "7/19/20",
+    "cases": 220,
     "deaths": 1,
     "recovered": 0,
-    "new": 30,
+    "new": 2,
     "newDeaths": 0
   },
   "Bell": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 2640,
     "deaths": 17,
-    "recovered": 0,
-    "new": 73,
-    "newDeaths": 2
-  },
-  "Bexar": {
-    "dateStr": "7/18/20",
-    "cases": 28633,
-    "deaths": 251,
-    "recovered": 0,
-    "new": 1108,
-    "newDeaths": 11
-  },
-  "Blanco": {
-    "dateStr": "7/18/20",
-    "cases": 68,
-    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Bexar": {
+    "dateStr": "7/19/20",
+    "cases": 30835,
+    "deaths": 257,
+    "recovered": 0,
+    "new": 2202,
+    "newDeaths": 6
+  },
+  "Blanco": {
+    "dateStr": "7/19/20",
+    "cases": 73,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
   "Borden": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -136,47 +136,47 @@
     "newDeaths": 0
   },
   "Bosque": {
-    "dateStr": "7/18/20",
-    "cases": 56,
+    "dateStr": "7/19/20",
+    "cases": 64,
     "deaths": 0,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Bowie": {
+    "dateStr": "7/19/20",
+    "cases": 610,
+    "deaths": 17,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 0
+  },
+  "Brazoria": {
+    "dateStr": "7/19/20",
+    "cases": 4675,
+    "deaths": 32,
+    "recovered": 0,
+    "new": 130,
+    "newDeaths": 1
+  },
+  "Brazos": {
+    "dateStr": "7/19/20",
+    "cases": 3373,
+    "deaths": 39,
+    "recovered": 0,
+    "new": 60,
+    "newDeaths": 1
+  },
+  "Brewster": {
+    "dateStr": "7/19/20",
+    "cases": 161,
+    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Bowie": {
-    "dateStr": "7/18/20",
-    "cases": 596,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 29,
-    "newDeaths": 1
-  },
-  "Brazoria": {
-    "dateStr": "7/18/20",
-    "cases": 4545,
-    "deaths": 31,
-    "recovered": 0,
-    "new": 186,
-    "newDeaths": 2
-  },
-  "Brazos": {
-    "dateStr": "7/18/20",
-    "cases": 3313,
-    "deaths": 38,
-    "recovered": 0,
-    "new": 60,
-    "newDeaths": 0
-  },
-  "Brewster": {
-    "dateStr": "7/18/20",
-    "cases": 161,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Briscoe": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 9,
     "deaths": 1,
     "recovered": 0,
@@ -184,79 +184,79 @@
     "newDeaths": 0
   },
   "Brooks": {
-    "dateStr": "7/18/20",
-    "cases": 55,
+    "dateStr": "7/19/20",
+    "cases": 56,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Brown": {
+    "dateStr": "7/19/20",
+    "cases": 273,
+    "deaths": 13,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Burleson": {
+    "dateStr": "7/19/20",
+    "cases": 184,
     "deaths": 0,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Brown": {
-    "dateStr": "7/18/20",
-    "cases": 273,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Burleson": {
-    "dateStr": "7/18/20",
-    "cases": 182,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Burnet": {
-    "dateStr": "7/18/20",
-    "cases": 320,
+    "dateStr": "7/19/20",
+    "cases": 328,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 8,
     "newDeaths": 0
   },
   "Caldwell": {
-    "dateStr": "7/18/20",
-    "cases": 820,
-    "deaths": 5,
+    "dateStr": "7/19/20",
+    "cases": 835,
+    "deaths": 7,
+    "recovered": 0,
+    "new": 15,
+    "newDeaths": 2
+  },
+  "Calhoun": {
+    "dateStr": "7/19/20",
+    "cases": 217,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Callahan": {
+    "dateStr": "7/19/20",
+    "cases": 32,
+    "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Calhoun": {
-    "dateStr": "7/18/20",
-    "cases": 212,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 22,
-    "newDeaths": 0
-  },
-  "Callahan": {
-    "dateStr": "7/18/20",
-    "cases": 32,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Cameron": {
-    "dateStr": "7/18/20",
-    "cases": 5565,
-    "deaths": 91,
+    "dateStr": "7/19/20",
+    "cases": 5891,
+    "deaths": 96,
     "recovered": 0,
-    "new": 325,
-    "newDeaths": 2
+    "new": 326,
+    "newDeaths": 5
   },
   "Camp": {
-    "dateStr": "7/18/20",
-    "cases": 163,
+    "dateStr": "7/19/20",
+    "cases": 164,
     "deaths": 2,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Carson": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 10,
     "deaths": 0,
     "recovered": 0,
@@ -264,47 +264,47 @@
     "newDeaths": 0
   },
   "Cass": {
-    "dateStr": "7/18/20",
-    "cases": 84,
+    "dateStr": "7/19/20",
+    "cases": 88,
     "deaths": 3,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
   "Castro": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 142,
     "deaths": 1,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Chambers": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 698,
     "deaths": 5,
     "recovered": 0,
-    "new": 43,
+    "new": 0,
     "newDeaths": 0
   },
   "Cherokee": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 489,
     "deaths": 2,
     "recovered": 0,
-    "new": 22,
+    "new": 0,
     "newDeaths": 0
   },
   "Childress": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 9,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Clay": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 20,
     "deaths": 0,
     "recovered": 0,
@@ -312,15 +312,15 @@
     "newDeaths": 0
   },
   "Cochran": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 9,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Coke": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 9,
     "deaths": 1,
     "recovered": 0,
@@ -328,7 +328,7 @@
     "newDeaths": 0
   },
   "Coleman": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 7,
     "deaths": 0,
     "recovered": 0,
@@ -336,15 +336,15 @@
     "newDeaths": 0
   },
   "Collin": {
-    "dateStr": "7/18/20",
-    "cases": 5154,
+    "dateStr": "7/19/20",
+    "cases": 5291,
     "deaths": 64,
     "recovered": 0,
-    "new": 75,
+    "new": 137,
     "newDeaths": 0
   },
   "Collingsworth": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -352,31 +352,31 @@
     "newDeaths": 0
   },
   "Colorado": {
-    "dateStr": "7/18/20",
-    "cases": 189,
+    "dateStr": "7/19/20",
+    "cases": 193,
     "deaths": 0,
     "recovered": 0,
-    "new": 5,
+    "new": 4,
     "newDeaths": 0
   },
   "Comal": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1300,
     "deaths": 37,
     "recovered": 0,
-    "new": 103,
-    "newDeaths": 2
+    "new": 0,
+    "newDeaths": 0
   },
   "Comanche": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 178,
     "deaths": 2,
     "recovered": 0,
-    "new": 21,
+    "new": 0,
     "newDeaths": 0
   },
   "Concho": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 17,
     "deaths": 0,
     "recovered": 0,
@@ -384,7 +384,7 @@
     "newDeaths": 0
   },
   "Cooke": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 120,
     "deaths": 0,
     "recovered": 0,
@@ -392,23 +392,23 @@
     "newDeaths": 0
   },
   "Coryell": {
-    "dateStr": "7/18/20",
-    "cases": 426,
+    "dateStr": "7/19/20",
+    "cases": 436,
     "deaths": 3,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Cottle": {
+    "dateStr": "7/19/20",
+    "cases": 6,
+    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Cottle": {
-    "dateStr": "7/18/20",
-    "cases": 6,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Crane": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 65,
     "deaths": 10,
     "recovered": 0,
@@ -416,87 +416,87 @@
     "newDeaths": 0
   },
   "Crockett": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 96,
     "deaths": 1,
-    "recovered": 0,
-    "new": 12,
-    "newDeaths": 0
-  },
-  "Crosby": {
-    "dateStr": "7/18/20",
-    "cases": 36,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Culberson": {
-    "dateStr": "7/18/20",
-    "cases": 13,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Dallam": {
-    "dateStr": "7/18/20",
-    "cases": 146,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
-  },
-  "Dallas": {
-    "dateStr": "7/18/20",
-    "cases": 40222,
-    "deaths": 523,
-    "recovered": 0,
-    "new": 1031,
-    "newDeaths": 9
-  },
-  "Dawson": {
-    "dateStr": "7/18/20",
-    "cases": 106,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Deaf Smith": {
-    "dateStr": "7/18/20",
-    "cases": 439,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Delta": {
-    "dateStr": "7/18/20",
-    "cases": 9,
-    "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Crosby": {
+    "dateStr": "7/19/20",
+    "cases": 36,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Culberson": {
+    "dateStr": "7/19/20",
+    "cases": 13,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Dallam": {
+    "dateStr": "7/19/20",
+    "cases": 146,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Dallas": {
+    "dateStr": "7/19/20",
+    "cases": 40222,
+    "deaths": 523,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Dawson": {
+    "dateStr": "7/19/20",
+    "cases": 106,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Deaf Smith": {
+    "dateStr": "7/19/20",
+    "cases": 439,
+    "deaths": 17,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Delta": {
+    "dateStr": "7/19/20",
+    "cases": 10,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Denton": {
-    "dateStr": "7/18/20",
-    "cases": 4765,
+    "dateStr": "7/19/20",
+    "cases": 4887,
     "deaths": 42,
     "recovered": 0,
-    "new": 160,
-    "newDeaths": 1
+    "new": 122,
+    "newDeaths": 0
   },
   "DeWitt": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 306,
     "deaths": 7,
     "recovered": 0,
-    "new": 25,
-    "newDeaths": 4
+    "new": 0,
+    "newDeaths": 0
   },
   "Dickens": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -504,87 +504,87 @@
     "newDeaths": 0
   },
   "Dimmit": {
-    "dateStr": "7/18/20",
-    "cases": 55,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Donley": {
-    "dateStr": "7/18/20",
-    "cases": 35,
+    "dateStr": "7/19/20",
+    "cases": 56,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Duval": {
-    "dateStr": "7/18/20",
-    "cases": 97,
+  "Donley": {
+    "dateStr": "7/19/20",
+    "cases": 35,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
+    "newDeaths": 0
+  },
+  "Duval": {
+    "dateStr": "7/19/20",
+    "cases": 105,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 8,
     "newDeaths": 0
   },
   "Eastland": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 29,
     "deaths": 0,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Ector": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1575,
     "deaths": 27,
     "recovered": 0,
-    "new": 64,
-    "newDeaths": 5
+    "new": 0,
+    "newDeaths": 0
   },
   "Edwards": {
-    "dateStr": "7/18/20",
-    "cases": 13,
+    "dateStr": "7/19/20",
+    "cases": 14,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Ellis": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1972,
     "deaths": 21,
-    "recovered": 0,
-    "new": 15,
-    "newDeaths": 0
-  },
-  "El Paso": {
-    "dateStr": "7/18/20",
-    "cases": 11132,
-    "deaths": 179,
-    "recovered": 0,
-    "new": 289,
-    "newDeaths": 2
-  },
-  "Erath": {
-    "dateStr": "7/18/20",
-    "cases": 339,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 14,
-    "newDeaths": 1
-  },
-  "Falls": {
-    "dateStr": "7/18/20",
-    "cases": 66,
-    "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "El Paso": {
+    "dateStr": "7/19/20",
+    "cases": 11573,
+    "deaths": 179,
+    "recovered": 0,
+    "new": 441,
+    "newDeaths": 0
+  },
+  "Erath": {
+    "dateStr": "7/19/20",
+    "cases": 339,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Falls": {
+    "dateStr": "7/19/20",
+    "cases": 68,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
   "Fannin": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 165,
     "deaths": 8,
     "recovered": 0,
@@ -592,23 +592,23 @@
     "newDeaths": 0
   },
   "Fayette": {
-    "dateStr": "7/18/20",
-    "cases": 206,
+    "dateStr": "7/19/20",
+    "cases": 217,
     "deaths": 4,
+    "recovered": 0,
+    "new": 11,
+    "newDeaths": 0
+  },
+  "Fisher": {
+    "dateStr": "7/19/20",
+    "cases": 22,
+    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Fisher": {
-    "dateStr": "7/18/20",
-    "cases": 22,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
   "Floyd": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 61,
     "deaths": 3,
     "recovered": 0,
@@ -616,7 +616,7 @@
     "newDeaths": 0
   },
   "Foard": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -624,15 +624,15 @@
     "newDeaths": 0
   },
   "Fort Bend": {
-    "dateStr": "7/18/20",
-    "cases": 5689,
+    "dateStr": "7/19/20",
+    "cases": 5979,
     "deaths": 71,
     "recovered": 0,
-    "new": 318,
-    "newDeaths": 2
+    "new": 290,
+    "newDeaths": 0
   },
   "Franklin": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 67,
     "deaths": 1,
     "recovered": 0,
@@ -640,55 +640,55 @@
     "newDeaths": 0
   },
   "Freestone": {
-    "dateStr": "7/18/20",
-    "cases": 93,
+    "dateStr": "7/19/20",
+    "cases": 95,
     "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Frio": {
-    "dateStr": "7/18/20",
-    "cases": 349,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Gaines": {
-    "dateStr": "7/18/20",
-    "cases": 57,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Galveston": {
-    "dateStr": "7/18/20",
-    "cases": 6911,
-    "deaths": 58,
-    "recovered": 0,
-    "new": 284,
-    "newDeaths": 0
-  },
-  "Garza": {
-    "dateStr": "7/18/20",
-    "cases": 60,
-    "deaths": 1,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Frio": {
+    "dateStr": "7/19/20",
+    "cases": 376,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 27,
+    "newDeaths": 0
+  },
+  "Gaines": {
+    "dateStr": "7/19/20",
+    "cases": 57,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Galveston": {
+    "dateStr": "7/19/20",
+    "cases": 7125,
+    "deaths": 65,
+    "recovered": 0,
+    "new": 214,
+    "newDeaths": 7
+  },
+  "Garza": {
+    "dateStr": "7/19/20",
+    "cases": 60,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Gillespie": {
-    "dateStr": "7/18/20",
-    "cases": 120,
+    "dateStr": "7/19/20",
+    "cases": 123,
     "deaths": 0,
     "recovered": 0,
-    "new": 40,
+    "new": 3,
     "newDeaths": 0
   },
   "Glasscock": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -696,7 +696,7 @@
     "newDeaths": 0
   },
   "Goliad": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 33,
     "deaths": 0,
     "recovered": 0,
@@ -704,63 +704,63 @@
     "newDeaths": 0
   },
   "Gonzales": {
-    "dateStr": "7/18/20",
-    "cases": 432,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
-  },
-  "Gray": {
-    "dateStr": "7/18/20",
-    "cases": 139,
+    "dateStr": "7/19/20",
+    "cases": 433,
     "deaths": 4,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Grayson": {
-    "dateStr": "7/18/20",
-    "cases": 844,
-    "deaths": 8,
-    "recovered": 0,
-    "new": 20,
-    "newDeaths": 1
-  },
-  "Gregg": {
-    "dateStr": "7/18/20",
-    "cases": 1008,
-    "deaths": 15,
-    "recovered": 0,
-    "new": 58,
-    "newDeaths": 0
-  },
-  "Grimes": {
-    "dateStr": "7/18/20",
-    "cases": 702,
-    "deaths": 2,
+  "Gray": {
+    "dateStr": "7/19/20",
+    "cases": 139,
+    "deaths": 4,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Guadalupe": {
-    "dateStr": "7/18/20",
-    "cases": 1281,
-    "deaths": 4,
+  "Grayson": {
+    "dateStr": "7/19/20",
+    "cases": 848,
+    "deaths": 8,
     "recovered": 0,
-    "new": 88,
+    "new": 4,
     "newDeaths": 0
   },
-  "Hale": {
-    "dateStr": "7/18/20",
-    "cases": 886,
-    "deaths": 19,
+  "Gregg": {
+    "dateStr": "7/19/20",
+    "cases": 1008,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Grimes": {
+    "dateStr": "7/19/20",
+    "cases": 722,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 20,
+    "newDeaths": 0
+  },
+  "Guadalupe": {
+    "dateStr": "7/19/20",
+    "cases": 1296,
+    "deaths": 4,
     "recovered": 0,
     "new": 15,
     "newDeaths": 0
   },
+  "Hale": {
+    "dateStr": "7/19/20",
+    "cases": 934,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 48,
+    "newDeaths": 0
+  },
   "Hall": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 2,
     "deaths": 1,
     "recovered": 0,
@@ -768,23 +768,23 @@
     "newDeaths": 0
   },
   "Hamilton": {
-    "dateStr": "7/18/20",
-    "cases": 41,
+    "dateStr": "7/19/20",
+    "cases": 45,
     "deaths": 1,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Hansford": {
+    "dateStr": "7/19/20",
+    "cases": 43,
+    "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Hansford": {
-    "dateStr": "7/18/20",
-    "cases": 43,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Hardeman": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -792,7 +792,7 @@
     "newDeaths": 0
   },
   "Hardin": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 524,
     "deaths": 5,
     "recovered": 0,
@@ -800,31 +800,31 @@
     "newDeaths": 0
   },
   "Harris": {
-    "dateStr": "7/18/20",
-    "cases": 54782,
-    "deaths": 533,
+    "dateStr": "7/19/20",
+    "cases": 55743,
+    "deaths": 536,
     "recovered": 0,
-    "new": 1247,
-    "newDeaths": 6
+    "new": 961,
+    "newDeaths": 3
   },
   "Harrison": {
-    "dateStr": "7/18/20",
-    "cases": 504,
+    "dateStr": "7/19/20",
+    "cases": 505,
     "deaths": 33,
     "recovered": 0,
-    "new": 7,
+    "new": 1,
     "newDeaths": 0
   },
   "Hartley": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 67,
     "deaths": 2,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Haskell": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 32,
     "deaths": 0,
     "recovered": 0,
@@ -832,7 +832,7 @@
     "newDeaths": 0
   },
   "Hays": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 3865,
     "deaths": 17,
     "recovered": 0,
@@ -840,79 +840,79 @@
     "newDeaths": 0
   },
   "Hemphill": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 23,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Henderson": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 380,
     "deaths": 5,
     "recovered": 0,
-    "new": 14,
+    "new": 0,
     "newDeaths": 0
   },
   "Hidalgo": {
-    "dateStr": "7/18/20",
-    "cases": 10943,
-    "deaths": 267,
+    "dateStr": "7/19/20",
+    "cases": 12263,
+    "deaths": 284,
     "recovered": 0,
-    "new": 451,
-    "newDeaths": 27
+    "new": 1320,
+    "newDeaths": 17
   },
   "Hill": {
-    "dateStr": "7/18/20",
-    "cases": 194,
+    "dateStr": "7/19/20",
+    "cases": 202,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Hockley": {
+    "dateStr": "7/19/20",
+    "cases": 128,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Hood": {
+    "dateStr": "7/19/20",
+    "cases": 246,
+    "deaths": 5,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Hopkins": {
+    "dateStr": "7/19/20",
+    "cases": 124,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Hockley": {
-    "dateStr": "7/18/20",
-    "cases": 128,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Hood": {
-    "dateStr": "7/18/20",
-    "cases": 246,
-    "deaths": 5,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Hopkins": {
-    "dateStr": "7/18/20",
-    "cases": 124,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
   "Houston": {
-    "dateStr": "7/18/20",
-    "cases": 203,
+    "dateStr": "7/19/20",
+    "cases": 209,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 6,
     "newDeaths": 0
   },
   "Howard": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 90,
     "deaths": 2,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Hudspeth": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 18,
     "deaths": 0,
     "recovered": 0,
@@ -920,23 +920,23 @@
     "newDeaths": 0
   },
   "Hunt": {
-    "dateStr": "7/18/20",
-    "cases": 823,
+    "dateStr": "7/19/20",
+    "cases": 850,
     "deaths": 8,
     "recovered": 0,
-    "new": 24,
+    "new": 27,
     "newDeaths": 0
   },
   "Hutchinson": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 91,
     "deaths": 1,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Irion": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -944,7 +944,7 @@
     "newDeaths": 0
   },
   "Jack": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 14,
     "deaths": 0,
     "recovered": 0,
@@ -952,23 +952,23 @@
     "newDeaths": 0
   },
   "Jackson": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 174,
     "deaths": 1,
     "recovered": 0,
-    "new": 44,
+    "new": 0,
     "newDeaths": 0
   },
   "Jasper": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 92,
     "deaths": 2,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Jeff Davis": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -976,15 +976,15 @@
     "newDeaths": 0
   },
   "Jefferson": {
-    "dateStr": "7/18/20",
-    "cases": 4255,
+    "dateStr": "7/19/20",
+    "cases": 4260,
     "deaths": 47,
     "recovered": 0,
-    "new": 107,
+    "new": 5,
     "newDeaths": 0
   },
   "Jim Hogg": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 42,
     "deaths": 0,
     "recovered": 0,
@@ -992,23 +992,23 @@
     "newDeaths": 0
   },
   "Jim Wells": {
-    "dateStr": "7/18/20",
-    "cases": 399,
+    "dateStr": "7/19/20",
+    "cases": 400,
     "deaths": 0,
     "recovered": 0,
-    "new": 12,
+    "new": 1,
     "newDeaths": 0
   },
   "Johnson": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 973,
     "deaths": 7,
     "recovered": 0,
-    "new": 23,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Jones": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 650,
     "deaths": 0,
     "recovered": 0,
@@ -1016,31 +1016,31 @@
     "newDeaths": 0
   },
   "Karnes": {
-    "dateStr": "7/18/20",
-    "cases": 152,
+    "dateStr": "7/19/20",
+    "cases": 153,
     "deaths": 0,
     "recovered": 0,
-    "new": 55,
+    "new": 1,
     "newDeaths": 0
   },
   "Kaufman": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1222,
     "deaths": 5,
     "recovered": 0,
-    "new": 14,
+    "new": 0,
     "newDeaths": 0
   },
   "Kendall": {
-    "dateStr": "7/18/20",
-    "cases": 115,
+    "dateStr": "7/19/20",
+    "cases": 117,
     "deaths": 0,
     "recovered": 0,
-    "new": 7,
+    "new": 2,
     "newDeaths": 0
   },
   "Kenedy": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -1048,31 +1048,31 @@
     "newDeaths": 0
   },
   "Kent": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Kerr": {
-    "dateStr": "7/18/20",
-    "cases": 242,
+    "dateStr": "7/19/20",
+    "cases": 255,
     "deaths": 1,
     "recovered": 0,
-    "new": 17,
+    "new": 13,
     "newDeaths": 0
   },
   "Kimble": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 11,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "King": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -1080,7 +1080,7 @@
     "newDeaths": 0
   },
   "Kinney": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -1088,95 +1088,95 @@
     "newDeaths": 0
   },
   "Kleberg": {
-    "dateStr": "7/18/20",
-    "cases": 263,
-    "deaths": 1,
+    "dateStr": "7/19/20",
+    "cases": 265,
+    "deaths": 2,
     "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
+    "new": 2,
+    "newDeaths": 1
   },
   "Knox": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 17,
     "deaths": 0,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Lamar": {
-    "dateStr": "7/18/20",
-    "cases": 455,
+    "dateStr": "7/19/20",
+    "cases": 465,
     "deaths": 15,
     "recovered": 0,
-    "new": 0,
+    "new": 10,
     "newDeaths": 0
   },
   "Lamb": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 118,
     "deaths": 1,
     "recovered": 0,
-    "new": 8,
+    "new": 0,
     "newDeaths": 0
   },
   "Lampasas": {
-    "dateStr": "7/18/20",
-    "cases": 45,
+    "dateStr": "7/19/20",
+    "cases": 47,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "La Salle": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 311,
     "deaths": 0,
     "recovered": 0,
-    "new": 218,
+    "new": 0,
     "newDeaths": 0
   },
   "Lavaca": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 464,
     "deaths": 1,
     "recovered": 0,
-    "new": 97,
+    "new": 0,
     "newDeaths": 0
   },
   "Lee": {
-    "dateStr": "7/18/20",
-    "cases": 117,
+    "dateStr": "7/19/20",
+    "cases": 119,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Leon": {
-    "dateStr": "7/18/20",
-    "cases": 116,
+    "dateStr": "7/19/20",
+    "cases": 118,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Liberty": {
-    "dateStr": "7/18/20",
-    "cases": 627,
+    "dateStr": "7/19/20",
+    "cases": 639,
     "deaths": 3,
     "recovered": 0,
-    "new": 21,
+    "new": 12,
     "newDeaths": 0
   },
   "Limestone": {
-    "dateStr": "7/18/20",
-    "cases": 114,
+    "dateStr": "7/19/20",
+    "cases": 119,
     "deaths": 1,
     "recovered": 0,
-    "new": 0,
+    "new": 5,
     "newDeaths": 0
   },
   "Lipscomb": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 12,
     "deaths": 0,
     "recovered": 0,
@@ -1184,23 +1184,23 @@
     "newDeaths": 0
   },
   "Live Oak": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 101,
     "deaths": 1,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Llano": {
-    "dateStr": "7/18/20",
-    "cases": 57,
-    "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Llano": {
+    "dateStr": "7/19/20",
+    "cases": 60,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
   "Loving": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -1208,15 +1208,15 @@
     "newDeaths": 0
   },
   "Lubbock": {
-    "dateStr": "7/18/20",
-    "cases": 4309,
+    "dateStr": "7/19/20",
+    "cases": 4445,
     "deaths": 65,
     "recovered": 0,
-    "new": 100,
+    "new": 136,
     "newDeaths": 0
   },
   "Lynn": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 55,
     "deaths": 3,
     "recovered": 0,
@@ -1224,7 +1224,7 @@
     "newDeaths": 0
   },
   "McCulloch": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 30,
     "deaths": 0,
     "recovered": 0,
@@ -1232,47 +1232,47 @@
     "newDeaths": 0
   },
   "McLennan": {
-    "dateStr": "7/18/20",
-    "cases": 3210,
-    "deaths": 22,
+    "dateStr": "7/19/20",
+    "cases": 3291,
+    "deaths": 24,
     "recovered": 0,
-    "new": 114,
+    "new": 81,
     "newDeaths": 2
   },
   "McMullen": {
-    "dateStr": "7/18/20",
-    "cases": 1,
+    "dateStr": "7/19/20",
+    "cases": 4,
     "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Madison": {
-    "dateStr": "7/18/20",
-    "cases": 175,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Marion": {
-    "dateStr": "7/18/20",
-    "cases": 71,
-    "deaths": 2,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
+  "Madison": {
+    "dateStr": "7/19/20",
+    "cases": 183,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Marion": {
+    "dateStr": "7/19/20",
+    "cases": 71,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Martin": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 32,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Mason": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 38,
     "deaths": 0,
     "recovered": 0,
@@ -1280,31 +1280,31 @@
     "newDeaths": 0
   },
   "Matagorda": {
-    "dateStr": "7/18/20",
-    "cases": 452,
+    "dateStr": "7/19/20",
+    "cases": 461,
     "deaths": 5,
     "recovered": 0,
-    "new": 30,
+    "new": 9,
     "newDeaths": 0
   },
   "Maverick": {
-    "dateStr": "7/18/20",
-    "cases": 1061,
-    "deaths": 13,
+    "dateStr": "7/19/20",
+    "cases": 1169,
+    "deaths": 16,
     "recovered": 0,
-    "new": 122,
-    "newDeaths": 0
+    "new": 108,
+    "newDeaths": 3
   },
   "Medina": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 492,
     "deaths": 4,
     "recovered": 0,
-    "new": 73,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Menard": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 15,
     "deaths": 0,
     "recovered": 0,
@@ -1312,23 +1312,23 @@
     "newDeaths": 0
   },
   "Midland": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1387,
     "deaths": 25,
     "recovered": 0,
-    "new": 48,
+    "new": 0,
     "newDeaths": 0
   },
   "Milam": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 217,
     "deaths": 2,
     "recovered": 0,
-    "new": 14,
+    "new": 0,
     "newDeaths": 0
   },
   "Mills": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 7,
     "deaths": 0,
     "recovered": 0,
@@ -1336,23 +1336,23 @@
     "newDeaths": 0
   },
   "Mitchell": {
-    "dateStr": "7/18/20",
-    "cases": 27,
+    "dateStr": "7/19/20",
+    "cases": 31,
     "deaths": 0,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Montague": {
+    "dateStr": "7/19/20",
+    "cases": 35,
+    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Montague": {
-    "dateStr": "7/18/20",
-    "cases": 35,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
   "Montgomery": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 4721,
     "deaths": 46,
     "recovered": 0,
@@ -1360,23 +1360,23 @@
     "newDeaths": 0
   },
   "Moore": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 940,
     "deaths": 15,
     "recovered": 0,
-    "new": 13,
+    "new": 0,
     "newDeaths": 0
   },
   "Morris": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 63,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Motley": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -1384,47 +1384,47 @@
     "newDeaths": 0
   },
   "Nacogdoches": {
-    "dateStr": "7/18/20",
-    "cases": 663,
-    "deaths": 34,
+    "dateStr": "7/19/20",
+    "cases": 665,
+    "deaths": 35,
     "recovered": 0,
-    "new": 16,
+    "new": 2,
     "newDeaths": 1
   },
   "Navarro": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 562,
     "deaths": 9,
     "recovered": 0,
-    "new": 26,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Newton": {
-    "dateStr": "7/18/20",
-    "cases": 28,
+    "dateStr": "7/19/20",
+    "cases": 29,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Nolan": {
-    "dateStr": "7/18/20",
-    "cases": 86,
+    "dateStr": "7/19/20",
+    "cases": 90,
     "deaths": 1,
     "recovered": 0,
-    "new": 10,
-    "newDeaths": 1
+    "new": 4,
+    "newDeaths": 0
   },
   "Nueces": {
-    "dateStr": "7/18/20",
-    "cases": 8407,
-    "deaths": 90,
+    "dateStr": "7/19/20",
+    "cases": 8579,
+    "deaths": 95,
     "recovered": 0,
-    "new": 236,
-    "newDeaths": 8
+    "new": 172,
+    "newDeaths": 5
   },
   "Ochiltree": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 63,
     "deaths": 3,
     "recovered": 0,
@@ -1432,15 +1432,15 @@
     "newDeaths": 0
   },
   "Oldham": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 7,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Orange": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 720,
     "deaths": 7,
     "recovered": 0,
@@ -1448,47 +1448,47 @@
     "newDeaths": 0
   },
   "Palo Pinto": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 84,
     "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Panola": {
-    "dateStr": "7/18/20",
-    "cases": 238,
-    "deaths": 25,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Panola": {
+    "dateStr": "7/19/20",
+    "cases": 241,
+    "deaths": 25,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
   "Parker": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 697,
     "deaths": 1,
     "recovered": 0,
-    "new": 18,
+    "new": 0,
     "newDeaths": 0
   },
   "Parmer": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 257,
     "deaths": 8,
     "recovered": 0,
-    "new": 5,
+    "new": 0,
     "newDeaths": 0
   },
   "Pecos": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 166,
     "deaths": 1,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Polk": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 414,
     "deaths": 1,
     "recovered": 0,
@@ -1496,15 +1496,15 @@
     "newDeaths": 0
   },
   "Potter": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 3159,
     "deaths": 39,
     "recovered": 0,
-    "new": 40,
+    "new": 0,
     "newDeaths": 0
   },
   "Presidio": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 28,
     "deaths": 0,
     "recovered": 0,
@@ -1512,31 +1512,31 @@
     "newDeaths": 0
   },
   "Rains": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 25,
     "deaths": 1,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Randall": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1260,
     "deaths": 7,
     "recovered": 0,
-    "new": 52,
+    "new": 0,
     "newDeaths": 0
   },
   "Reagan": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 47,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Real": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 8,
     "deaths": 0,
     "recovered": 0,
@@ -1544,7 +1544,7 @@
     "newDeaths": 0
   },
   "Red River": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 129,
     "deaths": 12,
     "recovered": 0,
@@ -1552,23 +1552,23 @@
     "newDeaths": 0
   },
   "Reeves": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 89,
     "deaths": 2,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Refugio": {
-    "dateStr": "7/18/20",
-    "cases": 76,
+    "dateStr": "7/19/20",
+    "cases": 79,
     "deaths": 0,
     "recovered": 0,
-    "new": 8,
+    "new": 3,
     "newDeaths": 0
   },
   "Roberts": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -1576,31 +1576,31 @@
     "newDeaths": 0
   },
   "Robertson": {
-    "dateStr": "7/18/20",
-    "cases": 143,
+    "dateStr": "7/19/20",
+    "cases": 155,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Rockwall": {
+    "dateStr": "7/19/20",
+    "cases": 537,
+    "deaths": 17,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Runnels": {
+    "dateStr": "7/19/20",
+    "cases": 35,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Rockwall": {
-    "dateStr": "7/18/20",
-    "cases": 537,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Runnels": {
-    "dateStr": "7/18/20",
-    "cases": 35,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
   "Rusk": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 292,
     "deaths": 3,
     "recovered": 0,
@@ -1608,7 +1608,7 @@
     "newDeaths": 0
   },
   "Sabine": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 35,
     "deaths": 1,
     "recovered": 0,
@@ -1616,7 +1616,7 @@
     "newDeaths": 0
   },
   "San Augustine": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 139,
     "deaths": 12,
     "recovered": 0,
@@ -1624,79 +1624,79 @@
     "newDeaths": 0
   },
   "San Jacinto": {
-    "dateStr": "7/18/20",
-    "cases": 128,
+    "dateStr": "7/19/20",
+    "cases": 130,
     "deaths": 2,
     "recovered": 0,
-    "new": 4,
+    "new": 2,
     "newDeaths": 0
   },
   "San Patricio": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 402,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 38,
-    "newDeaths": 0
-  },
-  "San Saba": {
-    "dateStr": "7/18/20",
-    "cases": 10,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Schleicher": {
-    "dateStr": "7/18/20",
-    "cases": 30,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Scurry": {
-    "dateStr": "7/18/20",
-    "cases": 367,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Shackelford": {
-    "dateStr": "7/18/20",
-    "cases": 13,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Shelby": {
-    "dateStr": "7/18/20",
-    "cases": 321,
-    "deaths": 14,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Sherman": {
-    "dateStr": "7/18/20",
-    "cases": 34,
+  "San Saba": {
+    "dateStr": "7/19/20",
+    "cases": 11,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "Schleicher": {
+    "dateStr": "7/19/20",
+    "cases": 30,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Scurry": {
+    "dateStr": "7/19/20",
+    "cases": 367,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Shackelford": {
+    "dateStr": "7/19/20",
+    "cases": 13,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Shelby": {
+    "dateStr": "7/19/20",
+    "cases": 321,
+    "deaths": 14,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Sherman": {
+    "dateStr": "7/19/20",
+    "cases": 34,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Smith": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1762,
     "deaths": 10,
     "recovered": 0,
-    "new": 45,
+    "new": 0,
     "newDeaths": 0
   },
   "Somervell": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 35,
     "deaths": 0,
     "recovered": 0,
@@ -1704,15 +1704,15 @@
     "newDeaths": 0
   },
   "Starr": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1362,
-    "deaths": 14,
+    "deaths": 15,
     "recovered": 0,
     "new": 0,
     "newDeaths": 1
   },
   "Stephens": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 18,
     "deaths": 0,
     "recovered": 0,
@@ -1720,7 +1720,7 @@
     "newDeaths": 0
   },
   "Sterling": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -1728,39 +1728,39 @@
     "newDeaths": 0
   },
   "Stonewall": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Sutton": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 39,
     "deaths": 0,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Swisher": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 64,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Tarrant": {
-    "dateStr": "7/18/20",
-    "cases": 21195,
-    "deaths": 293,
+    "dateStr": "7/19/20",
+    "cases": 21617,
+    "deaths": 298,
     "recovered": 0,
-    "new": 288,
+    "new": 422,
     "newDeaths": 5
   },
   "Taylor": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1174,
     "deaths": 11,
     "recovered": 0,
@@ -1768,7 +1768,7 @@
     "newDeaths": 0
   },
   "Terrell": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -1776,15 +1776,15 @@
     "newDeaths": 0
   },
   "Terry": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 64,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Throckmorton": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -1792,7 +1792,7 @@
     "newDeaths": 0
   },
   "Titus": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 1071,
     "deaths": 6,
     "recovered": 0,
@@ -1800,47 +1800,47 @@
     "newDeaths": 0
   },
   "Tom Green": {
-    "dateStr": "7/18/20",
-    "cases": 1455,
+    "dateStr": "7/19/20",
+    "cases": 1497,
     "deaths": 11,
     "recovered": 0,
-    "new": 36,
+    "new": 42,
     "newDeaths": 0
   },
   "Travis": {
-    "dateStr": "7/18/20",
-    "cases": 17215,
-    "deaths": 196,
+    "dateStr": "7/19/20",
+    "cases": 17454,
+    "deaths": 203,
     "recovered": 0,
-    "new": 232,
+    "new": 239,
     "newDeaths": 7
   },
   "Trinity": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 97,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Tyler": {
-    "dateStr": "7/18/20",
-    "cases": 48,
+    "dateStr": "7/19/20",
+    "cases": 49,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Upshur": {
-    "dateStr": "7/18/20",
-    "cases": 121,
+    "dateStr": "7/19/20",
+    "cases": 123,
     "deaths": 0,
     "recovered": 0,
-    "new": 8,
+    "new": 2,
     "newDeaths": 0
   },
   "Upton": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 0,
@@ -1848,31 +1848,31 @@
     "newDeaths": 0
   },
   "Uvalde": {
-    "dateStr": "7/18/20",
-    "cases": 308,
+    "dateStr": "7/19/20",
+    "cases": 315,
     "deaths": 4,
     "recovered": 0,
-    "new": 4,
+    "new": 7,
     "newDeaths": 0
   },
   "Val Verde": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 875,
     "deaths": 8,
     "recovered": 0,
-    "new": 38,
+    "new": 0,
     "newDeaths": 0
   },
   "Van Zandt": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 244,
     "deaths": 3,
     "recovered": 0,
-    "new": 15,
+    "new": 0,
     "newDeaths": 0
   },
   "Victoria": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 2188,
     "deaths": 18,
     "recovered": 0,
@@ -1880,111 +1880,111 @@
     "newDeaths": 0
   },
   "Walker": {
-    "dateStr": "7/18/20",
-    "cases": 2568,
+    "dateStr": "7/19/20",
+    "cases": 2586,
     "deaths": 28,
     "recovered": 0,
-    "new": 27,
+    "new": 18,
     "newDeaths": 0
   },
   "Waller": {
-    "dateStr": "7/18/20",
-    "cases": 286,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Ward": {
-    "dateStr": "7/18/20",
-    "cases": 67,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 1
-  },
-  "Washington": {
-    "dateStr": "7/18/20",
-    "cases": 379,
-    "deaths": 33,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Webb": {
-    "dateStr": "7/18/20",
-    "cases": 3677,
-    "deaths": 59,
-    "recovered": 0,
-    "new": 103,
-    "newDeaths": 4
-  },
-  "Wharton": {
-    "dateStr": "7/18/20",
-    "cases": 395,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Wheeler": {
-    "dateStr": "7/18/20",
-    "cases": 26,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Wichita": {
-    "dateStr": "7/18/20",
-    "cases": 709,
-    "deaths": 8,
-    "recovered": 0,
-    "new": 29,
-    "newDeaths": 1
-  },
-  "Wilbarger": {
-    "dateStr": "7/18/20",
-    "cases": 23,
+    "dateStr": "7/19/20",
+    "cases": 288,
     "deaths": 0,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Ward": {
+    "dateStr": "7/19/20",
+    "cases": 67,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Washington": {
+    "dateStr": "7/19/20",
+    "cases": 387,
+    "deaths": 34,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 1
+  },
+  "Webb": {
+    "dateStr": "7/19/20",
+    "cases": 3829,
+    "deaths": 62,
+    "recovered": 0,
+    "new": 152,
+    "newDeaths": 3
+  },
+  "Wharton": {
+    "dateStr": "7/19/20",
+    "cases": 403,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Wheeler": {
+    "dateStr": "7/19/20",
+    "cases": 26,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Wichita": {
+    "dateStr": "7/19/20",
+    "cases": 709,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Wilbarger": {
+    "dateStr": "7/19/20",
+    "cases": 23,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Willacy": {
-    "dateStr": "7/18/20",
-    "cases": 471,
+    "dateStr": "7/19/20",
+    "cases": 473,
     "deaths": 3,
     "recovered": 0,
-    "new": 9,
+    "new": 2,
     "newDeaths": 0
   },
   "Williamson": {
-    "dateStr": "7/18/20",
-    "cases": 4686,
-    "deaths": 70,
+    "dateStr": "7/19/20",
+    "cases": 4792,
+    "deaths": 72,
     "recovered": 0,
-    "new": 196,
-    "newDeaths": 3
+    "new": 106,
+    "newDeaths": 2
   },
   "Wilson": {
-    "dateStr": "7/18/20",
-    "cases": 344,
+    "dateStr": "7/19/20",
+    "cases": 352,
     "deaths": 5,
     "recovered": 0,
-    "new": 102,
+    "new": 8,
     "newDeaths": 0
   },
   "Winkler": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 55,
     "deaths": 0,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Wise": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 220,
     "deaths": 5,
     "recovered": 0,
@@ -1992,47 +1992,47 @@
     "newDeaths": 0
   },
   "Wood": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 174,
     "deaths": 5,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Yoakum": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 56,
     "deaths": 0,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Young": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 71,
     "deaths": 1,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Zapata": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 113,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Zavala": {
-    "dateStr": "7/18/20",
-    "cases": 90,
+    "dateStr": "7/19/20",
+    "cases": 95,
     "deaths": 0,
     "recovered": 0,
     "new": 5,
     "newDeaths": 0
   },
   "Out of TX": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -2040,7 +2040,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "7/18/20",
+    "dateStr": "7/19/20",
     "cases": 43,
     "deaths": 0,
     "recovered": 0,
