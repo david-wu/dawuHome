@@ -25,7 +25,7 @@ export class FirebaseAuthService {
       window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       // window.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
       // window.firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      // window.firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      window.firebase.auth.GithubAuthProvider.PROVIDER_ID,
       // window.firebase.auth.EmailAuthProvider.PROVIDER_ID,
       // window.firebase.auth.PhoneAuthProvider.PROVIDER_ID,
       // window.firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID

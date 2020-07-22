@@ -546,6 +546,9 @@ var FirebaseAuthService = /** @class */ (function () {
             },
             signInOptions: [
                 window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                // window.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                // window.firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                window.firebase.auth.GithubAuthProvider.PROVIDER_ID,
             ],
         };
         this.user$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](undefined);

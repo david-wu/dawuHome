@@ -1,46 +1,46 @@
 {
   "Apache": {
-    "dateStr": "7/20/20",
-    "cases": 2741,
-    "deaths": 110,
+    "dateStr": "7/21/20",
+    "cases": 2779,
+    "deaths": 115,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 38,
+    "newDeaths": 5
   },
   "Cochise": {
-    "dateStr": "7/20/20",
-    "cases": 1260,
-    "deaths": 29,
+    "dateStr": "7/21/20",
+    "cases": 1287,
+    "deaths": 30,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
+    "new": 27,
+    "newDeaths": 1
   },
   "Coconino": {
-    "dateStr": "7/20/20",
-    "cases": 2675,
-    "deaths": 106,
+    "dateStr": "7/21/20",
+    "cases": 2745,
+    "deaths": 107,
     "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
+    "new": 70,
+    "newDeaths": 1
   },
   "Gila": {
-    "dateStr": "7/20/20",
-    "cases": 573,
-    "deaths": 16,
+    "dateStr": "7/21/20",
+    "cases": 596,
+    "deaths": 19,
     "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
+    "new": 23,
+    "newDeaths": 3
   },
   "Graham": {
-    "dateStr": "7/20/20",
-    "cases": 298,
+    "dateStr": "7/21/20",
+    "cases": 311,
     "deaths": 4,
     "recovered": 0,
-    "new": 6,
+    "new": 13,
     "newDeaths": 0
   },
   "Greenlee": {
-    "dateStr": "7/20/20",
+    "dateStr": "7/21/20",
     "cases": 40,
     "deaths": 1,
     "recovered": 0,
@@ -48,79 +48,79 @@
     "newDeaths": 0
   },
   "La Paz": {
-    "dateStr": "7/20/20",
-    "cases": 435,
-    "deaths": 8,
+    "dateStr": "7/21/20",
+    "cases": 445,
+    "deaths": 9,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 10,
+    "newDeaths": 1
   },
   "Maricopa": {
-    "dateStr": "7/20/20",
-    "cases": 96711,
-    "deaths": 1485,
+    "dateStr": "7/21/20",
+    "cases": 98988,
+    "deaths": 1556,
     "recovered": 0,
-    "new": 1240,
-    "newDeaths": 12
+    "new": 2277,
+    "newDeaths": 71
   },
   "Mohave": {
-    "dateStr": "7/20/20",
-    "cases": 2281,
-    "deaths": 116,
+    "dateStr": "7/21/20",
+    "cases": 2403,
+    "deaths": 123,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 1
-  },
-  "Navajo": {
-    "dateStr": "7/20/20",
-    "cases": 4817,
-    "deaths": 157,
-    "recovered": 0,
-    "new": 16,
-    "newDeaths": 1
-  },
-  "Pima": {
-    "dateStr": "7/20/20",
-    "cases": 13594,
-    "deaths": 384,
-    "recovered": 0,
-    "new": 145,
-    "newDeaths": 0
-  },
-  "Pinal": {
-    "dateStr": "7/20/20",
-    "cases": 6654,
-    "deaths": 104,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Santa Cruz": {
-    "dateStr": "7/20/20",
-    "cases": 2340,
-    "deaths": 39,
-    "recovered": 0,
-    "new": 35,
-    "newDeaths": 0
-  },
-  "Yavapai": {
-    "dateStr": "7/20/20",
-    "cases": 1394,
-    "deaths": 44,
-    "recovered": 0,
-    "new": 19,
+    "new": 122,
     "newDeaths": 7
   },
-  "Yuma": {
-    "dateStr": "7/20/20",
-    "cases": 9374,
-    "deaths": 183,
+  "Navajo": {
+    "dateStr": "7/21/20",
+    "cases": 4877,
+    "deaths": 162,
     "recovered": 0,
-    "new": 74,
-    "newDeaths": 2
+    "new": 60,
+    "newDeaths": 5
+  },
+  "Pima": {
+    "dateStr": "7/21/20",
+    "cases": 13848,
+    "deaths": 391,
+    "recovered": 0,
+    "new": 254,
+    "newDeaths": 7
+  },
+  "Pinal": {
+    "dateStr": "7/21/20",
+    "cases": 6874,
+    "deaths": 109,
+    "recovered": 0,
+    "new": 220,
+    "newDeaths": 5
+  },
+  "Santa Cruz": {
+    "dateStr": "7/21/20",
+    "cases": 2374,
+    "deaths": 42,
+    "recovered": 0,
+    "new": 34,
+    "newDeaths": 3
+  },
+  "Yavapai": {
+    "dateStr": "7/21/20",
+    "cases": 1448,
+    "deaths": 49,
+    "recovered": 0,
+    "new": 54,
+    "newDeaths": 5
+  },
+  "Yuma": {
+    "dateStr": "7/21/20",
+    "cases": 9669,
+    "deaths": 201,
+    "recovered": 0,
+    "new": 295,
+    "newDeaths": 18
   },
   "Out of AZ": {
-    "dateStr": "7/20/20",
+    "dateStr": "7/21/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -128,7 +128,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "7/20/20",
+    "dateStr": "7/21/20",
     "cases": 2,
     "deaths": 42,
     "recovered": 0,
