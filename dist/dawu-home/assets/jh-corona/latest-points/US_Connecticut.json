@@ -1,54 +1,54 @@
 {
   "Fairfield": {
-    "dateStr": "7/21/20",
-    "cases": 17123,
+    "dateStr": "7/22/20",
+    "cases": 17164,
     "deaths": 1399,
     "recovered": 0,
-    "new": 11,
+    "new": 41,
     "newDeaths": 0
   },
   "Hartford": {
-    "dateStr": "7/21/20",
-    "cases": 12101,
-    "deaths": 1406,
+    "dateStr": "7/22/20",
+    "cases": 12147,
+    "deaths": 1407,
     "recovered": 0,
-    "new": 19,
-    "newDeaths": 0
+    "new": 46,
+    "newDeaths": 1
   },
   "Litchfield": {
-    "dateStr": "7/21/20",
-    "cases": 1525,
+    "dateStr": "7/22/20",
+    "cases": 1530,
     "deaths": 139,
     "recovered": 0,
-    "new": 1,
+    "new": 5,
     "newDeaths": 0
   },
   "Middlesex": {
-    "dateStr": "7/21/20",
-    "cases": 1361,
+    "dateStr": "7/22/20",
+    "cases": 1362,
     "deaths": 189,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "New Haven": {
-    "dateStr": "7/21/20",
-    "cases": 12794,
-    "deaths": 1092,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "New London": {
-    "dateStr": "7/21/20",
-    "cases": 1357,
-    "deaths": 102,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "New Haven": {
+    "dateStr": "7/22/20",
+    "cases": 12825,
+    "deaths": 1092,
+    "recovered": 0,
+    "new": 31,
+    "newDeaths": 0
+  },
+  "New London": {
+    "dateStr": "7/22/20",
+    "cases": 1364,
+    "deaths": 102,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
   "Tolland": {
-    "dateStr": "7/21/20",
+    "dateStr": "7/22/20",
     "cases": 948,
     "deaths": 65,
     "recovered": 0,
@@ -56,15 +56,15 @@
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "7/21/20",
-    "cases": 653,
+    "dateStr": "7/22/20",
+    "cases": 655,
     "deaths": 15,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Out of CT": {
-    "dateStr": "7/21/20",
+    "dateStr": "7/22/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "7/21/20",
+    "dateStr": "7/22/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,

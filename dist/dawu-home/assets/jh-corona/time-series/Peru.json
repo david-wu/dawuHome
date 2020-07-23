@@ -1441,18 +1441,26 @@
   },
   {
     "dateStr": "7/20/20",
-    "cases": 353590,
-    "deaths": 13187,
+    "cases": 357681,
+    "deaths": 13384,
     "recovered": 245081,
-    "new": 0,
-    "newDeaths": 0
+    "new": 4091,
+    "newDeaths": 197
   },
   {
     "dateStr": "7/21/20",
     "cases": 362087,
     "deaths": 13579,
     "recovered": 248746,
-    "new": 8497,
-    "newDeaths": 392
+    "new": 4406,
+    "newDeaths": 195
+  },
+  {
+    "dateStr": "7/22/20",
+    "cases": 366550,
+    "deaths": 13767,
+    "recovered": 252246,
+    "new": 4463,
+    "newDeaths": 188
   }
 ]
