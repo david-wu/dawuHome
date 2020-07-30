@@ -1505,10 +1505,18 @@
   },
   {
     "dateStr": "7/28/20",
-    "cases": 2127,
-    "deaths": 22,
+    "cases": 2183,
+    "deaths": 23,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 56,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "7/29/20",
+    "cases": 2209,
+    "deaths": 25,
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 2
   }
 ]
