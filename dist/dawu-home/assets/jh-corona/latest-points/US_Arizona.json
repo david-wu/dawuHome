@@ -1,46 +1,46 @@
 {
   "Apache": {
-    "dateStr": "7/29/20",
-    "cases": 2950,
-    "deaths": 128,
+    "dateStr": "7/30/20",
+    "cases": 2969,
+    "deaths": 129,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
+    "new": 19,
+    "newDeaths": 1
   },
   "Cochise": {
-    "dateStr": "7/29/20",
-    "cases": 1442,
-    "deaths": 44,
+    "dateStr": "7/30/20",
+    "cases": 1467,
+    "deaths": 47,
     "recovered": 0,
-    "new": 20,
-    "newDeaths": 0
-  },
-  "Coconino": {
-    "dateStr": "7/29/20",
-    "cases": 2903,
-    "deaths": 114,
-    "recovered": 0,
-    "new": 23,
-    "newDeaths": 2
-  },
-  "Gila": {
-    "dateStr": "7/29/20",
-    "cases": 730,
-    "deaths": 24,
-    "recovered": 0,
-    "new": 6,
+    "new": 25,
     "newDeaths": 3
   },
-  "Graham": {
-    "dateStr": "7/29/20",
-    "cases": 442,
-    "deaths": 6,
+  "Coconino": {
+    "dateStr": "7/30/20",
+    "cases": 2933,
+    "deaths": 117,
     "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
+    "new": 30,
+    "newDeaths": 3
+  },
+  "Gila": {
+    "dateStr": "7/30/20",
+    "cases": 778,
+    "deaths": 29,
+    "recovered": 0,
+    "new": 48,
+    "newDeaths": 5
+  },
+  "Graham": {
+    "dateStr": "7/30/20",
+    "cases": 442,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 2
   },
   "Greenlee": {
-    "dateStr": "7/29/20",
+    "dateStr": "7/30/20",
     "cases": 54,
     "deaths": 1,
     "recovered": 0,
@@ -48,79 +48,79 @@
     "newDeaths": 0
   },
   "La Paz": {
-    "dateStr": "7/29/20",
-    "cases": 466,
+    "dateStr": "7/30/20",
+    "cases": 468,
     "deaths": 10,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
+    "new": 2,
+    "newDeaths": 0
   },
   "Maricopa": {
-    "dateStr": "7/29/20",
-    "cases": 113148,
-    "deaths": 1915,
+    "dateStr": "7/30/20",
+    "cases": 114852,
+    "deaths": 2011,
     "recovered": 0,
-    "new": 1702,
-    "newDeaths": 33
+    "new": 1704,
+    "newDeaths": 96
   },
   "Mohave": {
-    "dateStr": "7/29/20",
-    "cases": 2828,
-    "deaths": 145,
+    "dateStr": "7/30/20",
+    "cases": 2865,
+    "deaths": 149,
     "recovered": 0,
     "new": 37,
-    "newDeaths": 3
-  },
-  "Navajo": {
-    "dateStr": "7/29/20",
-    "cases": 5130,
-    "deaths": 180,
-    "recovered": 0,
-    "new": 24,
-    "newDeaths": 1
-  },
-  "Pima": {
-    "dateStr": "7/29/20",
-    "cases": 15601,
-    "deaths": 431,
-    "recovered": 0,
-    "new": 309,
-    "newDeaths": 0
-  },
-  "Pinal": {
-    "dateStr": "7/29/20",
-    "cases": 7720,
-    "deaths": 123,
-    "recovered": 0,
-    "new": 65,
-    "newDeaths": 0
-  },
-  "Santa Cruz": {
-    "dateStr": "7/29/20",
-    "cases": 2543,
-    "deaths": 49,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Yavapai": {
-    "dateStr": "7/29/20",
-    "cases": 1661,
-    "deaths": 55,
-    "recovered": 0,
-    "new": 34,
-    "newDeaths": 0
-  },
-  "Yuma": {
-    "dateStr": "7/29/20",
-    "cases": 10657,
-    "deaths": 230,
-    "recovered": 0,
-    "new": 95,
     "newDeaths": 4
   },
+  "Navajo": {
+    "dateStr": "7/30/20",
+    "cases": 5182,
+    "deaths": 187,
+    "recovered": 0,
+    "new": 52,
+    "newDeaths": 7
+  },
+  "Pima": {
+    "dateStr": "7/30/20",
+    "cases": 15884,
+    "deaths": 450,
+    "recovered": 0,
+    "new": 283,
+    "newDeaths": 19
+  },
+  "Pinal": {
+    "dateStr": "7/30/20",
+    "cases": 7875,
+    "deaths": 132,
+    "recovered": 0,
+    "new": 155,
+    "newDeaths": 9
+  },
+  "Santa Cruz": {
+    "dateStr": "7/30/20",
+    "cases": 2577,
+    "deaths": 50,
+    "recovered": 0,
+    "new": 34,
+    "newDeaths": 1
+  },
+  "Yavapai": {
+    "dateStr": "7/30/20",
+    "cases": 1698,
+    "deaths": 59,
+    "recovered": 0,
+    "new": 37,
+    "newDeaths": 4
+  },
+  "Yuma": {
+    "dateStr": "7/30/20",
+    "cases": 10761,
+    "deaths": 247,
+    "recovered": 0,
+    "new": 104,
+    "newDeaths": 17
+  },
   "Out of AZ": {
-    "dateStr": "7/29/20",
+    "dateStr": "7/30/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -128,7 +128,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "7/29/20",
+    "dateStr": "7/30/20",
     "cases": 8,
     "deaths": 42,
     "recovered": 0,
