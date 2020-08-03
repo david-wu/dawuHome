@@ -1521,26 +1521,34 @@
   },
   {
     "dateStr": "7/30/20",
-    "cases": 85486,
-    "deaths": 1962,
-    "recovered": 26996,
-    "new": 0,
-    "newDeaths": 0
+    "cases": 89374,
+    "deaths": 1983,
+    "recovered": 65064,
+    "new": 3888,
+    "newDeaths": 21
   },
   {
     "dateStr": "7/31/20",
-    "cases": 85486,
-    "deaths": 1962,
-    "recovered": 26996,
-    "new": 0,
-    "newDeaths": 0
+    "cases": 93354,
+    "deaths": 2023,
+    "recovered": 65178,
+    "new": 3980,
+    "newDeaths": 40
   },
   {
     "dateStr": "8/1/20",
     "cases": 98232,
     "deaths": 2039,
     "recovered": 65265,
-    "new": 12746,
-    "newDeaths": 77
+    "new": 4878,
+    "newDeaths": 16
+  },
+  {
+    "dateStr": "8/2/20",
+    "cases": 103185,
+    "deaths": 2059,
+    "recovered": 65557,
+    "new": 4953,
+    "newDeaths": 20
   }
 ]

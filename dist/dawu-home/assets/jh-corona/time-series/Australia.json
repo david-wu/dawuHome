@@ -1537,10 +1537,18 @@
   },
   {
     "dateStr": "8/1/20",
-    "cases": 17280,
-    "deaths": 201,
+    "cases": 17895,
+    "deaths": 208,
     "recovered": 10204,
-    "new": 0,
+    "new": 615,
+    "newDeaths": 7
+  },
+  {
+    "dateStr": "8/2/20",
+    "cases": 17938,
+    "deaths": 208,
+    "recovered": 10426,
+    "new": 43,
     "newDeaths": 0
   }
 ]
