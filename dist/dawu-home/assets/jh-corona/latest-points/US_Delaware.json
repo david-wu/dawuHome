@@ -1,30 +1,30 @@
 {
   "Kent": {
-    "dateStr": "8/2/20",
-    "cases": 2199,
+    "dateStr": "8/4/20",
+    "cases": 2226,
     "deaths": 107,
     "recovered": 0,
-    "new": 16,
+    "new": 11,
     "newDeaths": 0
   },
   "New Castle": {
-    "dateStr": "8/2/20",
-    "cases": 6868,
-    "deaths": 287,
+    "dateStr": "8/4/20",
+    "cases": 6994,
+    "deaths": 289,
     "recovered": 0,
-    "new": 25,
-    "newDeaths": 0
+    "new": 56,
+    "newDeaths": 2
   },
   "Sussex": {
-    "dateStr": "8/2/20",
-    "cases": 5656,
+    "dateStr": "8/4/20",
+    "cases": 5685,
     "deaths": 191,
     "recovered": 0,
-    "new": 26,
+    "new": 12,
     "newDeaths": 0
   },
   "Out of DE": {
-    "dateStr": "8/2/20",
+    "dateStr": "8/4/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -32,11 +32,11 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "8/2/20",
-    "cases": 226,
+    "dateStr": "8/4/20",
+    "cases": 232,
     "deaths": 16,
     "recovered": 0,
-    "new": 5,
+    "new": 3,
     "newDeaths": 0
   }
 }

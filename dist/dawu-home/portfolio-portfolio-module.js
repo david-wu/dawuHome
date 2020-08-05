@@ -96724,6 +96724,19 @@ module.exports = function(hljs) {
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/backyard-patio/backyard-patio.component.html":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/backyard-patio/backyard-patio.component.html ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>Backyard Patio</h3>\n<div class=\"demo-container\">\n  <div class=\"image-card-container\">\n    <div *ngFor=\"let image of images\" class=\"image-card\" (click)=\"magnifiedImage = image\">\n      <!-- <div class=\"image-header\">{{ image.description }}</div> -->\n      <img class=\"md-image\" [src]=\"image.src\">\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"magnifiedImage\" class=\"magnified-image-container\" (click)=\"magnifiedImage = undefined\">\n  <img [src]=\"magnifiedImage.src\" class=\"magnified-image\">\n</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.html":
 /*!**************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/bar-chart-demo/bar-chart-demo.component.html ***!
@@ -96746,7 +96759,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input [(searchText)]=\"filterStr\" [placeholder]=\"'search..'\"></dwu-search-input>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <app-demo-page-wrapper *ngSwitchCase=\"'FUZZ'\"></app-demo-page-wrapper>\n            <dwu-tooltip-demo *ngSwitchCase=\"'TOOLTIP'\"></dwu-tooltip-demo>\n            <dwu-bar-chart-demo *ngSwitchCase=\"'BAR_CHART'\"></dwu-bar-chart-demo>\n            <div *ngSwitchCase=\"'FILE_EXPLORER'\">\n                <div>\n                    future file explorer demo\n                </div>\n            </div>\n            <div *ngSwitchCase=\"'TEXT_DECORATOR'\">\n                <div>\n                    future text-decorator demo\n                </div>\n            </div>\n            <div *ngSwitchDefault>\n                <div>\n                    Nothing here yet\n                </div>\n            </div>\n        </ng-container>\n    </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"left-side\">\n        <dwu-search-input [(searchText)]=\"filterStr\" [placeholder]=\"'search..'\"></dwu-search-input>\n        <dwu-file-explorer\n            [rootFileId]=\"fileGroup.rootFileId\"\n            [filesById]=\"fileGroup.filesById\"\n            (filesByIdChange)=\"fileGroup.filesById = $event\"\n            [fuzzFilterString]=\"filterStr\"\n            [closedFileIds]=\"fileGroup.closedFileIds\"\n            (closedFileIdsChange)=\"fileGroup.setClosedFileIds($event)\"\n            [selectedFileIds]=\"fileGroup.selectedFileIds\"\n            (selectedFileIdsChange)=\"fileGroup.setSelectedFileIds($event)\"\n            [perfMode]=\"true\"\n        ></dwu-file-explorer>\n    </div>\n    <div class=\"right-side\">\n        <ng-container  *ngIf=\"getSelectedFileId() as selectedFileId\" [ngSwitch]=\"selectedFileId\">\n            <app-demo-page-wrapper *ngSwitchCase=\"'FUZZ'\"></app-demo-page-wrapper>\n            <dwu-tooltip-demo *ngSwitchCase=\"'TOOLTIP'\"></dwu-tooltip-demo>\n            <dwu-bar-chart-demo *ngSwitchCase=\"'BAR_CHART'\"></dwu-bar-chart-demo>\n            <dwu-backyard-patio *ngSwitchCase=\"'BACKYARD_PATIO'\"></dwu-backyard-patio>\n            <div *ngSwitchCase=\"'FILE_EXPLORER'\">\n                <div>\n                    future file explorer demo\n                </div>\n            </div>\n            <div *ngSwitchCase=\"'TEXT_DECORATOR'\">\n                <div>\n                    future text-decorator demo\n                </div>\n            </div>\n            <div *ngSwitchDefault>\n                <div>\n                    Nothing here yet\n                </div>\n            </div>\n        </ng-container>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -96760,6 +96773,150 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<h3>Tooltip Demo</h3>\n<div class=\"demo-container\">\n  <p>\n    <span>Tooltips try to stay in viewport. They can be added onto any element. For example hover </span>\n    <dwu-tooltip [text]=\"'some tooltip text'\">\n      <a class=\"hover-text\">here.</a>\n    </dwu-tooltip>\n  </p>\n  <p>\n    <span>Tooltips are typically used on icons like this: </span>\n    <dwu-tooltip\n      [text]=\"'Here\\'s a really really really really really really really really really really really really really really really really really really really really really long tooltip.'\"\n    >\n      <div class=\"material-icons\">help</div>\n    </dwu-tooltip>\n  </p>\n  <p>\n    Tooltips be provided with templates that allow for more control over their appearance.\n  </p>\n  <p>\n    Tooltips near the edges will try to avoid spilling outside the viewport.\n  </p>\n  <div class=\"horizontal-container\">\n    <dwu-tooltip [text]=\"'Tooltip shows on the right side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n    <dwu-tooltip [text]=\"'Tooltip shows on the left side of this icon.'\">\n      <div><div class=\"material-icons\">help</div></div>\n    </dwu-tooltip>\n  </div>\n</div>\n\n<ng-template #tooltipTemplate>\n  <div>\n    <div>tooltip using template!</div>\n    <div>new line!</div>\n    <div>\n      <div class=\"material-icons\">\n        help\n      </div>\n    </div>\n  </div>\n</ng-template>");
+
+/***/ }),
+
+/***/ "./src/app/portfolio/backyard-patio/backyard-patio.component.scss":
+/*!************************************************************************!*\
+  !*** ./src/app/portfolio/backyard-patio/backyard-patio.component.scss ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n:host h3 {\n  margin: 1rem 2rem;\n}\n:host .demo-container {\n  flex: 1 1 0;\n  margin: 0.5rem 1.5rem;\n  padding-bottom: 5rem;\n}\np {\n  margin-bottom: 1rem;\n}\n.image-card-container {\n  display: flex;\n  flex-wrap: wrap;\n  padding: 0.25rem;\n}\n.image-card-container .image-card {\n  margin: 0.25rem;\n  display: flex;\n  flex-direction: column;\n}\n.image-card-container .image-card .md-image {\n  width: 200px;\n  height: auto;\n}\n.image-card-container .image-card .md-image:hover {\n  opacity: 0.8;\n  cursor: pointer;\n}\n.magnified-image-container {\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  padding: 1rem;\n  max-width: 100%;\n  max-height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: rgba(0, 0, 0, 0.85);\n}\n.magnified-image-container img.magnified-image {\n  max-width: 100%;\n  max-height: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbi9wcm9qZWN0cy9kYXd1LWhvbWUvc3JjL2FwcC9wb3J0Zm9saW8vYmFja3lhcmQtcGF0aW8vYmFja3lhcmQtcGF0aW8uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BvcnRmb2xpby9iYWNreWFyZC1wYXRpby9iYWNreWFyZC1wYXRpby5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLFlBQUE7RUFDQSxhQUFBO0VBQ0Esc0JBQUE7QUNGRjtBREdFO0VBQ0UsaUJBQUE7QUNESjtBREdFO0VBQ0UsV0FBQTtFQUNBLHFCQUFBO0VBQ0Esb0JBQUE7QUNESjtBREtBO0VBQ0UsbUJBQUE7QUNGRjtBREtBO0VBQ0UsYUFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtBQ0ZGO0FER0U7RUFDRSxlQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0FDREo7QURHSTtFQUNFLFlBQUE7RUFDQSxZQUFBO0FDRE47QURFTTtFQUNFLFlBQUE7RUFDQSxlQUFBO0FDQVI7QURNQTtFQUNFLGVBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFNBQUE7RUFDQSxRQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0VBQ0EscUNBQUE7QUNIRjtBREtFO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0FDSEoiLCJmaWxlIjoic3JjL2FwcC9wb3J0Zm9saW8vYmFja3lhcmQtcGF0aW8vYmFja3lhcmQtcGF0aW8uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbkBpbXBvcnQgJ21peGlucyc7XG5cbjpob3N0IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoMyB7XG4gICAgbWFyZ2luOiAxcmVtIDJyZW07XG4gIH1cbiAgLmRlbW8tY29udGFpbmVyIHtcbiAgICBmbGV4OiAxIDEgMDtcbiAgICBtYXJnaW46IDAuNXJlbSAxLjVyZW07XG4gICAgcGFkZGluZy1ib3R0b206IDVyZW07XG4gIH1cbn1cblxucCB7XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG59XG5cbi5pbWFnZS1jYXJkLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAgcGFkZGluZzogMC4yNXJlbTtcbiAgLmltYWdlLWNhcmQge1xuICAgIG1hcmdpbjogMC4yNXJlbTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG5cbiAgICAubWQtaW1hZ2Uge1xuICAgICAgd2lkdGg6IDIwMHB4O1xuICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgJjpob3ZlciB7XG4gICAgICAgIG9wYWNpdHk6IDAuODtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG4ubWFnbmlmaWVkLWltYWdlLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBib3R0b206IDA7XG4gIHJpZ2h0OiAwO1xuICBwYWRkaW5nOiAxcmVtO1xuICBtYXgtd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLCAwLjg1KTtcblxuICBpbWcubWFnbmlmaWVkLWltYWdlIHtcbiAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgbWF4LWhlaWdodDogMTAwJTtcbiAgfVxufSIsIjpob3N0IHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuOmhvc3QgaDMge1xuICBtYXJnaW46IDFyZW0gMnJlbTtcbn1cbjpob3N0IC5kZW1vLWNvbnRhaW5lciB7XG4gIGZsZXg6IDEgMSAwO1xuICBtYXJnaW46IDAuNXJlbSAxLjVyZW07XG4gIHBhZGRpbmctYm90dG9tOiA1cmVtO1xufVxuXG5wIHtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbn1cblxuLmltYWdlLWNhcmQtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBwYWRkaW5nOiAwLjI1cmVtO1xufVxuLmltYWdlLWNhcmQtY29udGFpbmVyIC5pbWFnZS1jYXJkIHtcbiAgbWFyZ2luOiAwLjI1cmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLmltYWdlLWNhcmQtY29udGFpbmVyIC5pbWFnZS1jYXJkIC5tZC1pbWFnZSB7XG4gIHdpZHRoOiAyMDBweDtcbiAgaGVpZ2h0OiBhdXRvO1xufVxuLmltYWdlLWNhcmQtY29udGFpbmVyIC5pbWFnZS1jYXJkIC5tZC1pbWFnZTpob3ZlciB7XG4gIG9wYWNpdHk6IDAuODtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG4ubWFnbmlmaWVkLWltYWdlLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBib3R0b206IDA7XG4gIHJpZ2h0OiAwO1xuICBwYWRkaW5nOiAxcmVtO1xuICBtYXgtd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuODUpO1xufVxuLm1hZ25pZmllZC1pbWFnZS1jb250YWluZXIgaW1nLm1hZ25pZmllZC1pbWFnZSB7XG4gIG1heC13aWR0aDogMTAwJTtcbiAgbWF4LWhlaWdodDogMTAwJTtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/portfolio/backyard-patio/backyard-patio.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/portfolio/backyard-patio/backyard-patio.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: BackyardPatioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BackyardPatioComponent", function() { return BackyardPatioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var BackyardPatioComponent = /** @class */ (function () {
+    function BackyardPatioComponent() {
+        this.images = [
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200425_103623.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200425_103629.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200726_161356.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200727_182054.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200728_093921.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200729_100937.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200801_103249.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200803_093712.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200803_100656.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200803_133722.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200803_142142.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200803_195323.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200804_214359.jpg',
+            },
+            {
+                description: '1',
+                src: 'assets/images/backyard-patio/20200804_214805.jpg',
+            },
+        ];
+    }
+    BackyardPatioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dwu-backyard-patio',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./backyard-patio.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/portfolio/backyard-patio/backyard-patio.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./backyard-patio.component.scss */ "./src/app/portfolio/backyard-patio/backyard-patio.component.scss")).default]
+        })
+    ], BackyardPatioComponent);
+    return BackyardPatioComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/portfolio/backyard-patio/backyard-patio.module.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/portfolio/backyard-patio/backyard-patio.module.ts ***!
+  \*******************************************************************/
+/*! exports provided: BackyardPatioModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BackyardPatioModule", function() { return BackyardPatioModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _backyard_patio_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./backyard-patio.component */ "./src/app/portfolio/backyard-patio/backyard-patio.component.ts");
+
+
+
+
+// import { TooltipModule } from '@common/tooltip/tooltip.module';
+var BackyardPatioModule = /** @class */ (function () {
+    function BackyardPatioModule() {
+    }
+    BackyardPatioModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            ],
+            declarations: [
+                _backyard_patio_component__WEBPACK_IMPORTED_MODULE_3__["BackyardPatioComponent"],
+            ],
+            exports: [
+                _backyard_patio_component__WEBPACK_IMPORTED_MODULE_3__["BackyardPatioComponent"],
+            ],
+        })
+    ], BackyardPatioModule);
+    return BackyardPatioModule;
+}());
+
+
 
 /***/ }),
 
@@ -96917,6 +97074,9 @@ var PortfolioComponent = /** @class */ (function () {
             id: 'PROJECTS',
             label: 'Projects',
             childrenById: {
+                BACKYARD_PATIO: {
+                    label: 'backyard patio',
+                },
                 COMPONENTS: {
                     label: 'components',
                     childrenById: {
@@ -96963,7 +97123,7 @@ var PortfolioComponent = /** @class */ (function () {
         var files = this.fileGroup.filesByIdFromJson(fileDataById);
         this.filesById = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["keyBy"])(files, 'id');
         this.fileGroup.setRootFile(this.filesById.PROJECTS);
-        this.fileGroup.selectedFileIds = new Set([this.filesById['TOOLTIP'].id]);
+        this.fileGroup.selectedFileIds = new Set([this.filesById['BACKYARD_PATIO'].id]);
     };
     PortfolioComponent.prototype.getSelectedFileId = function () {
         var selectedFileIds = Array.from(this.fileGroup.selectedFileIds || []);
@@ -97004,6 +97164,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _file_explorer_file_explorer_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @file-explorer/file-explorer.module */ "./src/app/common/file-explorer/file-explorer.module.ts");
 /* harmony import */ var _src_app_portfolio_tooltip_demo_tooltip_demo_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @src/app/portfolio/tooltip-demo/tooltip-demo.module */ "./src/app/portfolio/tooltip-demo/tooltip-demo.module.ts");
 /* harmony import */ var _src_app_portfolio_bar_chart_demo_bar_chart_demo_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @src/app/portfolio/bar-chart-demo/bar-chart-demo.module */ "./src/app/portfolio/bar-chart-demo/bar-chart-demo.module.ts");
+/* harmony import */ var _src_app_portfolio_backyard_patio_backyard_patio_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @src/app/portfolio/backyard-patio/backyard-patio.module */ "./src/app/portfolio/backyard-patio/backyard-patio.module.ts");
+
 
 
 
@@ -97020,6 +97182,7 @@ var PortfolioModule = /** @class */ (function () {
     PortfolioModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [
+                _src_app_portfolio_backyard_patio_backyard_patio_module__WEBPACK_IMPORTED_MODULE_10__["BackyardPatioModule"],
                 _src_app_portfolio_portfolio_routes__WEBPACK_IMPORTED_MODULE_5__["PortfolioRoutingModule"],
                 fuzz_demo_app__WEBPACK_IMPORTED_MODULE_3__["DemoPageWrapperModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],

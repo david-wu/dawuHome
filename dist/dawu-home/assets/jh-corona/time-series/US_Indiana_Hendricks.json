@@ -810,15 +810,15 @@
   {
     "dateStr": "5/2/20",
     "cases": 745,
-    "deaths": 41,
+    "deaths": 51,
     "recovered": 0,
     "new": 44,
-    "newDeaths": 1
+    "newDeaths": 11
   },
   {
     "dateStr": "5/3/20",
     "cases": 764,
-    "deaths": 41,
+    "deaths": 51,
     "recovered": 0,
     "new": 19,
     "newDeaths": 0
@@ -826,7 +826,7 @@
   {
     "dateStr": "5/4/20",
     "cases": 774,
-    "deaths": 41,
+    "deaths": 51,
     "recovered": 0,
     "new": 10,
     "newDeaths": 0
@@ -834,7 +834,7 @@
   {
     "dateStr": "5/5/20",
     "cases": 785,
-    "deaths": 44,
+    "deaths": 54,
     "recovered": 0,
     "new": 11,
     "newDeaths": 3
@@ -842,39 +842,39 @@
   {
     "dateStr": "5/6/20",
     "cases": 883,
-    "deaths": 46,
+    "deaths": 54,
     "recovered": 0,
     "new": 98,
-    "newDeaths": 2
+    "newDeaths": 0
   },
   {
     "dateStr": "5/7/20",
     "cases": 893,
-    "deaths": 49,
+    "deaths": 54,
     "recovered": 0,
     "new": 10,
-    "newDeaths": 3
+    "newDeaths": 0
   },
   {
     "dateStr": "5/8/20",
     "cases": 927,
-    "deaths": 52,
+    "deaths": 54,
     "recovered": 0,
     "new": 34,
-    "newDeaths": 3
+    "newDeaths": 0
   },
   {
     "dateStr": "5/9/20",
     "cases": 951,
-    "deaths": 53,
+    "deaths": 54,
     "recovered": 0,
     "new": 24,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   {
     "dateStr": "5/10/20",
     "cases": 958,
-    "deaths": 53,
+    "deaths": 54,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
@@ -885,7 +885,7 @@
     "deaths": 54,
     "recovered": 0,
     "new": 15,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   {
     "dateStr": "5/12/20",
@@ -1549,6 +1549,22 @@
     "deaths": 106,
     "recovered": 0,
     "new": 11,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/3/20",
+    "cases": 1750,
+    "deaths": 106,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/4/20",
+    "cases": 1774,
+    "deaths": 106,
+    "recovered": 0,
+    "new": 24,
     "newDeaths": 0
   }
 ]
