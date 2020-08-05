@@ -24,6 +24,9 @@ export class PortfolioComponent {
       id: 'PROJECTS',
       label: 'Projects',
       childrenById: {
+        BACKYARD_PATIO: {
+          label: 'backyard patio',
+        },
         COMPONENTS: {
           label: 'components',
           childrenById: {
@@ -72,7 +75,7 @@ export class PortfolioComponent {
     this.filesById = keyBy(files, 'id');
 
     this.fileGroup.setRootFile(this.filesById.PROJECTS);
-    this.fileGroup.selectedFileIds = new Set([this.filesById['TOOLTIP'].id]);
+    this.fileGroup.selectedFileIds = new Set([this.filesById['BACKYARD_PATIO'].id]);
   }
 
   public getSelectedFileId() {

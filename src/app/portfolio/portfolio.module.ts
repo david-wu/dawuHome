@@ -7,10 +7,12 @@ import { PortfolioRoutingModule } from '@src/app/portfolio/portfolio.routes';
 import { CommonModule as MyCommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@file-explorer/file-explorer.module';
 import { TooltipDemoModule } from '@src/app/portfolio/tooltip-demo/tooltip-demo.module';
-import { BarChartDemoModule } from '@src/app/portfolio/bar-chart-demo/bar-chart-demo.module'
+import { BarChartDemoModule } from '@src/app/portfolio/bar-chart-demo/bar-chart-demo.module';
+import { BackyardPatioModule } from '@src/app/portfolio/backyard-patio/backyard-patio.module';
 
 @NgModule({
   imports: [
+    BackyardPatioModule,
     PortfolioRoutingModule,
     DemoPageWrapperModule,
     CommonModule,
