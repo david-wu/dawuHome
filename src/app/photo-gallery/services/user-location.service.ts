@@ -7,7 +7,7 @@ import { LocationData } from '@photo-gallery/models/index';
 @Injectable()
 export class UserLocationService {
 
-  public getUserLocation() {
+  public getUserLocation(): Promise<any> {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition((userLocation: any) => {
 

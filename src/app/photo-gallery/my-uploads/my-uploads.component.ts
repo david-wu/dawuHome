@@ -30,8 +30,8 @@ export class MyUploadsComponent {
 
   public async onFileChange(file: File, user: User) {
     const exifLocationData = await this.exifService.getMetaData(file);
-    const myLocationData = await this.userLocationService.getUserLocation();
-    this.pgs.uploadFile(file, user, exifLocationData || myLocationData);
+    const locationData = exifLocationData || await this.userLocationService.getUserLocation();
+    this.pgs.uploadFile(file, user, locationData);
   }
 
   public onDeleteFile(file: any, user: User) {

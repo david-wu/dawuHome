@@ -11,6 +11,7 @@ import {
 } from 'rxjs/operators';
 import { sortBy } from 'lodash';
 import Geohash from 'latlon-geohash';
+import * as Jimp from 'jimp';
 
 import { User } from '@models/index';
 import {
@@ -36,6 +37,21 @@ export class PhotoGalleryService {
   }
 
   public async uploadFile(file: File, user: User, fileMeta: any = {}) {
+    const fileBlob = new Blob([file]);
+    const fileBuffer = await fileBlob.arrayBuffer();
+    Jimp.read(fileBuffer)
+      .then((image) => {
+        const resizedJimp = image.resize(1080, Jimp.AUTO);
+        resizedJimp.getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
+          const newBlob = new Blob([buffer]);
+          const resizedFile = new File([newBlob], file.name);
+          // const resizedFile = this.blobToFile(newBlob, file);
+          this.uploadFile2(resizedFile, user, fileMeta);
+        });
+      })
+  }
+
+  public async uploadFile2(file: File, user: User, fileMeta: any = {}) {
     const registeredFileId = await this.ffs.registerFileId(file, user, fileMeta);
     const fileUploadResponse = await this.fss.uploadFile(file, registeredFileId)
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
@@ -44,6 +60,30 @@ export class PhotoGalleryService {
     };
     await this.ffs.registerFileUploaded(registeredFileId, uploadMeta, user);
   }
+
+// public blobToFile = (blob: Blob, originalFile: File): File => {
+//   const file = Object.create(File.prototype)
+//   blob.name = originalFile.name;
+//   return Object.assign(file, originalFile, blob);
+//     // var b: any = theBlob;
+//     // //A Blob() is almost a File() - it's just missing the two properties below which we will add
+//     // b.lastModifiedDate = new Date();
+//     // b.name = fileName;
+
+//     // //Cast to a File() type
+//     // return <File>theBlob;
+// }
+
+
+  // public async uploadFile2(file: File, user: User, fileMeta: any = {}) {
+  //   const registeredFileId = await this.ffs.registerFileId(file, user, fileMeta);
+  //   const fileUploadResponse = await this.fss.uploadFile(file, registeredFileId)
+  //   const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
+  //   const uploadMeta = {
+  //     downloadUrl: downloadUrl,
+  //   };
+  //   await this.ffs.registerFileUploaded(registeredFileId, uploadMeta, user);
+  // }
 
   public getUploadedFiles$(): Observable<any[]> {
     return this.fas.user$.pipe(
