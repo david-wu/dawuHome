@@ -39,7 +39,7 @@ export class PhotoGalleryService {
   public async uploadFile(file: File, user: User, fileMeta: any = {}) {
     const fileBlob = new Blob([file]);
     const fileBuffer = await fileBlob.arrayBuffer();
-    Jimp.read(fileBuffer)
+    Jimp.read(fileBuffer as any)
       .then((image) => {
         const resizedJimp = image.resize(1080, Jimp.AUTO);
         resizedJimp.getBuffer(Jimp.MIME_JPEG, (err, buffer) => {

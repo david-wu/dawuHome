@@ -3,11 +3,11 @@
   <div class="image-card-container">
     <div *ngFor="let image of images" class="image-card" (click)="magnifiedImage = image">
       <!-- <div class="image-header">{{ image.description }}</div> -->
-      <img class="md-image" [src]="image.src">
+      <img class="md-image" [src]="getThumbnailSrc(image)">
     </div>
   </div>
 </div>
 
 <div *ngIf="magnifiedImage" class="magnified-image-container" (click)="magnifiedImage = undefined">
-  <img [src]="magnifiedImage.src" class="magnified-image">
+  <img [src]="getSrc(magnifiedImage)" class="magnified-image">
 </div>
