@@ -84,11 +84,11 @@ export class BackyardPatioComponent {
   ];
   public magnifiedImage;
 
-  public getThumbnailSrc(image) {
+  public getSmSrc(image) {
     return `${image.path}_sm.jpg`;
   }
 
-  public getSrc(image) {
+  public getLgSrc(image) {
     return `${image.path}_lg.jpg`;
   }
 }
