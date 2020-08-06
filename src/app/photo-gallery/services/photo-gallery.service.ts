@@ -37,7 +37,7 @@ export class PhotoGalleryService {
   }
 
   public async uploadFile(file: File, user: User, fileMeta: any = {}) {
-    const fileBlob = new Blob([file]);
+    const fileBlob = new Blob([file]) as any;
     const fileBuffer = await fileBlob.arrayBuffer();
     Jimp.read(fileBuffer as any)
       .then((image) => {
