@@ -9,17 +9,25 @@ export class UserLocationService {
 
   public getUserLocation(): Promise<any> {
     return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition((userLocation: any) => {
-
-        const latitude = userLocation.coords.latitude;
-        const longitude = userLocation.coords.longitude;
-        const locationData = LocationData.fromLatLong(
-          latitude,
-          longitude,
-          { locationSource: 'USER' },
-        );
-        resolve(locationData)
-      });
+      const geolocationOptions = {
+        enableHighAccuracy: false,
+        maximumAge: 0,
+      };
+      navigator.geolocation.getCurrentPosition(
+        (userLocation: any) => {
+          const latitude = userLocation.coords.latitude;
+          const longitude = userLocation.coords.longitude;
+          // console.log('lat, long', latitude, longitude);
+          const locationData = LocationData.fromLatLong(
+            latitude,
+            longitude,
+            { locationSource: 'USER' },
+          );
+          resolve(locationData)
+        },
+        (error) => reject(error),
+        geolocationOptions,
+      );
     });
   }
 

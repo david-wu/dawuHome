@@ -10,7 +10,6 @@ import {
   switchMap,
 } from 'rxjs/operators';
 import { sortBy } from 'lodash';
-import Geohash from 'latlon-geohash';
 import * as Jimp from 'jimp';
 
 import { User } from '@models/index';
@@ -20,78 +19,65 @@ import {
   FirebaseStorageService,
 } from '@services/index';
 import { UserLocationService } from './user-location.service';
+import { ImageProcessingService } from './image-processing.service';
 
 @Injectable()
 export class PhotoGalleryService {
 
   constructor(
-    public fas: FirebaseAuthService,
-    public ffs: FirebaseFirestoreService,
-    public fss: FirebaseStorageService,
+    public auth: FirebaseAuthService,
+    public firestore: FirebaseFirestoreService,
+    public storage: FirebaseStorageService,
     public userLocationService: UserLocationService,
+    public imageProcessing: ImageProcessingService,
   ) {}
 
   public async deleteFile(fileId: string, user: User) {
-    await this.fss.deleteFile(fileId);
-    await this.ffs.unregisterFile(fileId, user);
+    await this.storage.deleteFile(fileId);
+    await this.firestore.unregisterFile(fileId, user);
   }
 
-  public async uploadFile(file: File, user: User, fileMeta: any = {}) {
-    const fileBlob = new Blob([file]) as any;
-    const fileBuffer = await fileBlob.arrayBuffer();
-    Jimp.read(fileBuffer as any)
-      .then((image) => {
-        const resizedJimp = image.resize(1080, Jimp.AUTO).quality(80);
-        resizedJimp.getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
-          const newBlob = new Blob([buffer]);
-          const resizedFile = new File([newBlob], file.name);
-          // const resizedFile = this.blobToFile(newBlob, file);
-          this.uploadFile2(resizedFile, user, fileMeta);
-        });
-      })
-  }
-
-  public async uploadFile2(file: File, user: User, fileMeta: any = {}) {
-    const registeredFileId = await this.ffs.registerFileId(file, user, fileMeta);
-    const fileUploadResponse = await this.fss.uploadFile(file, registeredFileId)
+  public async uploadFile(file: File, user: User, locationData: any = {}) {
+    const sizedFile = await this.imageProcessing.sizeImageFile(file);
+    console.log('sizedFile', sizedFile, locationData)
+    const uploadDoc = {
+      userId: user.uid,
+      fileName: sizedFile.name,
+      locationData: { ...locationData },
+    };
+    const insertedUploadDoc = await this.firestore.insertUploadDoc(uploadDoc);
+    await this.firestore.addUploadToUser(insertedUploadDoc, user.uid);
+    const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
     const uploadMeta = {
       downloadUrl: downloadUrl,
     };
-    await this.ffs.registerFileUploaded(registeredFileId, uploadMeta, user);
+    await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta, user);
   }
 
-// public blobToFile = (blob: Blob, originalFile: File): File => {
-//   const file = Object.create(File.prototype)
-//   blob.name = originalFile.name;
-//   return Object.assign(file, originalFile, blob);
-//     // var b: any = theBlob;
-//     // //A Blob() is almost a File() - it's just missing the two properties below which we will add
-//     // b.lastModifiedDate = new Date();
-//     // b.name = fileName;
-
-//     // //Cast to a File() type
-//     // return <File>theBlob;
-// }
-
-
-  // public async uploadFile2(file: File, user: User, fileMeta: any = {}) {
-  //   const registeredFileId = await this.ffs.registerFileId(file, user, fileMeta);
-  //   const fileUploadResponse = await this.fss.uploadFile(file, registeredFileId)
-  //   const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
-  //   const uploadMeta = {
-  //     downloadUrl: downloadUrl,
-  //   };
-  //   await this.ffs.registerFileUploaded(registeredFileId, uploadMeta, user);
+  // public async sizeImageFile(file: File): Promise<File>{
+  //   const fileBlob = new Blob([file]) as any;
+  //   const fileBuffer = await fileBlob.arrayBuffer();
+  //   return new Promise((resolve, reject) => {
+  //     Jimp.read(fileBuffer as any)
+  //       .then((image) => {
+  //         const resizedJimp = image.resize(1080, Jimp.AUTO).quality(80);
+  //         resizedJimp.getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
+  //           const newBlob = new Blob([buffer]);
+  //           const resizedFile = new File([newBlob], file.name);
+  //           resolve(resizedFile);
+  //         });
+  //       });
+  //   });
   // }
 
   public getUploadedFiles$(): Observable<any[]> {
-    return this.fas.user$.pipe(
+    return this.auth.user$.pipe(
       switchMap((user: User) => {
         if (!user) {
           return of([]);
         } else {
-          return this.ffs.getUploadedFiles$(user);
+          return this.firestore.getUploadedFiles$(user);
         }
       })
     );
@@ -107,7 +93,7 @@ export class PhotoGalleryService {
     const nearByUploadStreams$ = new Subject<any>();
     const userLocation = this.userLocationService.getUserLocation()
       .then((userLocation: any) => {
-        const nearbyUploads$ = this.ffs.getNearbyUploads$(userLocation, distanceType).pipe(
+        const nearbyUploads$ = this.firestore.getNearbyUploads$(userLocation, distanceType).pipe(
           map((uploads: any[]) => {
             return sortBy(uploads, (upload) => {
               return Math.pow(userLocation.latitude - upload.locationData.latitude, 2) + Math.pow(userLocation.longitude - upload.locationData.longitude, 2);

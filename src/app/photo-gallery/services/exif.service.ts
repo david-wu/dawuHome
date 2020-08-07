@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as EXIFStatic from 'exif-js';
-import Geohash from 'latlon-geohash';
-import { S2 } from 's2-geometry';
 
 import { LocationData } from '@photo-gallery/models/index';
 

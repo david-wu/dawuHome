@@ -29,24 +29,19 @@ export class FirebaseFirestoreService {
   }
 
   /**
-   * registerFileId
+   * insertUploadDoc
    * Initial creation of upload document
    * @param {File} file
    * @param {User} user
    * @return {Promise<string>} id
    */
-  public async registerFileId(file: File, user: User, locationData: LocationData): Promise<string> {
-    const upload = {
-      userId: user.uid,
-      fileName: file.name,
-      locationData: { ...locationData },
-    };
-    const collection = this.firestore.collection('uploads');
-    const uploadDoc = await collection.add(upload);
+  public async insertUploadDoc(uploadDoc: any): Promise<any> {
+    return await this.firestore.collection('uploads').add(uploadDoc);
+  }
 
-    const userUploadDoc = this.firestore.doc(`users/${user.uid}/uploads/${uploadDoc.id}`)
-    await userUploadDoc.set(upload);
-    return uploadDoc.id;
+  public async addUploadToUser(uploadDoc: any, userUid: string) {
+    const userUploadDoc = this.firestore.doc(`users/${userUid}/uploads/${uploadDoc.id}`);
+    return await userUploadDoc.set(uploadDoc);
   }
 
   public async registerFileUploaded(fileId: string, uploadMeta: any, user: User) {
