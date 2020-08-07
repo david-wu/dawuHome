@@ -26,9 +26,9 @@ function sizeImages(rootImagesPath) {
     const imagePathRoot = imagePath.slice(0, imagePath.length - 4);
     Jimp.read(imagePath).then((image) => {
       console.log(`sizing ${imagePath}`)
-      image.resize(1080, Jimp.AUTO).write(`${imagePathRoot}_lg.jpg`);
-      image.resize(640, Jimp.AUTO).write(`${imagePathRoot}_md.jpg`);
-      image.resize(320, Jimp.AUTO).write(`${imagePathRoot}_sm.jpg`);
+      image.resize(1080, Jimp.AUTO).quality(80).write(`${imagePathRoot}_lg.jpg`);
+      image.resize(640, Jimp.AUTO).quality(80).write(`${imagePathRoot}_md.jpg`);
+      image.resize(320, Jimp.AUTO).quality(80).write(`${imagePathRoot}_sm.jpg`);
     });
   });
 }

@@ -27,7 +27,7 @@ export class PortfolioComponent {
     this.populateFileGroup();
     this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationEnd) {
-        const activatedChild = routerEvent.url.split('/')[2];
+        const activatedChild = routerEvent.urlAfterRedirects.split('/')[2];
         this.fileGroup.setSelectedFileIds(new Set([activatedChild]));
       }
     })

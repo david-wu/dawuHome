@@ -41,7 +41,7 @@ export class PhotoGalleryService {
     const fileBuffer = await fileBlob.arrayBuffer();
     Jimp.read(fileBuffer as any)
       .then((image) => {
-        const resizedJimp = image.resize(1080, Jimp.AUTO);
+        const resizedJimp = image.resize(1080, Jimp.AUTO).quality(80);
         resizedJimp.getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
           const newBlob = new Blob([buffer]);
           const resizedFile = new File([newBlob], file.name);
