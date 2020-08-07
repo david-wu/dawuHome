@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoPageWrapperModule } from 'fuzz-demo-app';
 
 import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 import { PortfolioRoutingModule } from '@src/app/portfolio/portfolio.routes';
@@ -9,12 +8,15 @@ import { FileExplorerModule } from '@file-explorer/file-explorer.module';
 import { TooltipDemoModule } from '@src/app/portfolio/tooltip-demo/tooltip-demo.module';
 import { BarChartDemoModule } from '@src/app/portfolio/bar-chart-demo/bar-chart-demo.module';
 import { BackyardPatioModule } from '@src/app/portfolio/backyard-patio/backyard-patio.module';
+import { FuzzDemoModule } from '@src/app/portfolio/fuzz-demo/fuzz-demo.module';
+import { MissingDemoModule } from '@src/app/portfolio/missing-demo/missing-demo.module';
 
 @NgModule({
   imports: [
     BackyardPatioModule,
     PortfolioRoutingModule,
-    DemoPageWrapperModule,
+    MissingDemoModule,
+    FuzzDemoModule,
     CommonModule,
     MyCommonModule,
     FileExplorerModule,

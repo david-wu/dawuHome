@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { keyBy } from 'lodash';
+import {
+  ActivatedRoute,
+  Router,
+  NavigationEnd,
+} from '@angular/router';
 
 import { FileGroup, FileType, File } from '@file-explorer/index';
 
@@ -15,8 +20,17 @@ export class PortfolioComponent {
   public fileGroup: FileGroup = new FileGroup();
   public filterStr: string = '';
 
-  public ngOnInit() {
+  constructor(
+    public router: Router,
+    public route: ActivatedRoute,
+  ) {
     this.populateFileGroup();
+    this.router.events.subscribe((routerEvent) => {
+      if (routerEvent instanceof NavigationEnd) {
+        const activatedChild = routerEvent.url.split('/')[2];
+        this.fileGroup.setSelectedFileIds(new Set([activatedChild]));
+      }
+    })
   }
 
   public populateFileGroup() {
@@ -27,10 +41,13 @@ export class PortfolioComponent {
         BACKYARD_PATIO: {
           label: 'backyard patio',
         },
+        PHOTO_APP: {
+          label: 'photo app',
+        },
+        FUZZ: { label: 'fuzz-js' },
         COMPONENTS: {
           label: 'components',
           childrenById: {
-            FUZZ: { label: 'fuzz-js' },
             TOOLTIP: { label: 'tooltip' },
             FILE_EXPLORER: { label: 'file-explorer' },
             TEXT_DECORATOR: { label: 'text-decorator' },
@@ -52,7 +69,7 @@ export class PortfolioComponent {
             FAVICON: { label: 'make a favicon' },
             COMMON: { label: 'components demos' },
             PHOTOS: {
-              label: 'photos app',
+              label: 'photo app todo',
               childrenById: {
                 TD1: { label: 'upload photo transaction' },
                 TD2: { label: 'service worker' },
@@ -75,12 +92,18 @@ export class PortfolioComponent {
     this.filesById = keyBy(files, 'id');
 
     this.fileGroup.setRootFile(this.filesById.PROJECTS);
-    this.fileGroup.selectedFileIds = new Set([this.filesById['BACKYARD_PATIO'].id]);
   }
 
   public getSelectedFileId() {
     const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
     return (selectedFileIds.length === 1) && selectedFileIds[0];
+  }
+
+  public onSelectedFileIdsChange(fileIds) {
+    const fileId = Array.from(fileIds)[0];
+    if (fileId) {
+      this.router.navigate([fileId], { relativeTo: this.route });
+    }
   }
 
 }
