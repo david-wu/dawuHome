@@ -51,9 +51,7 @@ export class FirebaseAuthService {
   }
 
   public initialize() {
-    if (!this.firebaseAuthUI) {
-      this.firebaseAuthUI = new this.FirebaseAuthUI(this.firebaseAuth);
-    }
+    this.firebaseAuthUI = window.firebaseui.auth.AuthUI.getInstance() || new this.FirebaseAuthUI(this.firebaseAuth);
     this.firebaseAuth.onAuthStateChanged((userData) => {
       if (userData === null) {
         this.user$.next(null);
