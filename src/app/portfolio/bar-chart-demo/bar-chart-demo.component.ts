@@ -23,6 +23,7 @@ export class BarChartDemoComponent {
   public demoKeys = [
     'dogs',
   ];
+  public hoverIndex: number;
 
   constructor() {
     this.demoData = this.generateDemoData();

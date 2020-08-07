@@ -10,6 +10,7 @@ import { PoeService } from '@src/app/poe/services/poe.service';
 export class PoeComponent {
 
   public jsonParseError: string;
+  public rawJson;
 
   constructor(public poeService: PoeService) {}
 

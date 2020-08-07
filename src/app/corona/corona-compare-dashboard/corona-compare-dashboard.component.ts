@@ -33,6 +33,7 @@ export class CoronaCompareDashboardComponent {
 
     public coronaExtractor = new CoronaDataExtractor();
 
+    public hoverSeries
     public compareData;
     public compareRData
     public compareKeys;

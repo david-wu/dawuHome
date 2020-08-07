@@ -38,6 +38,7 @@ export class CoronaDashboardComponent {
     @Input() isViewingLineChart: boolean = false;
     @Output() isViewingLineChartChange = new EventEmitter<boolean>();
 
+    public hoverSeries;
     public coronaData: any[];
     public coronaExtractor = new CoronaDataExtractor();
     public hoverIndex = 0;
