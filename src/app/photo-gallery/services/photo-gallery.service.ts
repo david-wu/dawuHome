@@ -38,38 +38,27 @@ export class PhotoGalleryService {
   }
 
   public async uploadFile(file: File, user: User, locationData: any = {}) {
-    const sizedFile = await this.imageProcessing.sizeImageFile(file);
-    console.log('sizedFile', sizedFile, locationData)
     const uploadDoc = {
       userId: user.uid,
-      fileName: sizedFile.name,
+      fileName: file.name,
       locationData: { ...locationData },
     };
-    const insertedUploadDoc = await this.firestore.insertUploadDoc(uploadDoc);
+    const insertedUploadDocRef = await this.firestore.insertUploadDoc(uploadDoc);
+    const insertedUploadDoc = {
+      ...uploadDoc,
+      id: insertedUploadDocRef.id,
+    }
     await this.firestore.addUploadToUser(insertedUploadDoc, user.uid);
+
+    const sizedFile = await this.imageProcessing.sizeImageFile(file);
     const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
+
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
     const uploadMeta = {
       downloadUrl: downloadUrl,
     };
     await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta, user);
   }
-
-  // public async sizeImageFile(file: File): Promise<File>{
-  //   const fileBlob = new Blob([file]) as any;
-  //   const fileBuffer = await fileBlob.arrayBuffer();
-  //   return new Promise((resolve, reject) => {
-  //     Jimp.read(fileBuffer as any)
-  //       .then((image) => {
-  //         const resizedJimp = image.resize(1080, Jimp.AUTO).quality(80);
-  //         resizedJimp.getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
-  //           const newBlob = new Blob([buffer]);
-  //           const resizedFile = new File([newBlob], file.name);
-  //           resolve(resizedFile);
-  //         });
-  //       });
-  //   });
-  // }
 
   public getUploadedFiles$(): Observable<any[]> {
     return this.auth.user$.pipe(

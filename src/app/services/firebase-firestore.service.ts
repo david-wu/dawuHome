@@ -33,7 +33,7 @@ export class FirebaseFirestoreService {
    * Initial creation of upload document
    * @param {File} file
    * @param {User} user
-   * @return {Promise<string>} id
+   * @return {Promise<DocumentReference>} docRef
    */
   public async insertUploadDoc(uploadDoc: any): Promise<any> {
     return await this.firestore.collection('uploads').add(uploadDoc);
