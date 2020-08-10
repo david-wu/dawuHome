@@ -18,10 +18,16 @@ export class FirebaseStorageService {
     return imageRef.put(file);
   }
 
-  public deleteFile(fileName: string= 'image.jpg') {
+  public async deleteFile(fileName: string= 'image.jpg') {
     const storageRef = this.firebaseStorage.ref();
     const imageRef = storageRef.child(`uploads/${fileName}`);
-    return imageRef.delete();
+    return imageRef.delete()
+      .catch((error) => {
+        if (error.code === 'storage/object-not-found') {
+          return
+        }
+        throw(error);
+      });
   }
 
 }

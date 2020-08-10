@@ -18,9 +18,6 @@
     *ngFor="let uploadedFile of nearByUploads; trackBy: trackById"
     class="uploaded-file"
   >
-    <div class="file-name">
-      <div>{{ uploadedFile.fileName }}</div>
-    </div>
     <img
       *ngIf="uploadedFile.uploadMeta"
       [src]="uploadedFile.uploadMeta.downloadUrl"
@@ -30,7 +27,9 @@
       *ngIf="!uploadedFile.uploadMeta"
       class="file-pic"
     >
-      <div class="dwu-loader"></div>
+      <div class="loader-container centered">
+        <div class="dwu-loader"></div>
+      </div>
     </div>
   </div>
 </div>

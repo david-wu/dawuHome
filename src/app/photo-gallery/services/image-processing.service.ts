@@ -1,24 +1,5 @@
 import { Injectable } from '@angular/core';
-// import {
-//   Observable,
-//   BehaviorSubject,
-//   Subject,
-//   of,
-// } from 'rxjs';
-// import {
-//   map,
-//   switchMap,
-// } from 'rxjs/operators';
-// import { sortBy } from 'lodash';
 import * as Jimp from 'jimp';
-
-// import { User } from '@models/index';
-// import {
-//   FirebaseAuthService,
-//   FirebaseFirestoreService,
-//   FirebaseStorageService,
-// } from '@services/index';
-// import { UserLocationService } from './user-location.service';
 
 @Injectable()
 export class ImageProcessingService {
@@ -29,16 +10,49 @@ export class ImageProcessingService {
     sm: 320,
     xs: 150,
   };
+  public quarterTurnOrientations = new Set([5, 6, 7, 8]);
 
-  public async sizeImageFile(file: File): Promise<File>{
+  public async processImageFile(file: File, exifData: any): Promise<File>{
+    let jimp = await this.getJimpFromFile(file);
+    const orientation = exifData && exifData.Orientation;
+    jimp = this.uprightImage(jimp, orientation);
+    jimp = this.resizeImage(jimp, orientation);
+    jimp = jimp.quality(80);
+    return await this.getFileFromJimp(jimp, file.name);
+  }
+
+  public uprightImage(jimp: any, orientation: number) {
+    if (orientation === 5 || orientation === 6) {
+      jimp = jimp.rotate(90)
+    }
+    if (orientation === 7 || orientation === 8) {
+      jimp = jimp.rotate(270)
+    }
+    if (orientation === 3 || orientation === 4) {
+      jimp = jimp.rotate(180)
+    }
+    return jimp;
+  }
+
+  public resizeImage(jimp: any, orientation: number) {
+    if (this.quarterTurnOrientations.has(orientation)) {
+      jimp = jimp.resize(
+        Jimp.AUTO,
+        ImageProcessingService.imageSizes.lg,
+      );
+    } else {
+      jimp = jimp.resize(
+        ImageProcessingService.imageSizes.lg,
+        Jimp.AUTO,
+      );
+    }
+    return jimp;
+  }
+
+  public async getJimpFromFile(file: File) {
     const fileBlob = new Blob([file]) as any;
     const fileBuffer = await fileBlob.arrayBuffer();
-    const image = await Jimp.read(fileBuffer as any);
-    const resizedJimp = image.resize(
-      ImageProcessingService.imageSizes.lg,
-      Jimp.AUTO,
-    ).quality(80);
-    return await this.getFileFromJimp(resizedJimp, file.name);
+    return await Jimp.read(fileBuffer as any);
   }
 
   public getFileFromJimp(jimpImage, fileName): Promise<File> {

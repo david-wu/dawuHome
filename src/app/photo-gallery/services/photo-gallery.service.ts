@@ -18,6 +18,7 @@ import {
   FirebaseFirestoreService,
   FirebaseStorageService,
 } from '@services/index';
+import { ExifService } from './exif.service';
 import { UserLocationService } from './user-location.service';
 import { ImageProcessingService } from './image-processing.service';
 
@@ -30,6 +31,7 @@ export class PhotoGalleryService {
     public storage: FirebaseStorageService,
     public userLocationService: UserLocationService,
     public imageProcessing: ImageProcessingService,
+    public exifService: ExifService,
   ) {}
 
   public async deleteFile(fileId: string, user: User) {
@@ -37,7 +39,11 @@ export class PhotoGalleryService {
     await this.firestore.unregisterFile(fileId, user);
   }
 
-  public async uploadFile(file: File, user: User, locationData: any = {}) {
+  public async uploadFile(file: File, user: User) {
+    const exifData = await this.exifService.getExifData(file);
+    const exifLocationData = this.exifService.getLocationData(exifData);
+    const locationData = exifLocationData || await this.userLocationService.getUserLocation();
+
     const uploadDoc = {
       userId: user.uid,
       fileName: file.name,
@@ -50,7 +56,7 @@ export class PhotoGalleryService {
     }
     await this.firestore.addUploadToUser(insertedUploadDoc, user.uid);
 
-    const sizedFile = await this.imageProcessing.sizeImageFile(file);
+    const sizedFile = await this.imageProcessing.processImageFile(file, exifData);
     const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
 
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
