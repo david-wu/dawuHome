@@ -5,6 +5,10 @@ import {
   Subject,
   from,
 } from 'rxjs';
+import { padStart } from 'lodash';
+// import { bigInt, BigInteger } from 'big-integer';
+const bigInt = require('big-integer');
+// import bigInt from 'big-integer';
 
 import { User } from '@models/index';
 import { LocationData } from '@photo-gallery/models/index';
@@ -90,18 +94,19 @@ export class FirebaseFirestoreService {
     // oakland
     // const walkingDistanceInS2 = Math.pow(10, 13);
     const distanceTargetsByType = {
-      WALK: Math.pow(10, 12) * 5,
-      BIKE: Math.pow(10, 12) * 5 * 2,
-      DRIVE: Math.pow(10, 12) * 5 * 2 * 3,
+      WALK: Math.pow(10, 12) * 7,
+      BIKE: Math.pow(10, 12) * 7 * 5,
+      DRIVE: Math.pow(10, 12) * 7 * 5 * 40,
     }
-    const distanceTargetInS2 = distanceTargetsByType[distanceType];
+    const distanceTargetInS2 = bigInt(distanceTargetsByType[distanceType]);
+    const userS2 = bigInt(userLocation.s2Id);
     // ignore first 4 chars to avoid big math
-    const preKeyStr = userLocation.s2Id.slice(0, 4);
-    const keyNum = Number(userLocation.s2Id.slice(4));
+    // const preKeyStr = userLocation.s2Id.slice(0, 4);
+    // const keyNum = Number(userLocation.s2Id.slice(4));
 
     const walkingRange = [
-      preKeyStr + String(keyNum - distanceTargetInS2),
-      preKeyStr + String(keyNum + distanceTargetInS2),
+      padStart(userS2.minus(distanceTargetInS2).toString(), 22, '0'),
+      padStart(userS2.add(distanceTargetInS2).toString(), 22, '0'),
     ];
     // const walkingRange = [
     //   String(Number(userLocation.s2Id) - walkingDistanceInS2),

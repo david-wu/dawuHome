@@ -13,12 +13,6 @@ export class ExifService {
         const arrayBuffer = reader.result
         const exif = (EXIFStatic as any).EXIF.readFromBinaryFile(arrayBuffer);
         resolve(exif);
-        // if (!exif || !exif.GPSLatitude) {
-        //   console.log('fileUploadMissingExif');
-        //   window.firebase.analytics.logEvent('fileUploadMissingExif');
-        //   resolve();
-        //   return;
-        // }
       }
       reader.readAsArrayBuffer(file);
     });
@@ -28,7 +22,6 @@ export class ExifService {
     if (!exif || !exif.GPSLatitude) {
       return;
     }
-    // const exif = await this.getExifData(file);
     const latitudeMag = exif.GPSLatitude[0] + (exif.GPSLatitude[1] / 60) + (exif.GPSLatitude[2] / 3600);
     const longitudeMag = exif.GPSLongitude[0] + (exif.GPSLongitude[1] / 60) + (exif.GPSLongitude[2] / 3600);
 

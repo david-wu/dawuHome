@@ -15,9 +15,9 @@ export class ImageProcessingService {
   public async processImageFile(file: File, exifData: any): Promise<File>{
     let jimp = await this.getJimpFromFile(file);
     const orientation = exifData && exifData.Orientation;
-    jimp = this.uprightImage(jimp, orientation);
-    jimp = this.resizeImage(jimp, orientation);
     jimp = jimp.quality(80);
+    jimp = this.resizeImage(jimp, orientation);
+    jimp = this.uprightImage(jimp, orientation);
     return await this.getFileFromJimp(jimp, file.name);
   }
 
