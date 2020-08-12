@@ -1,34 +1,130 @@
 {
   "Aruba": {
-    "dateStr": "8/10/20",
-    "cases": 630,
+    "dateStr": "8/11/20",
+    "cases": 717,
     "deaths": 3,
     "recovered": 114,
-    "new": 67,
+    "new": 87,
     "newDeaths": 0
   },
   "Curacao": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 32,
     "deaths": 1,
     "recovered": 30,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Sint Maarten": {
-    "dateStr": "8/10/20",
-    "cases": 189,
-    "deaths": 17,
-    "recovered": 86,
     "new": 0,
     "newDeaths": 0
   },
+  "Sint Maarten": {
+    "dateStr": "8/11/20",
+    "cases": 205,
+    "deaths": 17,
+    "recovered": 93,
+    "new": 16,
+    "newDeaths": 0
+  },
   "Bonaire, Sint Eustatius and Saba": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 7,
     "new": 0,
     "newDeaths": 0
+  },
+  "Flevoland": {
+    "dateStr": "8/11/20",
+    "cases": 1102,
+    "deaths": 93,
+    "recovered": 0,
+    "new": 1102,
+    "newDeaths": 93
+  },
+  "Friesland": {
+    "dateStr": "8/11/20",
+    "cases": 690,
+    "deaths": 69,
+    "recovered": 0,
+    "new": 690,
+    "newDeaths": 69
+  },
+  "Groningen": {
+    "dateStr": "8/11/20",
+    "cases": 446,
+    "deaths": 17,
+    "recovered": 0,
+    "new": 446,
+    "newDeaths": 17
+  },
+  "Noord-Holland": {
+    "dateStr": "8/11/20",
+    "cases": 9563,
+    "deaths": 816,
+    "recovered": 0,
+    "new": 9563,
+    "newDeaths": 816
+  },
+  "Zuid-Holland": {
+    "dateStr": "8/11/20",
+    "cases": 15471,
+    "deaths": 1313,
+    "recovered": 0,
+    "new": 15471,
+    "newDeaths": 1313
+  },
+  "Overijssel": {
+    "dateStr": "8/11/20",
+    "cases": 3255,
+    "deaths": 311,
+    "recovered": 0,
+    "new": 3255,
+    "newDeaths": 311
+  },
+  "Utrecht": {
+    "dateStr": "8/11/20",
+    "cases": 4728,
+    "deaths": 432,
+    "recovered": 0,
+    "new": 4728,
+    "newDeaths": 432
+  },
+  "Noord-Brabant": {
+    "dateStr": "8/11/20",
+    "cases": 10816,
+    "deaths": 1541,
+    "recovered": 0,
+    "new": 10816,
+    "newDeaths": 1541
+  },
+  "Gelderland": {
+    "dateStr": "8/11/20",
+    "cases": 6819,
+    "deaths": 685,
+    "recovered": 0,
+    "new": 6819,
+    "newDeaths": 685
+  },
+  "Limburg": {
+    "dateStr": "8/11/20",
+    "cases": 5017,
+    "deaths": 754,
+    "recovered": 0,
+    "new": 5017,
+    "newDeaths": 754
+  },
+  "Zeeland": {
+    "dateStr": "8/11/20",
+    "cases": 944,
+    "deaths": 69,
+    "recovered": 0,
+    "new": 944,
+    "newDeaths": 69
+  },
+  "Drenthe": {
+    "dateStr": "8/11/20",
+    "cases": 573,
+    "deaths": 41,
+    "recovered": 0,
+    "new": 573,
+    "newDeaths": 41
   }
 }

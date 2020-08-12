@@ -1,38 +1,38 @@
 {
   "French Guiana": {
-    "dateStr": "8/10/20",
-    "cases": 8324,
+    "dateStr": "8/11/20",
+    "cases": 8360,
     "deaths": 49,
-    "recovered": 7549,
-    "new": 57,
-    "newDeaths": 1
+    "recovered": 7632,
+    "new": 36,
+    "newDeaths": 0
   },
   "French Polynesia": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 112,
     "deaths": 0,
     "recovered": 62,
-    "new": 43,
-    "newDeaths": 0
-  },
-  "Guadeloupe": {
-    "dateStr": "8/10/20",
-    "cases": 317,
-    "deaths": 14,
-    "recovered": 186,
-    "new": 27,
-    "newDeaths": 0
-  },
-  "Mayotte": {
-    "dateStr": "8/10/20",
-    "cases": 3068,
-    "deaths": 39,
-    "recovered": 2835,
     "new": 0,
     "newDeaths": 0
   },
+  "Guadeloupe": {
+    "dateStr": "8/11/20",
+    "cases": 317,
+    "deaths": 14,
+    "recovered": 186,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Mayotte": {
+    "dateStr": "8/11/20",
+    "cases": 3091,
+    "deaths": 39,
+    "recovered": 2835,
+    "new": 23,
+    "newDeaths": 0
+  },
   "New Caledonia": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 23,
     "deaths": 0,
     "recovered": 22,
@@ -40,15 +40,15 @@
     "newDeaths": 0
   },
   "Reunion": {
-    "dateStr": "8/10/20",
-    "cases": 690,
+    "dateStr": "8/11/20",
+    "cases": 702,
     "deaths": 5,
     "recovered": 631,
-    "new": 3,
+    "new": 12,
     "newDeaths": 0
   },
   "Saint Barthelemy": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 6,
@@ -56,15 +56,15 @@
     "newDeaths": 0
   },
   "St Martin": {
-    "dateStr": "8/10/20",
-    "cases": 78,
-    "deaths": 3,
+    "dateStr": "8/11/20",
+    "cases": 84,
+    "deaths": 4,
     "recovered": 44,
-    "new": 0,
-    "newDeaths": 0
+    "new": 6,
+    "newDeaths": 1
   },
   "Martinique": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 336,
     "deaths": 16,
     "recovered": 98,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "Saint Pierre and Miquelon": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 1,

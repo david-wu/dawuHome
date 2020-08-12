@@ -1,46 +1,46 @@
 {
   "Adams": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 86,
     "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Ashland": {
-    "dateStr": "8/10/20",
-    "cases": 25,
-    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Ashland": {
+    "dateStr": "8/11/20",
+    "cases": 26,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Barron": {
-    "dateStr": "8/10/20",
-    "cases": 295,
+    "dateStr": "8/11/20",
+    "cases": 296,
     "deaths": 3,
     "recovered": 0,
-    "new": 2,
+    "new": 1,
     "newDeaths": 0
   },
   "Bayfield": {
-    "dateStr": "8/10/20",
-    "cases": 28,
+    "dateStr": "8/11/20",
+    "cases": 29,
     "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Brown": {
-    "dateStr": "8/10/20",
-    "cases": 4264,
+    "dateStr": "8/11/20",
+    "cases": 4340,
     "deaths": 54,
     "recovered": 0,
-    "new": 0,
+    "new": 76,
     "newDeaths": 0
   },
   "Buffalo": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 44,
     "deaths": 2,
     "recovered": 0,
@@ -48,7 +48,7 @@
     "newDeaths": 0
   },
   "Burnett": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 22,
     "deaths": 1,
     "recovered": 0,
@@ -56,95 +56,95 @@
     "newDeaths": 0
   },
   "Calumet": {
-    "dateStr": "8/10/20",
-    "cases": 330,
+    "dateStr": "8/11/20",
+    "cases": 334,
     "deaths": 2,
     "recovered": 0,
-    "new": 10,
+    "new": 4,
     "newDeaths": 0
   },
   "Chippewa": {
-    "dateStr": "8/10/20",
-    "cases": 239,
+    "dateStr": "8/11/20",
+    "cases": 241,
     "deaths": 0,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Clark": {
-    "dateStr": "8/10/20",
-    "cases": 188,
-    "deaths": 7,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Columbia": {
-    "dateStr": "8/10/20",
-    "cases": 252,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Crawford": {
-    "dateStr": "8/10/20",
-    "cases": 75,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Dane": {
-    "dateStr": "8/10/20",
-    "cases": 4554,
-    "deaths": 39,
-    "recovered": 0,
-    "new": 18,
-    "newDeaths": 0
-  },
-  "Dodge": {
-    "dateStr": "8/10/20",
-    "cases": 835,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
-  },
-  "Door": {
-    "dateStr": "8/10/20",
-    "cases": 106,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Douglas": {
-    "dateStr": "8/10/20",
-    "cases": 186,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 13,
-    "newDeaths": 0
-  },
-  "Dunn": {
-    "dateStr": "8/10/20",
-    "cases": 126,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Eau Claire": {
-    "dateStr": "8/10/20",
-    "cases": 590,
-    "deaths": 4,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Clark": {
+    "dateStr": "8/11/20",
+    "cases": 189,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 1
+  },
+  "Columbia": {
+    "dateStr": "8/11/20",
+    "cases": 255,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 1
+  },
+  "Crawford": {
+    "dateStr": "8/11/20",
+    "cases": 76,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Dane": {
+    "dateStr": "8/11/20",
+    "cases": 4578,
+    "deaths": 39,
+    "recovered": 0,
+    "new": 24,
+    "newDeaths": 0
+  },
+  "Dodge": {
+    "dateStr": "8/11/20",
+    "cases": 845,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Door": {
+    "dateStr": "8/11/20",
+    "cases": 107,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Douglas": {
+    "dateStr": "8/11/20",
+    "cases": 191,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Dunn": {
+    "dateStr": "8/11/20",
+    "cases": 128,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Eau Claire": {
+    "dateStr": "8/11/20",
+    "cases": 596,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
   "Florence": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 8,
     "deaths": 0,
     "recovered": 0,
@@ -152,63 +152,63 @@
     "newDeaths": 0
   },
   "Fond du Lac": {
-    "dateStr": "8/10/20",
-    "cases": 671,
+    "dateStr": "8/11/20",
+    "cases": 676,
     "deaths": 7,
-    "recovered": 0,
-    "new": 14,
-    "newDeaths": 0
-  },
-  "Forest": {
-    "dateStr": "8/10/20",
-    "cases": 59,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Grant": {
-    "dateStr": "8/10/20",
-    "cases": 357,
-    "deaths": 15,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Green": {
-    "dateStr": "8/10/20",
-    "cases": 167,
-    "deaths": 1,
     "recovered": 0,
     "new": 5,
     "newDeaths": 0
   },
-  "Green Lake": {
-    "dateStr": "8/10/20",
-    "cases": 56,
-    "deaths": 0,
+  "Forest": {
+    "dateStr": "8/11/20",
+    "cases": 60,
+    "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
-  "Iowa": {
-    "dateStr": "8/10/20",
-    "cases": 82,
-    "deaths": 0,
+  "Grant": {
+    "dateStr": "8/11/20",
+    "cases": 362,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Green": {
+    "dateStr": "8/11/20",
+    "cases": 169,
+    "deaths": 1,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Green Lake": {
+    "dateStr": "8/11/20",
+    "cases": 57,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Iowa": {
+    "dateStr": "8/11/20",
+    "cases": 83,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Iron": {
-    "dateStr": "8/10/20",
-    "cases": 75,
+    "dateStr": "8/11/20",
+    "cases": 76,
     "deaths": 2,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Jackson": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 58,
     "deaths": 1,
     "recovered": 0,
@@ -216,55 +216,55 @@
     "newDeaths": 0
   },
   "Jefferson": {
-    "dateStr": "8/10/20",
-    "cases": 637,
+    "dateStr": "8/11/20",
+    "cases": 647,
     "deaths": 5,
     "recovered": 0,
-    "new": 6,
+    "new": 10,
     "newDeaths": 0
   },
   "Juneau": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 138,
     "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Kenosha": {
-    "dateStr": "8/10/20",
-    "cases": 2681,
-    "deaths": 60,
-    "recovered": 0,
-    "new": 14,
-    "newDeaths": 0
-  },
-  "Kewaunee": {
-    "dateStr": "8/10/20",
-    "cases": 131,
-    "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Kenosha": {
+    "dateStr": "8/11/20",
+    "cases": 2692,
+    "deaths": 60,
+    "recovered": 0,
+    "new": 11,
+    "newDeaths": 0
+  },
+  "Kewaunee": {
+    "dateStr": "8/11/20",
+    "cases": 135,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
   "La Crosse": {
-    "dateStr": "8/10/20",
-    "cases": 914,
+    "dateStr": "8/11/20",
+    "cases": 921,
     "deaths": 1,
     "recovered": 0,
-    "new": 6,
+    "new": 7,
     "newDeaths": 0
   },
   "Lafayette": {
-    "dateStr": "8/10/20",
-    "cases": 143,
+    "dateStr": "8/11/20",
+    "cases": 147,
     "deaths": 0,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
   "Langlade": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 65,
     "deaths": 1,
     "recovered": 0,
@@ -272,39 +272,39 @@
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "8/10/20",
-    "cases": 68,
+    "dateStr": "8/11/20",
+    "cases": 69,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Manitowoc": {
-    "dateStr": "8/10/20",
-    "cases": 345,
+    "dateStr": "8/11/20",
+    "cases": 351,
     "deaths": 1,
     "recovered": 0,
-    "new": 8,
+    "new": 6,
     "newDeaths": 0
   },
   "Marathon": {
-    "dateStr": "8/10/20",
-    "cases": 655,
-    "deaths": 9,
+    "dateStr": "8/11/20",
+    "cases": 662,
+    "deaths": 10,
     "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
+    "new": 7,
+    "newDeaths": 1
   },
   "Marinette": {
-    "dateStr": "8/10/20",
-    "cases": 411,
-    "deaths": 3,
+    "dateStr": "8/11/20",
+    "cases": 432,
+    "deaths": 4,
     "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
+    "new": 21,
+    "newDeaths": 1
   },
   "Marquette": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 80,
     "deaths": 1,
     "recovered": 0,
@@ -312,63 +312,63 @@
     "newDeaths": 0
   },
   "Menominee": {
-    "dateStr": "8/10/20",
-    "cases": 22,
+    "dateStr": "8/11/20",
+    "cases": 25,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "Milwaukee": {
-    "dateStr": "8/10/20",
-    "cases": 21178,
-    "deaths": 456,
+    "dateStr": "8/11/20",
+    "cases": 21331,
+    "deaths": 458,
     "recovered": 0,
-    "new": 116,
-    "newDeaths": 0
+    "new": 153,
+    "newDeaths": 2
   },
   "Monroe": {
-    "dateStr": "8/10/20",
-    "cases": 244,
+    "dateStr": "8/11/20",
+    "cases": 245,
     "deaths": 2,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Oconto": {
-    "dateStr": "8/10/20",
-    "cases": 256,
+    "dateStr": "8/11/20",
+    "cases": 259,
     "deaths": 0,
     "recovered": 0,
-    "new": 8,
+    "new": 3,
     "newDeaths": 0
   },
   "Oneida": {
-    "dateStr": "8/10/20",
-    "cases": 141,
+    "dateStr": "8/11/20",
+    "cases": 153,
     "deaths": 0,
     "recovered": 0,
-    "new": 10,
+    "new": 12,
     "newDeaths": 0
   },
   "Outagamie": {
-    "dateStr": "8/10/20",
-    "cases": 1276,
+    "dateStr": "8/11/20",
+    "cases": 1299,
     "deaths": 14,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  "Ozaukee": {
+    "dateStr": "8/11/20",
+    "cases": 716,
+    "deaths": 17,
     "recovered": 0,
     "new": 24,
     "newDeaths": 0
   },
-  "Ozaukee": {
-    "dateStr": "8/10/20",
-    "cases": 692,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Pepin": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 42,
     "deaths": 0,
     "recovered": 0,
@@ -376,31 +376,31 @@
     "newDeaths": 0
   },
   "Pierce": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 224,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Polk": {
-    "dateStr": "8/10/20",
-    "cases": 132,
-    "deaths": 2,
+    "deaths": 3,
     "recovered": 0,
     "new": 0,
+    "newDeaths": 1
+  },
+  "Polk": {
+    "dateStr": "8/11/20",
+    "cases": 137,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 5,
     "newDeaths": 0
   },
   "Portage": {
-    "dateStr": "8/10/20",
-    "cases": 420,
+    "dateStr": "8/11/20",
+    "cases": 426,
     "deaths": 0,
     "recovered": 0,
-    "new": 9,
+    "new": 6,
     "newDeaths": 0
   },
   "Price": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 33,
     "deaths": 0,
     "recovered": 0,
@@ -408,15 +408,15 @@
     "newDeaths": 0
   },
   "Racine": {
-    "dateStr": "8/10/20",
-    "cases": 3526,
-    "deaths": 78,
+    "dateStr": "8/11/20",
+    "cases": 3567,
+    "deaths": 79,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 0
+    "new": 41,
+    "newDeaths": 1
   },
   "Richland": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 37,
     "deaths": 4,
     "recovered": 0,
@@ -424,159 +424,159 @@
     "newDeaths": 0
   },
   "Rock": {
-    "dateStr": "8/10/20",
-    "cases": 1441,
+    "dateStr": "8/11/20",
+    "cases": 1444,
     "deaths": 26,
     "recovered": 0,
-    "new": 9,
+    "new": 3,
     "newDeaths": 0
   },
   "Rusk": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 21,
     "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "St. Croix": {
-    "dateStr": "8/10/20",
-    "cases": 502,
-    "deaths": 5,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Sauk": {
-    "dateStr": "8/10/20",
-    "cases": 444,
-    "deaths": 4,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "St. Croix": {
+    "dateStr": "8/11/20",
+    "cases": 512,
+    "deaths": 5,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Sauk": {
+    "dateStr": "8/11/20",
+    "cases": 452,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
   "Sawyer": {
-    "dateStr": "8/10/20",
-    "cases": 69,
+    "dateStr": "8/11/20",
+    "cases": 76,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 7,
     "newDeaths": 0
   },
   "Shawano": {
-    "dateStr": "8/10/20",
-    "cases": 200,
+    "dateStr": "8/11/20",
+    "cases": 204,
     "deaths": 0,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
   "Sheboygan": {
-    "dateStr": "8/10/20",
-    "cases": 753,
+    "dateStr": "8/11/20",
+    "cases": 776,
     "deaths": 9,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  "Taylor": {
+    "dateStr": "8/11/20",
+    "cases": 71,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Trempealeau": {
+    "dateStr": "8/11/20",
+    "cases": 345,
+    "deaths": 2,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
   },
-  "Taylor": {
-    "dateStr": "8/10/20",
-    "cases": 71,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Trempealeau": {
-    "dateStr": "8/10/20",
-    "cases": 338,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
   "Vernon": {
-    "dateStr": "8/10/20",
-    "cases": 64,
+    "dateStr": "8/11/20",
+    "cases": 66,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Vilas": {
-    "dateStr": "8/10/20",
-    "cases": 55,
+    "dateStr": "8/11/20",
+    "cases": 60,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 5,
     "newDeaths": 0
   },
   "Walworth": {
-    "dateStr": "8/10/20",
-    "cases": 1335,
+    "dateStr": "8/11/20",
+    "cases": 1359,
     "deaths": 23,
     "recovered": 0,
-    "new": 0,
+    "new": 24,
     "newDeaths": 0
   },
   "Washburn": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 48,
     "deaths": 0,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Washington": {
-    "dateStr": "8/10/20",
-    "cases": 1066,
-    "deaths": 22,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Washington": {
+    "dateStr": "8/11/20",
+    "cases": 1108,
+    "deaths": 22,
+    "recovered": 0,
+    "new": 42,
+    "newDeaths": 0
+  },
   "Waukesha": {
-    "dateStr": "8/10/20",
-    "cases": 4299,
+    "dateStr": "8/11/20",
+    "cases": 4354,
     "deaths": 59,
     "recovered": 0,
-    "new": 65,
-    "newDeaths": 1
+    "new": 55,
+    "newDeaths": 0
   },
   "Waupaca": {
-    "dateStr": "8/10/20",
-    "cases": 468,
+    "dateStr": "8/11/20",
+    "cases": 473,
     "deaths": 15,
     "recovered": 0,
-    "new": 15,
+    "new": 5,
     "newDeaths": 0
   },
   "Waushara": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 120,
     "deaths": 1,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Winnebago": {
-    "dateStr": "8/10/20",
-    "cases": 1193,
+    "dateStr": "8/11/20",
+    "cases": 1212,
     "deaths": 18,
     "recovered": 0,
-    "new": 17,
+    "new": 19,
     "newDeaths": 0
   },
   "Wood": {
-    "dateStr": "8/10/20",
-    "cases": 305,
-    "deaths": 1,
+    "dateStr": "8/11/20",
+    "cases": 322,
+    "deaths": 2,
     "recovered": 0,
-    "new": 14,
-    "newDeaths": 0
+    "new": 17,
+    "newDeaths": 1
   },
   "Out of WI": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -584,7 +584,7 @@
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "8/10/20",
+    "dateStr": "8/11/20",
     "cases": 61,
     "deaths": 5,
     "recovered": 0,
