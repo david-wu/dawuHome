@@ -20,8 +20,8 @@
       >delete</span>
     </div>
     <img
-      *ngIf="uploadedFile.uploadMeta"
-      [src]="uploadedFile.uploadMeta.downloadUrl"
+      *ngIf="uploadedFile.uploadMeta?.downloadUrl_320"
+      [src]="uploadedFile.uploadMeta.downloadUrl_320"
       class="file-pic"
     >
     <div

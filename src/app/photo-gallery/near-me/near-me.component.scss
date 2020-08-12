@@ -1,11 +1,11 @@
 @import 'mixins';
 
 .uploaded-file-container {
-  padding: 0.5rem;
+  padding: 0.25rem;
   display: flex;
   flex-wrap: wrap;
   .uploaded-file {
-    margin: 0.5rem;
+    margin: 0.25rem;
     width: 20rem;
     display: flex;
     flex-direction: column;
