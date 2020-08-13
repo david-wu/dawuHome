@@ -81,6 +81,14 @@ export class BackyardPatioComponent {
       description: '1',
       path: 'assets/images/backyard-patio/20200805_201423',
     },
+    {
+      description: '1',
+      path: 'assets/images/backyard-patio/20200812_135003',
+    },
+    {
+      description: '1',
+      path: 'assets/images/backyard-patio/20200812_153652',
+    },
   ];
   public magnifiedImage;
 
