@@ -1617,10 +1617,18 @@
   },
   {
     "dateStr": "8/11/20",
-    "cases": 59194,
+    "cases": 59424,
     "deaths": 6159,
     "recovered": 0,
-    "new": 0,
+    "new": 230,
     "newDeaths": 0
+  },
+  {
+    "dateStr": "8/12/20",
+    "cases": 60627,
+    "deaths": 6161,
+    "recovered": 0,
+    "new": 1203,
+    "newDeaths": 2
   }
 ]

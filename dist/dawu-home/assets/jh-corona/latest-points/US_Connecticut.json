@@ -1,82 +1,82 @@
 {
   "Fairfield": {
-    "dateStr": "8/11/20",
-    "cases": 18081,
-    "deaths": 1409,
+    "dateStr": "8/12/20",
+    "cases": 18088,
+    "deaths": 1410,
     "recovered": 0,
-    "new": 46,
-    "newDeaths": 0
+    "new": 7,
+    "newDeaths": 1
   },
   "Hartford": {
-    "dateStr": "8/11/20",
-    "cases": 12826,
-    "deaths": 1415,
+    "dateStr": "8/12/20",
+    "cases": 12830,
+    "deaths": 1416,
     "recovered": 0,
-    "new": 26,
-    "newDeaths": 0
+    "new": 4,
+    "newDeaths": 1
   },
   "Litchfield": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 1618,
     "deaths": 139,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Middlesex": {
-    "dateStr": "8/11/20",
-    "cases": 1408,
-    "deaths": 192,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "New Haven": {
-    "dateStr": "8/11/20",
-    "cases": 13240,
-    "deaths": 1106,
-    "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
-  },
-  "New London": {
-    "dateStr": "8/11/20",
-    "cases": 1467,
-    "deaths": 103,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Tolland": {
-    "dateStr": "8/11/20",
-    "cases": 1056,
-    "deaths": 66,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Windham": {
-    "dateStr": "8/11/20",
-    "cases": 745,
-    "deaths": 15,
+  "Middlesex": {
+    "dateStr": "8/12/20",
+    "cases": 1408,
+    "deaths": 192,
     "recovered": 0,
-    "new": 7,
+    "new": 0,
     "newDeaths": 0
   },
+  "New Haven": {
+    "dateStr": "8/12/20",
+    "cases": 13254,
+    "deaths": 1109,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 3
+  },
+  "New London": {
+    "dateStr": "8/12/20",
+    "cases": 1469,
+    "deaths": 104,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 1
+  },
   "Out of CT": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Tolland": {
+    "dateStr": "8/12/20",
+    "cases": 1056,
+    "deaths": 66,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Unassigned": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,
     "new": 0,
+    "newDeaths": 0
+  },
+  "Windham": {
+    "dateStr": "8/12/20",
+    "cases": 748,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 3,
     "newDeaths": 0
   }
 }

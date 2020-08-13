@@ -1,38 +1,46 @@
 {
   "French Guiana": {
-    "dateStr": "8/11/20",
-    "cases": 8360,
-    "deaths": 49,
-    "recovered": 7632,
-    "new": 36,
-    "newDeaths": 0
+    "dateStr": "8/12/20",
+    "cases": 8423,
+    "deaths": 50,
+    "recovered": 7713,
+    "new": 63,
+    "newDeaths": 1
   },
   "French Polynesia": {
-    "dateStr": "8/11/20",
-    "cases": 112,
+    "dateStr": "8/12/20",
+    "cases": 139,
     "deaths": 0,
-    "recovered": 62,
-    "new": 0,
+    "recovered": 64,
+    "new": 27,
     "newDeaths": 0
   },
   "Guadeloupe": {
-    "dateStr": "8/11/20",
-    "cases": 317,
+    "dateStr": "8/12/20",
+    "cases": 367,
     "deaths": 14,
-    "recovered": 186,
+    "recovered": 289,
+    "new": 50,
+    "newDeaths": 0
+  },
+  "Martinique": {
+    "dateStr": "8/12/20",
+    "cases": 336,
+    "deaths": 16,
+    "recovered": 98,
     "new": 0,
     "newDeaths": 0
   },
   "Mayotte": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 3091,
     "deaths": 39,
     "recovered": 2835,
-    "new": 23,
+    "new": 0,
     "newDeaths": 0
   },
   "New Caledonia": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 23,
     "deaths": 0,
     "recovered": 22,
@@ -40,42 +48,34 @@
     "newDeaths": 0
   },
   "Reunion": {
-    "dateStr": "8/11/20",
-    "cases": 702,
+    "dateStr": "8/12/20",
+    "cases": 734,
     "deaths": 5,
     "recovered": 631,
-    "new": 12,
+    "new": 32,
     "newDeaths": 0
   },
   "Saint Barthelemy": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 6,
     "new": 0,
     "newDeaths": 0
   },
-  "St Martin": {
-    "dateStr": "8/11/20",
-    "cases": 84,
-    "deaths": 4,
-    "recovered": 44,
-    "new": 6,
-    "newDeaths": 1
-  },
-  "Martinique": {
-    "dateStr": "8/11/20",
-    "cases": 336,
-    "deaths": 16,
-    "recovered": 98,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Saint Pierre and Miquelon": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 1,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "St Martin": {
+    "dateStr": "8/12/20",
+    "cases": 84,
+    "deaths": 4,
+    "recovered": 44,
     "new": 0,
     "newDeaths": 0
   }

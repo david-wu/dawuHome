@@ -1,6 +1,14 @@
 {
+  "Bear River": {
+    "dateStr": "8/12/20",
+    "cases": 2349,
+    "deaths": 7,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 0
+  },
   "Beaver": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -8,7 +16,7 @@
     "newDeaths": 0
   },
   "Box Elder": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -16,7 +24,7 @@
     "newDeaths": 0
   },
   "Cache": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 37,
     "deaths": 0,
     "recovered": 0,
@@ -24,15 +32,23 @@
     "newDeaths": 0
   },
   "Carbon": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Central Utah": {
+    "dateStr": "8/12/20",
+    "cases": 437,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
   "Daggett": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -40,15 +56,15 @@
     "newDeaths": 0
   },
   "Davis": {
-    "dateStr": "8/11/20",
-    "cases": 3256,
+    "dateStr": "8/12/20",
+    "cases": 3294,
     "deaths": 21,
     "recovered": 0,
-    "new": 24,
+    "new": 38,
     "newDeaths": 0
   },
   "Duchesne": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -56,7 +72,7 @@
     "newDeaths": 0
   },
   "Emery": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -64,7 +80,7 @@
     "newDeaths": 0
   },
   "Garfield": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 1,
     "deaths": 0,
     "recovered": 0,
@@ -72,7 +88,7 @@
     "newDeaths": 0
   },
   "Grand": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 4,
     "deaths": 0,
     "recovered": 0,
@@ -80,7 +96,7 @@
     "newDeaths": 0
   },
   "Iron": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 15,
     "deaths": 0,
     "recovered": 0,
@@ -88,7 +104,7 @@
     "newDeaths": 0
   },
   "Juab": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -96,7 +112,7 @@
     "newDeaths": 0
   },
   "Kane": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -104,7 +120,7 @@
     "newDeaths": 0
   },
   "Millard": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -112,119 +128,7 @@
     "newDeaths": 0
   },
   "Morgan": {
-    "dateStr": "8/11/20",
-    "cases": 0,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Piute": {
-    "dateStr": "8/11/20",
-    "cases": 0,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Rich": {
-    "dateStr": "8/11/20",
-    "cases": 0,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Salt Lake": {
-    "dateStr": "8/11/20",
-    "cases": 20903,
-    "deaths": 200,
-    "recovered": 0,
-    "new": 155,
-    "newDeaths": 4
-  },
-  "San Juan": {
-    "dateStr": "8/11/20",
-    "cases": 653,
-    "deaths": 25,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Sanpete": {
-    "dateStr": "8/11/20",
-    "cases": 0,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Sevier": {
-    "dateStr": "8/11/20",
-    "cases": 0,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Summit": {
-    "dateStr": "8/11/20",
-    "cases": 714,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Tooele": {
-    "dateStr": "8/11/20",
-    "cases": 584,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Uintah": {
-    "dateStr": "8/11/20",
-    "cases": 6,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Utah": {
-    "dateStr": "8/11/20",
-    "cases": 8887,
-    "deaths": 37,
-    "recovered": 0,
-    "new": 93,
-    "newDeaths": 0
-  },
-  "Wasatch": {
-    "dateStr": "8/11/20",
-    "cases": 576,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Washington": {
-    "dateStr": "8/11/20",
-    "cases": 77,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Wayne": {
-    "dateStr": "8/11/20",
-    "cases": 0,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Weber": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -232,67 +136,163 @@
     "newDeaths": 0
   },
   "Out of UT": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 22,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Piute": {
+    "dateStr": "8/12/20",
+    "cases": 0,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Rich": {
+    "dateStr": "8/12/20",
+    "cases": 0,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Salt Lake": {
+    "dateStr": "8/12/20",
+    "cases": 21034,
+    "deaths": 202,
+    "recovered": 0,
+    "new": 131,
+    "newDeaths": 2
+  },
+  "San Juan": {
+    "dateStr": "8/12/20",
+    "cases": 653,
+    "deaths": 25,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Sanpete": {
+    "dateStr": "8/12/20",
+    "cases": 0,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Sevier": {
+    "dateStr": "8/12/20",
+    "cases": 0,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Southeast Utah": {
+    "dateStr": "8/12/20",
+    "cases": 115,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Southwest Utah": {
+    "dateStr": "8/12/20",
+    "cases": 3248,
+    "deaths": 26,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Summit": {
+    "dateStr": "8/12/20",
+    "cases": 717,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Tooele": {
+    "dateStr": "8/12/20",
+    "cases": 588,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "TriCounty": {
+    "dateStr": "8/12/20",
+    "cases": 181,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Uintah": {
+    "dateStr": "8/12/20",
+    "cases": 6,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Unassigned": {
-    "dateStr": "8/11/20",
+    "dateStr": "8/12/20",
     "cases": 4,
     "deaths": 7,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Bear River": {
-    "dateStr": "8/11/20",
-    "cases": 2335,
-    "deaths": 7,
+  "Utah": {
+    "dateStr": "8/12/20",
+    "cases": 8983,
+    "deaths": 37,
     "recovered": 0,
-    "new": 19,
+    "new": 96,
     "newDeaths": 0
   },
-  "Central Utah": {
-    "dateStr": "8/11/20",
-    "cases": 430,
-    "deaths": 2,
+  "Wasatch": {
+    "dateStr": "8/12/20",
+    "cases": 583,
+    "deaths": 4,
     "recovered": 0,
-    "new": 4,
+    "new": 7,
     "newDeaths": 0
   },
-  "Southeast Utah": {
-    "dateStr": "8/11/20",
-    "cases": 115,
+  "Washington": {
+    "dateStr": "8/12/20",
+    "cases": 77,
     "deaths": 1,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
-  "Southwest Utah": {
-    "dateStr": "8/11/20",
-    "cases": 3240,
-    "deaths": 26,
-    "recovered": 0,
-    "new": 17,
-    "newDeaths": 0
-  },
-  "TriCounty": {
-    "dateStr": "8/11/20",
-    "cases": 181,
+  "Wayne": {
+    "dateStr": "8/12/20",
+    "cases": 0,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Weber": {
+    "dateStr": "8/12/20",
+    "cases": 0,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
     "newDeaths": 0
   },
   "Weber-Morgan": {
-    "dateStr": "8/11/20",
-    "cases": 2878,
+    "dateStr": "8/12/20",
+    "cases": 2912,
     "deaths": 25,
     "recovered": 0,
-    "new": 33,
+    "new": 34,
     "newDeaths": 0
   }
 }
