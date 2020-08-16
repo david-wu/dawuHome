@@ -1626,9 +1626,33 @@
   {
     "dateStr": "8/12/20",
     "cases": 139739,
-    "deaths": 2290,
+    "deaths": 2280,
     "recovered": 0,
     "new": 996,
-    "newDeaths": 52
+    "newDeaths": 42
+  },
+  {
+    "dateStr": "8/13/20",
+    "cases": 140824,
+    "deaths": 2287,
+    "recovered": 0,
+    "new": 1085,
+    "newDeaths": 7
+  },
+  {
+    "dateStr": "8/14/20",
+    "cases": 142170,
+    "deaths": 2313,
+    "recovered": 0,
+    "new": 1346,
+    "newDeaths": 26
+  },
+  {
+    "dateStr": "8/15/20",
+    "cases": 143704,
+    "deaths": 2343,
+    "recovered": 0,
+    "new": 1534,
+    "newDeaths": 30
   }
 ]
