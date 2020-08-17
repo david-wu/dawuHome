@@ -13,6 +13,7 @@ import { sortBy } from 'lodash';
 import * as Jimp from 'jimp';
 
 import { User } from '@models/index';
+import { UploadFile } from '@photo-gallery/models/index';
 import {
   FirebaseAuthService,
   FirebaseFirestoreService,
@@ -34,11 +35,21 @@ export class PhotoGalleryService {
     public exifService: ExifService,
   ) {}
 
-  public async deleteFile(fileId: string, user: User) {
-    await this.storage.deleteFile(fileId);
-    await this.firestore.unregisterFile(fileId, user);
+  /**
+   * deleteFile
+   * @param {string} uploadFileId
+   * @param {User}   user
+   */
+  public async deleteFile(uploadFileId: string, user: User) {
+    await this.storage.deleteFile(uploadFileId);
+    await this.firestore.unregisterFile(uploadFileId, user);
   }
 
+  /**
+   * uploadFile
+   * @param {File} file
+   * @param {User} user
+   */
   public async uploadFile(file: File, user: User) {
     const exifData = await this.exifService.getExifData(file);
     const exifLocationData = this.exifService.getLocationData(exifData);
@@ -47,8 +58,10 @@ export class PhotoGalleryService {
     const uploadDoc = {
       userId: user.uid,
       fileName: file.name,
+      isUploaded: false,
       locationData: { ...locationData },
-    };
+      uploadMeta: undefined,
+    } as UploadFile;
     const insertedUploadDocRef = await this.firestore.insertUploadDoc(uploadDoc);
     const insertedUploadDoc = {
       ...uploadDoc,

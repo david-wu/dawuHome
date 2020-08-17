@@ -1,15 +1,5 @@
 @import 'mixins';
 
 :host {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  h3 {
-    margin: 1rem 2rem;
-  }
-  .demo-container {
-    flex: 1 1 0;
-    margin: 1rem 2rem;
-    padding-bottom: 5rem;
-  }
+  @include standard-demo-page;
 }

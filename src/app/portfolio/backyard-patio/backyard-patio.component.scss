@@ -2,27 +2,16 @@
 @import 'mixins';
 
 :host {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  h3 {
-    margin: 1rem 2rem;
-  }
+  @include standard-demo-page;
   .demo-container {
-    flex: 1 1 0;
-    margin: 0.5rem 1.5rem;
-    padding-bottom: 5rem;
+    margin-top: 1rem;
   }
-}
-
-p {
-  margin-bottom: 1rem;
 }
 
 .image-card-container {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.25rem;
+  margin: -0.25rem;
   .image-card {
     margin: 0.25rem;
     display: flex;

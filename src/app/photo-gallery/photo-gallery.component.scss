@@ -5,28 +5,33 @@
   .page-container {
     display: flex;
     flex-direction: column;
-    padding: 0 0.5rem;
-    .footer {
-      padding-bottom: 15rem;
-    }
   }
 }
 
-.nav-items-container {
-  flex: 0 0 auto;
+.page-container {
   display: flex;
-  justify-content: flex-start;
-  margin: 1rem 2rem 0 2rem;
-  height: 2rem;
-  @include respond-to(small) {
-    margin: 0 0.25rem;
-    justify-content: center;
+  flex-direction: column;
+
+  .nav-items-container {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 2rem;
+    height: 2rem;
+    @include respond-to(small) {
+      margin: 0 0.25rem;
+      justify-content: center;
+    }
+    .nav-item {
+      @include dark-button;
+      flex: 0 1 auto;
+      margin: 0 0.25rem;
+      border-radius: 4px 4px 0 0;
+    }
   }
-  .nav-item {
-    @include dark-button;
-    flex: 0 1 auto;
-    margin: 0 0.25rem;
-    border-radius: 4px 4px 0 0;
+
+  .page-content {
+    flex: 1 1 0;
   }
 }
 

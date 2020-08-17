@@ -89,6 +89,26 @@
     }
 }
 
+@mixin standard-demo-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  // h2 {
+  //   margin-bottom: 1rem;
+  // }
+  .demo-container {
+    flex: 1 1 0;
+    padding-bottom: 5rem;
+    h3 {
+      margin-top: 1rem;
+    }
+    p {
+      margin-top: 1rem;
+    }
+  }
+}
+
 @mixin responsive-page {
     @media screen and (max-width: 750px) {
         div.page-container {

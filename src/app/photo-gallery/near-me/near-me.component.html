@@ -14,7 +14,12 @@
 </div>
 
 <div *ngIf="nearByUploads$ | async as nearByUploads" class="uploaded-file-container">
-  <div
+  <dwu-upload-file-list-viewer
+    [uploadFileIds]="uploadFileIds$ | async"
+    [uploadFilesById]="uploadFilesById$ | async"
+  >
+  </dwu-upload-file-list-viewer>
+<!--   <div
     *ngFor="let uploadedFile of nearByUploads; trackBy: trackById"
     class="uploaded-file"
   >
@@ -31,7 +36,7 @@
         <div class="dwu-loader"></div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 <div *ngIf="!(nearByUploads$ | async)" class="loader-container for-page">
   <div class="dwu-loader"></div>

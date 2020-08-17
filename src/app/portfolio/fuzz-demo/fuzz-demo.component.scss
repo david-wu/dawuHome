@@ -1,28 +1,9 @@
+@import 'mixins';
+
 // use dwu-fuzz-demo instead of :host
 // component uses ViewEncapsulation.None to apply monokai.css styles
 dwu-fuzz-demo {
-  display: block;
-  padding-bottom: 10rem;
-  color: #222244;
-
-  h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin: 0 2rem 1rem;
-    padding-top: 1rem;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    margin: 2rem 2rem 0.5rem;
-  }
-
-  p {
-    margin: 0 2rem 0.5rem;
-    max-width: 30rem;
-    line-height: 1.5rem;
-    word-wrap: break-word;
-  }
+  @include standard-demo-page;
 
   img {
     max-width: 100%;
@@ -30,7 +11,7 @@ dwu-fuzz-demo {
 
   .demo-page-container {
     height: 40rem;
-    margin: 1rem 2rem;
+    // margin: 1rem 2rem;
     position: relative;
     background-color: #fdfdfd;
   }
