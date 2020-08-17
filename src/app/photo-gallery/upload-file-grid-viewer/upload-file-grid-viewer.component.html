@@ -1,19 +1,24 @@
 <!-- buffer loads at most 4 images in memory -->
 <cdk-virtual-scroll-viewport
   #scrollViewport
-  itemSize="248"
   class="viewport"
-  minBufferPx="496"
-  maxBufferPx="992"
+  [itemSize]="itemHeight"
+  [minBufferPx]="minBufferPx"
+  [maxBufferPx]="maxBufferPx"
 >
   <div
     *cdkVirtualFor="let uploadFileIdRow of uploadFileIdRows; index as i;"
     class="upload-file-container-row"
   >
-    <div *ngFor="let uploadFileId of uploadFileIdRow" class="upload-file-container">
+    <div
+      *ngFor="let uploadFileId of uploadFileIdRow"
+      class="upload-file-container"
+    >
       <img
         *ngIf="getUploadFileDownloadUrl(uploadFileId) as downloadUrl; else filePicSpinner"
         [src]="downloadUrl"
+        [style.width]="scaledImageWidthStr"
+        [style.height]="scaledImageHeightStr"
         (click)="onUploadFileClick(uploadFileId)"
         class="grid-image"
       >
