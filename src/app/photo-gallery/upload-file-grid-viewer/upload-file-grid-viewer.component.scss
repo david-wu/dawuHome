@@ -1,0 +1,31 @@
+@import 'mixins';
+
+:host {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+
+  cdk-virtual-scroll-viewport {
+    display: block;
+    flex: 1 1 0;
+  }
+  .upload-file-container-row {
+    width: 328px;
+    height: 248px; // 240px + 8px
+    padding-bottom: 8px 0;
+    display: flex;
+    .upload-file-container {
+      &:not(:first-child) {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+.grid-image {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.85;
+  }
+}

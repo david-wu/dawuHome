@@ -1,3 +1,13 @@
+<div class="radio-buttons distance-type">
+  <div class="radio-button"
+    [class.active]="fileViewStyle === 'GRID'"
+    (click)="fileViewStyle = 'GRID'"
+  >Grid</div>
+  <div class="radio-button"
+    [class.active]="fileViewStyle === 'LIST'"
+    (click)="fileViewStyle = 'LIST'"
+  >List</div>
+</div>
 <!-- <div class="radio-buttons distance-type">
   <div class="radio-button"
     [class.active]="distanceType$.value === 'WALK'"
@@ -13,31 +23,25 @@
   >Drive</div>
 </div> -->
 
+<ng-container *ngIf="nearByUploads$ | async">
   <dwu-upload-file-list-viewer
-    *ngIf="nearByUploads$ | async as nearByUploads"
+    *ngIf="fileViewStyle === 'LIST'"
     class="uploaded-file-container"
     [uploadFileIds]="uploadFileIds$ | async"
     [uploadFilesById]="uploadFilesById$ | async"
+    [selectedFileId]="selectedFileId"
   >
   </dwu-upload-file-list-viewer>
-<!--   <div
-    *ngFor="let uploadedFile of nearByUploads; trackBy: trackById"
-    class="uploaded-file"
+  <dwu-upload-file-grid-viewer
+    *ngIf="fileViewStyle === 'GRID'"
+    class="uploaded-file-container"
+    [uploadFileIds]="uploadFileIds$ | async"
+    [uploadFilesById]="uploadFilesById$ | async"
+    (selectUploadFileId)="onGridSelectUploadFileId($event)"
   >
-    <img
-      *ngIf="uploadedFile.uploadMeta?.downloadUrl_320"
-      [src]="uploadedFile.uploadMeta.downloadUrl_320"
-      class="file-pic"
-    >
-    <div
-      *ngIf="!uploadedFile.uploadMeta"
-      class="file-pic"
-    >
-      <div class="loader-container centered">
-        <div class="dwu-loader"></div>
-      </div>
-    </div>
-  </div> -->
+  </dwu-upload-file-grid-viewer>
+</ng-container>
+
 <div *ngIf="!(nearByUploads$ | async)" class="loader-container for-page">
   <div class="dwu-loader"></div>
 </div>

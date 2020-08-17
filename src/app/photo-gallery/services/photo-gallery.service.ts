@@ -60,7 +60,6 @@ export class PhotoGalleryService {
       fileName: file.name,
       isUploaded: false,
       locationData: { ...locationData },
-      uploadMeta: undefined,
     } as UploadFile;
     const insertedUploadDocRef = await this.firestore.insertUploadDoc(uploadDoc);
     const insertedUploadDoc = {

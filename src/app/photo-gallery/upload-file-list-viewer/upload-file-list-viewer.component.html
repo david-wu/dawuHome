@@ -1,23 +1,26 @@
+<!-- buffer loads at most 4 images in memory -->
 <cdk-virtual-scroll-viewport
-  *ngIf="uploadFilesById && uploadFileIds"
+  #scrollViewport
   itemSize="488"
   class="viewport"
+  minBufferPx="976"
+  maxBufferPx="976"
 >
-  <div *cdkVirtualFor="let uploadFileId of uploadFileIds; index as i;">
-    <div *ngIf="uploadFilesById[uploadFileId] as uploadFile" class="upload-file-container">
-      <img
-        *ngIf="uploadFile.uploadMeta?.downloadUrl_640"
-        [src]="uploadFile.uploadMeta.downloadUrl_640"
-        class="file-pic-large"
-      >
-      <div
-        *ngIf="!uploadFile.uploadMeta"
-        class="file-pic-large"
-      >
-        <div class="loader-container centered">
-          <div class="dwu-loader"></div>
-        </div>
-      </div>
-    </div>
+  <div
+    *cdkVirtualFor="let uploadFileId of uploadFileIds; index as i;"
+    class="upload-file-container"
+  >
+    <img
+      *ngIf="getUploadFileDownloadUrl(uploadFileId) as downloadUrl; else filePicSpinner"
+      [src]="downloadUrl"
+    >
   </div>
 </cdk-virtual-scroll-viewport>
+
+<ng-template
+  #filePicSpinner
+>
+  <div class="loader-container centered">
+    <div class="dwu-loader"></div>
+  </div>
+</ng-template>

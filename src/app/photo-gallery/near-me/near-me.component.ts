@@ -22,6 +22,8 @@ export class NearMeComponent {
   public uploadFileIds$: Observable<string[]>;
   public uploadFilesById$: Observable<Record<string, UploadFile>>;
   public distanceType$ = new BehaviorSubject<string>('DRIVE');
+  public selectedFileId: string;
+  public fileViewStyle: string = 'GRID';
 
   constructor(
     public pgs: PhotoGalleryService,
@@ -41,6 +43,12 @@ export class NearMeComponent {
 
   public trackById(file: any) {
     return file.id;
+  }
+
+  public onGridSelectUploadFileId(fileId: string) {
+    console.log('onGridSelectUploadFileId', fileId)
+    this.selectedFileId = fileId;
+    this.fileViewStyle = 'LIST';
   }
 
 }

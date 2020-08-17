@@ -12,12 +12,14 @@ import { UserLoginModule } from '@app/user-login/user-login.module';
 import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
 import { UploadFileListViewerComponent } from '@photo-gallery/upload-file-list-viewer/upload-file-list-viewer.component';
+import { UploadFileGridViewerComponent } from '@photo-gallery/upload-file-grid-viewer/upload-file-grid-viewer.component';
 
 const PHOTO_GALLERY_COMPONENTS = [
   PhotoGalleryComponent,
   MyUploadsComponent,
   NearMeComponent,
   UploadFileListViewerComponent,
+  UploadFileGridViewerComponent,
 ];
 
 @NgModule({
