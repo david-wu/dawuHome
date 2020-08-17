@@ -5,6 +5,7 @@ import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 
 import { BackyardPatioComponent } from './backyard-patio/backyard-patio.component';
 import { BarChartDemoComponent } from './bar-chart-demo/bar-chart-demo.component';
+import { LineChartDemoComponent } from './line-chart-demo/line-chart-demo.component';
 import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
 import { FuzzDemoComponent } from './fuzz-demo/fuzz-demo.component'
 import { MissingDemoComponent } from '@src/app/portfolio/missing-demo/missing-demo.component';
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'BAR_CHART',
         component: BarChartDemoComponent,
+      },
+      {
+        path: 'LINE_CHART',
+        component: LineChartDemoComponent,
       },
       {
         path: 'TOOLTIP',

@@ -111,7 +111,10 @@ export class BarChartComponent extends BaseChartComponent {
     }
 
     public positionHoverBox() {
-      const hoverBoxTimestamp = this.tableData[this.hoverIndex || 0].timestamp;
+      if (this.hoverIndex === undefined) {
+        return;
+      }
+      const hoverBoxTimestamp = this.tableData[this.hoverIndex].timestamp;
       this.hoverBox
         .attr('x', this.xScale(hoverBoxTimestamp))
         .attr('y', this.yScale(this.maxY))

@@ -1,7 +1,16 @@
 @import 'mixins';
-
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.radio-buttons.distance-type {
+  flex: 0 0 auto;
+}
 .uploaded-file-container {
-  padding: 0.25rem;
+  // padding: 0.25rem;
+  flex: 1 1 0;
   display: flex;
   flex-wrap: wrap;
   .uploaded-file {

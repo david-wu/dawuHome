@@ -2,7 +2,6 @@
 <div class="demo-container">
   <div class="image-card-container">
     <div *ngFor="let image of images" class="image-card" (click)="magnifiedImage = image">
-      <!-- <div class="image-header">{{ image.description }}</div> -->
       <img class="sm-image" [src]="getSmSrc(image)">
     </div>
   </div>

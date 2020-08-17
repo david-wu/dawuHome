@@ -2,34 +2,11 @@
 
 // use dwu-fuzz-demo instead of :host
 // component uses ViewEncapsulation.None to apply monokai.css styles
-dwu-fuzz-demo {
+:host {
   @include standard-demo-page;
-
-  img {
-    max-width: 100%;
-  }
-
   .demo-page-container {
     height: 40rem;
-    // margin: 1rem 2rem;
     position: relative;
     background-color: #fdfdfd;
   }
-
-  pre.code {
-    box-shadow: 2px 2px 5px 2px #aaaaaa;
-  }
-
-  pre.code.code-block {
-    margin: 0.5rem 2rem;
-    max-width: 40rem;
-  }
-
-  @media (max-width: 767px) {
-    p, h2, h3, .demo-page-container, pre.code:not(.code-fills-container) {
-      margin-left: 0.5rem;
-      margin-right: 1.25rem;
-    }
-  }
-
 }

@@ -1,25 +1,15 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
-  ViewEncapsulation,
 } from '@angular/core';
-
-import hljs from 'highlight.js/lib/highlight';
-import typescript from 'highlight.js/lib/languages/typescript';
-
 
 @Component({
   selector: 'dwu-fuzz-demo',
   templateUrl: './fuzz-demo.component.html',
   styleUrls: [
-    './styles/pre-code.scss',
-    './styles/monokai.css',
     './fuzz-demo.component.scss',
   ],
-  encapsulation: ViewEncapsulation.None,
 })
-export class FuzzDemoComponent implements AfterViewInit {
+export class FuzzDemoComponent {
 
   public readonly codeBlocks = {
     howToUse:
@@ -63,15 +53,4 @@ const results = Fuzz.search(users, 'maggi', options);
    */`,
   };
 
-  constructor(
-    private hostEl: ElementRef,
-  ) {
-
-  }
-
-  public ngAfterViewInit() {
-    hljs.registerLanguage('typescript', typescript);
-    const allCodeBlocks = this.hostEl.nativeElement.querySelectorAll('pre code')
-      .forEach((codeBlock: HTMLElement) => hljs.highlightBlock(codeBlock));
-  }
 }

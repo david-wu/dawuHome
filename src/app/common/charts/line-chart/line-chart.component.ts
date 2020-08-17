@@ -24,7 +24,14 @@ export class LineChartComponent extends BaseChartComponent {
 
   @Input() tableData: any;
   @Input() keys: string[];
-  @Input() colorsByKey: Record<string, string>;
+  @Input() colorsByKey: Record<string, string> = {};
+  @Input() colorScheme: string[] = [
+    '#ED9797',
+    '#AD3E3E',
+    '#34A2AA',
+    '#2B1919',
+    '#65635F',
+  ];
   @Input() disabledKeys: Set<string> = new Set();
   @Input() hoverIndex: number;
   @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
@@ -156,7 +163,7 @@ export class LineChartComponent extends BaseChartComponent {
   }
 
   public positionHoverLine() {
-    if (!this.tableData || !this.tableData.length) {
+    if (!this.tableData || !this.tableData.length || (this.hoverIndex === undefined)) {
       return;
     }
     const tableColumnData = this.tableData[this.hoverIndex];
@@ -182,7 +189,7 @@ export class LineChartComponent extends BaseChartComponent {
       .style('fill', 'white')
       .attr('stroke-width', '1px')
       .merge(bubbles)
-      .attr('stroke', (d) => this.colorsByKey[d.key])
+      .attr('stroke', (d, i) => this.colorsByKey[d.key] || this.colorScheme[i])
       .attr('cy', (d) => this.yScale(d.value))
     bubbles.exit().remove();
 
@@ -284,7 +291,7 @@ export class LineChartComponent extends BaseChartComponent {
     .merge(paths)
       .attr('class', (d) => `series ${d.key}`)
       .attr('d', pathLineDrawer)
-      .style('stroke', (d) => this.colorsByKey[d.key])
+      .style('stroke', (d, i) => this.colorsByKey[d.key] || this.colorScheme[i])
       .style('stroke-opacity', (d) => {
         if (this.hoverSeries && (this.hoverSeries !== d.key)) {
           return 0.25;

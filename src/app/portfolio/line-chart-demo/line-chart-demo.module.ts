@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
 
-import { BarChartModule } from '@common/charts/bar-chart/bar-chart.module';
-import { BarChartDemoComponent } from './bar-chart-demo.component';
+import { LineChartModule } from '@common/charts/line-chart/line-chart.module';
+import { LineChartDemoComponent } from './line-chart-demo.component';
 import { TooltipModule } from '@common/tooltip/tooltip.module';
 import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.module';
 
@@ -10,14 +10,14 @@ import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.
   imports: [
     NgCommonModule,
     TooltipModule,
-    BarChartModule,
+    LineChartModule,
     CodeSnippetModule,
   ],
   declarations: [
-    BarChartDemoComponent,
+    LineChartDemoComponent,
   ],
   exports: [
-    BarChartDemoComponent,
+    LineChartDemoComponent,
   ],
 })
-export class BarChartDemoModule { }
+export class LineChartDemoModule { }

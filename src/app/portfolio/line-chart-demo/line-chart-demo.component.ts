@@ -14,19 +14,19 @@ import { take } from 'rxjs/operators';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 @Component({
-  selector: 'dwu-bar-chart-demo',
-  templateUrl: './bar-chart-demo.component.html',
-  styleUrls: ['./bar-chart-demo.component.scss'],
+  selector: 'dwu-line-chart-demo',
+  templateUrl: './line-chart-demo.component.html',
+  styleUrls: ['./line-chart-demo.component.scss'],
 })
-export class BarChartDemoComponent {
+export class LineChartDemoComponent {
   public demoData;
   public demoKeys = [
     'dogs',
     'cats',
   ];
   public hoverIndex: number;
-  public barChartHtml: string = barChartHtml;
-  public barChartJs: string = '';
+  public lineChartHtml: string = lineChartHtml;
+  public lineChartJs: string = '';
 
   constructor() {
     this.generateDemoData();
@@ -47,15 +47,15 @@ export class BarChartDemoComponent {
   }
 
   public generateSnippets() {
-    this.barChartJs =`this.demoKeys = ${JSON.stringify(this.demoKeys, null, 2)};\nthis.demoData = ${JSON.stringify(this.demoData, null, 2)};`;
+    this.lineChartJs =`this.demoKeys = ${JSON.stringify(this.demoKeys, null, 2)};\nthis.demoData = ${JSON.stringify(this.demoData, null, 2)};`;
   }
 }
 
-const barChartHtml =
-`<dwu-bar-chart
+const lineChartHtml =
+`<dwu-line-chart
   [tableData]="demoData"
   [keys]="demoKeys"
   [hoverIndex]="hoverIndex"
   (hoverIndexChange)="hoverIndex = $event"
-></dwu-bar-chart>`;
+></dwu-line-chart>`;
 

@@ -1,4 +1,4 @@
-<div class="radio-buttons distance-type">
+<!-- <div class="radio-buttons distance-type">
   <div class="radio-button"
     [class.active]="distanceType$.value === 'WALK'"
     (click)="distanceType$.next('WALK')"
@@ -11,10 +11,10 @@
     [class.active]="distanceType$.value === 'DRIVE'"
     (click)="distanceType$.next('DRIVE')"
   >Drive</div>
-</div>
+</div> -->
 
-<div *ngIf="nearByUploads$ | async as nearByUploads" class="uploaded-file-container">
   <dwu-upload-file-list-viewer
+    *ngIf="nearByUploads$ | async as nearByUploads" class="uploaded-file-container"
     [uploadFileIds]="uploadFileIds$ | async"
     [uploadFilesById]="uploadFilesById$ | async"
   >
@@ -37,7 +37,6 @@
       </div>
     </div>
   </div> -->
-</div>
 <div *ngIf="!(nearByUploads$ | async)" class="loader-container for-page">
   <div class="dwu-loader"></div>
 </div>

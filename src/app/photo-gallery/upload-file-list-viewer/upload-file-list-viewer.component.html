@@ -1,7 +1,23 @@
-<cdk-virtual-scroll-viewport itemSize="24" class="viewport">
+<cdk-virtual-scroll-viewport
+  *ngIf="uploadFilesById && uploadFileIds"
+  itemSize="488"
+  class="viewport"
+>
   <div *cdkVirtualFor="let uploadFileId of uploadFileIds; index as i;">
-    <div *ngIf="uploadFilesById[uploadFileId] as uploadFile">
-      {{ uploadFile.id }}
+    <div *ngIf="uploadFilesById[uploadFileId] as uploadFile" class="upload-file-container">
+      <img
+        *ngIf="uploadFile.uploadMeta?.downloadUrl_640"
+        [src]="uploadFile.uploadMeta.downloadUrl_640"
+        class="file-pic-large"
+      >
+      <div
+        *ngIf="!uploadFile.uploadMeta"
+        class="file-pic-large"
+      >
+        <div class="loader-container centered">
+          <div class="dwu-loader"></div>
+        </div>
+      </div>
     </div>
   </div>
 </cdk-virtual-scroll-viewport>
