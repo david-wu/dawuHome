@@ -5,7 +5,6 @@
   height: 100%;
   width: 100%;
   flex-direction: column;
-  margin: -4px;
 
   cdk-virtual-scroll-viewport {
     display: block;
@@ -13,7 +12,7 @@
   }
   .upload-file-container {
     width: 640px;
-    height: 488px; //480+(4*2)
-    padding: 4px 0;
+    height: 488px; // 480px + 8px
+    padding-bottom: 8px 0;
   }
 }

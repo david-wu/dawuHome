@@ -37,8 +37,6 @@ export class NearMeComponent {
         return keyBy(uploadFiles, (uploadFile: UploadFile) => uploadFile.id);
       }),
     );
-    this.uploadFileIds$.subscribe(console.log);
-    this.uploadFilesById$.subscribe(console.log);
   }
 
   public trackById(file: any) {

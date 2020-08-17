@@ -14,7 +14,8 @@
 </div> -->
 
   <dwu-upload-file-list-viewer
-    *ngIf="nearByUploads$ | async as nearByUploads" class="uploaded-file-container"
+    *ngIf="nearByUploads$ | async as nearByUploads"
+    class="uploaded-file-container"
     [uploadFileIds]="uploadFileIds$ | async"
     [uploadFilesById]="uploadFilesById$ | async"
   >
