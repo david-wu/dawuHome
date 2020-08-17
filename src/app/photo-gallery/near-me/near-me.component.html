@@ -37,6 +37,7 @@
     class="uploaded-file-container"
     [uploadFileIds]="uploadFileIds$ | async"
     [uploadFilesById]="uploadFilesById$ | async"
+    [selectedFileId]="selectedFileId"
     (selectUploadFileId)="onGridSelectUploadFileId($event)"
   >
   </dwu-upload-file-grid-viewer>

@@ -1,6 +1,6 @@
 <!-- buffer loads at most 4 images in memory -->
 <cdk-virtual-scroll-viewport
-  *ngIf="uploadFilesById && uploadFileIds"
+  #scrollViewport
   itemSize="248"
   class="viewport"
   minBufferPx="496"

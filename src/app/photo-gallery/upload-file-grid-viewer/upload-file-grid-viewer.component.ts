@@ -3,13 +3,14 @@ import {
   EventEmitter,
   Input,
   Output,
+  ViewChild,
 } from '@angular/core';
 import {
   Observable,
   // BehaviorSubject,
 } from 'rxjs';
 import { get } from 'lodash';
-
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 import { UploadFile } from '@photo-gallery/models/index';
 // import { PhotoGalleryService } from '@photo-gallery/services/index';
@@ -21,9 +22,12 @@ import { UploadFile } from '@photo-gallery/models/index';
 })
 export class UploadFileGridViewerComponent {
 
-  @Input() uploadFileIds: string[];
+  @Input() uploadFileIds: string[] = [];
   @Input() uploadFilesById: Record<string, UploadFile>;
+  @Input() selectedFileId: string;
   @Output() selectUploadFileId: EventEmitter<string> = new EventEmitter<string>();
+  @ViewChild('scrollViewport', { static: true }) scrollViewport: CdkVirtualScrollViewport;
+
   // public distanceType$ = new BehaviorSubject<string>('WALK');
   public uploadFileIdRows: string[][];
   public columnCount = 3;
@@ -39,6 +43,28 @@ export class UploadFileGridViewerComponent {
     if (changes.uploadFileIds) {
       this.uploadFileIdRows = this.getUploadFileIdRows(this.uploadFileIds, this.columnCount);
     }
+    if (changes.uploadFileIds || changes.selectedFileId) {
+      this.scrollToSelectedFileId();
+    }
+  }
+
+  public ngOnInit() {
+    this.scrollToSelectedFileId();
+  }
+
+  public scrollToSelectedFileId() {
+    if (!this.uploadFileIds || !this.scrollViewport) {
+      return;
+    }
+    const viewportSize = this.scrollViewport.getViewportSize()
+    const viewportPadding = (viewportSize - 248) / 2;
+    const index = this.uploadFileIds.indexOf(this.selectedFileId);
+    const imagePaddingOffset = 4;
+    const rowIndex = Math.floor(index / this.columnCount);
+    const offset = (rowIndex * 248) - viewportPadding - imagePaddingOffset;
+    setTimeout(() => {
+      this.scrollViewport.scrollToOffset(offset);
+    })
   }
 
   public getUploadFileIdRows(fileIds: string[], columnCount: number) {

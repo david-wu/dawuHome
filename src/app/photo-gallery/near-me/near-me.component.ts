@@ -46,7 +46,6 @@ export class NearMeComponent {
   }
 
   public onGridSelectUploadFileId(fileId: string) {
-    console.log('onGridSelectUploadFileId', fileId)
     this.selectedFileId = fileId;
     this.fileViewStyle = 'LIST';
   }

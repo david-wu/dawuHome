@@ -58,7 +58,6 @@ export class UploadFileListViewerComponent {
     const offset = (index * 488) - viewportPadding - imagePaddingOffset;
 
     setTimeout(() => {
-      console.log('this.scrollViewport', this.scrollViewport, this.selectedFileId, viewportPadding, index, offset);
       this.scrollViewport.scrollToOffset(offset);
     })
   }
