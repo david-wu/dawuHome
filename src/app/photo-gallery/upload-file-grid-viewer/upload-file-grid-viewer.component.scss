@@ -9,16 +9,15 @@
   cdk-virtual-scroll-viewport {
     display: block;
     flex: 1 1 0;
+    overflow-x: hidden;
   }
   .upload-file-container-row {
-    // width: 328px;
-    // height: 248px; // 240px + 8px
-    padding-bottom: 8px;
+    padding-bottom: 2px;
     line-height: 0;
     display: flex;
     .upload-file-container {
       &:not(:first-child) {
-        margin-left: 8px;
+        margin-left: 2px;
       }
     }
   }
