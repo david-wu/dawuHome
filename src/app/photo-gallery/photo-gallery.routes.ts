@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PhotoGalleryComponent } from '@src/app/photo-gallery/photo-gallery.component';
-import { NearMeComponent } from '@photo-gallery/near-me/near-me.component';
 import { MyUploadsComponent } from '@photo-gallery/my-uploads/my-uploads.component';
 
 const routes: Routes = [
@@ -11,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'near-me',
-        component: NearMeComponent,
+        loadChildren: () => import('./near-me/near-me.module').then(m => m.NearMeModule),
       },
       {
         path: 'my-uploads',

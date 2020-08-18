@@ -1,11 +1,13 @@
 <div class="radio-buttons distance-type">
   <div class="radio-button"
-    [class.active]="fileViewStyle === 'GRID'"
-    (click)="fileViewStyle = 'GRID'"
+    [routerLink]="'grid'"
+    [routerLinkActive]="['active']"
+    queryParamsHandling="merge"
   >Grid</div>
   <div class="radio-button"
-    [class.active]="fileViewStyle === 'LIST'"
-    (click)="fileViewStyle = 'LIST'"
+    [routerLink]="'list'"
+    [routerLinkActive]="['active']"
+    queryParamsHandling="merge"
   >List</div>
 </div>
 <!-- <div class="radio-buttons distance-type">
@@ -23,26 +25,4 @@
   >Drive</div>
 </div> -->
 
-<ng-container *ngIf="nearByUploads$ | async">
-  <dwu-upload-file-list-viewer
-    *ngIf="fileViewStyle === 'LIST'"
-    class="uploaded-file-container"
-    [uploadFileIds]="uploadFileIds$ | async"
-    [uploadFilesById]="uploadFilesById$ | async"
-    [selectedFileId]="selectedFileId"
-  >
-  </dwu-upload-file-list-viewer>
-  <dwu-upload-file-grid-viewer
-    *ngIf="fileViewStyle === 'GRID'"
-    class="uploaded-file-container"
-    [uploadFileIds]="uploadFileIds$ | async"
-    [uploadFilesById]="uploadFilesById$ | async"
-    [selectedFileId]="selectedFileId"
-    (selectUploadFileId)="onGridSelectUploadFileId($event)"
-  >
-  </dwu-upload-file-grid-viewer>
-</ng-container>
-
-<div *ngIf="!(nearByUploads$ | async)" class="loader-container for-page">
-  <div class="dwu-loader"></div>
-</div>
+<router-outlet></router-outlet>

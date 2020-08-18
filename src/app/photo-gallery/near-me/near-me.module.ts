@@ -3,41 +3,34 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { AppComponent } from '@app/app.component';
+import { PhotoGalleryCommonModule } from '@photo-gallery/photo-gallery-common/photo-gallery-common.module';
+import { NearMeRoutingModule } from '@photo-gallery/near-me/near-me.routes';
 import { NearMeComponent } from '@photo-gallery/near-me/near-me.component';
-import { MyUploadsComponent } from '@photo-gallery/my-uploads/my-uploads.component';
-import { PhotoGalleryComponent } from '@photo-gallery/photo-gallery.component';
-import { PhotoGalleryRoutingModule } from '@photo-gallery/photo-gallery.routes';
-import { UserLoginModule } from '@app/user-login/user-login.module';
-import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
+import { NearMeGridComponent } from '@photo-gallery/near-me/near-me-grid/near-me-grid.component';
+import { NearMeListComponent } from '@photo-gallery/near-me/near-me-list/near-me-list.component';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
-import { UploadFileListViewerComponent } from '@photo-gallery/upload-file-list-viewer/upload-file-list-viewer.component';
-import { UploadFileGridViewerComponent } from '@photo-gallery/upload-file-grid-viewer/upload-file-grid-viewer.component';
 
-const PHOTO_GALLERY_COMPONENTS = [
-  PhotoGalleryComponent,
-  MyUploadsComponent,
+const NEAR_ME_COMPONENTS = [
   NearMeComponent,
-  UploadFileListViewerComponent,
-  UploadFileGridViewerComponent,
+  NearMeGridComponent,
+  NearMeListComponent,
 ];
 
 @NgModule({
   imports: [
-    PhotoGalleryRoutingModule,
     CommonModule,
-    FileUploaderModule,
+    PhotoGalleryCommonModule,
+    NearMeRoutingModule,
     ScrollingModule,
-    UserLoginModule,
   ],
   declarations: [
-    ...PHOTO_GALLERY_COMPONENTS,
+    ...NEAR_ME_COMPONENTS,
   ],
   exports: [
-    ...PHOTO_GALLERY_COMPONENTS,
+    ...NEAR_ME_COMPONENTS,
   ],
   providers: [
     ...PHOTO_GALLERY_SERVICES,
   ],
 })
-export class PhotoGalleryModule { }
+export class NearMeModule { }

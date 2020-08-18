@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import {
   Observable,
-  // BehaviorSubject,
 } from 'rxjs';
 import {
   get,
@@ -15,7 +14,6 @@ import {
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 import { UploadFile } from '@photo-gallery/models/index';
-// import { PhotoGalleryService } from '@photo-gallery/services/index';
 
 @Component({
   selector: 'dwu-upload-file-list-viewer',
@@ -29,14 +27,6 @@ export class UploadFileListViewerComponent {
   @Input() selectedFileId: string;
   @Output() selectUploadFileId: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('scrollViewport', { static: true }) scrollViewport: CdkVirtualScrollViewport;
-  // public distanceType$ = new BehaviorSubject<string>('WALK');
-
-  constructor(
-    // public pgs: PhotoGalleryService,
-  ) {
-    // console.log('this.pgs', this.pgs);
-    // this.uploadFiles$ = this.pgs.getNearByUploadsForDistanceType$(this.distanceType$);
-  }
 
   public ngOnInit() {
     this.scrollToSelectedFileId();
@@ -50,7 +40,6 @@ export class UploadFileListViewerComponent {
     if (!this.uploadFileIds || !this.scrollViewport) {
       return;
     }
-    // this.scrollViewport.scrollToOffset()
     const viewportSize = this.scrollViewport.getViewportSize()
     const viewportPadding = (viewportSize - 488) / 2;
     const index = this.uploadFileIds.indexOf(this.selectedFileId);
@@ -73,9 +62,5 @@ export class UploadFileListViewerComponent {
       'downloadUrl_640',
     ]);
   }
-
-  // public trackById(file: any) {
-  //   return file.id;
-  // }
 
 }

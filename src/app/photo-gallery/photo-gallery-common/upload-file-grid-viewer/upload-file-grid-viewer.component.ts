@@ -1,5 +1,6 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   Output,
@@ -10,7 +11,10 @@ import {
   Observable,
 } from 'rxjs';
 import { get } from 'lodash';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import {
+  CdkVirtualScrollViewport,
+  FixedSizeVirtualScrollStrategy,
+} from '@angular/cdk/scrolling';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 import { UploadFile } from '@photo-gallery/models/index';
@@ -32,20 +36,24 @@ export class UploadFileGridViewerComponent {
   public columnCount = undefined;
   public sensor: any;
 
-  public imageWidth: number = 320;
-  public scaledImageWidth: number = 320;
-  public scaledImageWidthStr: string = '320px';
-  public scaledImageHeight: number = 480;
-  public scaledImageHeightStr: string = '240px';
-  public itemHeight: number = 242;
-  public minBufferPx: number = 484;
-  public maxBufferPx: number = 968;
+  public imageWidth: number = undefined;
+  public scaledImageWidth: number = undefined;
+  public scaledImageWidthStr: string = undefined;
+  public scaledImageHeight: number = undefined;
+  public scaledImageHeightStr: string = undefined;
+  public itemHeight: number = undefined;
+  public minBufferPx: number = undefined;
+  public maxBufferPx: number = undefined;
+  public strat: FixedSizeVirtualScrollStrategy = new FixedSizeVirtualScrollStrategy(1,1,1);
+
+  constructor(public hostEl: ElementRef) {}
 
   public ngOnChanges(changes: SimpleChanges) {
-    if (changes.uploadFileIds) {
-      this.setUploadFileIdRows(this.columnCount);
-    }
+    // if (changes.uploadFileIds) {
+    //   this.setUploadFileIdRows(this.columnCount);
+    // }
     if (changes.uploadFileIds || changes.selectedFileId) {
+      this.setViewportSize();
       this.scrollToSelectedFileId();
     }
   }
@@ -53,9 +61,10 @@ export class UploadFileGridViewerComponent {
   public ngOnInit() {
     this.setViewportSize();
     this.scrollToSelectedFileId();
-    this.sensor = new ResizeSensor(this.scrollViewport.elementRef.nativeElement, () => {
+    this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
       this.setViewportSize();
     });
+    this.strat.attach(this.scrollViewport);
   }
 
   public ngOnDestroy() {
@@ -65,25 +74,31 @@ export class UploadFileGridViewerComponent {
   }
 
   public setViewportSize() {
-    const viewportEl = this.scrollViewport.elementRef.nativeElement;
-    const clientWidth = viewportEl.clientWidth;
+    // assumes scrollbar is 16px
+    const clientWidth = this.hostEl.nativeElement.clientWidth - 16;
 
-    this.imageWidth = ((clientWidth * 1.2) <= (322 * 2)) ? 150 : 320;
-    const nextColumnCount = Math.floor((clientWidth * 1.2) / (this.imageWidth))
-    if (nextColumnCount !== this.columnCount) {
-      this.setUploadFileIdRows(nextColumnCount);
-    }
+    // Assumes we can compact the pictures a little to fit in a smaller space
+    const stretchedClientWidth = clientWidth * 1.2;
+
+    this.imageWidth = (stretchedClientWidth <= (322 * 2)) ? 150 : 320;
+    const nextColumnCount = Math.floor(stretchedClientWidth / (this.imageWidth))
+    this.setUploadFileIdRows(nextColumnCount, this.uploadFileIds);
     this.scaledImageWidth = (clientWidth / this.columnCount) - 2;
     this.scaledImageWidthStr = `${this.scaledImageWidth}px`;
 
-    const aspectRatio = 4/3;
+    const aspectRatio = 4 / 3;
     this.scaledImageHeight = this.scaledImageWidth / aspectRatio;
     this.scaledImageHeightStr = `${this.scaledImageHeight}px`;
 
-    const itemHeight = this.scaledImageHeight + 2;
-    this.itemHeight = itemHeight;
-    this.minBufferPx = itemHeight * 2;
-    this.maxBufferPx = itemHeight * 3;
+    this.itemHeight = this.scaledImageHeight + 2;
+    // this.minBufferPx = itemHeight * 2;
+    // this.maxBufferPx = itemHeight * 3;
+    this.strat.updateItemAndBufferSize(
+      this.itemHeight,
+      this.itemHeight * 2,
+      this.itemHeight * 3,
+    );
+    this.strat.attach(this.scrollViewport);
   }
 
   public setUploadFileIdRows(
@@ -119,14 +134,16 @@ export class UploadFileGridViewerComponent {
     if (!this.uploadFileIds || !this.scrollViewport) {
       return;
     }
-    const viewportSize = this.scrollViewport.getViewportSize()
-    const viewportPadding = (viewportSize - 242) / 2;
-    const index = this.uploadFileIds.indexOf(this.selectedFileId);
-    const imagePaddingOffset = 1;
-    const rowIndex = Math.floor(index / this.columnCount);
-    const offset = (rowIndex * 242) - viewportPadding - imagePaddingOffset;
     setTimeout(() => {
-      this.scrollViewport.scrollToOffset(offset);
+      const index = this.uploadFileIds.indexOf(this.selectedFileId);
+      const rowIndex = Math.floor(index / this.columnCount);
+      this.strat.scrollToIndex(rowIndex, 'auto');
+
+      // const viewportSize = this.scrollViewport.getViewportSize()
+      // const viewportPadding = (viewportSize - this.itemHeight) / 2;
+      // const imagePaddingOffset = 0.5;
+      // const offset = (rowIndex * this.itemHeight) + viewportPadding - imagePaddingOffset;
+      // this.scrollViewport.scrollToOffset(offset);
     })
   }
 
@@ -135,10 +152,10 @@ export class UploadFileGridViewerComponent {
       return;
     }
     const viewportSize = this.scrollViewport.getViewportSize();
-    const viewportPadding = (viewportSize - 242) / 2;
+    const viewportPadding = (viewportSize - this.itemHeight) / 2;
     const imagePaddingOffset = 1;
     const offset = this.scrollViewport.measureScrollOffset() + viewportPadding + imagePaddingOffset + 121;
-    const rowIndex = Math.floor(offset / 242);
+    const rowIndex = Math.floor(offset / this.itemHeight);
     const row = this.uploadFileIdRows[rowIndex];
     return row && row[0];
   }
