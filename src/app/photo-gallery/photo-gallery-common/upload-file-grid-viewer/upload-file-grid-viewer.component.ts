@@ -49,9 +49,6 @@ export class UploadFileGridViewerComponent {
   constructor(public hostEl: ElementRef) {}
 
   public ngOnChanges(changes: SimpleChanges) {
-    // if (changes.uploadFileIds) {
-    //   this.setUploadFileIdRows(this.columnCount);
-    // }
     if (changes.uploadFileIds || changes.selectedFileId) {
       this.setViewportSize();
       this.scrollToSelectedFileId();
@@ -91,8 +88,6 @@ export class UploadFileGridViewerComponent {
     this.scaledImageHeightStr = `${this.scaledImageHeight}px`;
 
     this.itemHeight = this.scaledImageHeight + 2;
-    // this.minBufferPx = itemHeight * 2;
-    // this.maxBufferPx = itemHeight * 3;
     this.strat.updateItemAndBufferSize(
       this.itemHeight,
       this.itemHeight * 2,
@@ -138,12 +133,6 @@ export class UploadFileGridViewerComponent {
       const index = this.uploadFileIds.indexOf(this.selectedFileId);
       const rowIndex = Math.floor(index / this.columnCount);
       this.strat.scrollToIndex(rowIndex, 'auto');
-
-      // const viewportSize = this.scrollViewport.getViewportSize()
-      // const viewportPadding = (viewportSize - this.itemHeight) / 2;
-      // const imagePaddingOffset = 0.5;
-      // const offset = (rowIndex * this.itemHeight) + viewportPadding - imagePaddingOffset;
-      // this.scrollViewport.scrollToOffset(offset);
     })
   }
 

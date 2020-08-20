@@ -6,7 +6,10 @@ import { LocationData } from '@photo-gallery/models/index';
 @Injectable()
 export class UserLocationService {
 
-  public getUserLocation(): Promise<any> {
+  public getUserLocation(): Promise<LocationData> {
+    // console.log('getUserLocation')
+    // this.getIsPermissionGranted();
+
     return new Promise((resolve, reject) => {
       const geolocationOptions = {
         enableHighAccuracy: false,
@@ -29,4 +32,22 @@ export class UserLocationService {
     });
   }
 
+  public getIsPermissionGranted(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (navigator.permissions) {
+        return navigator.permissions.query({ name: 'geolocation' })
+          .then((permission: PermissionStatus) => {
+            if (permission.state === 'granted') {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
+          });
+      } else {
+        reject(new Error('Permission API is not supported'));
+      }
+
+    })
+    return navigator.permissions.query({ name: 'geolocation' });
+  }
 }

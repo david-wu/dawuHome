@@ -12,9 +12,15 @@ import {
   Router,
   Params,
 } from '@angular/router';
+import { Store } from '@ngrx/store';
+
 
 import { PhotoGalleryService } from '@photo-gallery/services/index';
 import { UploadFile } from '@photo-gallery/models/upload-file.model';
+import {
+  NearMeActions,
+  NearMeState,
+} from '../store/index';
 
 @Component({
   selector: 'dwu-near-me-grid',
@@ -33,6 +39,7 @@ export class NearMeGridComponent {
     public pgs: PhotoGalleryService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
+    public store: Store<NearMeState>
   ) {
     this.nearByUploads$ = this.pgs.getNearByUploadsForDistanceType$(this.distanceType$);
     this.uploadFileIds$ = this.nearByUploads$.pipe(
@@ -48,6 +55,7 @@ export class NearMeGridComponent {
     this.selectedFileId$ = this.activatedRoute.queryParams.pipe(
       map((params: Params) => params.selectedFileId),
     );
+    this.store.dispatch(NearMeActions.loadNearMe({}));
   }
 
   public onGridSelectUploadFileId(fileId: string) {

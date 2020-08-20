@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
+import { LocationPickerComponent } from '@photo-gallery/photo-gallery-common/location-picker/location-picker.component';
 import { PhotoGalleryComponent } from '@photo-gallery/photo-gallery.component';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
 import { UploadFileListViewerComponent } from '@photo-gallery/photo-gallery-common/upload-file-list-viewer/upload-file-list-viewer.component';
@@ -10,6 +11,7 @@ import { UploadFileGridViewerComponent } from '@photo-gallery/photo-gallery-comm
 const PHOTO_GALLERY_COMMON_COMPONENTS = [
   UploadFileListViewerComponent,
   UploadFileGridViewerComponent,
+  LocationPickerComponent,
 ];
 
 @NgModule({
