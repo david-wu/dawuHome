@@ -14,6 +14,7 @@ import { FirebaseStorageService } from '@services/firebase-storage.service';
 })
 export class FileUploaderComponent {
 
+  @Input() acceptStr = `image/*`;
   @Input() showUploadButton: boolean = false;
   @Output() fileChange = new EventEmitter<File>()
 

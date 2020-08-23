@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('../photo-gallery/photo-gallery.module').then(m => m.PhotoGalleryModule)
       },
       {
+        path: 'ML_APP',
+        loadChildren: () => import('../ml-app/ml-app.module').then(m => m.MlAppModule)
+      },
+      {
         path: 'FUZZ',
         component: FuzzDemoComponent,
       },

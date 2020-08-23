@@ -4,7 +4,7 @@
   (fileChange)="onFileChange($event, user)"
 ></dwu-file-uploader>
 <div
-  *ngIf="(uploadedFiles$ | async) as uploadedFiles"
+  *ngIf="(uploadedFiles$ | async) as uploadedFiles; else loader"
   class="uploaded-file-container"
 >
   <div
@@ -34,7 +34,9 @@
     </div>
   </div>
 </div>
-<div *ngIf="!(uploadedFiles$ | async)" class="loader-container for-page">
-  <div class="dwu-loader"></div>
-</div>
+<ng-template #loader>
+  <div class="loader-container for-page">
+    <div class="dwu-loader"></div>
+  </div>
+</ng-template>
 <div class="footer"></div>

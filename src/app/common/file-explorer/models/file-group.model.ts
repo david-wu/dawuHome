@@ -105,6 +105,10 @@ export class FileGroup {
      this.selectedFileIds = fileIds;
    }
 
+  public getSelectedFileId() {
+    return Array.from(this.selectedFileIds)[0];
+  }
+
   /**
    * setRootFile
    * @param {File} file

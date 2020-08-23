@@ -24,7 +24,7 @@
 
 <input
   type="file"
-  accept="image/*"
+  [accept]="acceptStr"
   (change)="onFileChange($event)"
   class="upload-input"
   id="select-file-button"

@@ -1,0 +1,90 @@
+import { Component } from '@angular/core';
+import { keyBy } from 'lodash';
+import {
+  ActivatedRoute,
+  Router,
+  NavigationEnd,
+  Params,
+} from '@angular/router';
+
+import { FirebaseAuthService } from '@services/index';
+import { FileGroup, FileType, File } from '@file-explorer/index';
+
+@Component({
+  selector: 'ml-app',
+  templateUrl: './ml-app.component.html',
+  styleUrls: ['./ml-app.component.scss']
+})
+export class MlAppComponent {
+
+  public filesById: Record<string, File> = {};
+  public filesByLabel: Record<string, File> = {};
+  public fileGroup: FileGroup = new FileGroup();
+  public filterStr: string = '';
+  public selectedFileId: string;
+
+  constructor(
+    public firebaseAuthService: FirebaseAuthService,
+    public router: Router,
+    public route: ActivatedRoute,
+  ) {
+    this.populateFileGroup();
+    this.route.queryParams.subscribe((queryParams: Params) => {
+      if (queryParams.selectedFileId) {
+        this.fileGroup.setSelectedFileIds(new Set([queryParams.selectedFileId]));
+        this.selectedFileId = this.fileGroup.getSelectedFileId();
+      }
+    })
+    // this.router.events.subscribe((routerEvent) => {
+    //   if (routerEvent instanceof NavigationEnd) {
+    //     console.log('routerEvent', routerEvent)
+    //     const activatedChild = routerEvent.urlAfterRedirects.split('/')[2];
+    //     this.fileGroup.setSelectedFileIds(new Set([activatedChild]));
+    //   }
+    // })
+  }
+
+  public populateFileGroup() {
+    const fileDataById = {
+      id: 'ROOT',
+      childrenById: {
+        PROJECT_1: {
+          label: 'Project1',
+          childrenById: {
+            UPLOAD_IMAGES: {
+              label: 'Upload Images',
+            },
+            CLASSIFICATIONS: {
+              label: 'Classifications',
+              childrenById: {
+                T_SHIRTS: { label: 't shirts' },
+                SHORTS: { label: 'shorts' },
+                SOCKS: { label: 'socks' },
+              }
+            },
+          },
+        },
+      }
+    };
+
+    const files = this.fileGroup.filesByIdFromJson(fileDataById);
+    this.filesById = keyBy(files, 'id');
+    this.fileGroup.setRootFile(this.filesById.ROOT);
+  }
+
+  public getSelectedFileId() {
+    const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
+    return (selectedFileIds.length === 1) && selectedFileIds[0];
+  }
+
+  public onSelectedFileIdsChange(fileIds) {
+    const selectedFileId = Array.from(fileIds)[0];
+    if (selectedFileId) {
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { selectedFileId },
+      });
+    }
+  }
+
+}

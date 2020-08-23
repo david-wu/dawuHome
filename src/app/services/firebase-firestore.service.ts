@@ -5,6 +5,7 @@ import {
   Subject,
   from,
 } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { padStart } from 'lodash';
 // import { bigInt, BigInteger } from 'big-integer';
 const bigInt = require('big-integer');
@@ -63,19 +64,37 @@ export class FirebaseFirestoreService {
   }
 
   public getUploadedFiles$(user: User): Observable<any[]> {
-    const collection = this.firestore.doc(`users/${user.uid}`).collection('uploads');
-    const uploadedFiles$ = new Subject();
-    // collection.where('isUploaded', "==", true)
-    collection.onSnapshot((querySnapshot) => {
-      const docs = querySnapshot.docs.map((doc) => {
-        return {
-          ...doc.data(),
-          id: doc.id,
-        };
-      });
-      uploadedFiles$.next(docs);
+    const querySnapshot$ = Observable.create((observer) => {
+      return this.firestore
+        .doc(`users/${user.uid}`)
+        .collection('uploads')
+        .onSnapshot(observer);
     });
-    return uploadedFiles$ as Observable<any[]>;
+
+    return querySnapshot$.pipe(
+      map((querySnapshot: any) => {
+        return querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
+        });
+      }),
+    );
+
+    // const collection = this.firestore.doc(`users/${user.uid}`).collection('uploads');
+    // const uploadedFiles$ = new Subject();
+    // // collection.where('isUploaded', "==", true)
+    // collection.onSnapshot((querySnapshot) => {
+    //   const docs = querySnapshot.docs.map((doc) => {
+    //     return {
+    //       ...doc.data(),
+    //       id: doc.id,
+    //     };
+    //   });
+    //   uploadedFiles$.next(docs);
+    // });
+    // return uploadedFiles$ as Observable<any[]>;
   }
 
   public getNearbyUploads$(userLocation: any, distanceType: string) {
