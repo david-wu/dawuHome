@@ -5,7 +5,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { FirebaseStorageService } from '@services/firebase-storage.service';
+// import { FirebaseStorageService } from '@services/firebase-storage.service';
 
 @Component({
   selector: 'dwu-file-uploader',
@@ -17,11 +17,12 @@ export class FileUploaderComponent {
   @Input() acceptStr = `image/*`;
   @Input() showUploadButton: boolean = false;
   @Output() fileChange = new EventEmitter<File>()
+  @Output() fileUpload = new EventEmitter<File>()
 
   public file: File;
 
   constructor(
-    public fss: FirebaseStorageService,
+    // public fss: FirebaseStorageService,
   ) {
   }
 
@@ -33,6 +34,7 @@ export class FileUploaderComponent {
   }
 
   public upload() {
-    this.fss.uploadFile(this.file);
+    // this.fss.uploadZip(this.file);
+    this.fileUpload.emit(this.file);
   }
 }

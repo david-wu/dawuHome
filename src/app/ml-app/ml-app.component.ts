@@ -49,10 +49,10 @@ export class MlAppComponent {
       id: 'ROOT',
       childrenById: {
         PROJECT_1: {
-          label: 'Project1',
+          label: 'Apparel',
           childrenById: {
             UPLOAD_IMAGES: {
-              label: 'Upload Images',
+              label: 'Staging Area',
             },
             CLASSIFICATIONS: {
               label: 'Classifications',

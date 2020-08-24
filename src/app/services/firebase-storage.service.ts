@@ -18,6 +18,12 @@ export class FirebaseStorageService {
     return imageRef.put(file);
   }
 
+  public uploadZip(file: File, fileName: string= 'file.zip') {
+    const storageRef = this.firebaseStorage.ref();
+    const imageRef = storageRef.child('uploadZips').child(fileName);
+    return imageRef.put(file);
+  }
+
   public async deleteFile(fileName: string= 'image.jpg') {
     const storageRef = this.firebaseStorage.ref();
     const imageRef = storageRef.child(`uploads/${fileName}`);
