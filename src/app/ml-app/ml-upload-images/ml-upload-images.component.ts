@@ -28,7 +28,7 @@ export class MlUploadImagesComponent {
   ) {
   }
 
-  public onFileChange() {
+  public onFileChange(file) {
 
   }
 }
