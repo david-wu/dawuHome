@@ -1713,10 +1713,42 @@
   },
   {
     "dateStr": "8/23/20",
-    "cases": 13534,
+    "cases": 13590,
     "deaths": 604,
     "recovered": 0,
+    "new": 56,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/24/20",
+    "cases": 13639,
+    "deaths": 604,
+    "recovered": 0,
+    "new": 49,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/25/20",
+    "cases": 13684,
+    "deaths": 604,
+    "recovered": 0,
+    "new": 45,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/26/20",
+    "cases": 13684,
+    "deaths": 605,
+    "recovered": 0,
     "new": 0,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "8/27/20",
+    "cases": 13794,
+    "deaths": 605,
+    "recovered": 0,
+    "new": 110,
     "newDeaths": 0
   }
 ]
