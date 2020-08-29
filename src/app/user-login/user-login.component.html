@@ -1,15 +1,18 @@
 
-<div [class.invisible]="!(firebaseAuthService.authLoading$ | async)">
+<div [class.invisible]="!(authLoading$ | async)">
   loading..
 </div>
-<div [class.invisible]="firebaseAuthService.authLoading$ | async">
+<div [class.invisible]="authLoading$ | async">
   <div
     #loginRef
-    [class.invisible]="!(firebaseAuthService.canLogin$ | async)"
+    [class.invisible]="!(canLogin$ | async)"
   ></div>
-  <div
-    *ngIf="firebaseAuthService.user$ | async"
-    class="sign-out-button"
-    (click)="signOut()"
-  >Sign Out</div>
+
+  <ng-container *ngIf="user$ | async as user">
+    <div>{{ user.email }}</div>
+    <div
+      class="sign-out-button"
+      (click)="signOut()"
+    >Sign Out</div>
+  </ng-container>
 </div>

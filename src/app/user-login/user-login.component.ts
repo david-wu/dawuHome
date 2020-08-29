@@ -4,11 +4,18 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
+import { Observable } from 'rxjs';
+import {
+  Store,
+  select,
+} from '@ngrx/store';
 
 import {
-  FirebaseAuthService,
-  FirebaseFirestoreService,
-} from '@services/index';
+  AuthActions,
+  getUser$,
+  getAuthLoading$,
+  getCanLogin$,
+} from '@app/store/index';
 import { User } from '@models/index';
 
 declare global {
@@ -27,25 +34,31 @@ export class UserLoginComponent {
 
   @ViewChild('loginRef', { static: true }) loginRef: ElementRef;
 
-  public ui: any;
+  public user$: Observable<User>;
+  public authLoading$: Observable<boolean>;
+  public canLogin$: Observable<boolean>;
 
   constructor(
+    public store: Store<any>,
     public hostEl: ElementRef,
-    public firebaseAuthService: FirebaseAuthService,
-    public firestoreService: FirebaseFirestoreService,
-  ) {}
+  ) {
+    this.user$ = this.store.pipe(select(getUser$));
+    this.authLoading$ = this.store.pipe(select(getAuthLoading$));
+    this.canLogin$ = this.store.pipe(select(getCanLogin$));
+
+    this.user$.subscribe((u) => console.log('user$', u));
+  }
 
   public ngOnInit() {
-    this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
-    this.firebaseAuthService.user$.subscribe((user: User) => {
-      if (user) {
-        this.firestoreService.updateUser(user);
-      }
-    });
+    console.log(this.loginRef, this.loginRef.nativeElement)
+    this.store.dispatch(AuthActions.renderLogin({
+      nativeEl: this.loginRef.nativeElement
+    }));
   }
 
   public signOut() {
-    this.firebaseAuthService.signOut();
-    this.firebaseAuthService.renderLogin(this.loginRef.nativeElement);
+    this.store.dispatch(AuthActions.signOut({
+      nativeEl: this.loginRef.nativeElement,
+    }));
   }
 }

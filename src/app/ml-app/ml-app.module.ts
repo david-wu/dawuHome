@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { CommonModule as MyCommonModule } from '@src/app/common/common.module';
 import { FileExplorerModule } from '@file-explorer/file-explorer.module';
 import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
 import { UserLoginModule } from '@app/user-login/user-login.module';
-
 import { MlAppComponent } from '@src/app/ml-app/ml-app.component';
 import { MlUploadImagesComponent } from '@src/app/ml-app/ml-upload-images/ml-upload-images.component';
 import { MlAppRoutingModule } from '@src/app/ml-app/ml-app.routes';
+import {
+  MlFilesEffects,
+  mlFilesReducer,
+} from '@ml-app/store/index';
 
 const COMPONENTS = [
   MlUploadImagesComponent,
@@ -23,6 +28,8 @@ const COMPONENTS = [
     CommonModule,
     MyCommonModule,
     FileExplorerModule,
+    StoreModule.forRoot({ photoGallery: mlFilesReducer }),
+    EffectsModule.forRoot([MlFilesEffects]),
   ],
   providers: [],
   declarations: [

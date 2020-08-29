@@ -28,8 +28,8 @@ const PHOTO_GALLERY_COMPONENTS = [
     PhotoGalleryRoutingModule,
     FileUploaderModule,
     UserLoginModule,
-    StoreModule.forRoot({ photoGallery: photoGalleryReducer }),
-    EffectsModule.forRoot([PhotoGalleryEffects]),
+    StoreModule.forFeature('photoGallery', photoGalleryReducer),
+    EffectsModule.forFeature([PhotoGalleryEffects]),
   ],
   declarations: [
     ...PHOTO_GALLERY_COMPONENTS,

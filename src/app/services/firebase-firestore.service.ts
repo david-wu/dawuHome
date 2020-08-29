@@ -21,9 +21,12 @@ export class FirebaseFirestoreService {
 
   public firestore = window.firebase.firestore();
 
-  public updateUser(user: User) {
+  public updateUser(user: User): Observable<User> {
     const userDoc = this.firestore.doc(`users/${user.uid}`);
-    userDoc.set({ ...user });
+    const promise = userDoc.set({ ...user });
+    return from(promise).pipe(
+      map(() => user),
+    );
   }
 
   public async unregisterFile(fileId: string, user: User) {

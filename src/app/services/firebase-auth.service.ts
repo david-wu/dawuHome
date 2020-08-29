@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Observable,
   BehaviorSubject,
+  from,
 } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -68,14 +69,15 @@ export class FirebaseAuthService {
     })
   }
 
-  public renderLogin(hostEl: HTMLElement) {
+  public renderLogin(hostEl: HTMLElement): Observable<User> {
     this.firebaseAuthUI.start(hostEl, {
       ...this.defaultUiConfig,
     });
+    return this.user$.asObservable();
   }
 
-  public signOut() {
-    return this.firebaseAuth.signOut();
+  public signOut(): Observable<any> {
+    return from(this.firebaseAuth.signOut());
   }
 
 }
