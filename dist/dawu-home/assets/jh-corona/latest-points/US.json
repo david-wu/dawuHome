@@ -1,6 +1,6 @@
 {
   "American Samoa": {
-    "dateStr": "8/27/20",
+    "dateStr": "8/28/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -8,7 +8,7 @@
     "newDeaths": 0
   },
   "Diamond Princess": {
-    "dateStr": "8/27/20",
+    "dateStr": "8/28/20",
     "cases": 49,
     "deaths": 0,
     "recovered": 0,
@@ -16,7 +16,7 @@
     "newDeaths": 0
   },
   "Grand Princess": {
-    "dateStr": "8/27/20",
+    "dateStr": "8/28/20",
     "cases": 103,
     "deaths": 3,
     "recovered": 0,
@@ -24,15 +24,15 @@
     "newDeaths": 0
   },
   "Guam": {
-    "dateStr": "8/27/20",
-    "cases": 1232,
-    "deaths": 9,
+    "dateStr": "8/28/20",
+    "cases": 1287,
+    "deaths": 10,
     "recovered": 0,
-    "new": 112,
-    "newDeaths": 0
+    "new": 55,
+    "newDeaths": 1
   },
   "Northern Mariana Islands": {
-    "dateStr": "8/27/20",
+    "dateStr": "8/28/20",
     "cases": 54,
     "deaths": 2,
     "recovered": 0,
@@ -40,427 +40,427 @@
     "newDeaths": 0
   },
   "Virgin Islands": {
-    "dateStr": "8/27/20",
-    "cases": 1052,
+    "dateStr": "8/28/20",
+    "cases": 1075,
     "deaths": 14,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  "Alabama": {
+    "dateStr": "8/28/20",
+    "cases": 122185,
+    "deaths": 2107,
+    "recovered": 0,
+    "new": 1162,
+    "newDeaths": 31
+  },
+  "Alaska": {
+    "dateStr": "8/28/20",
+    "cases": 5092,
+    "deaths": 37,
+    "recovered": 0,
+    "new": 118,
+    "newDeaths": 0
+  },
+  "Arizona": {
+    "dateStr": "8/28/20",
+    "cases": 200658,
+    "deaths": 4978,
+    "recovered": 0,
+    "new": 519,
+    "newDeaths": 49
+  },
+  "Arkansas": {
+    "dateStr": "8/28/20",
+    "cases": 59583,
+    "deaths": 756,
+    "recovered": 0,
+    "new": 838,
+    "newDeaths": 17
+  },
+  "California": {
+    "dateStr": "8/28/20",
+    "cases": 697385,
+    "deaths": 12805,
+    "recovered": 0,
+    "new": 5564,
+    "newDeaths": 128
+  },
+  "Colorado": {
+    "dateStr": "8/28/20",
+    "cases": 56753,
+    "deaths": 1937,
+    "recovered": 0,
+    "new": 430,
+    "newDeaths": 6
+  },
+  "Connecticut": {
+    "dateStr": "8/28/20",
+    "cases": 52495,
+    "deaths": 4465,
+    "recovered": 0,
+    "new": 145,
+    "newDeaths": 0
+  },
+  "Delaware": {
+    "dateStr": "8/28/20",
+    "cases": 17083,
+    "deaths": 604,
+    "recovered": 0,
+    "new": 97,
+    "newDeaths": 0
+  },
+  "District of Columbia": {
+    "dateStr": "8/28/20",
+    "cases": 13851,
+    "deaths": 605,
+    "recovered": 0,
+    "new": 57,
+    "newDeaths": 0
+  },
+  "Florida": {
+    "dateStr": "8/28/20",
+    "cases": 615806,
+    "deaths": 10957,
+    "recovered": 0,
+    "new": 3815,
+    "newDeaths": 89
+  },
+  "Georgia": {
+    "dateStr": "8/28/20",
+    "cases": 265372,
+    "deaths": 5471,
+    "recovered": 0,
+    "new": 2298,
+    "newDeaths": 78
+  },
+  "Hawaii": {
+    "dateStr": "8/28/20",
+    "cases": 7830,
+    "deaths": 59,
+    "recovered": 0,
+    "new": 264,
+    "newDeaths": 4
+  },
+  "Idaho": {
+    "dateStr": "8/28/20",
+    "cases": 31376,
+    "deaths": 353,
+    "recovered": 0,
+    "new": 263,
+    "newDeaths": 10
+  },
+  "Illinois": {
+    "dateStr": "8/28/20",
+    "cases": 231186,
+    "deaths": 8206,
+    "recovered": 0,
+    "new": 2436,
+    "newDeaths": 20
+  },
+  "Indiana": {
+    "dateStr": "8/28/20",
+    "cases": 91313,
+    "deaths": 3277,
+    "recovered": 0,
+    "new": 809,
+    "newDeaths": 11
+  },
+  "Iowa": {
+    "dateStr": "8/28/20",
+    "cases": 62828,
+    "deaths": 1108,
+    "recovered": 0,
+    "new": 1340,
+    "newDeaths": 17
+  },
+  "Kansas": {
+    "dateStr": "8/28/20",
+    "cases": 41050,
+    "deaths": 445,
+    "recovered": 0,
+    "new": 690,
+    "newDeaths": 1
+  },
+  "Kentucky": {
+    "dateStr": "8/28/20",
+    "cases": 46757,
+    "deaths": 918,
+    "recovered": 0,
+    "new": 779,
+    "newDeaths": 8
+  },
+  "Louisiana": {
+    "dateStr": "8/28/20",
+    "cases": 146243,
+    "deaths": 4904,
+    "recovered": 0,
+    "new": 606,
+    "newDeaths": 30
+  },
+  "Maine": {
+    "dateStr": "8/28/20",
+    "cases": 4436,
+    "deaths": 132,
     "recovered": 0,
     "new": 22,
     "newDeaths": 0
   },
-  "Alabama": {
-    "dateStr": "8/27/20",
-    "cases": 121023,
-    "deaths": 2076,
-    "recovered": 0,
-    "new": 1769,
-    "newDeaths": 31
-  },
-  "Alaska": {
-    "dateStr": "8/27/20",
-    "cases": 4974,
-    "deaths": 37,
-    "recovered": 0,
-    "new": 79,
-    "newDeaths": 0
-  },
-  "Arizona": {
-    "dateStr": "8/27/20",
-    "cases": 200139,
-    "deaths": 4929,
-    "recovered": 0,
-    "new": 680,
-    "newDeaths": 33
-  },
-  "Arkansas": {
-    "dateStr": "8/27/20",
-    "cases": 58745,
-    "deaths": 739,
-    "recovered": 0,
-    "new": 722,
-    "newDeaths": 7
-  },
-  "California": {
-    "dateStr": "8/27/20",
-    "cases": 691821,
-    "deaths": 12677,
-    "recovered": 0,
-    "new": 4817,
-    "newDeaths": 145
-  },
-  "Colorado": {
-    "dateStr": "8/27/20",
-    "cases": 56323,
-    "deaths": 1931,
-    "recovered": 0,
-    "new": 350,
-    "newDeaths": 4
-  },
-  "Connecticut": {
-    "dateStr": "8/27/20",
-    "cases": 52350,
-    "deaths": 4465,
-    "recovered": 0,
-    "new": 130,
-    "newDeaths": 2
-  },
-  "Delaware": {
-    "dateStr": "8/27/20",
-    "cases": 16986,
-    "deaths": 604,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "District of Columbia": {
-    "dateStr": "8/27/20",
-    "cases": 13794,
-    "deaths": 605,
-    "recovered": 0,
-    "new": 110,
-    "newDeaths": 0
-  },
-  "Florida": {
-    "dateStr": "8/27/20",
-    "cases": 611991,
-    "deaths": 10868,
-    "recovered": 0,
-    "new": 3269,
-    "newDeaths": 135
-  },
-  "Georgia": {
-    "dateStr": "8/27/20",
-    "cases": 263074,
-    "deaths": 5393,
-    "recovered": 0,
-    "new": 2484,
-    "newDeaths": 82
-  },
-  "Hawaii": {
-    "dateStr": "8/27/20",
-    "cases": 7566,
-    "deaths": 55,
-    "recovered": 0,
-    "new": 306,
-    "newDeaths": 4
-  },
-  "Idaho": {
-    "dateStr": "8/27/20",
-    "cases": 31113,
-    "deaths": 343,
-    "recovered": 0,
-    "new": 342,
-    "newDeaths": 6
-  },
-  "Illinois": {
-    "dateStr": "8/27/20",
-    "cases": 228750,
-    "deaths": 8186,
-    "recovered": 0,
-    "new": 1707,
-    "newDeaths": 23
-  },
-  "Indiana": {
-    "dateStr": "8/27/20",
-    "cases": 90504,
-    "deaths": 3266,
-    "recovered": 0,
-    "new": 1145,
-    "newDeaths": 7
-  },
-  "Iowa": {
-    "dateStr": "8/27/20",
-    "cases": 61488,
-    "deaths": 1091,
-    "recovered": 0,
-    "new": 2681,
-    "newDeaths": 20
-  },
-  "Kansas": {
-    "dateStr": "8/27/20",
-    "cases": 40360,
-    "deaths": 444,
-    "recovered": 0,
-    "new": 480,
-    "newDeaths": 2
-  },
-  "Kentucky": {
-    "dateStr": "8/27/20",
-    "cases": 45978,
-    "deaths": 910,
-    "recovered": 0,
-    "new": 748,
-    "newDeaths": 8
-  },
-  "Louisiana": {
-    "dateStr": "8/27/20",
-    "cases": 145637,
-    "deaths": 4874,
-    "recovered": 0,
-    "new": 677,
-    "newDeaths": 23
-  },
-  "Maine": {
-    "dateStr": "8/27/20",
-    "cases": 4414,
-    "deaths": 132,
-    "recovered": 0,
-    "new": 25,
-    "newDeaths": 0
-  },
   "Maryland": {
-    "dateStr": "8/27/20",
-    "cases": 106063,
-    "deaths": 3722,
+    "dateStr": "8/28/20",
+    "cases": 106664,
+    "deaths": 3727,
     "recovered": 0,
-    "new": 577,
+    "new": 601,
     "newDeaths": 5
   },
   "Massachusetts": {
-    "dateStr": "8/27/20",
-    "cases": 127124,
-    "deaths": 9008,
+    "dateStr": "8/28/20",
+    "cases": 127584,
+    "deaths": 9024,
     "recovered": 0,
-    "new": 368,
-    "newDeaths": 21
-  },
-  "Michigan": {
-    "dateStr": "8/27/20",
-    "cases": 110343,
-    "deaths": 6706,
-    "recovered": 0,
-    "new": 863,
+    "new": 460,
     "newDeaths": 16
   },
-  "Minnesota": {
-    "dateStr": "8/27/20",
-    "cases": 72390,
-    "deaths": 1855,
+  "Michigan": {
+    "dateStr": "8/28/20",
+    "cases": 111136,
+    "deaths": 6712,
     "recovered": 0,
-    "new": 1154,
-    "newDeaths": 15
+    "new": 793,
+    "newDeaths": 6
+  },
+  "Minnesota": {
+    "dateStr": "8/28/20",
+    "cases": 73240,
+    "deaths": 1859,
+    "recovered": 0,
+    "new": 850,
+    "newDeaths": 4
   },
   "Mississippi": {
-    "dateStr": "8/27/20",
-    "cases": 80695,
-    "deaths": 2399,
+    "dateStr": "8/28/20",
+    "cases": 81294,
+    "deaths": 2413,
     "recovered": 0,
-    "new": 585,
-    "newDeaths": 26
+    "new": 599,
+    "newDeaths": 14
   },
   "Missouri": {
-    "dateStr": "8/27/20",
-    "cases": 80214,
-    "deaths": 1488,
+    "dateStr": "8/28/20",
+    "cases": 81672,
+    "deaths": 1500,
     "recovered": 0,
-    "new": 1471,
-    "newDeaths": 7
+    "new": 1458,
+    "newDeaths": 12
   },
   "Montana": {
-    "dateStr": "8/27/20",
-    "cases": 6929,
-    "deaths": 98,
+    "dateStr": "8/28/20",
+    "cases": 7063,
+    "deaths": 100,
     "recovered": 0,
-    "new": 144,
-    "newDeaths": 0
-  },
-  "Nebraska": {
-    "dateStr": "8/27/20",
-    "cases": 33101,
-    "deaths": 391,
-    "recovered": 0,
-    "new": 374,
-    "newDeaths": 5
-  },
-  "Nevada": {
-    "dateStr": "8/27/20",
-    "cases": 67220,
-    "deaths": 1271,
-    "recovered": 0,
-    "new": 554,
-    "newDeaths": 21
-  },
-  "New Hampshire": {
-    "dateStr": "8/27/20",
-    "cases": 7194,
-    "deaths": 431,
-    "recovered": 0,
-    "new": 38,
+    "new": 134,
     "newDeaths": 2
   },
+  "Nebraska": {
+    "dateStr": "8/28/20",
+    "cases": 33436,
+    "deaths": 392,
+    "recovered": 0,
+    "new": 335,
+    "newDeaths": 1
+  },
+  "Nevada": {
+    "dateStr": "8/28/20",
+    "cases": 67852,
+    "deaths": 1287,
+    "recovered": 0,
+    "new": 632,
+    "newDeaths": 16
+  },
+  "New Hampshire": {
+    "dateStr": "8/28/20",
+    "cases": 7216,
+    "deaths": 432,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 1
+  },
   "New Jersey": {
-    "dateStr": "8/27/20",
-    "cases": 190613,
+    "dateStr": "8/28/20",
+    "cases": 190971,
     "deaths": 15953,
     "recovered": 0,
-    "new": 307,
+    "new": 358,
     "newDeaths": 0
   },
   "New Mexico": {
-    "dateStr": "8/27/20",
-    "cases": 24920,
-    "deaths": 764,
+    "dateStr": "8/28/20",
+    "cases": 25042,
+    "deaths": 767,
     "recovered": 0,
-    "new": 188,
-    "newDeaths": 9
-  },
-  "New York": {
-    "dateStr": "8/27/20",
-    "cases": 432131,
-    "deaths": 32926,
-    "recovered": 0,
-    "new": 791,
-    "newDeaths": 5
-  },
-  "North Carolina": {
-    "dateStr": "8/27/20",
-    "cases": 161076,
-    "deaths": 2630,
-    "recovered": 0,
-    "new": 2091,
-    "newDeaths": 24
-  },
-  "North Dakota": {
-    "dateStr": "8/27/20",
-    "cases": 10800,
-    "deaths": 139,
-    "recovered": 0,
-    "new": 333,
-    "newDeaths": 1
-  },
-  "Ohio": {
-    "dateStr": "8/27/20",
-    "cases": 118828,
-    "deaths": 4076,
-    "recovered": 0,
-    "new": 1244,
-    "newDeaths": 32
-  },
-  "Oklahoma": {
-    "dateStr": "8/27/20",
-    "cases": 55550,
-    "deaths": 778,
-    "recovered": 0,
-    "new": 712,
-    "newDeaths": 15
-  },
-  "Oregon": {
-    "dateStr": "8/27/20",
-    "cases": 25761,
-    "deaths": 438,
-    "recovered": 0,
-    "new": 190,
-    "newDeaths": 5
-  },
-  "Pennsylvania": {
-    "dateStr": "8/27/20",
-    "cases": 135912,
-    "deaths": 7622,
-    "recovered": 0,
-    "new": 633,
-    "newDeaths": 9
-  },
-  "Puerto Rico": {
-    "dateStr": "8/27/20",
-    "cases": 31383,
-    "deaths": 412,
-    "recovered": 0,
-    "new": 639,
-    "newDeaths": 8
-  },
-  "Rhode Island": {
-    "dateStr": "8/27/20",
-    "cases": 21589,
-    "deaths": 1044,
-    "recovered": 0,
-    "new": 135,
+    "new": 122,
     "newDeaths": 3
   },
-  "South Carolina": {
-    "dateStr": "8/27/20",
-    "cases": 114598,
-    "deaths": 2628,
+  "New York": {
+    "dateStr": "8/28/20",
+    "cases": 432767,
+    "deaths": 32934,
     "recovered": 0,
-    "new": 505,
-    "newDeaths": 55
+    "new": 636,
+    "newDeaths": 8
   },
-  "South Dakota": {
-    "dateStr": "8/27/20",
-    "cases": 12194,
-    "deaths": 162,
+  "North Carolina": {
+    "dateStr": "8/28/20",
+    "cases": 162491,
+    "deaths": 2652,
     "recovered": 0,
-    "new": 623,
+    "new": 1415,
+    "newDeaths": 22
+  },
+  "North Dakota": {
+    "dateStr": "8/28/20",
+    "cases": 11110,
+    "deaths": 139,
+    "recovered": 0,
+    "new": 310,
     "newDeaths": 0
   },
-  "Tennessee": {
-    "dateStr": "8/27/20",
-    "cases": 149179,
-    "deaths": 1673,
+  "Ohio": {
+    "dateStr": "8/28/20",
+    "cases": 120124,
+    "deaths": 4105,
     "recovered": 0,
-    "new": 1826,
-    "newDeaths": 25
+    "new": 1296,
+    "newDeaths": 29
   },
-  "Texas": {
-    "dateStr": "8/27/20",
-    "cases": 614549,
-    "deaths": 12365,
+  "Oklahoma": {
+    "dateStr": "8/28/20",
+    "cases": 56260,
+    "deaths": 786,
     "recovered": 0,
-    "new": 3901,
-    "newDeaths": 225
+    "new": 710,
+    "newDeaths": 8
   },
-  "Utah": {
-    "dateStr": "8/27/20",
-    "cases": 50557,
-    "deaths": 403,
+  "Oregon": {
+    "dateStr": "8/28/20",
+    "cases": 26054,
+    "deaths": 447,
     "recovered": 0,
-    "new": 383,
+    "new": 293,
+    "newDeaths": 9
+  },
+  "Pennsylvania": {
+    "dateStr": "8/28/20",
+    "cases": 136781,
+    "deaths": 7642,
+    "recovered": 0,
+    "new": 869,
+    "newDeaths": 20
+  },
+  "Puerto Rico": {
+    "dateStr": "8/28/20",
+    "cases": 31988,
+    "deaths": 424,
+    "recovered": 0,
+    "new": 605,
+    "newDeaths": 12
+  },
+  "Rhode Island": {
+    "dateStr": "8/28/20",
+    "cases": 21683,
+    "deaths": 1046,
+    "recovered": 0,
+    "new": 94,
     "newDeaths": 2
   },
+  "South Carolina": {
+    "dateStr": "8/28/20",
+    "cases": 115951,
+    "deaths": 2655,
+    "recovered": 0,
+    "new": 1353,
+    "newDeaths": 27
+  },
+  "South Dakota": {
+    "dateStr": "8/28/20",
+    "cases": 12517,
+    "deaths": 165,
+    "recovered": 0,
+    "new": 323,
+    "newDeaths": 3
+  },
+  "Tennessee": {
+    "dateStr": "8/28/20",
+    "cases": 150815,
+    "deaths": 1701,
+    "recovered": 0,
+    "new": 1636,
+    "newDeaths": 28
+  },
+  "Texas": {
+    "dateStr": "8/28/20",
+    "cases": 619354,
+    "deaths": 12537,
+    "recovered": 0,
+    "new": 4805,
+    "newDeaths": 172
+  },
+  "Utah": {
+    "dateStr": "8/28/20",
+    "cases": 50948,
+    "deaths": 407,
+    "recovered": 0,
+    "new": 391,
+    "newDeaths": 4
+  },
   "Vermont": {
-    "dateStr": "8/27/20",
-    "cases": 1586,
+    "dateStr": "8/28/20",
+    "cases": 1589,
     "deaths": 58,
     "recovered": 0,
-    "new": 9,
+    "new": 3,
     "newDeaths": 0
   },
   "Virginia": {
-    "dateStr": "8/27/20",
-    "cases": 116569,
-    "deaths": 2527,
+    "dateStr": "8/28/20",
+    "cases": 117578,
+    "deaths": 2550,
     "recovered": 0,
-    "new": 1121,
-    "newDeaths": 12
+    "new": 1009,
+    "newDeaths": 23
   },
   "Washington": {
-    "dateStr": "8/27/20",
-    "cases": 72703,
-    "deaths": 1890,
+    "dateStr": "8/28/20",
+    "cases": 73301,
+    "deaths": 1905,
     "recovered": 0,
-    "new": 542,
-    "newDeaths": 10
+    "new": 598,
+    "newDeaths": 15
   },
   "West Virginia": {
-    "dateStr": "8/27/20",
-    "cases": 9633,
-    "deaths": 198,
+    "dateStr": "8/28/20",
+    "cases": 9826,
+    "deaths": 201,
     "recovered": 0,
-    "new": 89,
-    "newDeaths": 8
+    "new": 193,
+    "newDeaths": 3
   },
   "Wisconsin": {
-    "dateStr": "8/27/20",
-    "cases": 73138,
-    "deaths": 1111,
+    "dateStr": "8/28/20",
+    "cases": 73981,
+    "deaths": 1113,
     "recovered": 0,
-    "new": 878,
-    "newDeaths": 11
+    "new": 843,
+    "newDeaths": 2
   },
   "Wyoming": {
-    "dateStr": "8/27/20",
-    "cases": 3733,
+    "dateStr": "8/28/20",
+    "cases": 3803,
     "deaths": 37,
     "recovered": 0,
-    "new": 53,
+    "new": 70,
     "newDeaths": 0
   }
 }
