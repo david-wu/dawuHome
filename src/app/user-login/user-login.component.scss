@@ -1,8 +1,15 @@
 @import 'mixins';
 
+.logged-in-container {
+  display: flex;
+  align-items: center;
+  .display-name-container {
+    @include button-xs;
+  }
+  .sign-out-button {
+    @include dark-mini-button;
+  }
+}
 .invisible {
   display: none;
-}
-.sign-out-button {
-  @include dark-button;
 }

@@ -1,4 +1,3 @@
-
 <div [class.invisible]="!(authLoading$ | async)">
   loading..
 </div>
@@ -9,10 +8,12 @@
   ></div>
 
   <ng-container *ngIf="user$ | async as user">
-    <div>{{ user.email }}</div>
-    <div
-      class="sign-out-button"
-      (click)="signOut()"
-    >Sign Out</div>
+    <div class="logged-in-container">
+      <a class="display-name-container">{{ user.displayName }}</a>
+      <div
+        class="sign-out-button"
+        (click)="signOut()"
+      >Sign Out</div>
+    </div>
   </ng-container>
 </div>

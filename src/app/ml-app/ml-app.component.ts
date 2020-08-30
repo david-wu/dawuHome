@@ -6,7 +6,9 @@ import {
   NavigationEnd,
   Params,
 } from '@angular/router';
+import { Store } from '@ngrx/store';
 
+import { MlFilesActions } from '@ml-app/store/index';
 import { FirebaseAuthService } from '@services/index';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 
@@ -18,16 +20,17 @@ import { FileGroup, FileType, File } from '@file-explorer/index';
 export class MlAppComponent {
 
   public filesById: Record<string, File> = {};
-  public filesByLabel: Record<string, File> = {};
   public fileGroup: FileGroup = new FileGroup();
   public filterStr: string = '';
   public selectedFileId: string;
 
   constructor(
+    public store: Store,
     public firebaseAuthService: FirebaseAuthService,
     public router: Router,
     public route: ActivatedRoute,
   ) {
+    this.store.dispatch(MlFilesActions.getUserFiles());
     this.populateFileGroup();
     this.route.queryParams.subscribe((queryParams: Params) => {
       if (queryParams.selectedFileId) {

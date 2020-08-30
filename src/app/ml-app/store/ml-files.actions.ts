@@ -3,6 +3,7 @@ import {
   props,
 } from '@ngrx/store';
 import { LocationData } from '@photo-gallery/models/index';
+import { File } from '@file-explorer/models/index';
 
 export class MlFilesActions {
   public static readonly CATEGORY = '[ML_FILES]';
@@ -12,6 +13,7 @@ export class MlFilesActions {
   );
   public static getUserFilesSuccess = createAction(
     `${MlFilesActions.CATEGORY} GET_USER_FILES_SUCCESS`,
+    props<{ files: File[] }>(),
   );
   public static getUserFilesFailure = createAction(
     `${MlFilesActions.CATEGORY} GET_USER_FILES_FAILURE`,

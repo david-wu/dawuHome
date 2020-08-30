@@ -185,7 +185,10 @@
     @include light-theme;
     @include button-sm;
 }
-
+@mixin dark-mini-button {
+    @include dark-theme;
+    @include button-xs;
+}
 @mixin dark-button {
     @include dark-theme;
     @include button-md;

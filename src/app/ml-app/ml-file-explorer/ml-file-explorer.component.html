@@ -1,0 +1,11 @@
+<dwu-file-explorer
+  [rootFileId]="rootId"
+  [filesById]="filesById$ | async"
+  (filesByIdChange)="fileGroup.filesById = $event"
+  [fuzzFilterString]="filterStr"
+  [closedFileIds]="fileGroup.closedFileIds"
+  (closedFileIdsChange)="fileGroup.setClosedFileIds($event)"
+  [selectedFileIds]="fileGroup.selectedFileIds"
+  (selectedFileIdsChange)="onSelectedFileIdsChange($event)"
+  [perfMode]="true"
+></dwu-file-explorer>

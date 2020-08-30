@@ -3,7 +3,8 @@
   <div class="left-side">
     <dwu-user-login></dwu-user-login>
     <dwu-search-input [(searchText)]="filterStr" [placeholder]="'search..'"></dwu-search-input>
-    <dwu-file-explorer
+    <ml-file-explorer></ml-file-explorer>
+    <!-- <dwu-file-explorer
       [rootFileId]="fileGroup.rootFileId"
       [filesById]="fileGroup.filesById"
       (filesByIdChange)="fileGroup.filesById = $event"
@@ -13,7 +14,7 @@
       [selectedFileIds]="fileGroup.selectedFileIds"
       (selectedFileIdsChange)="onSelectedFileIdsChange($event)"
       [perfMode]="true"
-    ></dwu-file-explorer>
+    ></dwu-file-explorer> -->
   </div>
   <div class="right-side">
     {{ selectedFileId }}

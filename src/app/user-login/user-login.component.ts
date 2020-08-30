@@ -45,12 +45,9 @@ export class UserLoginComponent {
     this.user$ = this.store.pipe(select(getUser$));
     this.authLoading$ = this.store.pipe(select(getAuthLoading$));
     this.canLogin$ = this.store.pipe(select(getCanLogin$));
-
-    this.user$.subscribe((u) => console.log('user$', u));
   }
 
   public ngOnInit() {
-    console.log(this.loginRef, this.loginRef.nativeElement)
     this.store.dispatch(AuthActions.renderLogin({
       nativeEl: this.loginRef.nativeElement
     }));

@@ -4,22 +4,29 @@ import {
   createReducer,
   on,
 } from '@ngrx/store';
+import { keyBy } from 'lodash';
 
 import { MlFilesActions } from './ml-files.actions';
 import {
   initialMlFilesState,
   MlFilesState,
 } from './ml-files.state';
+import { File } from '@file-explorer/models/index';
 
 const reducer: ActionReducer<MlFilesState> = createReducer(
   initialMlFilesState,
-  // on(MlFilesActions.requestUserLocation, (state: MlFilesState, action: MlFilesActions) => {
-  //   console.log('MlFilesState state', state)
-  //   return {
-  //     ...state,
-  //     userLocation: undefined,
-  //   };
-  // }),
+  on(MlFilesActions.getUserFilesSuccess, (state: MlFilesState, action) => {
+    // console.log('MlFilesState state', state)
+    const incomingFilesById = keyBy(action.files, 'id');
+    console.log('incomingFilesById', incomingFilesById)
+    return {
+      ...state,
+      filesById: {
+        ...state.filesById,
+        ...incomingFilesById,
+      },
+    };
+  }),
   // on(MlFilesActions.setUserLocation, (state: MlFilesState, action: any) => {
   //   console.log('setUserLocation action', action, state)
   //   return {

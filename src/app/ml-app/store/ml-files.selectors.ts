@@ -5,7 +5,7 @@ import {
 } from '@ngrx/store';
 
 import { MlFilesState } from './ml-files.state';
-// import { LocationData } from '@ml-app/models/index';
+import { File } from '@file-explorer/models/index';
 
 export const getMlFilesState$: MemoizedSelector<MlFilesState, MlFilesState> = createFeatureSelector(
   'mlFiles',
@@ -19,4 +19,9 @@ export const getMlFilesState$: MemoizedSelector<MlFilesState, MlFilesState> = cr
 export const getLocationPermission$: MemoizedSelector<MlFilesState, boolean> = createSelector(
   getMlFilesState$,
   (state: MlFilesState) => state.locationPermission,
+);
+
+export const getFilesById$: MemoizedSelector<MlFilesState, Record<string, File>> = createSelector(
+  getMlFilesState$,
+  (state: MlFilesState) => state.filesById,
 );
