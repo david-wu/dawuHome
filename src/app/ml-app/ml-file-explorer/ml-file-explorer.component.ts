@@ -83,14 +83,14 @@ export class MlFileExplorerComponent {
   //   return (selectedFileIds.length === 1) && selectedFileIds[0];
   // }
 
-  // public onSelectedFileIdsChange(fileIds) {
-  //   const selectedFileId = Array.from(fileIds)[0];
-  //   if (selectedFileId) {
-  //     this.router.navigate([], {
-  //       relativeTo: this.route,
-  //       queryParams: { selectedFileId },
-  //     });
-  //   }
-  // }
+  public onSelectedFileIdsChange(fileIds) {
+    const selectedFileId = Array.from(fileIds)[0];
+    // if (selectedFileId) {
+    //   this.router.navigate([], {
+    //     relativeTo: this.route,
+    //     queryParams: { selectedFileId },
+    //   });
+    // }
+  }
 
 }
