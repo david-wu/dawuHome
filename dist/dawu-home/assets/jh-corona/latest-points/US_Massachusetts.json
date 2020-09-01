@@ -1,6 +1,6 @@
 {
   "Barnstable": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 1803,
     "deaths": 165,
     "recovered": 0,
@@ -8,7 +8,7 @@
     "newDeaths": 0
   },
   "Berkshire": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 668,
     "deaths": 46,
     "recovered": 0,
@@ -16,15 +16,15 @@
     "newDeaths": 0
   },
   "Bristol": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 9408,
-    "deaths": 657,
+    "deaths": 659,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Dukes": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 42,
     "deaths": 0,
     "recovered": 0,
@@ -32,7 +32,7 @@
     "newDeaths": 0
   },
   "Dukes and Nantucket": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 103,
     "deaths": 2,
     "recovered": 0,
@@ -40,47 +40,47 @@
     "newDeaths": 0
   },
   "Essex": {
-    "dateStr": "8/29/20",
-    "cases": 17952,
-    "deaths": 1234,
+    "dateStr": "8/31/20",
+    "cases": 18007,
+    "deaths": 1239,
     "recovered": 0,
-    "new": 22,
+    "new": 28,
     "newDeaths": 3
   },
   "Franklin": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 411,
-    "deaths": 64,
+    "deaths": 65,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Hampden": {
-    "dateStr": "8/29/20",
-    "cases": 7637,
+    "dateStr": "8/31/20",
+    "cases": 7664,
     "deaths": 746,
     "recovered": 0,
-    "new": 0,
+    "new": 26,
     "newDeaths": 0
   },
   "Hampshire": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 1184,
-    "deaths": 138,
+    "deaths": 140,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 1
+    "newDeaths": 2
   },
   "Middlesex": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 26565,
-    "deaths": 2064,
+    "deaths": 2070,
     "recovered": 0,
     "new": 0,
     "newDeaths": 2
   },
   "Nantucket": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 0,
@@ -88,15 +88,15 @@
     "newDeaths": 0
   },
   "Norfolk": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 10682,
-    "deaths": 1016,
+    "deaths": 1018,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 2
+    "newDeaths": 1
   },
   "Out of MA": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -104,35 +104,35 @@
     "newDeaths": 0
   },
   "Plymouth": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 9288,
-    "deaths": 740,
+    "deaths": 742,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
-  },
-  "Suffolk": {
-    "dateStr": "8/29/20",
-    "cases": 22232,
-    "deaths": 1107,
-    "recovered": 0,
-    "new": 89,
     "newDeaths": 1
   },
+  "Suffolk": {
+    "dateStr": "8/31/20",
+    "cases": 22354,
+    "deaths": 1109,
+    "recovered": 0,
+    "new": 69,
+    "newDeaths": 2
+  },
   "Unassigned": {
-    "dateStr": "8/29/20",
-    "cases": 10047,
+    "dateStr": "8/31/20",
+    "cases": 10075,
     "deaths": 603,
     "recovered": 0,
-    "new": 25,
+    "new": 6,
     "newDeaths": 0
   },
   "Worcester": {
-    "dateStr": "8/29/20",
+    "dateStr": "8/31/20",
     "cases": 13686,
-    "deaths": 1053,
+    "deaths": 1055,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 3
+    "newDeaths": 0
   }
 }
