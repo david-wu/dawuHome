@@ -418,15 +418,15 @@
   {
     "dateStr": "3/14/20",
     "cases": 25,
-    "deaths": 0,
+    "deaths": 1,
     "recovered": 0,
     "new": 25,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   {
     "dateStr": "3/15/20",
     "cases": 25,
-    "deaths": 0,
+    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -434,511 +434,511 @@
   {
     "dateStr": "3/16/20",
     "cases": 25,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "3/17/20",
-    "cases": 25,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "3/18/20",
-    "cases": 25,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "3/19/20",
-    "cases": 25,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 4
-  },
-  {
-    "dateStr": "3/20/20",
-    "cases": 449,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 424,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "3/21/20",
-    "cases": 449,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "3/22/20",
-    "cases": 449,
-    "deaths": 38,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 34
-  },
-  {
-    "dateStr": "3/23/20",
-    "cases": 449,
-    "deaths": 38,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "3/24/20",
-    "cases": 449,
-    "deaths": 39,
+    "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 1
   },
   {
-    "dateStr": "3/25/20",
-    "cases": 449,
-    "deaths": 39,
+    "dateStr": "3/17/20",
+    "cases": 25,
+    "deaths": 5,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 3
   },
   {
-    "dateStr": "3/26/20",
+    "dateStr": "3/18/20",
+    "cases": 25,
+    "deaths": 9,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 4
+  },
+  {
+    "dateStr": "3/19/20",
+    "cases": 25,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 2
+  },
+  {
+    "dateStr": "3/20/20",
     "cases": 449,
-    "deaths": 45,
+    "deaths": 14,
+    "recovered": 0,
+    "new": 424,
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "3/21/20",
+    "cases": 449,
+    "deaths": 20,
     "recovered": 0,
     "new": 0,
     "newDeaths": 6
   },
   {
-    "dateStr": "3/27/20",
+    "dateStr": "3/22/20",
     "cases": 449,
-    "deaths": 87,
+    "deaths": 23,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 42
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "3/23/20",
+    "cases": 449,
+    "deaths": 36,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 13
+  },
+  {
+    "dateStr": "3/24/20",
+    "cases": 449,
+    "deaths": 48,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 12
+  },
+  {
+    "dateStr": "3/25/20",
+    "cases": 449,
+    "deaths": 67,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 19
+  },
+  {
+    "dateStr": "3/26/20",
+    "cases": 449,
+    "deaths": 108,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 41
+  },
+  {
+    "dateStr": "3/27/20",
+    "cases": 449,
+    "deaths": 148,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 40
   },
   {
     "dateStr": "3/28/20",
     "cases": 449,
-    "deaths": 109,
+    "deaths": 199,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 22
+    "newDeaths": 51
   },
   {
     "dateStr": "3/29/20",
     "cases": 449,
-    "deaths": 159,
+    "deaths": 263,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 50
+    "newDeaths": 64
   },
   {
     "dateStr": "3/30/20",
     "cases": 449,
-    "deaths": 298,
+    "deaths": 348,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 139
+    "newDeaths": 85
   },
   {
     "dateStr": "3/31/20",
     "cases": 449,
-    "deaths": 468,
+    "deaths": 433,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 85
+  },
+  {
+    "dateStr": "4/1/20",
+    "cases": 449,
+    "deaths": 534,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 101
+  },
+  {
+    "dateStr": "4/2/20",
+    "cases": 449,
+    "deaths": 700,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 166
+  },
+  {
+    "dateStr": "4/3/20",
+    "cases": 449,
+    "deaths": 868,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 168
+  },
+  {
+    "dateStr": "4/4/20",
+    "cases": 449,
+    "deaths": 1054,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 186
+  },
+  {
+    "dateStr": "4/5/20",
+    "cases": 449,
+    "deaths": 1228,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 174
+  },
+  {
+    "dateStr": "4/6/20",
+    "cases": 449,
+    "deaths": 1452,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 224
+  },
+  {
+    "dateStr": "4/7/20",
+    "cases": 449,
+    "deaths": 1667,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 215
+  },
+  {
+    "dateStr": "4/8/20",
+    "cases": 449,
+    "deaths": 1866,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 199
+  },
+  {
+    "dateStr": "4/9/20",
+    "cases": 449,
+    "deaths": 2057,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 191
+  },
+  {
+    "dateStr": "4/10/20",
+    "cases": 449,
+    "deaths": 2236,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 179
+  },
+  {
+    "dateStr": "4/11/20",
+    "cases": 449,
+    "deaths": 2406,
     "recovered": 0,
     "new": 0,
     "newDeaths": 170
   },
   {
-    "dateStr": "4/1/20",
-    "cases": 449,
-    "deaths": 565,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 97
-  },
-  {
-    "dateStr": "4/2/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 110
-  },
-  {
-    "dateStr": "4/3/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/4/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/5/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/6/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/7/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/8/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/9/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/10/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
-    "dateStr": "4/11/20",
-    "cases": 449,
-    "deaths": 675,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  {
     "dateStr": "4/12/20",
     "cases": 449,
-    "deaths": 675,
+    "deaths": 2581,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 175
   },
   {
     "dateStr": "4/13/20",
     "cases": 449,
-    "deaths": 675,
+    "deaths": 2766,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 185
   },
   {
     "dateStr": "4/14/20",
     "cases": 449,
-    "deaths": 675,
+    "deaths": 2908,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 142
   },
   {
     "dateStr": "4/15/20",
     "cases": 449,
-    "deaths": 675,
+    "deaths": 3014,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 106
   },
   {
     "dateStr": "4/16/20",
     "cases": 449,
-    "deaths": 675,
+    "deaths": 3150,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 136
   },
   {
     "dateStr": "4/17/20",
     "cases": 449,
-    "deaths": 675,
+    "deaths": 3243,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 93
   },
   {
     "dateStr": "4/18/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3358,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 384
+    "newDeaths": 115
   },
   {
     "dateStr": "4/19/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3447,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 89
   },
   {
     "dateStr": "4/20/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3541,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 94
   },
   {
     "dateStr": "4/21/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3635,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 94
   },
   {
     "dateStr": "4/22/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3716,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 81
   },
   {
     "dateStr": "4/23/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3795,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 79
   },
   {
     "dateStr": "4/24/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3853,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 58
   },
   {
     "dateStr": "4/25/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3906,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 53
   },
   {
     "dateStr": "4/26/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 3959,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 53
   },
   {
     "dateStr": "4/27/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4005,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 46
   },
   {
     "dateStr": "4/28/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4035,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 30
   },
   {
     "dateStr": "4/29/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4070,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 35
   },
   {
     "dateStr": "4/30/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4100,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 30
   },
   {
     "dateStr": "5/1/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4138,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 38
   },
   {
     "dateStr": "5/2/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4170,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 32
   },
   {
     "dateStr": "5/3/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4199,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 29
   },
   {
     "dateStr": "5/4/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4234,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 35
   },
   {
     "dateStr": "5/5/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4250,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 16
   },
   {
     "dateStr": "5/6/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4278,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 28
   },
   {
     "dateStr": "5/7/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4295,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 17
   },
   {
     "dateStr": "5/8/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4317,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 22
   },
   {
     "dateStr": "5/9/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4326,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 9
   },
   {
     "dateStr": "5/10/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4338,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 12
   },
   {
     "dateStr": "5/11/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4352,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 14
   },
   {
     "dateStr": "5/12/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4364,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 12
   },
   {
     "dateStr": "5/13/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4372,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 8
   },
   {
     "dateStr": "5/14/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4389,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 17
   },
   {
     "dateStr": "5/15/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4401,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 12
   },
   {
     "dateStr": "5/16/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4419,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 18
   },
   {
     "dateStr": "5/17/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 10
   },
   {
     "dateStr": "5/18/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -946,7 +946,7 @@
   {
     "dateStr": "5/19/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -954,7 +954,7 @@
   {
     "dateStr": "5/20/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -962,7 +962,7 @@
   {
     "dateStr": "5/21/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -970,7 +970,7 @@
   {
     "dateStr": "5/22/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -978,7 +978,7 @@
   {
     "dateStr": "5/23/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -986,7 +986,7 @@
   {
     "dateStr": "5/24/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -994,7 +994,7 @@
   {
     "dateStr": "5/25/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1002,7 +1002,7 @@
   {
     "dateStr": "5/26/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1010,7 +1010,7 @@
   {
     "dateStr": "5/27/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1018,7 +1018,7 @@
   {
     "dateStr": "5/28/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1026,7 +1026,7 @@
   {
     "dateStr": "5/29/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1034,7 +1034,7 @@
   {
     "dateStr": "5/30/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1042,7 +1042,7 @@
   {
     "dateStr": "5/31/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1050,7 +1050,7 @@
   {
     "dateStr": "6/1/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1058,7 +1058,7 @@
   {
     "dateStr": "6/2/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1066,7 +1066,7 @@
   {
     "dateStr": "6/3/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1074,7 +1074,7 @@
   {
     "dateStr": "6/4/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1082,7 +1082,7 @@
   {
     "dateStr": "6/5/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1090,7 +1090,7 @@
   {
     "dateStr": "6/6/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1098,7 +1098,7 @@
   {
     "dateStr": "6/7/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1106,7 +1106,7 @@
   {
     "dateStr": "6/8/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1114,7 +1114,7 @@
   {
     "dateStr": "6/9/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1122,7 +1122,7 @@
   {
     "dateStr": "6/10/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1130,7 +1130,7 @@
   {
     "dateStr": "6/11/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1138,7 +1138,7 @@
   {
     "dateStr": "6/12/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1146,7 +1146,7 @@
   {
     "dateStr": "6/13/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1154,7 +1154,7 @@
   {
     "dateStr": "6/14/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1162,7 +1162,7 @@
   {
     "dateStr": "6/15/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1170,7 +1170,7 @@
   {
     "dateStr": "6/16/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1178,7 +1178,7 @@
   {
     "dateStr": "6/17/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1186,7 +1186,7 @@
   {
     "dateStr": "6/18/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1194,7 +1194,7 @@
   {
     "dateStr": "6/19/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1202,7 +1202,7 @@
   {
     "dateStr": "6/20/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1210,7 +1210,7 @@
   {
     "dateStr": "6/21/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1218,7 +1218,7 @@
   {
     "dateStr": "6/22/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1226,7 +1226,7 @@
   {
     "dateStr": "6/23/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1234,7 +1234,7 @@
   {
     "dateStr": "6/24/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1242,7 +1242,7 @@
   {
     "dateStr": "6/25/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1250,7 +1250,7 @@
   {
     "dateStr": "6/26/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1258,7 +1258,7 @@
   {
     "dateStr": "6/27/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1266,7 +1266,7 @@
   {
     "dateStr": "6/28/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1274,7 +1274,7 @@
   {
     "dateStr": "6/29/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1282,7 +1282,7 @@
   {
     "dateStr": "6/30/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1290,7 +1290,7 @@
   {
     "dateStr": "7/1/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1298,7 +1298,7 @@
   {
     "dateStr": "7/2/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1306,7 +1306,7 @@
   {
     "dateStr": "7/3/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1314,7 +1314,7 @@
   {
     "dateStr": "7/4/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1322,7 +1322,7 @@
   {
     "dateStr": "7/5/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1330,7 +1330,7 @@
   {
     "dateStr": "7/6/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1338,7 +1338,7 @@
   {
     "dateStr": "7/7/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1346,7 +1346,7 @@
   {
     "dateStr": "7/8/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1354,7 +1354,7 @@
   {
     "dateStr": "7/9/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1362,7 +1362,7 @@
   {
     "dateStr": "7/10/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1370,7 +1370,7 @@
   {
     "dateStr": "7/11/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1378,7 +1378,7 @@
   {
     "dateStr": "7/12/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1386,7 +1386,7 @@
   {
     "dateStr": "7/13/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1394,7 +1394,7 @@
   {
     "dateStr": "7/14/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1402,7 +1402,7 @@
   {
     "dateStr": "7/15/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1410,7 +1410,7 @@
   {
     "dateStr": "7/16/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1418,7 +1418,7 @@
   {
     "dateStr": "7/17/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1426,7 +1426,7 @@
   {
     "dateStr": "7/18/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1434,7 +1434,7 @@
   {
     "dateStr": "7/19/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1442,7 +1442,7 @@
   {
     "dateStr": "7/20/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1450,7 +1450,7 @@
   {
     "dateStr": "7/21/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1458,7 +1458,7 @@
   {
     "dateStr": "7/22/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1466,7 +1466,7 @@
   {
     "dateStr": "7/23/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1474,7 +1474,7 @@
   {
     "dateStr": "7/24/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1482,7 +1482,7 @@
   {
     "dateStr": "7/25/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1490,7 +1490,7 @@
   {
     "dateStr": "7/26/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1498,7 +1498,7 @@
   {
     "dateStr": "7/27/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1506,7 +1506,7 @@
   {
     "dateStr": "7/28/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1514,7 +1514,7 @@
   {
     "dateStr": "7/29/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1522,7 +1522,7 @@
   {
     "dateStr": "7/30/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1530,7 +1530,7 @@
   {
     "dateStr": "7/31/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1538,7 +1538,7 @@
   {
     "dateStr": "8/1/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1546,7 +1546,7 @@
   {
     "dateStr": "8/2/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1554,7 +1554,7 @@
   {
     "dateStr": "8/3/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1562,7 +1562,7 @@
   {
     "dateStr": "8/4/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1570,7 +1570,7 @@
   {
     "dateStr": "8/5/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1578,7 +1578,7 @@
   {
     "dateStr": "8/6/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1586,7 +1586,7 @@
   {
     "dateStr": "8/7/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1594,7 +1594,7 @@
   {
     "dateStr": "8/8/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1602,7 +1602,7 @@
   {
     "dateStr": "8/9/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1610,7 +1610,7 @@
   {
     "dateStr": "8/10/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1618,7 +1618,7 @@
   {
     "dateStr": "8/11/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1626,7 +1626,7 @@
   {
     "dateStr": "8/12/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1634,7 +1634,7 @@
   {
     "dateStr": "8/13/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1642,7 +1642,7 @@
   {
     "dateStr": "8/14/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1650,7 +1650,7 @@
   {
     "dateStr": "8/15/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1658,7 +1658,7 @@
   {
     "dateStr": "8/16/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1666,7 +1666,7 @@
   {
     "dateStr": "8/17/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1674,7 +1674,7 @@
   {
     "dateStr": "8/18/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1682,7 +1682,7 @@
   {
     "dateStr": "8/19/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1690,7 +1690,7 @@
   {
     "dateStr": "8/20/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1698,7 +1698,7 @@
   {
     "dateStr": "8/21/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1706,7 +1706,7 @@
   {
     "dateStr": "8/22/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1714,7 +1714,7 @@
   {
     "dateStr": "8/23/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1722,7 +1722,7 @@
   {
     "dateStr": "8/24/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1730,7 +1730,7 @@
   {
     "dateStr": "8/25/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1738,7 +1738,7 @@
   {
     "dateStr": "8/26/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1746,7 +1746,7 @@
   {
     "dateStr": "8/27/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1754,7 +1754,7 @@
   {
     "dateStr": "8/28/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1762,7 +1762,7 @@
   {
     "dateStr": "8/29/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1770,7 +1770,7 @@
   {
     "dateStr": "8/30/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -1778,7 +1778,7 @@
   {
     "dateStr": "8/31/20",
     "cases": 449,
-    "deaths": 1059,
+    "deaths": 4429,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
