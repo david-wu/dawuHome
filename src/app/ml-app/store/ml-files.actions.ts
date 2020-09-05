@@ -17,16 +17,20 @@ export class MlFilesActions {
   );
   public static getUserFilesFailure = createAction(
     `${MlFilesActions.CATEGORY} GET_USER_FILES_FAILURE`,
+    props<{ error: any }>(),
   );
 
   public static createUserFiles = createAction(
     `${MlFilesActions.CATEGORY} CREATE_USER_FILES`,
+    props<{ files: File[] }>(),
   );
   public static createUserFilesSuccess = createAction(
     `${MlFilesActions.CATEGORY} CREATE_USER_FILES_SUCCESS`,
+    props<{ files: File[] }>(),
   );
   public static createUserFilesFailure = createAction(
     `${MlFilesActions.CATEGORY} CREATE_USER_FILES_FAILURE`,
+    props<{ error: any }>(),
   );
 
   public static editUserFiles = createAction(

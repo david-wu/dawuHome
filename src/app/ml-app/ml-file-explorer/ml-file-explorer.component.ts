@@ -32,7 +32,7 @@ export class MlFileExplorerComponent {
   public selectedFileId: string;
 
   public filesById$: Observable<Record<string, File>>;
-  public rootId: string = undefined;
+  public rootId: string = 'ROOT';
 
   constructor(
     public store: Store,

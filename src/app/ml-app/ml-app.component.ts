@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { keyBy } from 'lodash';
+import {
+  keyBy,
+  values,
+} from 'lodash';
 import {
   ActivatedRoute,
   Router,
@@ -32,6 +35,11 @@ export class MlAppComponent {
   ) {
     this.store.dispatch(MlFilesActions.getUserFiles());
     this.populateFileGroup();
+
+
+    this.store.dispatch(MlFilesActions.createUserFiles({
+      files: values(this.fileGroup.filesById),
+    }))
     this.route.queryParams.subscribe((queryParams: Params) => {
       if (queryParams.selectedFileId) {
         this.fileGroup.setSelectedFileIds(new Set([queryParams.selectedFileId]));

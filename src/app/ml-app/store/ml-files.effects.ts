@@ -10,11 +10,13 @@ import {
   select,
 } from '@ngrx/store';
 import {
+  of,
   Observable,
   from,
 } from 'rxjs';
 import {
   map,
+  catchError,
   switchMap,
   filter,
   tap,
@@ -63,12 +65,53 @@ export class MlFilesEffects {
                   files: files
                 });
               }),
+              catchError((error: any) => of(MlFilesActions.getUserFilesFailure({ error }))),
             )
           })
         )
       }),
     );
   });
+
+  public createUserFiles$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(MlFilesActions.createUserFiles),
+      switchMap((action: any) => {
+        const files: File[] = action.files;
+
+        return this.store$.pipe(
+          select(getUser$),
+          filter(Boolean),
+          switchMap((user: User) => {
+            const fs = this.firestoreService.firestore;
+            const batch = fs.batch();
+            const filesRef = fs.collection(`users/${user.uid}/files`);
+
+            files.forEach((file: File) => {
+              filesRef.doc(file.id).set({
+                ...file
+              });
+            });
+            const commitP = batch.commit();
+            // commitP.then((d) => {
+            //   console.log('committed', d);
+            // });
+
+            return from(commitP).pipe(
+              map((fileRefs: any) => {
+                return MlFilesActions.createUserFilesSuccess({
+                  files: files
+                });
+              }),
+              catchError((error: any) => of(MlFilesActions.createUserFilesFailure({ error }))),
+            )
+          })
+        )
+      }),
+    );
+  });
+
+
   //       // get auth user from parent store
 
   //       // const userDoc = this.firestore.doc(`users/${user.uid}/uploads/${fileId}`);
