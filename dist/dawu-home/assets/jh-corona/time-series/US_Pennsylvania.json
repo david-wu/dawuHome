@@ -1881,10 +1881,10 @@
   },
   {
     "dateStr": "9/13/20",
-    "cases": 148635,
+    "cases": 149184,
     "deaths": 7829,
     "recovered": 0,
-    "new": 0,
+    "new": 549,
     "newDeaths": 0
   },
   {
@@ -1892,7 +1892,23 @@
     "cases": 150000,
     "deaths": 7855,
     "recovered": 0,
-    "new": 1365,
+    "new": 816,
     "newDeaths": 26
+  },
+  {
+    "dateStr": "9/15/20",
+    "cases": 151044,
+    "deaths": 7860,
+    "recovered": 0,
+    "new": 1044,
+    "newDeaths": 5
+  },
+  {
+    "dateStr": "9/16/20",
+    "cases": 151850,
+    "deaths": 7882,
+    "recovered": 0,
+    "new": 806,
+    "newDeaths": 22
   }
 ]

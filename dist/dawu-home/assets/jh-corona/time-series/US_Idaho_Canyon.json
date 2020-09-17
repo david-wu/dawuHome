@@ -1889,10 +1889,26 @@
   },
   {
     "dateStr": "9/14/20",
-    "cases": 7687,
-    "deaths": 90,
+    "cases": 7718,
+    "deaths": 93,
     "recovered": 0,
-    "new": 0,
+    "new": 31,
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "9/15/20",
+    "cases": 7729,
+    "deaths": 93,
+    "recovered": 0,
+    "new": 11,
     "newDeaths": 0
+  },
+  {
+    "dateStr": "9/16/20",
+    "cases": 7775,
+    "deaths": 96,
+    "recovered": 0,
+    "new": 46,
+    "newDeaths": 3
   }
 ]

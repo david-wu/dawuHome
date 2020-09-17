@@ -1881,18 +1881,34 @@
   },
   {
     "dateStr": "9/13/20",
-    "cases": 6519573,
+    "cases": 6520122,
     "deaths": 194071,
     "recovered": 2451406,
-    "new": 34450,
+    "new": 34999,
     "newDeaths": 378
   },
   {
     "dateStr": "9/14/20",
-    "cases": 6553399,
-    "deaths": 194489,
+    "cases": 6553652,
+    "deaths": 194493,
     "recovered": 2474570,
-    "new": 33826,
-    "newDeaths": 418
+    "new": 33530,
+    "newDeaths": 422
+  },
+  {
+    "dateStr": "9/15/20",
+    "cases": 6593269,
+    "deaths": 195786,
+    "recovered": 2495127,
+    "new": 39617,
+    "newDeaths": 1293
+  },
+  {
+    "dateStr": "9/16/20",
+    "cases": 6630051,
+    "deaths": 196763,
+    "recovered": 2525573,
+    "new": 36782,
+    "newDeaths": 977
   }
 ]

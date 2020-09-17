@@ -1,22 +1,22 @@
 {
   "Hawaii": {
-    "dateStr": "9/14/20",
-    "cases": 594,
+    "dateStr": "9/16/20",
+    "cases": 603,
     "deaths": 3,
     "recovered": 0,
-    "new": 7,
+    "new": 4,
     "newDeaths": 0
   },
   "Honolulu": {
-    "dateStr": "9/14/20",
-    "cases": 9723,
-    "deaths": 86,
+    "dateStr": "9/16/20",
+    "cases": 9879,
+    "deaths": 90,
     "recovered": 0,
-    "new": 69,
-    "newDeaths": 0
+    "new": 97,
+    "newDeaths": 3
   },
   "Kalawao": {
-    "dateStr": "9/14/20",
+    "dateStr": "9/16/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Kauai": {
-    "dateStr": "9/14/20",
+    "dateStr": "9/16/20",
     "cases": 58,
     "deaths": 0,
     "recovered": 0,
@@ -32,23 +32,23 @@
     "newDeaths": 0
   },
   "Maui": {
-    "dateStr": "9/14/20",
+    "dateStr": "9/16/20",
     "cases": 378,
     "deaths": 9,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Out of HI": {
-    "dateStr": "9/14/20",
-    "cases": 26,
-    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Out of HI": {
+    "dateStr": "9/16/20",
+    "cases": 28,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Unassigned": {
-    "dateStr": "9/14/20",
+    "dateStr": "9/16/20",
     "cases": 21,
     "deaths": 1,
     "recovered": 0,
