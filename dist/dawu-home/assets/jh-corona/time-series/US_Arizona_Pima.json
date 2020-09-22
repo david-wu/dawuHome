@@ -1929,10 +1929,18 @@
   },
   {
     "dateStr": "9/19/20",
-    "cases": 24313,
+    "cases": 24511,
     "deaths": 613,
     "recovered": 0,
-    "new": 0,
+    "new": 198,
     "newDeaths": 0
+  },
+  {
+    "dateStr": "9/20/20",
+    "cases": 24610,
+    "deaths": 615,
+    "recovered": 0,
+    "new": 99,
+    "newDeaths": 2
   }
 ]
