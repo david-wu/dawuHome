@@ -1,14 +1,14 @@
 {
   "Alameda": {
-    "dateStr": "9/20/20",
-    "cases": 20558,
-    "deaths": 374,
+    "dateStr": "9/22/20",
+    "cases": 20748,
+    "deaths": 390,
     "recovered": 0,
-    "new": 64,
-    "newDeaths": 0
+    "new": 107,
+    "newDeaths": 16
   },
   "Alpine": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -16,7 +16,7 @@
     "newDeaths": 0
   },
   "Amador": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 286,
     "deaths": 16,
     "recovered": 0,
@@ -24,15 +24,15 @@
     "newDeaths": 0
   },
   "Butte": {
-    "dateStr": "9/20/20",
-    "cases": 2748,
-    "deaths": 35,
+    "dateStr": "9/22/20",
+    "cases": 2769,
+    "deaths": 40,
     "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
+    "new": 5,
+    "newDeaths": 5
   },
   "Calaveras": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 311,
     "deaths": 14,
     "recovered": 0,
@@ -40,71 +40,71 @@
     "newDeaths": 0
   },
   "Colusa": {
-    "dateStr": "9/20/20",
-    "cases": 509,
+    "dateStr": "9/22/20",
+    "cases": 519,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 9,
     "newDeaths": 0
   },
   "Contra Costa": {
-    "dateStr": "9/20/20",
-    "cases": 15837,
-    "deaths": 199,
+    "dateStr": "9/22/20",
+    "cases": 16056,
+    "deaths": 201,
     "recovered": 0,
-    "new": 103,
+    "new": 98,
     "newDeaths": 0
   },
   "Del Norte": {
-    "dateStr": "9/20/20",
-    "cases": 136,
+    "dateStr": "9/22/20",
+    "cases": 138,
     "deaths": 1,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "El Dorado": {
-    "dateStr": "9/20/20",
-    "cases": 1068,
+    "dateStr": "9/22/20",
+    "cases": 1074,
     "deaths": 4,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Fresno": {
+    "dateStr": "9/22/20",
+    "cases": 27843,
+    "deaths": 362,
+    "recovered": 0,
+    "new": 74,
+    "newDeaths": 7
+  },
+  "Glenn": {
+    "dateStr": "9/22/20",
+    "cases": 563,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 0
+  },
+  "Humboldt": {
+    "dateStr": "9/22/20",
+    "cases": 489,
+    "deaths": 6,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
-  "Fresno": {
-    "dateStr": "9/20/20",
-    "cases": 27668,
-    "deaths": 355,
-    "recovered": 0,
-    "new": 108,
-    "newDeaths": 0
-  },
-  "Glenn": {
-    "dateStr": "9/20/20",
-    "cases": 550,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Humboldt": {
-    "dateStr": "9/20/20",
-    "cases": 482,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Imperial": {
-    "dateStr": "9/20/20",
-    "cases": 11558,
+    "dateStr": "9/22/20",
+    "cases": 11606,
     "deaths": 314,
     "recovered": 0,
-    "new": 0,
+    "new": 23,
     "newDeaths": 0
   },
   "Inyo": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 187,
     "deaths": 14,
     "recovered": 0,
@@ -112,31 +112,31 @@
     "newDeaths": 0
   },
   "Kern": {
-    "dateStr": "9/20/20",
-    "cases": 31379,
+    "dateStr": "9/22/20",
+    "cases": 31572,
     "deaths": 354,
     "recovered": 0,
-    "new": 118,
-    "newDeaths": 4
+    "new": 63,
+    "newDeaths": 0
   },
   "Kings": {
-    "dateStr": "9/20/20",
-    "cases": 7283,
+    "dateStr": "9/22/20",
+    "cases": 7534,
     "deaths": 77,
     "recovered": 0,
-    "new": 15,
+    "new": 104,
     "newDeaths": 0
   },
   "Lake": {
-    "dateStr": "9/20/20",
-    "cases": 465,
-    "deaths": 10,
+    "dateStr": "9/22/20",
+    "cases": 512,
+    "deaths": 11,
     "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
+    "new": 20,
+    "newDeaths": 1
   },
   "Lassen": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 747,
     "deaths": 0,
     "recovered": 0,
@@ -144,31 +144,31 @@
     "newDeaths": 0
   },
   "Los Angeles": {
-    "dateStr": "9/20/20",
-    "cases": 260797,
-    "deaths": 6353,
+    "dateStr": "9/22/20",
+    "cases": 262133,
+    "deaths": 6401,
     "recovered": 0,
-    "new": 980,
-    "newDeaths": 23
+    "new": 687,
+    "newDeaths": 35
   },
   "Madera": {
-    "dateStr": "9/20/20",
-    "cases": 4296,
-    "deaths": 58,
+    "dateStr": "9/22/20",
+    "cases": 4424,
+    "deaths": 65,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 33,
+    "newDeaths": 3
   },
   "Marin": {
-    "dateStr": "9/20/20",
-    "cases": 6557,
-    "deaths": 112,
+    "dateStr": "9/22/20",
+    "cases": 6613,
+    "deaths": 113,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 22,
+    "newDeaths": 1
   },
   "Mariposa": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 75,
     "deaths": 2,
     "recovered": 0,
@@ -176,71 +176,71 @@
     "newDeaths": 0
   },
   "Mendocino": {
-    "dateStr": "9/20/20",
-    "cases": 849,
+    "dateStr": "9/22/20",
+    "cases": 875,
     "deaths": 18,
     "recovered": 0,
-    "new": 16,
+    "new": 24,
     "newDeaths": 0
   },
   "Merced": {
-    "dateStr": "9/20/20",
-    "cases": 8750,
-    "deaths": 134,
+    "dateStr": "9/22/20",
+    "cases": 8820,
+    "deaths": 137,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 70,
+    "newDeaths": 3
   },
   "Modoc": {
-    "dateStr": "9/20/20",
-    "cases": 24,
+    "dateStr": "9/22/20",
+    "cases": 25,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Mono": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 165,
     "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Monterey": {
-    "dateStr": "9/20/20",
-    "cases": 9467,
-    "deaths": 67,
-    "recovered": 0,
-    "new": 107,
-    "newDeaths": 1
-  },
-  "Napa": {
-    "dateStr": "9/20/20",
-    "cases": 1614,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Nevada": {
-    "dateStr": "9/20/20",
-    "cases": 506,
-    "deaths": 6,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Orange": {
-    "dateStr": "9/20/20",
-    "cases": 52063,
-    "deaths": 1128,
+  "Monterey": {
+    "dateStr": "9/22/20",
+    "cases": 9568,
+    "deaths": 69,
     "recovered": 0,
-    "new": 190,
-    "newDeaths": 1
+    "new": 18,
+    "newDeaths": 2
+  },
+  "Napa": {
+    "dateStr": "9/22/20",
+    "cases": 1641,
+    "deaths": 13,
+    "recovered": 0,
+    "new": 15,
+    "newDeaths": 0
+  },
+  "Nevada": {
+    "dateStr": "9/22/20",
+    "cases": 524,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 0
+  },
+  "Orange": {
+    "dateStr": "9/22/20",
+    "cases": 52382,
+    "deaths": 1150,
+    "recovered": 0,
+    "new": 181,
+    "newDeaths": 22
   },
   "Out of CA": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -248,127 +248,127 @@
     "newDeaths": 0
   },
   "Placer": {
-    "dateStr": "9/20/20",
-    "cases": 3466,
-    "deaths": 41,
+    "dateStr": "9/22/20",
+    "cases": 3507,
+    "deaths": 42,
     "recovered": 0,
-    "new": 38,
-    "newDeaths": 0
+    "new": 19,
+    "newDeaths": 1
   },
   "Plumas": {
-    "dateStr": "9/20/20",
-    "cases": 49,
+    "dateStr": "9/22/20",
+    "cases": 50,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Riverside": {
-    "dateStr": "9/20/20",
-    "cases": 56681,
-    "deaths": 1153,
+    "dateStr": "9/22/20",
+    "cases": 57482,
+    "deaths": 1172,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 63,
+    "newDeaths": 10
   },
   "Sacramento": {
-    "dateStr": "9/20/20",
-    "cases": 21297,
-    "deaths": 375,
+    "dateStr": "9/22/20",
+    "cases": 21628,
+    "deaths": 383,
     "recovered": 0,
-    "new": 126,
+    "new": 0,
     "newDeaths": 0
   },
   "San Benito": {
-    "dateStr": "9/20/20",
-    "cases": 1301,
+    "dateStr": "9/22/20",
+    "cases": 1312,
     "deaths": 11,
     "recovered": 0,
-    "new": 11,
+    "new": 2,
     "newDeaths": 0
   },
   "San Bernardino": {
-    "dateStr": "9/20/20",
-    "cases": 52471,
+    "dateStr": "9/22/20",
+    "cases": 52873,
     "deaths": 908,
     "recovered": 0,
-    "new": 184,
+    "new": 224,
     "newDeaths": 0
   },
   "San Diego": {
-    "dateStr": "9/20/20",
-    "cases": 44577,
+    "dateStr": "9/22/20",
+    "cases": 45147,
     "deaths": 796,
     "recovered": 0,
-    "new": 284,
+    "new": 222,
     "newDeaths": 0
   },
   "San Francisco": {
-    "dateStr": "9/20/20",
-    "cases": 10745,
+    "dateStr": "9/22/20",
+    "cases": 10865,
     "deaths": 99,
     "recovered": 0,
-    "new": 49,
-    "newDeaths": 2
-  },
-  "San Joaquin": {
-    "dateStr": "9/20/20",
-    "cases": 19793,
-    "deaths": 414,
-    "recovered": 0,
-    "new": 0,
+    "new": 58,
     "newDeaths": 0
   },
+  "San Joaquin": {
+    "dateStr": "9/22/20",
+    "cases": 20019,
+    "deaths": 421,
+    "recovered": 0,
+    "new": 178,
+    "newDeaths": 6
+  },
   "San Luis Obispo": {
-    "dateStr": "9/20/20",
-    "cases": 3369,
+    "dateStr": "9/22/20",
+    "cases": 3438,
     "deaths": 27,
     "recovered": 0,
-    "new": 9,
+    "new": 45,
     "newDeaths": 0
   },
   "San Mateo": {
-    "dateStr": "9/20/20",
-    "cases": 9522,
-    "deaths": 143,
+    "dateStr": "9/22/20",
+    "cases": 9625,
+    "deaths": 144,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 27,
+    "newDeaths": 1
   },
   "Santa Barbara": {
-    "dateStr": "9/20/20",
-    "cases": 8862,
+    "dateStr": "9/22/20",
+    "cases": 8930,
     "deaths": 110,
     "recovered": 0,
-    "new": 16,
+    "new": 50,
     "newDeaths": 0
   },
   "Santa Clara": {
-    "dateStr": "9/20/20",
-    "cases": 20410,
-    "deaths": 296,
+    "dateStr": "9/22/20",
+    "cases": 20587,
+    "deaths": 299,
     "recovered": 0,
-    "new": 158,
-    "newDeaths": 0
+    "new": 76,
+    "newDeaths": 2
   },
   "Santa Cruz": {
-    "dateStr": "9/20/20",
-    "cases": 2218,
+    "dateStr": "9/22/20",
+    "cases": 2276,
     "deaths": 8,
     "recovered": 0,
-    "new": 29,
+    "new": 58,
     "newDeaths": 0
   },
   "Shasta": {
-    "dateStr": "9/20/20",
-    "cases": 687,
+    "dateStr": "9/22/20",
+    "cases": 724,
     "deaths": 14,
     "recovered": 0,
-    "new": 19,
+    "new": 15,
     "newDeaths": 0
   },
   "Sierra": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 6,
     "deaths": 0,
     "recovered": 0,
@@ -376,55 +376,55 @@
     "newDeaths": 0
   },
   "Siskiyou": {
-    "dateStr": "9/20/20",
-    "cases": 161,
+    "dateStr": "9/22/20",
+    "cases": 163,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Solano": {
-    "dateStr": "9/20/20",
-    "cases": 6085,
-    "deaths": 55,
+    "dateStr": "9/22/20",
+    "cases": 6194,
+    "deaths": 57,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 19,
+    "newDeaths": 2
   },
   "Sonoma": {
-    "dateStr": "9/20/20",
-    "cases": 7060,
-    "deaths": 114,
+    "dateStr": "9/22/20",
+    "cases": 7160,
+    "deaths": 120,
     "recovered": 0,
-    "new": 62,
-    "newDeaths": 0
+    "new": 48,
+    "newDeaths": 6
   },
   "Stanislaus": {
-    "dateStr": "9/20/20",
-    "cases": 16319,
-    "deaths": 335,
+    "dateStr": "9/22/20",
+    "cases": 16398,
+    "deaths": 339,
     "recovered": 0,
-    "new": 30,
-    "newDeaths": 3
+    "new": 47,
+    "newDeaths": 2
   },
   "Sutter": {
-    "dateStr": "9/20/20",
-    "cases": 1642,
+    "dateStr": "9/22/20",
+    "cases": 1679,
     "deaths": 10,
     "recovered": 0,
-    "new": 0,
+    "new": 37,
     "newDeaths": 0
   },
   "Tehama": {
-    "dateStr": "9/20/20",
-    "cases": 498,
+    "dateStr": "9/22/20",
+    "cases": 513,
     "deaths": 4,
     "recovered": 0,
-    "new": 8,
+    "new": 4,
     "newDeaths": 0
   },
   "Trinity": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 16,
     "deaths": 0,
     "recovered": 0,
@@ -432,23 +432,23 @@
     "newDeaths": 0
   },
   "Tulare": {
-    "dateStr": "9/20/20",
-    "cases": 15599,
+    "dateStr": "9/22/20",
+    "cases": 15687,
     "deaths": 256,
     "recovered": 0,
-    "new": 0,
+    "new": 88,
     "newDeaths": 0
   },
   "Tuolumne": {
-    "dateStr": "9/20/20",
-    "cases": 221,
+    "dateStr": "9/22/20",
+    "cases": 226,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 5,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "9/20/20",
+    "dateStr": "9/22/20",
     "cases": 167,
     "deaths": 2,
     "recovered": 0,
@@ -456,27 +456,27 @@
     "newDeaths": 0
   },
   "Ventura": {
-    "dateStr": "9/20/20",
-    "cases": 12328,
-    "deaths": 143,
+    "dateStr": "9/22/20",
+    "cases": 12477,
+    "deaths": 146,
     "recovered": 0,
-    "new": 92,
-    "newDeaths": 0
+    "new": 71,
+    "newDeaths": 3
   },
   "Yolo": {
-    "dateStr": "9/20/20",
-    "cases": 2747,
+    "dateStr": "9/22/20",
+    "cases": 2765,
     "deaths": 54,
     "recovered": 0,
-    "new": 7,
+    "new": 11,
     "newDeaths": 0
   },
   "Yuba": {
-    "dateStr": "9/20/20",
-    "cases": 1118,
+    "dateStr": "9/22/20",
+    "cases": 1130,
     "deaths": 8,
     "recovered": 0,
-    "new": 0,
+    "new": 12,
     "newDeaths": 0
   }
 }
