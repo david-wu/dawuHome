@@ -1953,10 +1953,10 @@
   },
   {
     "dateStr": "9/22/20",
-    "cases": 31486320,
+    "cases": 31486020,
     "deaths": 969231,
     "recovered": 21472615,
-    "new": 195761,
+    "new": 195461,
     "newDeaths": 4792
   },
   {
@@ -1964,7 +1964,7 @@
     "cases": 31747647,
     "deaths": 974772,
     "recovered": 21736031,
-    "new": 261327,
+    "new": 261627,
     "newDeaths": 5541
   },
   {
@@ -1982,5 +1982,13 @@
     "recovered": 22221596,
     "new": 335063,
     "newDeaths": 5966
+  },
+  {
+    "dateStr": "9/26/20",
+    "cases": 32718611,
+    "deaths": 992689,
+    "recovered": 22465559,
+    "new": 274608,
+    "newDeaths": 5244
   }
 ]
