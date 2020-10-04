@@ -1,30 +1,30 @@
 {
   "Adams": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 27,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Barnes": {
-    "dateStr": "10/2/20",
-    "cases": 246,
+    "dateStr": "10/3/20",
+    "cases": 250,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 4,
     "newDeaths": 0
   },
   "Benson": {
-    "dateStr": "10/2/20",
-    "cases": 350,
+    "dateStr": "10/3/20",
+    "cases": 364,
     "deaths": 7,
     "recovered": 0,
-    "new": 3,
-    "newDeaths": 1
+    "new": 14,
+    "newDeaths": 0
   },
   "Billings": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 18,
     "deaths": 0,
     "recovered": 0,
@@ -32,47 +32,47 @@
     "newDeaths": 0
   },
   "Bottineau": {
-    "dateStr": "10/2/20",
-    "cases": 101,
-    "deaths": 4,
+    "dateStr": "10/3/20",
+    "cases": 104,
+    "deaths": 5,
     "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
+    "new": 3,
+    "newDeaths": 1
   },
   "Bowman": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 46,
     "deaths": 0,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Burke": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 36,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Burleigh": {
-    "dateStr": "10/2/20",
-    "cases": 3914,
+    "dateStr": "10/3/20",
+    "cases": 3983,
     "deaths": 53,
     "recovered": 0,
-    "new": 81,
-    "newDeaths": 3
+    "new": 69,
+    "newDeaths": 0
   },
   "Cass": {
-    "dateStr": "10/2/20",
-    "cases": 5500,
+    "dateStr": "10/3/20",
+    "cases": 5595,
     "deaths": 78,
     "recovered": 0,
-    "new": 84,
-    "newDeaths": 1
+    "new": 95,
+    "newDeaths": 0
   },
   "Cavalier": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 55,
     "deaths": 0,
     "recovered": 0,
@@ -80,79 +80,79 @@
     "newDeaths": 0
   },
   "Dickey": {
-    "dateStr": "10/2/20",
-    "cases": 133,
+    "dateStr": "10/3/20",
+    "cases": 134,
     "deaths": 0,
-    "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
-  },
-  "Divide": {
-    "dateStr": "10/2/20",
-    "cases": 9,
-    "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Dunn": {
-    "dateStr": "10/2/20",
-    "cases": 120,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
-  },
-  "Eddy": {
-    "dateStr": "10/2/20",
-    "cases": 102,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 13,
-    "newDeaths": 0
-  },
-  "Emmons": {
-    "dateStr": "10/2/20",
-    "cases": 201,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 15,
-    "newDeaths": 0
-  },
-  "Foster": {
-    "dateStr": "10/2/20",
-    "cases": 70,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Golden Valley": {
-    "dateStr": "10/2/20",
-    "cases": 53,
-    "deaths": 0,
+  "Divide": {
+    "dateStr": "10/3/20",
+    "cases": 9,
+    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Dunn": {
+    "dateStr": "10/3/20",
+    "cases": 124,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 1
+  },
+  "Eddy": {
+    "dateStr": "10/3/20",
+    "cases": 103,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Emmons": {
+    "dateStr": "10/3/20",
+    "cases": 203,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Foster": {
+    "dateStr": "10/3/20",
+    "cases": 71,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 1
+  },
+  "Golden Valley": {
+    "dateStr": "10/3/20",
+    "cases": 60,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
   "Grand Forks": {
-    "dateStr": "10/2/20",
-    "cases": 2358,
+    "dateStr": "10/3/20",
+    "cases": 2362,
     "deaths": 13,
     "recovered": 0,
-    "new": 57,
+    "new": 4,
     "newDeaths": 0
   },
   "Grant": {
-    "dateStr": "10/2/20",
-    "cases": 33,
+    "dateStr": "10/3/20",
+    "cases": 36,
     "deaths": 1,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
   "Griggs": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 60,
     "deaths": 1,
     "recovered": 0,
@@ -160,103 +160,103 @@
     "newDeaths": 0
   },
   "Hettinger": {
-    "dateStr": "10/2/20",
-    "cases": 67,
+    "dateStr": "10/3/20",
+    "cases": 69,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Kidder": {
-    "dateStr": "10/2/20",
-    "cases": 56,
+    "dateStr": "10/3/20",
+    "cases": 59,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "LaMoure": {
-    "dateStr": "10/2/20",
-    "cases": 80,
+    "dateStr": "10/3/20",
+    "cases": 82,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Logan": {
+    "dateStr": "10/3/20",
+    "cases": 79,
     "deaths": 0,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
-  "Logan": {
-    "dateStr": "10/2/20",
-    "cases": 73,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
   "McHenry": {
-    "dateStr": "10/2/20",
-    "cases": 91,
+    "dateStr": "10/3/20",
+    "cases": 92,
     "deaths": 2,
     "recovered": 0,
     "new": 1,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   "McIntosh": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 80,
     "deaths": 3,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "McKenzie": {
-    "dateStr": "10/2/20",
-    "cases": 260,
+    "dateStr": "10/3/20",
+    "cases": 271,
     "deaths": 2,
     "recovered": 0,
-    "new": 4,
+    "new": 11,
     "newDeaths": 0
   },
   "McLean": {
-    "dateStr": "10/2/20",
-    "cases": 309,
+    "dateStr": "10/3/20",
+    "cases": 314,
     "deaths": 4,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Mercer": {
+    "dateStr": "10/3/20",
+    "cases": 180,
+    "deaths": 1,
     "recovered": 0,
     "new": 10,
     "newDeaths": 0
   },
-  "Mercer": {
-    "dateStr": "10/2/20",
-    "cases": 170,
-    "deaths": 1,
+  "Morton": {
+    "dateStr": "10/3/20",
+    "cases": 1406,
+    "deaths": 35,
+    "recovered": 0,
+    "new": 27,
+    "newDeaths": 1
+  },
+  "Mountrail": {
+    "dateStr": "10/3/20",
+    "cases": 283,
+    "deaths": 2,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Morton": {
-    "dateStr": "10/2/20",
-    "cases": 1379,
-    "deaths": 34,
-    "recovered": 0,
-    "new": 32,
-    "newDeaths": 1
-  },
-  "Mountrail": {
-    "dateStr": "10/2/20",
-    "cases": 282,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
   "Nelson": {
-    "dateStr": "10/2/20",
-    "cases": 80,
+    "dateStr": "10/3/20",
+    "cases": 81,
     "deaths": 0,
     "recovered": 0,
-    "new": 6,
+    "new": 1,
     "newDeaths": 0
   },
   "Oliver": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 24,
     "deaths": 0,
     "recovered": 0,
@@ -264,7 +264,7 @@
     "newDeaths": 0
   },
   "Out of ND": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -272,15 +272,15 @@
     "newDeaths": 0
   },
   "Pembina": {
-    "dateStr": "10/2/20",
-    "cases": 101,
+    "dateStr": "10/3/20",
+    "cases": 104,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 3,
     "newDeaths": 0
   },
   "Pierce": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 36,
     "deaths": 0,
     "recovered": 0,
@@ -288,55 +288,55 @@
     "newDeaths": 0
   },
   "Ramsey": {
-    "dateStr": "10/2/20",
-    "cases": 261,
+    "dateStr": "10/3/20",
+    "cases": 267,
     "deaths": 2,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
   "Ransom": {
-    "dateStr": "10/2/20",
-    "cases": 84,
+    "dateStr": "10/3/20",
+    "cases": 85,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Renville": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 72,
     "deaths": 1,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Richland": {
-    "dateStr": "10/2/20",
-    "cases": 255,
+    "dateStr": "10/3/20",
+    "cases": 258,
     "deaths": 2,
     "recovered": 0,
-    "new": 5,
+    "new": 3,
     "newDeaths": 0
   },
   "Rolette": {
-    "dateStr": "10/2/20",
-    "cases": 214,
+    "dateStr": "10/3/20",
+    "cases": 217,
     "deaths": 5,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
   "Sargent": {
-    "dateStr": "10/2/20",
-    "cases": 81,
-    "deaths": 0,
+    "dateStr": "10/3/20",
+    "cases": 83,
+    "deaths": 1,
     "recovered": 0,
     "new": 2,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   "Sheridan": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 15,
     "deaths": 0,
     "recovered": 0,
@@ -344,15 +344,15 @@
     "newDeaths": 0
   },
   "Sioux": {
-    "dateStr": "10/2/20",
-    "cases": 163,
+    "dateStr": "10/3/20",
+    "cases": 169,
     "deaths": 3,
     "recovered": 0,
-    "new": 5,
+    "new": 6,
     "newDeaths": 0
   },
   "Slope": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 11,
     "deaths": 0,
     "recovered": 0,
@@ -360,15 +360,15 @@
     "newDeaths": 0
   },
   "Stark": {
-    "dateStr": "10/2/20",
-    "cases": 1698,
-    "deaths": 14,
+    "dateStr": "10/3/20",
+    "cases": 1792,
+    "deaths": 16,
     "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
+    "new": 94,
+    "newDeaths": 2
   },
   "Steele": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 29,
     "deaths": 0,
     "recovered": 0,
@@ -376,31 +376,31 @@
     "newDeaths": 0
   },
   "Stutsman": {
-    "dateStr": "10/2/20",
-    "cases": 532,
+    "dateStr": "10/3/20",
+    "cases": 538,
     "deaths": 4,
     "recovered": 0,
-    "new": 3,
+    "new": 6,
     "newDeaths": 0
   },
   "Towner": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 23,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Traill": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 129,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 0,
     "deaths": 8,
     "recovered": 0,
@@ -408,23 +408,23 @@
     "newDeaths": 0
   },
   "Walsh": {
-    "dateStr": "10/2/20",
-    "cases": 226,
+    "dateStr": "10/3/20",
+    "cases": 229,
     "deaths": 1,
     "recovered": 0,
-    "new": 4,
+    "new": 3,
     "newDeaths": 0
   },
   "Ward": {
-    "dateStr": "10/2/20",
-    "cases": 1190,
+    "dateStr": "10/3/20",
+    "cases": 1205,
     "deaths": 11,
     "recovered": 0,
-    "new": 39,
+    "new": 15,
     "newDeaths": 0
   },
   "Wells": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 39,
     "deaths": 0,
     "recovered": 0,
@@ -432,11 +432,11 @@
     "newDeaths": 0
   },
   "Williams": {
-    "dateStr": "10/2/20",
-    "cases": 1154,
+    "dateStr": "10/3/20",
+    "cases": 1173,
     "deaths": 7,
     "recovered": 0,
-    "new": 17,
+    "new": 19,
     "newDeaths": 0
   }
 }

@@ -1,6 +1,6 @@
 {
   "Australian Capital Territory": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 113,
     "deaths": 3,
     "recovered": 110,
@@ -8,15 +8,15 @@
     "newDeaths": 0
   },
   "New South Wales": {
-    "dateStr": "10/2/20",
-    "cases": 4232,
+    "dateStr": "10/3/20",
+    "cases": 4234,
     "deaths": 53,
     "recovered": 3131,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Northern Territory": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 33,
     "deaths": 0,
     "recovered": 31,
@@ -24,23 +24,23 @@
     "newDeaths": 0
   },
   "Queensland": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 1160,
     "deaths": 7,
-    "recovered": 1147,
+    "recovered": 1148,
     "new": 0,
     "newDeaths": 0
   },
   "South Australia": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 470,
     "deaths": 4,
-    "recovered": 464,
-    "new": 2,
+    "recovered": 465,
+    "new": 0,
     "newDeaths": 0
   },
   "Tasmania": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 231,
     "deaths": 13,
     "recovered": 218,
@@ -48,19 +48,19 @@
     "newDeaths": 0
   },
   "Victoria": {
-    "dateStr": "10/2/20",
-    "cases": 20197,
-    "deaths": 805,
-    "recovered": 19091,
-    "new": 8,
-    "newDeaths": 3
+    "dateStr": "10/3/20",
+    "cases": 20209,
+    "deaths": 806,
+    "recovered": 19102,
+    "new": 12,
+    "newDeaths": 1
   },
   "Western Australia": {
-    "dateStr": "10/2/20",
+    "dateStr": "10/3/20",
     "cases": 686,
     "deaths": 9,
-    "recovered": 657,
-    "new": 1,
+    "recovered": 660,
+    "new": 0,
     "newDeaths": 0
   }
 }

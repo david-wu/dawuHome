@@ -2033,9 +2033,17 @@
   },
   {
     "dateStr": "10/2/20",
-    "cases": 6394068,
-    "deaths": 99773,
-    "recovered": 5352078,
+    "cases": 6473544,
+    "deaths": 100842,
+    "recovered": 5427706,
+    "new": 79476,
+    "newDeaths": 1069
+  },
+  {
+    "dateStr": "10/3/20",
+    "cases": 6473544,
+    "deaths": 100842,
+    "recovered": 5427706,
     "new": 0,
     "newDeaths": 0
   }
