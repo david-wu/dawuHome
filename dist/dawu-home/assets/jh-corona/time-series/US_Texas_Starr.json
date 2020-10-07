@@ -2046,5 +2046,21 @@
     "recovered": 0,
     "new": 0,
     "newDeaths": 1
+  },
+  {
+    "dateStr": "10/4/20",
+    "cases": 3451,
+    "deaths": 171,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "10/5/20",
+    "cases": 3452,
+    "deaths": 171,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
   }
 ]

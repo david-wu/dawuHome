@@ -2017,10 +2017,10 @@
   },
   {
     "dateStr": "9/30/20",
-    "cases": 68919,
+    "cases": 70763,
     "deaths": 655,
     "recovered": 33443,
-    "new": 1076,
+    "new": 2920,
     "newDeaths": 19
   },
   {
@@ -2028,7 +2028,7 @@
     "cases": 74255,
     "deaths": 678,
     "recovered": 34186,
-    "new": 5336,
+    "new": 3492,
     "newDeaths": 23
   },
   {
@@ -2046,5 +2046,21 @@
     "recovered": 39073,
     "new": 2554,
     "newDeaths": 12
+  },
+  {
+    "dateStr": "10/4/20",
+    "cases": 82446,
+    "deaths": 727,
+    "recovered": 44149,
+    "new": 1841,
+    "newDeaths": 16
+  },
+  {
+    "dateStr": "10/5/20",
+    "cases": 85566,
+    "deaths": 758,
+    "recovered": 46636,
+    "new": 3120,
+    "newDeaths": 31
   }
 ]

@@ -1,54 +1,54 @@
 {
   "Adams": {
-    "dateStr": "10/3/20",
-    "cases": 875,
+    "dateStr": "10/5/20",
+    "cases": 877,
     "deaths": 10,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Asotin": {
-    "dateStr": "10/3/20",
-    "cases": 126,
+    "dateStr": "10/5/20",
+    "cases": 134,
     "deaths": 3,
     "recovered": 0,
-    "new": 0,
+    "new": 8,
     "newDeaths": 0
   },
   "Benton": {
-    "dateStr": "10/3/20",
-    "cases": 4656,
+    "dateStr": "10/5/20",
+    "cases": 4706,
     "deaths": 133,
     "recovered": 0,
-    "new": 29,
+    "new": 31,
     "newDeaths": 0
   },
   "Chelan": {
-    "dateStr": "10/3/20",
-    "cases": 1874,
+    "dateStr": "10/5/20",
+    "cases": 1887,
     "deaths": 16,
     "recovered": 0,
-    "new": 6,
+    "new": 4,
     "newDeaths": 0
   },
   "Clallam": {
-    "dateStr": "10/3/20",
-    "cases": 237,
+    "dateStr": "10/5/20",
+    "cases": 239,
     "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Clark": {
-    "dateStr": "10/3/20",
-    "cases": 3429,
+    "dateStr": "10/5/20",
+    "cases": 3470,
     "deaths": 69,
     "recovered": 0,
-    "new": 41,
+    "new": 20,
     "newDeaths": 0
   },
   "Columbia": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 15,
     "deaths": 1,
     "recovered": 0,
@@ -56,23 +56,23 @@
     "newDeaths": 0
   },
   "Cowlitz": {
-    "dateStr": "10/3/20",
-    "cases": 695,
+    "dateStr": "10/5/20",
+    "cases": 704,
     "deaths": 7,
     "recovered": 0,
-    "new": 5,
+    "new": 3,
     "newDeaths": 0
   },
   "Douglas": {
-    "dateStr": "10/3/20",
-    "cases": 1193,
+    "dateStr": "10/5/20",
+    "cases": 1196,
     "deaths": 9,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Ferry": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 30,
     "deaths": 0,
     "recovered": 0,
@@ -80,119 +80,119 @@
     "newDeaths": 0
   },
   "Franklin": {
-    "dateStr": "10/3/20",
-    "cases": 4374,
+    "dateStr": "10/5/20",
+    "cases": 4401,
     "deaths": 66,
     "recovered": 0,
-    "new": 23,
+    "new": 20,
     "newDeaths": 0
   },
   "Garfield": {
-    "dateStr": "10/3/20",
-    "cases": 13,
+    "dateStr": "10/5/20",
+    "cases": 14,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Grant": {
-    "dateStr": "10/3/20",
-    "cases": 3027,
-    "deaths": 22,
+    "dateStr": "10/5/20",
+    "cases": 3050,
+    "deaths": 23,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 0
+    "new": 15,
+    "newDeaths": 1
   },
   "Grays Harbor": {
-    "dateStr": "10/3/20",
-    "cases": 542,
+    "dateStr": "10/5/20",
+    "cases": 548,
     "deaths": 11,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Island": {
+    "dateStr": "10/5/20",
+    "cases": 320,
+    "deaths": 13,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Jefferson": {
+    "dateStr": "10/5/20",
+    "cases": 75,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "King": {
+    "dateStr": "10/5/20",
+    "cases": 23115,
+    "deaths": 771,
+    "recovered": 0,
+    "new": 93,
+    "newDeaths": 3
+  },
+  "Kitsap": {
+    "dateStr": "10/5/20",
+    "cases": 1287,
+    "deaths": 14,
     "recovered": 0,
     "new": 9,
     "newDeaths": 0
   },
-  "Island": {
-    "dateStr": "10/3/20",
-    "cases": 318,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Jefferson": {
-    "dateStr": "10/3/20",
-    "cases": 72,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "King": {
-    "dateStr": "10/3/20",
-    "cases": 22916,
-    "deaths": 768,
-    "recovered": 0,
-    "new": 167,
-    "newDeaths": 0
-  },
-  "Kitsap": {
-    "dateStr": "10/3/20",
-    "cases": 1262,
-    "deaths": 14,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
   "Kittitas": {
-    "dateStr": "10/3/20",
-    "cases": 553,
+    "dateStr": "10/5/20",
+    "cases": 555,
     "deaths": 22,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Klickitat": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 199,
     "deaths": 3,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Lewis": {
-    "dateStr": "10/3/20",
-    "cases": 580,
-    "deaths": 5,
-    "recovered": 0,
-    "new": 13,
-    "newDeaths": 0
-  },
-  "Lincoln": {
-    "dateStr": "10/3/20",
-    "cases": 60,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Mason": {
-    "dateStr": "10/3/20",
-    "cases": 434,
-    "deaths": 7,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Okanogan": {
-    "dateStr": "10/3/20",
-    "cases": 1057,
-    "deaths": 10,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Lewis": {
+    "dateStr": "10/5/20",
+    "cases": 598,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 1
+  },
+  "Lincoln": {
+    "dateStr": "10/5/20",
+    "cases": 60,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Mason": {
+    "dateStr": "10/5/20",
+    "cases": 445,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 1
+  },
+  "Okanogan": {
+    "dateStr": "10/5/20",
+    "cases": 1058,
+    "deaths": 10,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Out of WA": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -200,31 +200,31 @@
     "newDeaths": 0
   },
   "Pacific": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 88,
     "deaths": 3,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Pend Oreille": {
-    "dateStr": "10/3/20",
-    "cases": 77,
+    "dateStr": "10/5/20",
+    "cases": 85,
     "deaths": 0,
     "recovered": 0,
-    "new": 6,
+    "new": 4,
     "newDeaths": 0
   },
   "Pierce": {
-    "dateStr": "10/3/20",
-    "cases": 8247,
+    "dateStr": "10/5/20",
+    "cases": 8335,
     "deaths": 207,
     "recovered": 0,
-    "new": 67,
+    "new": 41,
     "newDeaths": 0
   },
   "San Juan": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 30,
     "deaths": 0,
     "recovered": 0,
@@ -232,15 +232,15 @@
     "newDeaths": 0
   },
   "Skagit": {
-    "dateStr": "10/3/20",
-    "cases": 1124,
+    "dateStr": "10/5/20",
+    "cases": 1134,
     "deaths": 23,
     "recovered": 0,
-    "new": 5,
+    "new": 6,
     "newDeaths": 0
   },
   "Skamania": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 65,
     "deaths": 1,
     "recovered": 0,
@@ -248,39 +248,39 @@
     "newDeaths": 0
   },
   "Snohomish": {
-    "dateStr": "10/3/20",
-    "cases": 7122,
+    "dateStr": "10/5/20",
+    "cases": 7177,
     "deaths": 215,
     "recovered": 0,
-    "new": 39,
+    "new": 23,
     "newDeaths": 0
   },
   "Spokane": {
-    "dateStr": "10/3/20",
-    "cases": 7254,
-    "deaths": 172,
+    "dateStr": "10/5/20",
+    "cases": 7409,
+    "deaths": 173,
     "recovered": 0,
-    "new": 67,
-    "newDeaths": 0
+    "new": 57,
+    "newDeaths": 1
   },
   "Stevens": {
-    "dateStr": "10/3/20",
-    "cases": 193,
+    "dateStr": "10/5/20",
+    "cases": 200,
     "deaths": 3,
     "recovered": 0,
-    "new": 4,
+    "new": 6,
     "newDeaths": 0
   },
   "Thurston": {
-    "dateStr": "10/3/20",
-    "cases": 1175,
+    "dateStr": "10/5/20",
+    "cases": 1191,
     "deaths": 19,
     "recovered": 0,
-    "new": 16,
+    "new": 9,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 915,
     "deaths": 6,
     "recovered": 0,
@@ -288,43 +288,43 @@
     "newDeaths": 0
   },
   "Wahkiakum": {
-    "dateStr": "10/3/20",
+    "dateStr": "10/5/20",
     "cases": 7,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Walla Walla": {
-    "dateStr": "10/3/20",
-    "cases": 927,
+    "dateStr": "10/5/20",
+    "cases": 937,
     "deaths": 6,
     "recovered": 0,
-    "new": 5,
+    "new": 4,
     "newDeaths": 0
   },
   "Whatcom": {
-    "dateStr": "10/3/20",
-    "cases": 1384,
-    "deaths": 46,
+    "dateStr": "10/5/20",
+    "cases": 1403,
+    "deaths": 49,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 3
+  },
+  "Whitman": {
+    "dateStr": "10/5/20",
+    "cases": 1400,
+    "deaths": 0,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
   },
-  "Whitman": {
-    "dateStr": "10/3/20",
-    "cases": 1374,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 26,
-    "newDeaths": 0
-  },
   "Yakima": {
-    "dateStr": "10/3/20",
-    "cases": 11489,
-    "deaths": 263,
+    "dateStr": "10/5/20",
+    "cases": 11502,
+    "deaths": 264,
     "recovered": 0,
-    "new": 18,
-    "newDeaths": 0
+    "new": 7,
+    "newDeaths": 1
   }
 }
