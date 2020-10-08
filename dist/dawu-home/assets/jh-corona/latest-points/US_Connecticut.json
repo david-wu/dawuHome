@@ -1,54 +1,54 @@
 {
   "Fairfield": {
-    "dateStr": "10/5/20",
+    "dateStr": "10/6/20",
     "cases": 20587,
-    "deaths": 1423,
+    "deaths": 1425,
     "recovered": 0,
-    "new": 187,
-    "newDeaths": 0
+    "new": 0,
+    "newDeaths": 2
   },
   "Hartford": {
-    "dateStr": "10/5/20",
-    "cases": 15235,
+    "dateStr": "10/6/20",
+    "cases": 15272,
     "deaths": 1440,
     "recovered": 0,
-    "new": 246,
-    "newDeaths": 1
+    "new": 37,
+    "newDeaths": 0
   },
   "Litchfield": {
-    "dateStr": "10/5/20",
+    "dateStr": "10/6/20",
     "cases": 1921,
     "deaths": 141,
     "recovered": 0,
-    "new": 22,
+    "new": 0,
     "newDeaths": 0
   },
   "Middlesex": {
-    "dateStr": "10/5/20",
-    "cases": 1627,
+    "dateStr": "10/6/20",
+    "cases": 1631,
     "deaths": 193,
     "recovered": 0,
-    "new": 13,
+    "new": 4,
     "newDeaths": 0
   },
   "New Haven": {
-    "dateStr": "10/5/20",
-    "cases": 14715,
+    "dateStr": "10/6/20",
+    "cases": 14722,
     "deaths": 1115,
     "recovered": 0,
-    "new": 132,
+    "new": 7,
     "newDeaths": 0
   },
   "New London": {
-    "dateStr": "10/5/20",
-    "cases": 2349,
-    "deaths": 122,
+    "dateStr": "10/6/20",
+    "cases": 2413,
+    "deaths": 124,
     "recovered": 0,
-    "new": 143,
-    "newDeaths": 3
+    "new": 64,
+    "newDeaths": 2
   },
   "Out of CT": {
-    "dateStr": "10/5/20",
+    "dateStr": "10/6/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -56,15 +56,15 @@
     "newDeaths": 0
   },
   "Tolland": {
-    "dateStr": "10/5/20",
-    "cases": 1473,
+    "dateStr": "10/6/20",
+    "cases": 1477,
     "deaths": 67,
     "recovered": 0,
-    "new": 24,
+    "new": 4,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "10/5/20",
+    "dateStr": "10/6/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,
@@ -72,11 +72,11 @@
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "10/5/20",
-    "cases": 1056,
+    "dateStr": "10/6/20",
+    "cases": 1072,
     "deaths": 16,
     "recovered": 0,
-    "new": 31,
+    "new": 16,
     "newDeaths": 0
   }
 }
