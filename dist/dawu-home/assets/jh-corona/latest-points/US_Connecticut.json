@@ -1,54 +1,54 @@
 {
   "Fairfield": {
-    "dateStr": "10/9/20",
-    "cases": 20752,
+    "dateStr": "10/12/20",
+    "cases": 21052,
     "deaths": 1426,
     "recovered": 0,
-    "new": 51,
-    "newDeaths": 1
-  },
-  "Hartford": {
-    "dateStr": "10/9/20",
-    "cases": 15520,
-    "deaths": 1442,
-    "recovered": 0,
-    "new": 86,
+    "new": 300,
     "newDeaths": 0
   },
+  "Hartford": {
+    "dateStr": "10/12/20",
+    "cases": 15836,
+    "deaths": 1443,
+    "recovered": 0,
+    "new": 316,
+    "newDeaths": 1
+  },
   "Litchfield": {
-    "dateStr": "10/9/20",
-    "cases": 1921,
+    "dateStr": "10/12/20",
+    "cases": 1940,
     "deaths": 141,
     "recovered": 0,
-    "new": 0,
+    "new": 19,
     "newDeaths": 0
   },
   "Middlesex": {
-    "dateStr": "10/9/20",
-    "cases": 1667,
+    "dateStr": "10/12/20",
+    "cases": 1709,
     "deaths": 193,
     "recovered": 0,
-    "new": 15,
+    "new": 42,
     "newDeaths": 0
   },
   "New Haven": {
-    "dateStr": "10/9/20",
-    "cases": 14877,
-    "deaths": 1118,
+    "dateStr": "10/12/20",
+    "cases": 15164,
+    "deaths": 1119,
     "recovered": 0,
-    "new": 47,
+    "new": 287,
     "newDeaths": 1
   },
   "New London": {
-    "dateStr": "10/9/20",
-    "cases": 2570,
+    "dateStr": "10/12/20",
+    "cases": 2837,
     "deaths": 126,
     "recovered": 0,
-    "new": 55,
-    "newDeaths": 1
+    "new": 267,
+    "newDeaths": 0
   },
   "Out of CT": {
-    "dateStr": "10/9/20",
+    "dateStr": "10/12/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -56,15 +56,15 @@
     "newDeaths": 0
   },
   "Tolland": {
-    "dateStr": "10/9/20",
-    "cases": 1502,
+    "dateStr": "10/12/20",
+    "cases": 1520,
     "deaths": 67,
     "recovered": 0,
-    "new": 8,
+    "new": 18,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "10/9/20",
+    "dateStr": "10/12/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,
@@ -72,11 +72,11 @@
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "10/9/20",
-    "cases": 1108,
+    "dateStr": "10/12/20",
+    "cases": 1157,
     "deaths": 17,
     "recovered": 0,
-    "new": 11,
+    "new": 49,
     "newDeaths": 0
   }
 }
