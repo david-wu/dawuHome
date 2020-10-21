@@ -1,14 +1,14 @@
 {
   "Bernalillo": {
-    "dateStr": "10/17/20",
-    "cases": 8794,
-    "deaths": 186,
+    "dateStr": "10/20/20",
+    "cases": 9218,
+    "deaths": 187,
     "recovered": 0,
-    "new": 189,
-    "newDeaths": 1
+    "new": 152,
+    "newDeaths": 0
   },
   "Catron": {
-    "dateStr": "10/17/20",
+    "dateStr": "10/20/20",
     "cases": 11,
     "deaths": 1,
     "recovered": 0,
@@ -16,23 +16,23 @@
     "newDeaths": 0
   },
   "Chaves": {
-    "dateStr": "10/17/20",
-    "cases": 1710,
+    "dateStr": "10/20/20",
+    "cases": 1791,
     "deaths": 17,
     "recovered": 0,
-    "new": 23,
+    "new": 25,
     "newDeaths": 0
   },
   "Cibola": {
-    "dateStr": "10/17/20",
-    "cases": 490,
+    "dateStr": "10/20/20",
+    "cases": 507,
     "deaths": 21,
     "recovered": 0,
-    "new": 3,
+    "new": 9,
     "newDeaths": 0
   },
   "Colfax": {
-    "dateStr": "10/17/20",
+    "dateStr": "10/20/20",
     "cases": 41,
     "deaths": 1,
     "recovered": 0,
@@ -40,15 +40,15 @@
     "newDeaths": 0
   },
   "Curry": {
-    "dateStr": "10/17/20",
-    "cases": 1265,
-    "deaths": 8,
+    "dateStr": "10/20/20",
+    "cases": 1338,
+    "deaths": 9,
     "recovered": 0,
-    "new": 34,
-    "newDeaths": 0
+    "new": 45,
+    "newDeaths": 1
   },
   "De Baca": {
-    "dateStr": "10/17/20",
+    "dateStr": "10/20/20",
     "cases": 3,
     "deaths": 0,
     "recovered": 0,
@@ -56,31 +56,31 @@
     "newDeaths": 0
   },
   "Dona Ana": {
-    "dateStr": "10/17/20",
-    "cases": 4596,
+    "dateStr": "10/20/20",
+    "cases": 4902,
     "deaths": 63,
     "recovered": 0,
-    "new": 96,
+    "new": 137,
     "newDeaths": 0
   },
   "Eddy": {
-    "dateStr": "10/17/20",
-    "cases": 1161,
-    "deaths": 17,
+    "dateStr": "10/20/20",
+    "cases": 1214,
+    "deaths": 19,
     "recovered": 0,
-    "new": 36,
-    "newDeaths": 0
+    "new": 21,
+    "newDeaths": 2
   },
   "Grant": {
-    "dateStr": "10/17/20",
-    "cases": 161,
+    "dateStr": "10/20/20",
+    "cases": 169,
     "deaths": 2,
     "recovered": 0,
-    "new": 2,
+    "new": 1,
     "newDeaths": 0
   },
   "Guadalupe": {
-    "dateStr": "10/17/20",
+    "dateStr": "10/20/20",
     "cases": 37,
     "deaths": 1,
     "recovered": 0,
@@ -88,7 +88,7 @@
     "newDeaths": 0
   },
   "Harding": {
-    "dateStr": "10/17/20",
+    "dateStr": "10/20/20",
     "cases": 2,
     "deaths": 0,
     "recovered": 0,
@@ -96,71 +96,71 @@
     "newDeaths": 0
   },
   "Hidalgo": {
-    "dateStr": "10/17/20",
-    "cases": 111,
+    "dateStr": "10/20/20",
+    "cases": 112,
     "deaths": 2,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Lea": {
-    "dateStr": "10/17/20",
-    "cases": 1782,
-    "deaths": 28,
-    "recovered": 0,
-    "new": 15,
-    "newDeaths": 0
-  },
-  "Lincoln": {
-    "dateStr": "10/17/20",
-    "cases": 293,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Los Alamos": {
-    "dateStr": "10/17/20",
-    "cases": 37,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Luna": {
-    "dateStr": "10/17/20",
-    "cases": 579,
-    "deaths": 10,
-    "recovered": 0,
-    "new": 21,
-    "newDeaths": 0
-  },
-  "McKinley": {
-    "dateStr": "10/17/20",
-    "cases": 4461,
-    "deaths": 260,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Mora": {
-    "dateStr": "10/17/20",
-    "cases": 14,
-    "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "Lea": {
+    "dateStr": "10/20/20",
+    "cases": 1855,
+    "deaths": 28,
+    "recovered": 0,
+    "new": 18,
+    "newDeaths": 0
+  },
+  "Lincoln": {
+    "dateStr": "10/20/20",
+    "cases": 309,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Los Alamos": {
+    "dateStr": "10/20/20",
+    "cases": 40,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Luna": {
+    "dateStr": "10/20/20",
+    "cases": 648,
+    "deaths": 10,
+    "recovered": 0,
+    "new": 17,
+    "newDeaths": 0
+  },
+  "McKinley": {
+    "dateStr": "10/20/20",
+    "cases": 4492,
+    "deaths": 261,
+    "recovered": 0,
+    "new": 16,
+    "newDeaths": 0
+  },
+  "Mora": {
+    "dateStr": "10/20/20",
+    "cases": 14,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Otero": {
-    "dateStr": "10/17/20",
-    "cases": 348,
+    "dateStr": "10/20/20",
+    "cases": 395,
     "deaths": 13,
     "recovered": 0,
-    "new": 6,
+    "new": 29,
     "newDeaths": 0
   },
   "Out of NM": {
-    "dateStr": "10/17/20",
+    "dateStr": "10/20/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -168,115 +168,115 @@
     "newDeaths": 0
   },
   "Quay": {
-    "dateStr": "10/17/20",
-    "cases": 86,
+    "dateStr": "10/20/20",
+    "cases": 93,
     "deaths": 2,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Rio Arriba": {
-    "dateStr": "10/17/20",
-    "cases": 438,
-    "deaths": 14,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
-  "Roosevelt": {
-    "dateStr": "10/17/20",
-    "cases": 377,
-    "deaths": 6,
+  "Rio Arriba": {
+    "dateStr": "10/20/20",
+    "cases": 457,
+    "deaths": 15,
     "recovered": 0,
-    "new": 4,
+    "new": 3,
     "newDeaths": 0
   },
+  "Roosevelt": {
+    "dateStr": "10/20/20",
+    "cases": 392,
+    "deaths": 7,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 1
+  },
   "San Juan": {
-    "dateStr": "10/17/20",
-    "cases": 3575,
+    "dateStr": "10/20/20",
+    "cases": 3629,
     "deaths": 203,
     "recovered": 0,
-    "new": 10,
+    "new": 30,
     "newDeaths": 0
   },
   "San Miguel": {
-    "dateStr": "10/17/20",
-    "cases": 139,
+    "dateStr": "10/20/20",
+    "cases": 150,
     "deaths": 0,
     "recovered": 0,
-    "new": 7,
+    "new": 3,
     "newDeaths": 0
   },
   "Sandoval": {
-    "dateStr": "10/17/20",
-    "cases": 1688,
-    "deaths": 43,
+    "dateStr": "10/20/20",
+    "cases": 1748,
+    "deaths": 44,
     "recovered": 0,
-    "new": 24,
+    "new": 18,
     "newDeaths": 0
   },
   "Santa Fe": {
-    "dateStr": "10/17/20",
-    "cases": 1340,
-    "deaths": 8,
+    "dateStr": "10/20/20",
+    "cases": 1411,
+    "deaths": 12,
     "recovered": 0,
-    "new": 28,
-    "newDeaths": 0
+    "new": 32,
+    "newDeaths": 3
   },
   "Sierra": {
-    "dateStr": "10/17/20",
-    "cases": 74,
+    "dateStr": "10/20/20",
+    "cases": 76,
     "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Socorro": {
-    "dateStr": "10/17/20",
-    "cases": 165,
-    "deaths": 7,
+    "dateStr": "10/20/20",
+    "cases": 188,
+    "deaths": 8,
     "recovered": 0,
-    "new": 10,
+    "new": 5,
     "newDeaths": 0
   },
   "Taos": {
-    "dateStr": "10/17/20",
-    "cases": 167,
+    "dateStr": "10/20/20",
+    "cases": 175,
     "deaths": 4,
     "recovered": 0,
-    "new": 2,
+    "new": 1,
     "newDeaths": 0
   },
   "Torrance": {
-    "dateStr": "10/17/20",
+    "dateStr": "10/20/20",
     "cases": 93,
     "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Unassigned": {
-    "dateStr": "10/17/20",
-    "cases": 1532,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
-  },
-  "Union": {
-    "dateStr": "10/17/20",
-    "cases": 38,
-    "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Unassigned": {
+    "dateStr": "10/20/20",
+    "cases": 1565,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Union": {
+    "dateStr": "10/20/20",
+    "cases": 39,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Valencia": {
-    "dateStr": "10/17/20",
-    "cases": 740,
+    "dateStr": "10/20/20",
+    "cases": 787,
     "deaths": 4,
     "recovered": 0,
-    "new": 15,
+    "new": 14,
     "newDeaths": 0
   }
 }
