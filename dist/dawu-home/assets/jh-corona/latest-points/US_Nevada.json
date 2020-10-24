@@ -1,46 +1,46 @@
 {
   "Carson City": {
-    "dateStr": "10/20/20",
-    "cases": 665,
+    "dateStr": "10/22/20",
+    "cases": 689,
     "deaths": 8,
     "recovered": 0,
-    "new": 6,
+    "new": 11,
     "newDeaths": 0
   },
   "Churchill": {
-    "dateStr": "10/20/20",
-    "cases": 189,
+    "dateStr": "10/22/20",
+    "cases": 198,
     "deaths": 4,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Clark": {
+    "dateStr": "10/22/20",
+    "cases": 76817,
+    "deaths": 1488,
+    "recovered": 0,
+    "new": 573,
+    "newDeaths": 1
+  },
+  "Douglas": {
+    "dateStr": "10/22/20",
+    "cases": 388,
+    "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Clark": {
-    "dateStr": "10/20/20",
-    "cases": 75888,
-    "deaths": 1483,
-    "recovered": 0,
-    "new": 478,
-    "newDeaths": 13
-  },
-  "Douglas": {
-    "dateStr": "10/20/20",
-    "cases": 381,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
   "Elko": {
-    "dateStr": "10/20/20",
-    "cases": 1227,
+    "dateStr": "10/22/20",
+    "cases": 1288,
     "deaths": 11,
     "recovered": 0,
-    "new": 24,
+    "new": 43,
     "newDeaths": 0
   },
   "Esmeralda": {
-    "dateStr": "10/20/20",
+    "dateStr": "10/22/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -48,7 +48,7 @@
     "newDeaths": 0
   },
   "Eureka": {
-    "dateStr": "10/20/20",
+    "dateStr": "10/22/20",
     "cases": 10,
     "deaths": 0,
     "recovered": 0,
@@ -56,39 +56,39 @@
     "newDeaths": 0
   },
   "Humboldt": {
-    "dateStr": "10/20/20",
-    "cases": 157,
+    "dateStr": "10/22/20",
+    "cases": 167,
     "deaths": 4,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
   },
   "Lander": {
-    "dateStr": "10/20/20",
-    "cases": 93,
+    "dateStr": "10/22/20",
+    "cases": 102,
     "deaths": 2,
     "recovered": 0,
-    "new": 3,
+    "new": 6,
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "10/20/20",
-    "cases": 36,
+    "dateStr": "10/22/20",
+    "cases": 44,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Lyon": {
-    "dateStr": "10/20/20",
-    "cases": 554,
-    "deaths": 11,
+    "dateStr": "10/22/20",
+    "cases": 569,
+    "deaths": 12,
     "recovered": 0,
-    "new": 6,
-    "newDeaths": 1
+    "new": 9,
+    "newDeaths": 0
   },
   "Mineral": {
-    "dateStr": "10/20/20",
+    "dateStr": "10/22/20",
     "cases": 14,
     "deaths": 0,
     "recovered": 0,
@@ -96,15 +96,15 @@
     "newDeaths": 0
   },
   "Nye": {
-    "dateStr": "10/20/20",
-    "cases": 585,
+    "dateStr": "10/22/20",
+    "cases": 601,
     "deaths": 16,
     "recovered": 0,
-    "new": 4,
+    "new": 13,
     "newDeaths": 0
   },
   "Out of NV": {
-    "dateStr": "10/20/20",
+    "dateStr": "10/22/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -112,23 +112,23 @@
     "newDeaths": 0
   },
   "Pershing": {
-    "dateStr": "10/20/20",
+    "dateStr": "10/22/20",
     "cases": 25,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Storey": {
-    "dateStr": "10/20/20",
-    "cases": 20,
+    "dateStr": "10/22/20",
+    "cases": 21,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "10/20/20",
+    "dateStr": "10/22/20",
     "cases": 269,
     "deaths": 16,
     "recovered": 0,
@@ -136,19 +136,19 @@
     "newDeaths": 0
   },
   "Washoe": {
-    "dateStr": "10/20/20",
-    "cases": 11551,
-    "deaths": 186,
+    "dateStr": "10/22/20",
+    "cases": 11811,
+    "deaths": 189,
     "recovered": 0,
-    "new": 107,
-    "newDeaths": 1
+    "new": 117,
+    "newDeaths": 3
   },
   "White Pine": {
-    "dateStr": "10/20/20",
-    "cases": 104,
+    "dateStr": "10/22/20",
+    "cases": 112,
     "deaths": 1,
     "recovered": 0,
-    "new": 11,
+    "new": 7,
     "newDeaths": 0
   }
 }
