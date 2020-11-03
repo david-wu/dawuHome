@@ -1,38 +1,38 @@
 {
   "Aleutians East": {
-    "dateStr": "11/1/20",
-    "cases": 16,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Aleutians West": {
-    "dateStr": "11/1/20",
-    "cases": 100,
+    "dateStr": "11/2/20",
+    "cases": 17,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Anchorage": {
-    "dateStr": "11/1/20",
-    "cases": 8558,
-    "deaths": 50,
+  "Aleutians West": {
+    "dateStr": "11/2/20",
+    "cases": 100,
+    "deaths": 0,
     "recovered": 0,
-    "new": 159,
+    "new": 0,
     "newDeaths": 0
   },
+  "Anchorage": {
+    "dateStr": "11/2/20",
+    "cases": 8734,
+    "deaths": 51,
+    "recovered": 0,
+    "new": 176,
+    "newDeaths": 1
+  },
   "Bethel": {
-    "dateStr": "11/1/20",
-    "cases": 486,
+    "dateStr": "11/2/20",
+    "cases": 499,
     "deaths": 1,
     "recovered": 0,
-    "new": 9,
+    "new": 13,
     "newDeaths": 0
   },
   "Bristol Bay": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -40,7 +40,7 @@
     "newDeaths": 0
   },
   "Bristol Bay plus Lake and Peninsula": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 113,
     "deaths": 0,
     "recovered": 0,
@@ -48,7 +48,7 @@
     "newDeaths": 0
   },
   "Denali": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 31,
     "deaths": 0,
     "recovered": 0,
@@ -56,23 +56,23 @@
     "newDeaths": 0
   },
   "Dillingham": {
-    "dateStr": "11/1/20",
-    "cases": 61,
+    "dateStr": "11/2/20",
+    "cases": 62,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Fairbanks North Star": {
-    "dateStr": "11/1/20",
-    "cases": 2297,
+    "dateStr": "11/2/20",
+    "cases": 2352,
     "deaths": 16,
     "recovered": 0,
-    "new": 36,
-    "newDeaths": 1
+    "new": 55,
+    "newDeaths": 0
   },
   "Haines": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 0,
@@ -80,7 +80,7 @@
     "newDeaths": 0
   },
   "Hoonah-Angoon": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,79 +88,79 @@
     "newDeaths": 0
   },
   "Juneau": {
-    "dateStr": "11/1/20",
-    "cases": 590,
+    "dateStr": "11/2/20",
+    "cases": 594,
     "deaths": 3,
     "recovered": 0,
-    "new": 10,
+    "new": 4,
     "newDeaths": 0
   },
   "Kenai Peninsula": {
-    "dateStr": "11/1/20",
-    "cases": 1124,
+    "dateStr": "11/2/20",
+    "cases": 1138,
     "deaths": 4,
     "recovered": 0,
-    "new": 28,
+    "new": 14,
     "newDeaths": 0
   },
   "Ketchikan Gateway": {
-    "dateStr": "11/1/20",
-    "cases": 90,
+    "dateStr": "11/2/20",
+    "cases": 92,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 2,
     "newDeaths": 0
   },
   "Kodiak Island": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 124,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Kusilvak": {
-    "dateStr": "11/1/20",
-    "cases": 250,
+    "dateStr": "11/2/20",
+    "cases": 259,
     "deaths": 0,
     "recovered": 0,
-    "new": 11,
+    "new": 9,
     "newDeaths": 0
   },
   "Matanuska-Susitna": {
-    "dateStr": "11/1/20",
-    "cases": 1520,
+    "dateStr": "11/2/20",
+    "cases": 1588,
     "deaths": 3,
     "recovered": 0,
-    "new": 67,
+    "new": 68,
     "newDeaths": 0
   },
   "Nome": {
-    "dateStr": "11/1/20",
-    "cases": 138,
+    "dateStr": "11/2/20",
+    "cases": 141,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "North Slope": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 281,
     "deaths": 0,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Northwest Arctic": {
-    "dateStr": "11/1/20",
-    "cases": 258,
+    "dateStr": "11/2/20",
+    "cases": 261,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "Out of AK": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -168,7 +168,7 @@
     "newDeaths": 0
   },
   "Petersburg": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 20,
     "deaths": 1,
     "recovered": 0,
@@ -176,7 +176,7 @@
     "newDeaths": 0
   },
   "Prince of Wales-Hyder": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 35,
     "deaths": 1,
     "recovered": 0,
@@ -184,7 +184,7 @@
     "newDeaths": 0
   },
   "Sitka": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 82,
     "deaths": 0,
     "recovered": 0,
@@ -192,7 +192,7 @@
     "newDeaths": 0
   },
   "Skagway": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 8,
     "deaths": 0,
     "recovered": 0,
@@ -200,31 +200,31 @@
     "newDeaths": 0
   },
   "Southeast Fairbanks": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 90,
     "deaths": 1,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "11/1/20",
-    "cases": 68,
+    "dateStr": "11/2/20",
+    "cases": 69,
     "deaths": 5,
     "recovered": 0,
-    "new": 4,
+    "new": 1,
     "newDeaths": 0
   },
   "Valdez-Cordova": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 176,
     "deaths": 1,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Wrangell": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 19,
     "deaths": 0,
     "recovered": 0,
@@ -232,7 +232,7 @@
     "newDeaths": 0
   },
   "Yakutat": {
-    "dateStr": "11/1/20",
+    "dateStr": "11/2/20",
     "cases": 38,
     "deaths": 0,
     "recovered": 0,
@@ -240,11 +240,11 @@
     "newDeaths": 0
   },
   "Yukon-Koyukuk": {
-    "dateStr": "11/1/20",
-    "cases": 120,
+    "dateStr": "11/2/20",
+    "cases": 122,
     "deaths": 2,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   }
 }
