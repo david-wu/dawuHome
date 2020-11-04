@@ -2281,10 +2281,18 @@
   },
   {
     "dateStr": "11/2/20",
-    "cases": 1083321,
+    "cases": 1093256,
     "deaths": 31653,
     "recovered": 985796,
-    "new": 0,
+    "new": 9935,
     "newDeaths": 138
+  },
+  {
+    "dateStr": "11/3/20",
+    "cases": 1099392,
+    "deaths": 31847,
+    "recovered": 993877,
+    "new": 6136,
+    "newDeaths": 194
   }
 ]

@@ -2202,23 +2202,23 @@
   {
     "dateStr": "10/23/20",
     "cases": 93665,
-    "deaths": 1736,
+    "deaths": 1738,
     "recovered": 0,
     "new": 812,
-    "newDeaths": 0
+    "newDeaths": 2
   },
   {
     "dateStr": "10/24/20",
     "cases": 94812,
-    "deaths": 1739,
+    "deaths": 1743,
     "recovered": 0,
     "new": 1147,
-    "newDeaths": 3
+    "newDeaths": 5
   },
   {
     "dateStr": "10/25/20",
     "cases": 95703,
-    "deaths": 1744,
+    "deaths": 1748,
     "recovered": 0,
     "new": 891,
     "newDeaths": 5
@@ -2226,7 +2226,7 @@
   {
     "dateStr": "10/26/20",
     "cases": 96178,
-    "deaths": 1745,
+    "deaths": 1749,
     "recovered": 0,
     "new": 475,
     "newDeaths": 1
@@ -2234,7 +2234,7 @@
   {
     "dateStr": "10/27/20",
     "cases": 96908,
-    "deaths": 1752,
+    "deaths": 1756,
     "recovered": 0,
     "new": 730,
     "newDeaths": 7
@@ -2242,7 +2242,7 @@
   {
     "dateStr": "10/28/20",
     "cases": 97479,
-    "deaths": 1762,
+    "deaths": 1766,
     "recovered": 0,
     "new": 571,
     "newDeaths": 10
@@ -2250,7 +2250,7 @@
   {
     "dateStr": "10/29/20",
     "cases": 98552,
-    "deaths": 1765,
+    "deaths": 1769,
     "recovered": 0,
     "new": 1073,
     "newDeaths": 3
@@ -2258,7 +2258,7 @@
   {
     "dateStr": "10/30/20",
     "cases": 99784,
-    "deaths": 1773,
+    "deaths": 1777,
     "recovered": 0,
     "new": 1232,
     "newDeaths": 8
@@ -2266,7 +2266,7 @@
   {
     "dateStr": "10/31/20",
     "cases": 100761,
-    "deaths": 1773,
+    "deaths": 1777,
     "recovered": 0,
     "new": 977,
     "newDeaths": 0
@@ -2274,7 +2274,7 @@
   {
     "dateStr": "11/1/20",
     "cases": 101477,
-    "deaths": 1777,
+    "deaths": 1781,
     "recovered": 0,
     "new": 716,
     "newDeaths": 4
@@ -2282,9 +2282,17 @@
   {
     "dateStr": "11/2/20",
     "cases": 102114,
-    "deaths": 1846,
+    "deaths": 1784,
     "recovered": 0,
     "new": 637,
-    "newDeaths": 69
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "11/3/20",
+    "cases": 103025,
+    "deaths": 1807,
+    "recovered": 0,
+    "new": 911,
+    "newDeaths": 23
   }
 ]
