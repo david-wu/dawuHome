@@ -1,46 +1,46 @@
 {
   "Carson City": {
-    "dateStr": "11/5/20",
-    "cases": 847,
-    "deaths": 9,
+    "dateStr": "11/7/20",
+    "cases": 875,
+    "deaths": 10,
     "recovered": 0,
-    "new": 12,
+    "new": 4,
     "newDeaths": 0
   },
   "Churchill": {
-    "dateStr": "11/5/20",
-    "cases": 313,
+    "dateStr": "11/7/20",
+    "cases": 401,
     "deaths": 4,
     "recovered": 0,
-    "new": 29,
+    "new": 55,
     "newDeaths": 0
   },
   "Clark": {
-    "dateStr": "11/5/20",
-    "cases": 85641,
-    "deaths": 1551,
+    "dateStr": "11/7/20",
+    "cases": 88015,
+    "deaths": 1571,
     "recovered": 0,
-    "new": 769,
-    "newDeaths": 6
+    "new": 1342,
+    "newDeaths": 3
   },
   "Douglas": {
-    "dateStr": "11/5/20",
-    "cases": 445,
+    "dateStr": "11/7/20",
+    "cases": 452,
     "deaths": 2,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
-  },
-  "Elko": {
-    "dateStr": "11/5/20",
-    "cases": 1659,
-    "deaths": 14,
-    "recovered": 0,
-    "new": 49,
+    "new": 2,
     "newDeaths": 0
   },
+  "Elko": {
+    "dateStr": "11/7/20",
+    "cases": 1740,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 47,
+    "newDeaths": 1
+  },
   "Esmeralda": {
-    "dateStr": "11/5/20",
+    "dateStr": "11/7/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -48,63 +48,63 @@
     "newDeaths": 0
   },
   "Eureka": {
-    "dateStr": "11/5/20",
-    "cases": 14,
+    "dateStr": "11/7/20",
+    "cases": 15,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Humboldt": {
-    "dateStr": "11/5/20",
-    "cases": 191,
+    "dateStr": "11/7/20",
+    "cases": 194,
     "deaths": 4,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Lander": {
-    "dateStr": "11/5/20",
-    "cases": 116,
+    "dateStr": "11/7/20",
+    "cases": 121,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "11/5/20",
+    "dateStr": "11/7/20",
     "cases": 50,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   "Lyon": {
-    "dateStr": "11/5/20",
-    "cases": 645,
+    "dateStr": "11/7/20",
+    "cases": 664,
     "deaths": 14,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Mineral": {
-    "dateStr": "11/5/20",
-    "cases": 22,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Nye": {
-    "dateStr": "11/5/20",
-    "cases": 753,
-    "deaths": 17,
     "recovered": 0,
     "new": 11,
     "newDeaths": 0
   },
+  "Mineral": {
+    "dateStr": "11/7/20",
+    "cases": 22,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Nye": {
+    "dateStr": "11/7/20",
+    "cases": 866,
+    "deaths": 18,
+    "recovered": 0,
+    "new": 39,
+    "newDeaths": 0
+  },
   "Out of NV": {
-    "dateStr": "11/5/20",
+    "dateStr": "11/7/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -112,23 +112,23 @@
     "newDeaths": 0
   },
   "Pershing": {
-    "dateStr": "11/5/20",
-    "cases": 25,
+    "dateStr": "11/7/20",
+    "cases": 27,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Storey": {
-    "dateStr": "11/5/20",
-    "cases": 24,
+    "dateStr": "11/7/20",
+    "cases": 25,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "11/5/20",
+    "dateStr": "11/7/20",
     "cases": 269,
     "deaths": 16,
     "recovered": 0,
@@ -136,19 +136,19 @@
     "newDeaths": 0
   },
   "Washoe": {
-    "dateStr": "11/5/20",
-    "cases": 14486,
-    "deaths": 203,
+    "dateStr": "11/7/20",
+    "cases": 15125,
+    "deaths": 205,
     "recovered": 0,
-    "new": 377,
-    "newDeaths": 2
+    "new": 306,
+    "newDeaths": 1
   },
   "White Pine": {
-    "dateStr": "11/5/20",
-    "cases": 129,
+    "dateStr": "11/7/20",
+    "cases": 155,
     "deaths": 1,
     "recovered": 0,
-    "new": 2,
+    "new": 12,
     "newDeaths": 0
   }
 }
