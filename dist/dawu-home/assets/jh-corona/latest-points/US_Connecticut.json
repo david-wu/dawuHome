@@ -1,54 +1,54 @@
 {
   "Fairfield": {
-    "dateStr": "11/7/20",
-    "cases": 26435,
-    "deaths": 1447,
+    "dateStr": "11/9/20",
+    "cases": 27652,
+    "deaths": 1450,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 1217,
+    "newDeaths": 3
   },
   "Hartford": {
-    "dateStr": "11/7/20",
-    "cases": 19769,
-    "deaths": 1505,
+    "dateStr": "11/9/20",
+    "cases": 20409,
+    "deaths": 1518,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 640,
+    "newDeaths": 13
   },
   "Litchfield": {
-    "dateStr": "11/7/20",
-    "cases": 2559,
-    "deaths": 146,
+    "dateStr": "11/9/20",
+    "cases": 2704,
+    "deaths": 148,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 145,
+    "newDeaths": 2
   },
   "Middlesex": {
-    "dateStr": "11/7/20",
-    "cases": 2231,
+    "dateStr": "11/9/20",
+    "cases": 2335,
     "deaths": 198,
     "recovered": 0,
-    "new": 0,
+    "new": 104,
     "newDeaths": 0
   },
   "New Haven": {
-    "dateStr": "11/7/20",
-    "cases": 19154,
-    "deaths": 1137,
+    "dateStr": "11/9/20",
+    "cases": 20053,
+    "deaths": 1144,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 899,
+    "newDeaths": 7
   },
   "New London": {
-    "dateStr": "11/7/20",
-    "cases": 4220,
-    "deaths": 149,
+    "dateStr": "11/9/20",
+    "cases": 4326,
+    "deaths": 150,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 106,
+    "newDeaths": 1
   },
   "Out of CT": {
-    "dateStr": "11/7/20",
+    "dateStr": "11/9/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -56,15 +56,15 @@
     "newDeaths": 0
   },
   "Tolland": {
-    "dateStr": "11/7/20",
-    "cases": 1940,
+    "dateStr": "11/9/20",
+    "cases": 1991,
     "deaths": 68,
     "recovered": 0,
-    "new": 0,
+    "new": 51,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "11/7/20",
+    "dateStr": "11/9/20",
     "cases": 550,
     "deaths": 52,
     "recovered": 0,
@@ -72,11 +72,11 @@
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "11/7/20",
-    "cases": 1610,
+    "dateStr": "11/9/20",
+    "cases": 1685,
     "deaths": 21,
     "recovered": 0,
-    "new": 0,
+    "new": 75,
     "newDeaths": 0
   }
 }
