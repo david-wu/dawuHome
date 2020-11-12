@@ -1,398 +1,398 @@
 {
   "Alachua": {
-    "dateStr": "11/10/20",
-    "cases": 11347,
+    "dateStr": "11/11/20",
+    "cases": 11450,
     "deaths": 83,
     "recovered": 0,
-    "new": 86,
-    "newDeaths": 1
+    "new": 103,
+    "newDeaths": 0
   },
   "Baker": {
-    "dateStr": "11/10/20",
-    "cases": 1869,
+    "dateStr": "11/11/20",
+    "cases": 1872,
     "deaths": 28,
     "recovered": 0,
-    "new": 13,
-    "newDeaths": 1
+    "new": 3,
+    "newDeaths": 0
   },
   "Bay": {
-    "dateStr": "11/10/20",
-    "cases": 7279,
+    "dateStr": "11/11/20",
+    "cases": 7350,
     "deaths": 145,
+    "recovered": 0,
+    "new": 71,
+    "newDeaths": 0
+  },
+  "Bradford": {
+    "dateStr": "11/11/20",
+    "cases": 1289,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Brevard": {
+    "dateStr": "11/11/20",
+    "cases": 13092,
+    "deaths": 400,
+    "recovered": 0,
+    "new": 167,
+    "newDeaths": 1
+  },
+  "Broward": {
+    "dateStr": "11/11/20",
+    "cases": 92148,
+    "deaths": 1564,
+    "recovered": 0,
+    "new": 444,
+    "newDeaths": 4
+  },
+  "Calhoun": {
+    "dateStr": "11/11/20",
+    "cases": 776,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Charlotte": {
+    "dateStr": "11/11/20",
+    "cases": 4107,
+    "deaths": 170,
+    "recovered": 0,
+    "new": 38,
+    "newDeaths": 0
+  },
+  "Citrus": {
+    "dateStr": "11/11/20",
+    "cases": 3696,
+    "deaths": 143,
+    "recovered": 0,
+    "new": 41,
+    "newDeaths": 0
+  },
+  "Clay": {
+    "dateStr": "11/11/20",
+    "cases": 6682,
+    "deaths": 136,
     "recovered": 0,
     "new": 60,
     "newDeaths": 3
   },
-  "Bradford": {
-    "dateStr": "11/10/20",
-    "cases": 1279,
-    "deaths": 15,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Brevard": {
-    "dateStr": "11/10/20",
-    "cases": 12925,
-    "deaths": 399,
-    "recovered": 0,
-    "new": 145,
-    "newDeaths": 7
-  },
-  "Broward": {
-    "dateStr": "11/10/20",
-    "cases": 91704,
-    "deaths": 1560,
-    "recovered": 0,
-    "new": 263,
-    "newDeaths": 1
-  },
-  "Calhoun": {
-    "dateStr": "11/10/20",
-    "cases": 766,
-    "deaths": 19,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 3
-  },
-  "Charlotte": {
-    "dateStr": "11/10/20",
-    "cases": 4069,
-    "deaths": 170,
-    "recovered": 0,
-    "new": 38,
-    "newDeaths": 2
-  },
-  "Citrus": {
-    "dateStr": "11/10/20",
-    "cases": 3655,
-    "deaths": 143,
-    "recovered": 0,
-    "new": 41,
-    "newDeaths": 1
-  },
-  "Clay": {
-    "dateStr": "11/10/20",
-    "cases": 6622,
-    "deaths": 133,
-    "recovered": 0,
-    "new": 79,
-    "newDeaths": 3
-  },
   "Collier": {
-    "dateStr": "11/10/20",
-    "cases": 15441,
-    "deaths": 261,
+    "dateStr": "11/11/20",
+    "cases": 15566,
+    "deaths": 265,
     "recovered": 0,
-    "new": 127,
-    "newDeaths": 1
+    "new": 125,
+    "newDeaths": 4
   },
   "Columbia": {
-    "dateStr": "11/10/20",
-    "cases": 4402,
+    "dateStr": "11/11/20",
+    "cases": 4420,
     "deaths": 81,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "DeSoto": {
-    "dateStr": "11/10/20",
-    "cases": 1734,
-    "deaths": 30,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Dixie": {
-    "dateStr": "11/10/20",
-    "cases": 925,
-    "deaths": 11,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Duval": {
-    "dateStr": "11/10/20",
-    "cases": 37032,
-    "deaths": 537,
-    "recovered": 0,
-    "new": 185,
-    "newDeaths": 1
-  },
-  "Escambia": {
-    "dateStr": "11/10/20",
-    "cases": 14495,
-    "deaths": 282,
-    "recovered": 0,
-    "new": 98,
-    "newDeaths": 0
-  },
-  "Flagler": {
-    "dateStr": "11/10/20",
-    "cases": 2311,
-    "deaths": 41,
-    "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
-  },
-  "Franklin": {
-    "dateStr": "11/10/20",
-    "cases": 796,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Gadsden": {
-    "dateStr": "11/10/20",
-    "cases": 3098,
-    "deaths": 56,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Gilchrist": {
-    "dateStr": "11/10/20",
-    "cases": 641,
-    "deaths": 19,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Glades": {
-    "dateStr": "11/10/20",
-    "cases": 627,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Gulf": {
-    "dateStr": "11/10/20",
-    "cases": 992,
-    "deaths": 15,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Hamilton": {
-    "dateStr": "11/10/20",
-    "cases": 928,
-    "deaths": 11,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Hardee": {
-    "dateStr": "11/10/20",
-    "cases": 1662,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Hendry": {
-    "dateStr": "11/10/20",
-    "cases": 2305,
-    "deaths": 44,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Hernando": {
-    "dateStr": "11/10/20",
-    "cases": 4074,
-    "deaths": 180,
     "recovered": 0,
     "new": 18,
     "newDeaths": 0
   },
-  "Highlands": {
-    "dateStr": "11/10/20",
-    "cases": 3011,
-    "deaths": 125,
+  "DeSoto": {
+    "dateStr": "11/11/20",
+    "cases": 1741,
+    "deaths": 30,
     "recovered": 0,
-    "new": 29,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Dixie": {
+    "dateStr": "11/11/20",
+    "cases": 926,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Duval": {
+    "dateStr": "11/11/20",
+    "cases": 37494,
+    "deaths": 544,
+    "recovered": 0,
+    "new": 462,
+    "newDeaths": 7
+  },
+  "Escambia": {
+    "dateStr": "11/11/20",
+    "cases": 14609,
+    "deaths": 283,
+    "recovered": 0,
+    "new": 114,
     "newDeaths": 1
   },
-  "Hillsborough": {
-    "dateStr": "11/10/20",
-    "cases": 51296,
-    "deaths": 847,
+  "Flagler": {
+    "dateStr": "11/11/20",
+    "cases": 2324,
+    "deaths": 41,
     "recovered": 0,
-    "new": 241,
+    "new": 13,
     "newDeaths": 0
   },
-  "Holmes": {
-    "dateStr": "11/10/20",
-    "cases": 991,
-    "deaths": 13,
+  "Franklin": {
+    "dateStr": "11/11/20",
+    "cases": 802,
+    "deaths": 4,
     "recovered": 0,
-    "new": 2,
+    "new": 6,
     "newDeaths": 0
   },
-  "Indian River": {
-    "dateStr": "11/10/20",
-    "cases": 4225,
-    "deaths": 126,
+  "Gadsden": {
+    "dateStr": "11/11/20",
+    "cases": 3106,
+    "deaths": 56,
     "recovered": 0,
-    "new": 32,
+    "new": 8,
     "newDeaths": 0
   },
-  "Jackson": {
-    "dateStr": "11/10/20",
-    "cases": 3387,
-    "deaths": 84,
+  "Gilchrist": {
+    "dateStr": "11/11/20",
+    "cases": 645,
+    "deaths": 19,
     "recovered": 0,
-    "new": 38,
+    "new": 4,
     "newDeaths": 0
   },
-  "Jefferson": {
-    "dateStr": "11/10/20",
-    "cases": 714,
-    "deaths": 11,
+  "Glades": {
+    "dateStr": "11/11/20",
+    "cases": 630,
+    "deaths": 6,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
+  "Gulf": {
+    "dateStr": "11/11/20",
+    "cases": 997,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Hamilton": {
+    "dateStr": "11/11/20",
+    "cases": 934,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Hardee": {
+    "dateStr": "11/11/20",
+    "cases": 1669,
+    "deaths": 17,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Hendry": {
+    "dateStr": "11/11/20",
+    "cases": 2310,
+    "deaths": 44,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Hernando": {
+    "dateStr": "11/11/20",
+    "cases": 4127,
+    "deaths": 181,
+    "recovered": 0,
+    "new": 53,
+    "newDeaths": 1
+  },
+  "Highlands": {
+    "dateStr": "11/11/20",
+    "cases": 3037,
+    "deaths": 126,
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 1
+  },
+  "Hillsborough": {
+    "dateStr": "11/11/20",
+    "cases": 51635,
+    "deaths": 851,
+    "recovered": 0,
+    "new": 339,
+    "newDeaths": 4
+  },
+  "Holmes": {
+    "dateStr": "11/11/20",
+    "cases": 1002,
+    "deaths": 13,
+    "recovered": 0,
+    "new": 11,
+    "newDeaths": 0
+  },
+  "Indian River": {
+    "dateStr": "11/11/20",
+    "cases": 4272,
+    "deaths": 126,
+    "recovered": 0,
+    "new": 47,
+    "newDeaths": 0
+  },
+  "Jackson": {
+    "dateStr": "11/11/20",
+    "cases": 3428,
+    "deaths": 85,
+    "recovered": 0,
+    "new": 41,
+    "newDeaths": 1
+  },
+  "Jefferson": {
+    "dateStr": "11/11/20",
+    "cases": 715,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Lafayette": {
-    "dateStr": "11/10/20",
+    "dateStr": "11/11/20",
     "cases": 1293,
     "deaths": 19,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 2
-  },
-  "Lake": {
-    "dateStr": "11/10/20",
-    "cases": 9312,
-    "deaths": 238,
-    "recovered": 0,
-    "new": 66,
-    "newDeaths": 2
-  },
-  "Lee": {
-    "dateStr": "11/10/20",
-    "cases": 25067,
-    "deaths": 537,
-    "recovered": 0,
-    "new": 138,
-    "newDeaths": 6
-  },
-  "Leon": {
-    "dateStr": "11/10/20",
-    "cases": 13130,
-    "deaths": 119,
-    "recovered": 0,
-    "new": 116,
     "newDeaths": 0
   },
+  "Lake": {
+    "dateStr": "11/11/20",
+    "cases": 9360,
+    "deaths": 238,
+    "recovered": 0,
+    "new": 48,
+    "newDeaths": 0
+  },
+  "Lee": {
+    "dateStr": "11/11/20",
+    "cases": 25316,
+    "deaths": 538,
+    "recovered": 0,
+    "new": 249,
+    "newDeaths": 1
+  },
+  "Leon": {
+    "dateStr": "11/11/20",
+    "cases": 13219,
+    "deaths": 120,
+    "recovered": 0,
+    "new": 89,
+    "newDeaths": 1
+  },
   "Levy": {
-    "dateStr": "11/10/20",
-    "cases": 1218,
+    "dateStr": "11/11/20",
+    "cases": 1227,
     "deaths": 12,
     "recovered": 0,
-    "new": 3,
+    "new": 9,
     "newDeaths": 0
   },
   "Liberty": {
-    "dateStr": "11/10/20",
-    "cases": 550,
+    "dateStr": "11/11/20",
+    "cases": 551,
     "deaths": 12,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Madison": {
-    "dateStr": "11/10/20",
-    "cases": 1129,
+    "dateStr": "11/11/20",
+    "cases": 1143,
     "deaths": 25,
     "recovered": 0,
-    "new": 4,
+    "new": 14,
     "newDeaths": 0
   },
   "Manatee": {
-    "dateStr": "11/10/20",
-    "cases": 14281,
+    "dateStr": "11/11/20",
+    "cases": 14400,
     "deaths": 340,
     "recovered": 0,
-    "new": 95,
-    "newDeaths": 3
+    "new": 119,
+    "newDeaths": 0
   },
   "Marion": {
-    "dateStr": "11/10/20",
-    "cases": 11412,
+    "dateStr": "11/11/20",
+    "cases": 11455,
     "deaths": 362,
     "recovered": 0,
-    "new": 53,
+    "new": 43,
     "newDeaths": 0
   },
   "Martin": {
-    "dateStr": "11/10/20",
-    "cases": 5605,
+    "dateStr": "11/11/20",
+    "cases": 5630,
     "deaths": 170,
     "recovered": 0,
-    "new": 21,
+    "new": 25,
     "newDeaths": 0
   },
   "Miami-Dade": {
-    "dateStr": "11/10/20",
-    "cases": 195273,
-    "deaths": 3690,
+    "dateStr": "11/11/20",
+    "cases": 195991,
+    "deaths": 3693,
     "recovered": 0,
-    "new": 394,
-    "newDeaths": 2
+    "new": 718,
+    "newDeaths": 3
   },
   "Monroe": {
-    "dateStr": "11/10/20",
-    "cases": 2605,
+    "dateStr": "11/11/20",
+    "cases": 2646,
     "deaths": 25,
     "recovered": 0,
-    "new": 9,
+    "new": 41,
     "newDeaths": 0
   },
   "Nassau": {
-    "dateStr": "11/10/20",
-    "cases": 2650,
+    "dateStr": "11/11/20",
+    "cases": 2666,
     "deaths": 52,
     "recovered": 0,
-    "new": 23,
+    "new": 16,
     "newDeaths": 0
   },
   "Okaloosa": {
-    "dateStr": "11/10/20",
-    "cases": 7195,
+    "dateStr": "11/11/20",
+    "cases": 7280,
     "deaths": 139,
     "recovered": 0,
-    "new": 86,
+    "new": 85,
     "newDeaths": 0
   },
   "Okeechobee": {
-    "dateStr": "11/10/20",
-    "cases": 1823,
+    "dateStr": "11/11/20",
+    "cases": 1833,
     "deaths": 43,
     "recovered": 0,
-    "new": 9,
+    "new": 10,
     "newDeaths": 0
   },
   "Orange": {
-    "dateStr": "11/10/20",
-    "cases": 49422,
-    "deaths": 598,
+    "dateStr": "11/11/20",
+    "cases": 49752,
+    "deaths": 601,
     "recovered": 0,
-    "new": 393,
-    "newDeaths": 6
-  },
-  "Osceola": {
-    "dateStr": "11/10/20",
-    "cases": 15302,
-    "deaths": 215,
-    "recovered": 0,
-    "new": 89,
+    "new": 330,
     "newDeaths": 3
   },
+  "Osceola": {
+    "dateStr": "11/11/20",
+    "cases": 15441,
+    "deaths": 215,
+    "recovered": 0,
+    "new": 139,
+    "newDeaths": 0
+  },
   "Out of FL": {
-    "dateStr": "11/10/20",
+    "dateStr": "11/11/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -400,155 +400,155 @@
     "newDeaths": 0
   },
   "Palm Beach": {
-    "dateStr": "11/10/20",
-    "cases": 56145,
-    "deaths": 1612,
+    "dateStr": "11/11/20",
+    "cases": 56509,
+    "deaths": 1614,
     "recovered": 0,
-    "new": 329,
+    "new": 364,
     "newDeaths": 2
   },
   "Pasco": {
-    "dateStr": "11/10/20",
-    "cases": 11969,
+    "dateStr": "11/11/20",
+    "cases": 12088,
     "deaths": 251,
     "recovered": 0,
-    "new": 106,
-    "newDeaths": 1
+    "new": 119,
+    "newDeaths": 0
   },
   "Pinellas": {
-    "dateStr": "11/10/20",
-    "cases": 28032,
-    "deaths": 833,
+    "dateStr": "11/11/20",
+    "cases": 28242,
+    "deaths": 838,
     "recovered": 0,
-    "new": 183,
-    "newDeaths": 2
+    "new": 210,
+    "newDeaths": 5
   },
   "Polk": {
-    "dateStr": "11/10/20",
-    "cases": 24440,
-    "deaths": 642,
+    "dateStr": "11/11/20",
+    "cases": 24661,
+    "deaths": 643,
     "recovered": 0,
-    "new": 213,
-    "newDeaths": 4
+    "new": 221,
+    "newDeaths": 1
   },
   "Putnam": {
-    "dateStr": "11/10/20",
-    "cases": 2493,
+    "dateStr": "11/11/20",
+    "cases": 2510,
     "deaths": 54,
     "recovered": 0,
-    "new": 4,
+    "new": 17,
     "newDeaths": 0
   },
   "Santa Rosa": {
-    "dateStr": "11/10/20",
-    "cases": 6301,
+    "dateStr": "11/11/20",
+    "cases": 6374,
     "deaths": 89,
     "recovered": 0,
-    "new": 37,
+    "new": 73,
     "newDeaths": 0
   },
   "Sarasota": {
-    "dateStr": "11/10/20",
-    "cases": 10529,
-    "deaths": 352,
+    "dateStr": "11/11/20",
+    "cases": 10812,
+    "deaths": 356,
     "recovered": 0,
-    "new": 51,
-    "newDeaths": 1
+    "new": 283,
+    "newDeaths": 4
   },
   "Seminole": {
-    "dateStr": "11/10/20",
-    "cases": 11080,
+    "dateStr": "11/11/20",
+    "cases": 11145,
     "deaths": 253,
     "recovered": 0,
-    "new": 76,
+    "new": 65,
     "newDeaths": 0
   },
   "St. Johns": {
-    "dateStr": "11/10/20",
-    "cases": 7165,
+    "dateStr": "11/11/20",
+    "cases": 7219,
     "deaths": 88,
     "recovered": 0,
-    "new": 81,
+    "new": 54,
     "newDeaths": 0
   },
   "St. Lucie": {
-    "dateStr": "11/10/20",
-    "cases": 9592,
-    "deaths": 341,
+    "dateStr": "11/11/20",
+    "cases": 9631,
+    "deaths": 343,
     "recovered": 0,
-    "new": 37,
-    "newDeaths": 0
-  },
-  "Sumter": {
-    "dateStr": "11/10/20",
-    "cases": 3096,
-    "deaths": 88,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Suwannee": {
-    "dateStr": "11/10/20",
-    "cases": 3072,
-    "deaths": 82,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "Taylor": {
-    "dateStr": "11/10/20",
-    "cases": 1544,
-    "deaths": 20,
-    "recovered": 0,
-    "new": 6,
+    "new": 39,
     "newDeaths": 2
   },
+  "Sumter": {
+    "dateStr": "11/11/20",
+    "cases": 3108,
+    "deaths": 89,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 1
+  },
+  "Suwannee": {
+    "dateStr": "11/11/20",
+    "cases": 3084,
+    "deaths": 82,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Taylor": {
+    "dateStr": "11/11/20",
+    "cases": 1547,
+    "deaths": 20,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
   "Unassigned": {
-    "dateStr": "11/10/20",
-    "cases": 2038,
+    "dateStr": "11/11/20",
+    "cases": 2062,
     "deaths": 47,
     "recovered": 0,
-    "new": 0,
+    "new": 24,
     "newDeaths": 0
   },
   "Union": {
-    "dateStr": "11/10/20",
-    "cases": 1187,
+    "dateStr": "11/11/20",
+    "cases": 1190,
     "deaths": 53,
     "recovered": 0,
-    "new": 7,
-    "newDeaths": 4
+    "new": 3,
+    "newDeaths": 0
   },
   "Volusia": {
-    "dateStr": "11/10/20",
-    "cases": 13828,
+    "dateStr": "11/11/20",
+    "cases": 13937,
     "deaths": 333,
     "recovered": 0,
-    "new": 80,
-    "newDeaths": 2
+    "new": 109,
+    "newDeaths": 0
   },
   "Wakulla": {
-    "dateStr": "11/10/20",
-    "cases": 1407,
-    "deaths": 11,
+    "dateStr": "11/11/20",
+    "cases": 1418,
+    "deaths": 12,
     "recovered": 0,
-    "new": 20,
-    "newDeaths": 0
+    "new": 11,
+    "newDeaths": 1
   },
   "Walton": {
-    "dateStr": "11/10/20",
-    "cases": 3088,
-    "deaths": 32,
+    "dateStr": "11/11/20",
+    "cases": 3109,
+    "deaths": 33,
     "recovered": 0,
-    "new": 41,
-    "newDeaths": 0
+    "new": 21,
+    "newDeaths": 1
   },
   "Washington": {
-    "dateStr": "11/10/20",
-    "cases": 1317,
+    "dateStr": "11/11/20",
+    "cases": 1318,
     "deaths": 24,
     "recovered": 0,
-    "new": 8,
+    "new": 1,
     "newDeaths": 0
   }
 }

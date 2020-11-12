@@ -2338,17 +2338,25 @@
   {
     "dateStr": "11/9/20",
     "cases": 10115804,
-    "deaths": 238256,
+    "deaths": 238469,
     "recovered": 3928845,
     "new": 119944,
-    "newDeaths": 477
+    "newDeaths": 690
   },
   {
     "dateStr": "11/10/20",
-    "cases": 10252129,
-    "deaths": 239671,
+    "cases": 10256094,
+    "deaths": 239905,
     "recovered": 3961873,
-    "new": 136325,
-    "newDeaths": 1415
+    "new": 140290,
+    "newDeaths": 1436
+  },
+  {
+    "dateStr": "11/11/20",
+    "cases": 10400227,
+    "deaths": 241798,
+    "recovered": 3997175,
+    "new": 144133,
+    "newDeaths": 1893
   }
 ]

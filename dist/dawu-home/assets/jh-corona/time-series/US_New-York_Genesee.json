@@ -2345,10 +2345,18 @@
   },
   {
     "dateStr": "11/10/20",
-    "cases": 495,
+    "cases": 510,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 15,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/11/20",
+    "cases": 527,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 17,
     "newDeaths": 0
   }
 ]
