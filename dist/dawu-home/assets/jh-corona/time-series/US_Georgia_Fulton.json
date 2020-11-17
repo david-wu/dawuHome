@@ -2290,15 +2290,15 @@
   {
     "dateStr": "11/3/20",
     "cases": 33878,
-    "deaths": 629,
+    "deaths": 656,
     "recovered": 0,
     "new": 2035,
-    "newDeaths": 1
+    "newDeaths": 28
   },
   {
     "dateStr": "11/4/20",
     "cases": 34112,
-    "deaths": 629,
+    "deaths": 656,
     "recovered": 0,
     "new": 234,
     "newDeaths": 0
@@ -2306,7 +2306,7 @@
   {
     "dateStr": "11/5/20",
     "cases": 34329,
-    "deaths": 631,
+    "deaths": 658,
     "recovered": 0,
     "new": 217,
     "newDeaths": 2
@@ -2314,7 +2314,7 @@
   {
     "dateStr": "11/6/20",
     "cases": 34525,
-    "deaths": 635,
+    "deaths": 662,
     "recovered": 0,
     "new": 196,
     "newDeaths": 4
@@ -2322,7 +2322,7 @@
   {
     "dateStr": "11/7/20",
     "cases": 34644,
-    "deaths": 636,
+    "deaths": 663,
     "recovered": 0,
     "new": 119,
     "newDeaths": 1
@@ -2330,7 +2330,7 @@
   {
     "dateStr": "11/8/20",
     "cases": 34833,
-    "deaths": 636,
+    "deaths": 663,
     "recovered": 0,
     "new": 189,
     "newDeaths": 0
@@ -2338,7 +2338,7 @@
   {
     "dateStr": "11/9/20",
     "cases": 34946,
-    "deaths": 638,
+    "deaths": 665,
     "recovered": 0,
     "new": 113,
     "newDeaths": 2
@@ -2346,7 +2346,7 @@
   {
     "dateStr": "11/10/20",
     "cases": 35322,
-    "deaths": 642,
+    "deaths": 669,
     "recovered": 0,
     "new": 376,
     "newDeaths": 4
@@ -2354,9 +2354,49 @@
   {
     "dateStr": "11/11/20",
     "cases": 35500,
-    "deaths": 644,
+    "deaths": 671,
     "recovered": 0,
     "new": 178,
     "newDeaths": 2
+  },
+  {
+    "dateStr": "11/12/20",
+    "cases": 35756,
+    "deaths": 674,
+    "recovered": 0,
+    "new": 256,
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "11/13/20",
+    "cases": 35994,
+    "deaths": 674,
+    "recovered": 0,
+    "new": 238,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/14/20",
+    "cases": 36266,
+    "deaths": 677,
+    "recovered": 0,
+    "new": 272,
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "11/15/20",
+    "cases": 36425,
+    "deaths": 677,
+    "recovered": 0,
+    "new": 159,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/16/20",
+    "cases": 36496,
+    "deaths": 677,
+    "recovered": 0,
+    "new": 71,
+    "newDeaths": 0
   }
 ]

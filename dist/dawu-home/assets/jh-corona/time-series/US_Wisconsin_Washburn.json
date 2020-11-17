@@ -1850,15 +1850,15 @@
   {
     "dateStr": "9/9/20",
     "cases": 77,
-    "deaths": 0,
+    "deaths": 1,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   {
     "dateStr": "9/10/20",
     "cases": 78,
-    "deaths": 0,
+    "deaths": 1,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
@@ -1869,7 +1869,7 @@
     "deaths": 1,
     "recovered": 0,
     "new": 1,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   {
     "dateStr": "9/12/20",
@@ -2034,10 +2034,10 @@
   {
     "dateStr": "10/2/20",
     "cases": 122,
-    "deaths": 1,
+    "deaths": 2,
     "recovered": 0,
     "new": 6,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   {
     "dateStr": "10/3/20",
@@ -2045,7 +2045,7 @@
     "deaths": 2,
     "recovered": 0,
     "new": 6,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   {
     "dateStr": "10/4/20",
@@ -2357,6 +2357,46 @@
     "deaths": 2,
     "recovered": 0,
     "new": 11,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/12/20",
+    "cases": 392,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 17,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/13/20",
+    "cases": 420,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 28,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/14/20",
+    "cases": 443,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/15/20",
+    "cases": 466,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "11/16/20",
+    "cases": 484,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 18,
     "newDeaths": 0
   }
 ]

@@ -1,62 +1,62 @@
 {
   "Belknap": {
-    "dateStr": "11/11/20",
-    "cases": 328,
+    "dateStr": "11/16/20",
+    "cases": 420,
     "deaths": 6,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Carroll": {
+    "dateStr": "11/16/20",
+    "cases": 239,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Cheshire": {
+    "dateStr": "11/16/20",
+    "cases": 342,
+    "deaths": 3,
     "recovered": 0,
     "new": 17,
     "newDeaths": 0
   },
-  "Carroll": {
-    "dateStr": "11/11/20",
-    "cases": 202,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Cheshire": {
-    "dateStr": "11/11/20",
-    "cases": 283,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
   "Coos": {
-    "dateStr": "11/11/20",
-    "cases": 188,
-    "deaths": 1,
+    "dateStr": "11/16/20",
+    "cases": 234,
+    "deaths": 4,
     "recovered": 0,
-    "new": 14,
+    "new": 5,
     "newDeaths": 1
   },
   "Grafton": {
-    "dateStr": "11/11/20",
-    "cases": 342,
-    "deaths": 1,
+    "dateStr": "11/16/20",
+    "cases": 406,
+    "deaths": 2,
     "recovered": 0,
-    "new": 9,
+    "new": 7,
     "newDeaths": 0
   },
   "Hillsborough": {
-    "dateStr": "11/11/20",
-    "cases": 6210,
-    "deaths": 325,
+    "dateStr": "11/16/20",
+    "cases": 6845,
+    "deaths": 328,
     "recovered": 0,
-    "new": 73,
+    "new": 154,
     "newDeaths": 0
   },
   "Merrimack": {
-    "dateStr": "11/11/20",
-    "cases": 1129,
+    "dateStr": "11/16/20",
+    "cases": 1284,
     "deaths": 32,
     "recovered": 0,
-    "new": 24,
+    "new": 34,
     "newDeaths": 0
   },
   "Out of NH": {
-    "dateStr": "11/11/20",
+    "dateStr": "11/16/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -64,35 +64,35 @@
     "newDeaths": 0
   },
   "Rockingham": {
-    "dateStr": "11/11/20",
-    "cases": 3203,
+    "dateStr": "11/16/20",
+    "cases": 3587,
     "deaths": 105,
     "recovered": 0,
-    "new": 37,
+    "new": 75,
     "newDeaths": 0
   },
   "Strafford": {
-    "dateStr": "11/11/20",
-    "cases": 1013,
+    "dateStr": "11/16/20",
+    "cases": 1210,
     "deaths": 14,
     "recovered": 0,
-    "new": 13,
+    "new": 26,
     "newDeaths": 0
   },
   "Sullivan": {
-    "dateStr": "11/11/20",
-    "cases": 146,
-    "deaths": 3,
+    "dateStr": "11/16/20",
+    "cases": 173,
+    "deaths": 4,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 2
+    "new": 7,
+    "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "11/11/20",
-    "cases": 108,
+    "dateStr": "11/16/20",
+    "cases": 300,
     "deaths": 64,
     "recovered": 0,
-    "new": 23,
+    "new": 14,
     "newDeaths": 0
   }
 }

@@ -1,86 +1,86 @@
 {
   "Addison": {
-    "dateStr": "11/11/20",
-    "cases": 135,
+    "dateStr": "11/16/20",
+    "cases": 149,
     "deaths": 2,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Bennington": {
-    "dateStr": "11/11/20",
-    "cases": 152,
+    "dateStr": "11/16/20",
+    "cases": 167,
     "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Caledonia": {
+    "dateStr": "11/16/20",
+    "cases": 74,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Chittenden": {
+    "dateStr": "11/16/20",
+    "cases": 1217,
+    "deaths": 39,
+    "recovered": 0,
+    "new": 29,
+    "newDeaths": 0
+  },
+  "Essex": {
+    "dateStr": "11/16/20",
+    "cases": 25,
+    "deaths": 0,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Caledonia": {
-    "dateStr": "11/11/20",
-    "cases": 60,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Chittenden": {
-    "dateStr": "11/11/20",
-    "cases": 1125,
-    "deaths": 39,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
-  },
-  "Essex": {
-    "dateStr": "11/11/20",
-    "cases": 20,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Franklin": {
-    "dateStr": "11/11/20",
-    "cases": 152,
+    "dateStr": "11/16/20",
+    "cases": 169,
     "deaths": 7,
     "recovered": 0,
-    "new": 4,
+    "new": 6,
     "newDeaths": 0
   },
   "Grand Isle": {
-    "dateStr": "11/11/20",
-    "cases": 29,
+    "dateStr": "11/16/20",
+    "cases": 33,
     "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Lamoille": {
+    "dateStr": "11/16/20",
+    "cases": 105,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Orange": {
+    "dateStr": "11/16/20",
+    "cases": 106,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 15,
+    "newDeaths": 0
+  },
+  "Orleans": {
+    "dateStr": "11/16/20",
+    "cases": 73,
+    "deaths": 1,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
-  "Lamoille": {
-    "dateStr": "11/11/20",
-    "cases": 74,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Orange": {
-    "dateStr": "11/11/20",
-    "cases": 62,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Orleans": {
-    "dateStr": "11/11/20",
-    "cases": 59,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Out of VT": {
-    "dateStr": "11/11/20",
+    "dateStr": "11/16/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,15 +88,15 @@
     "newDeaths": 0
   },
   "Rutland": {
-    "dateStr": "11/11/20",
-    "cases": 151,
+    "dateStr": "11/16/20",
+    "cases": 185,
     "deaths": 1,
     "recovered": 0,
-    "new": 11,
+    "new": 8,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "11/11/20",
+    "dateStr": "11/16/20",
     "cases": 59,
     "deaths": 18,
     "recovered": 0,
@@ -104,27 +104,27 @@
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "11/11/20",
-    "cases": 199,
+    "dateStr": "11/16/20",
+    "cases": 370,
     "deaths": 2,
     "recovered": 0,
-    "new": 19,
+    "new": 39,
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "11/11/20",
-    "cases": 164,
+    "dateStr": "11/16/20",
+    "cases": 176,
     "deaths": 3,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Windsor": {
-    "dateStr": "11/11/20",
-    "cases": 144,
+    "dateStr": "11/16/20",
+    "cases": 152,
     "deaths": 2,
     "recovered": 0,
-    "new": 3,
+    "new": 1,
     "newDeaths": 0
   }
 }
