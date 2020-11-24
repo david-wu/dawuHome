@@ -1,22 +1,22 @@
 {
   "Alberta": {
-    "dateStr": "11/22/20",
-    "cases": 46872,
-    "deaths": 471,
+    "dateStr": "11/23/20",
+    "cases": 48421,
+    "deaths": 476,
     "recovered": 0,
-    "new": 1584,
-    "newDeaths": 0
+    "new": 1549,
+    "newDeaths": 5
   },
   "British Columbia": {
-    "dateStr": "11/22/20",
-    "cases": 25474,
-    "deaths": 331,
+    "dateStr": "11/23/20",
+    "cases": 27407,
+    "deaths": 348,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 1933,
+    "newDeaths": 17
   },
   "Diamond Princess": {
-    "dateStr": "11/22/20",
+    "dateStr": "11/23/20",
     "cases": 1,
     "deaths": 1,
     "recovered": 0,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Grand Princess": {
-    "dateStr": "11/22/20",
+    "dateStr": "11/23/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 0,
@@ -32,31 +32,31 @@
     "newDeaths": 0
   },
   "Manitoba": {
-    "dateStr": "11/22/20",
-    "cases": 13544,
-    "deaths": 229,
+    "dateStr": "11/23/20",
+    "cases": 14087,
+    "deaths": 236,
     "recovered": 0,
-    "new": 240,
-    "newDeaths": 12
+    "new": 543,
+    "newDeaths": 7
   },
   "New Brunswick": {
-    "dateStr": "11/22/20",
-    "cases": 430,
-    "deaths": 6,
+    "dateStr": "11/23/20",
+    "cases": 445,
+    "deaths": 7,
     "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
+    "new": 15,
+    "newDeaths": 1
   },
   "Newfoundland and Labrador": {
-    "dateStr": "11/22/20",
-    "cases": 319,
+    "dateStr": "11/23/20",
+    "cases": 321,
     "deaths": 4,
     "recovered": 0,
-    "new": 3,
+    "new": 2,
     "newDeaths": 0
   },
   "Northwest Territories": {
-    "dateStr": "11/22/20",
+    "dateStr": "11/23/20",
     "cases": 15,
     "deaths": 0,
     "recovered": 0,
@@ -64,51 +64,59 @@
     "newDeaths": 0
   },
   "Nova Scotia": {
-    "dateStr": "11/22/20",
-    "cases": 1179,
+    "dateStr": "11/23/20",
+    "cases": 1190,
     "deaths": 65,
     "recovered": 0,
     "new": 11,
     "newDeaths": 0
   },
-  "Ontario": {
-    "dateStr": "11/22/20",
-    "cases": 107347,
-    "deaths": 3532,
+  "Nunavut": {
+    "dateStr": "11/23/20",
+    "cases": 134,
+    "deaths": 0,
     "recovered": 0,
-    "new": 1487,
-    "newDeaths": 12
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Ontario": {
+    "dateStr": "11/23/20",
+    "cases": 108677,
+    "deaths": 3553,
+    "recovered": 0,
+    "new": 1330,
+    "newDeaths": 21
   },
   "Prince Edward Island": {
-    "dateStr": "11/22/20",
-    "cases": 68,
+    "dateStr": "11/23/20",
+    "cases": 69,
     "deaths": 1,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Quebec": {
-    "dateStr": "11/22/20",
-    "cases": 132042,
-    "deaths": 6829,
+    "dateStr": "11/23/20",
+    "cases": 133206,
+    "deaths": 6842,
     "recovered": 0,
-    "new": 1154,
-    "newDeaths": 23
+    "new": 1164,
+    "newDeaths": 13
   },
   "Saskatchewan": {
-    "dateStr": "11/22/20",
-    "cases": 6473,
-    "deaths": 33,
+    "dateStr": "11/23/20",
+    "cases": 6708,
+    "deaths": 37,
     "recovered": 0,
-    "new": 236,
-    "newDeaths": 0
+    "new": 235,
+    "newDeaths": 4
   },
   "Yukon": {
-    "dateStr": "11/22/20",
-    "cases": 32,
+    "dateStr": "11/23/20",
+    "cases": 38,
     "deaths": 1,
     "recovered": 0,
-    "new": 3,
+    "new": 6,
     "newDeaths": 0
   }
 }
