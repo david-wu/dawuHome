@@ -2385,10 +2385,10 @@
   },
   {
     "dateStr": "11/15/20",
-    "cases": 8217,
+    "cases": 8295,
     "deaths": 279,
     "recovered": 0,
-    "new": 0,
+    "new": 78,
     "newDeaths": 0
   },
   {
@@ -2396,7 +2396,7 @@
     "cases": 8931,
     "deaths": 284,
     "recovered": 0,
-    "new": 714,
+    "new": 636,
     "newDeaths": 5
   },
   {
@@ -2454,5 +2454,13 @@
     "recovered": 0,
     "new": 58,
     "newDeaths": 1
+  },
+  {
+    "dateStr": "11/24/20",
+    "cases": 9896,
+    "deaths": 289,
+    "recovered": 0,
+    "new": 166,
+    "newDeaths": 0
   }
 ]
