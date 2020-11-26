@@ -1,86 +1,86 @@
 {
   "Apache": {
-    "dateStr": "11/24/20",
-    "cases": 5036,
+    "dateStr": "11/25/20",
+    "cases": 5112,
     "deaths": 195,
     "recovered": 0,
-    "new": 115,
-    "newDeaths": 2
-  },
-  "Cochise": {
-    "dateStr": "11/24/20",
-    "cases": 3272,
-    "deaths": 79,
-    "recovered": 0,
-    "new": 135,
-    "newDeaths": 1
-  },
-  "Coconino": {
-    "dateStr": "11/24/20",
-    "cases": 7114,
-    "deaths": 169,
-    "recovered": 0,
-    "new": 126,
-    "newDeaths": 5
-  },
-  "Gila": {
-    "dateStr": "11/24/20",
-    "cases": 2689,
-    "deaths": 87,
-    "recovered": 0,
-    "new": 58,
+    "new": 76,
     "newDeaths": 0
   },
-  "Graham": {
-    "dateStr": "11/24/20",
-    "cases": 2008,
-    "deaths": 34,
+  "Cochise": {
+    "dateStr": "11/25/20",
+    "cases": 3350,
+    "deaths": 79,
     "recovered": 0,
-    "new": 75,
+    "new": 78,
+    "newDeaths": 0
+  },
+  "Coconino": {
+    "dateStr": "11/25/20",
+    "cases": 7185,
+    "deaths": 169,
+    "recovered": 0,
+    "new": 71,
+    "newDeaths": 0
+  },
+  "Gila": {
+    "dateStr": "11/25/20",
+    "cases": 2847,
+    "deaths": 88,
+    "recovered": 0,
+    "new": 158,
     "newDeaths": 1
   },
+  "Graham": {
+    "dateStr": "11/25/20",
+    "cases": 2041,
+    "deaths": 34,
+    "recovered": 0,
+    "new": 33,
+    "newDeaths": 0
+  },
   "Greenlee": {
-    "dateStr": "11/24/20",
-    "cases": 187,
+    "dateStr": "11/25/20",
+    "cases": 194,
     "deaths": 2,
     "recovered": 0,
-    "new": 6,
+    "new": 7,
     "newDeaths": 0
   },
   "La Paz": {
-    "dateStr": "11/24/20",
-    "cases": 755,
+    "dateStr": "11/25/20",
+    "cases": 789,
     "deaths": 19,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
-  },
-  "Maricopa": {
-    "dateStr": "11/24/20",
-    "cases": 194410,
-    "deaths": 3922,
-    "recovered": 0,
-    "new": 2907,
-    "newDeaths": 26
-  },
-  "Mohave": {
-    "dateStr": "11/24/20",
-    "cases": 5808,
-    "deaths": 251,
-    "recovered": 0,
-    "new": 165,
+    "new": 34,
     "newDeaths": 0
   },
+  "Maricopa": {
+    "dateStr": "11/25/20",
+    "cases": 196849,
+    "deaths": 3927,
+    "recovered": 0,
+    "new": 2439,
+    "newDeaths": 5
+  },
+  "Mohave": {
+    "dateStr": "11/25/20",
+    "cases": 5853,
+    "deaths": 253,
+    "recovered": 0,
+    "new": 45,
+    "newDeaths": 2
+  },
   "Navajo": {
-    "dateStr": "11/24/20",
-    "cases": 7756,
+    "dateStr": "11/25/20",
+    "cases": 7815,
     "deaths": 270,
     "recovered": 0,
-    "new": 102,
-    "newDeaths": 3
+    "new": 59,
+    "newDeaths": 0
   },
   "Out of AZ": {
-    "dateStr": "11/24/20",
+    "dateStr": "11/25/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,31 +88,31 @@
     "newDeaths": 0
   },
   "Pima": {
-    "dateStr": "11/24/20",
-    "cases": 36986,
+    "dateStr": "11/25/20",
+    "cases": 37518,
     "deaths": 679,
     "recovered": 0,
-    "new": 327,
-    "newDeaths": 5
+    "new": 532,
+    "newDeaths": 0
   },
   "Pinal": {
-    "dateStr": "11/24/20",
-    "cases": 15613,
+    "dateStr": "11/25/20",
+    "cases": 15707,
     "deaths": 252,
     "recovered": 0,
-    "new": 268,
+    "new": 94,
     "newDeaths": 0
   },
   "Santa Cruz": {
-    "dateStr": "11/24/20",
-    "cases": 3664,
+    "dateStr": "11/25/20",
+    "cases": 3720,
     "deaths": 69,
     "recovered": 0,
-    "new": 40,
-    "newDeaths": 1
+    "new": 56,
+    "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "11/24/20",
+    "dateStr": "11/25/20",
     "cases": 8,
     "deaths": 42,
     "recovered": 0,
@@ -120,19 +120,19 @@
     "newDeaths": 0
   },
   "Yavapai": {
-    "dateStr": "11/24/20",
-    "cases": 4638,
+    "dateStr": "11/25/20",
+    "cases": 4751,
     "deaths": 110,
     "recovered": 0,
-    "new": 109,
-    "newDeaths": 3
+    "new": 113,
+    "newDeaths": 0
   },
   "Yuma": {
-    "dateStr": "11/24/20",
-    "cases": 16932,
-    "deaths": 377,
+    "dateStr": "11/25/20",
+    "cases": 17119,
+    "deaths": 378,
     "recovered": 0,
-    "new": 106,
-    "newDeaths": 2
+    "new": 187,
+    "newDeaths": 1
   }
 }
