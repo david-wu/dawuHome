@@ -1,22 +1,22 @@
 {
   "French Guiana": {
-    "dateStr": "11/27/20",
-    "cases": 11158,
+    "dateStr": "11/30/20",
+    "cases": 11204,
     "deaths": 70,
     "recovered": 9995,
-    "new": 20,
+    "new": 25,
     "newDeaths": 0
   },
   "French Polynesia": {
-    "dateStr": "11/27/20",
-    "cases": 14096,
-    "deaths": 73,
+    "dateStr": "11/30/20",
+    "cases": 14372,
+    "deaths": 75,
     "recovered": 4842,
-    "new": 213,
-    "newDeaths": 1
+    "new": 276,
+    "newDeaths": 2
   },
   "Guadeloupe": {
-    "dateStr": "11/27/20",
+    "dateStr": "11/30/20",
     "cases": 8344,
     "deaths": 149,
     "recovered": 2242,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Martinique": {
-    "dateStr": "11/27/20",
+    "dateStr": "11/30/20",
     "cases": 5413,
     "deaths": 40,
     "recovered": 98,
@@ -32,7 +32,7 @@
     "newDeaths": 0
   },
   "Mayotte": {
-    "dateStr": "11/27/20",
+    "dateStr": "11/30/20",
     "cases": 5181,
     "deaths": 49,
     "recovered": 2964,
@@ -40,31 +40,31 @@
     "newDeaths": 0
   },
   "New Caledonia": {
-    "dateStr": "11/27/20",
-    "cases": 32,
+    "dateStr": "11/30/20",
+    "cases": 33,
     "deaths": 0,
     "recovered": 32,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Reunion": {
-    "dateStr": "11/27/20",
-    "cases": 7940,
+    "dateStr": "11/30/20",
+    "cases": 8054,
     "deaths": 40,
-    "recovered": 6660,
-    "new": 104,
-    "newDeaths": 1
-  },
-  "Saint Barthelemy": {
-    "dateStr": "11/27/20",
-    "cases": 127,
-    "deaths": 0,
-    "recovered": 94,
-    "new": 0,
+    "recovered": 7172,
+    "new": 114,
     "newDeaths": 0
   },
+  "Saint Barthelemy": {
+    "dateStr": "11/30/20",
+    "cases": 147,
+    "deaths": 1,
+    "recovered": 105,
+    "new": 20,
+    "newDeaths": 1
+  },
   "Saint Pierre and Miquelon": {
-    "dateStr": "11/27/20",
+    "dateStr": "11/30/20",
     "cases": 16,
     "deaths": 0,
     "recovered": 12,
@@ -72,11 +72,11 @@
     "newDeaths": 0
   },
   "St Martin": {
-    "dateStr": "11/27/20",
-    "cases": 690,
+    "dateStr": "11/30/20",
+    "cases": 717,
     "deaths": 12,
-    "recovered": 598,
-    "new": 0,
+    "recovered": 641,
+    "new": 27,
     "newDeaths": 0
   }
 }
