@@ -1,54 +1,54 @@
 {
   "Fairfield": {
-    "dateStr": "11/30/20",
-    "cases": 38305,
-    "deaths": 1507,
+    "dateStr": "12/1/20",
+    "cases": 38756,
+    "deaths": 1516,
     "recovered": 0,
-    "new": 1234,
-    "newDeaths": 16
-  },
-  "Hartford": {
-    "dateStr": "11/30/20",
-    "cases": 28895,
-    "deaths": 1604,
-    "recovered": 0,
-    "new": 1051,
+    "new": 451,
     "newDeaths": 9
   },
-  "Litchfield": {
-    "dateStr": "11/30/20",
-    "cases": 4503,
-    "deaths": 166,
+  "Hartford": {
+    "dateStr": "12/1/20",
+    "cases": 29049,
+    "deaths": 1609,
     "recovered": 0,
-    "new": 272,
+    "new": 154,
     "newDeaths": 5
   },
-  "Middlesex": {
-    "dateStr": "11/30/20",
-    "cases": 3717,
-    "deaths": 206,
+  "Litchfield": {
+    "dateStr": "12/1/20",
+    "cases": 4547,
+    "deaths": 167,
     "recovered": 0,
-    "new": 150,
-    "newDeaths": 0
+    "new": 44,
+    "newDeaths": 1
+  },
+  "Middlesex": {
+    "dateStr": "12/1/20",
+    "cases": 3753,
+    "deaths": 207,
+    "recovered": 0,
+    "new": 36,
+    "newDeaths": 1
   },
   "New Haven": {
-    "dateStr": "11/30/20",
-    "cases": 29455,
-    "deaths": 1256,
+    "dateStr": "12/1/20",
+    "cases": 30143,
+    "deaths": 1259,
     "recovered": 0,
-    "new": 1530,
-    "newDeaths": 18
+    "new": 688,
+    "newDeaths": 3
   },
   "New London": {
-    "dateStr": "11/30/20",
-    "cases": 6051,
-    "deaths": 175,
+    "dateStr": "12/1/20",
+    "cases": 6148,
+    "deaths": 176,
     "recovered": 0,
-    "new": 184,
-    "newDeaths": 7
+    "new": 97,
+    "newDeaths": 1
   },
   "Out of CT": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -56,27 +56,27 @@
     "newDeaths": 0
   },
   "Tolland": {
-    "dateStr": "11/30/20",
-    "cases": 3054,
+    "dateStr": "12/1/20",
+    "cases": 3068,
     "deaths": 76,
     "recovered": 0,
-    "new": 77,
-    "newDeaths": 2
+    "new": 14,
+    "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 702,
     "deaths": 52,
     "recovered": 0,
-    "new": 71,
+    "new": 0,
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "11/30/20",
-    "cases": 2613,
-    "deaths": 28,
+    "dateStr": "12/1/20",
+    "cases": 2636,
+    "deaths": 29,
     "recovered": 0,
-    "new": 145,
-    "newDeaths": 0
+    "new": 23,
+    "newDeaths": 1
   }
 }

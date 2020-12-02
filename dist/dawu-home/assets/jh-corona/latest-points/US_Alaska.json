@@ -1,6 +1,6 @@
 {
   "Aleutians East": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 38,
     "deaths": 0,
     "recovered": 0,
@@ -8,7 +8,7 @@
     "newDeaths": 0
   },
   "Aleutians West": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 108,
     "deaths": 0,
     "recovered": 0,
@@ -16,23 +16,23 @@
     "newDeaths": 0
   },
   "Anchorage": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 16859,
-    "deaths": 68,
+    "deaths": 69,
     "recovered": 0,
-    "new": 193,
-    "newDeaths": 0
+    "new": 0,
+    "newDeaths": 1
   },
   "Bethel": {
-    "dateStr": "11/30/20",
-    "cases": 1578,
+    "dateStr": "12/1/20",
+    "cases": 1590,
     "deaths": 5,
     "recovered": 0,
-    "new": 49,
+    "new": 12,
     "newDeaths": 0
   },
   "Bristol Bay": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -40,7 +40,7 @@
     "newDeaths": 0
   },
   "Bristol Bay plus Lake and Peninsula": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 144,
     "deaths": 0,
     "recovered": 0,
@@ -48,7 +48,7 @@
     "newDeaths": 0
   },
   "Denali": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 43,
     "deaths": 0,
     "recovered": 0,
@@ -56,31 +56,31 @@
     "newDeaths": 0
   },
   "Dillingham": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 101,
     "deaths": 1,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Fairbanks North Star": {
-    "dateStr": "11/30/20",
-    "cases": 3480,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 15,
-    "newDeaths": 0
-  },
-  "Haines": {
-    "dateStr": "11/30/20",
-    "cases": 16,
-    "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Fairbanks North Star": {
+    "dateStr": "12/1/20",
+    "cases": 3492,
+    "deaths": 17,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Haines": {
+    "dateStr": "12/1/20",
+    "cases": 17,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Hoonah-Angoon": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,79 +88,79 @@
     "newDeaths": 0
   },
   "Juneau": {
-    "dateStr": "11/30/20",
-    "cases": 860,
+    "dateStr": "12/1/20",
+    "cases": 863,
     "deaths": 5,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Kenai Peninsula": {
-    "dateStr": "11/30/20",
-    "cases": 2599,
-    "deaths": 9,
-    "recovered": 0,
-    "new": 30,
-    "newDeaths": 0
-  },
-  "Ketchikan Gateway": {
-    "dateStr": "11/30/20",
-    "cases": 197,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Kodiak Island": {
-    "dateStr": "11/30/20",
-    "cases": 284,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Kusilvak": {
-    "dateStr": "11/30/20",
-    "cases": 424,
-    "deaths": 1,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Matanuska-Susitna": {
-    "dateStr": "11/30/20",
-    "cases": 3567,
-    "deaths": 6,
+  "Kenai Peninsula": {
+    "dateStr": "12/1/20",
+    "cases": 2658,
+    "deaths": 9,
     "recovered": 0,
-    "new": 178,
+    "new": 59,
     "newDeaths": 0
   },
-  "Nome": {
-    "dateStr": "11/30/20",
-    "cases": 229,
+  "Ketchikan Gateway": {
+    "dateStr": "12/1/20",
+    "cases": 198,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "North Slope": {
-    "dateStr": "11/30/20",
-    "cases": 468,
+  "Kodiak Island": {
+    "dateStr": "12/1/20",
+    "cases": 296,
     "deaths": 0,
     "recovered": 0,
-    "new": 15,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Kusilvak": {
+    "dateStr": "12/1/20",
+    "cases": 426,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Matanuska-Susitna": {
+    "dateStr": "12/1/20",
+    "cases": 3770,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 203,
+    "newDeaths": 0
+  },
+  "Nome": {
+    "dateStr": "12/1/20",
+    "cases": 233,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "North Slope": {
+    "dateStr": "12/1/20",
+    "cases": 475,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 7,
     "newDeaths": 0
   },
   "Northwest Arctic": {
-    "dateStr": "11/30/20",
-    "cases": 359,
+    "dateStr": "12/1/20",
+    "cases": 361,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Out of AK": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -168,7 +168,7 @@
     "newDeaths": 0
   },
   "Petersburg": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 25,
     "deaths": 2,
     "recovered": 0,
@@ -176,55 +176,55 @@
     "newDeaths": 0
   },
   "Prince of Wales-Hyder": {
-    "dateStr": "11/30/20",
-    "cases": 52,
+    "dateStr": "12/1/20",
+    "cases": 55,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "Sitka": {
-    "dateStr": "11/30/20",
-    "cases": 196,
+    "dateStr": "12/1/20",
+    "cases": 200,
     "deaths": 0,
     "recovered": 0,
-    "new": 7,
+    "new": 4,
     "newDeaths": 0
   },
   "Skagway": {
-    "dateStr": "11/30/20",
-    "cases": 10,
+    "dateStr": "12/1/20",
+    "cases": 11,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Southeast Fairbanks": {
-    "dateStr": "11/30/20",
-    "cases": 284,
+    "dateStr": "12/1/20",
+    "cases": 288,
     "deaths": 2,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Unassigned": {
+    "dateStr": "12/1/20",
+    "cases": 158,
+    "deaths": 5,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Unassigned": {
-    "dateStr": "11/30/20",
-    "cases": 158,
-    "deaths": 5,
+  "Valdez-Cordova": {
+    "dateStr": "12/1/20",
+    "cases": 259,
+    "deaths": 2,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Valdez-Cordova": {
-    "dateStr": "11/30/20",
-    "cases": 257,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Wrangell": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 20,
     "deaths": 0,
     "recovered": 0,
@@ -232,7 +232,7 @@
     "newDeaths": 0
   },
   "Yakutat": {
-    "dateStr": "11/30/20",
+    "dateStr": "12/1/20",
     "cases": 49,
     "deaths": 0,
     "recovered": 0,
@@ -240,11 +240,11 @@
     "newDeaths": 0
   },
   "Yukon-Koyukuk": {
-    "dateStr": "11/30/20",
-    "cases": 171,
+    "dateStr": "12/1/20",
+    "cases": 173,
     "deaths": 3,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   }
 }
