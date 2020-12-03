@@ -1,30 +1,30 @@
 {
   "Bristol": {
-    "dateStr": "12/1/20",
-    "cases": 1244,
-    "deaths": 38,
+    "dateStr": "12/2/20",
+    "cases": 1369,
+    "deaths": 48,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 125,
+    "newDeaths": 10
   },
   "Kent": {
-    "dateStr": "12/1/20",
-    "cases": 5180,
-    "deaths": 138,
+    "dateStr": "12/2/20",
+    "cases": 6109,
+    "deaths": 145,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 929,
+    "newDeaths": 7
   },
   "Newport": {
-    "dateStr": "12/1/20",
-    "cases": 1217,
+    "dateStr": "12/2/20",
+    "cases": 1380,
     "deaths": 10,
     "recovered": 0,
-    "new": 0,
+    "new": 163,
     "newDeaths": 0
   },
   "Out of RI": {
-    "dateStr": "12/1/20",
+    "dateStr": "12/2/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -32,27 +32,27 @@
     "newDeaths": 0
   },
   "Providence": {
-    "dateStr": "12/1/20",
-    "cases": 35980,
-    "deaths": 1028,
+    "dateStr": "12/2/20",
+    "cases": 40206,
+    "deaths": 1060,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 4226,
+    "newDeaths": 32
   },
   "Unassigned": {
-    "dateStr": "12/1/20",
+    "dateStr": "12/2/20",
     "cases": 12062,
     "deaths": 80,
     "recovered": 0,
-    "new": 283,
-    "newDeaths": 3
-  },
-  "Washington": {
-    "dateStr": "12/1/20",
-    "cases": 2223,
-    "deaths": 86,
-    "recovered": 0,
     "new": 0,
     "newDeaths": 0
+  },
+  "Washington": {
+    "dateStr": "12/2/20",
+    "cases": 2641,
+    "deaths": 91,
+    "recovered": 0,
+    "new": 418,
+    "newDeaths": 5
   }
 }
