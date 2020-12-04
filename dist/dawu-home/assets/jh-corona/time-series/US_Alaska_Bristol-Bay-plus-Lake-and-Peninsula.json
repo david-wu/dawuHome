@@ -2521,7 +2521,15 @@
   },
   {
     "dateStr": "12/2/20",
-    "cases": 144,
+    "cases": 145,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "12/3/20",
+    "cases": 145,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
