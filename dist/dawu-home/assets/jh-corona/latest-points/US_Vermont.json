@@ -1,86 +1,86 @@
 {
   "Addison": {
-    "dateStr": "12/6/20",
+    "dateStr": "12/7/20",
     "cases": 207,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Bennington": {
+    "dateStr": "12/7/20",
+    "cases": 245,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Caledonia": {
+    "dateStr": "12/7/20",
+    "cases": 166,
     "deaths": 2,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
-  "Bennington": {
-    "dateStr": "12/6/20",
-    "cases": 241,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Caledonia": {
-    "dateStr": "12/6/20",
-    "cases": 162,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
   "Chittenden": {
-    "dateStr": "12/6/20",
-    "cases": 1756,
-    "deaths": 44,
+    "dateStr": "12/7/20",
+    "cases": 1777,
+    "deaths": 45,
     "recovered": 0,
-    "new": 32,
-    "newDeaths": 0
+    "new": 21,
+    "newDeaths": 1
   },
   "Essex": {
-    "dateStr": "12/6/20",
-    "cases": 63,
+    "dateStr": "12/7/20",
+    "cases": 64,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Franklin": {
-    "dateStr": "12/6/20",
-    "cases": 317,
+    "dateStr": "12/7/20",
+    "cases": 321,
     "deaths": 12,
     "recovered": 0,
-    "new": 13,
+    "new": 4,
     "newDeaths": 0
   },
   "Grand Isle": {
-    "dateStr": "12/6/20",
-    "cases": 46,
+    "dateStr": "12/7/20",
+    "cases": 47,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Lamoille": {
-    "dateStr": "12/6/20",
-    "cases": 178,
+    "dateStr": "12/7/20",
+    "cases": 179,
     "deaths": 2,
     "recovered": 0,
-    "new": 2,
+    "new": 1,
     "newDeaths": 0
   },
   "Orange": {
-    "dateStr": "12/6/20",
-    "cases": 250,
+    "dateStr": "12/7/20",
+    "cases": 258,
     "deaths": 0,
     "recovered": 0,
-    "new": 2,
+    "new": 8,
     "newDeaths": 0
   },
   "Orleans": {
-    "dateStr": "12/6/20",
-    "cases": 185,
+    "dateStr": "12/7/20",
+    "cases": 188,
     "deaths": 2,
     "recovered": 0,
-    "new": 9,
+    "new": 3,
     "newDeaths": 0
   },
   "Out of VT": {
-    "dateStr": "12/6/20",
+    "dateStr": "12/7/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,15 +88,15 @@
     "newDeaths": 0
   },
   "Rutland": {
-    "dateStr": "12/6/20",
-    "cases": 279,
+    "dateStr": "12/7/20",
+    "cases": 284,
     "deaths": 6,
     "recovered": 0,
-    "new": 8,
+    "new": 5,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "12/6/20",
+    "dateStr": "12/7/20",
     "cases": 59,
     "deaths": 18,
     "recovered": 0,
@@ -104,27 +104,27 @@
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "12/6/20",
-    "cases": 781,
-    "deaths": 2,
+    "dateStr": "12/7/20",
+    "cases": 784,
+    "deaths": 3,
     "recovered": 0,
-    "new": 20,
-    "newDeaths": 0
+    "new": 3,
+    "newDeaths": 1
   },
   "Windham": {
-    "dateStr": "12/6/20",
-    "cases": 290,
+    "dateStr": "12/7/20",
+    "cases": 298,
     "deaths": 5,
     "recovered": 0,
-    "new": 9,
+    "new": 8,
     "newDeaths": 0
   },
   "Windsor": {
-    "dateStr": "12/6/20",
-    "cases": 252,
+    "dateStr": "12/7/20",
+    "cases": 254,
     "deaths": 2,
     "recovered": 0,
-    "new": 11,
+    "new": 2,
     "newDeaths": 0
   }
 }
