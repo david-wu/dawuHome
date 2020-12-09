@@ -1396,7 +1396,7 @@
     "cases": 14949299,
     "deaths": 283703,
     "recovered": 5714557,
-    "new": 192299,
+    "new": 192416,
     "newDeaths": 1404
   },
   "Uganda": {
@@ -1479,14 +1479,6 @@
     "new": 1720,
     "newDeaths": 20
   },
-  "Western Sahara": {
-    "dateStr": "12/7/20",
-    "cases": 10,
-    "deaths": 1,
-    "recovered": 8,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Yemen": {
     "dateStr": "12/7/20",
     "cases": 2383,
@@ -1537,10 +1529,10 @@
   },
   "World": {
     "dateStr": "12/7/20",
-    "cases": 67521749,
-    "deaths": 1543911,
-    "recovered": 43131156,
-    "new": 517217,
+    "cases": 67521739,
+    "deaths": 1543910,
+    "recovered": 43131148,
+    "new": 517334,
     "newDeaths": 8476
   }
 }
