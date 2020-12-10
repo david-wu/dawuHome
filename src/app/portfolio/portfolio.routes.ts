@@ -9,6 +9,8 @@ import { LineChartDemoComponent } from './line-chart-demo/line-chart-demo.compon
 import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
 import { FuzzDemoComponent } from './fuzz-demo/fuzz-demo.component'
 import { MissingDemoComponent } from '@src/app/portfolio/missing-demo/missing-demo.component';
+import { CodeSnippetDemoComponent } from './code-snippet-demo/code-snippet-demo.component';
+import { FileExplorerDemoComponent } from './file-explorer-demo/file-explorer-demo.component';
 // console.log('DemoPageWrapperComponent', DemoPageWrapperComponent)
 
 const routes: Routes = [
@@ -43,6 +45,14 @@ const routes: Routes = [
       {
         path: 'TOOLTIP',
         component: TooltipDemoComponent,
+      },
+      {
+        path: 'CODE_SNIPPET',
+        component: CodeSnippetDemoComponent,
+      },
+      {
+        path: 'FILE_EXPLORER',
+        component: FileExplorerDemoComponent,
       },
       {
         path: ':tab',

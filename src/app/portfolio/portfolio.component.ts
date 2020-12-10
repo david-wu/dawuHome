@@ -48,16 +48,17 @@ export class PortfolioComponent {
         COMPONENTS: {
           label: 'components',
           childrenById: {
-            TOOLTIP: { label: 'tooltip' },
             FILE_EXPLORER: { label: 'file-explorer' },
+            CODE_SNIPPET: { label: 'code-snippet' },
             TEXT_DECORATOR: { label: 'text-decorator' },
             CHARTS_DIR: {
               label: 'charts',
               childrenById: {
-                FLEX_CHART: { label: 'flex chart' },
+                // FLEX_CHART: { label: 'flex chart' },
                 LINE_CHART: { label: 'line chart' },
                 BAR_CHART: { label: 'bar chart' },
                 CHART_LEGEND: { label: 'chart legend' },
+                TOOLTIP: { label: 'tooltip' },
               },
             },
           },

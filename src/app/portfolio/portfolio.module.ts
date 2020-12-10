@@ -12,12 +12,16 @@ import { BackyardPatioModule } from '@src/app/portfolio/backyard-patio/backyard-
 import { FuzzDemoModule } from '@src/app/portfolio/fuzz-demo/fuzz-demo.module';
 import { MissingDemoModule } from '@src/app/portfolio/missing-demo/missing-demo.module';
 import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.module';
+import { CodeSnippetDemoModule } from '@src/app/portfolio/code-snippet-demo/code-snippet-demo.module';
+import { FileExplorerDemoModule } from '@src/app/portfolio/file-explorer-demo/file-explorer-demo.module';
 
 @NgModule({
   imports: [
     BackyardPatioModule,
     PortfolioRoutingModule,
     CodeSnippetModule,
+    CodeSnippetDemoModule,
+    FileExplorerDemoModule,
     MissingDemoModule,
     FuzzDemoModule,
     CommonModule,
