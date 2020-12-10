@@ -14,6 +14,7 @@ import { MissingDemoModule } from '@src/app/portfolio/missing-demo/missing-demo.
 import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.module';
 import { CodeSnippetDemoModule } from '@src/app/portfolio/code-snippet-demo/code-snippet-demo.module';
 import { FileExplorerDemoModule } from '@src/app/portfolio/file-explorer-demo/file-explorer-demo.module';
+import { ChartLegendDemoModule } from '@src/app/portfolio/chart-legend-demo/chart-legend-demo.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { FileExplorerDemoModule } from '@src/app/portfolio/file-explorer-demo/fi
     CodeSnippetModule,
     CodeSnippetDemoModule,
     FileExplorerDemoModule,
+    ChartLegendDemoModule,
     MissingDemoModule,
     FuzzDemoModule,
     CommonModule,

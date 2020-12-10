@@ -26,12 +26,12 @@ export class FileExplorerDemoComponent {
     }),
     file2: Object.assign(new File(), {
       id: 'file2',
-      label: 'file2',
+      label: 'work stuff',
       childIds: ['file4', 'file5'],
     }),
     file3: Object.assign(new File(), {
       id: 'file3',
-      label: 'file3',
+      label: 'covid stuff',
       childIds: [],
     }),
     file4: Object.assign(new File(), {

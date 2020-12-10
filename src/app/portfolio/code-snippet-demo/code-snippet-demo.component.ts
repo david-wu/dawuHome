@@ -1,11 +1,5 @@
 import {
-  // AfterViewInit,
   Component,
-  // ElementRef,
-  // OnChanges,
-  // Input,
-  // ViewEncapsulation,
-  // ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -14,13 +8,12 @@ import {
   styleUrls: ['./code-snippet-demo.component.scss'],
 })
 export class CodeSnippetDemoComponent {
-  public demoSnippet: string =
-`console.log('This is a demo Snippet');
-`;
+  public demoSnippet: string = `console.log('This is a demo Snippet');`;
 
   public usageSnippet: string =
 `<dwu-code-snippet
   [snippet]="demoSnippet"
 ></dwu-code-snippet>`;
+  public usageSnippetCode: string = `public demoSnippet: string = \`console.log('This is a demo Snippet');\`;`;
 
 }

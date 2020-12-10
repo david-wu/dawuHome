@@ -50,7 +50,6 @@ export class PortfolioComponent {
           childrenById: {
             FILE_EXPLORER: { label: 'file-explorer' },
             CODE_SNIPPET: { label: 'code-snippet' },
-            TEXT_DECORATOR: { label: 'text-decorator' },
             CHARTS_DIR: {
               label: 'charts',
               childrenById: {
