@@ -50,6 +50,7 @@ export class FileExplorerDemoComponent {
   };
   public closedFileIds = new Set();
   public selectedFileIds = new Set();
+  public filterStr = '';
   public fileExplorerUsage =
 `<dwu-file-explorer
   [rootFileId]="'file1'"
