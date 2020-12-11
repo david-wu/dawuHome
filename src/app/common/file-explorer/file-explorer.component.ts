@@ -82,7 +82,7 @@ export class FileExplorerComponent {
           return false;
         }
         const fileId = el.getAttribute('data-file-id');
-        return Boolean(fileId && this.filesById[fileId].childIds);
+        return Boolean(fileId && this.filesById[fileId] && this.filesById[fileId].childIds);
       },
       moves: (el, container, handle) => {
         return this.dragEnabled && handle.classList.contains('dragula-handle');
