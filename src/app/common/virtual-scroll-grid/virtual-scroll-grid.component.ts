@@ -1,11 +1,12 @@
 import {
   Component,
   ElementRef,
-  EventEmitter,
+  // EventEmitter,
   Input,
   Output,
   ViewChild,
   SimpleChanges,
+  TemplateRef,
 } from '@angular/core';
 import {
   Observable,
@@ -17,22 +18,21 @@ import {
 } from '@angular/cdk/scrolling';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
-import { UploadFile } from '@photo-gallery/models/index';
-
 @Component({
-  selector: 'dwu-upload-file-grid-viewer',
-  templateUrl: './upload-file-grid-viewer.component.html',
-  styleUrls: ['./upload-file-grid-viewer.component.scss']
+  selector: 'dwu-virtual-scroll-grid',
+  templateUrl: './virtual-scroll-grid.component.html',
+  styleUrls: ['./virtual-scroll-grid.component.scss']
 })
-export class UploadFileGridViewerComponent {
+export class VirtualScrollGridComponent {
 
-  @Input() uploadFileIds: string[] = [];
-  @Input() uploadFilesById: Record<string, UploadFile>;
-  @Input() selectedFileId: string;
-  @Output() selectUploadFileId: EventEmitter<string> = new EventEmitter<string>();
+  @Input() tileIds: string[] = [];
+  @Input() selectedTileId: string;
+  @Input() tileTemplate: TemplateRef<any>;
+
+  // @Output() selectTileId: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('scrollViewport', { static: true }) scrollViewport: CdkVirtualScrollViewport;
 
-  public uploadFileIdRows: string[][];
+  public tileIdRows: string[][];
   public columnCount = undefined;
   public sensor: any;
 
@@ -49,15 +49,15 @@ export class UploadFileGridViewerComponent {
   constructor(public hostEl: ElementRef) {}
 
   public ngOnChanges(changes: SimpleChanges) {
-    if (changes.uploadFileIds || changes.selectedFileId) {
+    if (changes.tileIds || changes.selectedTileId) {
       this.setViewportSize();
-      this.scrollToSelectedFileId();
+      this.scrollToSelectedTileId();
     }
   }
 
   public ngOnInit() {
     this.setViewportSize();
-    this.scrollToSelectedFileId();
+    this.scrollToSelectedTileId();
     this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
       this.setViewportSize();
     });
@@ -79,7 +79,7 @@ export class UploadFileGridViewerComponent {
 
     this.imageWidth = (stretchedClientWidth <= (322 * 2)) ? 150 : 320;
     const nextColumnCount = Math.floor(stretchedClientWidth / (this.imageWidth))
-    this.setUploadFileIdRows(nextColumnCount, this.uploadFileIds);
+    this.setTileIdRows(nextColumnCount, this.tileIds);
     this.scaledImageWidth = (clientWidth / this.columnCount) - 2;
     this.scaledImageWidthStr = `${this.scaledImageWidth}px`;
 
@@ -96,41 +96,41 @@ export class UploadFileGridViewerComponent {
     this.strat.attach(this.scrollViewport);
   }
 
-  public setUploadFileIdRows(
+  public setTileIdRows(
     nextColumnCount: number = this.columnCount,
-    nextUploadFileIds: string[] = this.uploadFileIds,
+    nextTileIds: string[] = this.tileIds,
   ) {
-    this.uploadFileIdRows = this.getUploadFileIdRows(nextUploadFileIds, nextColumnCount);
+    this.tileIdRows = this.getTileIdRows(nextTileIds, nextColumnCount);
     this.columnCount = nextColumnCount;
-    this.uploadFileIds = nextUploadFileIds;
+    this.tileIds = nextTileIds;
   }
 
-  public getUploadFileIdRows(fileIds: string[], columnCount: number) {
-    if (!fileIds || !fileIds.length || !columnCount) {
+  public getTileIdRows(tileIds: string[], columnCount: number) {
+    if (!tileIds || !tileIds.length || !columnCount) {
       return [];
     }
-    const uploadFileIdRows = [];
-    let row = [fileIds[0]];
-    for(let i = 1; i < fileIds.length; i++) {
+    const tileIdRows = [];
+    let row = [tileIds[0]];
+    for(let i = 1; i < tileIds.length; i++) {
       if (!(i % columnCount)) {
-        uploadFileIdRows.push(row);
+        tileIdRows.push(row);
         row = [];
       }
-      row.push(fileIds[i]);
+      row.push(tileIds[i]);
     }
 
     if(row.length) {
-      uploadFileIdRows.push(row);
+      tileIdRows.push(row);
     }
-    return uploadFileIdRows;
+    return tileIdRows;
   }
 
-  public scrollToSelectedFileId() {
-    if (!this.uploadFileIds || !this.scrollViewport) {
+  public scrollToSelectedTileId() {
+    if (!this.tileIds || !this.scrollViewport) {
       return;
     }
     setTimeout(() => {
-      const index = this.uploadFileIds.indexOf(this.selectedFileId);
+      const index = this.tileIds.indexOf(this.selectedTileId);
       const rowIndex = Math.floor(index / this.columnCount);
       this.strat.scrollToIndex(rowIndex, 'auto');
     })
@@ -145,20 +145,8 @@ export class UploadFileGridViewerComponent {
     const imagePaddingOffset = 1;
     const offset = this.scrollViewport.measureScrollOffset() + viewportPadding + imagePaddingOffset + 121;
     const rowIndex = Math.floor(offset / this.itemHeight);
-    const row = this.uploadFileIdRows[rowIndex];
+    const row = this.tileIdRows[rowIndex];
     return row && row[0];
-  }
-
-  public getUploadFileDownloadUrl(uploadFileId: string): string {
-    return get(this.uploadFilesById, [
-      uploadFileId,
-      'uploadMeta',
-      `downloadUrl_${this.imageWidth}`,
-    ]);
-  }
-
-  public onImageClick(uploadFileId: string) {
-    this.selectUploadFileId.emit(uploadFileId);
   }
 
 }

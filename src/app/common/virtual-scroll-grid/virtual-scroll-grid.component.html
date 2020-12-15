@@ -6,21 +6,25 @@
   [maxBufferPx]="maxBufferPx"
 >
   <div
-    *cdkVirtualFor="let uploadFileIdRow of uploadFileIdRows; index as i;"
+    *cdkVirtualFor="let tileIdRow of tileIdRows; index as i;"
     class="upload-file-container-row"
   >
     <div
-      *ngFor="let uploadFileId of uploadFileIdRow"
+      *ngFor="let tileId of tileIdRow"
       class="upload-file-container"
     >
-      <img
-        *ngIf="getUploadFileDownloadUrl(uploadFileId) as downloadUrl; else filePicSpinner"
+      <ng-template
+        [ngTemplateOutlet]="tileTemplate"
+        [ngTemplateOutletContext]="{}"
+      ></ng-template>
+<!--       <img
+        *ngIf="gettileDownloadUrl(tileId) as downloadUrl; else filePicSpinner"
         [src]="downloadUrl"
         [style.width]="scaledImageWidthStr"
         [style.height]="scaledImageHeightStr"
         (click)="onImageClick(uploadFileId)"
         class="grid-image"
-      >
+      > -->
     </div>
   </div>
 </cdk-virtual-scroll-viewport>

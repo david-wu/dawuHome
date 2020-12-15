@@ -60,6 +60,10 @@ const routes: Routes = [
         component: FileExplorerDemoComponent,
       },
       {
+        path: 'VIRTUAL_SCROLL_GRID',
+        loadChildren: () => import('./virtual-scroll-grid-demo/virtual-scroll-grid-demo.module').then(m => m.VirtualScrollGridDemoModule)
+      },
+      {
         path: ':tab',
         pathMatch: 'full',
         component: MissingDemoComponent,

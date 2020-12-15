@@ -65,6 +65,7 @@ export class PortfolioComponent {
         TODOS: {
           label: 'todos',
           childrenById: {
+            VIRTUAL_SCROLL_GRID: { label: 'virtual-scroll-grid'},
             MARKDOWN: { label: 'support markdown-editor' },
             FAVICON: { label: 'make a favicon' },
             COMMON: { label: 'components demos' },
