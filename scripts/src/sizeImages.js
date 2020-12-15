@@ -1,6 +1,7 @@
 const Jimp = require('jimp');
 const fs = require('fs');
 const path = require('path');
+const argv = require('minimist')(process.argv.slice(2));
 
 const alreadySizedFileEndings = new Set([
   '_lg.jpg',
@@ -8,7 +9,9 @@ const alreadySizedFileEndings = new Set([
   '_sm.jpg',
 ]);
 
-deleteSizedImages('src/assets/images');
+if (argv.f) {
+  deleteSizedImages('src/assets/images');
+}
 sizeImages('src/assets/images');
 
 function deleteSizedImages(rootImagesPath) {
@@ -24,6 +27,18 @@ function deleteSizedImages(rootImagesPath) {
 function sizeImages(rootImagesPath) {
   iterateFilesDeep(rootImagesPath, (imagePath) => {
     const imagePathRoot = imagePath.slice(0, imagePath.length - 4);
+    const imageEnding = imagePath.slice(imagePath.length - 7);
+    if (alreadySizedFileEndings.has(imageEnding)) {
+      console.log(`skipping  ${imagePathRoot}, use -f to delete and force resize`);
+      return;
+    }
+    if (fs.existsSync(`${imagePathRoot}_sm.jpg`)) {
+      console.log(`skipping  ${imagePathRoot}, ***_sm.jpg file detected`);
+      return;
+    }
+    if (imagePath.includes('.DS_Store')) {
+      return;
+    }
     Jimp.read(imagePath).then((image) => {
       console.log(`sizing ${imagePath}`)
       image.resize(1080, Jimp.AUTO).quality(80).write(`${imagePathRoot}_lg.jpg`);

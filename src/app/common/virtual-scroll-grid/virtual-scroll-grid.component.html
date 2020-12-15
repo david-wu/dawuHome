@@ -1,9 +1,7 @@
 <cdk-virtual-scroll-viewport
   #scrollViewport
   class="viewport"
-  [itemSize]="itemHeight"
-  [minBufferPx]="minBufferPx"
-  [maxBufferPx]="maxBufferPx"
+  [itemSize]="scaledImageHeight"
 >
   <div
     *cdkVirtualFor="let tileIdRow of tileIdRows; index as i;"
@@ -15,24 +13,8 @@
     >
       <ng-template
         [ngTemplateOutlet]="tileTemplate"
-        [ngTemplateOutletContext]="{}"
+        [ngTemplateOutletContext]="{ scaledImageWidthStr: scaledImageWidthStr, scaledImageHeightStr: scaledImageHeightStr, tileId: tileId, targetTileOption: targetTileOption }"
       ></ng-template>
-<!--       <img
-        *ngIf="gettileDownloadUrl(tileId) as downloadUrl; else filePicSpinner"
-        [src]="downloadUrl"
-        [style.width]="scaledImageWidthStr"
-        [style.height]="scaledImageHeightStr"
-        (click)="onImageClick(uploadFileId)"
-        class="grid-image"
-      > -->
     </div>
   </div>
 </cdk-virtual-scroll-viewport>
-
-<ng-template
-  #filePicSpinner
->
-  <div class="loader-container centered">
-    <div class="dwu-loader"></div>
-  </div>
-</ng-template>

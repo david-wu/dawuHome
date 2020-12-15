@@ -22,7 +22,7 @@ export class TooltipComponent {
   @Input() customTemplate?: TemplateRef<any>;
 
   @ViewChild('defaultTemplate', { static: false }) defaultTemplate: TemplateRef<any>;
-  @HostBinding('attr.tabindex') tabIndex = '0';
+  // @HostBinding('attr.tabindex') tabIndex = '0';
 
   constructor(
     public hostEl: ElementRef,

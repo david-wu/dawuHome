@@ -3,13 +3,37 @@
   <p>
     virtual-scroll-grid-demo
   </p>
-  <div>
-
-    <dwu-virtual-scroll-grid>
-
-    </dwu-virtual-scroll-grid>
+  <div class="scroll-demo-container">
+    <label>
+      useMiniOptions: <input type="checkbox" [(ngModel)]="useMiniOptions">
+    </label>
+    <dwu-virtual-scroll-grid
+      [tileIds]="tileIds"
+      [tileTemplate]="tileTemplate"
+      [tileOptions]="useMiniOptions ? tileOptionsMini : tileOptions"
+    ></dwu-virtual-scroll-grid>
   </div>
   <h3>Usage</h3>
   <dwu-code-snippet [snippet]="lineChartHtml"></dwu-code-snippet>
   <dwu-code-snippet [snippet]="lineChartJs"></dwu-code-snippet>
 </div>
+
+<ng-template
+  #tileTemplate
+  let-scaledImageWidthStr="scaledImageWidthStr"
+  let-scaledImageHeightStr="scaledImageHeightStr"
+  let-tileId="tileId"
+  let-targetTileOption="targetTileOption"
+>
+  <div
+    class="tile"
+    [style.width]="scaledImageWidthStr"
+    [style.height]="scaledImageHeightStr"
+  >
+    <img
+      [src]="getImgSrc(tileId, targetTileOption.maxWidth)"
+      class="grid-image"
+    >
+  </div>
+</ng-template>
+

@@ -28,6 +28,7 @@ export class VirtualScrollGridComponent {
   @Input() tileIds: string[] = [];
   @Input() selectedTileId: string;
   @Input() tileTemplate: TemplateRef<any>;
+  @Input() tileOptions: any[]
 
   // @Output() selectTileId: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('scrollViewport', { static: true }) scrollViewport: CdkVirtualScrollViewport;
@@ -35,13 +36,13 @@ export class VirtualScrollGridComponent {
   public tileIdRows: string[][];
   public columnCount = undefined;
   public sensor: any;
+  public targetTileOption;
 
   public imageWidth: number = undefined;
   public scaledImageWidth: number = undefined;
   public scaledImageWidthStr: string = undefined;
   public scaledImageHeight: number = undefined;
   public scaledImageHeightStr: string = undefined;
-  public itemHeight: number = undefined;
   public minBufferPx: number = undefined;
   public maxBufferPx: number = undefined;
   public strat: FixedSizeVirtualScrollStrategy = new FixedSizeVirtualScrollStrategy(1,1,1);
@@ -49,7 +50,7 @@ export class VirtualScrollGridComponent {
   constructor(public hostEl: ElementRef) {}
 
   public ngOnChanges(changes: SimpleChanges) {
-    if (changes.tileIds || changes.selectedTileId) {
+    if (changes.tileIds || changes.selectedTileId || changes.tileOptions) {
       this.setViewportSize();
       this.scrollToSelectedTileId();
     }
@@ -73,35 +74,38 @@ export class VirtualScrollGridComponent {
   public setViewportSize() {
     // assumes scrollbar is 16px
     const clientWidth = this.hostEl.nativeElement.clientWidth - 16;
+    this.targetTileOption = this.pickTileOption(clientWidth);
+    this.columnCount = Math.ceil(clientWidth / this.targetTileOption.maxWidth);
 
-    // Assumes we can compact the pictures a little to fit in a smaller space
-    const stretchedClientWidth = clientWidth * 1.2;
-
-    this.imageWidth = (stretchedClientWidth <= (322 * 2)) ? 150 : 320;
-    const nextColumnCount = Math.floor(stretchedClientWidth / (this.imageWidth))
-    this.setTileIdRows(nextColumnCount, this.tileIds);
-    this.scaledImageWidth = (clientWidth / this.columnCount) - 2;
+    this.scaledImageWidth = clientWidth / this.columnCount;
     this.scaledImageWidthStr = `${this.scaledImageWidth}px`;
-
-    const aspectRatio = 4 / 3;
-    this.scaledImageHeight = this.scaledImageWidth / aspectRatio;
+    this.scaledImageHeight = this.scaledImageWidth / this.targetTileOption.aspectRatio;
     this.scaledImageHeightStr = `${this.scaledImageHeight}px`;
 
-    this.itemHeight = this.scaledImageHeight + 2;
+    this.setTileIdRows(this.columnCount, this.tileIds);
+
     this.strat.updateItemAndBufferSize(
-      this.itemHeight,
-      this.itemHeight * 2,
-      this.itemHeight * 3,
+      this.scaledImageHeight,
+      this.scaledImageHeight * 2,
+      this.scaledImageHeight * 3,
     );
     this.strat.attach(this.scrollViewport);
   }
 
+  public pickTileOption(clientWidth) {
+    return this.tileOptions.find((tileOption) => {
+      if (tileOption.maxColumns === undefined) {
+        return true;
+      }
+      return (tileOption.maxWidth * tileOption.maxColumns) >= clientWidth;
+    })
+  }
+
   public setTileIdRows(
-    nextColumnCount: number = this.columnCount,
+    columnCount: number = this.columnCount,
     nextTileIds: string[] = this.tileIds,
   ) {
-    this.tileIdRows = this.getTileIdRows(nextTileIds, nextColumnCount);
-    this.columnCount = nextColumnCount;
+    this.tileIdRows = this.getTileIdRows(nextTileIds, columnCount);
     this.tileIds = nextTileIds;
   }
 
@@ -141,10 +145,10 @@ export class VirtualScrollGridComponent {
       return;
     }
     const viewportSize = this.scrollViewport.getViewportSize();
-    const viewportPadding = (viewportSize - this.itemHeight) / 2;
+    const viewportPadding = (viewportSize - this.scaledImageHeight) / 2;
     const imagePaddingOffset = 1;
     const offset = this.scrollViewport.measureScrollOffset() + viewportPadding + imagePaddingOffset + 121;
-    const rowIndex = Math.floor(offset / this.itemHeight);
+    const rowIndex = Math.floor(offset / this.scaledImageHeight);
     const row = this.tileIdRows[rowIndex];
     return row && row[0];
   }
