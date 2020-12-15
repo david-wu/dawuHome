@@ -1,7 +1,13 @@
 <h2>Virtual Scroll Grid Demo</h2>
 <div class="demo-container">
   <p>
-    virtual-scroll-grid-demo
+    VirtualScrollGridComponent is useful for displaying a large number of images.  Elements are not mounted until the user scrolls into the viewport.  This allows for lazy loading and quick render times.
+  </p>
+  <p>
+    In addition, the width and height of the tiles automatically adjust based on the element's size.  This enables efficient loading of different image sizes.
+  </p>
+  <p>
+    is based on cdk-virtual-scroll-viewport and a ResizeSensor
   </p>
   <div class="scroll-demo-container">
     <label>
@@ -14,8 +20,8 @@
     ></dwu-virtual-scroll-grid>
   </div>
   <h3>Usage</h3>
-  <dwu-code-snippet [snippet]="lineChartHtml"></dwu-code-snippet>
-  <dwu-code-snippet [snippet]="lineChartJs"></dwu-code-snippet>
+  <!-- <dwu-code-snippet [snippet]="lineChartHtml"></dwu-code-snippet>
+  <dwu-code-snippet [snippet]="lineChartJs"></dwu-code-snippet> -->
 </div>
 
 <ng-template
