@@ -49,6 +49,7 @@ export class PortfolioComponent {
           label: 'components',
           childrenById: {
             FILE_EXPLORER: { label: 'file-explorer' },
+            VIRTUAL_SCROLL_GRID: { label: 'virtual-scroll-grid'},
             CODE_SNIPPET: { label: 'code-snippet' },
             CHARTS_DIR: {
               label: 'charts',
@@ -65,7 +66,6 @@ export class PortfolioComponent {
         TODOS: {
           label: 'todos',
           childrenById: {
-            VIRTUAL_SCROLL_GRID: { label: 'virtual-scroll-grid'},
             MARKDOWN: { label: 'support markdown-editor' },
             FAVICON: { label: 'make a favicon' },
             COMMON: { label: 'components demos' },
@@ -93,6 +93,7 @@ export class PortfolioComponent {
     this.filesById = keyBy(files, 'id');
 
     this.fileGroup.setRootFile(this.filesById.PROJECTS);
+    this.fileGroup.setClosedFileIds(new Set(['TODOS']));
   }
 
   public getSelectedFileId() {
