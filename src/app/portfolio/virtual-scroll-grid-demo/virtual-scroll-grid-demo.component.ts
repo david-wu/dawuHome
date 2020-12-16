@@ -26,7 +26,7 @@ export class VirtualScrollGridDemoComponent {
     const imageIndex = Math.floor(Math.random() * 5);
     return `${idx}_${imageIndex}`;
   });
-  public setColumnCountToMaxColumns = true;
+  public alwaysUseMaxColumns = true;
   public centeredTileId: string;
   // maxColumns is used as a bound to bump up to the next tileOption
   // larger tile width is preferred
