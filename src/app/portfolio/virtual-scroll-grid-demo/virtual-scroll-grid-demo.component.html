@@ -9,14 +9,36 @@
   <p>
     is based on cdk-virtual-scroll-viewport and a ResizeSensor
   </p>
-  <div class="scroll-demo-container">
+  <div>
     <label>
-      useMiniOptions: <input type="checkbox" [(ngModel)]="useMiniOptions">
+      <span>maxColumns:</span>
+      <input
+        type="number"
+        [(ngModel)]="maxColumns"
+        min="1"
+        step="1"
+      >
     </label>
+  </div>
+  <div>
+    <label>
+      <span>alwaysUseMaxColumns:</span>
+      <input
+        type="checkbox"
+        [(ngModel)]="alwaysUseMaxColumns"
+      >
+    </label>
+  </div>
+
+  <div>centeredTileId: {{ centeredTileId }}</div>
+  <div class="scroll-demo-container">
     <dwu-virtual-scroll-grid
       [tileIds]="tileIds"
       [tileTemplate]="tileTemplate"
-      [tileOptions]="useMiniOptions ? tileOptionsMini : tileOptions"
+      [tileOptions]="tileOptions"
+      [maxColumns]="maxColumns"
+      [(alwaysUseMaxColumns)]="alwaysUseMaxColumns"
+      [(centeredTileId)]="centeredTileId"
     ></dwu-virtual-scroll-grid>
   </div>
   <h3>Usage</h3>
@@ -35,11 +57,14 @@
     class="tile"
     [style.width]="scaledImageWidthStr"
     [style.height]="scaledImageHeightStr"
+    (click)="centeredTileId = tileId; maxColumns = 1;"
   >
     <img
       [src]="getImgSrc(tileId, targetTileOption.maxWidth)"
       class="grid-image"
     >
+    <div class="tile-id">{{tileId}}</div>
+    <div class="img-size">{{targetTileOption.maxWidth}}px</div>
   </div>
 </ng-template>
 

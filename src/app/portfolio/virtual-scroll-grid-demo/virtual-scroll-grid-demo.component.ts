@@ -21,20 +21,25 @@ import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 })
 export class VirtualScrollGridDemoComponent {
 
-  public tileIds: string[] = times(2000, (idx) => String(idx));
+  public maxColumns = 5;
+  public tileIds: string[] = times(2000, (idx) => {
+    const imageIndex = Math.floor(Math.random() * 5);
+    return `${idx}_${imageIndex}`;
+  });
+  public setColumnCountToMaxColumns = true;
+  public centeredTileId: string;
   // maxColumns is used as a bound to bump up to the next tileOption
   // larger tile width is preferred
-  public useMiniOptions = false;
   public readonly tileOptions = [
     {
       maxWidth: 150,
       aspectRatio: 4 / 3,
-      maxColumns: 5,
+      // maxColumns: 5,
     },
     {
       maxWidth: 320,
       aspectRatio: 4 / 3,
-      maxColumns: 5,
+      // maxColumns: 5,
     },
     {
       maxWidth: 640,
@@ -45,12 +50,12 @@ export class VirtualScrollGridDemoComponent {
     {
       maxWidth: 75,
       aspectRatio: 4 / 3,
-      maxColumns: 10,
+      // maxColumns: 10,
     },
     {
       maxWidth: 150,
       aspectRatio: 4 / 3,
-      maxColumns: 10,
+      // maxColumns: 10,
     },
     {
       maxWidth: 320,
@@ -72,7 +77,7 @@ export class VirtualScrollGridDemoComponent {
   };
 
   public getImgSrc(tileId, maxWidth) {
-    const imageIdx = Number(tileId) % 5;
+    const imageIdx = Number(tileId.split('_')[1]);
     const imgBase = this.images[imageIdx];
     const suffix = this.suffixByMaxWidth[maxWidth];
     return imgBase + suffix;
