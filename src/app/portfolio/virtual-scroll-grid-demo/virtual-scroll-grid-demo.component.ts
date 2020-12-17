@@ -21,12 +21,12 @@ import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 })
 export class VirtualScrollGridDemoComponent {
 
-  public maxColumns = 5;
+  public maxColumns = 3;
   public tileIds: string[] = times(2000, (idx) => {
     const imageIndex = Math.floor(Math.random() * 5);
     return `${idx}_${imageIndex}`;
   });
-  public alwaysUseMaxColumns = true;
+  public alwaysUseMaxColumns = false;
   public centeredTileId: string;
   // maxColumns is used as a bound to bump up to the next tileOption
   // larger tile width is preferred
@@ -39,7 +39,6 @@ export class VirtualScrollGridDemoComponent {
     {
       maxWidth: 320,
       aspectRatio: 4 / 3,
-      // maxColumns: 5,
     },
     {
       maxWidth: 640,

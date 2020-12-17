@@ -10,8 +10,12 @@ import {
 } from '@angular/core';
 import {
   Observable,
+  BehaviorSubject,
+  merge,
 } from 'rxjs';
-import { sampleTime } from 'rxjs/operators';
+import {
+  debounceTime,
+} from 'rxjs/operators';
 import {
   get,
   last,
@@ -50,9 +54,9 @@ export class VirtualScrollGridComponent {
   public scaledImageHeight: number = undefined;
   public scaledImageHeightStr: string = undefined;
   public strat: FixedSizeVirtualScrollStrategy = new FixedSizeVirtualScrollStrategy(1,1,1);
-  public updateCenteredTileIdTimeout: number;
   public scrollToTimeout: number;
   public sub;
+  public layoutChange$ = new BehaviorSubject(undefined);
 
   constructor(public hostEl: ElementRef) {}
 
@@ -61,25 +65,35 @@ export class VirtualScrollGridComponent {
       changes.tileIds ||
       changes.tileOptions ||
       changes.maxColumns ||
-      changes.centeredTileId ||
       changes.alwaysUseMaxColumns
     ) {
       this.sizeTiles();
+      this.layoutChange$.next(null);
+      this.scrollToCenteredTileId();
+    }
+    if (
+      changes.centeredTileId &&
+      changes.centeredTileId.previousValue !== changes.centeredTileId.currentValue
+    ) {
       this.scrollToCenteredTileId();
     }
   }
 
   public ngOnInit() {
     this.sizeTiles();
+    this.layoutChange$.next(null);
     this.scrollToCenteredTileId();
-
     this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
       this.sizeTiles();
+      this.layoutChange$.next(null);
       this.scrollToCenteredTileId();
     });
     this.strat.attach(this.scrollViewport);
-    this.sub = this.scrollViewport.elementScrolled()
-      .pipe(sampleTime(1))
+    this.sub = merge(
+      this.scrollViewport.elementScrolled(),
+      this.layoutChange$,
+    )
+      .pipe(debounceTime(200))
       .subscribe(() => this.updateCenteredTileId())
   }
 
@@ -118,7 +132,6 @@ export class VirtualScrollGridComponent {
       this.scaledImageHeight * 2,
       this.scaledImageHeight * 3,
     );
-    this.strat.attach(this.scrollViewport);
   }
 
   public pickTileOption(clientWidth) {
@@ -157,23 +170,21 @@ export class VirtualScrollGridComponent {
   }
 
   public updateCenteredTileId() {
-    clearTimeout(this.updateCenteredTileIdTimeout);
-    this.updateCenteredTileIdTimeout = setTimeout(() => {
-      const offsetTop = this.scrollViewport.measureScrollOffset('top');
-      const mostCenteredRowIndex = this.getMostCenteredRowIndex(offsetTop);
-      const mostCenteredRowIds = this.tileIdRows[mostCenteredRowIndex];
+    const offsetTop = this.scrollViewport.measureScrollOffset('top');
+    const mostCenteredRowIndex = this.getMostCenteredRowIndex(offsetTop);
+    const mostCenteredRowIds = this.tileIdRows[mostCenteredRowIndex];
 
-      // No need to update centeredTileId
-      // The centerRow already contains the current centeredTileId
-      if (!mostCenteredRowIds || mostCenteredRowIds.includes(this.centeredTileId)) {
-        return;
-      }
+    // No need to update centeredTileId
+    // The centerRow already contains the current centeredTileId
+    if (!mostCenteredRowIds || mostCenteredRowIds.includes(this.centeredTileId)) {
+      return;
+    }
 
-      const mostCenteredIdIndex = Math.floor(mostCenteredRowIds.length / 2);
-      const mostCenteredId = mostCenteredRowIds[mostCenteredIdIndex];
+    const mostCenteredIdIndex = Math.floor(mostCenteredRowIds.length / 2);
+    const mostCenteredId = mostCenteredRowIds[mostCenteredIdIndex];
 
-      this.centeredTileIdChange.emit(mostCenteredId);
-    });
+    this.centeredTileId = mostCenteredId;
+    this.centeredTileIdChange.emit(mostCenteredId);
   }
 
   public scrollToCenteredTileId(tileId: string = this.centeredTileId) {
