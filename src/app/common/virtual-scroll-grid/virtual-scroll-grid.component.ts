@@ -109,6 +109,7 @@ export class VirtualScrollGridComponent {
   public sizeTiles() {
     // assumes scrollbar is 16px
     const clientWidth = this.hostEl.nativeElement.clientWidth - 16;
+    const clientHeight = this.hostEl.nativeElement.clientHeight;
     this.targetTileOption = this.pickTileOption(clientWidth);
 
     if (this.alwaysUseMaxColumns) {
@@ -121,8 +122,14 @@ export class VirtualScrollGridComponent {
     }
 
     this.scaledImageWidth = clientWidth / this.columnCount;
-    this.scaledImageWidthStr = `${this.scaledImageWidth}px`;
     this.scaledImageHeight = this.scaledImageWidth / this.targetTileOption.aspectRatio;
+
+    // scales down tile sizes if host element is too small
+    const scaleDownAdjustment = Math.max(this.scaledImageHeight / clientHeight, 1);
+    this.scaledImageWidth /= scaleDownAdjustment;
+    this.scaledImageHeight /= scaleDownAdjustment;
+
+    this.scaledImageWidthStr = `${this.scaledImageWidth}px`;
     this.scaledImageHeightStr = `${this.scaledImageHeight}px`;
 
     this.setTileIdRows(this.columnCount, this.tileIds);
@@ -135,10 +142,20 @@ export class VirtualScrollGridComponent {
   }
 
   public pickTileOption(clientWidth) {
-    return this.tileOptions.find((tileOption) => {
-      const maxColumns = tileOption.maxColumns || this.maxColumns;
-      return (tileOption.maxWidth * maxColumns) >= clientWidth;
-    }) || last(this.tileOptions);
+    const width = this.hostEl.nativeElement.clientWidth;
+    const height = this.hostEl.nativeElement.clientHeight;
+    const validTileOptions = this.tileOptions.filter((tileOption) => {
+      const xScale = (tileOption.maxWidth / width);
+      const maxHeight = tileOption.maxWidth / (tileOption.aspectRatio || (4/3));
+      const scaledHeight = maxHeight * xScale;
+      return (tileOption.maxWidth <= width) && (scaledHeight <= height)
+    })
+
+    return validTileOptions
+      .find((tileOption) => {
+        const maxColumns = tileOption.maxColumns || this.maxColumns;
+        return (tileOption.maxWidth * maxColumns) >= clientWidth;
+      }) || last(validTileOptions);
   }
 
   public setTileIdRows(

@@ -1,10 +1,10 @@
 <h2>Virtual Scroll Grid Demo</h2>
 <div class="demo-container">
   <p>
-    VirtualScrollGridComponent is useful for displaying a large number of images.  Tile elements are not mounted until the user scrolls into the viewport.  This allows for lazy loading of images and quick render times.
+    VirtualScrollGrid is useful for displaying a large number of tiles.  Tile elements are not mounted onto the DOM until they are scrolled into the viewport.  This allows for lazy loading of resources and improves render times.
   </p>
   <p>
-    The width and height of the tiles automatically adjust based on the virtualScrollGridComponent's size.  This can be used to load lower resolution images when higher resolution images are not required.
+    The width and height of the tiles automatically adjusted to fill the virtualScrollGridComponent's area.  This can be used to load lower resolution images when higher resolution images are not required.
   </p>
   <div class="input-section">
     <label>
@@ -26,8 +26,9 @@
       >
     </label>
   </div>
-
-  <div>centeredTileId: {{ centeredTileId }}</div>
+  <div class="input-section">
+    <div>centeredTileId: {{ centeredTileId }}</div>
+  </div>
   <div class="scroll-demo-container">
     <dwu-virtual-scroll-grid
       [tileIds]="tileIds"

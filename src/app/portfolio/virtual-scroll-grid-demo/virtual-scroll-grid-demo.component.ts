@@ -22,7 +22,7 @@ import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 export class VirtualScrollGridDemoComponent {
 
   public maxColumns = 3;
-  public tileIds: string[] = times(2000, (idx) => {
+  public tileIds: string[] = times(5000, (idx) => {
     const imageIndex = Math.floor(Math.random() * 5);
     return `${idx}_${imageIndex}`;
   });
@@ -32,9 +32,12 @@ export class VirtualScrollGridDemoComponent {
   // larger tile width is preferred
   public readonly tileOptions = [
     {
-      maxWidth: 150,
+      maxWidth: 80,
       aspectRatio: 4 / 3,
-      // maxColumns: 5,
+    },
+    {
+      maxWidth: 160,
+      aspectRatio: 4 / 3,
     },
     {
       maxWidth: 320,
@@ -44,20 +47,8 @@ export class VirtualScrollGridDemoComponent {
       maxWidth: 640,
       aspectRatio: 4 / 3,
     },
-  ];
-  public readonly tileOptionsMini = [
     {
-      maxWidth: 75,
-      aspectRatio: 4 / 3,
-      // maxColumns: 10,
-    },
-    {
-      maxWidth: 150,
-      aspectRatio: 4 / 3,
-      // maxColumns: 10,
-    },
-    {
-      maxWidth: 320,
+      maxWidth: 1080,
       aspectRatio: 4 / 3,
     },
   ];
@@ -69,10 +60,11 @@ export class VirtualScrollGridDemoComponent {
     'assets/images/grid-demo-pics/5',
   ];
   public readonly suffixByMaxWidth = {
-    75: '_sm.jpg',
-    150: '_sm.jpg',
-    320: '_md.jpg',
-    640: '_lg.jpg',
+    80: '_xs.jpg',
+    160: '_ss.jpg',
+    320: '_sm.jpg',
+    640: '_md.jpg',
+    1080: '_lg.jpg',
   };
 
   public getImgSrc(tileId, maxWidth) {

@@ -7,6 +7,8 @@ const alreadySizedFileEndings = new Set([
   '_lg.jpg',
   '_md.jpg',
   '_sm.jpg',
+  '_ss.jpg',
+  '_xs.jpg',
 ]);
 
 if (argv.f) {
@@ -44,6 +46,8 @@ function sizeImages(rootImagesPath) {
       image.resize(1080, Jimp.AUTO).quality(80).write(`${imagePathRoot}_lg.jpg`);
       image.resize(640, Jimp.AUTO).quality(80).write(`${imagePathRoot}_md.jpg`);
       image.resize(320, Jimp.AUTO).quality(80).write(`${imagePathRoot}_sm.jpg`);
+      image.resize(160, Jimp.AUTO).quality(80).write(`${imagePathRoot}_ss.jpg`);
+      image.resize(80, Jimp.AUTO).quality(80).write(`${imagePathRoot}_xs.jpg`);
     });
   });
 }
