@@ -20,103 +20,88 @@ import ResizeSensor from 'css-element-queries/src/ResizeSensor';
   styleUrls: ['./backyard-patio.component.scss'],
 })
 export class BackyardPatioComponent {
-  public images = [
+  public tileIds = [
+    '20200425_103623',
+    '20200425_103629',
+    '20200726_161356',
+    '20200727_182054',
+    '20200728_093921',
+    '20200729_100937',
+    '20200801_103249',
+    '20200803_093712',
+    '20200803_100656',
+    '20200803_133722',
+    '20200803_142142',
+    '20200803_195323',
+    '20200804_214359',
+    '20200804_214805',
+    '20200805_201423',
+    '20200812_135003',
+    '20200812_153652',
+    '20200813_114158',
+    '20200926_120644',
+    '20201012_181354',
+    '20201101_110541',
+    '20201101_110551',
+  ];
+// tileIds
+// tileTemplate
+  public readonly tileOptions = [
     {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200425_103623',
+      maxWidth: 80,
+      aspectRatio: 4 / 3,
     },
     {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200425_103629',
+      maxWidth: 160,
+      aspectRatio: 4 / 3,
     },
     {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200726_161356',
+      maxWidth: 320,
+      aspectRatio: 4 / 3,
     },
     {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200727_182054',
+      maxWidth: 640,
+      aspectRatio: 4 / 3,
     },
     {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200728_093921',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200729_100937',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200801_103249',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200803_093712',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200803_100656',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200803_133722',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200803_142142',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200803_195323',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200804_214359',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200804_214805',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200805_201423',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200812_135003',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200812_153652',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200813_114158',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20200926_120644',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20201012_181354',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20201101_110541',
-    },
-    {
-      description: '1',
-      path: 'assets/images/backyard-patio/20201101_110551',
+      maxWidth: 1080,
+      aspectRatio: 4 / 3,
     },
   ];
+
+  public maxColumns = 5;
+  public alwaysUseMaxColumns = true;
+  public centeredTileId;
+
+  public suffixByMaxWidth = {
+    80: '_xs.jpg',
+    160: '_ss.jpg',
+    320: '_sm.jpg',
+    640: '_md.jpg',
+    1080: '_lg.jpg',
+  }
   public magnifiedImage;
 
-  public getSmSrc(image) {
-    return `${image.path}_sm.jpg`;
+  public getImgSrc(tileId, maxWidth) {
+    const imageIdx = Number(tileId.split('_')[1]);
+    const imgBase = `assets/images/backyard-patio/${tileId}`;
+    const suffix = this.suffixByMaxWidth[maxWidth];
+    return imgBase + suffix;
   }
 
-  public getLgSrc(image) {
-    return `${image.path}_lg.jpg`;
+  public zoomIn() {
+    this.maxColumns = Math.max(1, this.maxColumns - 1);
   }
+
+  public zoomOut() {
+    this.maxColumns = Math.min(10, this.maxColumns + 1);
+  }
+
+  // public getSmSrc(image) {
+  //   return `${image.path}_sm.jpg`;
+  // }
+
+  // public getLgSrc(image) {
+  //   return `${image.path}_lg.jpg`;
+  // }
 }

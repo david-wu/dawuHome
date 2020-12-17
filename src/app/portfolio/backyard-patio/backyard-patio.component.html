@@ -1,12 +1,54 @@
-<h2>Backyard Patio</h2>
-<div class="demo-container">
-  <div class="image-card-container">
-    <div *ngFor="let image of images" class="image-card" (click)="magnifiedImage = image">
-      <img class="sm-image" [src]="getSmSrc(image)">
-    </div>
+<h2>
+  <div>Backyard Patio</div>
+  <div class="zoom-icons">
+    <i
+      class="material-icons zoom-icon"
+      (click)="zoomIn()"
+      [class.disabled]="maxColumns <= 1"
+    >
+      zoom_in
+    </i>
+    <i
+      class="material-icons zoom-icon"
+      (click)="zoomOut()"
+      [class.disabled]="maxColumns >= 10"
+    >
+      zoom_out
+    </i>
   </div>
+</h2>
+<div class="scroll-grid-container">
+  <dwu-virtual-scroll-grid
+    [tileIds]="tileIds"
+    [tileTemplate]="tileTemplate"
+    [tileOptions]="tileOptions"
+    [maxColumns]="maxColumns"
+    [(alwaysUseMaxColumns)]="alwaysUseMaxColumns"
+    [(centeredTileId)]="centeredTileId"
+  ></dwu-virtual-scroll-grid>
 </div>
 
 <div *ngIf="magnifiedImage" class="magnified-image-container" (click)="magnifiedImage = undefined">
   <img [src]="getLgSrc(magnifiedImage)" class="magnified-image">
 </div>
+
+<ng-template
+  #tileTemplate
+  let-scaledImageWidthStr="scaledImageWidthStr"
+  let-scaledImageHeightStr="scaledImageHeightStr"
+  let-tileId="tileId"
+  let-targetTileOption="targetTileOption"
+>
+  <div
+    class="tile"
+    [style.width]="scaledImageWidthStr"
+    [style.height]="scaledImageHeightStr"
+    (click)="centeredTileId = tileId; maxColumns = 1;"
+  >
+    <img
+      [src]="getImgSrc(tileId, targetTileOption.maxWidth)"
+      class="grid-image"
+    >
+  </div>
+</ng-template>
+
