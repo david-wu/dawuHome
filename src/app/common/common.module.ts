@@ -6,6 +6,7 @@ import { TextDecoratorComponent } from './text-decorator/text-decorator.componen
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ChartsModule } from './charts/charts.module';
 import { TooltipModule } from './tooltip/tooltip.module';
+import { ZoomLevelPickerModule } from './zoom-level-picker/zoom-level-picker.module';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { TooltipModule } from './tooltip/tooltip.module';
     FormsModule,
     ChartsModule,
     TooltipModule,
+    ZoomLevelPickerModule,
   ],
   declarations: [
     TextDecoratorComponent,
@@ -21,6 +23,7 @@ import { TooltipModule } from './tooltip/tooltip.module';
   exports: [
     ChartsModule,
     TooltipModule,
+    ZoomLevelPickerModule,
     TextDecoratorComponent,
     SearchInputComponent,
   ],

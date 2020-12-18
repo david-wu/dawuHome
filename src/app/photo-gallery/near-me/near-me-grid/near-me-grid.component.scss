@@ -1,33 +1,32 @@
 @import 'mixins';
+
 :host {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+  dwu-zoom-level-picker {
+    align-self: flex-end;
+    display: block;
+    margin-right: 0.5rem;
+  }
 }
 
-.uploaded-file-container {
-  // padding: 0.25rem;
+.near-by-uploads {
   flex: 1 1 0;
   display: flex;
   flex-wrap: wrap;
-  // .uploaded-file {
-  //   margin: 0.25rem;
-  //   width: 20rem;
-  //   display: flex;
-  //   flex-direction: column;
-  //   .file-name {
-  //     color: $light-green;
-  //     background-color: $black-olive;
-  //     padding: 0.25rem 0.5rem;
-  //     border-radius: 0.25rem 0.25rem 0 0;
-  //   }
-  //   .file-pic {
-  //     width: 20rem;
-  //     height: 15rem;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }
-  // }
+}
+.tile {
+  padding: 1px;
+  position: relative;
+  .grid-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.85;
+    }
+  }
 }

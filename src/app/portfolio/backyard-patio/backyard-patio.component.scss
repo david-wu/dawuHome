@@ -7,23 +7,10 @@
   padding-left: 0;
   padding-right: 0;
   h2 {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     display: flex;
     justify-content: space-between;
-    .zoom-icons {
-      user-select: none;
-      cursor: pointer;
-      .zoom-icon {
-        padding: 0.125rem;
-        &:hover {
-          opacity: 0.8;
-        }
-        &.disabled {
-          cursor: default;
-          opacity: 0.25;
-        }
-      }
-    }
+    align-items: center;
   }
   .scroll-grid-container {
     margin-top: 1rem;
@@ -34,18 +21,6 @@
 .tile {
   padding: 1px;
   position: relative;
-  .tile-id {
-    background-color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .img-size {
-    background-color: white;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
   .grid-image {
     display: block;
     width: 100%;
@@ -56,26 +31,6 @@
     }
   }
 }
-
-// .image-card-container {
-//   display: flex;
-//   flex-wrap: wrap;
-//   margin: -0.25rem;
-//   .image-card {
-//     margin: 0.25rem;
-//     display: flex;
-//     flex-direction: column;
-
-//     .sm-image {
-//       width: 320px;
-//       height: auto;
-//       &:hover {
-//         opacity: 0.8;
-//         cursor: pointer;
-//       }
-//     }
-//   }
-// }
 
 .magnified-image-container {
   position: fixed;

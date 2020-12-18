@@ -12,6 +12,8 @@ import { NearMeListComponent } from '@photo-gallery/near-me/near-me-list/near-me
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
 // import { nearMeReducerMap } from './store/near-me.store';
 import { nearMeReducer } from './store/near-me.reducer';
+import { VirtualScrollGridModule } from '@common/virtual-scroll-grid/virtual-scroll-grid.module';
+import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module'
 
 const NEAR_ME_COMPONENTS = [
   NearMeComponent,
@@ -24,6 +26,8 @@ const NEAR_ME_COMPONENTS = [
     CommonModule,
     PhotoGalleryCommonModule,
     NearMeRoutingModule,
+    ZoomLevelPickerModule,
+    VirtualScrollGridModule,
     ScrollingModule,
     StoreModule.forFeature('nearMe', nearMeReducer)
   ],

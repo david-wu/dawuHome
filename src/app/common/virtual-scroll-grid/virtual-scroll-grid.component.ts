@@ -139,23 +139,16 @@ export class VirtualScrollGridComponent {
       this.scaledImageHeight * 2,
       this.scaledImageHeight * 3,
     );
+    // This seems to be needed or cdk doesn't always update
+    this.strat.attach(this.scrollViewport);
   }
 
   public pickTileOption(clientWidth) {
-    const width = this.hostEl.nativeElement.clientWidth;
-    const height = this.hostEl.nativeElement.clientHeight;
-    const validTileOptions = this.tileOptions.filter((tileOption) => {
-      const xScale = (tileOption.maxWidth / width);
-      const maxHeight = tileOption.maxWidth / (tileOption.aspectRatio || (4/3));
-      const scaledHeight = maxHeight * xScale;
-      return (tileOption.maxWidth <= width) && (scaledHeight <= height)
-    })
-
-    return validTileOptions
+    return this.tileOptions
       .find((tileOption) => {
         const maxColumns = tileOption.maxColumns || this.maxColumns;
         return (tileOption.maxWidth * maxColumns) >= clientWidth;
-      }) || last(validTileOptions);
+      }) || last(this.tileOptions);
   }
 
   public setTileIdRows(

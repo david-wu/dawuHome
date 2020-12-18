@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import {
   Observable,
   BehaviorSubject,
+  Subscription,
 } from 'rxjs';
 import {
   map,
 } from 'rxjs/operators';
-import { keyBy } from 'lodash';
+import {
+  keyBy,
+  get,
+} from 'lodash';
 import {
   ActivatedRoute,
   Router,
@@ -31,9 +35,33 @@ export class NearMeGridComponent {
 
   public nearByUploads$: Observable<any[]>;
   public uploadFileIds$: Observable<string[]>;
-  public uploadFilesById$: Observable<Record<string, UploadFile>>;
   public distanceType$ = new BehaviorSubject<string>('DRIVE');
   public selectedFileId$: Observable<string>;
+
+  public zoomLevel: number = 5;
+  public alwaysUseMaxColumns: boolean = true;
+  public centeredTileId: string;
+  public readonly tileOptions = [
+    {
+      maxWidth: 150,
+      aspectRatio: 4 / 3,
+    },
+    {
+      maxWidth: 320,
+      aspectRatio: 4 / 3,
+    },
+    {
+      maxWidth: 640,
+      aspectRatio: 4 / 3,
+    },
+    {
+      maxWidth: 1080,
+      aspectRatio: 4 / 3,
+    },
+  ];
+
+  public uploadFilesById;
+  public sub: Subscription;
 
   constructor(
     public pgs: PhotoGalleryService,
@@ -47,15 +75,34 @@ export class NearMeGridComponent {
         return uploadFiles.map((uploadFile: UploadFile) => uploadFile.id);
       }),
     );
-    this.uploadFilesById$ = this.nearByUploads$.pipe(
-      map((uploadFiles: UploadFile[]) => {
-        return keyBy(uploadFiles, (uploadFile: UploadFile) => uploadFile.id);
-      }),
-    );
     this.selectedFileId$ = this.activatedRoute.queryParams.pipe(
       map((params: Params) => params.selectedFileId),
     );
     this.store.dispatch(NearMeActions.loadNearMe({}));
+  }
+
+  public ngOnInit() {
+    this.sub = this.nearByUploads$.subscribe(
+      (uploadFiles: UploadFile[]) => {
+        this.uploadFilesById = keyBy(uploadFiles, (uploadFile: UploadFile) => uploadFile.id);
+        return keyBy(uploadFiles, (uploadFile: UploadFile) => uploadFile.id);
+      },
+    );
+  }
+
+  public ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe()
+    }
+  }
+
+  public getImgSrc(uploadFileId: string, imageWidth: number): string {
+    imageWidth = Math.min(640, imageWidth);
+    return get(this.uploadFilesById, [
+      uploadFileId,
+      'uploadMeta',
+      `downloadUrl_${imageWidth}`,
+    ]);
   }
 
   public onGridSelectUploadFileId(fileId: string) {

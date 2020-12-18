@@ -49,8 +49,7 @@ export class BackyardPatioComponent {
     '20201126_220433',
     '20201210_154146',
   ];
-// tileIds
-// tileTemplate
+
   public readonly tileOptions = [
     {
       maxWidth: 80,
@@ -74,7 +73,7 @@ export class BackyardPatioComponent {
     },
   ];
 
-  public maxColumns = 5;
+  public zoomLevel = 5;
   public alwaysUseMaxColumns = true;
   public centeredTileId;
 
@@ -94,13 +93,13 @@ export class BackyardPatioComponent {
     return imgBase + suffix;
   }
 
-  public zoomIn() {
-    this.maxColumns = Math.max(1, this.maxColumns - 1);
-  }
+  // public zoomIn() {
+  //   this.maxColumns = Math.max(1, this.maxColumns - 1);
+  // }
 
-  public zoomOut() {
-    this.maxColumns = Math.min(10, this.maxColumns + 1);
-  }
+  // public zoomOut() {
+  //   this.maxColumns = Math.min(10, this.maxColumns + 1);
+  // }
 
   // public getSmSrc(image) {
   //   return `${image.path}_sm.jpg`;

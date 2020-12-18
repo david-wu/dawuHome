@@ -1,28 +1,15 @@
 <h2>
   <div>Backyard Patio</div>
-  <div class="zoom-icons">
-    <i
-      class="material-icons zoom-icon"
-      (click)="zoomIn()"
-      [class.disabled]="maxColumns <= 1"
-    >
-      zoom_in
-    </i>
-    <i
-      class="material-icons zoom-icon"
-      (click)="zoomOut()"
-      [class.disabled]="maxColumns >= 10"
-    >
-      zoom_out
-    </i>
-  </div>
+  <dwu-zoom-level-picker
+    [(zoomLevel)]="zoomLevel"
+  ></dwu-zoom-level-picker>
 </h2>
 <div class="scroll-grid-container">
   <dwu-virtual-scroll-grid
     [tileIds]="tileIds"
     [tileTemplate]="tileTemplate"
     [tileOptions]="tileOptions"
-    [maxColumns]="maxColumns"
+    [maxColumns]="zoomLevel"
     [(alwaysUseMaxColumns)]="alwaysUseMaxColumns"
     [(centeredTileId)]="centeredTileId"
   ></dwu-virtual-scroll-grid>
@@ -43,7 +30,7 @@
     class="tile"
     [style.width]="scaledImageWidthStr"
     [style.height]="scaledImageHeightStr"
-    (click)="centeredTileId = tileId; maxColumns = 1;"
+    (click)="centeredTileId = tileId; zoomLevel = 1;"
   >
     <img
       [src]="getImgSrc(tileId, targetTileOption.maxWidth)"

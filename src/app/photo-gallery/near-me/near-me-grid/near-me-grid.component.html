@@ -1,14 +1,44 @@
-<dwu-upload-file-grid-viewer
-  *ngIf="nearByUploads$ | async; else loader"
-  class="uploaded-file-container"
-  [uploadFileIds]="uploadFileIds$ | async"
-  [uploadFilesById]="uploadFilesById$ | async"
-  [selectedFileId]="selectedFileId$ | async"
-  (selectUploadFileId)="onGridSelectUploadFileId($event)"
+<dwu-zoom-level-picker
+  [(zoomLevel)]="zoomLevel"
+></dwu-zoom-level-picker>
+<dwu-virtual-scroll-grid
+  *ngIf="nearByUploads$ | async; else loaderForPage"
+  [tileIds]="uploadFileIds$ | async"
+  [tileTemplate]="tileTemplate"
+  [tileOptions]="tileOptions"
+  [maxColumns]="zoomLevel"
+  [(alwaysUseMaxColumns)]="alwaysUseMaxColumns"
+  [(centeredTileId)]="centeredTileId"
+  class="near-by-uploads"
+></dwu-virtual-scroll-grid>
+<ng-template
+  #tileTemplate
+  let-scaledImageWidthStr="scaledImageWidthStr"
+  let-scaledImageHeightStr="scaledImageHeightStr"
+  let-tileId="tileId"
+  let-targetTileOption="targetTileOption"
 >
-</dwu-upload-file-grid-viewer>
+  <div
+    class="tile"
+    [style.width]="scaledImageWidthStr"
+    [style.height]="scaledImageHeightStr"
+    (click)="centeredTileId = tileId; zoomLevel = 1;"
+  >
+    <img
+      *ngIf="getImgSrc(tileId, targetTileOption.maxWidth) as imgSrc; else loader"
+      [src]="imgSrc"
+      class="grid-image"
+    >
+  </div>
+</ng-template>
 
 <ng-template #loader>
+  <div class="loader-container centered">
+    <div class="dwu-loader"></div>
+  </div>
+</ng-template>
+
+<ng-template #loaderForPage>
   <div class="loader-container for-page">
     <div class="dwu-loader"></div>
   </div>
