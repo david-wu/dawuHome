@@ -76,6 +76,10 @@ export class MyUploadsComponent {
     this.pgs.deleteFile(file.id, user);
   }
 
+  public onZoomIn(imageId: string) {
+    this.magnifiedImageId = imageId;
+  }
+
   // public trackById(file: any) {
   //   return file.id;
   // }

@@ -35,7 +35,7 @@ export class DecoratedImageComponent {
   // @HostListener('focus') onFocus(e) {
   //   this.isFocused = true;
   // }
-  @HostListener('blur') onblur(e) {
+  @HostListener('blur') onblur() {
     this.isFocused = false;
   }
 

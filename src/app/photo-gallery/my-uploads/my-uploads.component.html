@@ -72,7 +72,7 @@
     <!-- (click)="centeredTileId = tileId; zoomLevel = 1;" -->
   <dwu-decorated-image
     [src]="getImgSrc(tileId, targetTileOption.maxWidth)"
-    (zoomIn)="magnifiedImageId = tileId"
+    (zoomIn)="onZoomIn(tileId)"
     (download)="downloadImage(tileId)"
     class="grid-image"
   ></dwu-decorated-image>
