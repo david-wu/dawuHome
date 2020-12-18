@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { keyBy, get } from 'lodash';
 
 import { FirebaseAuthService } from '@services/index';
 import { PhotoGalleryService } from '@photo-gallery/services/index';
 import { User } from '@models/index';
+import { UploadFile } from '@photo-gallery/models/upload-file.model';
 
 @Component({
   selector: 'dwu-my-uploads',
@@ -13,12 +16,56 @@ import { User } from '@models/index';
 export class MyUploadsComponent {
 
   public uploadedFiles$: Observable<any[]>;
+  public uploadedFileIds$: Observable<string[]>;
+  public zoomLevel = 5;
+  public readonly tileOptions = [
+    { maxWidth: 150, aspectRatio: 4 / 3 },
+    { maxWidth: 320, aspectRatio: 4 / 3 },
+    { maxWidth: 640, aspectRatio: 4 / 3 },
+    { maxWidth: 1080, aspectRatio: 4 / 3 },
+  ];
+  public alwaysUseMaxColumns = true;
+  public centeredTileId;
+  public uploadFilesById;
+
+  public sub;
+  public magnifiedImageId;
 
   constructor(
     public pgs: PhotoGalleryService,
     public firebaseAuthService: FirebaseAuthService,
   ) {
     this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+    this.uploadedFileIds$ = this.uploadedFiles$.pipe(
+      map((uploadFiles: UploadFile[]) => {
+        return uploadFiles.map((uploadFile: UploadFile) => uploadFile.id);
+      }),
+    );
+  }
+
+
+  public ngOnInit() {
+    this.sub = this.uploadedFiles$.subscribe(
+      (uploadFiles: UploadFile[]) => {
+        this.uploadFilesById = keyBy(uploadFiles, (uploadFile: UploadFile) => uploadFile.id);
+        return keyBy(uploadFiles, (uploadFile: UploadFile) => uploadFile.id);
+      },
+    );
+  }
+
+  public ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe()
+    }
+  }
+
+  public getImgSrc(uploadFileId: string, imageWidth: number): string {
+    imageWidth = Math.min(640, imageWidth);
+    return get(this.uploadFilesById, [
+      uploadFileId,
+      'uploadMeta',
+      `downloadUrl_${imageWidth}`,
+    ]);
   }
 
   public async onFileChange(file: File, user: User) {
@@ -29,8 +76,22 @@ export class MyUploadsComponent {
     this.pgs.deleteFile(file.id, user);
   }
 
-  public trackById(file: any) {
-    return file.id;
-  }
+  // public trackById(file: any) {
+  //   return file.id;
+  // }
+
+  public downloadImage(imageId: string) {
+    const uploadFile = this.uploadFilesById[imageId];
+    const downloadUrl = uploadFile.uploadMeta.downloadUrl;
+    const url = this.getImgSrc(imageId, 1080);
+    const a: any = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = imageId;
+    a.style = 'display: none';
+    a.target = '_self';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
 
 }

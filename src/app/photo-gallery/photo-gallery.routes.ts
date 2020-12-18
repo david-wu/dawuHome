@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PhotoGalleryComponent } from '@src/app/photo-gallery/photo-gallery.component';
-import { MyUploadsComponent } from '@photo-gallery/my-uploads/my-uploads.component';
 
 const routes: Routes = [
   {
@@ -14,7 +13,7 @@ const routes: Routes = [
       },
       {
         path: 'my-uploads',
-        component: MyUploadsComponent,
+        loadChildren: () => import('./my-uploads/my-uploads.module').then(m => m.MyUploadsModule),
       },
       {
         path: '',

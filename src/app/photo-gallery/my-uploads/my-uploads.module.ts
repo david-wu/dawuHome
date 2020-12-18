@@ -4,40 +4,39 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
 import { PhotoGalleryCommonModule } from '@photo-gallery/photo-gallery-common/photo-gallery-common.module';
-import { NearMeRoutingModule } from '@photo-gallery/near-me/near-me.routes';
-import { NearMeComponent } from '@photo-gallery/near-me/near-me.component';
-import { NearMeGridComponent } from '@photo-gallery/near-me/near-me-grid/near-me-grid.component';
-import { NearMeListComponent } from '@photo-gallery/near-me/near-me-list/near-me-list.component';
+import { MyUploadsRoutingModule } from '@photo-gallery/my-uploads/my-uploads.routes';
+import { MyUploadsComponent } from '@photo-gallery/my-uploads/my-uploads.component';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
-import { nearMeReducer } from './store/near-me.reducer';
 import { VirtualScrollGridModule } from '@common/virtual-scroll-grid/virtual-scroll-grid.module';
 import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module'
+import { UserLoginModule } from '@app/user-login/user-login.module';
+import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
 import { DecoratedImageModule } from '@common/decorated-image/decorated-image.module'
 
-const NEAR_ME_COMPONENTS = [
-  NearMeComponent,
-  NearMeGridComponent,
-  NearMeListComponent,
+const MY_UPLOADS_COMPONENTS = [
+  MyUploadsComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    PhotoGalleryCommonModule,
-    NearMeRoutingModule,
-    ZoomLevelPickerModule,
-    VirtualScrollGridModule,
     DecoratedImageModule,
-    StoreModule.forFeature('nearMe', nearMeReducer)
+    PhotoGalleryCommonModule,
+    MyUploadsRoutingModule,
+    VirtualScrollGridModule,
+    ZoomLevelPickerModule,
+    UserLoginModule,
+    FileUploaderModule,
   ],
   declarations: [
-    ...NEAR_ME_COMPONENTS,
+    ...MY_UPLOADS_COMPONENTS,
   ],
   exports: [
-    ...NEAR_ME_COMPONENTS,
+    ...MY_UPLOADS_COMPONENTS,
   ],
   providers: [
     ...PHOTO_GALLERY_SERVICES,
   ],
+  bootstrap: [MyUploadsComponent],
 })
-export class NearMeModule { }
+export class MyUploadsModule { }

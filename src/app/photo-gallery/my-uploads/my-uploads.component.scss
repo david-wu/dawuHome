@@ -1,35 +1,85 @@
 @import 'mixins';
 
-dwu-user-login, dwu-file-uploader {
-  margin: 0.25rem;
-  display: block;
-}
-
-.uploaded-file-container {
-  padding: 0.25rem;
+// dwu-user-login, dwu-file-uploader {
+//   margin: 0.25rem;
+//   display: block;
+// }
+:host {
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  .uploaded-file {
-    margin: 0.25rem;
-    width: 20rem;
+  flex-direction: column;
+  .control-bar {
     display: flex;
-    flex-direction: column;
-    .file-name {
-      color: $light-green;
-      background-color: $black-olive;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem 0.25rem 0 0;
+
+    dwu-user-login, dwu-file-uploader {
+      align-self: flex-start;
+      margin: 0.25rem;
+      display: block;
     }
-    .file-pic {
-      width: 20rem;
-      height: 15rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .loader-container {
-      height: 100px;
+    dwu-zoom-level-picker {
+      align-self: flex-end;
+      display: block;
+      margin-right: 0.5rem;
     }
   }
 }
 
+.magnified-image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0, 0.85);
+
+  img.magnified-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+// .uploaded-file-container {
+//   padding: 0.25rem;
+//   display: flex;
+//   flex-wrap: wrap;
+//   .uploaded-file {
+//     margin: 0.25rem;
+//     width: 20rem;
+//     display: flex;
+//     flex-direction: column;
+//     .file-name {
+//       color: $light-green;
+//       background-color: $black-olive;
+//       padding: 0.25rem 0.5rem;
+//       border-radius: 0.25rem 0.25rem 0 0;
+//     }
+//     .file-pic {
+//       width: 20rem;
+//       height: 15rem;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//     }
+//     .loader-container {
+//       height: 100px;
+//     }
+//   }
+// }
+
+
+
+.near-by-uploads {
+  flex: 1 1 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tile {
+  padding: 1px;
+  position: relative;
+}

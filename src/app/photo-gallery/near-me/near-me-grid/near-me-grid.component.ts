@@ -42,22 +42,10 @@ export class NearMeGridComponent {
   public alwaysUseMaxColumns: boolean = true;
   public centeredTileId: string;
   public readonly tileOptions = [
-    {
-      maxWidth: 150,
-      aspectRatio: 4 / 3,
-    },
-    {
-      maxWidth: 320,
-      aspectRatio: 4 / 3,
-    },
-    {
-      maxWidth: 640,
-      aspectRatio: 4 / 3,
-    },
-    {
-      maxWidth: 1080,
-      aspectRatio: 4 / 3,
-    },
+    { maxWidth: 150, aspectRatio: 4 / 3 },
+    { maxWidth: 320, aspectRatio: 4 / 3 },
+    { maxWidth: 640, aspectRatio: 4 / 3 },
+    { maxWidth: 1080, aspectRatio: 4 / 3 },
   ];
 
   public uploadFilesById;
@@ -103,16 +91,6 @@ export class NearMeGridComponent {
       'uploadMeta',
       `downloadUrl_${imageWidth}`,
     ]);
-  }
-
-  public onGridSelectUploadFileId(fileId: string) {
-    const navgateOptions = {
-      relativeTo: this.activatedRoute,
-      queryParams: {
-        selectedFileId: fileId,
-      },
-    };
-    this.router.navigate(['../list'], navgateOptions)
   }
 
 }
