@@ -69,19 +69,12 @@
     [style.width]="scaledImageWidthStr"
     [style.height]="scaledImageHeightStr"
   >
-    <!-- (click)="centeredTileId = tileId; zoomLevel = 1;" -->
-  <dwu-decorated-image
-    [src]="getImgSrc(tileId, targetTileOption.maxWidth)"
-    (zoomIn)="onZoomIn(tileId)"
-    (download)="downloadImage(tileId)"
-    class="grid-image"
-  ></dwu-decorated-image>
-
-<!--     <img
-      *ngIf="getImgSrc(tileId, targetTileOption.maxWidth) as imgSrc; else loader"
-      [src]="imgSrc"
+    <dwu-decorated-image
+      [src]="getImgSrc(tileId, targetTileOption.maxWidth)"
+      (zoomIn)="onZoomIn(tileId)"
+      (download)="downloadImage(tileId)"
       class="grid-image"
-    > -->
+    ></dwu-decorated-image>
   </div>
 </ng-template>
 

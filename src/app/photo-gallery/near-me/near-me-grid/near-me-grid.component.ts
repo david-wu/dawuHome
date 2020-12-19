@@ -38,7 +38,7 @@ export class NearMeGridComponent {
   public distanceType$ = new BehaviorSubject<string>('DRIVE');
   public selectedFileId$: Observable<string>;
 
-  public zoomLevel: number = 5;
+  public zoomLevel: number = 3;
   public alwaysUseMaxColumns: boolean = true;
   public centeredTileId: string;
   public readonly tileOptions = [
