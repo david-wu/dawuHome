@@ -16,7 +16,8 @@
     "sizeImages": "node ./scripts/src/sizeImages.js;",
     "sizeImagesHard": "node ./scripts/src/sizeImages.js -f;",
     "pushMaster": "git subtree split --prefix dist/dawu-home -b master;git checkout master;git push --set-upstream prod master;git checkout develop;",
-    "everything": "cd ../COVID-19;git pull;cd -;npm run corona;npm run build; git add .;git commit -m 'data';git push; npm run pushMaster"
+    "everything": "cd ../COVID-19;git pull;cd -;npm run corona;npm run build; git add .;git commit -m 'data';git push; npm run pushMaster",
+    "pushBuild": "npm run build; git add .;git commit -m 'pushBuild';git push; npm run pushMaster"
   },
   "private": true,
   "dependencies": {
