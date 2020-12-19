@@ -8,45 +8,7 @@
     [(zoomLevel)]="zoomLevel"
   ></dwu-zoom-level-picker>
 </div>
-<!-- <div
-  *ngIf="(uploadedFiles$ | async) as uploadedFiles; else loader"
-  class="uploaded-file-container"
->
-  <div
-    *ngFor="let uploadedFile of uploadedFiles; trackBy: trackById"
-    class="uploaded-file"
-  >
-    <div class="file-name">
-      <div>{{ uploadedFile.fileName }}</div>
-      <span
-        *ngIf="firebaseAuthService.user$ | async as user"
-        class="material-icons"
-        (click)="onDeleteFile(uploadedFile, user)"
-      >delete</span>
-    </div>
-    <img
-      *ngIf="uploadedFile.uploadMeta?.downloadUrl_320"
-      [src]="uploadedFile.uploadMeta.downloadUrl_320"
-      class="file-pic"
-    >
-    <div
-      *ngIf="!uploadedFile.uploadMeta"
-      class="file-pic"
-    >
-      <div class="loader-container centered">
-        <div class="dwu-loader"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<ng-template #loader>
-  <div class="loader-container for-page">
-    <div class="dwu-loader"></div>
-  </div>
-</ng-template>
-<div class="footer"></div>
 
- -->
 <dwu-virtual-scroll-grid
   *ngIf="uploadedFileIds$ | async; else loaderForPage"
   [tileIds]="uploadedFileIds$ | async"

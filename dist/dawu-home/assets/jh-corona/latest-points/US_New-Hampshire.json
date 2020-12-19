@@ -1,62 +1,62 @@
 {
   "Belknap": {
-    "dateStr": "12/15/20",
-    "cases": 1296,
-    "deaths": 37,
-    "recovered": 0,
-    "new": 54,
-    "newDeaths": 0
-  },
-  "Carroll": {
-    "dateStr": "12/15/20",
-    "cases": 651,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 20,
-    "newDeaths": 0
-  },
-  "Cheshire": {
-    "dateStr": "12/15/20",
-    "cases": 957,
-    "deaths": 4,
+    "dateStr": "12/18/20",
+    "cases": 1428,
+    "deaths": 39,
     "recovered": 0,
     "new": 22,
     "newDeaths": 0
   },
-  "Coos": {
-    "dateStr": "12/15/20",
-    "cases": 428,
-    "deaths": 12,
+  "Carroll": {
+    "dateStr": "12/18/20",
+    "cases": 701,
+    "deaths": 2,
     "recovered": 0,
-    "new": 5,
+    "new": 8,
     "newDeaths": 0
   },
-  "Grafton": {
-    "dateStr": "12/15/20",
-    "cases": 862,
-    "deaths": 4,
+  "Cheshire": {
+    "dateStr": "12/18/20",
+    "cases": 1019,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 16,
+    "newDeaths": 1
+  },
+  "Coos": {
+    "dateStr": "12/18/20",
+    "cases": 453,
+    "deaths": 13,
     "recovered": 0,
     "new": 14,
     "newDeaths": 0
   },
-  "Hillsborough": {
-    "dateStr": "12/15/20",
-    "cases": 13520,
-    "deaths": 361,
+  "Grafton": {
+    "dateStr": "12/18/20",
+    "cases": 924,
+    "deaths": 8,
     "recovered": 0,
-    "new": 164,
-    "newDeaths": 0
+    "new": 8,
+    "newDeaths": 1
+  },
+  "Hillsborough": {
+    "dateStr": "12/18/20",
+    "cases": 14325,
+    "deaths": 379,
+    "recovered": 0,
+    "new": 176,
+    "newDeaths": 6
   },
   "Merrimack": {
-    "dateStr": "12/15/20",
-    "cases": 3396,
-    "deaths": 40,
+    "dateStr": "12/18/20",
+    "cases": 3777,
+    "deaths": 43,
     "recovered": 0,
-    "new": 82,
-    "newDeaths": 0
+    "new": 89,
+    "newDeaths": 1
   },
   "Out of NH": {
-    "dateStr": "12/15/20",
+    "dateStr": "12/18/20",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -64,35 +64,35 @@
     "newDeaths": 0
   },
   "Rockingham": {
-    "dateStr": "12/15/20",
-    "cases": 8130,
-    "deaths": 120,
+    "dateStr": "12/18/20",
+    "cases": 8709,
+    "deaths": 123,
     "recovered": 0,
-    "new": 224,
+    "new": 163,
     "newDeaths": 0
   },
   "Strafford": {
-    "dateStr": "12/15/20",
-    "cases": 2339,
-    "deaths": 19,
+    "dateStr": "12/18/20",
+    "cases": 2628,
+    "deaths": 20,
     "recovered": 0,
-    "new": 62,
+    "new": 153,
     "newDeaths": 0
   },
   "Sullivan": {
-    "dateStr": "12/15/20",
-    "cases": 328,
+    "dateStr": "12/18/20",
+    "cases": 348,
     "deaths": 5,
     "recovered": 0,
-    "new": 2,
+    "new": 4,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "12/15/20",
-    "cases": 638,
+    "dateStr": "12/18/20",
+    "cases": 648,
     "deaths": 64,
     "recovered": 0,
-    "new": 17,
+    "new": 10,
     "newDeaths": 0
   }
 }

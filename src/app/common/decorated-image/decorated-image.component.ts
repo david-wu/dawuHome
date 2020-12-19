@@ -24,21 +24,30 @@ export class DecoratedImageComponent {
   @Output() zoomIn = new EventEmitter();
 
   public isFocused: boolean = false;
+  public hideOverlay: boolean = false;
 
   constructor(
     public hostEl: ElementRef,
   ) {}
 
-  @HostListener('mouseup') onMouseUp() {
-    if (this.isFocused) {
-      this.hostEl.nativeElement.blur();
-    } else {
-      this.isFocused = true;
-    }
+  @HostListener('focus') onFocus() {
+    this.isFocused = true;
   }
 
   @HostListener('blur') onBlur() {
     this.isFocused = false;
+    this.hideOverlay = false;
+  }
+
+  @HostListener('mouseleave') onMouseleave() {
+    this.isFocused = false;
+    this.hideOverlay = false;
+  }
+
+  @HostListener('mousedown') onMousedown() {
+    if (this.isFocused) {
+      this.hideOverlay = !this.hideOverlay;
+    }
   }
 
   public onSelect(event) {

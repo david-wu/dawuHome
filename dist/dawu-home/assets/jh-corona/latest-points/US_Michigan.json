@@ -1,662 +1,662 @@
 {
   "Alcona": {
-    "dateStr": "12/15/20",
-    "cases": 304,
-    "deaths": 11,
+    "dateStr": "12/18/20",
+    "cases": 321,
+    "deaths": 12,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 2
+    "new": 11,
+    "newDeaths": 0
   },
   "Alger": {
-    "dateStr": "12/15/20",
-    "cases": 268,
+    "dateStr": "12/18/20",
+    "cases": 275,
     "deaths": 2,
     "recovered": 0,
-    "new": 1,
+    "new": 5,
     "newDeaths": 0
   },
   "Allegan": {
-    "dateStr": "12/15/20",
-    "cases": 5102,
-    "deaths": 46,
+    "dateStr": "12/18/20",
+    "cases": 5298,
+    "deaths": 50,
     "recovered": 0,
-    "new": 37,
+    "new": 54,
     "newDeaths": 1
   },
   "Alpena": {
-    "dateStr": "12/15/20",
-    "cases": 1003,
-    "deaths": 21,
+    "dateStr": "12/18/20",
+    "cases": 1034,
+    "deaths": 22,
     "recovered": 0,
-    "new": 3,
+    "new": 16,
     "newDeaths": 1
   },
   "Antrim": {
-    "dateStr": "12/15/20",
+    "dateStr": "12/18/20",
+    "cases": 575,
+    "deaths": 9,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Arenac": {
+    "dateStr": "12/18/20",
+    "cases": 569,
+    "deaths": 24,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Baraga": {
+    "dateStr": "12/18/20",
     "cases": 554,
+    "deaths": 28,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Barry": {
+    "dateStr": "12/18/20",
+    "cases": 2761,
+    "deaths": 26,
+    "recovered": 0,
+    "new": 16,
+    "newDeaths": 0
+  },
+  "Bay": {
+    "dateStr": "12/18/20",
+    "cases": 5744,
+    "deaths": 159,
+    "recovered": 0,
+    "new": 68,
+    "newDeaths": 2
+  },
+  "Benzie": {
+    "dateStr": "12/18/20",
+    "cases": 616,
+    "deaths": 18,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Berrien": {
+    "dateStr": "12/18/20",
+    "cases": 8659,
+    "deaths": 162,
+    "recovered": 0,
+    "new": 72,
+    "newDeaths": 0
+  },
+  "Branch": {
+    "dateStr": "12/18/20",
+    "cases": 2842,
+    "deaths": 53,
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 1
+  },
+  "Calhoun": {
+    "dateStr": "12/18/20",
+    "cases": 7375,
+    "deaths": 165,
+    "recovered": 0,
+    "new": 56,
+    "newDeaths": 2
+  },
+  "Cass": {
+    "dateStr": "12/18/20",
+    "cases": 2911,
+    "deaths": 40,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  "Charlevoix": {
+    "dateStr": "12/18/20",
+    "cases": 807,
     "deaths": 8,
     "recovered": 0,
     "new": 9,
     "newDeaths": 0
   },
-  "Arenac": {
-    "dateStr": "12/15/20",
-    "cases": 557,
-    "deaths": 24,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Baraga": {
-    "dateStr": "12/15/20",
-    "cases": 550,
-    "deaths": 28,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 2
-  },
-  "Barry": {
-    "dateStr": "12/15/20",
-    "cases": 2704,
-    "deaths": 25,
-    "recovered": 0,
-    "new": 30,
-    "newDeaths": 1
-  },
-  "Bay": {
-    "dateStr": "12/15/20",
-    "cases": 5556,
-    "deaths": 150,
-    "recovered": 0,
-    "new": 62,
-    "newDeaths": 4
-  },
-  "Benzie": {
-    "dateStr": "12/15/20",
-    "cases": 592,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Berrien": {
-    "dateStr": "12/15/20",
-    "cases": 8458,
-    "deaths": 154,
-    "recovered": 0,
-    "new": 50,
-    "newDeaths": 4
-  },
-  "Branch": {
-    "dateStr": "12/15/20",
-    "cases": 2782,
-    "deaths": 47,
-    "recovered": 0,
-    "new": 34,
-    "newDeaths": 0
-  },
-  "Calhoun": {
-    "dateStr": "12/15/20",
-    "cases": 7183,
-    "deaths": 159,
-    "recovered": 0,
-    "new": 79,
-    "newDeaths": 7
-  },
-  "Cass": {
-    "dateStr": "12/15/20",
-    "cases": 2826,
-    "deaths": 39,
-    "recovered": 0,
-    "new": 33,
-    "newDeaths": 3
-  },
-  "Charlevoix": {
-    "dateStr": "12/15/20",
-    "cases": 786,
-    "deaths": 8,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
   "Cheboygan": {
-    "dateStr": "12/15/20",
-    "cases": 657,
-    "deaths": 27,
+    "dateStr": "12/18/20",
+    "cases": 675,
+    "deaths": 29,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
   "Chippewa": {
-    "dateStr": "12/15/20",
-    "cases": 1128,
-    "deaths": 10,
+    "dateStr": "12/18/20",
+    "cases": 1190,
+    "deaths": 11,
     "recovered": 0,
-    "new": 31,
+    "new": 12,
     "newDeaths": 0
   },
   "Clare": {
-    "dateStr": "12/15/20",
-    "cases": 1038,
-    "deaths": 28,
+    "dateStr": "12/18/20",
+    "cases": 1102,
+    "deaths": 29,
+    "recovered": 0,
+    "new": 23,
+    "newDeaths": 0
+  },
+  "Clinton": {
+    "dateStr": "12/18/20",
+    "cases": 3599,
+    "deaths": 34,
+    "recovered": 0,
+    "new": 43,
+    "newDeaths": 0
+  },
+  "Crawford": {
+    "dateStr": "12/18/20",
+    "cases": 444,
+    "deaths": 5,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Delta": {
+    "dateStr": "12/18/20",
+    "cases": 2823,
+    "deaths": 71,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 0
+  },
+  "Dickinson": {
+    "dateStr": "12/18/20",
+    "cases": 2074,
+    "deaths": 63,
     "recovered": 0,
     "new": 15,
     "newDeaths": 0
   },
-  "Clinton": {
-    "dateStr": "12/15/20",
-    "cases": 3451,
-    "deaths": 31,
-    "recovered": 0,
-    "new": 45,
-    "newDeaths": 2
-  },
-  "Crawford": {
-    "dateStr": "12/15/20",
-    "cases": 433,
-    "deaths": 5,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Delta": {
-    "dateStr": "12/15/20",
-    "cases": 2775,
-    "deaths": 66,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Dickinson": {
-    "dateStr": "12/15/20",
-    "cases": 2037,
-    "deaths": 63,
-    "recovered": 0,
-    "new": 18,
-    "newDeaths": 1
-  },
   "Eaton": {
-    "dateStr": "12/15/20",
-    "cases": 4077,
-    "deaths": 71,
+    "dateStr": "12/18/20",
+    "cases": 4237,
+    "deaths": 76,
     "recovered": 0,
-    "new": 47,
+    "new": 73,
     "newDeaths": 2
   },
   "Emmet": {
-    "dateStr": "12/15/20",
-    "cases": 1161,
-    "deaths": 30,
+    "dateStr": "12/18/20",
+    "cases": 1168,
+    "deaths": 31,
     "recovered": 0,
-    "new": 13,
+    "new": 4,
     "newDeaths": 0
   },
   "Federal Correctional Institution (FCI)": {
-    "dateStr": "12/15/20",
-    "cases": 238,
+    "dateStr": "12/18/20",
+    "cases": 241,
     "deaths": 5,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Genesee": {
-    "dateStr": "12/15/20",
-    "cases": 19205,
-    "deaths": 522,
+    "dateStr": "12/18/20",
+    "cases": 19943,
+    "deaths": 539,
     "recovered": 0,
-    "new": 272,
-    "newDeaths": 14
+    "new": 212,
+    "newDeaths": 4
   },
   "Gladwin": {
-    "dateStr": "12/15/20",
-    "cases": 1060,
-    "deaths": 18,
+    "dateStr": "12/18/20",
+    "cases": 1088,
+    "deaths": 23,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 2
-  },
-  "Gogebic": {
-    "dateStr": "12/15/20",
-    "cases": 964,
-    "deaths": 28,
-    "recovered": 0,
-    "new": 7,
+    "new": 12,
     "newDeaths": 1
   },
-  "Grand Traverse": {
-    "dateStr": "12/15/20",
-    "cases": 2609,
-    "deaths": 36,
+  "Gogebic": {
+    "dateStr": "12/18/20",
+    "cases": 988,
+    "deaths": 30,
     "recovered": 0,
-    "new": 34,
-    "newDeaths": 2
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Grand Traverse": {
+    "dateStr": "12/18/20",
+    "cases": 2716,
+    "deaths": 38,
+    "recovered": 0,
+    "new": 33,
+    "newDeaths": 1
   },
   "Gratiot": {
-    "dateStr": "12/15/20",
-    "cases": 2122,
-    "deaths": 50,
+    "dateStr": "12/18/20",
+    "cases": 2221,
+    "deaths": 55,
     "recovered": 0,
-    "new": 13,
+    "new": 38,
     "newDeaths": 2
   },
   "Hillsdale": {
-    "dateStr": "12/15/20",
-    "cases": 2245,
-    "deaths": 49,
+    "dateStr": "12/18/20",
+    "cases": 2324,
+    "deaths": 50,
     "recovered": 0,
-    "new": 48,
+    "new": 21,
     "newDeaths": 0
   },
   "Houghton": {
-    "dateStr": "12/15/20",
-    "cases": 1871,
-    "deaths": 21,
+    "dateStr": "12/18/20",
+    "cases": 1907,
+    "deaths": 23,
     "recovered": 0,
-    "new": 20,
-    "newDeaths": 4
+    "new": 9,
+    "newDeaths": 0
   },
   "Huron": {
-    "dateStr": "12/15/20",
-    "cases": 1332,
-    "deaths": 29,
+    "dateStr": "12/18/20",
+    "cases": 1388,
+    "deaths": 34,
     "recovered": 0,
-    "new": 35,
-    "newDeaths": 1
+    "new": 15,
+    "newDeaths": 0
   },
   "Ingham": {
-    "dateStr": "12/15/20",
-    "cases": 11225,
-    "deaths": 153,
+    "dateStr": "12/18/20",
+    "cases": 11622,
+    "deaths": 160,
     "recovered": 0,
-    "new": 128,
+    "new": 134,
     "newDeaths": 3
   },
   "Ionia": {
-    "dateStr": "12/15/20",
-    "cases": 3026,
+    "dateStr": "12/18/20",
+    "cases": 3115,
     "deaths": 38,
     "recovered": 0,
-    "new": 26,
-    "newDeaths": 2
+    "new": 35,
+    "newDeaths": 0
   },
   "Iosco": {
-    "dateStr": "12/15/20",
-    "cases": 997,
-    "deaths": 38,
+    "dateStr": "12/18/20",
+    "cases": 1031,
+    "deaths": 42,
     "recovered": 0,
-    "new": 17,
-    "newDeaths": 1
+    "new": 6,
+    "newDeaths": 0
   },
   "Iron": {
-    "dateStr": "12/15/20",
-    "cases": 777,
+    "dateStr": "12/18/20",
+    "cases": 785,
     "deaths": 37,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Isabella": {
-    "dateStr": "12/15/20",
-    "cases": 3049,
-    "deaths": 34,
+    "dateStr": "12/18/20",
+    "cases": 3156,
+    "deaths": 36,
     "recovered": 0,
-    "new": 28,
+    "new": 43,
     "newDeaths": 1
   },
   "Jackson": {
-    "dateStr": "12/15/20",
-    "cases": 6778,
-    "deaths": 129,
+    "dateStr": "12/18/20",
+    "cases": 7093,
+    "deaths": 136,
     "recovered": 0,
-    "new": 106,
-    "newDeaths": 4
+    "new": 102,
+    "newDeaths": 0
   },
   "Kalamazoo": {
-    "dateStr": "12/15/20",
-    "cases": 11146,
-    "deaths": 208,
+    "dateStr": "12/18/20",
+    "cases": 11445,
+    "deaths": 218,
     "recovered": 0,
-    "new": 132,
-    "newDeaths": 6
+    "new": 77,
+    "newDeaths": 2
   },
   "Kalkaska": {
-    "dateStr": "12/15/20",
-    "cases": 448,
+    "dateStr": "12/18/20",
+    "cases": 460,
     "deaths": 9,
     "recovered": 0,
-    "new": 1,
+    "new": 5,
     "newDeaths": 0
   },
   "Kent": {
-    "dateStr": "12/15/20",
-    "cases": 39882,
-    "deaths": 471,
+    "dateStr": "12/18/20",
+    "cases": 40856,
+    "deaths": 493,
     "recovered": 0,
-    "new": 291,
-    "newDeaths": 16
+    "new": 285,
+    "newDeaths": 10
   },
   "Keweenaw": {
-    "dateStr": "12/15/20",
-    "cases": 82,
+    "dateStr": "12/18/20",
+    "cases": 83,
     "deaths": 2,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Lake": {
-    "dateStr": "12/15/20",
-    "cases": 258,
+    "dateStr": "12/18/20",
+    "cases": 271,
     "deaths": 6,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "Lapeer": {
-    "dateStr": "12/15/20",
-    "cases": 3501,
-    "deaths": 77,
+    "dateStr": "12/18/20",
+    "cases": 3701,
+    "deaths": 85,
     "recovered": 0,
-    "new": 87,
-    "newDeaths": 2
+    "new": 97,
+    "newDeaths": 1
   },
   "Leelanau": {
-    "dateStr": "12/15/20",
-    "cases": 522,
-    "deaths": 4,
+    "dateStr": "12/18/20",
+    "cases": 555,
+    "deaths": 5,
     "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
+    "new": 16,
+    "newDeaths": 1
   },
   "Lenawee": {
-    "dateStr": "12/15/20",
-    "cases": 3564,
-    "deaths": 48,
+    "dateStr": "12/18/20",
+    "cases": 3702,
+    "deaths": 55,
     "recovered": 0,
-    "new": 94,
-    "newDeaths": 3
-  },
-  "Livingston": {
-    "dateStr": "12/15/20",
-    "cases": 7150,
-    "deaths": 57,
-    "recovered": 0,
-    "new": 120,
+    "new": 58,
     "newDeaths": 0
   },
+  "Livingston": {
+    "dateStr": "12/18/20",
+    "cases": 7340,
+    "deaths": 63,
+    "recovered": 0,
+    "new": 78,
+    "newDeaths": 1
+  },
   "Luce": {
-    "dateStr": "12/15/20",
-    "cases": 183,
+    "dateStr": "12/18/20",
+    "cases": 186,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Mackinac": {
-    "dateStr": "12/15/20",
-    "cases": 354,
-    "deaths": 1,
+    "dateStr": "12/18/20",
+    "cases": 359,
+    "deaths": 2,
     "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
+    "new": 1,
+    "newDeaths": 1
   },
   "Macomb": {
-    "dateStr": "12/15/20",
-    "cases": 45847,
-    "deaths": 1449,
+    "dateStr": "12/18/20",
+    "cases": 46883,
+    "deaths": 1477,
     "recovered": 0,
-    "new": 602,
-    "newDeaths": 23
+    "new": 322,
+    "newDeaths": 3
   },
   "Manistee": {
-    "dateStr": "12/15/20",
-    "cases": 512,
-    "deaths": 12,
+    "dateStr": "12/18/20",
+    "cases": 544,
+    "deaths": 14,
     "recovered": 0,
-    "new": 9,
+    "new": 20,
     "newDeaths": 1
   },
   "Marquette": {
-    "dateStr": "12/15/20",
-    "cases": 3336,
-    "deaths": 48,
+    "dateStr": "12/18/20",
+    "cases": 3400,
+    "deaths": 49,
     "recovered": 0,
-    "new": 14,
-    "newDeaths": 3
+    "new": 22,
+    "newDeaths": 0
   },
   "Mason": {
-    "dateStr": "12/15/20",
-    "cases": 817,
+    "dateStr": "12/18/20",
+    "cases": 871,
     "deaths": 15,
     "recovered": 0,
-    "new": 13,
+    "new": 14,
     "newDeaths": 0
   },
   "Mecosta": {
-    "dateStr": "12/15/20",
-    "cases": 1531,
+    "dateStr": "12/18/20",
+    "cases": 1575,
     "deaths": 12,
     "recovered": 0,
     "new": 11,
     "newDeaths": 0
   },
   "Menominee": {
-    "dateStr": "12/15/20",
-    "cases": 1515,
-    "deaths": 22,
+    "dateStr": "12/18/20",
+    "cases": 1542,
+    "deaths": 23,
     "recovered": 0,
-    "new": 10,
+    "new": 9,
     "newDeaths": 0
   },
   "Michigan Department of Corrections (MDOC)": {
-    "dateStr": "12/15/20",
-    "cases": 18456,
-    "deaths": 106,
+    "dateStr": "12/18/20",
+    "cases": 18844,
+    "deaths": 110,
     "recovered": 0,
-    "new": 228,
+    "new": 142,
     "newDeaths": 2
   },
   "Midland": {
-    "dateStr": "12/15/20",
-    "cases": 3578,
-    "deaths": 34,
+    "dateStr": "12/18/20",
+    "cases": 3678,
+    "deaths": 37,
     "recovered": 0,
-    "new": 42,
-    "newDeaths": 2
+    "new": 40,
+    "newDeaths": 1
   },
   "Missaukee": {
-    "dateStr": "12/15/20",
-    "cases": 390,
-    "deaths": 7,
+    "dateStr": "12/18/20",
+    "cases": 403,
+    "deaths": 8,
     "recovered": 0,
-    "new": 6,
+    "new": 4,
     "newDeaths": 0
   },
   "Monroe": {
-    "dateStr": "12/15/20",
-    "cases": 6867,
-    "deaths": 120,
+    "dateStr": "12/18/20",
+    "cases": 7057,
+    "deaths": 123,
     "recovered": 0,
-    "new": 80,
-    "newDeaths": 3
+    "new": 73,
+    "newDeaths": 1
   },
   "Montcalm": {
-    "dateStr": "12/15/20",
+    "dateStr": "12/18/20",
     "cases": 2786,
-    "deaths": 49,
+    "deaths": 53,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 5
+    "newDeaths": 0
   },
   "Montmorency": {
-    "dateStr": "12/15/20",
-    "cases": 259,
-    "deaths": 6,
+    "dateStr": "12/18/20",
+    "cases": 272,
+    "deaths": 8,
     "recovered": 0,
-    "new": 1,
+    "new": 12,
     "newDeaths": 1
   },
   "Muskegon": {
-    "dateStr": "12/15/20",
-    "cases": 8723,
-    "deaths": 226,
+    "dateStr": "12/18/20",
+    "cases": 8984,
+    "deaths": 235,
     "recovered": 0,
-    "new": 81,
-    "newDeaths": 4
+    "new": 67,
+    "newDeaths": 5
   },
   "Newaygo": {
-    "dateStr": "12/15/20",
-    "cases": 2023,
-    "deaths": 27,
+    "dateStr": "12/18/20",
+    "cases": 2089,
+    "deaths": 28,
     "recovered": 0,
-    "new": 11,
+    "new": 14,
     "newDeaths": 0
   },
   "Oakland": {
-    "dateStr": "12/15/20",
-    "cases": 55885,
-    "deaths": 1490,
+    "dateStr": "12/18/20",
+    "cases": 57285,
+    "deaths": 1514,
     "recovered": 0,
-    "new": 702,
-    "newDeaths": 12
+    "new": 460,
+    "newDeaths": 3
   },
   "Oceana": {
-    "dateStr": "12/15/20",
-    "cases": 1498,
+    "dateStr": "12/18/20",
+    "cases": 1529,
     "deaths": 33,
     "recovered": 0,
-    "new": 11,
-    "newDeaths": 1
+    "new": 5,
+    "newDeaths": 0
   },
   "Ogemaw": {
-    "dateStr": "12/15/20",
-    "cases": 779,
-    "deaths": 23,
+    "dateStr": "12/18/20",
+    "cases": 820,
+    "deaths": 24,
     "recovered": 0,
-    "new": 7,
+    "new": 9,
     "newDeaths": 0
   },
   "Ontonagon": {
-    "dateStr": "12/15/20",
+    "dateStr": "12/18/20",
     "cases": 300,
     "deaths": 16,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Osceola": {
-    "dateStr": "12/15/20",
-    "cases": 727,
-    "deaths": 14,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Oscoda": {
-    "dateStr": "12/15/20",
-    "cases": 275,
+    "dateStr": "12/18/20",
+    "cases": 752,
     "deaths": 14,
     "recovered": 0,
     "new": 6,
-    "newDeaths": 3
+    "newDeaths": 0
+  },
+  "Oscoda": {
+    "dateStr": "12/18/20",
+    "cases": 280,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
   },
   "Otsego": {
-    "dateStr": "12/15/20",
-    "cases": 916,
-    "deaths": 20,
+    "dateStr": "12/18/20",
+    "cases": 938,
+    "deaths": 21,
     "recovered": 0,
-    "new": 7,
-    "newDeaths": 1
+    "new": 15,
+    "newDeaths": 0
   },
   "Ottawa": {
-    "dateStr": "12/15/20",
-    "cases": 16874,
-    "deaths": 220,
+    "dateStr": "12/18/20",
+    "cases": 17350,
+    "deaths": 235,
     "recovered": 0,
-    "new": 149,
-    "newDeaths": 2
+    "new": 99,
+    "newDeaths": 5
   },
   "Out of MI": {
-    "dateStr": "12/15/20",
-    "cases": 1306,
+    "dateStr": "12/18/20",
+    "cases": 1324,
     "deaths": 10,
     "recovered": 0,
-    "new": 0,
+    "new": 17,
     "newDeaths": 0
   },
   "Presque Isle": {
-    "dateStr": "12/15/20",
-    "cases": 444,
+    "dateStr": "12/18/20",
+    "cases": 461,
     "deaths": 5,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 1
+    "new": 6,
+    "newDeaths": 0
   },
   "Roscommon": {
-    "dateStr": "12/15/20",
-    "cases": 843,
-    "deaths": 25,
+    "dateStr": "12/18/20",
+    "cases": 888,
+    "deaths": 26,
     "recovered": 0,
-    "new": 12,
+    "new": 16,
     "newDeaths": 0
   },
   "Saginaw": {
-    "dateStr": "12/15/20",
-    "cases": 10943,
-    "deaths": 320,
+    "dateStr": "12/18/20",
+    "cases": 11424,
+    "deaths": 339,
     "recovered": 0,
-    "new": 78,
-    "newDeaths": 6
+    "new": 208,
+    "newDeaths": 4
   },
   "Sanilac": {
-    "dateStr": "12/15/20",
-    "cases": 1276,
-    "deaths": 46,
+    "dateStr": "12/18/20",
+    "cases": 1340,
+    "deaths": 51,
     "recovered": 0,
-    "new": 20,
-    "newDeaths": 2
+    "new": 18,
+    "newDeaths": 0
   },
   "Schoolcraft": {
-    "dateStr": "12/15/20",
-    "cases": 204,
-    "deaths": 3,
+    "dateStr": "12/18/20",
+    "cases": 211,
+    "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 5,
     "newDeaths": 0
   },
   "Shiawassee": {
-    "dateStr": "12/15/20",
-    "cases": 2580,
-    "deaths": 51,
+    "dateStr": "12/18/20",
+    "cases": 2669,
+    "deaths": 55,
     "recovered": 0,
-    "new": 25,
+    "new": 35,
     "newDeaths": 0
   },
   "St. Clair": {
-    "dateStr": "12/15/20",
-    "cases": 6153,
-    "deaths": 126,
+    "dateStr": "12/18/20",
+    "cases": 6397,
+    "deaths": 134,
     "recovered": 0,
-    "new": 68,
-    "newDeaths": 7
+    "new": 71,
+    "newDeaths": 2
   },
   "St. Joseph": {
-    "dateStr": "12/15/20",
-    "cases": 3186,
-    "deaths": 43,
+    "dateStr": "12/18/20",
+    "cases": 3301,
+    "deaths": 45,
     "recovered": 0,
-    "new": 27,
+    "new": 41,
     "newDeaths": 0
   },
   "Tuscola": {
-    "dateStr": "12/15/20",
-    "cases": 2245,
-    "deaths": 75,
+    "dateStr": "12/18/20",
+    "cases": 2347,
+    "deaths": 80,
     "recovered": 0,
-    "new": 35,
-    "newDeaths": 2
+    "new": 32,
+    "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "12/15/20",
+    "dateStr": "12/18/20",
     "cases": 409,
     "deaths": 12,
     "recovered": 0,
@@ -664,32 +664,32 @@
     "newDeaths": 0
   },
   "Van Buren": {
-    "dateStr": "12/15/20",
-    "cases": 3685,
+    "dateStr": "12/18/20",
+    "cases": 3801,
     "deaths": 69,
     "recovered": 0,
-    "new": 36,
-    "newDeaths": 4
+    "new": 37,
+    "newDeaths": 0
   },
   "Washtenaw": {
-    "dateStr": "12/15/20",
-    "cases": 12372,
-    "deaths": 159,
+    "dateStr": "12/18/20",
+    "cases": 12730,
+    "deaths": 168,
     "recovered": 0,
-    "new": 221,
+    "new": 110,
     "newDeaths": 2
   },
   "Wayne": {
-    "dateStr": "12/15/20",
-    "cases": 77742,
-    "deaths": 3451,
+    "dateStr": "12/18/20",
+    "cases": 79656,
+    "deaths": 3496,
     "recovered": 0,
-    "new": 977,
-    "newDeaths": 25
+    "new": 659,
+    "newDeaths": 1
   },
   "Wexford": {
-    "dateStr": "12/15/20",
-    "cases": 877,
+    "dateStr": "12/18/20",
+    "cases": 925,
     "deaths": 18,
     "recovered": 0,
     "new": 14,

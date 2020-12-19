@@ -13,11 +13,14 @@
   }
 }
 
-:host:hover{
-  .overlay {
-    display: block;
+@media (hover: hover) {
+  :host:hover{
+    .overlay {
+      display: block;
+    }
   }
 }
+
 .overlay {
   display: none;
   position: absolute;
@@ -25,10 +28,9 @@
   height: 100%;
   top: 0;
   left: 0;
-  &.is-focused {
+  &.is-visible {
     display: block;
   }
-  // background: linear-gradient(45deg, rgba(255,255,255,0) 85%, blue 50% 100%);
   .corner {
     position: absolute;
     width: 48px;
@@ -88,15 +90,5 @@
       line-height: 20px;
     }
   }
-  // .zoom-icon {
-  //   position: absolute;
-  //   color: white;
-  //   top: 0;
-  //   right: 0;
-  //   opacity: 0.6;
-  //   &:hover {
-  //     opacity: 1;
-  //   }
-  // }
 }
 

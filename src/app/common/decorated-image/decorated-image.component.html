@@ -4,7 +4,7 @@
   class="grid-image"
 >
 
-<div class="overlay" [class.is-focused]="isFocused">
+<div class="overlay" [class.is-visible]="isFocused && !hideOverlay">
   <div class="corner upper-left"></div>
   <div class="corner upper-right"></div>
   <div class="corner bottom-right"></div>
