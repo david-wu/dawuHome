@@ -87,35 +87,21 @@ export class MyUploadsComponent {
   public downloadImage(imageId: string) {
     const uploadFile = this.uploadFilesById[imageId];
     const downloadUrl = uploadFile.uploadMeta.downloadUrl;
-    // const url = this.getImgSrc(imageId, 1080);
-
-    // const a: any = document.createElement('a');
-    // a.setAttribute('href', downloadUrl);
-    // a.setAttribute('download', `asdf${imageId}.jpg`);
-    // a.style = 'display: none';
-    // document.body.appendChild(a);
-    // a.click();
-
-    console.log(downloadUrl)
-
 
     const Url = window.URL || (window as any).webkitURL;
-    // window.URL = window.URL || window.webkitURL;
-
     const xhr = new XMLHttpRequest();
     const aEl: any = document.createElement('a')
 
     xhr.open('GET', downloadUrl, true);
     xhr.responseType = 'blob';
     xhr.onload = () => {
-      // const file = new Blob([xhr.response], { type : 'application/octet-stream' });
-      const file = new Blob([xhr.response]);
+      const file = new Blob([xhr.response], { type : 'application/octet-stream' });
       aEl.href = Url.createObjectURL(file);
-      console.log('aEl.href', aEl.href)
       aEl.download = `${imageId}.jpg`;
       aEl.style = 'display: none';
       document.body.appendChild(aEl);
       aEl.click();
+      aEl.remove();
     };
     xhr.send();
 
