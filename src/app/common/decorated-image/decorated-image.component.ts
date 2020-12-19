@@ -29,7 +29,7 @@ export class DecoratedImageComponent {
     public hostEl: ElementRef,
   ) {}
 
-  @HostListener('click') onMouseUp() {
+  @HostListener('mouseup') onMouseUp() {
     if (this.isFocused) {
       this.hostEl.nativeElement.blur();
     } else {
