@@ -3,31 +3,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
-import { PhotoGalleryCommonModule } from '@photo-gallery/photo-gallery-common/photo-gallery-common.module';
 import { NearMeRoutingModule } from '@photo-gallery/near-me/near-me.routes';
 import { NearMeComponent } from '@photo-gallery/near-me/near-me.component';
 import { NearMeGridComponent } from '@photo-gallery/near-me/near-me-grid/near-me-grid.component';
-import { NearMeListComponent } from '@photo-gallery/near-me/near-me-list/near-me-list.component';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
 import { nearMeReducer } from './store/near-me.reducer';
-import { VirtualScrollGridModule } from '@common/virtual-scroll-grid/virtual-scroll-grid.module';
 import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module'
-import { DecoratedImageModule } from '@common/decorated-image/decorated-image.module'
+import { ImageGridModule } from '@photo-gallery/photo-gallery-common/image-grid/image-grid.module';
 
 const NEAR_ME_COMPONENTS = [
   NearMeComponent,
   NearMeGridComponent,
-  NearMeListComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    PhotoGalleryCommonModule,
+    ImageGridModule,
     NearMeRoutingModule,
     ZoomLevelPickerModule,
-    VirtualScrollGridModule,
-    DecoratedImageModule,
     StoreModule.forFeature('nearMe', nearMeReducer)
   ],
   declarations: [

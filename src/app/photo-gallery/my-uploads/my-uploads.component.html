@@ -8,45 +8,7 @@
     [(zoomLevel)]="zoomLevel"
   ></dwu-zoom-level-picker>
 </div>
-
-<dwu-virtual-scroll-grid
-  *ngIf="uploadedFileIds$ | async; else loaderForPage"
-  [tileIds]="uploadedFileIds$ | async"
-  [tileTemplate]="tileTemplate"
-  [tileOptions]="tileOptions"
-  [maxColumns]="zoomLevel"
-  [(alwaysUseMaxColumns)]="alwaysUseMaxColumns"
-  [(centeredTileId)]="centeredTileId"
-  class="near-by-uploads"
-></dwu-virtual-scroll-grid>
-<ng-template
-  #tileTemplate
-  let-scaledImageWidthStr="scaledImageWidthStr"
-  let-scaledImageHeightStr="scaledImageHeightStr"
-  let-tileId="tileId"
-  let-targetTileOption="targetTileOption"
->
-  <div
-    class="tile"
-    [style.width]="scaledImageWidthStr"
-    [style.height]="scaledImageHeightStr"
-  >
-    <dwu-decorated-image
-      [src]="getImgSrc(tileId, targetTileOption.maxWidth)"
-      (zoomIn)="onZoomIn(tileId)"
-      (download)="downloadImage(tileId)"
-      class="grid-image"
-    ></dwu-decorated-image>
-  </div>
-</ng-template>
-
-<ng-template #loaderForPage>
-  <div class="loader-container for-page">
-    <div class="dwu-loader"></div>
-  </div>
-</ng-template>
-
-
-<div *ngIf="magnifiedImageId" class="magnified-image-container" (click)="magnifiedImageId = undefined">
-  <img [src]="getImgSrc(magnifiedImageId, 1080)" class="magnified-image">
-</div>
+<dwu-image-grid
+  [files]="uploadedFiles$ | async"
+  [zoomLevel]="zoomLevel"
+></dwu-image-grid>

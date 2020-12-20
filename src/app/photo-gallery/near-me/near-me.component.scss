@@ -5,36 +5,36 @@
   display: flex;
   flex-direction: column;
 }
-.radio-buttons.distance-type {
-  flex: 0 0 auto;
-}
-.uploaded-file-container {
-  // padding: 0.25rem;
-  flex: 1 1 0;
-  display: flex;
-  flex-wrap: wrap;
-  .uploaded-file {
-    margin: 0.25rem;
-    width: 20rem;
-    display: flex;
-    flex-direction: column;
-    .file-name {
-      color: $light-green;
-      background-color: $black-olive;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem 0.25rem 0 0;
-    }
-    .file-pic {
-      width: 20rem;
-      height: 15rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
+// .radio-buttons.distance-type {
+//   flex: 0 0 auto;
+// }
+// .uploaded-file-container {
+//   // padding: 0.25rem;
+//   flex: 1 1 0;
+//   display: flex;
+//   flex-wrap: wrap;
+//   .uploaded-file {
+//     margin: 0.25rem;
+//     width: 20rem;
+//     display: flex;
+//     flex-direction: column;
+//     .file-name {
+//       color: $light-green;
+//       background-color: $black-olive;
+//       padding: 0.25rem 0.5rem;
+//       border-radius: 0.25rem 0.25rem 0 0;
+//     }
+//     .file-pic {
+//       width: 20rem;
+//       height: 15rem;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//     }
+//   }
+// }
 
-.radio-buttons.distance-type {
-  @include radio-button-container;
-  margin: 0.25rem 0.5rem;
-}
+// .radio-buttons.distance-type {
+//   @include radio-button-container;
+//   margin: 0.25rem 0.5rem;
+// }
