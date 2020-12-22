@@ -42,12 +42,12 @@ export class PortfolioComponent {
           label: 'backyard patio',
         },
         COVID_DEMO: {
-          label: 'Covid tracker',
+          label: 'covid tracker',
         },
+        FUZZ: { label: 'fuzz-js' },
         PHOTO_APP: {
           label: 'photo app',
         },
-        FUZZ: { label: 'fuzz-js' },
         COMPONENTS: {
           label: 'components',
           childrenById: {

@@ -43,7 +43,7 @@ export class BarChartComponent extends BaseChartComponent {
     public maxY;
 
     // some extra margin on the chart itself
-    public chartMargin = 8;
+    public chartMargin = 10;
 
     constructor(
         public hostEl: ElementRef,

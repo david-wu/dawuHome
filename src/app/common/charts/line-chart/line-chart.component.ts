@@ -47,7 +47,7 @@ export class LineChartComponent extends BaseChartComponent {
   public maxY;
 
   // some extra margin on the chart itself
-  public chartMargin = 10;
+  public chartMargin = 12;
 
   constructor(
     public hostEl: ElementRef,

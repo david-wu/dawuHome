@@ -7,14 +7,10 @@ import {
     last,
     isString,
 } from 'lodash';
-import { Subscription } from 'rxjs';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 import jhFileNames from '@src/assets/jh-corona/file-names.json';
 import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
-// import coronaLocations from '@src/assets/corona/locations.json';
-// import countryNamesByCode from '@src/assets/country-names-by-code.json';
-// import stateNamesByCode from '@src/assets/state-names-by-code.json';
 
 import { LocalStorageService } from '@src/app/corona/services/local-storage.service';
 import { FileGroup, FileType, File } from '@file-explorer/index';
@@ -47,7 +43,6 @@ export class CoronaComponent {
     public isViewingLineChart: boolean = false;
     public selectedTab: Tab;
     public compareSelectedFileIds = new Set<string>();
-    public subs = new Subscription();
     public closedFileIdsWhileQuery = new Set<string>();
     public leftSideExpanded = false;
     public sensor;
@@ -72,15 +67,17 @@ export class CoronaComponent {
     }
 
     public ngOnInit() {
-      this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
-        this.narrowMode = this.hostEl.nativeElement.clientWidth <= 750;
-        this.hostEl.nativeElement.className = this.narrowMode ? 'narrow-mode' : '';
-      });
+      this.setNarrowModeClass();
+      this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => this.setNarrowModeClass());
     }
 
     public ngOnDestroy() {
-      this.subs.unsubscribe();
       this.sensor.detach()
+    }
+
+    public setNarrowModeClass() {
+      this.narrowMode = this.hostEl.nativeElement.clientWidth <= 750;
+      this.hostEl.nativeElement.className = this.narrowMode ? 'narrow-mode' : '';
     }
 
     public onSelectedFileIdsChange(selectedFileIds: Set<string>) {
@@ -166,43 +163,6 @@ export class CoronaComponent {
         });
         return nestedJhCoronaFileNames;
     }
-
-    /**
-     * getNestedCoronaLocations
-     * This returns a nested format that represents the final files
-     * @param {string[]} coronaLocations
-     */
-    // public getNestedCoronaLocations(coronaLocations: string[]) {
-    //     const nestedCoronaLocations = {};
-
-    //     // set nestedCoronaLocations from the leaves
-    //     // if there is a location with the same name as a folder, create summary
-    //     coronaLocations.sort((a, b) => b.length - a.length);
-    //     coronaLocations.forEach((coronaLocation: string) => {
-    //         const splitLocation = this.decorateAndSplitLocation(coronaLocation);
-    //         if (get(nestedCoronaLocations, splitLocation)) {
-    //             const folderName = last(splitLocation);
-    //             splitLocation.push(`${folderName} Summary`)
-    //         }
-    //         set(nestedCoronaLocations, splitLocation, coronaLocation);
-    //     });
-    //     return nestedCoronaLocations;
-    // }
-
-    /**
-     * decorateAndSplitLocation
-     * Replaces country and state codes
-     * @param {string} coronaLocation
-     */
-    // public decorateAndSplitLocation(coronaLocation: string) {
-    //     const splitLocation = coronaLocation.split(', ').reverse();
-    //     splitLocation[0] = countryNamesByCode[splitLocation[0]] || splitLocation[0];
-
-    //     if (splitLocation.length > 1 && splitLocation[0] === 'United States') {
-    //         splitLocation[1] = stateNamesByCode[splitLocation[1]] || splitLocation[1];
-    //     }
-    //     return splitLocation;
-    // }
 
     /**
      * setFileGroupNested
