@@ -19,6 +19,7 @@ export class PortfolioComponent {
   public filesByLabel: Record<string, File> = {};
   public fileGroup: FileGroup = new FileGroup();
   public filterStr: string = '';
+  public leftSideExpanded: boolean = false;
 
   constructor(
     public router: Router,
