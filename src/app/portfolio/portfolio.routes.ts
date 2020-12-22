@@ -29,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: 'PHOTO_APP',
-        loadChildren: () => import('../photo-gallery/photo-gallery.module').then(m => m.PhotoGalleryModule)
+        loadChildren: () => import('./picture-piper-demo/picture-piper-demo.module').then(m => m.PicturePiperDemoModule)
       },
       {
         path: 'ML_APP',
