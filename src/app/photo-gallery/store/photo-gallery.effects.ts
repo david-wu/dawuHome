@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import {
   Actions,
   createEffect,
   ofType,
 } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import {
+  Action,
+  select,
+} from '@ngrx/store';
 import {
   Observable,
   from,
@@ -12,10 +16,12 @@ import {
 import {
   map,
   switchMap,
-  tap
+  withLatestFrom,
+  tap,
 } from 'rxjs/operators';
 
 import { PhotoGalleryActions } from './photo-gallery.actions';
+import { getUserLocation$ } from './photo-gallery.selectors';
 import { UserLocationService } from '@photo-gallery/services/index';
 import { LocationData } from '@photo-gallery/models/index';
 
@@ -27,17 +33,30 @@ export class PhotoGalleryEffects {
       return this.actions$.pipe(
         ofType(PhotoGalleryActions.requestUserLocation),
         switchMap(() => {
-          console.log('getting user location')
           return from(this.userLocationService.getUserLocation()).pipe(
             map((locationData: LocationData) => {
-              console.log('got user location', locationData)
-              return PhotoGalleryActions.setUserLocation({ locationData: locationData })
+              return PhotoGalleryActions.setUserLocation({ payload: locationData })
             }),
           );
         }),
       );
     },
   );
+
+  public loadNearbyLocation$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(
+        PhotoGalleryActions.setUserLocation,
+        // PhotoGalleryActions.setNearbyLocationsRequired,
+      ),
+      withLatestFrom(
+        this.store$.pipe(select(getUserLocation$)),
+      ),
+      map(([action, userLocation]) => {
+        return PhotoGalleryActions.setNearbyLocationsRequired({ payload: true });
+      })
+    )
+  });
 
   public checkUserLocationPermission$: Observable<Action> = createEffect(
     () => {
@@ -53,6 +72,7 @@ export class PhotoGalleryEffects {
   )
 
   constructor(
+    public store$: Store,
     public actions$: Actions,
     public userLocationService: UserLocationService,
   ) {}

@@ -11,7 +11,6 @@
 .page-container {
   display: flex;
   flex-direction: column;
-
   .nav-items-container {
     flex: 0 0 auto;
     display: flex;
@@ -29,7 +28,6 @@
       border-radius: 4px 4px 0 0;
     }
   }
-
   .page-content {
     flex: 1 1 0;
   }

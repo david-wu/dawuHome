@@ -11,9 +11,14 @@ export class PhotoGalleryActions {
     `${PhotoGalleryActions.CATEGORY} REQUEST_USER_LOCATION`,
   );
 
+  public static setNearbyLocationsRequired = createAction(
+    `${PhotoGalleryActions.CATEGORY} SET_NEARBY_LOCATIONS_REQUIRED`,
+    props<{ payload: boolean }>(),
+  );
+
   public static setUserLocation = createAction(
     `${PhotoGalleryActions.CATEGORY} SET_USER_LOCATION`,
-    props<{ locationData: LocationData }>(),
+    props<{ payload: LocationData }>(),
   );
 
   public static checkUserLocationPermission = createAction(

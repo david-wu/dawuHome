@@ -6,7 +6,6 @@ import {
   NgZone,
   Output,
   TemplateRef,
-  ViewChild,
 } from '@angular/core';
 import { isUndefined, first, filter, last } from 'lodash';
 import * as d3 from 'd3';

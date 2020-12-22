@@ -14,21 +14,27 @@ import {
 const reducer: ActionReducer<PhotoGalleryState> = createReducer(
   initialPhotoGalleryState,
   on(PhotoGalleryActions.requestUserLocation, (state: PhotoGalleryState, action: PhotoGalleryActions) => {
-    console.log('PhotoGalleryState state', state)
     return {
       ...state,
       userLocation: undefined,
     };
   }),
-  on(PhotoGalleryActions.setUserLocation, (state: PhotoGalleryState, action: any) => {
-    console.log('setUserLocation action', action, state)
+
+  on(PhotoGalleryActions.setNearbyLocationsRequired, (state: PhotoGalleryState, action: any) => {
     return {
       ...state,
-      userLocation: action.userLocation,
+      nearbyLocationsRequired: action.payload,
     };
   }),
+
+  on(PhotoGalleryActions.setUserLocation, (state: PhotoGalleryState, action: any) => {
+    return {
+      ...state,
+      userLocation: action.payload,
+    };
+  }),
+
   on(PhotoGalleryActions.setUserLocationPermission, (state: PhotoGalleryState, action: any) => {
-    console.log('action, setUserLocationPermission', action)
     return {
       ...state,
       locationPermission: action.locationPermission,
@@ -39,11 +45,3 @@ const reducer: ActionReducer<PhotoGalleryState> = createReducer(
 export function photoGalleryReducer(state: PhotoGalleryState, action: Action): PhotoGalleryState {
   return reducer(state, action);
 }
-
-// interface PhotoGalleryState  {
-
-// }
-
-// export const photoGalleryReducerMap: ActionReducerMap<PhotoGalleryState> = {
-//   photoGalleryState: '',
-// };

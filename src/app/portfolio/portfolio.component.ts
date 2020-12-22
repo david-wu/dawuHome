@@ -41,6 +41,9 @@ export class PortfolioComponent {
         BACKYARD_PATIO: {
           label: 'backyard patio',
         },
+        COVID_DEMO: {
+          label: 'Covid tracker',
+        },
         PHOTO_APP: {
           label: 'photo app',
         },

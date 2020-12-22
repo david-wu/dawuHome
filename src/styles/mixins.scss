@@ -113,45 +113,58 @@
   }
 }
 
-@mixin responsive-page {
-    @media screen and (max-width: 750px) {
-        div.page-container {
-            flex-direction: column;
-            .left-side {
-                flex: 0 0 auto;
-                height: 13.25rem;
-                width: 100%;
-                max-width: none;
-                // min-width: none;
-                transition: height 50ms;
-                &.expanded {
-                    height: 85%;
-                }
-                .expander {
-                    @include dark-theme;
-                    position: absolute;
-                    bottom: 0;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    width: 3.5rem;
-                    height: 1rem;
-                    border: 1px solid $moss-green;
-                    border-radius: 5px 5px 0 0 ;
-                    text-align: center;
-                    display: flex;
-                    justify-content: center;
-                    cursor: pointer;
-                    .expander-icon {
-                        font-size: 16px;
-                        &.flipped {
-                            transform: rotate(180deg);
-                        }
+@mixin narrow-page {
+    div.page-container {
+        flex-direction: column;
+        .left-side {
+            flex: 0 0 auto;
+            height: 13.25rem;
+            width: 100%;
+            max-width: none;
+            // min-width: none;
+            transition: height 50ms;
+            &.expanded {
+                height: 85%;
+            }
+            .expander {
+                @include dark-theme;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 3.5rem;
+                height: 1rem;
+                border: 1px solid $moss-green;
+                border-radius: 5px 5px 0 0 ;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+                .expander-icon {
+                    font-size: 16px;
+                    &.flipped {
+                        transform: rotate(180deg);
                     }
-
                 }
+
             }
         }
     }
+}
+@mixin responsive-page {
+    display:block;
+    height: 100%;
+    width: 100%;
+
+    @media screen and (max-width: 750px) {
+      @include narrow-page;
+    }
+
+    // media checks entire page's width, this has issues when rendering the entier app in a smaller window
+    &.narrow-mode {
+      @include narrow-page;
+    }
+
     .page-container {
         height: 100%;
         width: 100%;

@@ -6,7 +6,6 @@ import {
     NgZone,
     Output,
     TemplateRef,
-    ViewChild,
 } from '@angular/core';
 import * as d3 from 'd3';
 

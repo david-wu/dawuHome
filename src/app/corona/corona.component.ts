@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import {
     each,
     keyBy,
@@ -8,6 +8,7 @@ import {
     isString,
 } from 'lodash';
 import { Subscription } from 'rxjs';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 import jhFileNames from '@src/assets/jh-corona/file-names.json';
 import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
@@ -49,6 +50,8 @@ export class CoronaComponent {
     public subs = new Subscription();
     public closedFileIdsWhileQuery = new Set<string>();
     public leftSideExpanded = false;
+    public sensor;
+    public narrowMode;
 
     public readonly Tab = Tab;
     public readonly lockdownDataByLocation = lockdownDataByLocation;
@@ -58,6 +61,7 @@ export class CoronaComponent {
      */
     constructor(
         public localStorageService: LocalStorageService,
+        public hostEl: ElementRef,
     ) {
         this.populateFileGroup();
         this.fileGroup.closeAllFolders();
@@ -65,6 +69,18 @@ export class CoronaComponent {
         this.fileGroup.closedFileIds.delete(this.locationRoot.id);
         this.loadFavorites();
         this.setSelectedTab(Tab.SAVED)
+    }
+
+    public ngOnInit() {
+      this.sensor = new ResizeSensor(this.hostEl.nativeElement, () => {
+        this.narrowMode = this.hostEl.nativeElement.clientWidth <= 750;
+        this.hostEl.nativeElement.className = this.narrowMode ? 'narrow-mode' : '';
+      });
+    }
+
+    public ngOnDestroy() {
+      this.subs.unsubscribe();
+      this.sensor.detach()
     }
 
     public onSelectedFileIdsChange(selectedFileIds: Set<string>) {
@@ -87,9 +103,6 @@ export class CoronaComponent {
         this.filterStr = '';
     }
 
-    public ngOnDestroy() {
-        this.subs.unsubscribe();
-    }
 
     public onFilterStringChange(filterStr: string) {
         if (filterStr && this.selectedTab === Tab.SAVED) {

@@ -9,7 +9,8 @@ import { NearMeGridComponent } from '@photo-gallery/near-me/near-me-grid/near-me
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
 import { nearMeReducer } from './store/near-me.reducer';
 import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module'
-import { ImageGridModule } from '@photo-gallery/photo-gallery-common/image-grid/image-grid.module';
+import { ImageGridModule } from '@common/image-grid/image-grid.module';
+import { PhotoGalleryCommonModule } from '@photo-gallery/photo-gallery-common/photo-gallery-common.module';
 
 const NEAR_ME_COMPONENTS = [
   NearMeComponent,
@@ -19,6 +20,7 @@ const NEAR_ME_COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
+    PhotoGalleryCommonModule,
     ImageGridModule,
     NearMeRoutingModule,
     ZoomLevelPickerModule,

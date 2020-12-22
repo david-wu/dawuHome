@@ -9,7 +9,7 @@ import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
 import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module'
 import { UserLoginModule } from '@app/user-login/user-login.module';
 import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
-import { ImageGridModule } from '@photo-gallery/photo-gallery-common/image-grid/image-grid.module';
+import { ImageGridModule } from '@common/image-grid/image-grid.module';
 
 @NgModule({
   imports: [

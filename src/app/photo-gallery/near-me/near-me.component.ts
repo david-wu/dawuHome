@@ -3,6 +3,7 @@ import {
   Observable,
   BehaviorSubject,
 } from 'rxjs';
+import { Store } from '@ngrx/store';
 import {
   map,
 } from 'rxjs/operators';
@@ -10,6 +11,7 @@ import { keyBy } from 'lodash';
 
 import { PhotoGalleryService } from '@photo-gallery/services/index';
 import { UploadFile } from '@photo-gallery/models/upload-file.model';
+import { PhotoGalleryActions } from '@photo-gallery/store';
 
 @Component({
   selector: 'dwu-near-me',
@@ -27,6 +29,7 @@ export class NearMeComponent {
 
   constructor(
     public pgs: PhotoGalleryService,
+    public store: Store,
   ) {
     this.nearByUploads$ = this.pgs.getNearByUploadsForDistanceType$(this.distanceType$);
     this.uploadFileIds$ = this.nearByUploads$.pipe(
@@ -39,6 +42,14 @@ export class NearMeComponent {
         return keyBy(uploadFiles, (uploadFile: UploadFile) => uploadFile.id);
       }),
     );
+  }
+
+  public ngOnInit() {
+    this.store.dispatch(PhotoGalleryActions.setNearbyLocationsRequired({ payload: true }));
+  }
+
+  public ngOnDestroy() {
+    this.store.dispatch(PhotoGalleryActions.setNearbyLocationsRequired({ payload: false }));
   }
 
   public trackById(file: any) {

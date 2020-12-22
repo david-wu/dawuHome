@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ImageGridComponent } from '@photo-gallery/photo-gallery-common/image-grid/image-grid.component';
+import { ImageGridComponent } from '@common/image-grid/image-grid.component';
 import { DecoratedImageModule } from '@common/decorated-image/decorated-image.module'
 import { VirtualScrollGridModule } from '@common/virtual-scroll-grid/virtual-scroll-grid.module';
 

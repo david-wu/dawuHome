@@ -2634,15 +2634,15 @@
   {
     "dateStr": "12/16/20",
     "cases": 24555,
-    "deaths": 733,
+    "deaths": 735,
     "recovered": 0,
     "new": 221,
-    "newDeaths": 0
+    "newDeaths": 2
   },
   {
     "dateStr": "12/17/20",
     "cases": 24787,
-    "deaths": 733,
+    "deaths": 735,
     "recovered": 0,
     "new": 232,
     "newDeaths": 0
@@ -2650,9 +2650,33 @@
   {
     "dateStr": "12/18/20",
     "cases": 24983,
-    "deaths": 733,
+    "deaths": 739,
     "recovered": 0,
     "new": 196,
+    "newDeaths": 4
+  },
+  {
+    "dateStr": "12/19/20",
+    "cases": 25124,
+    "deaths": 739,
+    "recovered": 0,
+    "new": 141,
     "newDeaths": 0
+  },
+  {
+    "dateStr": "12/20/20",
+    "cases": 25275,
+    "deaths": 739,
+    "recovered": 0,
+    "new": 151,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "12/21/20",
+    "cases": 25413,
+    "deaths": 745,
+    "recovered": 0,
+    "new": 138,
+    "newDeaths": 6
   }
 ]

@@ -20,6 +20,10 @@ const routes: Routes = [
     component: PortfolioComponent,
     children: [
       {
+        path: 'COVID_DEMO',
+        loadChildren: () => import('./covid-demo/covid-demo.module').then(m => m.CovidDemoModule)
+      },
+      {
         path: 'BACKYARD_PATIO',
         component: BackyardPatioComponent,
       },

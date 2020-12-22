@@ -8,7 +8,6 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChildren,
-  ViewChild,
   QueryList,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
