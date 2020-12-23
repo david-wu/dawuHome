@@ -100,7 +100,7 @@ export class FirebaseFirestoreService {
     // return uploadedFiles$ as Observable<any[]>;
   }
 
-  public getNearbyUploads$(userLocation: any, distanceType: string) {
+  public getNearbyUploads$(userLocation: any, distanceType: string='DRIVE') {
     // const walkingRange = userLocation.geohash.slice(0, 5);
     // const lastGeohashChar = walkingRange[walkingRange.length - 1];
     // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);

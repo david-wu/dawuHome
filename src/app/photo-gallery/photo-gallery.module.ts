@@ -6,7 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PhotoGalleryComponent } from '@photo-gallery/photo-gallery.component';
 import { PhotoGalleryRoutingModule } from '@photo-gallery/photo-gallery.routes';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
-import { PhotoGalleryCommonModule } from '@photo-gallery/photo-gallery-common/photo-gallery-common.module';
+import { LocationPickerModule } from '@photo-gallery/photo-gallery-common/location-picker/location-picker.module';
 
 import {
   PhotoGalleryEffects,
@@ -20,7 +20,7 @@ const PHOTO_GALLERY_COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    PhotoGalleryCommonModule,
+    LocationPickerModule,
     PhotoGalleryRoutingModule,
     StoreModule.forFeature('photoGallery', photoGalleryReducer),
     EffectsModule.forFeature([PhotoGalleryEffects]),

@@ -46,8 +46,7 @@ export class UserLocationService {
       } else {
         reject(new Error('Permission API is not supported'));
       }
-
-    })
-    return navigator.permissions.query({ name: 'geolocation' });
+    });
+    // return navigator.permissions.query({ name: 'geolocation' });
   }
 }

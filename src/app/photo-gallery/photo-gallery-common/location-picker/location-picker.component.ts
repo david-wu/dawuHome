@@ -42,27 +42,21 @@ export class LocationPickerComponent {
 
   @ViewChild('mapContainerEl', { static: true }) mapContainerEl: ElementRef<any>;
 
-  constructor(
-    public store: Store<PhotoGalleryState>,
-  ) {
+  constructor(public store: Store<PhotoGalleryState>) {
     this.userLocation$ = this.store.pipe(select(getUserLocation$));
-    this.userLocation$.subscribe(console.log);
   }
 
   public ngOnInit() {
-    const myLoc = { lat: 37.796247, lng: -122.2648188 };
-
-
-    console.log('mapContainerEl', this.mapContainerEl);
-        const map = new (window as any).google.maps.Map(this.mapContainerEl.nativeElement, {
-          zoom: 8,
-          center: myLoc,
-        });
-        const marker = new (window as any).google.maps.Marker({
-          position: myLoc,
-          map: map,
-        });
-    // this.store.dispatch(PhotoGalleryActions.checkUserLocationPermission());
+    this.useMyLocation();
+    // const myLoc = { lat: 37.8, lng: -122.3 };
+    // const map = new (window as any).google.maps.Map(this.mapContainerEl.nativeElement, {
+    //   zoom: 10,
+    //   center: myLoc,
+    // });
+    // const marker = new (window as any).google.maps.Marker({
+    //   position: myLoc,
+    //   map: map,
+    // });
   }
 
   public useMyLocation() {

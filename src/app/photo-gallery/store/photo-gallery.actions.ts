@@ -11,14 +11,19 @@ export class PhotoGalleryActions {
     `${PhotoGalleryActions.CATEGORY} REQUEST_USER_LOCATION`,
   );
 
-  public static setNearbyLocationsRequired = createAction(
-    `${PhotoGalleryActions.CATEGORY} SET_NEARBY_LOCATIONS_REQUIRED`,
-    props<{ payload: boolean }>(),
-  );
-
   public static setUserLocation = createAction(
     `${PhotoGalleryActions.CATEGORY} SET_USER_LOCATION`,
     props<{ payload: LocationData }>(),
+  );
+
+  public static setNearbyImagesVisible = createAction(
+    `${PhotoGalleryActions.CATEGORY} SET_NEARBY_IMAGES_VISIBLE`,
+    props<{ payload: boolean }>(),
+  );
+
+  public static setNearbyImages = createAction(
+    `${PhotoGalleryActions.CATEGORY} SET_NEARBY_IMAGES`,
+    props<{ payload: any[] }>(),
   );
 
   public static checkUserLocationPermission = createAction(

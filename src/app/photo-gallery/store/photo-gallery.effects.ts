@@ -12,6 +12,7 @@ import {
 import {
   Observable,
   from,
+  of,
 } from 'rxjs';
 import {
   map,
@@ -19,9 +20,18 @@ import {
   withLatestFrom,
   tap,
 } from 'rxjs/operators';
+import {
+  // FirebaseAuthService,
+  FirebaseFirestoreService,
+  // FirebaseStorageService,
+} from '@services/index';
+import { sortBy } from 'lodash';
 
 import { PhotoGalleryActions } from './photo-gallery.actions';
-import { getUserLocation$ } from './photo-gallery.selectors';
+import {
+  getUserLocation$,
+  getNearbyImagesVisible$,
+} from './photo-gallery.selectors';
 import { UserLocationService } from '@photo-gallery/services/index';
 import { LocationData } from '@photo-gallery/models/index';
 
@@ -47,14 +57,25 @@ export class PhotoGalleryEffects {
     return this.actions$.pipe(
       ofType(
         PhotoGalleryActions.setUserLocation,
-        // PhotoGalleryActions.setNearbyLocationsRequired,
+        PhotoGalleryActions.setNearbyImagesVisible,
       ),
       withLatestFrom(
         this.store$.pipe(select(getUserLocation$)),
+        this.store$.pipe(select(getNearbyImagesVisible$)),
       ),
-      map(([action, userLocation]) => {
-        return PhotoGalleryActions.setNearbyLocationsRequired({ payload: true });
-      })
+      switchMap(([action, userLocation, nearbyImagesVisible]) => {
+        if (!nearbyImagesVisible || !userLocation) {
+          return of(PhotoGalleryActions.setNearbyImages({ payload: undefined }));
+        }
+        return this.firestore.getNearbyUploads$(userLocation).pipe(
+          map((nearbyUploads: any[]) => {
+            const sortedUploads =  sortBy(nearbyUploads, (upload) => {
+              return Math.pow(userLocation.latitude - upload.locationData.latitude, 2) + Math.pow(userLocation.longitude - upload.locationData.longitude, 2);
+            });
+            return PhotoGalleryActions.setNearbyImages({ payload: sortedUploads });
+          }),
+        );
+      }),
     )
   });
 
@@ -75,5 +96,6 @@ export class PhotoGalleryEffects {
     public store$: Store,
     public actions$: Actions,
     public userLocationService: UserLocationService,
+    public firestore: FirebaseFirestoreService,
   ) {}
 }

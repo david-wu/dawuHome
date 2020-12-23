@@ -13,6 +13,7 @@ import {
 
 const reducer: ActionReducer<PhotoGalleryState> = createReducer(
   initialPhotoGalleryState,
+
   on(PhotoGalleryActions.requestUserLocation, (state: PhotoGalleryState, action: PhotoGalleryActions) => {
     return {
       ...state,
@@ -20,17 +21,24 @@ const reducer: ActionReducer<PhotoGalleryState> = createReducer(
     };
   }),
 
-  on(PhotoGalleryActions.setNearbyLocationsRequired, (state: PhotoGalleryState, action: any) => {
-    return {
-      ...state,
-      nearbyLocationsRequired: action.payload,
-    };
-  }),
-
   on(PhotoGalleryActions.setUserLocation, (state: PhotoGalleryState, action: any) => {
     return {
       ...state,
       userLocation: action.payload,
+    };
+  }),
+
+  on(PhotoGalleryActions.setNearbyImagesVisible, (state: PhotoGalleryState, action: any) => {
+    return {
+      ...state,
+      nearbyImagesVisible: action.payload,
+    };
+  }),
+
+  on(PhotoGalleryActions.setNearbyImages, (state: PhotoGalleryState, action: any) => {
+    return {
+      ...state,
+      nearbyImages: action.payload,
     };
   }),
 

@@ -1,13 +1,15 @@
 import { LocationData } from '@photo-gallery/models/index';
 
 export interface PhotoGalleryState  {
-  nearbyLocationsRequired: boolean,
+  nearbyImagesVisible: boolean,
+  nearbyImages: any[],
   userLocation: LocationData,
   locationPermission: boolean,
 }
 
 export const initialPhotoGalleryState = {
-  nearbyLocationsRequired: false,
+  nearbyImagesVisible: false,
+  nearbyImages: undefined,
   userLocation: undefined,
   locationPermission: undefined,
 };
