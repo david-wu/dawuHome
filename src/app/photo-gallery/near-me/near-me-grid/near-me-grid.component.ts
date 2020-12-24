@@ -23,6 +23,8 @@ export class NearMeGridComponent {
   public userLocation$: Observable<LocationData>;
   public nearByUploads$: Observable<UploadFile[]>;
   public zoomLevel: number = 3;
+  public viewingLocationPicker = true;
+  public defaultLoc = LocationData.fromLatLong(37.803, -122.271);
 
   constructor(public store: Store) {
     this.nearByUploads$ = this.store.pipe(select(getNearbyImages$));

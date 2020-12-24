@@ -11,9 +11,17 @@
     .left-toolbar {
       flex: 1 1 0;
       height: 28px;
-      margin-left: 0.25rem;
-      .world-icon {
+      // margin-left: 0.25rem;
+      .world-icon-container{
+        display: inline-block;
+        height: 28px;
         padding: 0.125rem;
+        cursor: pointer;
+        user-select: none;
+        .world-icon {
+          @include light-theme;
+          border-radius: 0.125rem;
+        }
       }
     }
     dwu-zoom-level-picker {

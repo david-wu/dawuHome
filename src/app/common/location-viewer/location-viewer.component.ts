@@ -35,7 +35,7 @@ import { LocationData } from '@photo-gallery/models/index';
 })
 export class LocationViewerComponent {
 
-  @Input() location: LocationData = LocationData.fromLatLong(37.8, -122.3);
+  @Input() location: LocationData;
   @Output() locationChange = new EventEmitter<LocationData>();
   @Input() markers;
   @ViewChild('mapContainerEl', { static: true }) mapContainerEl: ElementRef<any>;
@@ -44,11 +44,9 @@ export class LocationViewerComponent {
   public debouncedLocationChange;
 
   constructor() {
-    this.debouncedLocationChange = debounce((location: LocationData) => {
-      if (!location.isEqual(this.location)) {
-        this.locationChange.emit(location);
-      }
-    }, 100);
+    this.debouncedLocationChange = debounce(() => {
+      this.locationChange.emit(this.location);
+    }, 100, { maxWait: 750 });
   }
 
   public ngOnChanges(changes) {
@@ -62,10 +60,9 @@ export class LocationViewerComponent {
   }
 
   public setMapCenter() {
-    const location = this.location || LocationData.fromLatLong(37.8, -122.3);
     const center = {
-      lat: location.latitude,
-      lng: location.longitude,
+      lat: this.location.latitude,
+      lng: this.location.longitude,
     };
     if (!this.map) {
       this.map = new (window as any).google.maps.Map(this.mapContainerEl.nativeElement, {
@@ -75,11 +72,15 @@ export class LocationViewerComponent {
       });
       this.map.addListener('center_changed', () => {
         const center = this.map.getCenter();
-        const location = LocationData.fromLatLong(center.lat(), center.lng());
-        this.debouncedLocationChange(location);
-      })
+        this.location = LocationData.fromLatLong(center.lat(), center.lng());
+        this.debouncedLocationChange();
+      });
+      this.locationChange.emit(this.location);
     } else {
-      this.map.setCenter(center);
+      const mapCenter = this.map.getCenter();
+      if((mapCenter.lat() !== center.lat) || (mapCenter.lng() !== center.lng)) {
+        this.map.setCenter(center);
+      }
     }
   }
 
