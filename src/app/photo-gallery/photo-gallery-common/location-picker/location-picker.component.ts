@@ -1,33 +1,10 @@
 import {
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   Output,
-  ViewChild,
-  SimpleChanges,
 } from '@angular/core';
-import {
-  Observable,
-} from 'rxjs';
-import { get } from 'lodash';
-import {
-  CdkVirtualScrollViewport,
-  FixedSizeVirtualScrollStrategy,
-} from '@angular/cdk/scrolling';
-import ResizeSensor from 'css-element-queries/src/ResizeSensor';
-import {
-  Store,
-  select,
-} from '@ngrx/store';
 
-import { UploadFile } from '@photo-gallery/models/index';
-import {
-  PhotoGalleryActions,
-  PhotoGalleryState,
-  getLocationPermission$,
-  getUserLocation$,
-} from '@photo-gallery/store/index';
 import { LocationData } from '@photo-gallery/models/index';
 
 @Component({
@@ -37,30 +14,17 @@ import { LocationData } from '@photo-gallery/models/index';
 })
 export class LocationPickerComponent {
 
-  public locationPermission$: Observable<boolean>;
-  public userLocation$: Observable<LocationData>;
+  @Input() location: LocationData;
+  @Output() locationChange = new EventEmitter<LocationData>();
+  @Output() useMyLocation = new EventEmitter();
 
-  @ViewChild('mapContainerEl', { static: true }) mapContainerEl: ElementRef<any>;
-
-  constructor(public store: Store<PhotoGalleryState>) {
-    this.userLocation$ = this.store.pipe(select(getUserLocation$));
+  public onUseMyLocation() {
+    this.useMyLocation.emit();
   }
 
-  public ngOnInit() {
-    this.useMyLocation();
-    // const myLoc = { lat: 37.8, lng: -122.3 };
-    // const map = new (window as any).google.maps.Map(this.mapContainerEl.nativeElement, {
-    //   zoom: 10,
-    //   center: myLoc,
-    // });
-    // const marker = new (window as any).google.maps.Marker({
-    //   position: myLoc,
-    //   map: map,
-    // });
-  }
-
-  public useMyLocation() {
-    this.store.dispatch(PhotoGalleryActions.requestUserLocation());
+  public onLocationChange(location: LocationData) {
+    this.location = location;
+    this.locationChange.emit(location);
   }
 
 }

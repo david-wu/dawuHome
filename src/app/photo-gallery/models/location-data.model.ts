@@ -32,4 +32,10 @@ export class LocationData {
 
   public locationSource: string;
 
+  public isEqual(location: LocationData): boolean {
+    return location &&
+      this.latitude === location.latitude &&
+      this.longitude === location.longitude;
+  }
+
 }

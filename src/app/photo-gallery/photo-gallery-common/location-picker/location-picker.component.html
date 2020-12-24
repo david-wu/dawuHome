@@ -1,3 +1,16 @@
-<!-- <button (click)="useMyLocation()">select location</button>
-<button (click)="useMyLocation()">use my location</button>
-<div #mapContainerEl class="map-container"></div> -->
+<dwu-location-viewer
+  [location]="location"
+  (locationChange)="onLocationChange($event)"
+></dwu-location-viewer>
+<button
+  (click)="onUseMyLocation()"
+  class="use-my-location-button"
+>
+  Use my location
+</button>
+
+<div class="cross-hairs">
+  <div class="material-icons">
+    center_focus_weak
+  </div>
+</div>

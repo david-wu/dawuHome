@@ -32,6 +32,7 @@ export class ImageGridComponent {
     if (changes.files && this.files) {
       this.fileIds = map(this.files, (uploadFile: UploadFile) => uploadFile.id);
       this.filesById = keyBy(this.files, (uploadFile: UploadFile) => uploadFile.id);
+      this.centeredTileId = undefined;
     }
   }
 

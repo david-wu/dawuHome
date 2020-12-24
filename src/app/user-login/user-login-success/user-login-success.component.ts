@@ -4,13 +4,6 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-// declare global {
-//   interface Window {
-//     firebase: any;
-//     firebaseui: any;
-//   }
-// }
-
 @Component({
   selector: 'dwu-user-login-success',
   templateUrl: './user-login-success.component.html',

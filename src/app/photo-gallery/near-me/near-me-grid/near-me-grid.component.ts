@@ -8,8 +8,10 @@ import {
 import { UploadFile } from '@photo-gallery/models/upload-file.model';
 import {
   getNearbyImages$,
+  getUserLocation$,
   PhotoGalleryActions,
 } from '@photo-gallery/store/index';
+import { LocationData } from '@photo-gallery/models/index';
 
 @Component({
   selector: 'dwu-near-me-grid',
@@ -18,11 +20,13 @@ import {
 })
 export class NearMeGridComponent {
 
+  public userLocation$: Observable<LocationData>;
   public nearByUploads$: Observable<UploadFile[]>;
   public zoomLevel: number = 3;
 
   constructor(public store: Store) {
     this.nearByUploads$ = this.store.pipe(select(getNearbyImages$));
+    this.userLocation$ = this.store.pipe(select(getUserLocation$));
   }
 
   public ngOnInit() {
@@ -31,5 +35,13 @@ export class NearMeGridComponent {
 
   public ngOnDestroy() {
     this.store.dispatch(PhotoGalleryActions.setNearbyImagesVisible({ payload: false }));
+  }
+
+  public onLocationChange(location: LocationData) {
+    this.store.dispatch(PhotoGalleryActions.setUserLocation({ payload: location }));
+  }
+
+  public onUseMyLocation() {
+    this.store.dispatch(PhotoGalleryActions.requestUserLocation());
   }
 }

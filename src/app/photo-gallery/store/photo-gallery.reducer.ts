@@ -14,12 +14,11 @@ import {
 const reducer: ActionReducer<PhotoGalleryState> = createReducer(
   initialPhotoGalleryState,
 
-  on(PhotoGalleryActions.requestUserLocation, (state: PhotoGalleryState, action: PhotoGalleryActions) => {
-    return {
-      ...state,
-      userLocation: undefined,
-    };
-  }),
+  // on(PhotoGalleryActions.requestUserLocation, (state: PhotoGalleryState, action: PhotoGalleryActions) => {
+  //   return {
+  //     ...state,
+  //   };
+  // }),
 
   on(PhotoGalleryActions.setUserLocation, (state: PhotoGalleryState, action: any) => {
     return {

@@ -38,6 +38,9 @@ export class VirtualScrollGridComponent {
   // Otherwise, try to find the best columnCount based on tileOptions and maxColumns
   @Input() alwaysUseMaxColumns: boolean = false;
   @Input() centeredTileId: string;
+  // assumes scrollbar is 0px
+  @Input() marginLeft: number = 0;
+
   @Output() centeredTileIdChange = new EventEmitter<string>();
   @Input() tileTemplate: TemplateRef<any>;
   @Input() tileOptions: any[]
@@ -107,8 +110,7 @@ export class VirtualScrollGridComponent {
   }
 
   public sizeTiles() {
-    // assumes scrollbar is 16px
-    const clientWidth = this.hostEl.nativeElement.clientWidth - 16;
+    const clientWidth = this.hostEl.nativeElement.clientWidth - this.marginLeft;
     const clientHeight = this.hostEl.nativeElement.clientHeight;
     this.targetTileOption = this.pickTileOption(clientWidth);
 

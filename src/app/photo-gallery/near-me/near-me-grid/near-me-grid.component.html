@@ -1,8 +1,25 @@
-<dwu-location-picker></dwu-location-picker>
-<dwu-zoom-level-picker
-  [(zoomLevel)]="zoomLevel"
-></dwu-zoom-level-picker>
+<div class="toolbar">
+  <div class="left-toolbar">
+    <span class="material-icons world-icon">
+      public
+    </span>
+  </div>
+  <dwu-zoom-level-picker
+    [(zoomLevel)]="zoomLevel"
+  ></dwu-zoom-level-picker>
+</div>
+<dwu-location-picker
+  [location]="userLocation$ | async"
+  (useMyLocation)="onUseMyLocation()"
+  (locationChange)="onLocationChange($event)"
+></dwu-location-picker>
 <dwu-image-grid
+  *ngIf="userLocation$ | async; else noLocationSelectedTemplate"
   [files]="nearByUploads$ | async"
   [zoomLevel]="zoomLevel"
 ></dwu-image-grid>
+<ng-template
+  #noLocationSelectedTemplate
+>
+  noLocationSelectedTemplate
+</ng-template>
