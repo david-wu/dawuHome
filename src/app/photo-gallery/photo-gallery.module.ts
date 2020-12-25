@@ -6,7 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PhotoGalleryComponent } from '@photo-gallery/photo-gallery.component';
 import { PhotoGalleryRoutingModule } from '@photo-gallery/photo-gallery.routes';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
-import { LocationPickerModule } from '@photo-gallery/photo-gallery-common/location-picker/location-picker.module';
+import { LocationPickerModule } from '@common/location-picker/location-picker.module';
 
 import {
   PhotoGalleryEffects,

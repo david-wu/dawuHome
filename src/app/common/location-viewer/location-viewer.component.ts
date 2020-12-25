@@ -46,7 +46,7 @@ export class LocationViewerComponent {
   constructor() {
     this.debouncedLocationChange = debounce(() => {
       this.locationChange.emit(this.location);
-    }, 100, { maxWait: 750 });
+    }, 100);
   }
 
   public ngOnChanges(changes) {
