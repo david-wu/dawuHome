@@ -21,7 +21,6 @@ import {
 import {
   FirebaseAuthService,
   FirebaseFirestoreService,
-  FirebaseStorageService,
 } from '@services/index';
 import { User } from '@models/index';
 import { AuthActions } from './auth.actions';
@@ -68,7 +67,5 @@ export class AuthEffects {
     public actions$: Actions,
     public firestoreService: FirebaseFirestoreService,
     public authService: FirebaseAuthService,
-    public storageService: FirebaseStorageService,
-    // public userLocationService: UserLocationService,
   ) {}
 }
