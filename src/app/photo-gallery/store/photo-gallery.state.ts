@@ -5,6 +5,8 @@ export interface PhotoGalleryState  {
   nearbyImages: any[],
   userLocation: LocationData,
   locationPermission: boolean,
+  myUploadsVisible: boolean,
+  myUploads: any[],
 }
 
 export const initialPhotoGalleryState = {
@@ -12,4 +14,6 @@ export const initialPhotoGalleryState = {
   nearbyImages: undefined,
   userLocation: undefined,
   locationPermission: undefined,
+  myUploadsVisible: undefined,
+  myUploads: undefined,
 };

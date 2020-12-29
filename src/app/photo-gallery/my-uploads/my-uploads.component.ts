@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import {
+  Store,
+  select,
+} from '@ngrx/store';
+
 
 import { PhotoGalleryService } from '@photo-gallery/services/index';
 import { FirebaseAuthService } from '@services/index';
 import { User } from '@models/index';
 import { UploadFile } from '@photo-gallery/models/upload-file.model';
+import {
+  PhotoGalleryActions,
+  getMyUploads$,
+} from '@photo-gallery/store/index';
 
 @Component({
   selector: 'dwu-my-uploads',
@@ -17,14 +26,24 @@ export class MyUploadsComponent {
   public zoomLevel = 3;
 
   constructor(
+    public store: Store,
     public pgs: PhotoGalleryService,
     public firebaseAuthService: FirebaseAuthService,
   ) {
-    this.uploadedFiles$ = this.pgs.getUploadedFiles$();
+    this.uploadedFiles$ = this.store.pipe(select(getMyUploads$));
+    // this.pgs.getUploadedFiles$();
   }
 
   public async onFileChange(file: File, user: User) {
     this.pgs.uploadFile(file, user);
+  }
+
+  public ngOnInit() {
+    this.store.dispatch(PhotoGalleryActions.setMyUploadsVisible({ payload: true }));
+  }
+
+  public ngOnDestroy() {
+    this.store.dispatch(PhotoGalleryActions.setMyUploadsVisible({ payload: false }));
   }
 
 }

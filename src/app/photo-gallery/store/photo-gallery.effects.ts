@@ -29,8 +29,13 @@ import { sortBy } from 'lodash';
 
 import { PhotoGalleryActions } from './photo-gallery.actions';
 import {
+  AuthActions,
+  getUser$,
+} from '@src/app/store/index';
+import {
   getUserLocation$,
   getNearbyImagesVisible$,
+  getMyUploadsVisible$,
 } from './photo-gallery.selectors';
 import { UserLocationService } from '@photo-gallery/services/index';
 import { LocationData } from '@photo-gallery/models/index';
@@ -79,6 +84,35 @@ export class PhotoGalleryEffects {
     )
   });
 
+  public getMyUploads$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(
+        AuthActions.setUser,
+        PhotoGalleryActions.setMyUploadsVisible,
+      ),
+      withLatestFrom(
+        this.store$.pipe(select(getUser$)),
+        this.store$.pipe(select(getMyUploadsVisible$)),
+      ),
+      switchMap(([action, user, myUploadsVisible]) => {
+        console.log('getmyuplad', user, myUploadsVisible)
+        if (!myUploadsVisible || !user) {
+          return of(PhotoGalleryActions.setMyUploads({ payload: [] }));
+        }
+        return this.firestore.getUploadedFiles$(user).pipe(
+          map((myUploads) => PhotoGalleryActions.setMyUploads({ payload: myUploads }))
+        );
+        // return this.firestore.getNearbyUploads$(userLocation).pipe(
+        //   map((nearbyUploads: any[]) => {
+        //     const sortedUploads =  sortBy(nearbyUploads, (upload) => {
+        //       return Math.pow(userLocation.latitude - upload.locationData.latitude, 2) + Math.pow(userLocation.longitude - upload.locationData.longitude, 2);
+        //     });
+        //     return PhotoGalleryActions.setMyUploads({ payload: sortedUploads });
+        //   }),
+        // );
+      }),
+    )
+  });
   public checkUserLocationPermission$: Observable<Action> = createEffect(
     () => {
       return this.actions$.pipe(

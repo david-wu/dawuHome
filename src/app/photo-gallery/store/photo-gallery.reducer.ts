@@ -47,6 +47,20 @@ const reducer: ActionReducer<PhotoGalleryState> = createReducer(
       locationPermission: action.locationPermission,
     };
   }),
+
+  on(PhotoGalleryActions.setMyUploadsVisible, (state: PhotoGalleryState, action: any) => {
+    return {
+      ...state,
+      myUploadsVisible: action.payload,
+    };
+  }),
+
+  on(PhotoGalleryActions.setMyUploads, (state: PhotoGalleryState, action: any) => {
+    return {
+      ...state,
+      myUploads: action.payload,
+    };
+  }),
 );
 
 export function photoGalleryReducer(state: PhotoGalleryState, action: Action): PhotoGalleryState {

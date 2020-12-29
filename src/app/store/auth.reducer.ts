@@ -13,16 +13,10 @@ import {
 
 const reducer: ActionReducer<AuthState> = createReducer(
   initialAuthState,
-  on(AuthActions.loginSuccess, (state: AuthState, action) => {
+  on(AuthActions.setUser, (state: AuthState, action) => {
     return {
       ...state,
-      user: action.user,
-    };
-  }),
-  on(AuthActions.signOutSuccess, (state: AuthState, action: AuthActions) => {
-    return {
-      ...state,
-      user: undefined,
+      user: action.payload,
     };
   }),
 );

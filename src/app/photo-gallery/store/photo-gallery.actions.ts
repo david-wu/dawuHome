@@ -35,4 +35,15 @@ export class PhotoGalleryActions {
     props<{ locationPermission: any }>(),
   );
 
+
+  public static setMyUploadsVisible = createAction(
+    `${PhotoGalleryActions.CATEGORY} SET_MY_UPLOADS_VISIBLE`,
+    props<{ payload: boolean }>(),
+  );
+
+  public static setMyUploads = createAction(
+    `${PhotoGalleryActions.CATEGORY} SET_MY_UPLOADS`,
+    props<{ payload: any[] }>(),
+  );
+
 }

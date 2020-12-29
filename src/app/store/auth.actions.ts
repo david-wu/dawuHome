@@ -8,21 +8,23 @@ import { User } from '@models/index';
 export class AuthActions {
   public static readonly CATEGORY = '[AUTH]';
 
+  public static linkFirebaseAuth = createAction(
+    `${AuthActions.CATEGORY} LINK_FIREBASE_AUTH`,
+  );
+
+  public static setUser = createAction(
+    `${AuthActions.CATEGORY} SET_USER`,
+    props<{ payload: User }>(),
+  );
+
   public static renderLogin = createAction(
     `${AuthActions.CATEGORY} RENDER_LOGIN`,
     props<{ nativeEl: HTMLElement }>(),
-  );
-  public static loginSuccess = createAction(
-    `${AuthActions.CATEGORY} LOGIN_SUCCESS`,
-    props<{ user: User }>(),
   );
 
   public static signOut = createAction(
     `${AuthActions.CATEGORY} SIGN_OUT`,
     props<{ nativeEl: HTMLElement }>(),
-  );
-  public static signOutSuccess = createAction(
-    `${AuthActions.CATEGORY} SIGN_OUT_SUCCESS`,
   );
 
   // public static getUserFilesSuccess = createAction(

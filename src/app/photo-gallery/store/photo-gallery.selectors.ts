@@ -31,3 +31,13 @@ export const getLocationPermission$: MemoizedSelector<PhotoGalleryState, boolean
   getPhotoGalleryState$,
   (state: PhotoGalleryState) => state.locationPermission,
 );
+
+export const getMyUploadsVisible$: MemoizedSelector<PhotoGalleryState, boolean> = createSelector(
+  getPhotoGalleryState$,
+  (state: PhotoGalleryState) => state.myUploadsVisible,
+);
+
+export const getMyUploads$: MemoizedSelector<PhotoGalleryState, UploadFile[]> = createSelector(
+  getPhotoGalleryState$,
+  (state: PhotoGalleryState) => state.myUploads,
+);

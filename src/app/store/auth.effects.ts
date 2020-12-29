@@ -13,6 +13,7 @@ import {
 import {
   map,
   switchMap,
+  startWith,
   mergeMap,
   filter,
   tap
@@ -28,23 +29,31 @@ import { AuthActions } from './auth.actions';
 @Injectable()
 export class AuthEffects {
 
-  public renderLogin$: Observable<Action> = createEffect(() => {
+  public linkFirebaseAuth$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
-      ofType(AuthActions.renderLogin),
-      switchMap(({ nativeEl }) => {
-        return this.authService.renderLogin(nativeEl).pipe(
+      ofType(AuthActions.linkFirebaseAuth),
+      startWith(AuthActions.linkFirebaseAuth()),
+      switchMap(() => {
+        return this.authService.getUser$().pipe(
           switchMap((user: User) => {
             if (user) {
               return this.firestoreService.updateUser(user).pipe(
-                map(() => AuthActions.loginSuccess({ user })),
+                map(() => AuthActions.setUser({ payload: user })),
               );
             }
-            return of(AuthActions.loginSuccess({ user }))
-          }),
+            return of(AuthActions.setUser({ payload: user }))
+          })
         );
       }),
     );
   });
+
+  public renderLogin$: any = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActions.renderLogin),
+      switchMap(({ nativeEl }) => this.authService.renderLogin(nativeEl)),
+    );
+  }, { dispatch: false });
 
   public signOut$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
@@ -53,7 +62,7 @@ export class AuthEffects {
         return this.authService.signOut().pipe(
           mergeMap(() => {
             return [
-              AuthActions.signOutSuccess(),
+              AuthActions.setUser({ payload: undefined}),
               AuthActions.renderLogin({ nativeEl }),
             ];
           }),
