@@ -4,8 +4,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { CommonModule as MyCommonModule } from '@src/app/common/common.module';
+import { SearchInputModule } from '@common/search-input/search-input.module';
 import { FileExplorerModule } from '@file-explorer/file-explorer.module';
-import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
+import { FileUploaderModule } from '@common/file-uploader/file-uploader.module';
 import { UserLoginModule } from '@app/user-login/user-login.module';
 import { MlAppComponent } from '@src/app/ml-app/ml-app.component';
 import { MlUploadImagesComponent } from '@src/app/ml-app/ml-upload-images/ml-upload-images.component';
@@ -26,6 +27,7 @@ const COMPONENTS = [
   imports: [
     FileUploaderModule,
     MlAppRoutingModule,
+    SearchInputModule,
     UserLoginModule,
     CommonModule,
     MyCommonModule,

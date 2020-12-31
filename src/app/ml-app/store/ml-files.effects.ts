@@ -38,7 +38,6 @@ import {
 } from '@models/index';
 import { File } from '@file-explorer/models/index';
 
-// import { UserLocationService } from '@photo-gallery/services/index';
 // import { LocationData } from '@photo-gallery/models/index';
 
 @Injectable()
@@ -111,51 +110,11 @@ export class MlFilesEffects {
     );
   });
 
-
-  //       // get auth user from parent store
-
-  //       // const userDoc = this.firestore.doc(`users/${user.uid}/uploads/${fileId}`);
-  //       // await userDoc.delete();
-  //       // const uploadDoc = this.firestore.doc(`uploads/${fileId}`);
-  //       // return await uploadDoc.delete();
-
-
-  // public requestUserLocation$: Observable<Action> = createEffect(
-  //   () => {
-  //     return this.actions$.pipe(
-  //       ofType(MlFilesActions.requestUserLocation),
-  //       switchMap(() => {
-  //         console.log('getting user location')
-  //         return from(this.userLocationService.getUserLocation()).pipe(
-  //           map((locationData: LocationData) => {
-  //             console.log('got user location', locationData)
-  //             return MlFilesActions.setUserLocation({ locationData: locationData })
-  //           }),
-  //         );
-  //       }),
-  //     );
-  //   },
-  // );
-
-  // public checkUserLocationPermission$: Observable<Action> = createEffect(
-  //   () => {
-  //     return this.actions$.pipe(
-  //       ofType(MlFilesActions.checkUserLocationPermission),
-  //       switchMap(() => {
-  //         return from(this.userLocationService.getIsPermissionGranted()).pipe(
-  //           map((permission) => MlFilesActions.setUserLocationPermission({ locationPermission: permission }))
-  //         );
-  //       }),
-  //     );
-  //   }
-  // )
-
   constructor(
     public store$: Store,
     public actions$: Actions,
     public firestoreService: FirebaseFirestoreService,
     public auth: FirebaseAuthService,
     public storage: FirebaseStorageService,
-    // public userLocationService: UserLocationService,
   ) {}
 }

@@ -4,7 +4,7 @@ import { CommonModule as NgCommonModule } from '@angular/common';
 import { BarChartModule } from '@common/charts/bar-chart/bar-chart.module';
 import { BarChartDemoComponent } from './bar-chart-demo.component';
 import { TooltipModule } from '@common/tooltip/tooltip.module';
-import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.module';
+import { CodeSnippetModule } from '@common/code-snippet/code-snippet.module';
 
 @NgModule({
   imports: [

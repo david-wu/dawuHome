@@ -31,7 +31,7 @@ export class PortfolioComponent {
         const activatedChild = routerEvent.urlAfterRedirects.split('/')[2];
         this.fileGroup.setSelectedFileIds(new Set([activatedChild]));
       }
-    })
+    });
   }
 
   public populateFileGroup() {

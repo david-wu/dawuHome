@@ -1,0 +1,11 @@
+@import 'mixins';
+
+:host {
+  @include standard-demo-page;
+  p {
+    margin: 1rem 0;
+  }
+  dwu-code-snippet {
+    margin: 0.5rem;
+  }
+}

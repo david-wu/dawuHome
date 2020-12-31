@@ -27,7 +27,6 @@ import { ImageProcessingService } from './image-processing.service';
 export class PhotoGalleryService {
 
   constructor(
-    public auth: FirebaseAuthService,
     public firestore: FirebaseFirestoreService,
     public storage: FirebaseStorageService,
     public userLocationService: UserLocationService,
@@ -65,55 +64,13 @@ export class PhotoGalleryService {
     const insertedUploadDoc = {
       ...uploadDoc,
       id: insertedUploadDocRef.id,
-    }
-    await this.firestore.addUploadToUser(insertedUploadDoc, user.uid);
+    };
 
     const sizedFile = await this.imageProcessing.processImageFile(file, exifData);
     const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
-
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
-    const uploadMeta = {
-      downloadUrl: downloadUrl,
-    };
-    await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta, user);
-  }
-
-  public getUploadedFiles$(): Observable<any[]> {
-    return this.auth.user$.pipe(
-      switchMap((user: User) => {
-        if (!user) {
-          return of([]);
-        } else {
-          return this.firestore.getUploadedFiles$(user);
-        }
-      })
-    );
-  }
-
-  public getNearByUploadsForDistanceType$(distanceType$: any): Observable<any[]> {
-    return distanceType$.pipe(
-      switchMap((distanceType: string) => this.getNearByUploads$(distanceType)),
-    );
-  }
-
-  public getNearByUploads$(distanceType: string = 'DRIVE'): Observable<any[]> {
-    const nearByUploadStreams$ = new Subject<any>();
-    const userLocation = this.userLocationService.getUserLocation()
-      .then((userLocation: any) => {
-        const nearbyUploads$ = this.firestore.getNearbyUploads$(userLocation, distanceType).pipe(
-          map((uploads: any[]) => {
-            return sortBy(uploads, (upload) => {
-              return Math.pow(userLocation.latitude - upload.locationData.latitude, 2) + Math.pow(userLocation.longitude - upload.locationData.longitude, 2);
-            });
-          }),
-        );
-        nearByUploadStreams$.next(nearbyUploads$);
-      });
-
-    return nearByUploadStreams$.pipe(
-      switchMap((nearbyUploads$) => nearbyUploads$)
-    ) as Observable<any[]>;
-
+    const uploadMeta = { downloadUrl: downloadUrl };
+    await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta);
   }
 
 }

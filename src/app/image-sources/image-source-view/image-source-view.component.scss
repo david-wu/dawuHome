@@ -1,0 +1,22 @@
+@import 'mixins';
+
+:host {
+  @include top-nav-page;
+
+  dwu-file-explorer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.top-nav {
+  background-color: $black-olive;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  .nav-items-container {
+    @include nav-items-container;
+  }
+}

@@ -5,7 +5,7 @@ import { LineChartModule } from '@common/charts/line-chart/line-chart.module';
 import { ChartLegendDemoComponent } from './chart-legend-demo.component';
 import { TooltipModule } from '@common/tooltip/tooltip.module';
 import { ChartsModule } from '@common/charts/charts.module';
-import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.module';
+import { CodeSnippetModule } from '@common/code-snippet/code-snippet.module';
 
 @NgModule({
   imports: [

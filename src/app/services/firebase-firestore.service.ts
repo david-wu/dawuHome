@@ -7,9 +7,7 @@ import {
 } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { padStart } from 'lodash';
-// import { bigInt, BigInteger } from 'big-integer';
 const bigInt = require('big-integer');
-// import bigInt from 'big-integer';
 
 import { User } from '@models/index';
 import { LocationData } from '@photo-gallery/models/index';
@@ -20,7 +18,43 @@ import { LocationData } from '@photo-gallery/models/index';
 export class FirebaseFirestoreService {
 
   public firestore = window.firebase.firestore();
+  public firestoreTimestamp = window.firebase.firestore.FieldValue.serverTimestamp
 
+  public getImageSources$(user: User): Observable<any[]> {
+    const querySnapshot$ = Observable.create((observer) => {
+      return this.firestore
+        .collection('imageSources')
+        .where('userId', '==', user.uid)
+        .orderBy('updatedAt', 'desc')
+        .onSnapshot(observer);
+    });
+    return querySnapshot$.pipe(
+      map((querySnapshot: any) => {
+        return querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
+        });
+      }),
+    );
+  }
+
+  public createImageSource(user: User): Observable<any> {
+    const timestamp = this.firestoreTimestamp();
+    const imageSource = {
+      userId: user.uid,
+      createdAt: timestamp,
+      updatedAt: timestamp,
+    }
+    return from(this.firestore.collection('imageSources').add(imageSource));
+  }
+
+  /**
+   * updateUser
+   * @param  {User} user
+   * @return {Observable<User>}
+   */
   public updateUser(user: User): Observable<User> {
     const userDoc = this.firestore.doc(`users/${user.uid}`);
     const promise = userDoc.set({ ...user });
@@ -29,9 +63,12 @@ export class FirebaseFirestoreService {
     );
   }
 
+  /**
+   * unregisterFile
+   * @param {string} fileId
+   * @param {User} user
+   */
   public async unregisterFile(fileId: string, user: User) {
-    const userDoc = this.firestore.doc(`users/${user.uid}/uploads/${fileId}`);
-    await userDoc.delete();
     const uploadDoc = this.firestore.doc(`uploads/${fileId}`);
     return await uploadDoc.delete();
   }
@@ -44,23 +81,20 @@ export class FirebaseFirestoreService {
    * @return {Promise<DocumentReference>} docRef
    */
   public async insertUploadDoc(uploadDoc: any): Promise<any> {
+    const timestamp = this.firestoreTimestamp();
+    uploadDoc.createdAt = timestamp;
+    uploadDoc.updatedAt = timestamp;
     return await this.firestore.collection('uploads').add(uploadDoc);
   }
 
-  public async addUploadToUser(uploadDoc: any, userUid: string) {
-    const userUploadDoc = this.firestore.doc(`users/${userUid}/uploads/${uploadDoc.id}`);
-    return await userUploadDoc.set(uploadDoc);
-  }
-
-  public async registerFileUploaded(fileId: string, uploadMeta: any, user: User) {
+  /**
+   * registerFileUploaded
+   * @param {string} fileId
+   * @param {any} uploadMeta
+   */
+  public async registerFileUploaded(fileId: string, uploadMeta: any) {
     const uploadIndexDoc = this.firestore.doc(`uploads/${fileId}`);
     await uploadIndexDoc.update({
-      isUploaded: true,
-      uploadMeta,
-    });
-
-    const uploadDoc = this.firestore.doc(`users/${user.uid}/uploads/${fileId}`)
-    return uploadDoc.update({
       isUploaded: true,
       uploadMeta,
     });
@@ -69,8 +103,9 @@ export class FirebaseFirestoreService {
   public getUploadedFiles$(user: User): Observable<any[]> {
     const querySnapshot$ = Observable.create((observer) => {
       return this.firestore
-        .doc(`users/${user.uid}`)
         .collection('uploads')
+        .where('userId', '==', user.uid)
+        .orderBy('updatedAt', 'desc')
         .onSnapshot(observer);
     });
 
@@ -84,37 +119,9 @@ export class FirebaseFirestoreService {
         });
       }),
     );
-
-    // const collection = this.firestore.doc(`users/${user.uid}`).collection('uploads');
-    // const uploadedFiles$ = new Subject();
-    // // collection.where('isUploaded', "==", true)
-    // collection.onSnapshot((querySnapshot) => {
-    //   const docs = querySnapshot.docs.map((doc) => {
-    //     return {
-    //       ...doc.data(),
-    //       id: doc.id,
-    //     };
-    //   });
-    //   uploadedFiles$.next(docs);
-    // });
-    // return uploadedFiles$ as Observable<any[]>;
   }
 
   public getNearbyUploads$(userLocation: any, distanceType: string='DRIVE') {
-    // const walkingRange = userLocation.geohash.slice(0, 5);
-    // const lastGeohashChar = walkingRange[walkingRange.length - 1];
-    // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
-    // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
-
-    // const collection = this.firestore.collection(`uploads`)
-    //   .where('locationData.geohash', ">=", walkingRange)
-    //   .where('locationData.geohash', "<=", walkingRangeEnd);
-
-    // lake merritt
-    // const walkingDistanceInS2 = Math.pow(10, 12);
-
-    // oakland
-    // const walkingDistanceInS2 = Math.pow(10, 13);
     const distanceTargetsByType = {
       WALK: Math.pow(10, 12) * 7,
       BIKE: Math.pow(10, 12) * 7 * 5,

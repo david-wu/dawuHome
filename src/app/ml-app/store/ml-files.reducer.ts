@@ -18,7 +18,7 @@ const reducer: ActionReducer<MlFilesState> = createReducer(
   on(MlFilesActions.getUserFilesSuccess, (state: MlFilesState, action) => {
     // console.log('MlFilesState state', state)
     const incomingFilesById = keyBy(action.files, 'id');
-    console.log('incomingFilesById', incomingFilesById)
+    // console.log('incomingFilesById', incomingFilesById)
     return {
       ...state,
       filesById: {

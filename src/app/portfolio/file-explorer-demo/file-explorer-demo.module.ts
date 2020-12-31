@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { FileExplorerDemoComponent } from './file-explorer-demo.component';
 import { TooltipModule } from '@common/tooltip/tooltip.module';
-import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.module';
+import { CodeSnippetModule } from '@common/code-snippet/code-snippet.module';
 import { FileExplorerModule } from '@common/file-explorer/file-explorer.module';
 
 @NgModule({

@@ -1,0 +1,8 @@
+@import 'mixins';
+
+:host {
+  @include standard-demo-page;
+  p {
+    margin: 1rem 0;
+  }
+}

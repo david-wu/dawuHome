@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./ml-app/ml-app.module').then(m => m.MlAppModule)
   },
   {
+    path: 'image-sources',
+    loadChildren: () => import('./image-sources/image-sources.module').then(m => m.ImageSourcesModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'corona'

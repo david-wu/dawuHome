@@ -19,7 +19,7 @@ import {
 } from '@app/ml-app/store/index';
 
 @Component({
-  selector: 'ml-file-explorer',
+  selector: 'dwu-ml-file-explorer',
   templateUrl: './ml-file-explorer.component.html',
   styleUrls: ['./ml-file-explorer.component.scss']
 })
@@ -40,6 +40,7 @@ export class MlFileExplorerComponent {
     public route: ActivatedRoute,
   ) {
     this.filesById$ = this.store.pipe(select(getFilesById$));
+    // console.log('this.filesById$', this.filesById$)
     this.filesById$.subscribe(console.log);
     // this.populateFileGroup();
     // this.route.queryParams.subscribe((queryParams: Params) => {
@@ -83,8 +84,11 @@ export class MlFileExplorerComponent {
   //   return (selectedFileIds.length === 1) && selectedFileIds[0];
   // }
 
-  public onSelectedFileIdsChange(fileIds) {
+  public onSelectedFileIdsChange(fileIds: Set<string>) {
+    console.log('onSelectedFileIdsChange', fileIds)
     const selectedFileId = Array.from(fileIds)[0];
+    // this.selectedFileId = selectedFileId;
+    this.fileGroup.setSelectedFileIds(new Set([selectedFileId]));
     // if (selectedFileId) {
     //   this.router.navigate([], {
     //     relativeTo: this.route,

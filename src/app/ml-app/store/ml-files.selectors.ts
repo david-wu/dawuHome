@@ -23,5 +23,8 @@ export const getLocationPermission$: MemoizedSelector<MlFilesState, boolean> = c
 
 export const getFilesById$: MemoizedSelector<MlFilesState, Record<string, File>> = createSelector(
   getMlFilesState$,
-  (state: MlFilesState) => state.filesById,
+  (state: MlFilesState) => {
+    // console.log('state', state)
+    return state.filesById
+  },
 );

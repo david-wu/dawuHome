@@ -5,7 +5,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 
 import { FuzzDemoComponent } from './fuzz-demo.component';
 import { DemoPageModule } from './demo-page/demo-page.module';
-import { CodeSnippetModule } from '@src/app/portfolio/code-snippet/code-snippet.module';
+import { CodeSnippetModule } from '@common/code-snippet/code-snippet.module';
 
 @NgModule({
   declarations: [

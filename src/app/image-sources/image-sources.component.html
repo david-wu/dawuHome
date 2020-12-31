@@ -1,0 +1,29 @@
+<div class="page-container">
+  <div
+    class="left-side"
+    [class.expanded]="leftSideExpanded"
+  >
+    <div
+      class="create-source-button"
+      (click)="onCreateSource()"
+    >
+      + Create Source
+    </div>
+    <dwu-search-input
+      [(searchText)]="filterStr"
+      [placeholder]="'search..'"
+    ></dwu-search-input>
+    <dwu-image-sources-explorer
+      [imageSources]="imageSourcesList$ | async"
+      [filterStr]="filterStr"
+      [selectedImageSourceIds]="selectedImageSourceIds$ | async"
+      (selectedImageSourceIdsChange)="onSelectedImageSourceIdsChange($event)"
+    ></dwu-image-sources-explorer>
+  </div>
+  <div class="right-side">
+    <router-outlet></router-outlet>
+    <!-- <dwu-image-source-view
+      [imageSourceId]="selectedImageSourceId$ | async"
+    ></dwu-image-source-view> -->
+  </div>
+</div>

@@ -25,7 +25,10 @@ import {
   FirebaseFirestoreService,
   // FirebaseStorageService,
 } from '@services/index';
-import { sortBy } from 'lodash';
+import {
+  sortBy,
+  orderBy,
+} from 'lodash';
 
 import { PhotoGalleryActions } from './photo-gallery.actions';
 import {
@@ -95,24 +98,24 @@ export class PhotoGalleryEffects {
         this.store$.pipe(select(getMyUploadsVisible$)),
       ),
       switchMap(([action, user, myUploadsVisible]) => {
-        console.log('getmyuplad', user, myUploadsVisible)
         if (!myUploadsVisible || !user) {
           return of(PhotoGalleryActions.setMyUploads({ payload: [] }));
         }
         return this.firestore.getUploadedFiles$(user).pipe(
-          map((myUploads) => PhotoGalleryActions.setMyUploads({ payload: myUploads }))
+          map((myUploads) => {
+            // const sortedUploads = orderBy(myUploads, (upload) => {
+            //   if (!upload.metaData) {
+            //     return 0;
+            //   }
+            //   return upload.metaData.updatedAt;
+            // }, 'desc');
+            return PhotoGalleryActions.setMyUploads({ payload: myUploads });
+          })
         );
-        // return this.firestore.getNearbyUploads$(userLocation).pipe(
-        //   map((nearbyUploads: any[]) => {
-        //     const sortedUploads =  sortBy(nearbyUploads, (upload) => {
-        //       return Math.pow(userLocation.latitude - upload.locationData.latitude, 2) + Math.pow(userLocation.longitude - upload.locationData.longitude, 2);
-        //     });
-        //     return PhotoGalleryActions.setMyUploads({ payload: sortedUploads });
-        //   }),
-        // );
       }),
     )
   });
+
   public checkUserLocationPermission$: Observable<Action> = createEffect(
     () => {
       return this.actions$.pipe(

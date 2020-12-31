@@ -1,6 +1,8 @@
 import {
   Component,
   Input,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 import { map, keyBy, get } from 'lodash';
 
@@ -15,6 +17,7 @@ export class ImageGridComponent {
 
   @Input() files;
   @Input() zoomLevel = 3;
+  @Output() deleteImage = new EventEmitter();
 
   public fileIds: string[];
   public filesById: Record<string, UploadFile>;
@@ -47,6 +50,10 @@ export class ImageGridComponent {
 
   public onZoomIn(imageId: string) {
     this.magnifiedImageId = imageId;
+  }
+
+  public onDeleteImage(imageId: string) {
+    this.deleteImage.emit(imageId);
   }
 
   public downloadImage(imageId: string) {

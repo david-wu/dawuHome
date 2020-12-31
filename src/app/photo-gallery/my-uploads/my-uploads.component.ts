@@ -5,7 +5,6 @@ import {
   select,
 } from '@ngrx/store';
 
-
 import { PhotoGalleryService } from '@photo-gallery/services/index';
 import { FirebaseAuthService } from '@services/index';
 import { User } from '@models/index';
@@ -14,6 +13,7 @@ import {
   PhotoGalleryActions,
   getMyUploads$,
 } from '@photo-gallery/store/index';
+import { getUser$ } from '@app/store';
 
 @Component({
   selector: 'dwu-my-uploads',
@@ -22,16 +22,18 @@ import {
 })
 export class MyUploadsComponent {
 
+  public user$: Observable<User>;
   public uploadedFiles$: Observable<UploadFile[]>;
   public zoomLevel = 3;
+  public viewingFilePicker: boolean = true;
 
   constructor(
     public store: Store,
     public pgs: PhotoGalleryService,
     public firebaseAuthService: FirebaseAuthService,
   ) {
+    this.user$ = this.store.pipe(select(getUser$));
     this.uploadedFiles$ = this.store.pipe(select(getMyUploads$));
-    // this.pgs.getUploadedFiles$();
   }
 
   public async onFileChange(file: File, user: User) {
@@ -44,6 +46,10 @@ export class MyUploadsComponent {
 
   public ngOnDestroy() {
     this.store.dispatch(PhotoGalleryActions.setMyUploadsVisible({ payload: false }));
+  }
+
+  public onDeleteImage(imageId: string, user: User) {
+    this.pgs.deleteFile(imageId, user);
   }
 
 }

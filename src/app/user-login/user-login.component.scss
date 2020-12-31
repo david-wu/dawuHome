@@ -5,6 +5,7 @@
   align-items: center;
   .display-name-container {
     @include button-xs;
+    cursor: auto;
   }
   .sign-out-button {
     @include dark-mini-button;

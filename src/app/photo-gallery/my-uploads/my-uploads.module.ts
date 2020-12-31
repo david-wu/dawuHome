@@ -8,8 +8,9 @@ import { MyUploadsComponent } from '@photo-gallery/my-uploads/my-uploads.compone
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
 import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module'
 import { UserLoginModule } from '@app/user-login/user-login.module';
-import { FileUploaderModule } from '@app/file-uploader/file-uploader.module';
+import { FileUploaderModule } from '@common/file-uploader/file-uploader.module';
 import { ImageGridModule } from '@common/image-grid/image-grid.module';
+// import { MlFileExplorerComponent } from './ml-file-explorer/ml-file-explorer.component';
 
 @NgModule({
   imports: [
@@ -22,9 +23,11 @@ import { ImageGridModule } from '@common/image-grid/image-grid.module';
   ],
   declarations: [
     MyUploadsComponent,
+    // MlFileExplorerComponent,
   ],
   exports: [
     MyUploadsComponent,
+    // MlFileExplorerComponent,
   ],
   providers: [
     ...PHOTO_GALLERY_SERVICES,

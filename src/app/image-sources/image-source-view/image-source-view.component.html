@@ -1,0 +1,37 @@
+<div class="top-nav">
+  <div class="nav-items-container">
+    <div
+      class="nav-item"
+      [routerLink]="['./overview']"
+      [routerLinkActive]="['active']"
+    >Overview</div>
+    <div
+      class="nav-item"
+      [routerLink]="['./images']"
+      [routerLinkActive]="['active']"
+    >Images</div>
+    <div
+      class="nav-item"
+      [routerLink]="['./setup']"
+      [routerLinkActive]="['active']"
+    >Setup</div>
+  </div>
+</div>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- imageSourceId: {{ selectedImageSourceId$ | async }} -->
+<!-- <router-outlet></router-outlet> -->
+
+
+<!-- <h3>Direct Upload</h3>
+<dwu-file-uploader
+  [showUploadButton]="true"
+  (fileUpload)="onFileUpload($event)"
+></dwu-file-uploader>
+
+<h3>Images</h3>
+
+<h3>Classifiers</h3>
+ -->
