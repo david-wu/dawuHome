@@ -1,22 +1,22 @@
 {
   "Anguilla": {
-    "dateStr": "12/28/20",
+    "dateStr": "12/30/20",
     "cases": 13,
     "deaths": 0,
     "recovered": 12,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Bermuda": {
-    "dateStr": "12/28/20",
-    "cases": 581,
+    "dateStr": "12/30/20",
+    "cases": 595,
     "deaths": 10,
-    "recovered": 394,
+    "recovered": 421,
     "new": 0,
     "newDeaths": 0
   },
   "British Virgin Islands": {
-    "dateStr": "12/28/20",
+    "dateStr": "12/30/20",
     "cases": 86,
     "deaths": 1,
     "recovered": 74,
@@ -24,23 +24,23 @@
     "newDeaths": 0
   },
   "Cayman Islands": {
-    "dateStr": "12/28/20",
-    "cases": 318,
+    "dateStr": "12/30/20",
+    "cases": 330,
     "deaths": 2,
-    "recovered": 290,
-    "new": 0,
+    "recovered": 294,
+    "new": 4,
     "newDeaths": 0
   },
   "Channel Islands": {
-    "dateStr": "12/28/20",
-    "cases": 2989,
-    "deaths": 57,
-    "recovered": 2045,
-    "new": 29,
-    "newDeaths": 0
+    "dateStr": "12/30/20",
+    "cases": 3024,
+    "deaths": 58,
+    "recovered": 2256,
+    "new": 20,
+    "newDeaths": 1
   },
   "Falkland Islands (Malvinas)": {
-    "dateStr": "12/28/20",
+    "dateStr": "12/30/20",
     "cases": 29,
     "deaths": 0,
     "recovered": 17,
@@ -48,23 +48,23 @@
     "newDeaths": 0
   },
   "Gibraltar": {
-    "dateStr": "12/28/20",
-    "cases": 1706,
+    "dateStr": "12/30/20",
+    "cases": 1973,
     "deaths": 6,
-    "recovered": 1149,
-    "new": 45,
+    "recovered": 1216,
+    "new": 180,
     "newDeaths": 0
   },
   "Isle of Man": {
-    "dateStr": "12/28/20",
-    "cases": 374,
+    "dateStr": "12/30/20",
+    "cases": 377,
     "deaths": 25,
-    "recovered": 346,
-    "new": 0,
+    "recovered": 348,
+    "new": 3,
     "newDeaths": 0
   },
   "Montserrat": {
-    "dateStr": "12/28/20",
+    "dateStr": "12/30/20",
     "cases": 13,
     "deaths": 1,
     "recovered": 12,
@@ -72,11 +72,11 @@
     "newDeaths": 0
   },
   "Turks and Caicos Islands": {
-    "dateStr": "12/28/20",
-    "cases": 849,
+    "dateStr": "12/30/20",
+    "cases": 874,
     "deaths": 6,
-    "recovered": 763,
-    "new": 0,
+    "recovered": 764,
+    "new": 9,
     "newDeaths": 0
   }
 }
