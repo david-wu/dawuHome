@@ -68,7 +68,7 @@ export class FirebaseFirestoreService {
    * @param {string} fileId
    * @param {User} user
    */
-  public async unregisterFile(fileId: string, user: User) {
+  public async unregisterFile(fileId: string) {
     const uploadDoc = this.firestore.doc(`uploads/${fileId}`);
     return await uploadDoc.delete();
   }
@@ -94,7 +94,7 @@ export class FirebaseFirestoreService {
    */
   public async registerFileUploaded(fileId: string, uploadMeta: any) {
     const uploadIndexDoc = this.firestore.doc(`uploads/${fileId}`);
-    await uploadIndexDoc.update({
+    return await uploadIndexDoc.update({
       isUploaded: true,
       uploadMeta,
     });
@@ -105,6 +105,27 @@ export class FirebaseFirestoreService {
       return this.firestore
         .collection('uploads')
         .where('userId', '==', user.uid)
+        .orderBy('updatedAt', 'desc')
+        .onSnapshot(observer);
+    });
+
+    return querySnapshot$.pipe(
+      map((querySnapshot: any) => {
+        return querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
+        });
+      }),
+    );
+  }
+
+  public getFilesForSource$(sourceId: string): Observable<any[]> {
+    const querySnapshot$ = Observable.create((observer) => {
+      return this.firestore
+        .collection('uploads')
+        .where('sourceId', '==', sourceId)
         .orderBy('updatedAt', 'desc')
         .onSnapshot(observer);
     });

@@ -4,6 +4,7 @@ import {
   BehaviorSubject,
   Subject,
   of,
+  from,
 } from 'rxjs';
 import {
   map,
@@ -21,15 +22,13 @@ import {
   ExifService,
   ImageProcessingService,
 } from '@services/index';
-import { UserLocationService } from './user-location.service';
-console.log('ExifService', ExifService, ImageProcessingService)
+
 @Injectable()
-export class PhotoGalleryService {
+export class ImageSourcesService {
 
   constructor(
     public firestore: FirebaseFirestoreService,
     public storage: FirebaseStorageService,
-    public userLocationService: UserLocationService,
     public imageProcessing: ImageProcessingService,
     public exifService: ExifService,
   ) {}
@@ -39,26 +38,26 @@ export class PhotoGalleryService {
    * @param {string} uploadFileId
    * @param {User}   user
    */
-  public async deleteFile(uploadFileId: string, user: User) {
+  public async deleteFile(uploadFileId: string) {
     await this.storage.deleteFile(uploadFileId);
-    await this.firestore.unregisterFile(uploadFileId);
+    return await this.firestore.unregisterFile(uploadFileId);
   }
 
   /**
-   * uploadFile
+   * uploadImageSourceFile
    * @param {File} file
    * @param {User} user
    */
-  public async uploadFile(file: File, user: User) {
+  public async uploadImageSourceFile(file: File, user: User, sourceId: string) {
     const exifData = await this.exifService.getExifData(file);
     const exifLocationData = this.exifService.getLocationData(exifData);
-    const locationData = exifLocationData || await this.userLocationService.getUserLocation();
 
     const uploadDoc = {
       userId: user.uid,
       fileName: file.name,
       isUploaded: false,
-      locationData: { ...locationData },
+      sourceId,
+      locationData: { ...exifLocationData },
     } as UploadFile;
     const insertedUploadDocRef = await this.firestore.insertUploadDoc(uploadDoc);
     const insertedUploadDoc = {
@@ -70,7 +69,7 @@ export class PhotoGalleryService {
     const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
     const uploadMeta = { downloadUrl: downloadUrl };
-    await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta);
+    return await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta);
   }
 
 }

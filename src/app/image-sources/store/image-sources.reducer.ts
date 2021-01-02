@@ -46,6 +46,22 @@ const reducer: ActionReducer<ImageSourcesState> = createReducer(
     };
   }),
 
+  on(ImageSourcesActions.addImagesBySourceId, (state: ImageSourcesState, action: any) => {
+    return {
+      ...state,
+      imagesBySourceId: {
+        ...state,
+        ...action.payload,
+      },
+    };
+  }),
+
+  on(ImageSourcesActions.setImageSourceViewTab, (state: ImageSourcesState, action: any) => {
+    return {
+      ...state,
+      imageSourceViewTab: action.payload,
+    };
+  }),
 );
 
 export function imageSourcesReducer(state: ImageSourcesState, action: Action): ImageSourcesState {

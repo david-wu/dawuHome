@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
   Store,
   select,
 } from '@ngrx/store';
+import { Subscription, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   ActivatedRoute,
@@ -15,6 +15,8 @@ import {
   getImageSourcesList$,
   getSelectedImageSourceId$,
 } from '@app/image-sources/store/index';
+import { getUser$ } from '@app/store';
+import { User } from '@models/index';
 
 @Component({
   selector: 'dwu-image-sources',
@@ -23,41 +25,44 @@ import {
 })
 export class ImageSourcesComponent {
 
+  public user$: Observable<User>;
   public imageSourcesList$: Observable<any[]>;
   public selectedImageSourceId$: Observable<string>;
-  public selectedImageSourceIds$: Observable<Set<string>>;
+
   public filterStr: string = '';
   public leftSideExpanded: boolean = false;
+  public sub: Subscription;
 
   constructor(
     public store: Store,
     public router: Router,
     public activatedRoute: ActivatedRoute,
   ) {
+    this.user$ = this.store.pipe(select(getUser$));
     this.imageSourcesList$ = this.store.pipe(select(getImageSourcesList$));
     this.selectedImageSourceId$ = this.store.pipe(select(getSelectedImageSourceId$));
-    this.selectedImageSourceIds$ = this.selectedImageSourceId$.pipe(
-      map((selectedImageSourceId) => {
-        return selectedImageSourceId ? new Set([selectedImageSourceId]) : new Set();
-      }),
-    );
   }
 
   public ngOnInit() {
     this.store.dispatch(ImageSourcesActions.setImageSourcesListVisible({ payload: true }));
+    this.sub = this.activatedRoute.params.subscribe((params) => {
+      this.store.dispatch(ImageSourcesActions.setSelectedImageSourceId({ payload: params.imageSourceId }))
+    });
   }
 
   public ngOnDestroy() {
     this.store.dispatch(ImageSourcesActions.setImageSourcesListVisible({ payload: false }));
+    if (this.sub) {
+      this.sub.unsubscribe()
+    }
   }
 
   public onCreateSource() {
     this.store.dispatch(ImageSourcesActions.createImageSource());
   }
 
-  public onSelectedImageSourceIdsChange(selectedImageSourceIds: Set<string>) {
-    const imageSourceId = Array.from(selectedImageSourceIds || [])[0];
-    this.router.navigate([imageSourceId], { relativeTo: this.activatedRoute });
+  public onSelectedImageSourceIdChange(selectedImageSourceId: string) {
+    const urlTree = this.router.createUrlTree(['..', selectedImageSourceId], { relativeTo: this.activatedRoute });
+    this.store.dispatch(ImageSourcesActions.navigateToImageSourceView({ payload: urlTree.toString() }));
   }
-
 }

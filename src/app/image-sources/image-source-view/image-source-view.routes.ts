@@ -13,7 +13,7 @@ const routes: Routes = [
       },
       {
         path: 'images',
-        loadChildren: () => import('./image-source-images/image-source-images.module').then(m => m.ImageSourceImagesModule)
+        loadChildren: () => import('./image-source-images-view/image-source-images-view.module').then(m => m.ImageSourceImagesViewModule)
       },
       {
         path: 'setup',

@@ -10,6 +10,7 @@ export class UploadFile {
   userId: string;
   fileName: string;
   isUploaded: boolean;
-  locationData: LocationData;
-  uploadMeta: UploadMeta
+  sourceId?: string;
+  locationData?: LocationData;
+  uploadMeta?: UploadMeta
 }

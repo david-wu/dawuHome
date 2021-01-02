@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
+  Router,
+} from '@angular/router';
+import {
   Actions,
   createEffect,
   ofType,
@@ -35,8 +38,10 @@ import {
 } from '@src/app/store/index';
 import {
   getImageSourcesListVisible$,
+  getImageSourceViewTab$,
 } from './image-sources.selectors';
 import { ImageSourcesActions } from './image-sources.actions';
+import { ImageSourcesService } from '@src/app/image-sources/services';
 
 @Injectable()
 export class ImageSourcesEffects {
@@ -56,9 +61,7 @@ export class ImageSourcesEffects {
           return of(ImageSourcesActions.setImageSourcesList({ payload: [] }));
         }
         return this.firestore.getImageSources$(user).pipe(
-          map((imageSources) => {
-            return ImageSourcesActions.setImageSourcesList({ payload: imageSources });
-          })
+          map((imageSources) => ImageSourcesActions.setImageSourcesList({ payload: imageSources })),
         );
       }),
     )
@@ -84,9 +87,79 @@ export class ImageSourcesEffects {
     )
   });
 
+
+  public loadImagesBySourceId$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ImageSourcesActions.loadImagesBySourceId),
+      withLatestFrom(this.store$.pipe(select(getUser$))),
+      switchMap(([action, user]) => {
+        const sourceId = action.payload;
+        if (!sourceId || !user) {
+          return of(ImageSourcesActions.addImagesBySourceId({ payload: {} }));
+        }
+        return this.firestore.getFilesForSource$(sourceId).pipe(
+          map((myUploads) => {
+            return ImageSourcesActions.addImagesBySourceId({
+              payload: {
+                [sourceId]: myUploads,
+              },
+            });
+          })
+        );
+      }),
+    )
+  });
+
+  public uploadImageSourceFile$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ImageSourcesActions.uploadImageSourceFile),
+      withLatestFrom(this.store$.pipe(select(getUser$))),
+      switchMap(([action, user]) => {
+        const sourceId = action.selectedImageSourceId;
+        const file = action.file;
+        if (!sourceId || !user) {
+          return of(ImageSourcesActions.uploadImageSourceFileFailure({ payload: 'no user or source' }));
+        }
+        return from(this.imageSourcesService.uploadImageSourceFile(file, user, sourceId)).pipe(
+          map((uploadedImage) => {
+            return ImageSourcesActions.uploadImageSourceFileSuccess({
+              selectedImageSourceId: sourceId,
+            });
+          })
+        );
+      }),
+    );
+  });
+
+  public deleteUpload$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ImageSourcesActions.deleteUpload),
+      switchMap((action) => {
+        const uploadId = action.payload;
+        if (!uploadId) {
+          return of(ImageSourcesActions.deleteUploadFailure({ payload: 'no uploadId' }));
+        }
+        return from(this.imageSourcesService.deleteFile(uploadId)).pipe(
+          map((uploadedImage) => ImageSourcesActions.deleteUploadSuccess({ payload: uploadId })),
+        );
+      }),
+    );
+  });
+
+
+  public navigateToImageSourceView$: Observable<any> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ImageSourcesActions.navigateToImageSourceView),
+      withLatestFrom(this.store$.pipe(select(getImageSourceViewTab$))),
+      map(([action, viewTab]) => this.router.navigate([action.payload, viewTab])),
+    );
+  }, { dispatch: false });
+
   constructor(
     public store$: Store,
     public actions$: Actions,
     public firestore: FirebaseFirestoreService,
+    public imageSourcesService: ImageSourcesService,
+    public router: Router,
   ) {}
 }

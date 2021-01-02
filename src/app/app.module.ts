@@ -7,11 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserLoginModule } from '@src/app/user-login/user-login.module';
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
-import {
-  FirebaseAuthService,
-  FirebaseFirestoreService,
-  FirebaseStorageService,
-} from '@services/index';
+import { APP_SERVICES } from '@services/index';
 import {
   AuthEffects,
   authReducer,
@@ -31,9 +27,7 @@ import {
   providers: [
     Location,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    FirebaseAuthService,
-    FirebaseFirestoreService,
-    FirebaseStorageService,
+    ...APP_SERVICES,
   ],
   bootstrap: [AppComponent]
 })

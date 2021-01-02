@@ -13,6 +13,7 @@ import {
 import { ImageSourcesRoutingModule } from './image-sources.routes';
 import { ImageSourcesComponent } from './image-sources.component';
 import { ImageSourcesExplorerModule } from './image-sources-explorer/image-sources-explorer.module';
+import { IMAGE_SOURCES_SERVICES } from './services';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { ImageSourcesExplorerModule } from './image-sources-explorer/image-sourc
     ImageSourcesComponent,
   ],
   providers: [
+    ...IMAGE_SOURCES_SERVICES,
   ],
 })
 export class ImageSourcesModule { }

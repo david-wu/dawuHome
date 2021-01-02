@@ -1,24 +1,17 @@
 import {
   Component,
-  Input,
-  Output,
-  EventEmitter,
 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import {
   Store,
   select,
 } from '@ngrx/store';
-import { keyBy, map } from 'lodash';
 import {
   ActivatedRoute,
   Router,
   NavigationEnd,
 } from '@angular/router';
 
-import { User } from '@models/index';
-import { UploadFile } from '@photo-gallery/models/upload-file.model';
-import { FileGroup, FileType, File } from '@file-explorer/index';
 import {
   ImageSourcesActions,
   getSelectedImageSourceId$,
@@ -32,20 +25,31 @@ import {
 export class ImageSourceViewComponent {
 
   public selectedImageSourceId$: Observable<string>;
-  public sub;
+  public sub: Subscription;
 
   constructor(
     public store: Store,
     public activatedRoute: ActivatedRoute,
+    public router: Router,
   ) {
-    this.sub = this.activatedRoute.params.subscribe((params) => {
-      this.store.dispatch(ImageSourcesActions.setSelectedImageSourceId({ payload: params.imageSourceId }))
-    });
     this.selectedImageSourceId$ = this.store.pipe(select(getSelectedImageSourceId$));
   }
 
+  public ngOnInit() {
+    const initialTabName = (this.activatedRoute.firstChild.url as any).value[0].path;
+    this.store.dispatch(ImageSourcesActions.setImageSourceViewTab({ payload: initialTabName }));
+    this.sub = this.router.events.subscribe((routerEvent) => {
+      if (routerEvent instanceof NavigationEnd) {
+        const tabName = routerEvent.urlAfterRedirects.split('/')[3];
+        this.store.dispatch(ImageSourcesActions.setImageSourceViewTab({ payload: tabName }));
+      }
+    });
+  }
+
   public ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   public onFileUpload(files) {

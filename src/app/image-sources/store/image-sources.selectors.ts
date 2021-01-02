@@ -23,3 +23,14 @@ export const getSelectedImageSourceId$: MemoizedSelector<ImageSourcesState, stri
   getImageSourcesState$,
   (state: ImageSourcesState) => state.selectedImageSourceId,
 );
+
+export const getImagesBySourceId$: MemoizedSelector<ImageSourcesState, Record<string, any[]>> = createSelector(
+  getImageSourcesState$,
+  (state: ImageSourcesState) => state.imagesBySourceId,
+);
+
+export const getImageSourceViewTab$: MemoizedSelector<ImageSourcesState, string> = createSelector(
+  getImageSourcesState$,
+  (state: ImageSourcesState) => state.imageSourceViewTab,
+);
+
