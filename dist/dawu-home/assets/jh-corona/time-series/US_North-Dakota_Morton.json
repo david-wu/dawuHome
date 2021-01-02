@@ -2745,10 +2745,26 @@
   },
   {
     "dateStr": "12/30/20",
-    "cases": 4606,
+    "cases": 4621,
     "deaths": 87,
     "recovered": 0,
-    "new": 0,
+    "new": 15,
     "newDeaths": 0
+  },
+  {
+    "dateStr": "12/31/20",
+    "cases": 4629,
+    "deaths": 88,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "1/1/21",
+    "cases": 4638,
+    "deaths": 90,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 2
   }
 ]
