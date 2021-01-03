@@ -241,15 +241,15 @@
 @mixin light-theme {
   background-color: $eggshell-dark;
   &:hover:not([disabled]) {
-  background-color: $laurel-green;
+    background-color: $laurel-green;
   }
   &.active:not([disabled]) {
-  background-color: $olive-green;
-  color: $lightest-green;
+    background-color: $olive-green;
+    color: $lightest-green;
   }
   &[disabled] {
-  pointer-events: none;
-  opacity: 0.3;
+    pointer-events: none;
+    opacity: 0.3;
   }
 }
 

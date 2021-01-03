@@ -7,7 +7,8 @@ import {
   select,
 } from '@ngrx/store';
 import {
-  getSelectedImageSourceId$,
+  getSelectedImageSource$,
+  ImageSourcesActions,
 } from '@app/image-sources/store/index';
 
 @Component({
@@ -17,12 +18,20 @@ import {
 })
 export class ImageSourceOverviewComponent {
 
-  public selectedImageSourceId$: Observable<string>;
+  public selectedImageSource$: Observable<any>;
 
   constructor(
     public store: Store,
   ) {
-    this.selectedImageSourceId$ = this.store.pipe(select(getSelectedImageSourceId$));
+    this.selectedImageSource$ = this.store.pipe(select(getSelectedImageSource$));
+  }
+
+  public onLabelChange(imageSourceId: string, label: string) {
+    this.store.dispatch(ImageSourcesActions.updateImageSource({ imageSourceId, patch: { label } }));
+  }
+
+  public onDescriptionChange(imageSourceId: string, description: string) {
+    this.store.dispatch(ImageSourcesActions.updateImageSource({ imageSourceId, patch: { description } }));
   }
 
 }

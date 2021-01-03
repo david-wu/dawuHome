@@ -9,6 +9,7 @@ import {
 
 import {
   getSelectedImageSourceId$,
+  ImageSourcesActions,
 } from '@app/image-sources/store/index';
 
 @Component({
@@ -24,6 +25,10 @@ export class ImageSourceSetupComponent {
     public store: Store,
   ) {
     this.selectedImageSourceId$ = this.store.pipe(select(getSelectedImageSourceId$));
+  }
+
+  public generateImageSourceToken(selectedImageSourceId: string) {
+    this.store.dispatch(ImageSourcesActions.generateImageSourceToken({ payload: selectedImageSourceId }))
   }
 
   public getUsage(imageSourceId: string) {

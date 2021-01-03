@@ -51,7 +51,7 @@ export class MlFilesEffects {
           select(getUser$),
           filter(Boolean),
           switchMap((user: User) => {
-            const filesRef = this.firestoreService.firestore.collection(`users/${user.uid}/files`);
+            const filesRef = this.firestoreService.db.collection(`users/${user.uid}/files`);
             return from(filesRef.get()).pipe(
               map((fileRefs: any) => {
                 const files = fileRefs.docs.map((fileRef) => {
@@ -82,7 +82,7 @@ export class MlFilesEffects {
           select(getUser$),
           filter(Boolean),
           switchMap((user: User) => {
-            const fs = this.firestoreService.firestore;
+            const fs = this.firestoreService.db;
             const batch = fs.batch();
             const filesRef = fs.collection(`users/${user.uid}/files`);
 

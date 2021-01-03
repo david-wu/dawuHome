@@ -17,12 +17,12 @@ import { LocationData } from '@photo-gallery/models/index';
 })
 export class FirebaseFirestoreService {
 
-  public firestore = window.firebase.firestore();
+  public db = window.firebase.firestore();
   public firestoreTimestamp = window.firebase.firestore.FieldValue.serverTimestamp
 
   public getImageSources$(user: User): Observable<any[]> {
     const querySnapshot$ = Observable.create((observer) => {
-      return this.firestore
+      return this.db
         .collection('imageSources')
         .where('userId', '==', user.uid)
         .orderBy('updatedAt', 'desc')
@@ -47,7 +47,7 @@ export class FirebaseFirestoreService {
       createdAt: timestamp,
       updatedAt: timestamp,
     }
-    return from(this.firestore.collection('imageSources').add(imageSource));
+    return from(this.db.collection('imageSources').add(imageSource));
   }
 
   /**
@@ -56,7 +56,7 @@ export class FirebaseFirestoreService {
    * @return {Observable<User>}
    */
   public updateUser(user: User): Observable<User> {
-    const userDoc = this.firestore.doc(`users/${user.uid}`);
+    const userDoc = this.db.doc(`users/${user.uid}`);
     const promise = userDoc.set({ ...user });
     return from(promise).pipe(
       map(() => user),
@@ -69,7 +69,7 @@ export class FirebaseFirestoreService {
    * @param {User} user
    */
   public async unregisterFile(fileId: string) {
-    const uploadDoc = this.firestore.doc(`uploads/${fileId}`);
+    const uploadDoc = this.db.doc(`uploads/${fileId}`);
     return await uploadDoc.delete();
   }
 
@@ -84,7 +84,7 @@ export class FirebaseFirestoreService {
     const timestamp = this.firestoreTimestamp();
     uploadDoc.createdAt = timestamp;
     uploadDoc.updatedAt = timestamp;
-    return await this.firestore.collection('uploads').add(uploadDoc);
+    return await this.db.collection('uploads').add(uploadDoc);
   }
 
   /**
@@ -93,7 +93,7 @@ export class FirebaseFirestoreService {
    * @param {any} uploadMeta
    */
   public async registerFileUploaded(fileId: string, uploadMeta: any) {
-    const uploadIndexDoc = this.firestore.doc(`uploads/${fileId}`);
+    const uploadIndexDoc = this.db.doc(`uploads/${fileId}`);
     return await uploadIndexDoc.update({
       isUploaded: true,
       uploadMeta,
@@ -102,7 +102,7 @@ export class FirebaseFirestoreService {
 
   public getUploadedFiles$(user: User): Observable<any[]> {
     const querySnapshot$ = Observable.create((observer) => {
-      return this.firestore
+      return this.db
         .collection('uploads')
         .where('userId', '==', user.uid)
         .orderBy('updatedAt', 'desc')
@@ -123,7 +123,7 @@ export class FirebaseFirestoreService {
 
   public getFilesForSource$(sourceId: string): Observable<any[]> {
     const querySnapshot$ = Observable.create((observer) => {
-      return this.firestore
+      return this.db
         .collection('uploads')
         .where('sourceId', '==', sourceId)
         .orderBy('updatedAt', 'desc')
@@ -165,7 +165,7 @@ export class FirebaseFirestoreService {
     // const lastGeohashChar = walkingRange[walkingRange.length - 1];
     // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
     // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
-    const collection = this.firestore.collection(`uploads`)
+    const collection = this.db.collection(`uploads`)
       .where('locationData.s2Id', ">=", walkingRange[0])
       .where('locationData.s2Id', "<=", walkingRange[1]);
 

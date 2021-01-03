@@ -72,4 +72,11 @@ export class ImageSourcesService {
     return await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta);
   }
 
+  public updateImageSource(imageSourceId, patch) {
+    return this.firestore.db.collection('imageSources')
+      .doc(imageSourceId)
+      .update(patch)
+  }
+
+// db.collection("users").doc(doc.id).update({foo: "bar"});
 }

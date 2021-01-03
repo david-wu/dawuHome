@@ -146,14 +146,45 @@ export class ImageSourcesEffects {
     );
   });
 
-
   public navigateToImageSourceView$: Observable<any> = createEffect(() => {
     return this.actions$.pipe(
       ofType(ImageSourcesActions.navigateToImageSourceView),
       withLatestFrom(this.store$.pipe(select(getImageSourceViewTab$))),
-      map(([action, viewTab]) => this.router.navigate([action.payload, viewTab])),
+      map(([action, viewTab]) => this.router.navigate([
+        action.payload,
+        ...(viewTab ? [viewTab] : []),
+      ])),
     );
   }, { dispatch: false });
+
+  public updateImageSource$: Observable<any> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ImageSourcesActions.updateImageSource),
+      switchMap((action) => {
+        const { imageSourceId, patch } = action;
+        return from(this.imageSourcesService.updateImageSource(imageSourceId, patch)).pipe(
+          map((uploadedImage) => ImageSourcesActions.updateImageSourceSuccess({ imageSourceId, patch })),
+        );
+      }),
+    );
+  });
+
+  public generateImageSourceToken$: Observable<any> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ImageSourcesActions.generateImageSourceToken),
+      switchMap(async (action) => {
+        const imageSourceId = action.payload;
+        console.log('generateImageSourceToken', imageSourceId)
+        const generateImageSourceToken = window.firebase.functions().httpsCallable('generateImageSourceTokenTask');
+        const res = await generateImageSourceToken({ imageSourceId });
+        console.log('res', res)
+        return ImageSourcesActions.generateImageSourceTokenSuccess({ payload: imageSourceId });
+        // return from(this.imageSourcesService.updateImageSource(imageSourceId, patch)).pipe(
+        //   map((uploadedImage) => ImageSourcesActions.updateImageSourceSuccess({ imageSourceId, patch })),
+        // );
+      }),
+    );
+  });
 
   constructor(
     public store$: Store,

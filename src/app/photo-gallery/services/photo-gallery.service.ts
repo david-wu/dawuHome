@@ -22,7 +22,7 @@ import {
   ImageProcessingService,
 } from '@services/index';
 import { UserLocationService } from './user-location.service';
-console.log('ExifService', ExifService, ImageProcessingService)
+
 @Injectable()
 export class PhotoGalleryService {
 

@@ -3,6 +3,7 @@
   Add an agent to your app to use it as an image source.
 </p>
 <ng-container *ngIf="selectedImageSourceId$ | async as selectedImageSourceId">
+  <button class="generate-button" (click)="generateImageSourceToken(selectedImageSourceId)">generateImageSourceToken</button>
   <dwu-code-snippet [snippet]="getUsage(selectedImageSourceId)"></dwu-code-snippet>
   <dwu-code-snippet [snippet]="getSecretJson(selectedImageSourceId)"></dwu-code-snippet>
 </ng-container>

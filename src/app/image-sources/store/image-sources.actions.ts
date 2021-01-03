@@ -75,4 +75,31 @@ export class ImageSourcesActions {
     `${ImageSourcesActions.CATEGORY} NAVIGATE_TO_IMAGE_SOURCE_VIEW`,
     props<{ payload: string }>(),
   )
+
+
+  public static updateImageSource = createAction(
+    `${ImageSourcesActions.CATEGORY} UPDATE_IMAGE_SOURCE`,
+    props<{ imageSourceId: string, patch: any }>(),
+  )
+  public static updateImageSourceSuccess = createAction(
+    `${ImageSourcesActions.CATEGORY} UPDATE_IMAGE_SOURCE_SUCCESS`,
+    props<{ imageSourceId: string, patch: any }>(),
+  )
+  public static updateImageSourceFailure = createAction(
+    `${ImageSourcesActions.CATEGORY} UPDATE_IMAGE_SOURCE_FAILURE`,
+    props<{ imageSourceId: string, patch: any, error: string }>(),
+  )
+
+  public static generateImageSourceToken = createAction(
+    `${ImageSourcesActions.CATEGORY} GENERATE_IMAGE_SOURCE_TOKEN`,
+    props<{ payload: string }>(),
+  )
+  public static generateImageSourceTokenSuccess = createAction(
+    `${ImageSourcesActions.CATEGORY} GENERATE_IMAGE_SOURCE_TOKEN_SUCCESS`,
+    props<{ payload: string }>(),
+  )
+  public static generateImageSourceTokenFailure = createAction(
+    `${ImageSourcesActions.CATEGORY} GENERATE_IMAGE_SOURCE_TOKEN_FAILURE`,
+    props<{ payload: string }>(),
+  )
 }
