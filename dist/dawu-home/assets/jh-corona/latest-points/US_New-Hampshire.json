@@ -1,62 +1,62 @@
 {
   "Belknap": {
-    "dateStr": "1/1/21",
-    "cases": 1934,
-    "deaths": 47,
+    "dateStr": "1/2/21",
+    "cases": 1981,
+    "deaths": 49,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 47,
+    "newDeaths": 2
   },
   "Carroll": {
-    "dateStr": "1/1/21",
-    "cases": 905,
+    "dateStr": "1/2/21",
+    "cases": 921,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 16,
     "newDeaths": 0
   },
   "Cheshire": {
-    "dateStr": "1/1/21",
-    "cases": 1263,
+    "dateStr": "1/2/21",
+    "cases": 1319,
     "deaths": 7,
     "recovered": 0,
-    "new": 0,
+    "new": 56,
     "newDeaths": 0
   },
   "Coos": {
-    "dateStr": "1/1/21",
-    "cases": 662,
+    "dateStr": "1/2/21",
+    "cases": 694,
     "deaths": 15,
     "recovered": 0,
-    "new": 0,
+    "new": 32,
     "newDeaths": 0
   },
   "Grafton": {
-    "dateStr": "1/1/21",
-    "cases": 1127,
+    "dateStr": "1/2/21",
+    "cases": 1177,
     "deaths": 9,
     "recovered": 0,
-    "new": 0,
+    "new": 50,
     "newDeaths": 0
   },
   "Hillsborough": {
-    "dateStr": "1/1/21",
-    "cases": 17624,
-    "deaths": 435,
+    "dateStr": "1/2/21",
+    "cases": 17858,
+    "deaths": 441,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 234,
+    "newDeaths": 6
   },
   "Merrimack": {
-    "dateStr": "1/1/21",
-    "cases": 4793,
-    "deaths": 64,
+    "dateStr": "1/2/21",
+    "cases": 4908,
+    "deaths": 65,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 115,
+    "newDeaths": 1
   },
   "Out of NH": {
-    "dateStr": "1/1/21",
+    "dateStr": "1/2/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -64,35 +64,35 @@
     "newDeaths": 0
   },
   "Rockingham": {
-    "dateStr": "1/1/21",
-    "cases": 10918,
-    "deaths": 141,
+    "dateStr": "1/2/21",
+    "cases": 11130,
+    "deaths": 142,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 212,
+    "newDeaths": 1
   },
   "Strafford": {
-    "dateStr": "1/1/21",
-    "cases": 3489,
+    "dateStr": "1/2/21",
+    "cases": 3620,
     "deaths": 31,
     "recovered": 0,
-    "new": 0,
+    "new": 131,
     "newDeaths": 0
   },
   "Sullivan": {
-    "dateStr": "1/1/21",
-    "cases": 430,
+    "dateStr": "1/2/21",
+    "cases": 451,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 21,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "1/1/21",
-    "cases": 883,
+    "dateStr": "1/2/21",
+    "cases": 1147,
     "deaths": 64,
     "recovered": 0,
-    "new": 0,
+    "new": 264,
     "newDeaths": 0
   }
 }
