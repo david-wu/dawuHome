@@ -167,28 +167,32 @@
   }
 
   .page-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
+    @include page-container;
+  }
+}
 
-    .left-side {
-      position: relative;
-      flex: 1 1 0;
-      overflow: hidden;
-      max-width: 27.5%;
-      min-width: 20rem;
-      .expander {
-        display: none;
-      }
-    }
-    .right-side {
-      flex: 1 1 0;
-      overflow: auto;
-      position: relative;
+@mixin page-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .left-side {
+    position: relative;
+    flex: 1 1 0;
+    overflow: hidden;
+    max-width: 27.5%;
+    min-width: 20rem;
+    .expander {
+      display: none;
     }
   }
-
+  .right-side {
+    flex: 1 1 0;
+    overflow: auto;
+    position: relative;
+  }
 }
+
 @mixin light-mini-button {
   @include light-theme;
   @include button-xs;
@@ -346,5 +350,18 @@
     flex: 0 1 auto;
     margin: 0 0.25rem;
     border-radius: 4px 4px 0 0;
+  }
+}
+
+@mixin full-file-explorer-container {
+  background-color: $eggshell-darker;
+  display: flex;
+  flex-direction: column;
+  .control-button {
+    flex: 0 0 auto;
+    @include light-mini-button;
+  }
+  .file-explorer {
+    flex: 1 1 0;
   }
 }

@@ -76,7 +76,6 @@ export class ImageSourcesActions {
     props<{ payload: string }>(),
   )
 
-
   public static updateImageSource = createAction(
     `${ImageSourcesActions.CATEGORY} UPDATE_IMAGE_SOURCE`,
     props<{ imageSourceId: string, patch: any }>(),
@@ -102,4 +101,18 @@ export class ImageSourcesActions {
     `${ImageSourcesActions.CATEGORY} GENERATE_IMAGE_SOURCE_TOKEN_FAILURE`,
     props<{ payload: string }>(),
   )
+
+  public static loadImageSourceTokens = createAction(
+    `${ImageSourcesActions.CATEGORY} LOAD_IMAGE_SOURCE_TOKENS`,
+    props<{ imageSourceId: string }>(),
+  )
+  public static loadImageSourceTokensSuccess = createAction(
+    `${ImageSourcesActions.CATEGORY} LOAD_IMAGE_SOURCE_TOKENS_SUCCESS`,
+    props<{ imageSourceId: string, imageSourceTokens: any[] }>(),
+  )
+  public static loadImageSourceTokensFailure = createAction(
+    `${ImageSourcesActions.CATEGORY} LOAD_IMAGE_SOURCE_TOKENS_FAILURE`,
+    props<{ imageSourceId: string }>(),
+  )
+
 }

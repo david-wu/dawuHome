@@ -4,7 +4,9 @@ import {
   uniqueId,
   uniq,
   values,
+  keyBy,
   mapValues,
+  map,
   some,
 } from 'lodash';
 import { FileType } from './file-type.enum';
@@ -16,6 +18,13 @@ export class FileGroup {
   public filesById: Record<string, File> = {};
   public closedFileIds: Set<string> = new Set();
   public selectedFileIds: Set<string> = new Set<string>();
+
+  public static createWithRoot(rootId: string) {
+    const fileGroup = new FileGroup();
+    const root = fileGroup.createFile({ label: 'World' });
+    fileGroup.setRootFile(root);
+    return fileGroup;
+  }
 
   constructor(public seed = uniqueId("dfg_")) {}
 
@@ -231,12 +240,22 @@ export class FileGroup {
    * getUniqueId
    * @return {string}
    */
-   public getUniqueId(): string {
-     while(true) {
-       const id = uniqueId(this.seed);
-       if (!this.filesById[id]) {
-         return id;
-       }
-     }
-   }
- }
+  public getUniqueId(): string {
+    while(true) {
+      const id = uniqueId(this.seed);
+      if (!this.filesById[id]) {
+        return id;
+      }
+    }
+  }
+
+  /**
+   * setRootChildren
+   */
+  public setRootChildren(files: File[]) {
+    const rootFile = this.filesById[this.rootFileId];
+    rootFile.childIds = map(files, 'id');
+    this.filesById = keyBy([rootFile, ...files], 'id');
+  }
+
+}

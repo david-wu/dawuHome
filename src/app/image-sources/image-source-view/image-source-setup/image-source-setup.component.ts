@@ -9,6 +9,7 @@ import {
 
 import {
   getSelectedImageSourceId$,
+  getIsSelectedSourceGeneratingToken$,
   ImageSourcesActions,
 } from '@app/image-sources/store/index';
 
@@ -20,11 +21,15 @@ import {
 export class ImageSourceSetupComponent {
 
   public selectedImageSourceId$: Observable<string>;
+  public isGeneratingToken$: Observable<boolean>;
+  public filterStr: string;
+  public selectedToken: any;
 
   constructor(
     public store: Store,
   ) {
     this.selectedImageSourceId$ = this.store.pipe(select(getSelectedImageSourceId$));
+    this.isGeneratingToken$ = this.store.pipe(select(getIsSelectedSourceGeneratingToken$));
   }
 
   public generateImageSourceToken(selectedImageSourceId: string) {
@@ -45,11 +50,16 @@ piper.send(imageBlob);
   public getSecretJson(imageSourceId: string) {
     const secret =
 `{
-  "id": "${imageSourceId}",
-  "authToken": "authToken",
+  "sourceId": "${imageSourceId}",
+  "token": "${this.selectedToken && this.selectedToken.value}",
 }
 `;
     return secret
+  }
+
+  public onSelectToken(token) {
+    console.log('token', token);
+    this.selectedToken = token;
   }
 
 }

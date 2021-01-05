@@ -6,6 +6,8 @@ export interface ImageSourcesState  {
   selectedImageSourceId: string,
   imagesBySourceId: Record<string, any[]>,
   imageSourceViewTab: string,
+  isGeneratingTokenByImageSource: Record<string, boolean>,
+  imageSourceTokensByImageSource: Record<string, any[]>,
 }
 
 export const initialImageSourcesState = {
@@ -14,4 +16,6 @@ export const initialImageSourcesState = {
   selectedImageSourceId: undefined,
   imagesBySourceId: {},
   imageSourceViewTab: undefined,
+  isGeneratingTokenByImageSource: {},
+  imageSourceTokensByImageSource: {},
 };

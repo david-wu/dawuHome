@@ -172,16 +172,24 @@ export class ImageSourcesEffects {
   public generateImageSourceToken$: Observable<any> = createEffect(() => {
     return this.actions$.pipe(
       ofType(ImageSourcesActions.generateImageSourceToken),
-      switchMap(async (action) => {
+      switchMap((action) => {
         const imageSourceId = action.payload;
-        console.log('generateImageSourceToken', imageSourceId)
-        const generateImageSourceToken = window.firebase.functions().httpsCallable('generateImageSourceTokenTask');
-        const res = await generateImageSourceToken({ imageSourceId });
-        console.log('res', res)
-        return ImageSourcesActions.generateImageSourceTokenSuccess({ payload: imageSourceId });
-        // return from(this.imageSourcesService.updateImageSource(imageSourceId, patch)).pipe(
-        //   map((uploadedImage) => ImageSourcesActions.updateImageSourceSuccess({ imageSourceId, patch })),
-        // );
+        return from(this.imageSourcesService.generateImageSourceToken(imageSourceId)).pipe(
+          map(() => ImageSourcesActions.generateImageSourceTokenSuccess({ payload: imageSourceId })),
+          catchError(() => of(ImageSourcesActions.generateImageSourceTokenFailure({ payload: imageSourceId }))),
+        );
+      }),
+    );
+  });
+
+  public loadImageSourceTokens$: Observable<any> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ImageSourcesActions.loadImageSourceTokens),
+      switchMap((action) => {
+        const imageSourceId = action.imageSourceId;
+        return from(this.imageSourcesService.loadImageSourceTokens(imageSourceId)).pipe(
+          map((imageSourceTokens: any[]) => ImageSourcesActions.loadImageSourceTokensSuccess({ imageSourceId, imageSourceTokens })),
+        );
       }),
     );
   });

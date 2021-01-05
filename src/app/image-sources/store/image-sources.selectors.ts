@@ -48,3 +48,19 @@ export const getImageSourceViewTab$: MemoizedSelector<ImageSourcesState, string>
   (state: ImageSourcesState) => state.imageSourceViewTab,
 );
 
+export const getIsGeneratingTokenByImageSource$: MemoizedSelector<ImageSourcesState, Record<string, boolean>> = createSelector(
+  getImageSourcesState$,
+  (state: ImageSourcesState) => state.isGeneratingTokenByImageSource,
+);
+
+export const getIsSelectedSourceGeneratingToken$: MemoizedSelector<ImageSourcesState, boolean> = createSelector(
+  getSelectedImageSourceId$,
+  getIsGeneratingTokenByImageSource$,
+  (sourceId: string, isGeneratingTokenBySource: Record<string, boolean>) => isGeneratingTokenBySource[sourceId],
+);
+
+export const getImageSourceTokensByImageSource$: MemoizedSelector<ImageSourcesState, Record<string, any[]>> = createSelector(
+  getImageSourcesState$,
+  (state: ImageSourcesState) => state.imageSourceTokensByImageSource,
+);
+

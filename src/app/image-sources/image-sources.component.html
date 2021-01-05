@@ -7,16 +7,17 @@
     [class.expanded]="leftSideExpanded"
   >
     <div
-      class="create-source-button"
+      class="control-button"
       (click)="onCreateSource()"
     >
-      + Create Source
+      + New Source
     </div>
     <dwu-search-input
       [(searchText)]="filterStr"
       [placeholder]="'search..'"
     ></dwu-search-input>
     <dwu-image-sources-explorer
+      class="file-explorer"
       [imageSources]="imageSourcesList$ | async"
       [filterStr]="filterStr"
       [selectedImageSourceId]="selectedImageSourceId$ | async"

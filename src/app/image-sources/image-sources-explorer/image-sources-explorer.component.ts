@@ -28,13 +28,8 @@ export class ImageSourcesExplorerComponent {
   @Output() selectedImageSourceIdChange = new EventEmitter<string>();
 
   public selectedImageSourceIds: Set<string>;
-  public fileGroup: FileGroup = new FileGroup();
+  public fileGroup: FileGroup = FileGroup.createWithRoot('ROOT');
   public readonly rootFileId = 'ROOT';
-
-  constructor() {
-    const root = this.fileGroup.createFile({ label: 'World' });
-    this.fileGroup.setRootFile(root);
-  }
 
   public ngOnChanges(changes) {
     if (changes.imageSources) {
@@ -46,15 +41,13 @@ export class ImageSourcesExplorerComponent {
   }
 
   public onImageSourcesChanges(imageSources) {
-    const rootFile = this.fileGroup.filesById[this.fileGroup.rootFileId];
     const files = map(imageSources, (imageSource) => {
       return Object.assign(new File(), {
         id: imageSource.id,
         label: imageSource.label || imageSource.id,
       });
     });
-    rootFile.childIds = map(files, 'id');
-    this.fileGroup.filesById = keyBy([rootFile, ...files], 'id');
+    this.fileGroup.setRootChildren(files);
   }
 
   public onSelectedFileIdsChange(selectedFileIds: Set<string>) {

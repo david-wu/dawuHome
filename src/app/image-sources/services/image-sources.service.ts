@@ -34,6 +34,17 @@ export class ImageSourcesService {
   ) {}
 
   /**
+   * generateImageSourceToken
+   * @param {string} imageSourceId
+   * @param {User}   user
+   */
+  public async generateImageSourceToken(imageSourceId: string) {
+    const generateToken = window.firebase.functions().httpsCallable('generateImageSourceTokenTask');
+    // imageSourceId = 'bOuFUgQtaPzYTUiBQHaI';
+    return await generateToken({ imageSourceId });
+  }
+
+  /**
    * deleteFile
    * @param {string} uploadFileId
    * @param {User}   user
@@ -76,6 +87,32 @@ export class ImageSourcesService {
     return this.firestore.db.collection('imageSources')
       .doc(imageSourceId)
       .update(patch)
+  }
+
+  public loadImageSourceTokens(imageSourceId: string): Observable<any[]> {
+    const querySnapshot$ = Observable.create((observer) => {
+      return this.firestore.db
+        .collection('imageSources')
+        .doc(imageSourceId)
+        .collection('accessTokens')
+        .orderBy('createdAt', 'desc')
+        .onSnapshot(observer);
+      // return this.db
+      //   .collection('uploads')
+      //   .where('userId', '==', user.uid)
+      //   .orderBy('updatedAt', 'desc')
+      //   .onSnapshot(observer);
+    });
+    return querySnapshot$.pipe(
+      map((querySnapshot: any) => {
+        return querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
+        });
+      }),
+    );
   }
 
 // db.collection("users").doc(doc.id).update({foo: "bar"});

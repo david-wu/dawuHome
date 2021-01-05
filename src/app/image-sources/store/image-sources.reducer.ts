@@ -62,6 +62,44 @@ const reducer: ActionReducer<ImageSourcesState> = createReducer(
       imageSourceViewTab: action.payload,
     };
   }),
+
+  on(ImageSourcesActions.generateImageSourceToken, (state: ImageSourcesState, action: any) => {
+    return {
+      ...state,
+      isGeneratingTokenByImageSource: {
+        ...state.isGeneratingTokenByImageSource,
+        [action.payload]: true,
+      },
+    };
+  }),
+  on(ImageSourcesActions.generateImageSourceTokenSuccess, (state: ImageSourcesState, action: any) => {
+    return {
+      ...state,
+      isGeneratingTokenByImageSource: {
+        ...state.isGeneratingTokenByImageSource,
+        [action.payload]: false,
+      },
+    };
+  }),
+  on(ImageSourcesActions.generateImageSourceTokenFailure, (state: ImageSourcesState, action: any) => {
+    return {
+      ...state,
+      isGeneratingTokenByImageSource: {
+        ...state.isGeneratingTokenByImageSource,
+        [action.payload]: false,
+      },
+    };
+  }),
+
+  on(ImageSourcesActions.loadImageSourceTokensSuccess, (state: ImageSourcesState, action: any) => {
+    return {
+      ...state,
+      imageSourceTokensByImageSource: {
+        ...state.imageSourceTokensByImageSource,
+        [action.imageSourceId]: action.imageSourceTokens,
+      },
+    }
+  })
 );
 
 export function imageSourcesReducer(state: ImageSourcesState, action: Action): ImageSourcesState {
