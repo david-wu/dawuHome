@@ -41,8 +41,10 @@ export class InputStringEditorComponent {
     }
 
     public onSaveEdit() {
-      this.str = this.editStr;
-      this.strChange.emit(this.editStr);
+      if (this.str !== this.editStr) {
+        this.str = this.editStr;
+        this.strChange.emit(this.editStr);
+      }
       this.isEditing = false;
     }
 

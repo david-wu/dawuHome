@@ -1,6 +1,9 @@
-<h3>Setup Agent</h3>
+<h3>Setup Agents</h3>
 <p>
-  Image source tokens grant access to the image source, make sure not to share these tokens in public repositories.  The Picture Piper Agent uses a token to push events to this image source.
+  Image source tokens grant write access to the image source, make sure not to share these tokens in public repositories.  The Picture Piper Agent uses a token to push events to this image source.
+</p>
+<p>
+  I recommend a separate token for each device contributing to this source.  This allows for distinguishing images between devices, and revoking access for a single device.
 </p>
 <div class="helper-container">
   <ng-container *ngIf="selectedImageSourceId$ | async as selectedImageSourceId">

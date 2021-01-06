@@ -5,9 +5,10 @@
   height: 100%;
   width: 100%;
   p {
-    margin: 1rem 0;
+    margin: 1rem 0 0;
   }
   .helper-container {
+    margin-top: 1rem;
     flex: 1 1 0;
     width: 100%;
     min-height: 15rem;
