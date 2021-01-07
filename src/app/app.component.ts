@@ -10,7 +10,7 @@ import { map, filter } from 'rxjs/operators';
 })
 export class AppComponent {
 
-  public readonly pathsWithNoNav = new Set(['photos', 'image-sources']);
+  public readonly pathsWithNoNav = new Set(['photos', 'image-sources', 'pp']);
   public navVisible$: Observable<boolean>;
 
   constructor(

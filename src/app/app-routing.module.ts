@@ -28,7 +28,11 @@ const routes: Routes = [
   },
   {
     path: 'image-sources',
-    loadChildren: () => import('./image-sources/image-sources.module').then(m => m.ImageSourcesModule)
+    loadChildren: () => import('./picture-piper/image-sources/image-sources.module').then(m => m.ImageSourcesModule)
+  },
+  {
+    path: 'pp',
+    loadChildren: () => import('./picture-piper/picture-piper.module').then(m => m.PicturePiperModule)
   },
   {
     path: '',

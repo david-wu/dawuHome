@@ -40,6 +40,27 @@ export class FirebaseFirestoreService {
     );
   }
 
+  public getImageStreams$(user: User): Observable<any[]> {
+    const querySnapshot$ = Observable.create((observer) => {
+      return this.db
+        .collection('imageStreams')
+        .where('userId', '==', user.uid)
+        .orderBy('updatedAt', 'desc')
+        .onSnapshot(observer);
+    });
+    return querySnapshot$.pipe(
+      map((querySnapshot: any) => {
+        return querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
+        });
+      }),
+    );
+  }
+
+
   public createImageSource(user: User): Observable<any> {
     const timestamp = this.firestoreTimestamp();
     const imageSource = {
@@ -48,6 +69,16 @@ export class FirebaseFirestoreService {
       updatedAt: timestamp,
     }
     return from(this.db.collection('imageSources').add(imageSource));
+  }
+
+  public createImageStream(user: User): Observable<any> {
+    const timestamp = this.firestoreTimestamp();
+    const imageStream = {
+      userId: user.uid,
+      createdAt: timestamp,
+      updatedAt: timestamp,
+    }
+    return from(this.db.collection('imageStreams').add(imageStream));
   }
 
   /**
@@ -122,6 +153,27 @@ export class FirebaseFirestoreService {
   }
 
   public getFilesForSource$(sourceId: string): Observable<any[]> {
+    const querySnapshot$ = Observable.create((observer) => {
+      return this.db
+        .collection('uploads')
+        .where('sourceId', '==', sourceId)
+        .orderBy('updatedAt', 'desc')
+        .onSnapshot(observer);
+    });
+
+    return querySnapshot$.pipe(
+      map((querySnapshot: any) => {
+        return querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
+        });
+      }),
+    );
+  }
+
+  public getFilesForStream$(sourceId: string): Observable<any[]> {
     const querySnapshot$ = Observable.create((observer) => {
       return this.db
         .collection('uploads')

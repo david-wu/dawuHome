@@ -30,6 +30,7 @@
         "src/*"
       ],
       "@app/*": ["src/app/*"],
+      "@pp/*": ["src/app/picture-piper/*"],
       "@common/*": ["src/app/common/*"],
       "@file-explorer/*": ["src/app/common/file-explorer/*"],
       "@photo-gallery/*": ["src/app/photo-gallery/*"],

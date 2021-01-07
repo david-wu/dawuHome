@@ -1,0 +1,33 @@
+<div
+  *ngIf="user$ | async; else loginTemplate"
+  class="page-container"
+>
+  <div
+    class="left-side"
+    [class.expanded]="leftSideExpanded"
+  >
+    <div
+      class="control-button"
+      (click)="onCreateSource()"
+    >
+      + New Stream
+    </div>
+    <dwu-search-input
+      [(searchText)]="filterStr"
+      [placeholder]="'search..'"
+    ></dwu-search-input>
+    <!-- <dwu-image-sources-explorer
+      class="file-explorer"
+      [imageSources]="imageSourcesList$ | async"
+      [filterStr]="filterStr"
+      [selectedImageSourceId]="selectedImageSourceId$ | async"
+      (selectedImageSourceIdChange)="onSelectedImageSourceIdChange($event)"
+    ></dwu-image-sources-explorer> -->
+  </div>
+  <div class="right-side">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<ng-template #loginTemplate>
+  login
+</ng-template>

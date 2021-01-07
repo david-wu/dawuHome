@@ -65,6 +65,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      &.pale {
+        opacity: 0.5;
+      }
       .control-icon {
         font-size: calc(100% - 3px);
       }

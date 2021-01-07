@@ -18,6 +18,7 @@ export class InputStringEditorComponent {
     @Output() strChange: EventEmitter<string> = new EventEmitter<string>();
     @Input() placeholder: string = 'Enter Text..';
     @ViewChild('stringInput', { static: true }) stringInput: ElementRef<any>;
+    @ViewChild('editEl', { static: true }) editEl: ElementRef<any>;
 
     public isEditing: boolean = false;
     public editStr: string = '';
@@ -27,7 +28,12 @@ export class InputStringEditorComponent {
         if (e && e.keyCode === 13) {
           this.onSaveEdit();
         }
-      })
+      });
+      this.stringInput.nativeElement.addEventListener('blur', ()=> {
+        if (this.str === this.editStr) {
+          this.onCancelEdit();
+        }
+      });
     }
 
     public onEdit() {
@@ -50,5 +56,9 @@ export class InputStringEditorComponent {
 
     public onStrChange(nextStr) {
       this.editStr = nextStr;
+    }
+
+    public preventBlur(e) {
+      e.preventDefault();
     }
 }

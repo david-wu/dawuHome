@@ -15,6 +15,7 @@
     <div
       class="control-button"
       (click)="onSaveEdit()"
+      (mousedown)="preventBlur($event)"
     >
       <span class="material-icons control-icon">
         save
@@ -23,6 +24,7 @@
     <div
       class="control-button"
       (click)="onCancelEdit()"
+      (mousedown)="preventBlur($event)"
     >
       <span class="material-icons control-icon">
         cancel
@@ -35,7 +37,7 @@
   <div class="string-text" [class.is-placeholder]="!str">{{ str || placeholder }}</div>
   <div class="control-buttons">
     <div
-      class="control-button"
+      class="control-button pale"
     >
       <span class="material-icons control-icon">
         create

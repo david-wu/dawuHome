@@ -1,0 +1,47 @@
+@import 'mixins';
+
+:host {
+  @include top-nav-page;
+
+  dwu-file-explorer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.top-nav {
+  // background-color: $black-olive;
+  background-color: $eggshell-darker;
+  // height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  .nav-items-container {
+    // @include nav-items-container;
+    // background-color: $eggshell-darker;
+  }
+}
+
+            .view-tabs {
+                // padding: 0 0.5rem;
+                display: flex;
+                .view-tab {
+                    @include light-mini-button;
+                    // margin-left: 0.5rem;
+                    padding: 0.25rem 1rem;
+                    // padding: 0.25rem 0.75rem;
+                    // border-radius: 4px 4px 0 0;
+                    // border: 1px solid $moss-green;
+                    border-bottom: none;
+                    flex: 0 0 auto;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .star {
+                        margin-right: 0.25rem;
+                    }
+                }
+            }
