@@ -1,18 +1,5 @@
-<!-- <div
-  *ngIf="user$ | async; else loginTemplate"
-  class="page-container"
->
-  <div class="right-side">
-    <router-outlet></router-outlet>
-  </div>
-</div>
-<ng-template #loginTemplate>
-  login
-</ng-template>
-
- -->
 <div class="top-nav">
-  <div class="page-title-container">
+  <div class="page-title-container" [routerLink]="['/pp']">
     <div>Picture Piper</div>
   </div>
   <div class="right-section">
@@ -21,7 +8,7 @@
         class="nav-item"
         [routerLinkActive]="['active']"
         [routerLink]="['/pp/image-sources']"
-      >Image Sources</div>
+      >Sources</div>
       <div
         class="nav-item"
         [routerLinkActive]="['active']"
@@ -48,6 +35,9 @@
     <h3>
       Welcome to the Picture Piper Platform!
     </h3>
+    <p>
+      Please sign in to continue.
+    </p>
     <dwu-user-login></dwu-user-login>
   </div>
 </ng-template>

@@ -3,11 +3,12 @@ import {
   Store,
   select,
 } from '@ngrx/store';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   ActivatedRoute,
   Router,
+  NavigationEnd,
 } from '@angular/router';
 
 import {
@@ -31,7 +32,7 @@ export class ImageSourcesComponent {
 
   public filterStr: string = '';
   public leftSideExpanded: boolean = false;
-  public sub: Subscription;
+  public sub;
 
   constructor(
     public store: Store,
@@ -41,20 +42,21 @@ export class ImageSourcesComponent {
     this.user$ = this.store.pipe(select(getUser$));
     this.imageSourcesList$ = this.store.pipe(select(getImageSourcesList$));
     this.selectedImageSourceId$ = this.store.pipe(select(getSelectedImageSourceId$));
+
+    this.loadInUrlState(this.router.url);
+    this.sub = this.router.events.subscribe((routerEvent) => {
+      if (routerEvent instanceof NavigationEnd) {
+        this.loadInUrlState(routerEvent.url);
+      }
+    });
   }
 
   public ngOnInit() {
     this.store.dispatch(ImageSourcesActions.setImageSourcesListVisible({ payload: true }));
-    this.sub = this.activatedRoute.params.subscribe((params) => {
-      this.store.dispatch(ImageSourcesActions.setSelectedImageSourceId({ payload: params.imageSourceId }))
-    });
   }
 
   public ngOnDestroy() {
     this.store.dispatch(ImageSourcesActions.setImageSourcesListVisible({ payload: false }));
-    if (this.sub) {
-      this.sub.unsubscribe()
-    }
   }
 
   public onCreateSource() {
@@ -64,5 +66,13 @@ export class ImageSourcesComponent {
   public onSelectedImageSourceIdChange(selectedImageSourceId: string) {
     const urlTree = this.router.createUrlTree([selectedImageSourceId], { relativeTo: this.activatedRoute });
     this.store.dispatch(ImageSourcesActions.navigateToImageSourceView({ payload: urlTree.toString() }));
+  }
+
+  public loadInUrlState(url: string) {
+    const urlArr = url.split('/');
+    const imageSourceId = urlArr[3] === 'intro' ? undefined : urlArr[3];
+    const tabName = urlArr[4];
+    this.store.dispatch(ImageSourcesActions.setSelectedImageSourceId({ payload: imageSourceId }))
+    this.store.dispatch(ImageSourcesActions.setImageSourceViewTab({ payload: tabName }));
   }
 }

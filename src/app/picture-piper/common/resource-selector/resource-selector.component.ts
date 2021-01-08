@@ -1,0 +1,65 @@
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { Observable } from 'rxjs';
+import {
+  Store,
+  select,
+} from '@ngrx/store';
+import { keyBy, map } from 'lodash';
+
+import { User } from '@models/index';
+import { UploadFile } from '@photo-gallery/models/upload-file.model';
+import { FileGroup, FileType, File } from '@file-explorer/index';
+
+@Component({
+  selector: 'dwu-resource-selector',
+  templateUrl: './resource-selector.component.html',
+  styleUrls: ['./resource-selector.component.scss']
+})
+export class ResourceSelectorComponent {
+
+  @Input() resources: any[];
+  @Input() filterStr: string = '';
+  @Input() selectedResourceId: any;
+  @Output() selectedResourceIdChange = new EventEmitter<string>();
+
+  @Input() isMultiSelect: boolean;
+  @Input() selectedResourceIds: Set<string>;
+  @Output() selectedResourceIdsChange = new EventEmitter<Set<string>>();
+
+  // public selectedResourceIds: Set<string>;
+  public fileGroup: FileGroup = FileGroup.createWithRoot('ROOT');
+  public readonly rootFileId = 'ROOT';
+
+  public ngOnChanges(changes) {
+    if (changes.resources) {
+      this.onResourcesChanges(this.resources);
+    }
+    if (changes.selectedResourceId) {
+      this.selectedResourceIds = this.selectedResourceId ? new Set([this.selectedResourceId]) : new Set();
+    }
+  }
+
+  public onResourcesChanges(resources) {
+    const files = map(resources, (resource) => {
+      return Object.assign(new File(), {
+        id: resource.id,
+        label: resource.label || resource.id,
+      });
+    });
+    this.fileGroup.setRootChildren(files);
+  }
+
+  public onSelectedFileIdsChange(selectedFileIds: Set<string>) {
+    if (this.isMultiSelect) {
+      this.selectedResourceIdsChange.emit(selectedFileIds);
+    }
+    const selectedFileId = Array.from(selectedFileIds || [])[0];
+    this.selectedResourceIdChange.emit(selectedFileId);
+  }
+
+}

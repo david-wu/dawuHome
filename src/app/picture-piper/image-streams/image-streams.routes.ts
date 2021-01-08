@@ -7,26 +7,21 @@ const routes: Routes = [
     path: '',
     component: ImageStreamsComponent,
     children: [
-      // {
-      //   path: 'intro',
-      //   loadChildren: () => import('./image-streams-intro/image-streams-intro.module').then(m => m.ImageSourceIntroModule),
-      // },
-      // {
-      //   path: ':imageSourceId',
-      //   loadChildren: () => import('./image-source-view/image-source-view.module').then(m => m.ImageSourceViewModule)
-      // },
-      // {
-      //   path: '',
-      //   pathMatch: 'full',
-      //   redirectTo: 'intro',
-      // },
+      {
+        path: 'intro',
+        loadChildren: () => import('@app/picture-piper/common/image-streams-intro/image-streams-intro.module').then(m => m.ImageStreamsIntroModule),
+      },
+      {
+        path: ':imageStreamId',
+        loadChildren: () => import('./image-stream-view/image-stream-view.module').then(m => m.ImageStreamViewModule)
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'intro',
+      },
     ],
   },
-  // {
-  //   path: '',
-  //   pathMatch: 'full',
-  //   redirectTo: 'intro',
-  // },
 ];
 
 @NgModule({

@@ -12,14 +12,14 @@ import {
 } from './store/index';
 import { ImageStreamsRoutingModule } from './image-streams.routes';
 import { ImageStreamsComponent } from './image-streams.component';
-// import { ImageStreamsExplorerModule } from './image-streams-explorer/image-streams-explorer.module';
 import { IMAGE_STREAMS_SERVICES } from './services';
+import { ResourceSelectorModule } from '@pp/common/resource-selector/resource-selector.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SearchInputModule,
-    // ImageStreamsExplorerModule,
+    ResourceSelectorModule,
     ImageStreamsRoutingModule,
     UserLoginModule,
     StoreModule.forFeature('imageStreams', imageStreamsReducer),

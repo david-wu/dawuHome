@@ -357,9 +357,24 @@
   background-color: $eggshell-darker;
   display: flex;
   flex-direction: column;
-  .control-button {
+  .control-buttons {
     flex: 0 0 auto;
-    @include light-mini-button;
+    display: flex;
+    align-items: center;
+    .wide-button {
+      flex: 1 1 0;
+      @include light-mini-button;
+    }
+    .icon-button {
+      flex: 0 0 auto;
+      @include light-mini-button;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      .material-icons {
+        font-size: 1rem;
+      }
+    }
   }
   .file-explorer {
     flex: 1 1 0;

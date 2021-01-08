@@ -39,6 +39,7 @@ import {
 import {
   getImageSourcesListVisible$,
   getImageSourceViewTab$,
+  getSelectedImageSourceId$,
 } from './image-sources.selectors';
 import { ImageSourcesActions } from './image-sources.actions';
 import { ImageSourcesService } from '@pp/image-sources/services';

@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'intro',
-        loadChildren: () => import('./image-source-intro/image-source-intro.module').then(m => m.ImageSourceIntroModule),
+        loadChildren: () => import('@app/picture-piper/common/image-sources-intro/image-sources-intro.module').then(m => m.ImageSourcesIntroModule)
       },
       {
         path: ':imageSourceId',
@@ -21,36 +21,6 @@ const routes: Routes = [
         redirectTo: 'intro',
       },
     ],
-  },
-
-
-
-
-
-  // {
-  //   path: 'intro',
-  //   component: ImageSourcesComponent,
-  //   children: [
-  //     {
-  //       path: '',
-  //       loadChildren: () => import('./image-source-intro/image-source-intro.module').then(m => m.ImageSourceIntroModule),
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: ':imageSourceId',
-  //   component: ImageSourcesComponent,
-  //   children: [
-  //     {
-  //       path: '',
-  //       loadChildren: () => import('./image-source-view/image-source-view.module').then(m => m.ImageSourceViewModule)
-  //     },
-  //   ],
-  // },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'intro',
   },
 ];
 

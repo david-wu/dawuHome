@@ -23,11 +23,9 @@ const reducer: ActionReducer<ImageSourcesState> = createReducer(
 
   on(ImageSourcesActions.setImageSourcesList, (state: ImageSourcesState, action: any) => {
     const imageSourcesList = action.payload || [];
-    // const defaultId = imageSourcesList.length ? [imageSourcesList[0].id] : [];
     return {
       ...state,
       imageSourcesList,
-      // selectedImageSourceIds: state.selectedImageSourceIds.size ? state.selectedImageSourceIds : new Set(defaultId),
     };
   }),
 

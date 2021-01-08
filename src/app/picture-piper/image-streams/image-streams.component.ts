@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import {
   ActivatedRoute,
   Router,
+  NavigationEnd,
 } from '@angular/router';
 
 import {
@@ -45,16 +46,17 @@ export class ImageStreamsComponent {
 
   public ngOnInit() {
     this.store.dispatch(ImageStreamsActions.setImageStreamsListVisible({ payload: true }));
-    this.sub = this.activatedRoute.params.subscribe((params) => {
-      this.store.dispatch(ImageStreamsActions.setSelectedImageStreamId({ payload: params.imageStreamId }))
+
+    this.loadInUrlState(this.router.url);
+    this.sub = this.router.events.subscribe((routerEvent) => {
+      if (routerEvent instanceof NavigationEnd) {
+        this.loadInUrlState(routerEvent.url);
+      }
     });
   }
 
   public ngOnDestroy() {
     this.store.dispatch(ImageStreamsActions.setImageStreamsListVisible({ payload: false }));
-    if (this.sub) {
-      this.sub.unsubscribe()
-    }
   }
 
   public onCreateSource() {
@@ -64,5 +66,13 @@ export class ImageStreamsComponent {
   public onSelectedImageStreamIdChange(selectedImageStreamId: string) {
     const urlTree = this.router.createUrlTree([selectedImageStreamId], { relativeTo: this.activatedRoute });
     this.store.dispatch(ImageStreamsActions.navigateToImageStreamView({ payload: urlTree.toString() }));
+  }
+
+  public loadInUrlState(url: string) {
+    const urlArr = url.split('/');
+    const imageStreamId = urlArr[3] === 'intro' ? undefined : urlArr[3];
+    const tabName = urlArr[4];
+    this.store.dispatch(ImageStreamsActions.setSelectedImageStreamId({ payload: imageStreamId }))
+    this.store.dispatch(ImageStreamsActions.setImageStreamViewTab({ payload: tabName }));
   }
 }

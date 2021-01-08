@@ -5,11 +5,13 @@
 <div class="helper-container">
   <ng-container *ngIf="selectedImageSourceId$ | async as selectedImageSourceId">
     <div class="file-explorer-container">
-      <div
-        (click)="generateImageSourceToken(selectedImageSourceId)"
-        class="control-button"
-        [attr.disabled]="(isGeneratingToken$ | async) ? true : null"
-      >Regenerate Token</div>
+      <div class="control-buttons">
+        <div
+          (click)="generateImageSourceToken(selectedImageSourceId)"
+          class="wide-button"
+          [attr.disabled]="(isGeneratingToken$ | async) ? true : null"
+        >Regenerate Token</div>
+      </div>
       <dwu-search-input
         [(searchText)]="filterStr"
         [placeholder]="'search..'"

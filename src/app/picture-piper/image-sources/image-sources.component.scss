@@ -4,16 +4,10 @@
 :host {
   @include responsive-page;
   .left-side {
-    @include full-file-explorer-container
-    // background-color: $eggshell-darker;
-    // display: flex;
-    // flex-direction: column;
-    // .create-source-button {
-    //   flex: 0 0 auto;
-    //   @include light-mini-button;
-    // }
-    // dwu-image-sources-explorer {
-    //   flex: 1 1 0;
-    // }
+    @include full-file-explorer-container;
+    .view-tab {
+        @include light-mini-button;
+        padding: 0.25rem 1rem;
+    }
   }
 }
