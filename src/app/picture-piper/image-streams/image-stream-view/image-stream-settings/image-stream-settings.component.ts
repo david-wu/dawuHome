@@ -26,12 +26,16 @@ export class ImageStreamSettingsComponent {
     this.selectedImageStream$ = this.store.pipe(select(getSelectedImageStream$));
   }
 
-  public onLabelChange(imageStreamId: string, label: string) {
-    this.store.dispatch(ImageStreamsActions.updateImageStream({ imageStreamId, patch: { label } }));
+  public ngOnInit() {
+
   }
 
-  public onDescriptionChange(imageStreamId: string, description: string) {
-    this.store.dispatch(ImageStreamsActions.updateImageStream({ imageStreamId, patch: { description } }));
-  }
+  // public onLabelChange(imageStreamId: string, label: string) {
+  //   this.store.dispatch(ImageStreamsActions.updateImageStream({ imageStreamId, patch: { label } }));
+  // }
+
+  // public onDescriptionChange(imageStreamId: string, description: string) {
+  //   this.store.dispatch(ImageStreamsActions.updateImageStream({ imageStreamId, patch: { description } }));
+  // }
 
 }

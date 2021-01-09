@@ -43,6 +43,7 @@ import {
 } from './image-sources.selectors';
 import { ImageSourcesActions } from './image-sources.actions';
 import { ImageSourcesService } from '@pp/image-sources/services';
+import { PicturePiperService } from '@pp/services';
 
 @Injectable()
 export class ImageSourcesEffects {
@@ -61,7 +62,7 @@ export class ImageSourcesEffects {
         if (!isVisible || !user) {
           return of(ImageSourcesActions.setImageSourcesList({ payload: [] }));
         }
-        return this.firestore.getImageSources$(user).pipe(
+        return this.ppService.getImageSources$(user).pipe(
           map((imageSources) => ImageSourcesActions.setImageSourcesList({ payload: imageSources })),
         );
       }),
@@ -203,5 +204,6 @@ export class ImageSourcesEffects {
     public firestore: FirebaseFirestoreService,
     public imageSourcesService: ImageSourcesService,
     public router: Router,
+    public ppService: PicturePiperService,
   ) {}
 }

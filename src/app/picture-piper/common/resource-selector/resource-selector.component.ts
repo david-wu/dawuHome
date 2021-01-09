@@ -31,7 +31,6 @@ export class ResourceSelectorComponent {
   @Input() selectedResourceIds: Set<string>;
   @Output() selectedResourceIdsChange = new EventEmitter<Set<string>>();
 
-  // public selectedResourceIds: Set<string>;
   public fileGroup: FileGroup = FileGroup.createWithRoot('ROOT');
   public readonly rootFileId = 'ROOT';
 

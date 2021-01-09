@@ -42,6 +42,7 @@ import {
 } from './image-streams.selectors';
 import { ImageStreamsActions } from './image-streams.actions';
 import { ImageStreamsService } from '@pp/image-streams/services';
+import { PicturePiperService } from '@pp/services';
 
 @Injectable()
 export class ImageStreamsEffects {
@@ -60,7 +61,7 @@ export class ImageStreamsEffects {
         if (!isVisible || !user) {
           return of(ImageStreamsActions.setImageStreamsList({ payload: [] }));
         }
-        return this.firestore.getImageStreams$(user).pipe(
+        return this.ppService.getImageStreams$(user).pipe(
           map((imageStreams) => ImageStreamsActions.setImageStreamsList({ payload: imageStreams })),
         );
       }),
@@ -171,30 +172,30 @@ export class ImageStreamsEffects {
     );
   });
 
-  public generateImageStreamToken$: Observable<any> = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(ImageStreamsActions.generateImageStreamToken),
-      switchMap((action) => {
-        const imageStreamId = action.payload;
-        return from(this.imageStreamsService.generateImageStreamToken(imageStreamId)).pipe(
-          map(() => ImageStreamsActions.generateImageStreamTokenSuccess({ payload: imageStreamId })),
-          catchError(() => of(ImageStreamsActions.generateImageStreamTokenFailure({ payload: imageStreamId }))),
-        );
-      }),
-    );
-  });
+  // public generateImageStreamToken$: Observable<any> = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(ImageStreamsActions.generateImageStreamToken),
+  //     switchMap((action) => {
+  //       const imageStreamId = action.payload;
+  //       return from(this.imageStreamsService.generateImageStreamToken(imageStreamId)).pipe(
+  //         map(() => ImageStreamsActions.generateImageStreamTokenSuccess({ payload: imageStreamId })),
+  //         catchError(() => of(ImageStreamsActions.generateImageStreamTokenFailure({ payload: imageStreamId }))),
+  //       );
+  //     }),
+  //   );
+  // });
 
-  public loadImageStreamTokens$: Observable<any> = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(ImageStreamsActions.loadImageStreamTokens),
-      switchMap((action) => {
-        const imageStreamId = action.imageStreamId;
-        return from(this.imageStreamsService.loadImageStreamTokens(imageStreamId)).pipe(
-          map((imageStreamTokens: any[]) => ImageStreamsActions.loadImageStreamTokensSuccess({ imageStreamId, imageStreamTokens })),
-        );
-      }),
-    );
-  });
+  // public loadImageStreamTokens$: Observable<any> = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(ImageStreamsActions.loadImageStreamTokens),
+  //     switchMap((action) => {
+  //       const imageStreamId = action.imageStreamId;
+  //       return from(this.imageStreamsService.loadImageStreamTokens(imageStreamId)).pipe(
+  //         map((imageStreamTokens: any[]) => ImageStreamsActions.loadImageStreamTokensSuccess({ imageStreamId, imageStreamTokens })),
+  //       );
+  //     }),
+  //   );
+  // });
 
   constructor(
     public store$: Store,
@@ -202,5 +203,6 @@ export class ImageStreamsEffects {
     public firestore: FirebaseFirestoreService,
     public imageStreamsService: ImageStreamsService,
     public router: Router,
+    public ppService: PicturePiperService,
   ) {}
 }

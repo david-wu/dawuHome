@@ -55,6 +55,7 @@ export class FileExplorerComponent {
   @Input() multiFileSelect: boolean = false;
   @Input() dragEnabled: boolean = false;
   @Input() disableOpening: boolean = false;
+  @Input() filterThreshold: number = 0.6;
   @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
   @Output() closedFileIdsChange = new EventEmitter<Set<string>>();
   @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
@@ -359,7 +360,7 @@ export class FileExplorerComponent {
         disableStyledString: true,
         subjectKeys: ['label'],
       },
-      );
+    );
     const fuzzItemsByFileId = {};
     fuzzResults.forEach((fuzzItem: FuzzItem) => {
       fuzzItemsByFileId[fuzzItem.original.id] = fuzzItem;
@@ -464,7 +465,7 @@ export class FileExplorerComponent {
     const currentFile = filesById[currentFileId];
     const currentMaxScore = isUndefined(maxScoresByFileId[currentFileId]) ? 1 : maxScoresByFileId[currentFileId];
     const visibleFileIds = new Set<string>();
-    if (currentMaxScore > 0.80) {
+    if (currentMaxScore > this.filterThreshold) {
       visibleFileIds.add(currentFile.id);
     }
     if (!closedFileIds.has(currentFileId)) {

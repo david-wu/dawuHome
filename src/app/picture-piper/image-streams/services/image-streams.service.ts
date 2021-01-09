@@ -89,31 +89,4 @@ export class ImageStreamsService {
       .update(patch)
   }
 
-  public loadImageStreamTokens(imageStreamId: string): Observable<any[]> {
-    const querySnapshot$ = Observable.create((observer) => {
-      return this.firestore.db
-        .collection('imageStreams')
-        .doc(imageStreamId)
-        .collection('accessTokens')
-        .orderBy('createdAt', 'desc')
-        .onSnapshot(observer);
-      // return this.db
-      //   .collection('uploads')
-      //   .where('userId', '==', user.uid)
-      //   .orderBy('updatedAt', 'desc')
-      //   .onSnapshot(observer);
-    });
-    return querySnapshot$.pipe(
-      map((querySnapshot: any) => {
-        return querySnapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            id: doc.id,
-          };
-        });
-      }),
-    );
-  }
-
-// db.collection("users").doc(doc.id).update({foo: "bar"});
 }

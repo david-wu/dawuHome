@@ -357,6 +357,11 @@
   background-color: $eggshell-darker;
   display: flex;
   flex-direction: column;
+  .explorer-title {
+    text-align: center;
+    font-size: 1.25rem;
+    padding-top: 0.5rem;
+  }
   .control-buttons {
     flex: 0 0 auto;
     display: flex;

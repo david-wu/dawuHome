@@ -1,8 +1,4 @@
-image-stream-settings
-
-<div
-  class="view-tab"
->Sources</div>
-<div
-  class="view-tab"
->Classifiers</div>
+<dwu-image-stream-settings-selector
+  *ngIf="selectedImageStream$ | async as selectedImageStream"
+  [selectedImageStreamId]="selectedImageStream.id"
+></dwu-image-stream-settings-selector>

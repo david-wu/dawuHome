@@ -58,7 +58,6 @@ piper.send(imageBlob);
   }
 
   public onSelectToken(token) {
-    console.log('token', token);
     this.selectedToken = token;
   }
 
