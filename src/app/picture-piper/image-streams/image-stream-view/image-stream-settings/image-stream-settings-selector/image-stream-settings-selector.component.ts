@@ -20,7 +20,7 @@ import {
 })
 export class ImageStreamSettingsSelectorComponent {
 
-  @Input() selectedImageStreamId: string;
+  @Input() imageStreamId: string;
 
   public imageSourcesFilterStr: string = '';
   public classifiersFilterStr: string = '';
@@ -46,30 +46,55 @@ export class ImageStreamSettingsSelectorComponent {
   }
 
   public ngOnChanges(changes) {
-    if (changes.selectedImageStreamId) {
-      this.store.dispatch(PicturePiperActions.addVisibleResourceList({
-        resource: {
-          path: this.imageSourcePath,
-        },
-      }));
-      this.store.dispatch(PicturePiperActions.addVisibleResourceList({
-        resource: {
-          path: this.classifiersPath,
-        },
-      }));
+    if (changes.imageStreamId) {
+      if (!changes.imageStreamId.firstChange) {
+        this.unwatchData();
+      }
+      this.watchData()
     }
   }
 
-  // public ngOnInit() {
-    // this.store.dispatch(PicturePiperActions.addVisibleResourceList())
-  // }
+  public watchData() {
+    this.store.dispatch(PicturePiperActions.addVisibleResourceList({
+      resource: {
+        path: this.imageSourcePath,
+      },
+    }));
+    this.store.dispatch(PicturePiperActions.addVisibleResourceList({
+      resource: {
+        path: this.classifiersPath,
+      },
+    }));
+    this.store.dispatch(PicturePiperActions.addVisibleResourceDoc({
+      resource: {
+        path: `imageStreams/${this.imageStreamId}`,
+      },
+    }));
+  }
 
-  // public onLabelChange(imageStreamId: string, label: string) {
-  //   this.store.dispatch(ImageStreamsActions.updateImageStream({ imageStreamId, patch: { label } }));
-  // }
+  public unwatchData() {
+    this.store.dispatch(PicturePiperActions.removeVisibleResourceList({
+      resource: {
+        path: this.imageSourcePath,
+      },
+    }));
+    this.store.dispatch(PicturePiperActions.removeVisibleResourceList({
+      resource: {
+        path: this.classifiersPath,
+      },
+    }));
+    this.store.dispatch(PicturePiperActions.removeVisibleResourceDoc({
+      resource: {
+        path: `imageStreams/${this.imageStreamId}`,
+      },
+    }));
+  }
 
-  // public onDescriptionChange(imageStreamId: string, description: string) {
-  //   this.store.dispatch(ImageStreamsActions.updateImageStream({ imageStreamId, patch: { description } }));
-  // }
+  public onSelectedImageSourceIdsChange(selectedImageSourceIds: Set<string>) {
+    this.selectedImageSourceIds = selectedImageSourceIds;
+  }
 
+  public onSelectedClassifierIdsChange(selectedClassifierIds: Set<string>) {
+    this.selectedClassifierIds = selectedClassifierIds;
+  }
 }

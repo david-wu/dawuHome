@@ -20,47 +20,6 @@ export class FirebaseFirestoreService {
   public db = window.firebase.firestore();
   public firestoreTimestamp = window.firebase.firestore.FieldValue.serverTimestamp
 
-  // public getImageSources$(user: User): Observable<any[]> {
-  //   const querySnapshot$ = Observable.create((observer) => {
-  //     return this.db
-  //       .collection('imageSources')
-  //       .where('userId', '==', user.uid)
-  //       .orderBy('updatedAt', 'desc')
-  //       .onSnapshot(observer);
-  //   });
-  //   return querySnapshot$.pipe(
-  //     map((querySnapshot: any) => {
-  //       return querySnapshot.docs.map((doc) => {
-  //         return {
-  //           ...doc.data(),
-  //           id: doc.id,
-  //         };
-  //       });
-  //     }),
-  //   );
-  // }
-
-  public getImageStreams$(user: User): Observable<any[]> {
-    const querySnapshot$ = Observable.create((observer) => {
-      return this.db
-        .collection('imageStreams')
-        .where('userId', '==', user.uid)
-        .orderBy('updatedAt', 'desc')
-        .onSnapshot(observer);
-    });
-    return querySnapshot$.pipe(
-      map((querySnapshot: any) => {
-        return querySnapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            id: doc.id,
-          };
-        });
-      }),
-    );
-  }
-
-
   public createImageSource(user: User): Observable<any> {
     const timestamp = this.firestoreTimestamp();
     const imageSource = {
@@ -267,5 +226,19 @@ export class FirebaseFirestoreService {
     );
   }
 
+  public queryDoc(queryDocFunc) {
+    const querySnapshot$ = Observable.create((observer) => {
+      return queryDocFunc(this.db)
+        .onSnapshot(observer);
+    });
+    return querySnapshot$.pipe(
+      map((doc: any) => {
+        return {
+          ...doc.data(),
+          id: doc.id,
+        };
+      }),
+    );
+  }
 }
 

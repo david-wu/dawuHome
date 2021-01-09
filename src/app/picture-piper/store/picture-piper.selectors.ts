@@ -12,17 +12,28 @@ export const getPicturePiperState$: MemoizedSelector<PicturePiperState, PictureP
   'picturePiper',
 );
 
-export const getVisibleResourceListCounts$: MemoizedSelector<PicturePiperState, boolean> = createSelector(
+export const getVisibleResourceListCounts$: MemoizedSelector<PicturePiperState, Record<string, number>> = createSelector(
   getPicturePiperState$,
   (state: PicturePiperState) => state.visibleResourceListCounts,
 );
-
-export const getResourceLists$: MemoizedSelector<PicturePiperState, boolean> = createSelector(
+export const getResourceLists$: MemoizedSelector<PicturePiperState, Record<string, any[]>> = createSelector(
   getPicturePiperState$,
   (state: PicturePiperState) => state.resourceLists,
 );
-
-export const getResourceListsLoading$: MemoizedSelector<PicturePiperState, boolean> = createSelector(
+export const getResourceListsLoading$: MemoizedSelector<PicturePiperState, Record<string, boolean>> = createSelector(
   getPicturePiperState$,
   (state: PicturePiperState) => state.resourceListsLoading,
+);
+
+export const getVisibleResourceDocCounts$: MemoizedSelector<PicturePiperState, Record<string, number>> = createSelector(
+  getPicturePiperState$,
+  (state: PicturePiperState) => state.visibleResourceDocCounts,
+);
+export const getResourceDocs$: MemoizedSelector<PicturePiperState, Record<string, any>> = createSelector(
+  getPicturePiperState$,
+  (state: PicturePiperState) => state.resourceDocs,
+);
+export const getResourceDocsLoading$: MemoizedSelector<PicturePiperState, Record<string, boolean>> = createSelector(
+  getPicturePiperState$,
+  (state: PicturePiperState) => state.resourceDocsLoading,
 );

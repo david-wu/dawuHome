@@ -37,12 +37,43 @@ const reducer: ActionReducer<PicturePiperState> = createReducer(
   }),
 
   on(PicturePiperActions.setResourceList, (state: PicturePiperState, action: any) => {
-
     return {
       ...state,
       resourceLists: {
         ...state.resourceLists,
         [action.resource.path]: action.list,
+      },
+    };
+  }),
+
+  on(PicturePiperActions.addVisibleResourceDoc, (state: PicturePiperState, action: any) => {
+    const currentCount = state.visibleResourceDocCounts[action.resource.path];
+    return {
+      ...state,
+      visibleResourceDocCounts: {
+        ...state.visibleResourceDocCounts,
+        [action.resource.path]: currentCount ? currentCount + 1 : 1,
+      },
+    };
+  }),
+
+  on(PicturePiperActions.removeVisibleResourceDoc, (state: PicturePiperState, action: any) => {
+    const currentCount = state.visibleResourceDocCounts[action.resource.path];
+    return {
+      ...state,
+      visibleResourceDocCounts: {
+        ...state.visibleResourceDocCounts,
+        [action.resource.path]: currentCount ? currentCount - 1 : 0,
+      },
+    };
+  }),
+
+  on(PicturePiperActions.setResourceDoc, (state: PicturePiperState, action: any) => {
+    return {
+      ...state,
+      resourceDocs: {
+        ...state.resourceLists,
+        [action.resource.path]: action.doc,
       },
     };
   }),

@@ -10,7 +10,7 @@ image-stream-settings
       [resources]="imageSources$ | async"
       [filterStr]="imageSourcesFilterStr"
       [selectedResourceIds]="selectedImageSourceIds"
-      (selectedResourceIdsChange)="selectedImageSourceIds = $event"
+      (selectedResourceIdsChange)="onSelectedImageSourceIdsChange($event)"
       [isMultiSelect]= "true"
     ></dwu-resource-selector>
   </div>
@@ -24,7 +24,7 @@ image-stream-settings
       [resources]="classifiers$ | async"
       [filterStr]="classifiersFilterStr"
       [selectedResourceIds]="selectedClassifierIds"
-      (selectedResourceIdsChange)="selectedClassifierIds = $event"
+      (selectedResourceIdsChange)="onSelectedClassifierIdsChange($event)"
       [isMultiSelect]= "true"
     ></dwu-resource-selector>
   </div>

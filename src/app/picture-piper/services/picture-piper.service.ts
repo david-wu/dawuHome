@@ -42,6 +42,13 @@ export class PicturePiperService {
     });
   }
 
+  public getResourceDoc$(user: User, resource: any): Observable<any[]> {
+    return this.firestore.queryDoc((db) => {
+      return db.doc(resource.path);
+    });
+  }
+
+
   public getImageSources$(user: User): Observable<any[]> {
     return this.firestore.query((db) => {
       return db
