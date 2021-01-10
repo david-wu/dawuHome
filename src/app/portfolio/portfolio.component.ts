@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { keyBy } from 'lodash';
 import {
   ActivatedRoute,
-  Router,
   NavigationEnd,
+  Router,
 } from '@angular/router';
+import { keyBy } from 'lodash';
 
-import { FileGroup, FileType, File } from '@file-explorer/index';
+import { File, FileGroup } from '@file-explorer/index';
 
 @Component({
   selector: 'portfolio',

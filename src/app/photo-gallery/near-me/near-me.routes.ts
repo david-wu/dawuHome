@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { NearMeComponent } from '@photo-gallery/near-me/near-me.component';
+import { RouterModule, Routes } from '@angular/router';
 import { NearMeGridComponent } from '@photo-gallery/near-me/near-me-grid/near-me-grid.component';
+import { NearMeComponent } from '@photo-gallery/near-me/near-me.component';
 
 const routes: Routes = [
   {

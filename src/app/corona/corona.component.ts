@@ -1,21 +1,17 @@
 import { Component, ElementRef } from '@angular/core';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import {
     each,
-    keyBy,
-    get,
-    set,
-    last,
     isString,
+    set,
 } from 'lodash';
-import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 import jhFileNames from '@src/assets/jh-corona/file-names.json';
 import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
 
-import { LocalStorageService } from '@src/app/corona/services/local-storage.service';
-import { FileGroup, FileType, File } from '@file-explorer/index';
-import { breadthFirstBy } from '@utils/index';
+import { File, FileGroup } from '@file-explorer/index';
 import { NormalKeys } from '@src/app/corona/models/index';
+import { LocalStorageService } from '@src/app/corona/services/local-storage.service';
 
 enum Tab {
     ALL = 'ALL',

@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { TextDecoratorComponent } from '@src/app/common/text-decorator/text-decorator.component';
 import { ChartsModule } from '@src/app/common/charts/charts.module';
+import { TextDecoratorComponent } from '@src/app/common/text-decorator/text-decorator.component';
 import { TooltipModule } from '@src/app/common/tooltip/tooltip.module';
 import { ZoomLevelPickerModule } from '@src/app/common/zoom-level-picker/zoom-level-picker.module';
 

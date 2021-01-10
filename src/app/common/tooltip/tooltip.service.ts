@@ -7,19 +7,15 @@ import {
   Injector,
   TemplateRef,
 } from '@angular/core';
+import { TooltipViewComponent } from '@common/tooltip/tooltip-view.component';
 import {
   map,
   some,
-  sortBy,
 } from 'lodash';
 import {
-  combineLatest,
   BehaviorSubject,
-  Observable,
+  combineLatest,
 } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { share } from 'rxjs/operators';
-import { TooltipViewComponent } from '@common/tooltip/tooltip-view.component';
 
 @Injectable()
 export class TooltipService {

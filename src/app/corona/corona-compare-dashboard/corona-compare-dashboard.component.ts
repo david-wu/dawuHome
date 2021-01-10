@@ -1,24 +1,19 @@
 import {
     Component,
-    EventEmitter,
     Input,
-    Output,
 } from '@angular/core';
 import {
     round,
     set,
-    mapValues,
 } from 'lodash';
-import * as d3 from 'd3';
 
-import { FileGroup, FileType, File } from '@file-explorer/index';
+import { File } from '@file-explorer/index';
 import {
     CoronaDataExtractor,
     CoronaKeys,
-    NormalKeys,
     Labels,
+    NormalKeys,
 } from '@src/app/corona/models/index';
-import { getDateFromStr } from '@src/app/utils/index';
 
 @Component({
   selector: 'dwu-corona-compare-dashboard',

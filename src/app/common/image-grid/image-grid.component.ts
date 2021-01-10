@@ -1,10 +1,10 @@
 import {
   Component,
-  Input,
   EventEmitter,
+  Input,
   Output,
 } from '@angular/core';
-import { map, keyBy, get } from 'lodash';
+import { get, keyBy, map } from 'lodash';
 
 import { UploadFile } from '@photo-gallery/models/upload-file.model';
 

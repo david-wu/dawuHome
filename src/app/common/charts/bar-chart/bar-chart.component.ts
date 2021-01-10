@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import * as d3 from 'd3';
 
-import { BaseChartComponent } from '@src/app/common/charts/base-chart/base-chart.component';
 import { TooltipService } from '@common/tooltip/tooltip.service';
+import { BaseChartComponent } from '@src/app/common/charts/base-chart/base-chart.component';
 
 @Component({
   selector: 'dwu-bar-chart',

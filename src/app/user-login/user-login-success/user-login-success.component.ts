@@ -1,6 +1,5 @@
 import {
   Component,
-  ElementRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

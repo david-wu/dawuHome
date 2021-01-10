@@ -1,7 +1,7 @@
-import { FirebaseAuthService } from '@src/app/services/firebase-auth.service';
-import { FirebaseStorageService } from '@src/app/services/firebase-storage.service';
-import { FirebaseFirestoreService } from '@src/app/services/firebase-firestore.service';
 import { ExifService } from '@src/app/services/exif.service';
+import { FirebaseAuthService } from '@src/app/services/firebase-auth.service';
+import { FirebaseFirestoreService } from '@src/app/services/firebase-firestore.service';
+import { FirebaseStorageService } from '@src/app/services/firebase-storage.service';
 import { ImageProcessingService } from '@src/app/services/image-processing.service';
 
 export const APP_SERVICES = [

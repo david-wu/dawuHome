@@ -1,5 +1,5 @@
-import { LocationData } from '@photo-gallery/models/index';
 import { User } from '@models/index';
+import { LocationData } from '@photo-gallery/models/index';
 
 export interface AuthState  {
   user: User;

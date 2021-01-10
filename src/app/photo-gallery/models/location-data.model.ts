@@ -1,6 +1,6 @@
 import Geohash from 'latlon-geohash';
-import { S2 } from 's2-geometry';
 import { padStart } from 'lodash';
+import { S2 } from 's2-geometry';
 
 export class LocationData {
 

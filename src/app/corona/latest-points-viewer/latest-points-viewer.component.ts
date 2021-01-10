@@ -1,37 +1,25 @@
 import {
   Component,
-  EventEmitter,
   Input,
-  Output,
   ViewChild,
 } from '@angular/core';
 import {
-  MatTableDataSource,
   MatSort,
+  MatTableDataSource,
 } from '@angular/material';
 import {
-  BehaviorSubject,
-  Observable,
-  of,
-  combineLatest,
-} from 'rxjs';
-import {
-  filter,
-  startWith,
-  switchMap,
-  map,
-  shareReplay,
-} from 'rxjs/operators';
-import {
-  mapValues,
   fromPairs,
   zip,
 } from 'lodash';
+import {
+  Observable,
+} from 'rxjs';
+import {
+  map,
+  startWith,
+} from 'rxjs/operators';
 
-import populationDataByFileName from '@src/assets/jh-corona/population-by-file-name.json';
-import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
-import { FileGroup, FileType, File } from '@file-explorer/index';
-import { breadthFirstBy } from '@utils/index';
+import { File } from '@file-explorer/index';
 import {
   CoronaService,
   CoronaStoreService,

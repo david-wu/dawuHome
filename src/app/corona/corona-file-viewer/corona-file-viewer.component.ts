@@ -5,32 +5,29 @@ import {
     Output,
 } from '@angular/core';
 import {
+    fromPairs,
+    mapValues,
+    zip,
+} from 'lodash';
+import {
     BehaviorSubject,
-    Observable,
-    of,
-    forkJoin,
     combineLatest,
+    forkJoin,
+    Observable,
 } from 'rxjs';
 import {
     filter,
-    startWith,
-    switchMap,
     map,
     shareReplay,
+    startWith,
+    switchMap,
 } from 'rxjs/operators';
-import {
-    every,
-    mapValues,
-    fromPairs,
-    zip,
-} from 'lodash';
 
-import populationDataByLocation from '@src/assets/jh-corona/population-by-file-name.json';
+import { File } from '@file-explorer/index';
+import { CoronaService } from '@src/app/corona/services/corona.service';
 // import lockdownDataByLocation from '@src/assets/corona/lockdown-data-by-location.json';
 import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
-import { FileGroup, FileType, File } from '@file-explorer/index';
-import { breadthFirstBy } from '@utils/index';
-import { CoronaService } from '@src/app/corona/services/corona.service';
+import populationDataByLocation from '@src/assets/jh-corona/population-by-file-name.json';
 
 @Component({
   selector: 'dwu-corona-file-viewer',

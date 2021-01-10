@@ -20,12 +20,12 @@ import {
 } from 'rxjs/operators';
 
 import { PicturePiperService } from '@pp/services';
-import { getUser$ } from '@src/app/store/index';
 import { PicturePiperActions } from '@src/app/picture-piper/store/picture-piper.actions';
 import {
   getVisibleResourceDocCounts$,
   getVisibleResourceListCounts$,
 } from '@src/app/picture-piper/store/picture-piper.selectors';
+import { getUser$ } from '@src/app/store/index';
 
 @Injectable()
 export class PicturePiperEffects {

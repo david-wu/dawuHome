@@ -7,11 +7,11 @@ import {
   Output,
   TemplateRef,
 } from '@angular/core';
-import { isUndefined, first, filter, last } from 'lodash';
 import * as d3 from 'd3';
+import { first, isUndefined, last } from 'lodash';
 
-import { BaseChartComponent } from '@src/app/common/charts/base-chart/base-chart.component';
 import { TooltipService } from '@common/tooltip/tooltip.service';
+import { BaseChartComponent } from '@src/app/common/charts/base-chart/base-chart.component';
 
 @Component({
   selector: 'dwu-line-chart',

@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   Input,
-  HostBinding,
   TemplateRef,
   ViewChild,
 } from '@angular/core';

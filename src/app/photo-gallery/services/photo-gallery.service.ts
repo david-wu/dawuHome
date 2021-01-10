@@ -1,24 +1,11 @@
 import { Injectable } from '@angular/core';
-import {
-  Observable,
-  BehaviorSubject,
-  Subject,
-  of,
-} from 'rxjs';
-import {
-  map,
-  switchMap,
-} from 'rxjs/operators';
-import { sortBy } from 'lodash';
-import * as Jimp from 'jimp';
 
 import { User } from '@models/index';
 import { UploadFile } from '@photo-gallery/models/index';
 import {
-  FirebaseAuthService,
+  ExifService,
   FirebaseFirestoreService,
   FirebaseStorageService,
-  ExifService,
   ImageProcessingService,
 } from '@services/index';
 import { UserLocationService } from '@src/app/photo-gallery/services/user-location.service';

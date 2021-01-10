@@ -1,6 +1,6 @@
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 

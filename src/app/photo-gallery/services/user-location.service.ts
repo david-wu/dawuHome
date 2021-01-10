@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import Geohash from 'latlon-geohash';
 
 import { LocationData } from '@photo-gallery/models/index';
 

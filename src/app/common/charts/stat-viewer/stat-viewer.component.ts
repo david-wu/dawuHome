@@ -1,8 +1,6 @@
 import {
     Component,
-    EventEmitter,
     Input,
-    Output,
 } from '@angular/core';
 import { round } from 'lodash';
 

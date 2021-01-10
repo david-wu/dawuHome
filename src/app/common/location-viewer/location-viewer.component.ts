@@ -1,32 +1,16 @@
 import {
-  CdkVirtualScrollViewport,
-  FixedSizeVirtualScrollStrategy,
-} from '@angular/cdk/scrolling';
-import {
   Component,
   ElementRef,
   EventEmitter,
   Input,
   Output,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import {
   debounce,
-  get,
 } from 'lodash';
-import {
-  Observable,
-} from 'rxjs';
 
-import { UploadFile } from '@photo-gallery/models/index';
 import { LocationData } from '@photo-gallery/models/index';
-import {
-  getLocationPermission$,
-  PhotoGalleryActions,
-  PhotoGalleryState,
-} from '@photo-gallery/store/index';
 
 @Component({
   selector: 'dwu-location-viewer',

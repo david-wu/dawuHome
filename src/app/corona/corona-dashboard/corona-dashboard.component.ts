@@ -4,17 +4,16 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import { round } from 'lodash';
 import * as d3 from 'd3';
+import { round } from 'lodash';
 
 import {
     CoronaDataExtractor,
     CoronaKeys,
-    NormalKeys,
     Labels,
+    NormalKeys,
 } from '@src/app/corona/models/index';
 import {
-    getDateFromStr,
     getDateFromLeadingYearStr,
 } from '@src/app/utils/index';
 

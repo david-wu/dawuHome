@@ -1,9 +1,8 @@
+import { User } from '@models/index';
 import {
   createAction,
   props,
 } from '@ngrx/store';
-import { LocationData } from '@photo-gallery/models/index';
-import { User } from '@models/index';
 
 export class AuthActions {
   public static readonly CATEGORY = '[AUTH]';

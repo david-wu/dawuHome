@@ -1,14 +1,10 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   forkJoin,
   Observable,
 } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import {
-  share,
-  map,
-} from 'rxjs/operators';
 
 @Injectable()
 export class CoronaService {

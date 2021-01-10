@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { CoronaComponent } from '@src/app/corona/corona.component';
 
 export const routes: Routes = [

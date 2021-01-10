@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
+import { padStart } from 'lodash';
 import {
-  Observable,
-  BehaviorSubject,
-  Subject,
   from,
+  Observable,
+  Subject,
 } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { padStart } from 'lodash';
 const bigInt = require('big-integer');
 
 import { User } from '@models/index';
-import { LocationData } from '@photo-gallery/models/index';
 
 @Injectable({
   providedIn: 'root',

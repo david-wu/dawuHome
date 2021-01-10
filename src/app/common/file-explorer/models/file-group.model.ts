@@ -1,17 +1,16 @@
 
-import {
-  each,
-  uniqueId,
-  uniq,
-  values,
-  keyBy,
-  mapValues,
-  map,
-  some,
-} from 'lodash';
-import { FileType } from '@src/app/common/file-explorer/models/file-type.enum';
 import { File } from '@src/app/common/file-explorer/models/file.model';
 import { breadthFirstBy, reverseBreadthFirstBy } from '@utils/index';
+import {
+  each,
+  keyBy,
+  map,
+  mapValues,
+  some,
+  uniq,
+  uniqueId,
+  values,
+} from 'lodash';
 
 export class FileGroup {
   public rootFileId: string;

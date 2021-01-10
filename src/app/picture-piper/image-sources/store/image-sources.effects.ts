@@ -29,15 +29,15 @@ import {
 
 import { ImageSourcesService } from '@pp/image-sources/services';
 import { PicturePiperService } from '@pp/services';
-import {
-  AuthActions,
-  getUser$,
-} from '@src/app/store/index';
 import { ImageSourcesActions } from '@src/app/picture-piper/image-sources/store/image-sources.actions';
 import {
   getImageSourcesListVisible$,
   getImageSourceViewTab$,
 } from '@src/app/picture-piper/image-sources/store/image-sources.selectors';
+import {
+  AuthActions,
+  getUser$,
+} from '@src/app/store/index';
 
 @Injectable()
 export class ImageSourcesEffects {

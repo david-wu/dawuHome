@@ -1,15 +1,7 @@
 import {
   Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  SimpleChanges,
-  TemplateRef,
-  ViewChildren,
-  QueryList,
 } from '@angular/core';
-import { FileGroup, FileType, File } from '@file-explorer/index';
+import { File } from '@file-explorer/index';
 
 
 @Component({

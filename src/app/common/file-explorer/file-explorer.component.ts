@@ -1,38 +1,36 @@
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import {
   Component,
   ElementRef,
   EventEmitter,
   Input,
   Output,
+  QueryList,
   SimpleChanges,
   TemplateRef,
   ViewChildren,
-  QueryList,
 } from '@angular/core';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
+import { reverseBreadthFirstBy } from '@utils/index';
 import {
   Fuzz,
   FuzzItem,
 } from 'fuzz-js';
 import {
-  cloneDeep,
-  isUndefined,
-  includes,
   each,
-  without,
+  includes,
+  isUndefined,
   last,
   uniq,
+  without,
 } from 'lodash';
 import { DragulaService } from 'ng2-dragula';
-import { breadthFirstBy, reverseBreadthFirstBy } from '@utils/index';
 
 import {
   File,
-  FileType,
 } from '@src/app/common/file-explorer/models/index';
 
 @Component({

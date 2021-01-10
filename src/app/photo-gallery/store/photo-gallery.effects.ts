@@ -1,25 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import {
   Actions,
   createEffect,
   ofType,
 } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import {
   Action,
   select,
 } from '@ngrx/store';
-import {
-  Observable,
-  from,
-  of,
-} from 'rxjs';
-import {
-  map,
-  switchMap,
-  withLatestFrom,
-  tap,
-} from 'rxjs/operators';
 import {
   // FirebaseAuthService,
   FirebaseFirestoreService,
@@ -27,21 +16,30 @@ import {
 } from '@services/index';
 import {
   sortBy,
-  orderBy,
 } from 'lodash';
+import {
+  from,
+  Observable,
+  of,
+} from 'rxjs';
+import {
+  map,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 
+import { LocationData } from '@photo-gallery/models/index';
+import { UserLocationService } from '@photo-gallery/services/index';
 import { PhotoGalleryActions } from '@src/app/photo-gallery/store/photo-gallery.actions';
+import {
+  getMyUploadsVisible$,
+  getNearbyImagesVisible$,
+  getUserLocation$,
+} from '@src/app/photo-gallery/store/photo-gallery.selectors';
 import {
   AuthActions,
   getUser$,
 } from '@src/app/store/index';
-import {
-  getUserLocation$,
-  getNearbyImagesVisible$,
-  getMyUploadsVisible$,
-} from '@src/app/photo-gallery/store/photo-gallery.selectors';
-import { UserLocationService } from '@photo-gallery/services/index';
-import { LocationData } from '@photo-gallery/models/index';
 
 @Injectable()
 export class PhotoGalleryEffects {

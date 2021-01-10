@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
+import { LocationData } from '@photo-gallery/models/index';
 import { UploadFile } from '@photo-gallery/models/upload-file.model';
 import {
   getNearbyImages$,
   getUserLocation$,
   PhotoGalleryActions,
 } from '@photo-gallery/store/index';
-import { LocationData } from '@photo-gallery/models/index';
 
 @Component({
   selector: 'dwu-near-me-grid',

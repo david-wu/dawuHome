@@ -29,15 +29,15 @@ import {
 
 import { ImageStreamsService } from '@pp/image-streams/services';
 import { PicturePiperService } from '@pp/services';
-import {
-  AuthActions,
-  getUser$,
-} from '@src/app/store/index';
 import { ImageStreamsActions } from '@src/app/picture-piper/image-streams/store/image-streams.actions';
 import {
   getImageStreamsListVisible$,
   getImageStreamViewTab$,
 } from '@src/app/picture-piper/image-streams/store/image-streams.selectors';
+import {
+  AuthActions,
+  getUser$,
+} from '@src/app/store/index';
 
 @Injectable()
 export class ImageStreamsEffects {

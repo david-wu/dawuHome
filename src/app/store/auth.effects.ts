@@ -7,23 +7,20 @@ import {
 import { Action } from '@ngrx/store';
 import {
   Observable,
-  from,
   of,
 } from 'rxjs';
 import {
   map,
-  switchMap,
-  startWith,
   mergeMap,
-  filter,
-  tap
+  startWith,
+  switchMap
 } from 'rxjs/operators';
 
+import { User } from '@models/index';
 import {
   FirebaseAuthService,
   FirebaseFirestoreService,
 } from '@services/index';
-import { User } from '@models/index';
 import { AuthActions } from '@src/app/store/auth.actions';
 
 @Injectable()

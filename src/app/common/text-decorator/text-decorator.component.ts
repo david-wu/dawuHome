@@ -1,18 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     Input,
-    Output,
     SimpleChanges,
 } from '@angular/core';
 import {
-    Fuzz,
-    FuzzItem,
-} from 'fuzz-js';
-import {
-    cloneDeep,
-    each,
     isEqual,
 } from 'lodash';
 

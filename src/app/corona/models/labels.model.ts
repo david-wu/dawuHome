@@ -1,5 +1,5 @@
-import { NormalKeys } from '@src/app/corona/models/normal-keys.enum';
 import { CoronaKeys } from '@src/app/corona/models/corona-keys.enum';
+import { NormalKeys } from '@src/app/corona/models/normal-keys.enum';
 
 export class Labels {
 

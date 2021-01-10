@@ -7,8 +7,8 @@ import {
 
 import { AuthActions } from '@src/app/store/auth.actions';
 import {
-  initialAuthState,
   AuthState,
+  initialAuthState,
 } from '@src/app/store/auth.state';
 
 const reducer: ActionReducer<AuthState> = createReducer(

@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { UserLoginRoutingModule } from '@app/user-login/user-login.routes';
-import { UserLoginComponent } from '@app/user-login/user-login.component';
 import { UserLoginSuccessComponent } from '@app/user-login/user-login-success/user-login-success.component';
+import { UserLoginComponent } from '@app/user-login/user-login.component';
+import { UserLoginRoutingModule } from '@app/user-login/user-login.routes';
 import {
   FirebaseAuthService,
   FirebaseFirestoreService,

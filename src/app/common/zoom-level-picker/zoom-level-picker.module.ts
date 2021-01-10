@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { ZoomLevelPickerComponent } from '@src/app/common/zoom-level-picker/zoom-level-picker.component';
 

@@ -14,13 +14,11 @@ import {
 } from '@angular/core';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import {
-  get,
   last,
 } from 'lodash';
 import {
   BehaviorSubject,
   merge,
-  Observable,
 } from 'rxjs';
 import {
   debounceTime,

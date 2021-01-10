@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { CovidDemoComponent } from '@src/app/portfolio/covid-demo/covid-demo.component';
 // import { CoronaModule } from '@src/app/corona/corona.module';

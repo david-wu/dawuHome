@@ -1,20 +1,19 @@
 import {
   Component,
   ElementRef,
-  TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import {
   AuthActions,
-  getUser$,
   getAuthLoading$,
   getCanLogin$,
+  getUser$,
 } from '@app/store/index';
 import { User } from '@models/index';
 

@@ -1,13 +1,9 @@
 import {
-  ChangeDetectorRef,
   ElementRef,
-  EventEmitter,
-  Input,
   NgZone,
-  Output,
 } from '@angular/core';
-import * as d3 from 'd3';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
+import * as d3 from 'd3';
 import { filter, last } from 'lodash';
 
 export class BaseChartComponent {
