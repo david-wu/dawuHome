@@ -2,10 +2,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnChanges,
   Input,
-  ViewEncapsulation,
+  OnChanges,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import hljs from 'highlight.js/lib/highlight';
 import typescript from 'highlight.js/lib/languages/typescript';

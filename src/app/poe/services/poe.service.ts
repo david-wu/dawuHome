@@ -1,11 +1,9 @@
 
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
   HttpClient,
-  HttpHeaders,
-} from '@angular/common/http'
-import { share } from 'rxjs/operators';
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class PoeService {

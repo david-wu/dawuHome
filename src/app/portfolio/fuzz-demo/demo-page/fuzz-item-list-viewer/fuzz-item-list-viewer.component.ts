@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 
+import { scrollIntoView } from '@src/app/portfolio/fuzz-demo/utils/scroll-into-view';
 import { FuzzItem } from 'fuzz-js';
-import { scrollIntoView } from '../../utils/scroll-into-view';
 
 @Component({
   selector: 'app-fuzz-item-list-viewer',
@@ -29,7 +29,7 @@ export class FuzzItemListViewerComponent {
       // this.scrollSelectedFuzzItemIntoView();
     }
 
-    if(changes.fuzzItems) {
+    if (changes.fuzzItems) {
       if (!this.fuzzItems.includes(this.selectedFuzzItem)) {
         this.hostEl.nativeElement.scroll(0, 0);
       }

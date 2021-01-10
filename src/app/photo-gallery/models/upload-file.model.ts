@@ -1,6 +1,6 @@
 
-import { UploadMeta } from './upload-meta.model';
-import { LocationData } from './location-data.model';
+import { UploadMeta } from '@src/app/photo-gallery/models/upload-meta.model';
+import { LocationData } from '@src/app/photo-gallery/models/location-data.model';
 
 /**
  * UploadFile
@@ -12,5 +12,5 @@ export class UploadFile {
   isUploaded: boolean;
   sourceId?: string;
   locationData?: LocationData;
-  uploadMeta?: UploadMeta
+  uploadMeta?: UploadMeta;
 }

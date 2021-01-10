@@ -22,7 +22,7 @@ export class NearMeGridComponent {
 
   public userLocation$: Observable<LocationData>;
   public nearByUploads$: Observable<UploadFile[]>;
-  public zoomLevel: number = 3;
+  public zoomLevel = 3;
   public viewingLocationPicker = true;
   public defaultLoc = LocationData.fromLatLong(37.803, -122.271);
 

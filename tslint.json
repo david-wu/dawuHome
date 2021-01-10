@@ -69,7 +69,8 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": true,
+    "no-unused-variable": true,
     "quotemark": [
       true,
       "single"

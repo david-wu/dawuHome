@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
 import {
-  Store,
-  select,
-} from '@ngrx/store';
-import { Subscription, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {
   ActivatedRoute,
-  Router,
   NavigationEnd,
+  Router,
 } from '@angular/router';
-
 import {
-  ImageStreamsActions,
-  getImageStreamsList$,
-  getSelectedImageStreamId$,
-} from '@pp/image-streams/store/index';
+  select,
+  Store,
+} from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+
 import { getUser$ } from '@app/store';
 import { User } from '@models/index';
+import {
+  getImageStreamsList$,
+  getSelectedImageStreamId$,
+  ImageStreamsActions,
+} from '@pp/image-streams/store/index';
 
 @Component({
   selector: 'dwu-image-streams',
@@ -30,8 +29,8 @@ export class ImageStreamsComponent {
   public imageStreamsList$: Observable<any[]>;
   public selectedImageStreamId$: Observable<string>;
 
-  public filterStr: string = '';
-  public leftSideExpanded: boolean = false;
+  public filterStr = '';
+  public leftSideExpanded = false;
   public sub: Subscription;
 
   constructor(
@@ -72,7 +71,7 @@ export class ImageStreamsComponent {
     const urlArr = url.split('/');
     const imageStreamId = urlArr[3] === 'intro' ? undefined : urlArr[3];
     const tabName = urlArr[4];
-    this.store.dispatch(ImageStreamsActions.setSelectedImageStreamId({ payload: imageStreamId }))
+    this.store.dispatch(ImageStreamsActions.setSelectedImageStreamId({ payload: imageStreamId }));
     this.store.dispatch(ImageStreamsActions.setImageStreamViewTab({ payload: tabName }));
   }
 }

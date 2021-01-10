@@ -5,8 +5,8 @@ import {
   sortBy,
 } from 'lodash';
 
-import { NormalKeys } from './normal-keys.enum';
-import { CoronaKeys } from './corona-keys.enum';
+import { NormalKeys } from '@src/app/corona/models/normal-keys.enum';
+import { CoronaKeys } from '@src/app/corona/models/corona-keys.enum';
 import { getDateFromStr } from '@src/app/utils/index';
 
 export class CoronaDataExtractor {
@@ -32,7 +32,7 @@ export class CoronaDataExtractor {
     // if there is a hole in the data, this removes everything before that hole
     let spottyDataClipIndex = 0;
     const overOneDay = (1000 * 60 * 60 * 24) * 1.2;
-    for(let i = 1; i < cleanData.length; i++) {
+    for (let i = 1; i < cleanData.length; i++) {
       const point = cleanData[i];
       const previousPoint = cleanData[i - 1];
       if (!previousPoint) {
@@ -51,7 +51,7 @@ export class CoronaDataExtractor {
 
     let boringDataClipIndex = 0;
     const lastCases = last(oneLeadingZeroData).cases;
-    for(let i = 1; i < oneLeadingZeroData.length; i++) {
+    for (let i = 1; i < oneLeadingZeroData.length; i++) {
       const point = oneLeadingZeroData[i];
       if ((point.cases < 100) && ((point.cases / lastCases) < 0.01)) {
         boringDataClipIndex = i;
@@ -73,14 +73,14 @@ export class CoronaDataExtractor {
         ],
         distanceFromPointToAvg,
       );
-    };
+    }
     return this.getNormalizedData(coolData, population);
   }
 
   public getNormalizedData(cleanData, population: number = 1) {
     const normalizedData = [];
 
-    for(let i = 0; i < cleanData.length; i++) {
+    for (let i = 0; i < cleanData.length; i++) {
       const cleanPoint = cleanData[i];
       const previousCases = cleanPoint.cases - cleanPoint.new;
       const r = previousCases
@@ -99,7 +99,7 @@ export class CoronaDataExtractor {
       normalizedData.push(normalizedPoint);
     }
 
-    for(let i = 0; i < cleanData.length; i++) {
+    for (let i = 0; i < cleanData.length; i++) {
       const ppPreviousPoint = cleanData[i - 3] || { cases: 0, new: 0 };
       const pPreviousPoint = cleanData[i - 2] || { cases: 0, new: 0 };
       const previousPoint = cleanData[i - 1] || { cases: 0, new: 0 };
@@ -126,7 +126,7 @@ export class CoronaDataExtractor {
   ) {
     const avgSeries = [];
 
-    for(let i = 0; i < cleanData.length; i++) {
+    for (let i = 0; i < cleanData.length; i++) {
 
       // points towards the ends of the series could be averaged over a smaller number of points
       let startIndex = i - distanceFromPointToAvg;

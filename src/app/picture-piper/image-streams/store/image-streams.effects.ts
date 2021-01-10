@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import {
   Router,
 } from '@angular/router';
@@ -8,41 +7,37 @@ import {
   createEffect,
   ofType,
 } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import {
   Action,
   select,
 } from '@ngrx/store';
 import {
-  Observable,
-  from,
-  of,
-} from 'rxjs';
-import {
-  map,
-  catchError,
-  switchMap,
-  withLatestFrom,
-  tap,
-} from 'rxjs/operators';
-import {
   FirebaseFirestoreService,
 } from '@services/index';
 import {
-  sortBy,
-  orderBy,
-} from 'lodash';
+  from,
+  Observable,
+  of,
+} from 'rxjs';
+import {
+  catchError,
+  map,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 
+import { ImageStreamsService } from '@pp/image-streams/services';
+import { PicturePiperService } from '@pp/services';
 import {
   AuthActions,
   getUser$,
 } from '@src/app/store/index';
+import { ImageStreamsActions } from '@src/app/picture-piper/image-streams/store/image-streams.actions';
 import {
   getImageStreamsListVisible$,
   getImageStreamViewTab$,
-} from './image-streams.selectors';
-import { ImageStreamsActions } from './image-streams.actions';
-import { ImageStreamsService } from '@pp/image-streams/services';
-import { PicturePiperService } from '@pp/services';
+} from '@src/app/picture-piper/image-streams/store/image-streams.selectors';
 
 @Injectable()
 export class ImageStreamsEffects {
@@ -65,7 +60,7 @@ export class ImageStreamsEffects {
           map((imageStreams) => ImageStreamsActions.setImageStreamsList({ payload: imageStreams })),
         );
       }),
-    )
+    );
   });
 
   public createImageStream$: Observable<Action> = createEffect(() => {
@@ -85,7 +80,7 @@ export class ImageStreamsEffects {
           })
         );
       }),
-    )
+    );
   });
 
 
@@ -108,7 +103,7 @@ export class ImageStreamsEffects {
           })
         );
       }),
-    )
+    );
   });
 
   public uploadImageStreamFile$: Observable<Action> = createEffect(() => {

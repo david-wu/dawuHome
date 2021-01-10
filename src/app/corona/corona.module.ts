@@ -12,10 +12,10 @@ import { CoronaRoutingModule } from '@src/app/corona/corona.routes';
 import { CommonModule as MyCommonModule } from '@src/app/common/common.module';
 import { SearchInputModule } from '@common/search-input/search-input.module';
 import { FileExplorerModule } from '@file-explorer/file-explorer.module';
-import { CoronaCompareDashboardComponent } from './corona-compare-dashboard/corona-compare-dashboard.component';
-import { CoronaDashboardComponent } from './corona-dashboard/corona-dashboard.component';
-import { LatestPointsViewerComponent } from './latest-points-viewer/latest-points-viewer.component';
-import { SERVICES } from './services/index';
+import { CoronaCompareDashboardComponent } from '@src/app/corona/corona-compare-dashboard/corona-compare-dashboard.component';
+import { CoronaDashboardComponent } from '@src/app/corona/corona-dashboard/corona-dashboard.component';
+import { LatestPointsViewerComponent } from '@src/app/corona/latest-points-viewer/latest-points-viewer.component';
+import { SERVICES } from '@src/app/corona/services/index';
 
 @NgModule({
     imports: [

@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import {
-  Store,
-  select,
-} from '@ngrx/store';
-import { Subscription, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {
   ActivatedRoute,
   Router,
 } from '@angular/router';
+import {
+  select,
+  Store,
+} from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
 
 import {
-  ImageSourcesActions,
   getImageSourcesList$,
   getSelectedImageSourceId$,
+  ImageSourcesActions,
 } from '@app/picture-piper/image-sources/store/index';
 import { getUser$ } from '@app/store';
 import { User } from '@models/index';
@@ -29,8 +28,8 @@ export class PicturePiperComponent {
   public imageSourcesList$: Observable<any[]>;
   public selectedImageSourceId$: Observable<string>;
 
-  public filterStr: string = '';
-  public leftSideExpanded: boolean = false;
+  public filterStr = '';
+  public leftSideExpanded = false;
   public sub: Subscription;
 
   constructor(
@@ -53,7 +52,7 @@ export class PicturePiperComponent {
   public ngOnDestroy() {
     this.store.dispatch(ImageSourcesActions.setImageSourcesListVisible({ payload: false }));
     if (this.sub) {
-      this.sub.unsubscribe()
+      this.sub.unsubscribe();
     }
   }
 

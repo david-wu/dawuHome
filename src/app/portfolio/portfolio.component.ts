@@ -18,8 +18,8 @@ export class PortfolioComponent {
   public filesById: Record<string, File> = {};
   public filesByLabel: Record<string, File> = {};
   public fileGroup: FileGroup = new FileGroup();
-  public filterStr: string = '';
-  public leftSideExpanded: boolean = false;
+  public filterStr = '';
+  public leftSideExpanded = false;
 
   constructor(
     public router: Router,
@@ -101,7 +101,7 @@ export class PortfolioComponent {
   }
 
   public getSelectedFileId() {
-    const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || [])
+    const selectedFileIds = Array.from(this.fileGroup.selectedFileIds || []);
     return (selectedFileIds.length === 1) && selectedFileIds[0];
   }
 

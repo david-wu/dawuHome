@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { PicturePiperDemoRoutingModule } from './picture-piper-demo.routes';
-import { PicturePiperDemoComponent } from './picture-piper-demo.component';
+import { PicturePiperDemoComponent } from '@src/app/portfolio/picture-piper-demo/picture-piper-demo.component';
+import { PicturePiperDemoRoutingModule } from '@src/app/portfolio/picture-piper-demo/picture-piper-demo.routes';
 
 @NgModule({
   imports: [

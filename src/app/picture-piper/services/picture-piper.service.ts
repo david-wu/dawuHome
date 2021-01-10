@@ -1,25 +1,14 @@
 import { Injectable } from '@angular/core';
 import {
-  Observable,
-  BehaviorSubject,
-  Subject,
-  of,
   from,
+  Observable,
 } from 'rxjs';
-import {
-  map,
-  switchMap,
-} from 'rxjs/operators';
-import { sortBy } from 'lodash';
-import * as Jimp from 'jimp';
 
 import { User } from '@models/index';
-import { UploadFile } from '@photo-gallery/models/index';
 import {
-  FirebaseAuthService,
+  ExifService,
   FirebaseFirestoreService,
   FirebaseStorageService,
-  ExifService,
   ImageProcessingService,
 } from '@services/index';
 
@@ -38,7 +27,7 @@ export class PicturePiperService {
       return db
         .collection(resource.path)
         .where('userId', '==', user.uid)
-        .orderBy('updatedAt', 'desc')
+        .orderBy('updatedAt', 'desc');
     });
   }
 
@@ -49,12 +38,19 @@ export class PicturePiperService {
   }
 
 
+  public patchResourceDoc(user: User, resource: any, patch): Observable<any> {
+    console.log('patchResourceDoc', resource.path, patch);
+    return from(this.firestore.db.doc(resource.path).update(patch));
+  }
+
+
+
   public getImageSources$(user: User): Observable<any[]> {
     return this.firestore.query((db) => {
       return db
         .collection('imageSources')
         .where('userId', '==', user.uid)
-        .orderBy('updatedAt', 'desc')
+        .orderBy('updatedAt', 'desc');
     });
   }
 
@@ -63,7 +59,7 @@ export class PicturePiperService {
       return db
         .collection('imageStreams')
         .where('userId', '==', user.uid)
-        .orderBy('updatedAt', 'desc')
+        .orderBy('updatedAt', 'desc');
     });
   }
 

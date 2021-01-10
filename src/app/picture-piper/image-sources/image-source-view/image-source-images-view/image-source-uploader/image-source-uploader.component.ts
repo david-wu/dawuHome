@@ -2,15 +2,10 @@ import {
   Component,
   Input,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import {
   Store,
-  select,
 } from '@ngrx/store';
 import {
-  getSelectedImageSourceId$,
-  getImagesBySourceId$,
   ImageSourcesActions,
 } from '@pp/image-sources/store/index';
 

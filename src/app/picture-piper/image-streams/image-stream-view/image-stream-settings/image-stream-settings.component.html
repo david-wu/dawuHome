@@ -1,4 +1,5 @@
-<dwu-image-stream-settings-selector
+<dwu-image-stream-settings-editor
   *ngIf="selectedImageStream$ | async as selectedImageStream"
-  [imageStreamId]="selectedImageStream.id"
-></dwu-image-stream-settings-selector>
+  [imageStream]="selectedImageStream"
+  (onSave)="onSave(selectedImageStream.id, $event)"
+></dwu-image-stream-settings-editor>

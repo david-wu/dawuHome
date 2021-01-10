@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import {
   Router,
 } from '@angular/router';
@@ -8,42 +7,37 @@ import {
   createEffect,
   ofType,
 } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import {
   Action,
   select,
 } from '@ngrx/store';
 import {
-  Observable,
-  from,
-  of,
-} from 'rxjs';
-import {
-  map,
-  catchError,
-  switchMap,
-  withLatestFrom,
-  tap,
-} from 'rxjs/operators';
-import {
   FirebaseFirestoreService,
 } from '@services/index';
 import {
-  sortBy,
-  orderBy,
-} from 'lodash';
+  from,
+  Observable,
+  of,
+} from 'rxjs';
+import {
+  catchError,
+  map,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 
+import { ImageSourcesService } from '@pp/image-sources/services';
+import { PicturePiperService } from '@pp/services';
 import {
   AuthActions,
   getUser$,
 } from '@src/app/store/index';
+import { ImageSourcesActions } from '@src/app/picture-piper/image-sources/store/image-sources.actions';
 import {
   getImageSourcesListVisible$,
   getImageSourceViewTab$,
-  getSelectedImageSourceId$,
-} from './image-sources.selectors';
-import { ImageSourcesActions } from './image-sources.actions';
-import { ImageSourcesService } from '@pp/image-sources/services';
-import { PicturePiperService } from '@pp/services';
+} from '@src/app/picture-piper/image-sources/store/image-sources.selectors';
 
 @Injectable()
 export class ImageSourcesEffects {
@@ -66,7 +60,7 @@ export class ImageSourcesEffects {
           map((imageSources) => ImageSourcesActions.setImageSourcesList({ payload: imageSources })),
         );
       }),
-    )
+    );
   });
 
   public createImageSource$: Observable<Action> = createEffect(() => {
@@ -86,7 +80,7 @@ export class ImageSourcesEffects {
           })
         );
       }),
-    )
+    );
   });
 
 
@@ -109,7 +103,7 @@ export class ImageSourcesEffects {
           })
         );
       }),
-    )
+    );
   });
 
   public uploadImageSourceFile$: Observable<Action> = createEffect(() => {

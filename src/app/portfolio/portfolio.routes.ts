@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PortfolioComponent } from '@src/app/portfolio/portfolio.component';
 // import { DemoPageWrapperComponent } from 'fuzz-demo-app';
 
-import { BackyardPatioComponent } from './backyard-patio/backyard-patio.component';
-import { BarChartDemoComponent } from './bar-chart-demo/bar-chart-demo.component';
-import { LineChartDemoComponent } from './line-chart-demo/line-chart-demo.component';
-import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
-import { FuzzDemoComponent } from './fuzz-demo/fuzz-demo.component'
 import { MissingDemoComponent } from '@src/app/portfolio/missing-demo/missing-demo.component';
-import { CodeSnippetDemoComponent } from './code-snippet-demo/code-snippet-demo.component';
-import { FileExplorerDemoComponent } from './file-explorer-demo/file-explorer-demo.component';
-import { ChartLegendDemoComponent } from './chart-legend-demo/chart-legend-demo.component';
+import { BackyardPatioComponent } from '@src/app/portfolio/backyard-patio/backyard-patio.component';
+import { BarChartDemoComponent } from '@src/app/portfolio/bar-chart-demo/bar-chart-demo.component';
+import { ChartLegendDemoComponent } from '@src/app/portfolio/chart-legend-demo/chart-legend-demo.component';
+import { CodeSnippetDemoComponent } from '@src/app/portfolio/code-snippet-demo/code-snippet-demo.component';
+import { FileExplorerDemoComponent } from '@src/app/portfolio/file-explorer-demo/file-explorer-demo.component';
+import { FuzzDemoComponent } from '@src/app/portfolio/fuzz-demo/fuzz-demo.component';
+import { LineChartDemoComponent } from '@src/app/portfolio/line-chart-demo/line-chart-demo.component';
+import { TooltipDemoComponent } from '@src/app/portfolio/tooltip-demo/tooltip-demo.component';
 // console.log('DemoPageWrapperComponent', DemoPageWrapperComponent)
 
 const routes: Routes = [

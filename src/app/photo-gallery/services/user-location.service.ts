@@ -24,7 +24,7 @@ export class UserLocationService {
             longitude,
             { locationSource: 'USER' },
           );
-          resolve(locationData)
+          resolve(locationData);
         },
         (error) => reject(error),
         geolocationOptions,

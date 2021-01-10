@@ -1,8 +1,8 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { VirtualScrollGridComponent } from './virtual-scroll-grid.component';
+import { VirtualScrollGridComponent } from '@src/app/common/virtual-scroll-grid/virtual-scroll-grid.component';
 // import { LocationPickerComponent } from '@photo-gallery/photo-gallery-common/location-picker/location-picker.component';
 // import { PhotoGalleryComponent } from '@photo-gallery/photo-gallery.component';
 // import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';

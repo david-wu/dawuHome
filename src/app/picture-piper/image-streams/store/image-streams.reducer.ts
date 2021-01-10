@@ -5,11 +5,11 @@ import {
   on,
 } from '@ngrx/store';
 
-import { ImageStreamsActions } from './image-streams.actions';
+import { ImageStreamsActions } from '@src/app/picture-piper/image-streams/store/image-streams.actions';
 import {
-  initialImageStreamsState,
   ImageStreamsState,
-} from './image-streams.state';
+  initialImageStreamsState,
+} from '@src/app/picture-piper/image-streams/store/image-streams.state';
 
 const reducer: ActionReducer<ImageStreamsState> = createReducer(
   initialImageStreamsState,
@@ -98,7 +98,7 @@ const reducer: ActionReducer<ImageStreamsState> = createReducer(
         ...state.imageStreamTokensByImageStream,
         [action.imageStreamId]: action.imageStreamTokens,
       },
-    }
+    };
   })
 );
 

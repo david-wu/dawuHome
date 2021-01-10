@@ -8,12 +8,12 @@ import {
   styleUrls: ['./code-snippet-demo.component.scss'],
 })
 export class CodeSnippetDemoComponent {
-  public demoSnippet: string = `console.log('This is a demo Snippet');`;
+  public demoSnippet = `console.log('This is a demo Snippet');`;
 
-  public usageSnippet: string =
+  public usageSnippet =
 `<dwu-code-snippet
   [snippet]="demoSnippet"
 ></dwu-code-snippet>`;
-  public usageSnippetCode: string = `public demoSnippet: string = \`console.log('This is a demo Snippet');\`;`;
+  public usageSnippetCode = `public demoSnippet: string = \`console.log('This is a demo Snippet');\`;`;
 
 }

@@ -61,7 +61,7 @@ export class ImageGridComponent {
     const downloadUrl = file.uploadMeta.downloadUrl;
     const Url = window.URL || (window as any).webkitURL;
     const xhr = new XMLHttpRequest();
-    const aEl: any = document.createElement('a')
+    const aEl: any = document.createElement('a');
 
     xhr.open('GET', downloadUrl, true);
     xhr.responseType = 'blob';
@@ -75,6 +75,6 @@ export class ImageGridComponent {
       aEl.remove();
     };
     xhr.send();
-  };
+  }
 
 }

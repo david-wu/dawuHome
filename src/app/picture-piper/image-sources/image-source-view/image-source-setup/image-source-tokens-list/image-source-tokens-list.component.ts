@@ -1,23 +1,23 @@
 import {
   Component,
+  EventEmitter,
   Input,
   Output,
-  EventEmitter,
 } from '@angular/core';
-import { keyBy } from 'lodash';
-import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { File, FileGroup } from '@file-explorer/index';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
-import { FileGroup, File } from '@file-explorer/index';
 import {
   // getSelectedImageSourceId$,
   getImageSourceTokensByImageSource$,
   // getImagesBySourceId$,
   ImageSourcesActions,
 } from '@pp/image-sources/store/index';
+import { keyBy } from 'lodash';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'dwu-image-source-tokens-list',

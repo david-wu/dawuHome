@@ -1,5 +1,5 @@
-import { NormalKeys } from './normal-keys.enum';
-import { CoronaKeys } from './corona-keys.enum';
+import { NormalKeys } from '@src/app/corona/models/normal-keys.enum';
+import { CoronaKeys } from '@src/app/corona/models/corona-keys.enum';
 
 export class Labels {
 
@@ -21,6 +21,6 @@ export class Labels {
         [NormalKeys.RECOVERED]: 'Recovered',
         [NormalKeys.DEATHS]: 'Deaths',
         [NormalKeys.NEW_DEATHS]: 'New Deaths',
-    }
+    };
 
 }

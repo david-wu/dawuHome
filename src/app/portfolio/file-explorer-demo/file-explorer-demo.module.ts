@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { FileExplorerDemoComponent } from './file-explorer-demo.component';
-import { TooltipModule } from '@common/tooltip/tooltip.module';
 import { CodeSnippetModule } from '@common/code-snippet/code-snippet.module';
 import { FileExplorerModule } from '@common/file-explorer/file-explorer.module';
+import { TooltipModule } from '@common/tooltip/tooltip.module';
+import { FileExplorerDemoComponent } from '@src/app/portfolio/file-explorer-demo/file-explorer-demo.component';
 
 @NgModule({
   imports: [

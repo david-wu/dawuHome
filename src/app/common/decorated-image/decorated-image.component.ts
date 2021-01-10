@@ -1,9 +1,9 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     ElementRef,
     EventEmitter,
+    HostBinding,
     HostListener,
     Input,
     Output,
@@ -23,8 +23,8 @@ export class DecoratedImageComponent {
   @Output() download = new EventEmitter();
   @Output() zoomIn = new EventEmitter();
 
-  public isFocused: boolean = false;
-  public hideOverlay: boolean = false;
+  public isFocused = false;
+  public hideOverlay = false;
 
   constructor(
     public hostEl: ElementRef,

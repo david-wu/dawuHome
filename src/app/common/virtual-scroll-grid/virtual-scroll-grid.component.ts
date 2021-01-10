@@ -1,30 +1,30 @@
 import {
+  CdkVirtualScrollViewport,
+  FixedSizeVirtualScrollStrategy,
+} from '@angular/cdk/scrolling';
+import {
   Component,
   ElementRef,
   EventEmitter,
   Input,
   Output,
-  ViewChild,
   SimpleChanges,
   TemplateRef,
+  ViewChild,
 } from '@angular/core';
-import {
-  Observable,
-  BehaviorSubject,
-  merge,
-} from 'rxjs';
-import {
-  debounceTime,
-} from 'rxjs/operators';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import {
   get,
   last,
 } from 'lodash';
 import {
-  CdkVirtualScrollViewport,
-  FixedSizeVirtualScrollStrategy,
-} from '@angular/cdk/scrolling';
-import ResizeSensor from 'css-element-queries/src/ResizeSensor';
+  BehaviorSubject,
+  merge,
+  Observable,
+} from 'rxjs';
+import {
+  debounceTime,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'dwu-virtual-scroll-grid',
@@ -33,17 +33,17 @@ import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 })
 export class VirtualScrollGridComponent {
   @Input() tileIds: string[] = [];
-  @Input() maxColumns: number = 5;
+  @Input() maxColumns = 5;
   // If true, columnCount will always equal maxColumns
   // Otherwise, try to find the best columnCount based on tileOptions and maxColumns
-  @Input() alwaysUseMaxColumns: boolean = false;
+  @Input() alwaysUseMaxColumns = false;
   @Input() centeredTileId: string;
   // assumes scrollbar is 0px
-  @Input() marginLeft: number = 0;
+  @Input() marginLeft = 0;
 
   @Output() centeredTileIdChange = new EventEmitter<string>();
   @Input() tileTemplate: TemplateRef<any>;
-  @Input() tileOptions: any[]
+  @Input() tileOptions: any[];
 
   @ViewChild('scrollViewport', { static: true }) scrollViewport: CdkVirtualScrollViewport;
 
@@ -56,7 +56,7 @@ export class VirtualScrollGridComponent {
   public scaledImageWidthStr: string = undefined;
   public scaledImageHeight: number = undefined;
   public scaledImageHeightStr: string = undefined;
-  public strat: FixedSizeVirtualScrollStrategy = new FixedSizeVirtualScrollStrategy(1,1,1);
+  public strat: FixedSizeVirtualScrollStrategy = new FixedSizeVirtualScrollStrategy(1, 1, 1);
   public scrollToTimeout: number;
   public sub;
   public layoutChange$ = new BehaviorSubject(undefined);
@@ -97,7 +97,7 @@ export class VirtualScrollGridComponent {
       this.layoutChange$,
     )
       .pipe(debounceTime(200))
-      .subscribe(() => this.updateCenteredTileId())
+      .subscribe(() => this.updateCenteredTileId());
   }
 
   public ngOnDestroy() {
@@ -167,7 +167,7 @@ export class VirtualScrollGridComponent {
     }
     const tileIdRows = [];
     let row = [tileIds[0]];
-    for(let i = 1; i < tileIds.length; i++) {
+    for (let i = 1; i < tileIds.length; i++) {
       if ((i % columnCount) === 0) {
         tileIdRows.push(row);
         row = [];
@@ -175,7 +175,7 @@ export class VirtualScrollGridComponent {
       row.push(tileIds[i]);
     }
 
-    if(row.length) {
+    if (row.length) {
       tileIdRows.push(row);
     }
     return tileIdRows;
@@ -218,8 +218,8 @@ export class VirtualScrollGridComponent {
       const rowIndex = Math.ceil((index + 1) / this.columnCount) - 1;
 
       const offset = (rowIndex * this.scaledImageHeight) - (clientHeight / 2) + (this.scaledImageHeight / 2);
-      this.scrollViewport.scrollTo({ top: offset })
-    })
+      this.scrollViewport.scrollTo({ top: offset });
+    });
   }
 
   public getMostCenteredRowIndex(offsetTop?: number) {

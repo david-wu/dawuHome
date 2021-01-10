@@ -5,11 +5,11 @@ import {
   on,
 } from '@ngrx/store';
 
-import { ImageSourcesActions } from './image-sources.actions';
+import { ImageSourcesActions } from '@src/app/picture-piper/image-sources/store/image-sources.actions';
 import {
-  initialImageSourcesState,
   ImageSourcesState,
-} from './image-sources.state';
+  initialImageSourcesState,
+} from '@src/app/picture-piper/image-sources/store/image-sources.state';
 
 const reducer: ActionReducer<ImageSourcesState> = createReducer(
   initialImageSourcesState,
@@ -96,7 +96,7 @@ const reducer: ActionReducer<ImageSourcesState> = createReducer(
         ...state.imageSourceTokensByImageSource,
         [action.imageSourceId]: action.imageSourceTokens,
       },
-    }
+    };
   })
 );
 

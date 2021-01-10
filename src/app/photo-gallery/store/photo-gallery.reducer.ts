@@ -5,11 +5,11 @@ import {
   on,
 } from '@ngrx/store';
 
-import { PhotoGalleryActions } from './photo-gallery.actions';
+import { PhotoGalleryActions } from '@src/app/photo-gallery/store/photo-gallery.actions';
 import {
   initialPhotoGalleryState,
   PhotoGalleryState,
-} from './photo-gallery.state';
+} from '@src/app/photo-gallery/store/photo-gallery.state';
 
 const reducer: ActionReducer<PhotoGalleryState> = createReducer(
   initialPhotoGalleryState,

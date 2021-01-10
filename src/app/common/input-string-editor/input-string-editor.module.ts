@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { InputStringEditorComponent } from './input-string-editor.component';
+import { InputStringEditorComponent } from '@src/app/common/input-string-editor/input-string-editor.component';
 
 @NgModule({
   imports: [

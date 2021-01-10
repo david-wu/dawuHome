@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { ImageStreamOverviewComponent } from './image-stream-overview.component';
-import { ImageStreamOverviewRoutingModule } from './image-stream-overview.routes';
 import { InputStringEditorModule } from '@common/input-string-editor/input-string-editor.module';
+import { ImageStreamOverviewComponent } from '@src/app/picture-piper/image-streams/image-stream-view/image-stream-overview/image-stream-overview.component';
+import { ImageStreamOverviewRoutingModule } from '@src/app/picture-piper/image-streams/image-stream-view/image-stream-overview/image-stream-overview.routes';
 
 @NgModule({
   imports: [

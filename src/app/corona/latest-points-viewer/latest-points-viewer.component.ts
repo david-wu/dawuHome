@@ -35,7 +35,7 @@ import { breadthFirstBy } from '@utils/index';
 import {
   CoronaService,
   CoronaStoreService,
-} from '../services/index';
+} from '@src/app/corona/services/index';
 
 @Component({
   selector: 'dwu-latest-points-viewer',
@@ -47,7 +47,7 @@ export class LatestPointsViewerComponent {
   @Input() locations: string[];
   @ViewChild(MatSort, { static: true }) sort;
 
-  public dataSource$: Observable<MatTableDataSource<any>>
+  public dataSource$: Observable<MatTableDataSource<any>>;
   public tableData$: Observable<any>;
   public displayedColumns = ['location', 'cases', 'new', 'deaths', 'newDeaths'];
 
@@ -80,7 +80,7 @@ export class LatestPointsViewerComponent {
           };
         });
         const dataSource = new MatTableDataSource(locationData);
-        dataSource.sort = this.sort
+        dataSource.sort = this.sort;
         return dataSource;
       }),
       );

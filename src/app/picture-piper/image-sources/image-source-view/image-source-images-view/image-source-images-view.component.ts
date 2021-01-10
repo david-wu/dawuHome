@@ -1,14 +1,14 @@
 import {
   Component,
 } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
 import {
   getSelectedImageSourceId$,
 } from '@pp/image-sources/store/index';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'dwu-image-source-images-view',
@@ -26,7 +26,7 @@ export class ImageSourceImagesViewComponent {
   }
 
   public onFileUpload(file) {
-    console.log('onFileUpload', file)
+    console.log('onFileUpload', file);
   }
 
 }

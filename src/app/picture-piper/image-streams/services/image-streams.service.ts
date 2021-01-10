@@ -1,25 +1,11 @@
 import { Injectable } from '@angular/core';
-import {
-  Observable,
-  BehaviorSubject,
-  Subject,
-  of,
-  from,
-} from 'rxjs';
-import {
-  map,
-  switchMap,
-} from 'rxjs/operators';
-import { sortBy } from 'lodash';
-import * as Jimp from 'jimp';
 
 import { User } from '@models/index';
 import { UploadFile } from '@photo-gallery/models/index';
 import {
-  FirebaseAuthService,
+  ExifService,
   FirebaseFirestoreService,
   FirebaseStorageService,
-  ExifService,
   ImageProcessingService,
 } from '@services/index';
 
@@ -35,19 +21,14 @@ export class ImageStreamsService {
 
   /**
    * generateImageStreamToken
-   * @param {string} imageStreamId
-   * @param {User}   user
    */
   public async generateImageStreamToken(imageStreamId: string) {
     const generateToken = window.firebase.functions().httpsCallable('generateImageStreamTokenTask');
-    // imageStreamId = 'bOuFUgQtaPzYTUiBQHaI';
     return await generateToken({ imageStreamId });
   }
 
   /**
    * deleteFile
-   * @param {string} uploadFileId
-   * @param {User}   user
    */
   public async deleteFile(uploadFileId: string) {
     await this.storage.deleteFile(uploadFileId);
@@ -56,8 +37,6 @@ export class ImageStreamsService {
 
   /**
    * uploadImageStreamFile
-   * @param {File} file
-   * @param {User} user
    */
   public async uploadImageStreamFile(file: File, user: User, sourceId: string) {
     const exifData = await this.exifService.getExifData(file);
@@ -77,16 +56,16 @@ export class ImageStreamsService {
     };
 
     const sizedFile = await this.imageProcessing.processImageFile(file, exifData);
-    const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
+    const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id);
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
-    const uploadMeta = { downloadUrl: downloadUrl };
+    const uploadMeta = { downloadUrl };
     return await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta);
   }
 
-  public updateImageStream(imageStreamId, patch) {
+  public updateImageStream(imageStreamId: string, patch: any) {
     return this.firestore.db.collection('imageStreams')
       .doc(imageStreamId)
-      .update(patch)
+      .update(patch);
   }
 
 }

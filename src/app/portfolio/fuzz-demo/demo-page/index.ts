@@ -1,9 +1,9 @@
 
-import { DemoPageComponent } from './demo-page.component';
-import { TabbedWindowComponent } from './tabbed-window/tabbed-window.component';
-import { FuzzItemListViewerComponent } from './fuzz-item-list-viewer/fuzz-item-list-viewer.component';
-import { FuzzalyticsComponent } from './fuzzalytics/fuzzalytics.component';
-import { OptionsAndCodeComponent } from './options-and-code/options-and-code.component';
+import { DemoPageComponent } from '@src/app/portfolio/fuzz-demo/demo-page/demo-page.component';
+import { FuzzItemListViewerComponent } from '@src/app/portfolio/fuzz-demo/demo-page/fuzz-item-list-viewer/fuzz-item-list-viewer.component';
+import { FuzzalyticsComponent } from '@src/app/portfolio/fuzz-demo/demo-page/fuzzalytics/fuzzalytics.component';
+import { OptionsAndCodeComponent } from '@src/app/portfolio/fuzz-demo/demo-page/options-and-code/options-and-code.component';
+import { TabbedWindowComponent } from '@src/app/portfolio/fuzz-demo/demo-page/tabbed-window/tabbed-window.component';
 
 export const DEMO_PAGE_COMPONENTS = [
 	DemoPageComponent,

@@ -12,7 +12,7 @@ import {
     CoronaKeys,
     NormalKeys,
     Labels,
-} from '../models/index';
+} from '@src/app/corona/models/index';
 import {
     getDateFromStr,
     getDateFromLeadingYearStr,
@@ -28,14 +28,14 @@ export class CoronaDashboardComponent {
     @Input() lockdownInfo: any;
     @Input() coronaFile: any;
     @Input() disabledBarKeys = new Set<string>();
-    @Input() population: number = 0;
+    @Input() population = 0;
     @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
     @Input() disabledNormalKeys = new Set<string>();
     @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
 
-    @Input() isViewingNormalized: boolean = false;
+    @Input() isViewingNormalized = false;
     @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
-    @Input() isViewingLineChart: boolean = false;
+    @Input() isViewingLineChart = false;
     @Output() isViewingLineChartChange = new EventEmitter<boolean>();
 
     public hoverSeries;
@@ -110,7 +110,7 @@ export class CoronaDashboardComponent {
         [NormalKeys.R_AVG]: this.toPercentage,
         [NormalKeys.R]: this.toPercentage,
         [CoronaKeys.TIMESTAMP]: d3.timeFormat('%-m/%e'),
-    }
+    };
 
     public ngOnChanges(changes) {
         if (changes.coronaFile && this.coronaFile) {

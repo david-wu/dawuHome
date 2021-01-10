@@ -15,9 +15,9 @@ import {
 export class FileUploaderComponent {
 
   @Input() acceptStr = `image/*`;
-  @Input() showUploadButton: boolean = false;
-  @Output() fileChange = new EventEmitter<File>()
-  @Output() fileUpload = new EventEmitter<File>()
+  @Input() showUploadButton = false;
+  @Output() fileChange = new EventEmitter<File>();
+  @Output() fileUpload = new EventEmitter<File>();
 
   public file: File;
 

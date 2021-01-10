@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
-import { keyBy } from 'lodash';
 import {
   ActivatedRoute,
   Router,
-  NavigationEnd,
-  Params,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import {
   select,
   Store,
 } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { FileGroup, FileType, File } from '@file-explorer/index';
 import {
   getFilesById$,
   // getMlFilesState$,
 } from '@app/ml-app/store/index';
+import { File, FileGroup } from '@file-explorer/index';
 
 @Component({
   selector: 'dwu-ml-file-explorer',
@@ -28,11 +25,11 @@ export class MlFileExplorerComponent {
   public filesById: Record<string, File> = {};
   public filesByLabel: Record<string, File> = {};
   public fileGroup: FileGroup = new FileGroup();
-  public filterStr: string = '';
+  public filterStr = '';
   public selectedFileId: string;
 
   public filesById$: Observable<Record<string, File>>;
-  public rootId: string = 'ROOT';
+  public rootId = 'ROOT';
 
   constructor(
     public store: Store,
@@ -85,7 +82,7 @@ export class MlFileExplorerComponent {
   // }
 
   public onSelectedFileIdsChange(fileIds: Set<string>) {
-    console.log('onSelectedFileIdsChange', fileIds)
+    console.log('onSelectedFileIdsChange', fileIds);
     const selectedFileId = Array.from(fileIds)[0];
     // this.selectedFileId = selectedFileId;
     this.fileGroup.setSelectedFileIds(new Set([selectedFileId]));

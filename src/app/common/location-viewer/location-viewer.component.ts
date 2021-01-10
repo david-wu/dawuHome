@@ -1,32 +1,32 @@
 import {
+  CdkVirtualScrollViewport,
+  FixedSizeVirtualScrollStrategy,
+} from '@angular/cdk/scrolling';
+import {
   Component,
   ElementRef,
   EventEmitter,
   Input,
   Output,
-  ViewChild,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
-import {
-  Observable,
-} from 'rxjs';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import {
   debounce,
   get,
 } from 'lodash';
 import {
-  CdkVirtualScrollViewport,
-  FixedSizeVirtualScrollStrategy,
-} from '@angular/cdk/scrolling';
-import ResizeSensor from 'css-element-queries/src/ResizeSensor';
+  Observable,
+} from 'rxjs';
 
 import { UploadFile } from '@photo-gallery/models/index';
+import { LocationData } from '@photo-gallery/models/index';
 import {
+  getLocationPermission$,
   PhotoGalleryActions,
   PhotoGalleryState,
-  getLocationPermission$,
 } from '@photo-gallery/store/index';
-import { LocationData } from '@photo-gallery/models/index';
 
 @Component({
   selector: 'dwu-location-viewer',
@@ -50,7 +50,7 @@ export class LocationViewerComponent {
   }
 
   public ngOnChanges(changes) {
-    if(changes.location) {
+    if (changes.location) {
       this.setMapCenter();
     }
   }
@@ -67,7 +67,7 @@ export class LocationViewerComponent {
     if (!this.map) {
       this.map = new (window as any).google.maps.Map(this.mapContainerEl.nativeElement, {
         zoom: 13,
-        center: center,
+        center,
         disableDefaultUI: true,
       });
       this.map.addListener('center_changed', () => {
@@ -78,7 +78,7 @@ export class LocationViewerComponent {
       this.locationChange.emit(this.location);
     } else {
       const mapCenter = this.map.getCenter();
-      if((mapCenter.lat() !== center.lat) || (mapCenter.lng() !== center.lng)) {
+      if ((mapCenter.lat() !== center.lat) || (mapCenter.lng() !== center.lng)) {
         this.map.setCenter(center);
       }
     }

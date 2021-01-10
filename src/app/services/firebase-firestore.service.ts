@@ -18,7 +18,7 @@ import { LocationData } from '@photo-gallery/models/index';
 export class FirebaseFirestoreService {
 
   public db = window.firebase.firestore();
-  public firestoreTimestamp = window.firebase.firestore.FieldValue.serverTimestamp
+  public firestoreTimestamp = window.firebase.firestore.FieldValue.serverTimestamp;
 
   public createImageSource(user: User): Observable<any> {
     const timestamp = this.firestoreTimestamp();
@@ -26,7 +26,7 @@ export class FirebaseFirestoreService {
       userId: user.uid,
       createdAt: timestamp,
       updatedAt: timestamp,
-    }
+    };
     return from(this.db.collection('imageSources').add(imageSource));
   }
 
@@ -36,7 +36,7 @@ export class FirebaseFirestoreService {
       userId: user.uid,
       createdAt: timestamp,
       updatedAt: timestamp,
-    }
+    };
     return from(this.db.collection('imageStreams').add(imageStream));
   }
 
@@ -153,12 +153,12 @@ export class FirebaseFirestoreService {
     );
   }
 
-  public getNearbyUploads$(userLocation: any, distanceType: string='DRIVE') {
+  public getNearbyUploads$(userLocation: any, distanceType: string= 'DRIVE') {
     const distanceTargetsByType = {
       WALK: Math.pow(10, 12) * 7,
       BIKE: Math.pow(10, 12) * 7 * 5,
       DRIVE: Math.pow(10, 12) * 7 * 5 * 40,
-    }
+    };
     const distanceTargetInS2 = bigInt(distanceTargetsByType[distanceType]);
     const userS2 = bigInt(userLocation.s2Id);
     // ignore first 4 chars to avoid big math
@@ -177,8 +177,8 @@ export class FirebaseFirestoreService {
     // const nextGeohashChar = String.fromCharCode(lastGeohashChar.charCodeAt(0) + 1);
     // const walkingRangeEnd = userLocation.geohash.slice(0, 4) + nextGeohashChar;
     const collection = this.db.collection(`uploads`)
-      .where('locationData.s2Id', ">=", walkingRange[0])
-      .where('locationData.s2Id', "<=", walkingRange[1]);
+      .where('locationData.s2Id', '>=', walkingRange[0])
+      .where('locationData.s2Id', '<=', walkingRange[1]);
 
     // client filtering
     // const userLoc = [

@@ -5,11 +5,11 @@ import {
   on,
 } from '@ngrx/store';
 
-import { AuthActions } from './auth.actions';
+import { AuthActions } from '@src/app/store/auth.actions';
 import {
   initialAuthState,
   AuthState,
-} from './auth.state';
+} from '@src/app/store/auth.state';
 
 const reducer: ActionReducer<AuthState> = createReducer(
   initialAuthState,

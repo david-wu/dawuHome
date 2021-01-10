@@ -1,22 +1,16 @@
 import { Component } from '@angular/core';
 import {
-  keyBy,
-  values,
-} from 'lodash';
-import {
   ActivatedRoute,
   Router,
-  NavigationEnd,
-  Params,
 } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { User } from '@models/index';
-import { MlFilesActions } from '@ml-app/store/index';
-// import { FirebaseAuthService } from '@services/index';
-import { FileGroup, FileType, File } from '@file-explorer/index';
 import { getUser$ } from '@app/store';
+// import { FirebaseAuthService } from '@services/index';
+import { File, FileGroup } from '@file-explorer/index';
+import { MlFilesActions } from '@ml-app/store/index';
+import { User } from '@models/index';
 
 @Component({
   selector: 'ml-app',
@@ -28,7 +22,7 @@ export class MlAppComponent {
   public user$: Observable<User>;
   public filesById: Record<string, File> = {};
   public fileGroup: FileGroup = new FileGroup();
-  public filterStr: string = '';
+  public filterStr = '';
   public selectedFileId: string;
 
   constructor(

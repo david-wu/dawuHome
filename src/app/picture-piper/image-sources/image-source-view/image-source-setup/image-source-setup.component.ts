@@ -1,15 +1,15 @@
 import {
   Component,
 } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import {
-  getSelectedImageSourceId$,
   getIsSelectedSourceGeneratingToken$,
+  getSelectedImageSourceId$,
   ImageSourcesActions,
 } from '@pp/image-sources/store/index';
 
@@ -33,7 +33,7 @@ export class ImageSourceSetupComponent {
   }
 
   public generateImageSourceToken(selectedImageSourceId: string) {
-    this.store.dispatch(ImageSourcesActions.generateImageSourceToken({ payload: selectedImageSourceId }))
+    this.store.dispatch(ImageSourcesActions.generateImageSourceToken({ payload: selectedImageSourceId }));
   }
 
   public getUsage(imageSourceId: string) {
@@ -44,7 +44,7 @@ const secret = require('./secret.json');
 const piper = new Piper(secret);
 piper.send(imageBlob);
 `;
-    return usage
+    return usage;
   }
 
   public getSecretJson(imageSourceId: string) {
@@ -54,7 +54,7 @@ piper.send(imageBlob);
   "token": "${this.selectedToken && this.selectedToken.value}",
 }
 `;
-    return secret
+    return secret;
   }
 
   public onSelectToken(token) {

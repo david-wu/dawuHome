@@ -1,4 +1,13 @@
-image-stream-settings
+<div class="control-buttons">
+  <ng-container *ngIf="!isEditing">
+    <button class="control-button" (click)="startEdit()">Edit</button>
+  </ng-container>
+  <ng-container *ngIf="isEditing">
+    <button class="control-button" (click)="save()">Save</button>
+    <button class="control-button" (click)="stopEdit()">Cancel</button>
+  </ng-container>
+</div>
+
 <div class="join-table">
   <div class="file-explorer-container">
     <div class="explorer-title">Sources</div>
@@ -9,9 +18,9 @@ image-stream-settings
       class="file-explorer"
       [resources]="imageSources$ | async"
       [filterStr]="imageSourcesFilterStr"
-      [selectedResourceIds]="imageSourceIds"
+      [selectedResourceIds]="isEditing ? editImageSourceIds : selectedImageSourceIds"
       (selectedResourceIdsChange)="onSelectedImageSourceIdsChange($event)"
-      [isMultiSelect]= "true"
+      [isMultiSelect]= "isEditing"
     ></dwu-resource-selector>
   </div>
   <div class="file-explorer-container">
@@ -23,9 +32,9 @@ image-stream-settings
       class="file-explorer"
       [resources]="classifiers$ | async"
       [filterStr]="classifiersFilterStr"
-      [selectedResourceIds]="classifierIds"
+      [selectedResourceIds]="isEditing ? editClassifierIds : selectedClassifierIds"
       (selectedResourceIdsChange)="onSelectedClassifierIdsChange($event)"
-      [isMultiSelect]= "true"
+      [isMultiSelect]= "isEditing"
     ></dwu-resource-selector>
   </div>
 </div>

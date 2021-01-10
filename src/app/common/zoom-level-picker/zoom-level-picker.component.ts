@@ -15,8 +15,8 @@ import {
 export class ZoomLevelPickerComponent {
   @Input() zoomLevel: number;
   @Output() zoomLevelChange: EventEmitter<number> = new EventEmitter<number>();
-  @Input() minZoomLevel: number = 1;
-  @Input() maxZoomLevel: number = 6;
+  @Input() minZoomLevel = 1;
+  @Input() maxZoomLevel = 6;
 
 
   public zoomIn() {

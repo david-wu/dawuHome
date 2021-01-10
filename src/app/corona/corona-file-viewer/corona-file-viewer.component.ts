@@ -30,7 +30,7 @@ import populationDataByLocation from '@src/assets/jh-corona/population-by-file-n
 import lockdownDataByLocation from '@src/assets/jh-corona/lockdown-data-by-file-name.json';
 import { FileGroup, FileType, File } from '@file-explorer/index';
 import { breadthFirstBy } from '@utils/index';
-import { CoronaService } from '../services/corona.service';
+import { CoronaService } from '@src/app/corona/services/corona.service';
 
 @Component({
   selector: 'dwu-corona-file-viewer',
@@ -42,15 +42,15 @@ export class CoronaFileViewerComponent {
     @Input() selectedFileIds: Set<string>;
     @Input() filesById: Record<string, File>;
     @Input() locationsByFileId: Record<string, string>;
-    @Input() isComparing: boolean = false;
+    @Input() isComparing = false;
 
     @Input() disabledBarKeys = new Set<string>();
     @Output() disabledBarKeysChange = new EventEmitter<Set<string>>();
     @Input() disabledNormalKeys = new Set<string>();
     @Output() disabledNormalKeysChange = new EventEmitter<Set<string>>();
-    @Input() isViewingNormalized: boolean = false;
+    @Input() isViewingNormalized = false;
     @Output() isViewingNormalizedChange = new EventEmitter<boolean>();
-    @Input() isViewingLineChart: boolean = false;
+    @Input() isViewingLineChart = false;
     @Output() isViewingLineChartChange = new EventEmitter<boolean>();
 
     public selectedFileIds$ = new BehaviorSubject<Set<string>>(undefined);
@@ -99,7 +99,7 @@ export class CoronaFileViewerComponent {
                 if (!fileIdSet || !coronaDataByFileId) {
                     return;
                 }
-                return Array.from(fileIdSet).map((fileId) => [coronaDataByFileId[fileId], fileId])
+                return Array.from(fileIdSet).map((fileId) => [coronaDataByFileId[fileId], fileId]);
             }
         ).pipe(filter(Boolean));
         this.firstCoronaFile$ = combineLatest(
@@ -167,7 +167,7 @@ export class CoronaFileViewerComponent {
     public getFirstSelectedFileLockdownInfo() {
         const fileId = Array.from(this.selectedFileIds || [])[0];
         const location = this.locationsByFileId && this.locationsByFileId[fileId];
-        return this.lockdownDataByLocation && this.lockdownDataByLocation[location]
+        return this.lockdownDataByLocation && this.lockdownDataByLocation[location];
     }
 
 

@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { ImageSourceViewComponent } from './image-source-view.component';
-import { ImageSourceViewRoutingModule } from './image-source-view.routes';
+import { ImageSourceViewComponent } from '@src/app/picture-piper/image-sources/image-source-view/image-source-view.component';
+import { ImageSourceViewRoutingModule } from '@src/app/picture-piper/image-sources/image-source-view/image-source-view.routes';
 
 @NgModule({
   imports: [

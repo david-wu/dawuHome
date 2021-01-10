@@ -30,7 +30,7 @@ import {
   orderBy,
 } from 'lodash';
 
-import { PhotoGalleryActions } from './photo-gallery.actions';
+import { PhotoGalleryActions } from '@src/app/photo-gallery/store/photo-gallery.actions';
 import {
   AuthActions,
   getUser$,
@@ -39,7 +39,7 @@ import {
   getUserLocation$,
   getNearbyImagesVisible$,
   getMyUploadsVisible$,
-} from './photo-gallery.selectors';
+} from '@src/app/photo-gallery/store/photo-gallery.selectors';
 import { UserLocationService } from '@photo-gallery/services/index';
 import { LocationData } from '@photo-gallery/models/index';
 
@@ -53,7 +53,7 @@ export class PhotoGalleryEffects {
         switchMap(() => {
           return from(this.userLocationService.getUserLocation()).pipe(
             map((locationData: LocationData) => {
-              return PhotoGalleryActions.setUserLocation({ payload: locationData })
+              return PhotoGalleryActions.setUserLocation({ payload: locationData });
             }),
           );
         }),
@@ -84,7 +84,7 @@ export class PhotoGalleryEffects {
           }),
         );
       }),
-    )
+    );
   });
 
   public getMyUploads$: Observable<Action> = createEffect(() => {
@@ -113,7 +113,7 @@ export class PhotoGalleryEffects {
           })
         );
       }),
-    )
+    );
   });
 
   public checkUserLocationPermission$: Observable<Action> = createEffect(
@@ -127,7 +127,7 @@ export class PhotoGalleryEffects {
         }),
       );
     }
-  )
+  );
 
   constructor(
     public store$: Store,

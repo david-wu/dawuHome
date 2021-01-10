@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
 import {
-  Store,
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+} from '@angular/router';
+import {
   select,
+  Store,
 } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {
-  ActivatedRoute,
-  Router,
-  NavigationEnd,
-} from '@angular/router';
 
-import {
-  ImageSourcesActions,
-  getImageSourcesList$,
-  getSelectedImageSourceId$,
-} from '@pp/image-sources/store/index';
 import { getUser$ } from '@app/store';
 import { User } from '@models/index';
+import {
+  getImageSourcesList$,
+  getSelectedImageSourceId$,
+  ImageSourcesActions,
+} from '@pp/image-sources/store/index';
 
 @Component({
   selector: 'dwu-image-sources',
@@ -30,8 +29,8 @@ export class ImageSourcesComponent {
   public imageSourcesList$: Observable<any[]>;
   public selectedImageSourceId$: Observable<string>;
 
-  public filterStr: string = '';
-  public leftSideExpanded: boolean = false;
+  public filterStr = '';
+  public leftSideExpanded = false;
   public sub;
 
   constructor(
@@ -72,7 +71,7 @@ export class ImageSourcesComponent {
     const urlArr = url.split('/');
     const imageSourceId = urlArr[3] === 'intro' ? undefined : urlArr[3];
     const tabName = urlArr[4];
-    this.store.dispatch(ImageSourcesActions.setSelectedImageSourceId({ payload: imageSourceId }))
+    this.store.dispatch(ImageSourcesActions.setSelectedImageSourceId({ payload: imageSourceId }));
     this.store.dispatch(ImageSourcesActions.setImageSourceViewTab({ payload: tabName }));
   }
 }

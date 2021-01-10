@@ -1,9 +1,9 @@
 import {
     Component,
+    ElementRef,
     EventEmitter,
     Input,
     Output,
-    ElementRef,
     ViewChild,
 } from '@angular/core';
 
@@ -14,14 +14,14 @@ import {
 })
 export class InputStringEditorComponent {
 
-    @Input() str: string = '';
+    @Input() str = '';
     @Output() strChange: EventEmitter<string> = new EventEmitter<string>();
-    @Input() placeholder: string = 'Enter Text..';
+    @Input() placeholder = 'Enter Text..';
     @ViewChild('stringInput', { static: true }) stringInput: ElementRef<any>;
     @ViewChild('editEl', { static: true }) editEl: ElementRef<any>;
 
-    public isEditing: boolean = false;
-    public editStr: string = '';
+    public isEditing = false;
+    public editStr = '';
 
     public ngOnInit() {
       this.stringInput.nativeElement.addEventListener('keydown', (e) => {
@@ -29,7 +29,7 @@ export class InputStringEditorComponent {
           this.onSaveEdit();
         }
       });
-      this.stringInput.nativeElement.addEventListener('blur', ()=> {
+      this.stringInput.nativeElement.addEventListener('blur', () => {
         if (this.str === this.editStr) {
           this.onCancelEdit();
         }
@@ -39,7 +39,7 @@ export class InputStringEditorComponent {
     public onEdit() {
       this.editStr = this.str || '';
       this.isEditing = true;
-      setTimeout(() =>this.stringInput.nativeElement.select());
+      setTimeout(() => this.stringInput.nativeElement.select());
     }
 
     public onCancelEdit() {

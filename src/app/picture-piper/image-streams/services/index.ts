@@ -1,4 +1,4 @@
-import { ImageStreamsService } from './image-streams.service';
+import { ImageStreamsService } from '@src/app/picture-piper/image-streams/services/image-streams.service';
 
 export const IMAGE_STREAMS_SERVICES = [
   ImageStreamsService,

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import * as d3 from 'd3';
 
-import { BaseChartComponent } from '../base-chart/base-chart.component';
+import { BaseChartComponent } from '@src/app/common/charts/base-chart/base-chart.component';
 import { TooltipService } from '@common/tooltip/tooltip.service';
 
 @Component({
@@ -31,14 +31,14 @@ export class BarChartComponent extends BaseChartComponent {
       '#65635F',
     ];
     @Input() disabledKeys: Set<string> = new Set();
-    @Input() hoverIndex: number = 0;
+    @Input() hoverIndex = 0;
     @Input() yAxisFormatter: any;
     @Output() hoverIndexChange: EventEmitter<number> = new EventEmitter<number>();
     @Input() indicators: any[];
 
     @Input() tooltipTemplate: TemplateRef<any>;
 
-    public barPadding = 0.05
+    public barPadding = 0.05;
     public hoverBox;
     public maxY;
 
@@ -62,7 +62,7 @@ export class BarChartComponent extends BaseChartComponent {
                 this.render();
             }
         }
-        if(changes.hoverIndex) {
+        if (changes.hoverIndex) {
             this.positionHoverBox();
         }
         if (changes.indicators) {
@@ -118,7 +118,7 @@ export class BarChartComponent extends BaseChartComponent {
         .attr('x', this.xScale(hoverBoxTimestamp))
         .attr('y', this.yScale(this.maxY))
         .attr('width', this.xScale.bandwidth)
-        .attr('height', this.yScale(0) - this.yScale(this.maxY))
+        .attr('height', this.yScale(0) - this.yScale(this.maxY));
 
       if (this.mouseIn) {
         this.tts.renderTooltip(this.hoverBox.node(), this.tooltipTemplate, true);
@@ -140,7 +140,7 @@ export class BarChartComponent extends BaseChartComponent {
       this.xScale.range(nextRange);
 
       const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
-      const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
+      const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints);
       super.applyXAxis(this.xAxisG, xAxis, height);
 
       this.seriesG.selectAll('g.series').selectAll('rect')
@@ -170,7 +170,7 @@ export class BarChartComponent extends BaseChartComponent {
             const seriesMax = series.reduce((currentSeriesMax: number, stack: number[]) => {
                 return Math.max(currentSeriesMax, ...stack);
             }, 0);
-            return Math.max(currentMax, seriesMax)
+            return Math.max(currentMax, seriesMax);
         }, 0);
 
         this.yScale = d3.scaleLinear()
@@ -178,7 +178,7 @@ export class BarChartComponent extends BaseChartComponent {
           .range([height, 0]);
 
         const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
-        const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints)
+        const xAxis = super.getXBandAxis(this.xScale, width, numberOfXDataPoints);
         super.applyXAxis(this.xAxisG, xAxis, height);
         const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);
         super.applyYAxis(this.yAxisG, yAxis);
@@ -210,7 +210,7 @@ export class BarChartComponent extends BaseChartComponent {
             .attr('height', (d) => this.yScale(d[0]) - this.yScale(d[1]))
             .attr('width', this.xScale.bandwidth());
 
-        rects.exit().remove()
+        rects.exit().remove();
 
         this.positionHoverBox();
         this.renderIndicators(this.indicators, this.tableData, this.maxY, this.xScale.step());

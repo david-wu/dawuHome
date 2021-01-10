@@ -28,16 +28,16 @@ export class PoeComponent {
 
   public parseJsonStr(jsonStr: string) {
     let json;
-    try{
+    try {
       json = JSON.parse(jsonStr);
-    } catch(err) {
+    } catch (err) {
       this.jsonParseError = err;
       return;
     }
-    console.log('json', json)
+    console.log('json', json);
     const explicitModifiersByItemId = {};
     const itemNamesById = {};
-    const modNames = []
+    const modNames = [];
 
     json.items.forEach((item) => {
       const explicitMods = item.explicitMods || [];
@@ -55,7 +55,7 @@ export class PoeComponent {
       });
     });
 
-    console.log('modNames', modNames)
+    console.log('modNames', modNames);
   }
 }
 

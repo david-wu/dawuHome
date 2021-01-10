@@ -1,7 +1,6 @@
+import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import * as faker from 'faker';
-import * as Fuse from 'fuse.js';
 
 import { Fuzz, FuzzItem } from 'fuzz-js';
 
@@ -53,7 +52,7 @@ export class DemoPageComponent implements AfterViewInit {
   public isSmallScreen: boolean;
   public searchOptions: Partial<Fuzz> = {};
 
-  public fuseJsFilterQuery: string = '';
+  public fuseJsFilterQuery = '';
   public fuseJsFilterItems: any[];
   public fuseJsFilterSortTime: number;
 
@@ -148,7 +147,7 @@ export class DemoPageComponent implements AfterViewInit {
     const allItems = [];
     for (let i = 0; i < this.fakeDataSize; i++) {
       const siblingCount = Math.floor(Math.random() * 3);
-      const siblings = []
+      const siblings = [];
       for (let j = 0; j <= siblingCount; j++) {
         siblings.push(faker.name.findName());
       }

@@ -6,21 +6,19 @@ import {
 } from '@ngrx/effects';
 import {
   Action,
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
 import {
-  of,
-  Observable,
   from,
+  Observable,
+  of,
 } from 'rxjs';
 import {
-  map,
   catchError,
-  switchMap,
   filter,
-  tap,
-  withLatestFrom,
+  map,
+  switchMap,
 } from 'rxjs/operators';
 
 import {
@@ -32,11 +30,11 @@ import {
   FirebaseStorageService,
 } from '@services/index';
 
-import { MlFilesActions } from './ml-files.actions';
+import { File } from '@file-explorer/models/index';
 import {
   User,
 } from '@models/index';
-import { File } from '@file-explorer/models/index';
+import { MlFilesActions } from '@src/app/ml-app/store/ml-files.actions';
 
 // import { LocationData } from '@photo-gallery/models/index';
 
@@ -61,13 +59,13 @@ export class MlFilesEffects {
                   });
                 });
                 return MlFilesActions.getUserFilesSuccess({
-                  files: files
+                  files
                 });
               }),
               catchError((error: any) => of(MlFilesActions.getUserFilesFailure({ error }))),
-            )
+            );
           })
-        )
+        );
       }),
     );
   });
@@ -99,13 +97,13 @@ export class MlFilesEffects {
             return from(commitP).pipe(
               map((fileRefs: any) => {
                 return MlFilesActions.createUserFilesSuccess({
-                  files: files
+                  files
                 });
               }),
               catchError((error: any) => of(MlFilesActions.createUserFilesFailure({ error }))),
-            )
+            );
           })
-        )
+        );
       }),
     );
   });

@@ -26,7 +26,7 @@ export class LineChartDemoComponent {
   ];
   public hoverIndex: number;
   public lineChartHtml: string = lineChartHtml;
-  public lineChartJs: string = '';
+  public lineChartJs = '';
 
   constructor() {
     this.generateDemoData();
@@ -47,7 +47,7 @@ export class LineChartDemoComponent {
   }
 
   public generateSnippets() {
-    this.lineChartJs =`this.demoKeys = ${JSON.stringify(this.demoKeys, null, 2)};\nthis.demoData = ${JSON.stringify(this.demoData, null, 2)};`;
+    this.lineChartJs = `this.demoKeys = ${JSON.stringify(this.demoKeys, null, 2)};\nthis.demoData = ${JSON.stringify(this.demoData, null, 2)};`;
   }
 }
 

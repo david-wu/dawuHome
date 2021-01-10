@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FuzzItemListViewerComponent } from './fuzz-item-list-viewer.component';
+import { FuzzItemListViewerComponent } from '@src/app/portfolio/fuzz-demo/demo-page/fuzz-item-list-viewer/fuzz-item-list-viewer.component';
 
 describe('FuzzItemListViewerComponent', () => {
   let component: FuzzItemListViewerComponent;

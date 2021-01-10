@@ -16,17 +16,13 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'dwu-image-stream-settings-selector',
-  templateUrl: './image-stream-settings-selector.component.html',
-  styleUrls: ['./image-stream-settings-selector.component.scss']
+  selector: 'dwu-image-stream-settings-editor',
+  templateUrl: './image-stream-settings-editor.component.html',
+  styleUrls: ['./image-stream-settings-editor.component.scss']
 })
-export class ImageStreamSettingsSelectorComponent {
-
-  @Input() imageStreamId: string;
-  @Input() imageSourceIds: Set<string>;
-  @Input() classifierIds: Set<string>;
-  @Output() selectedImageSourceIdsChange = new EventEmitter();
-  @Output() selectedClassifierIdsChange = new EventEmitter();
+export class ImageStreamSettingsEditorComponent {
+  @Input() imageStream: any;
+  @Output() onSave = new EventEmitter();
 
   public imageSourcesFilterStr = '';
   public classifiersFilterStr = '';
@@ -34,6 +30,9 @@ export class ImageStreamSettingsSelectorComponent {
   public classifiers$: Observable<any[]>;
   public selectedImageSourceIds = new Set();
   public selectedClassifierIds = new Set();
+  public editImageSourceIds = new Set();
+  public editClassifierIds = new Set();
+  public isEditing = false;
 
   public readonly imageSourcePath = 'imageSources';
   public readonly classifiersPath = 'classifiers';
@@ -52,12 +51,40 @@ export class ImageStreamSettingsSelectorComponent {
   }
 
   public ngOnChanges(changes) {
-    if (changes.imageStreamId) {
-      if (!changes.imageStreamId.firstChange) {
+    if (changes.imageStream) {
+      this.stopEdit();
+      if (!changes.imageStream.firstChange) {
         this.unwatchData();
       }
       this.watchData();
+      this.selectedImageSourceIds = new Set(this.imageStream.sourceIds || []);
+      this.selectedClassifierIds = new Set(this.imageStream.classifierIds || []);
     }
+  }
+
+  public startEdit() {
+    this.isEditing = true;
+    this.editImageSourceIds = new Set(this.selectedImageSourceIds);
+    this.editClassifierIds = new Set(this.selectedClassifierIds);
+  }
+
+  public save() {
+    this.isEditing = false;
+    const patch = {
+      sourceIds: new Set(),
+      classifierIds: new Set(),
+    };
+    this.onSave.emit({
+      sourceIds: Array.from(this.editImageSourceIds || []).sort(),
+      classifierIds: Array.from(this.editClassifierIds || []).sort(),
+    });
+  }
+
+
+  public stopEdit() {
+    this.isEditing = false;
+    this.editImageSourceIds = new Set(this.selectedImageSourceIds);
+    this.editClassifierIds = new Set(this.selectedClassifierIds);
   }
 
   public watchData() {
@@ -73,7 +100,7 @@ export class ImageStreamSettingsSelectorComponent {
     }));
     this.store.dispatch(PicturePiperActions.addVisibleResourceDoc({
       resource: {
-        path: `imageStreams/${this.imageStreamId}`,
+        path: `imageStreams/${this.imageStream.id}`,
       },
     }));
   }
@@ -91,28 +118,16 @@ export class ImageStreamSettingsSelectorComponent {
     }));
     this.store.dispatch(PicturePiperActions.removeVisibleResourceDoc({
       resource: {
-        path: `imageStreams/${this.imageStreamId}`,
+        path: `imageStreams/${this.imageStream.id}`,
       },
     }));
   }
 
   public onSelectedImageSourceIdsChange(selectedImageSourceIds: Set<string>) {
-    this.selectedImageSourceIdsChange.emit(selectedImageSourceIds);
-
-    // this.selectedImageSourceIds = selectedImageSourceIds;
-    // const sourceIds = Array.from(selectedImageSourceIds).sort();
-    // console.log('sourceIds', sourceIds);
-    // this.store.dispatch(PicturePiperActions.patchResourceDoc({
-    //   resource: {
-    //     path: `imageStreams/${this.imageStreamId}`,
-    //   },
-    //   patch: { sourceIds }
-    // }))
+    this.editImageSourceIds = selectedImageSourceIds;
   }
 
   public onSelectedClassifierIdsChange(selectedClassifierIds: Set<string>) {
-    this.selectedClassifierIdsChange.emit(selectedClassifierIds);
-
-    // this.selectedClassifierIds = selectedClassifierIds;
+    this.editClassifierIds = selectedClassifierIds;
   }
 }

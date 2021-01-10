@@ -9,8 +9,8 @@ import {
   map,
   some,
 } from 'lodash';
-import { FileType } from './file-type.enum';
-import { File } from './file.model';
+import { FileType } from '@src/app/common/file-explorer/models/file-type.enum';
+import { File } from '@src/app/common/file-explorer/models/file.model';
 import { breadthFirstBy, reverseBreadthFirstBy } from '@utils/index';
 
 export class FileGroup {
@@ -26,7 +26,7 @@ export class FileGroup {
     return fileGroup;
   }
 
-  constructor(public seed = uniqueId("dfg_")) {}
+  constructor(public seed = uniqueId('dfg_')) {}
 
   /**
    * filesByIdFromJson
@@ -241,7 +241,7 @@ export class FileGroup {
    * @return {string}
    */
   public getUniqueId(): string {
-    while(true) {
+    while (true) {
       const id = uniqueId(this.seed);
       if (!this.filesById[id]) {
         return id;

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 // import { FirebaseAuthModule } from '@src/app/firebase-auth/firebase-auth.module';
 import { FileUploaderComponent } from '@common/file-uploader/file-uploader.component';

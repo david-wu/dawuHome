@@ -1,9 +1,8 @@
+import { File } from '@file-explorer/models/index';
 import {
   createAction,
   props,
 } from '@ngrx/store';
-import { LocationData } from '@photo-gallery/models/index';
-import { File } from '@file-explorer/models/index';
 
 export class MlFilesActions {
   public static readonly CATEGORY = '[ML_FILES]';

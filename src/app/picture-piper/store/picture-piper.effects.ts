@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import {
   Actions,
   createEffect,
   ofType,
 } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import {
   Action,
   select,
@@ -15,19 +15,17 @@ import {
 } from 'rxjs';
 import {
   map,
-  catchError,
-  switchMap,
   mergeMap,
   withLatestFrom,
 } from 'rxjs/operators';
 
-import { getUser$ } from '@src/app/store/index';
 import { PicturePiperService } from '@pp/services';
+import { getUser$ } from '@src/app/store/index';
+import { PicturePiperActions } from '@src/app/picture-piper/store/picture-piper.actions';
 import {
-  getVisibleResourceListCounts$,
   getVisibleResourceDocCounts$,
-} from './picture-piper.selectors';
-import { PicturePiperActions } from './picture-piper.actions';
+  getVisibleResourceListCounts$,
+} from '@src/app/picture-piper/store/picture-piper.selectors';
 
 @Injectable()
 export class PicturePiperEffects {
@@ -58,7 +56,7 @@ export class PicturePiperEffects {
           list: [],
         }));
       }),
-    )
+    );
   });
 
   public addVisibleResourceDoc$: Observable<Action> = createEffect(() => {
@@ -87,8 +85,30 @@ export class PicturePiperEffects {
           doc: undefined,
         }));
       }),
-    )
+    );
   });
+
+  public patchResourceDoc$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PicturePiperActions.patchResourceDoc),
+      withLatestFrom(
+        this.store$.pipe(select(getUser$)),
+      ),
+      mergeMap(([action, user]) => {
+        const resource = action.resource;
+        const patch = action.patch;
+        return this.ppService.patchResourceDoc(user, resource, patch).pipe(
+          map((doc) => {
+            return PicturePiperActions.patchResourceSuccess({
+              resource,
+            });
+          }),
+        );
+      }),
+    );
+  });
+
+
 
   constructor(
     public store$: Store,

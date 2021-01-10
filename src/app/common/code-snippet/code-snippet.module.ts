@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { CodeSnippetComponent } from './code-snippet.component';
+import { CodeSnippetComponent } from '@src/app/common/code-snippet/code-snippet.component';
 
 @NgModule({
   imports: [

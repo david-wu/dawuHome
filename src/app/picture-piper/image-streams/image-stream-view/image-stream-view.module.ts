@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { ImageStreamViewComponent } from './image-stream-view.component';
-import { ImageStreamViewRoutingModule } from './image-stream-view.routes';
+import { ImageStreamViewComponent } from '@src/app/picture-piper/image-streams/image-stream-view/image-stream-view.component';
+import { ImageStreamViewRoutingModule } from '@src/app/picture-piper/image-streams/image-stream-view/image-stream-view.routes';
 
 @NgModule({
   imports: [

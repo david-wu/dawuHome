@@ -4,7 +4,7 @@ import {
   MemoizedSelector,
 } from '@ngrx/store';
 
-import { AuthState } from './auth.state';
+import { AuthState } from '@src/app/store/auth.state';
 import { User } from '@models/index';
 
 export const getAuthState$: MemoizedSelector<AuthState, AuthState> = createFeatureSelector(
@@ -14,7 +14,7 @@ export const getAuthState$: MemoizedSelector<AuthState, AuthState> = createFeatu
 export const getUser$: MemoizedSelector<AuthState, User> = createSelector(
   getAuthState$,
   (state: AuthState) => state.user,
-)
+);
 
 export const getAuthLoading$: MemoizedSelector<AuthState, boolean> = createSelector(
   getUser$,
@@ -24,4 +24,4 @@ export const getAuthLoading$: MemoizedSelector<AuthState, boolean> = createSelec
 export const getCanLogin$: MemoizedSelector<AuthState, boolean> = createSelector(
   getUser$,
   (user: User) => user === null,
-)
+);

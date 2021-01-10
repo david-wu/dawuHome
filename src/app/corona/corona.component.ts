@@ -36,11 +36,11 @@ export class CoronaComponent {
     public locationRoot: File;
     public favoritesRootId: string;
     public favoriteFileIds: Set<string> = new Set();
-    public filterStr: string = '';
+    public filterStr = '';
     public disabledBarKeys = new Set<string>();
     public disabledNormalKeys = new Set<string>([NormalKeys.R]);
-    public isViewingNormalized: boolean = false;
-    public isViewingLineChart: boolean = false;
+    public isViewingNormalized = false;
+    public isViewingLineChart = false;
     public selectedTab: Tab;
     public compareSelectedFileIds = new Set<string>();
     public closedFileIdsWhileQuery = new Set<string>();
@@ -63,7 +63,7 @@ export class CoronaComponent {
         this.fileGroup.closedFileIds.delete(this.favoritesRootId);
         this.fileGroup.closedFileIds.delete(this.locationRoot.id);
         this.loadFavorites();
-        this.setSelectedTab(Tab.SAVED)
+        this.setSelectedTab(Tab.SAVED);
     }
 
     public ngOnInit() {
@@ -72,7 +72,7 @@ export class CoronaComponent {
     }
 
     public ngOnDestroy() {
-      this.sensor.detach()
+      this.sensor.detach();
     }
 
     public setNarrowModeClass() {
@@ -84,7 +84,7 @@ export class CoronaComponent {
         if (this.selectedTab === Tab.COMPARE) {
             this.compareSelectedFileIds = selectedFileIds;
         } else {
-            this.fileGroup.setSelectedFileIds(selectedFileIds)
+            this.fileGroup.setSelectedFileIds(selectedFileIds);
         }
     }
 
@@ -128,13 +128,13 @@ export class CoronaComponent {
     public toggleFavoriteFile(file: File, event: Event) {
         event.stopPropagation();
         if (this.favoriteFileIds.has(file.id)) {
-            this.favoriteFileIds.delete(file.id)
+            this.favoriteFileIds.delete(file.id);
             this.fileGroup.removeAsChildId(this.favoritesRootId, file.id);
         } else {
-            this.favoriteFileIds.add(file.id)
+            this.favoriteFileIds.add(file.id);
             this.fileGroup.addAsChildId(this.favoritesRootId, file.id);
-        };
-        this.saveFavorites()
+        }
+        this.saveFavorites();
         this.fileGroup.flushFileChanges();
     }
 
@@ -187,7 +187,7 @@ export class CoronaComponent {
                 .replace(/\*/g, '');
 
             const childNode = this.fileGroup.batchCreateFile({
-                label: label,
+                label,
             });
             this.fileGroup.batchAddAsChild(file, childNode);
             this.setFileGroupNested(childNode, nestedLocations[location], jhFileNameSet, [...path, location]);

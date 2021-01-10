@@ -10,7 +10,7 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng --prod build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --fix",
     "e2e": "ng e2e",
     "corona": "node ./scripts/src/splitFile.js;",
     "sizeImages": "node ./scripts/src/sizeImages.js;",

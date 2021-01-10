@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { TooltipDemoComponent } from './tooltip-demo.component';
 import { TooltipModule } from '@common/tooltip/tooltip.module';
+import { TooltipDemoComponent } from '@src/app/portfolio/tooltip-demo/tooltip-demo.component';
 
 @NgModule({
   imports: [

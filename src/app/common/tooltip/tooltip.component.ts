@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { TooltipService } from './tooltip.service';
+import { TooltipService } from '@src/app/common/tooltip/tooltip.service';
 
 @Component({
   selector: 'dwu-tooltip',

@@ -1,19 +1,12 @@
 import {
   Component,
+  EventEmitter,
   Input,
   Output,
-  EventEmitter,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import {
-  Store,
-  select,
-} from '@ngrx/store';
-import { keyBy, map } from 'lodash';
+import { map } from 'lodash';
 
-import { User } from '@models/index';
-import { UploadFile } from '@photo-gallery/models/upload-file.model';
-import { FileGroup, FileType, File } from '@file-explorer/index';
+import { File, FileGroup } from '@file-explorer/index';
 
 @Component({
   selector: 'dwu-resource-selector',
@@ -23,7 +16,7 @@ import { FileGroup, FileType, File } from '@file-explorer/index';
 export class ResourceSelectorComponent {
 
   @Input() resources: any[];
-  @Input() filterStr: string = '';
+  @Input() filterStr = '';
   @Input() selectedResourceId: any;
   @Output() selectedResourceIdChange = new EventEmitter<string>();
 

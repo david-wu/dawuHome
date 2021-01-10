@@ -30,7 +30,7 @@ export class FirebaseStorageService {
     return imageRef.delete()
       .catch((error) => {
         if (error.code === 'storage/object-not-found') {
-          return
+          return;
         }
         throw(error);
       });

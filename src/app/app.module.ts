@@ -1,17 +1,17 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
-import { UserLoginModule } from '@src/app/user-login/user-login.module';
-import { AppRoutingModule } from '@src/app/app-routing.module';
-import { AppComponent } from '@src/app/app.component';
-import { APP_SERVICES } from '@services/index';
 import {
   AuthEffects,
   authReducer,
 } from '@app/store/index';
+import { APP_SERVICES } from '@services/index';
+import { AppRoutingModule } from '@src/app/app-routing.module';
+import { AppComponent } from '@src/app/app.component';
+import { UserLoginModule } from '@src/app/user-login/user-login.module';
 
 @NgModule({
   imports: [

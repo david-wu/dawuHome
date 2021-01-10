@@ -37,7 +37,7 @@ export class OptionsAndCodeComponent {
       startDecorator: '<i>',
       endDecorator: '</i>',
     },
-  }
+  };
 
   public optionsFormGroup: FormGroup = this.fb.group({
     caseSensitive: [false],
@@ -90,7 +90,7 @@ export class OptionsAndCodeComponent {
    * @param  {Partial<Fuzz>} options
    * @return {any}
    */
-  public optionsToFormGroupValues (options: Partial<Fuzz>): any {
+  public optionsToFormGroupValues(options: Partial<Fuzz>): any {
     const optionsDecorators = {
       startDecorator: options.startDecorator,
       endDecorator: options.endDecorator,
@@ -117,7 +117,7 @@ export class OptionsAndCodeComponent {
    * formGroupValuesToOptions
    * @param {any} values
    */
-  public formGroupValuesToOptions (values: any): any {
+  public formGroupValuesToOptions(values: any): any {
     const options = {
       ...values,
       ...this.decoratorsByDecoratorPair[values.decoratorPair],
@@ -172,7 +172,7 @@ const results = Fuzz.search(inputData, 'searchQuery');
    * @param  {any}    options
    * @return {string}
    */
-  public getOptionsString(options: any) : string {
+  public getOptionsString(options: any): string {
     const baseFuzz = new Fuzz();
     const optionDiffs = [];
     each(options, (value, key) => {

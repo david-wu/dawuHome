@@ -26,7 +26,7 @@ export class BarChartDemoComponent {
   ];
   public hoverIndex: number;
   public barChartHtml: string = barChartHtml;
-  public barChartJs: string = '';
+  public barChartJs = '';
 
   constructor() {
     this.generateDemoData();
@@ -47,7 +47,7 @@ export class BarChartDemoComponent {
   }
 
   public generateSnippets() {
-    this.barChartJs =`this.demoKeys = ${JSON.stringify(this.demoKeys, null, 2)};\nthis.demoData = ${JSON.stringify(this.demoData, null, 2)};`;
+    this.barChartJs = `this.demoKeys = ${JSON.stringify(this.demoKeys, null, 2)};\nthis.demoData = ${JSON.stringify(this.demoData, null, 2)};`;
   }
 }
 

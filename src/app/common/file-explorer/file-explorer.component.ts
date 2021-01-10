@@ -33,7 +33,7 @@ import { breadthFirstBy, reverseBreadthFirstBy } from '@utils/index';
 import {
   File,
   FileType,
-} from './models/index';
+} from '@src/app/common/file-explorer/models/index';
 
 @Component({
   selector: 'dwu-file-explorer',
@@ -45,17 +45,17 @@ import {
 })
 export class FileExplorerComponent {
   @Input() rootFileId: string;
-  @Input() fuzzFilterString: string = '';
+  @Input() fuzzFilterString = '';
   @Input() filesById: Record<string, File>;
   @Input() closedFileIds: Set<string> = new Set();
   @Input() selectedFileIds: Set<string> = new Set<string>();
-  @Input() perfMode: boolean = true;
+  @Input() perfMode = true;
   @Input() rowIconTemplate?: TemplateRef<any>;
-  @Input() hideRoot: boolean = true;
-  @Input() multiFileSelect: boolean = false;
-  @Input() dragEnabled: boolean = false;
-  @Input() disableOpening: boolean = false;
-  @Input() filterThreshold: number = 0.6;
+  @Input() hideRoot = true;
+  @Input() multiFileSelect = false;
+  @Input() dragEnabled = false;
+  @Input() disableOpening = false;
+  @Input() filterThreshold = 0.6;
   @Output() filesByIdChange = new EventEmitter<Record<string, File>>();
   @Output() closedFileIdsChange = new EventEmitter<Set<string>>();
   @Output() selectedFileIdsChange = new EventEmitter<Set<string>>();
@@ -67,7 +67,7 @@ export class FileExplorerComponent {
   public fuzzItemsByFileId: Record<string, FuzzItem> = {};
   public fileIdsAndDepth: Array<[string, number]> = [];
   public visibleFileIds: Set<string> = new Set<string>();
-  public fileIsOddById: Record<string, boolean> = {}
+  public fileIsOddById: Record<string, boolean> = {};
   public sensor;
   private subs = new Subscription();
 
@@ -184,7 +184,7 @@ export class FileExplorerComponent {
   public ngOnDestroy() {
     this.subs.unsubscribe();
     this.dragulaService.destroy('EXP');
-    this.sensor.detach()
+    this.sensor.detach();
   }
 
   public scrollToSelectedFileId() {
@@ -204,7 +204,7 @@ export class FileExplorerComponent {
   }
 
   public insertFileAfterFile(fileId1: string, fileId2: string) {
-    let changes = {};
+    const changes = {};
     each(this.filesById, (file: File) => {
       if (includes(file.childIds, fileId1)) {
         changes[file.id] = Object.assign(new File(), {
@@ -226,7 +226,7 @@ export class FileExplorerComponent {
     this.filesByIdChange.emit({
       ...this.filesById,
       ...changes,
-    })
+    });
   }
 
   public insertFileBeforeFile(fileId1, fileId2) {
@@ -234,7 +234,7 @@ export class FileExplorerComponent {
       return;
     }
 
-    let changes = {};
+    const changes = {};
     each(this.filesById, (file: File) => {
       if (includes(file.childIds, fileId1)) {
         changes[file.id] = Object.assign(new File(), {
@@ -256,11 +256,11 @@ export class FileExplorerComponent {
     this.filesByIdChange.emit({
       ...this.filesById,
       ...changes,
-    })
+    });
   }
 
   public addFileToFileChildren(fileId1, fileId2) {
-    let changes = {};
+    const changes = {};
     each(this.filesById, (file: File) => {
       if (includes(file.childIds, fileId1)) {
         changes[file.id] = Object.assign(new File(), {
@@ -288,7 +288,7 @@ export class FileExplorerComponent {
     this.filesByIdChange.emit({
       ...this.filesById,
       ...changes,
-    })
+    });
   }
 
   public getParentIdsByFileId(fileId: string, filesById: Record<string, File>) {
@@ -436,7 +436,7 @@ export class FileExplorerComponent {
       fileIdsAndDepth.length = 0;
       depth--;
     }
-    if(depth > maxDepth) {
+    if (depth > maxDepth) {
       return fileIdsAndDepth;
     }
 
@@ -483,9 +483,9 @@ export class FileExplorerComponent {
   }
 
   public getFileIsOddById(fileIdsAndDepth: Array<[string, number]>, visibleFileIds: Set<string>) {
-    const fileIsOddById = {}
+    const fileIsOddById = {};
     let isOdd = false;
-    for(let i = 0; i < fileIdsAndDepth.length; i++) {
+    for (let i = 0; i < fileIdsAndDepth.length; i++) {
       const fileId = fileIdsAndDepth[i][0];
       if (visibleFileIds.has(fileId)) {
         isOdd = !isOdd;

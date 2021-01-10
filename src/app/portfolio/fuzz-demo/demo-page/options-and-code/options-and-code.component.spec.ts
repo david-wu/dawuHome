@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OptionsAndCodeComponent } from './options-and-code.component';
+import { OptionsAndCodeComponent } from '@src/app/portfolio/fuzz-demo/demo-page/options-and-code/options-and-code.component';
 
 describe('OptionsAndCodeComponent', () => {
   let component: OptionsAndCodeComponent;

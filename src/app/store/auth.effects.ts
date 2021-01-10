@@ -24,7 +24,7 @@ import {
   FirebaseFirestoreService,
 } from '@services/index';
 import { User } from '@models/index';
-import { AuthActions } from './auth.actions';
+import { AuthActions } from '@src/app/store/auth.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -41,7 +41,7 @@ export class AuthEffects {
                 map(() => AuthActions.setUser({ payload: user })),
               );
             }
-            return of(AuthActions.setUser({ payload: user }))
+            return of(AuthActions.setUser({ payload: user }));
           })
         );
       }),

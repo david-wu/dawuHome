@@ -1,5 +1,5 @@
 
-import { LocationData } from './location-data.model';
+import { LocationData } from '@src/app/photo-gallery/models/location-data.model';
 
 /**
  * UploadMeta

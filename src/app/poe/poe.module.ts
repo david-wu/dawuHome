@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import {
-  HttpClientModule,
   HttpClientJsonpModule,
+  HttpClientModule,
 } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from '@src/app/app.component';
 import { PoeComponent } from '@src/app/poe/poe.component';
 import { PoeRoutingModule } from '@src/app/poe/poe.routes';
 // import { FirebaseAuthModule } from '@src/app/firebase-auth/firebase-auth.module';

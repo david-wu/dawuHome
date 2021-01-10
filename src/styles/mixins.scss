@@ -220,6 +220,7 @@
   outline: none;
   white-space: nowrap;
   user-select: none;
+  border: none;
 }
 
 @mixin button-sm {
@@ -230,6 +231,7 @@
   outline: none;
   white-space: nowrap;
   user-select: none;
+  border: none;
 }
 
 @mixin button-md {
@@ -240,6 +242,7 @@
   outline: none;
   white-space: nowrap;
   user-select: none;
+  border: none;
 }
 
 @mixin light-theme {

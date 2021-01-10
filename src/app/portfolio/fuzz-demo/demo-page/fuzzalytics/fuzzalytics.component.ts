@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { FuzzItem, Fuzzalytics } from 'fuzz-js';
+import { Fuzzalytics, FuzzItem } from 'fuzz-js';
 
 @Component({
   selector: 'app-fuzzalytics',
@@ -50,7 +50,7 @@ export class FuzzalyticsComponent implements OnChanges {
   }
 
   public getColorByEditDistance(editDistance, worstPossible = this.worstPossibleEditDistance) {
-    const score = 1 - (editDistance / worstPossible)
+    const score = 1 - (editDistance / worstPossible);
     return this.getColorByScore(score);
   }
 

@@ -3,10 +3,8 @@ import {
   createSelector,
   MemoizedSelector,
 } from '@ngrx/store';
-import { map } from 'rxjs/operators';
-import { keyBy } from 'lodash';
 
-import { PicturePiperState } from './picture-piper.state';
+import { PicturePiperState } from '@src/app/picture-piper/store/picture-piper.state';
 
 export const getPicturePiperState$: MemoizedSelector<PicturePiperState, PicturePiperState> = createFeatureSelector(
   'picturePiper',

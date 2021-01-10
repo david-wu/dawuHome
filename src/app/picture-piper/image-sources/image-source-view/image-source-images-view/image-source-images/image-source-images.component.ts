@@ -2,17 +2,16 @@ import {
   Component,
   Input,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
 import {
-  getSelectedImageSourceId$,
   getImagesBySourceId$,
   ImageSourcesActions,
 } from '@pp/image-sources/store/index';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'dwu-image-source-images',
@@ -24,7 +23,7 @@ export class ImageSourceImagesComponent {
   @Input() selectedImageSourceId: string;
 
   public images$: Observable<any[]>;
-  public zoomLevel: number = 5;
+  public zoomLevel = 5;
 
   constructor(public store: Store) {
     this.images$ = this.store.pipe(

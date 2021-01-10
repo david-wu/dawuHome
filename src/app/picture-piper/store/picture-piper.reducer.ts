@@ -5,11 +5,11 @@ import {
   on,
 } from '@ngrx/store';
 
-import { PicturePiperActions } from './picture-piper.actions';
+import { PicturePiperActions } from '@src/app/picture-piper/store/picture-piper.actions';
 import {
   initialPicturePiperState,
   PicturePiperState,
-} from './picture-piper.state';
+} from '@src/app/picture-piper/store/picture-piper.state';
 
 const reducer: ActionReducer<PicturePiperState> = createReducer(
   initialPicturePiperState,

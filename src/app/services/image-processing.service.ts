@@ -12,7 +12,7 @@ export class ImageProcessingService {
   };
   public quarterTurnOrientations = new Set([5, 6, 7, 8]);
 
-  public async processImageFile(file: File, exifData: any): Promise<File>{
+  public async processImageFile(file: File, exifData: any): Promise<File> {
     let jimp = await this.getJimpFromFile(file);
     const orientation = exifData && exifData.Orientation;
     jimp = jimp.quality(80);
@@ -23,13 +23,13 @@ export class ImageProcessingService {
 
   public uprightImage(jimp: any, orientation: number) {
     if (orientation === 5 || orientation === 6) {
-      jimp = jimp.rotate(90)
+      jimp = jimp.rotate(90);
     }
     if (orientation === 7 || orientation === 8) {
-      jimp = jimp.rotate(270)
+      jimp = jimp.rotate(270);
     }
     if (orientation === 3 || orientation === 4) {
-      jimp = jimp.rotate(180)
+      jimp = jimp.rotate(180);
     }
     return jimp;
   }

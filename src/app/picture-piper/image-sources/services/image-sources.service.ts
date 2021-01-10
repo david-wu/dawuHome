@@ -1,25 +1,17 @@
 import { Injectable } from '@angular/core';
 import {
   Observable,
-  BehaviorSubject,
-  Subject,
-  of,
-  from,
 } from 'rxjs';
 import {
   map,
-  switchMap,
 } from 'rxjs/operators';
-import { sortBy } from 'lodash';
-import * as Jimp from 'jimp';
 
 import { User } from '@models/index';
 import { UploadFile } from '@photo-gallery/models/index';
 import {
-  FirebaseAuthService,
+  ExifService,
   FirebaseFirestoreService,
   FirebaseStorageService,
-  ExifService,
   ImageProcessingService,
 } from '@services/index';
 
@@ -77,16 +69,16 @@ export class ImageSourcesService {
     };
 
     const sizedFile = await this.imageProcessing.processImageFile(file, exifData);
-    const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
+    const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id);
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
-    const uploadMeta = { downloadUrl: downloadUrl };
+    const uploadMeta = { downloadUrl };
     return await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta);
   }
 
   public updateImageSource(imageSourceId, patch) {
     return this.firestore.db.collection('imageSources')
       .doc(imageSourceId)
-      .update(patch)
+      .update(patch);
   }
 
   public loadImageSourceTokens(imageSourceId: string): Observable<any[]> {

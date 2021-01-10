@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { UserLoginModule } from '@app/user-login/user-login.module';
+import { ResourceSelectorModule } from '@pp/common/resource-selector/resource-selector.module';
 import { SearchInputModule } from '@src/app/common/search-input/search-input.module';
+import { ImageStreamsComponent } from '@src/app/picture-piper/image-streams/image-streams.component';
+import { ImageStreamsRoutingModule } from '@src/app/picture-piper/image-streams/image-streams.routes';
+import { IMAGE_STREAMS_SERVICES } from '@src/app/picture-piper/image-streams/services';
 import {
   ImageStreamsEffects,
   imageStreamsReducer,
-} from './store/index';
-import { ImageStreamsRoutingModule } from './image-streams.routes';
-import { ImageStreamsComponent } from './image-streams.component';
-import { IMAGE_STREAMS_SERVICES } from './services';
-import { ResourceSelectorModule } from '@pp/common/resource-selector/resource-selector.module';
+} from '@src/app/picture-piper/image-streams/store/index';
 
 @NgModule({
   imports: [

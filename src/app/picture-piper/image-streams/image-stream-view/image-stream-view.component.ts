@@ -1,14 +1,13 @@
 import {
   Component,
 } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import {
-  ImageStreamsActions,
   getSelectedImageStreamId$,
 } from '@pp/image-streams/store/index';
 
@@ -28,7 +27,7 @@ export class ImageStreamViewComponent {
   }
 
   public onFileUpload(files) {
-    console.log('uploading', files)
+    console.log('uploading', files);
   }
 
 

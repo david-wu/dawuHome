@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { ImageSourceOverviewComponent } from './image-source-overview.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ImageSourceOverviewComponent } from '@src/app/picture-piper/image-sources/image-source-view/image-source-overview/image-source-overview.component';
 
 const routes: Routes = [
   {

@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { ImageSourceImagesViewComponent } from './image-source-images-view.component';
-import { ImageSourceImagesComponent } from './image-source-images/image-source-images.component';
-import { ImageSourceUploaderComponent } from './image-source-uploader/image-source-uploader.component';
-import { ImageSourceImagesViewRoutingModule } from './image-source-images-view.routes';
 import { FileUploaderModule } from '@common/file-uploader/file-uploader.module';
-import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module';
 import { ImageGridModule } from '@common/image-grid/image-grid.module';
+import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-picker.module';
+import { ImageSourceImagesViewComponent } from '@src/app/picture-piper/image-sources/image-source-view/image-source-images-view/image-source-images-view.component';
+import { ImageSourceImagesViewRoutingModule } from '@src/app/picture-piper/image-sources/image-source-view/image-source-images-view/image-source-images-view.routes';
+import { ImageSourceImagesComponent } from '@src/app/picture-piper/image-sources/image-source-view/image-source-images-view/image-source-images/image-source-images.component';
+import { ImageSourceUploaderComponent } from '@src/app/picture-piper/image-sources/image-source-view/image-source-images-view/image-source-uploader/image-source-uploader.component';
 
 @NgModule({
   imports: [

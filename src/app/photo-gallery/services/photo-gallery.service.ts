@@ -21,7 +21,7 @@ import {
   ExifService,
   ImageProcessingService,
 } from '@services/index';
-import { UserLocationService } from './user-location.service';
+import { UserLocationService } from '@src/app/photo-gallery/services/user-location.service';
 
 @Injectable()
 export class PhotoGalleryService {
@@ -67,9 +67,9 @@ export class PhotoGalleryService {
     };
 
     const sizedFile = await this.imageProcessing.processImageFile(file, exifData);
-    const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id)
+    const fileUploadResponse = await this.storage.uploadFile(sizedFile, insertedUploadDoc.id);
     const downloadUrl = await fileUploadResponse.ref.getDownloadURL();
-    const uploadMeta = { downloadUrl: downloadUrl };
+    const uploadMeta = { downloadUrl };
     await this.firestore.registerFileUploaded(insertedUploadDoc.id, uploadMeta);
   }
 

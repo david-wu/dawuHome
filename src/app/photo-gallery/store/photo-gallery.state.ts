@@ -1,12 +1,12 @@
 import { LocationData } from '@photo-gallery/models/index';
 
 export interface PhotoGalleryState  {
-  nearbyImagesVisible: boolean,
-  nearbyImages: any[],
-  userLocation: LocationData,
-  locationPermission: boolean,
-  myUploadsVisible: boolean,
-  myUploads: any[],
+  nearbyImagesVisible: boolean;
+  nearbyImages: any[];
+  userLocation: LocationData;
+  locationPermission: boolean;
+  myUploadsVisible: boolean;
+  myUploads: any[];
 }
 
 export const initialPhotoGalleryState = {

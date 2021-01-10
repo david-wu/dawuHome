@@ -12,8 +12,8 @@ import {
 })
 export class SearchInputComponent {
 
-    @Input() searchText: string = '';
-    @Input() placeholder: string = 'search..';
+    @Input() searchText = '';
+    @Input() placeholder = 'search..';
     @Output() searchTextChange: EventEmitter<string> = new EventEmitter<string>();
 
 }

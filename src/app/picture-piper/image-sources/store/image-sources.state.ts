@@ -1,13 +1,12 @@
-import { LocationData } from '@photo-gallery/models/index';
 
 export interface ImageSourcesState  {
-  imageSourcesListVisible: boolean,
-  imageSourcesList: any[],
-  selectedImageSourceId: string,
-  imagesBySourceId: Record<string, any[]>,
-  imageSourceViewTab: string,
-  isGeneratingTokenByImageSource: Record<string, boolean>,
-  imageSourceTokensByImageSource: Record<string, any[]>,
+  imageSourcesListVisible: boolean;
+  imageSourcesList: any[];
+  selectedImageSourceId: string;
+  imagesBySourceId: Record<string, any[]>;
+  imageSourceViewTab: string;
+  isGeneratingTokenByImageSource: Record<string, boolean>;
+  imageSourceTokensByImageSource: Record<string, any[]>;
 }
 
 export const initialImageSourcesState = {

@@ -9,5 +9,5 @@ export enum CoronaKeys {
     RECOVERED = 'recovered',
     DEATHS = 'deaths',
     NEW_DEATHS = 'newDeaths',
-};
+}
 

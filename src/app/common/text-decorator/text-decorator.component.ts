@@ -29,9 +29,9 @@ interface SpanElement {
 })
 export class TextDecoratorComponent {
 
-    @Input() text: string = '';
+    @Input() text = '';
     @Input() matchRanges: number[][] = [];
-    @Input() ignoreUpdates: boolean = false;
+    @Input() ignoreUpdates = false;
 
     public spanElements: SpanElement[] = [];
 
@@ -50,7 +50,7 @@ export class TextDecoratorComponent {
     public getSpanElements() {
         const indicesDecorated = new Set<number>();
         this.matchRanges.forEach((matchRange: number[]) => {
-            for(let i = matchRange[0]; i <= matchRange[1]; i++) {
+            for (let i = matchRange[0]; i <= matchRange[1]; i++) {
                 indicesDecorated.add(i);
             }
         });
@@ -59,7 +59,7 @@ export class TextDecoratorComponent {
         let previousIndex = 0;
         let isPreviousDecorated = indicesDecorated.has(0);
         let isCurrentDecorated;
-        for(let i = 1; i < this.text.length; i++) {
+        for (let i = 1; i < this.text.length; i++) {
             isCurrentDecorated = indicesDecorated.has(i);
             if (isPreviousDecorated !== isCurrentDecorated) {
                 spanElements.push({

@@ -6,12 +6,11 @@ import {
 } from '@ngrx/store';
 import { keyBy } from 'lodash';
 
-import { MlFilesActions } from './ml-files.actions';
+import { MlFilesActions } from '@src/app/ml-app/store/ml-files.actions';
 import {
   initialMlFilesState,
   MlFilesState,
-} from './ml-files.state';
-import { File } from '@file-explorer/models/index';
+} from '@src/app/ml-app/store/ml-files.state';
 
 const reducer: ActionReducer<MlFilesState> = createReducer(
   initialMlFilesState,

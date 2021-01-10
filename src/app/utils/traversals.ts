@@ -14,7 +14,7 @@ export function reverseBreadthFirstBy(rootNode, getChildren, iteratee) {
   breadthFirstBy(rootNode, getChildren, (node: any) => {
     stack.push(node);
   });
-  for(let i = stack.length - 1; i >= 0; i--) {
+  for (let i = stack.length - 1; i >= 0; i--) {
     iteratee(stack[i]);
   }
 }

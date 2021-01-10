@@ -4,6 +4,16 @@ import { padStart } from 'lodash';
 
 export class LocationData {
 
+  public latitude: number;
+
+  public longitude: number;
+
+  public geohash: string;
+
+  public s2Id: string;
+
+  public locationSource: string;
+
   public static fromLatLong(
     latitude: number,
     longitude: number,
@@ -21,16 +31,6 @@ export class LocationData {
       ...overrides,
     });
   }
-
-  public latitude: number;
-
-  public longitude: number;
-
-  public geohash: string;
-
-  public s2Id: string;
-
-  public locationSource: string;
 
   public isEqual(location: LocationData): boolean {
     return location &&

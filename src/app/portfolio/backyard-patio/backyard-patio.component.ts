@@ -83,7 +83,7 @@ export class BackyardPatioComponent {
     320: '_sm.jpg',
     640: '_md.jpg',
     1080: '_lg.jpg',
-  }
+  };
   public magnifiedImage;
 
   public getImgSrc(tileId, maxWidth) {

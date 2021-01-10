@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-import { VirtualScrollGridDemoComponent } from './virtual-scroll-grid-demo.component';
+import { VirtualScrollGridDemoComponent } from '@src/app/portfolio/virtual-scroll-grid-demo/virtual-scroll-grid-demo.component';
 
 const routes: Routes = [
   {

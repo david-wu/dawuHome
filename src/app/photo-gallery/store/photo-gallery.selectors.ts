@@ -4,7 +4,7 @@ import {
   MemoizedSelector,
 } from '@ngrx/store';
 
-import { PhotoGalleryState } from './photo-gallery.state';
+import { PhotoGalleryState } from '@src/app/photo-gallery/store/photo-gallery.state';
 import { LocationData } from '@photo-gallery/models/index';
 import { UploadFile } from '@photo-gallery/models/upload-file.model';
 

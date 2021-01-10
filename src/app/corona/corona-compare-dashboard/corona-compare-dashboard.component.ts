@@ -17,7 +17,7 @@ import {
     CoronaKeys,
     NormalKeys,
     Labels,
-} from '../models/index';
+} from '@src/app/corona/models/index';
 import { getDateFromStr } from '@src/app/utils/index';
 
 @Component({
@@ -33,9 +33,9 @@ export class CoronaCompareDashboardComponent {
 
     public coronaExtractor = new CoronaDataExtractor();
 
-    public hoverSeries
+    public hoverSeries;
     public compareData;
-    public compareRData
+    public compareRData;
     public compareKeys;
     public compareColorsByKey;
     public disabledCompareKeys;
@@ -64,7 +64,7 @@ export class CoronaCompareDashboardComponent {
             NormalKeys.DEATHS,
             NormalKeys.NEW_DEATHS,
         ],
-    }
+    };
 
     public isViewingRAvg = true;
 
@@ -79,12 +79,12 @@ export class CoronaCompareDashboardComponent {
         '#A1EF8B',
     ];
     public readonly Labels = Labels;
-    public readonly CoronaKeys = CoronaKeys
+    public readonly CoronaKeys = CoronaKeys;
     public readonly NormalKeys = NormalKeys;
 
     public ngOnChanges(changes) {
         if (this.coronaFilesWithFileId && this.filesById) {
-            this.setup(this.coronaFilesWithFileId, this.filesById, this.populationsByFileId)
+            this.setup(this.coronaFilesWithFileId, this.filesById, this.populationsByFileId);
         }
     }
 
@@ -105,14 +105,14 @@ export class CoronaCompareDashboardComponent {
 
     public setup(coronaFilesWithFileId, filesById, populationsByFileId) {
         this.refreshCompareTable();
-        this.refreshRTable()
+        this.refreshRTable();
 
         this.hoverIndex = this.compareData.length - 1;
         const fileIds = coronaFilesWithFileId.map(([coronaFile, fileId]: [any, string]) => fileId);
         this.compareKeys = fileIds;
         this.compareColorsByKey = {};
         this.compareLabelsByKey = {};
-        this.rFormattersByKeys = {}
+        this.rFormattersByKeys = {};
         this.compareKeys.forEach((key: string, index: number) => {
             const colorIndex = index % this.colorScheme.length;
             this.compareColorsByKey[key] = this.colorScheme[colorIndex];
@@ -126,7 +126,7 @@ export class CoronaCompareDashboardComponent {
       metric,
       distanceFromPointToAvg: number = 0,
     ) {
-        const coronaFilesByFileId = {}
+        const coronaFilesByFileId = {};
         coronaFilesWithFileId.forEach(([file, fileId]: [any, string]) => coronaFilesByFileId[fileId] = file);
 
         const dataByTimestamp = {};
@@ -184,7 +184,7 @@ export class CoronaCompareDashboardComponent {
     }
 
     public toPercentage(d: number): string {
-        const roundedPercent = round(d * 100, 2)
+        const roundedPercent = round(d * 100, 2);
         return isNaN(roundedPercent) ? '' : `${roundedPercent}%`;
     }
 

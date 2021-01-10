@@ -4,8 +4,8 @@ import {
   MemoizedSelector,
 } from '@ngrx/store';
 
-import { MlFilesState } from './ml-files.state';
 import { File } from '@file-explorer/models/index';
+import { MlFilesState } from '@src/app/ml-app/store/ml-files.state';
 
 export const getMlFilesState$: MemoizedSelector<MlFilesState, MlFilesState> = createFeatureSelector(
   'mlFiles',
@@ -25,6 +25,6 @@ export const getFilesById$: MemoizedSelector<MlFilesState, Record<string, File>>
   getMlFilesState$,
   (state: MlFilesState) => {
     // console.log('state', state)
-    return state.filesById
+    return state.filesById;
   },
 );

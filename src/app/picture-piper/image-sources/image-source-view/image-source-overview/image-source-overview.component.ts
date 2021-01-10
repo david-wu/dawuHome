@@ -1,15 +1,15 @@
 import {
   Component,
 } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
 import {
   getSelectedImageSource$,
   ImageSourcesActions,
 } from '@pp/image-sources/store/index';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'dwu-image-source-overview',

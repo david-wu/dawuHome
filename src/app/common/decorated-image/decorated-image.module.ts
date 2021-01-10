@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { DecoratedImageComponent } from './decorated-image.component';
+import { DecoratedImageComponent } from '@src/app/common/decorated-image/decorated-image.component';
 
 @NgModule({
   imports: [

@@ -2,7 +2,6 @@ import {
   createAction,
   props,
 } from '@ngrx/store';
-import { LocationData } from '@photo-gallery/models/index';
 
 class ResourceList {
 
@@ -38,6 +37,16 @@ export class PicturePiperActions {
   public static setResourceDoc = createAction(
     `${PicturePiperActions.CATEGORY} SET_RESOURCE_DOC`,
     props<{ resource: any, doc: any[] }>(),
+  );
+
+
+  public static patchResourceDoc = createAction(
+    `${PicturePiperActions.CATEGORY} PATCH_RESOURCE_DOC`,
+    props<{ resource: any, patch: any }>(),
+  );
+  public static patchResourceSuccess = createAction(
+    `${PicturePiperActions.CATEGORY} PATCH_RESOURCE_SUCCESS`,
+    props<{ resource: any }>(),
   );
 
 }

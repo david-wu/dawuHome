@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PhotoGalleryComponent } from '@src/app/photo-gallery/photo-gallery.component';
 
 const routes: Routes = [

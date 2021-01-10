@@ -32,9 +32,9 @@ export class StatViewerComponent {
     }
 
     public buildStatTable() {
-        this.statTable = []
+        this.statTable = [];
         const keys = [...this.keys];
-        while(keys.length) {
+        while (keys.length) {
             const columnKeys = keys.splice(0, this.rowCount);
             const columnValues = columnKeys.map((columnKey: string) => {
                 const cellValue = this.columnData[columnKey];

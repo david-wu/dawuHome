@@ -15,10 +15,10 @@ export class ExifService {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onloadend = () => {
-        const arrayBuffer = reader.result
+        const arrayBuffer = reader.result;
         const exif = (EXIFStatic as any).EXIF.readFromBinaryFile(arrayBuffer);
         resolve(exif);
-      }
+      };
       reader.readAsArrayBuffer(file);
     });
   }

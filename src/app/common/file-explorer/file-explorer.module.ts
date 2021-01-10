@@ -4,7 +4,7 @@ import { CommonModule as NgCommonModule } from '@angular/common';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { CommonModule } from '@src/app/common/common.module';
-import { FileExplorerComponent } from './file-explorer.component';
+import { FileExplorerComponent } from '@src/app/common/file-explorer/file-explorer.component';
 
 @NgModule({
   imports: [

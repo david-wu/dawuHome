@@ -10,7 +10,7 @@ import {
 import { isUndefined, first, filter, last } from 'lodash';
 import * as d3 from 'd3';
 
-import { BaseChartComponent } from '../base-chart/base-chart.component';
+import { BaseChartComponent } from '@src/app/common/charts/base-chart/base-chart.component';
 import { TooltipService } from '@common/tooltip/tooltip.service';
 
 @Component({
@@ -66,7 +66,7 @@ export class LineChartComponent extends BaseChartComponent {
         this.render();
       }
     }
-    if(changes.hoverIndex) {
+    if (changes.hoverIndex) {
       this.positionHoverLine();
     }
     if (changes.hoverSeries) {
@@ -105,7 +105,7 @@ export class LineChartComponent extends BaseChartComponent {
     // const range = this.xScale.range();
     const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
     const startingPx = this.xScale(this.tableData[0].timestamp);
-    const distanceBetweenPoints = width / (numberOfXDataPoints - 1)
+    const distanceBetweenPoints = width / (numberOfXDataPoints - 1);
     const xOnChart =  x - this.margins.left - this.chartMargin;
     const valueOnChart = this.xScale.invert(xOnChart);
     const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
@@ -134,11 +134,11 @@ export class LineChartComponent extends BaseChartComponent {
       return;
     }
 
-    let hoverSeries = '';
+    const hoverSeries = '';
     const dataPoint = this.tableData[hoverIndex];
     const keyVals = this.keys.map((key: string) => {
       return {
-        key: key,
+        key,
         yVal: this.yScale(dataPoint[key]),
       };
     });
@@ -146,10 +146,10 @@ export class LineChartComponent extends BaseChartComponent {
 
     let distanceFrom = Math.abs(y - keyVals[0].yVal);
     let closestSeries = keyVals[0];
-    for(let i = 1; i < keyVals.length; i++) {
+    for (let i = 1; i < keyVals.length; i++) {
       const nextDistanceFrom = Math.abs(y - keyVals[i].yVal);
       if (nextDistanceFrom < distanceFrom) {
-        closestSeries = keyVals[i]
+        closestSeries = keyVals[i];
         distanceFrom = nextDistanceFrom;
       }
     }
@@ -173,7 +173,7 @@ export class LineChartComponent extends BaseChartComponent {
       }
       return {
         value: tableColumnData[key],
-        key: key,
+        key,
       };
     }).filter(Boolean);
 
@@ -189,14 +189,14 @@ export class LineChartComponent extends BaseChartComponent {
       .attr('stroke-width', '1px')
       .merge(bubbles)
       .attr('stroke', (d, i) => this.colorsByKey[d.key] || this.colorScheme[i])
-      .attr('cy', (d) => this.yScale(d.value))
+      .attr('cy', (d) => this.yScale(d.value));
     bubbles.exit().remove();
 
     this.hoverLine
       .attr('x1', this.xScale(hoverLineTimestamp) || 0)
       .attr('x2', this.xScale(hoverLineTimestamp) || 0)
       .attr('y1', this.yScale(this.maxY || 1) - 3)
-      .attr('y2', this.yScale(0) + 3)
+      .attr('y2', this.yScale(0) + 3);
 
     if (this.mouseIn) {
       this.tts.renderTooltip(this.hoverLine.node(), this.tooltipTemplate, true);
@@ -220,7 +220,7 @@ export class LineChartComponent extends BaseChartComponent {
 
     const numberOfXDataPoints = this.tableData.length ? this.tableData.length : 0;
     const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
-    const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
+    const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues);
     super.applyXAxis(this.xAxisG, xAxis, height);
 
     const pathLineDrawer = d3.line()
@@ -242,7 +242,7 @@ export class LineChartComponent extends BaseChartComponent {
       const series = this.tableData.map((columnData: any) => {
         const cellData = columnData[key];
         return !isUndefined(cellData) && {
-          key: key,
+          key,
           y: cellData,
           x: columnData.timestamp,
           data: columnData,
@@ -262,7 +262,7 @@ export class LineChartComponent extends BaseChartComponent {
       const seriesMax = series.reduce((currentSeriesMax: number, cell: any) => {
         return Math.max(currentSeriesMax, cell.y);
       }, 0);
-      return Math.max(currentMax, seriesMax)
+      return Math.max(currentMax, seriesMax);
     }, 0);
 
     this.yScale = d3.scaleLinear()
@@ -271,7 +271,7 @@ export class LineChartComponent extends BaseChartComponent {
 
     const numberOfXDataPoints = this.tableData.length || 0;
     const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
-    const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues)
+    const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues);
     super.applyXAxis(this.xAxisG, xAxis, height);
     const yAxis = super.getLinearYAxis(this.yScale, width, this.yAxisFormatter);
     super.applyYAxis(this.yAxisG, yAxis);

@@ -17,7 +17,7 @@ import {
   BehaviorSubject,
   Observable,
 } from 'rxjs';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { share } from 'rxjs/operators';
 import { TooltipViewComponent } from '@common/tooltip/tooltip-view.component';
 
@@ -39,7 +39,7 @@ export class TooltipService {
     private appRef: ApplicationRef,
     private injector: Injector
   ) {
-    this.tooltipViewRef = this.appendComponentToDocBody(TooltipViewComponent)
+    this.tooltipViewRef = this.appendComponentToDocBody(TooltipViewComponent);
     this.tooltipView = this.tooltipViewRef.instance;
 
     combineLatest(
@@ -96,7 +96,7 @@ export class TooltipService {
   public getTooltipDirection(protrudingBy, horizontalOnly) {
     let protrudingList = map(protrudingBy, (value, key) => [key, value]);
     if (!some(protrudingList, ([direction, protrudingBy]) => protrudingBy > 0)) {
-      return horizontalOnly ? 'LEFT': 'TOP';
+      return horizontalOnly ? 'LEFT' : 'TOP';
     }
 
     if (horizontalOnly) {
@@ -112,20 +112,20 @@ export class TooltipService {
     if (direction === 'TOP') {
       return {
         top: `${boundingRect.top - this.arrowSize}px`,
-        left: `${boundingRect.left + (boundingRect.width/2)}px`,
+        left: `${boundingRect.left + (boundingRect.width / 2)}px`,
         transform: `translate(-50%, -100%)`,
       };
     }
     if (direction === 'LEFT') {
       return {
-        top: `${boundingRect.top + (boundingRect.height/2)}px`,
+        top: `${boundingRect.top + (boundingRect.height / 2)}px`,
         left: `${boundingRect.left - this.arrowSize}px`,
         transform: `translate(-100%, -50%)`,
       };
     }
     if (direction === 'RIGHT') {
       return {
-        top: `${boundingRect.top + (boundingRect.height/2)}px`,
+        top: `${boundingRect.top + (boundingRect.height / 2)}px`,
         left: `${boundingRect.left + boundingRect.width + this.arrowSize}px`,
         transform: `translate(0, -50%)`,
       };
@@ -133,7 +133,7 @@ export class TooltipService {
     if (direction === 'BOTTOM') {
       return {
         top: `${boundingRect.top + boundingRect.height + this.arrowSize}px`,
-        left: `${boundingRect.left + (boundingRect.width/2)}px`,
+        left: `${boundingRect.left + (boundingRect.width / 2)}px`,
         transform: `translate(-50%, 0)`,
       };
     }

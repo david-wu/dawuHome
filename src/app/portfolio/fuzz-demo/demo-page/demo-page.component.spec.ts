@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DemoPageComponent } from './demo-page.component';
+import { DemoPageComponent } from '@src/app/portfolio/fuzz-demo/demo-page/demo-page.component';
 
 describe('DemoPageComponent', () => {
   let component: DemoPageComponent;

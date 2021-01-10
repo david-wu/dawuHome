@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .input-container {
-  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   position: relative;
   .search-icon {
     position: absolute;
@@ -22,9 +22,13 @@
     color: $granite;
   }
   input {
-    padding: 0 0.5rem 0 2rem;
-    border-radius: 0.5rem;
-    border: 2px solid $moss-green;
+    padding: 0 0.25rem 0 2rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 2px 0 $moss-green;
+    &:focus {
+      box-shadow: 0 0 2px 2px $moss-green;
+    }
+    border: none;
     outline: none;
     width: 100%;
     font-size: 1rem;

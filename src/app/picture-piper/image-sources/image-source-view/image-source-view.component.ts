@@ -1,14 +1,13 @@
 import {
   Component,
 } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
 import {
-  Store,
   select,
+  Store,
 } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import {
-  ImageSourcesActions,
   getSelectedImageSourceId$,
 } from '@pp/image-sources/store/index';
 
@@ -28,7 +27,7 @@ export class ImageSourceViewComponent {
   }
 
   public onFileUpload(files) {
-    console.log('uploading', files)
+    console.log('uploading', files);
   }
 
 

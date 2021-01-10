@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ChartLegendComponent } from './chart-legend/chart-legend.component';
-import { StatViewerComponent } from './stat-viewer/stat-viewer.component';
-import { BarChartModule } from './bar-chart/bar-chart.module';
-import { LineChartModule } from './line-chart/line-chart.module';
+import { ChartLegendComponent } from '@src/app/common/charts/chart-legend/chart-legend.component';
+import { StatViewerComponent } from '@src/app/common/charts/stat-viewer/stat-viewer.component';
+import { BarChartModule } from '@src/app/common/charts/bar-chart/bar-chart.module';
+import { LineChartModule } from '@src/app/common/charts/line-chart/line-chart.module';
 
 @NgModule({
   imports: [

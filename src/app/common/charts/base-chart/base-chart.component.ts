@@ -24,7 +24,7 @@ export class BaseChartComponent {
   public rootG;
   public seriesG;
   public xScale;
-  public yScale
+  public yScale;
   public xAxisG;
   public yAxisG;
   public indicatorsG;
@@ -44,7 +44,7 @@ export class BaseChartComponent {
   }
 
   public ngOnDestroy() {
-    this.sensor.detach()
+    this.sensor.detach();
   }
 
   public initializeSvg() {
@@ -58,7 +58,7 @@ export class BaseChartComponent {
 
     this.svg
       .on('mouseenter', () => this._onMouseEnter())
-      .on('mouseleave', () => this._onMouseLeave())
+      .on('mouseleave', () => this._onMouseLeave());
 
     this.rootG = this.svg.append('g');
     this.yAxisG = this.rootG.append('g')
@@ -72,7 +72,7 @@ export class BaseChartComponent {
     this.indicatorsG = this.rootG.append('g');
     // this.applyZoom(this.svg);
 
-    const defs = this.svg.append('defs')
+    const defs = this.svg.append('defs');
 
     this.clipPathRect = defs.append('clipPath')
     .attr('id', 'clip')
@@ -122,7 +122,7 @@ export class BaseChartComponent {
   }
 
   public renderFor(width, height) {
-    throw('must implement renderFor');
+    throw new Error(('must implement renderFor'));
   }
 
   public getChartDim() {
@@ -130,14 +130,14 @@ export class BaseChartComponent {
     return {
       width: elDim.width - this.margins.left - this.margins.right,
       height: elDim.height - this.margins.top - this.margins.bottom,
-    }
+    };
   }
 
   public render() {
     const { width, height } = this.getChartDim();
     this.svg
       .attr('width', width + this.margins.left + this.margins.right)
-      .attr('height', height + this.margins.top + this.margins.bottom)
+      .attr('height', height + this.margins.top + this.margins.bottom);
 
     this.rootG
       .attr('transform', 'translate(' + this.margins.left + ',' + this.margins.top + ')');
@@ -150,7 +150,7 @@ export class BaseChartComponent {
   }
 
   public getLinearYAxis(yScale, width: number, formatter?: any) {
-    let baseAxis = d3.axisLeft()
+    const baseAxis = d3.axisLeft()
       .scale(yScale)
       .ticks(6)
       .tickSize(-width, 0, 0);
@@ -199,7 +199,7 @@ export class BaseChartComponent {
   public getFilteredTickValues(ticks, width, numberOfXDataPoints) {
     const xDomainInterval = this.getXDomainInterval(width, numberOfXDataPoints);
     const remainder = numberOfXDataPoints % xDomainInterval;
-    return ticks.filter((d, i)=> {
+    return ticks.filter((d, i) => {
       // (i + 1 - remainder) makes sure the most recent datapoint's tick is always visible
       return !((i + 1 - remainder) % xDomainInterval);
     });
@@ -209,7 +209,7 @@ export class BaseChartComponent {
     const maxXpoints = this.getMaxXPoints(width);
     let xPoints = numberOfXDataPoints;
     let interval = 1;
-    while(xPoints > maxXpoints) {
+    while (xPoints > maxXpoints) {
       interval++;
       xPoints = numberOfXDataPoints / interval;
     }
@@ -224,13 +224,13 @@ export class BaseChartComponent {
     return {
       width: this.hostEl.nativeElement.clientWidth,
       height: this.hostEl.nativeElement.clientHeight,
-    }
+    };
   }
 
   public renderIndicators(indicators, tableData, maxY, barStepWidth = 0) {
     const cleanIndicatorData = filter(indicators, (indicatorInfo) => {
       return (indicatorInfo.value >= tableData[0].timestamp)
-      && (indicatorInfo.value <= last(tableData).timestamp)
+      && (indicatorInfo.value <= last(tableData).timestamp);
     });
     const indicatorLines = this.indicatorsG.selectAll('line.indicators')
       .data(cleanIndicatorData);
@@ -246,7 +246,7 @@ export class BaseChartComponent {
       .attr('x1', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
       .attr('x2', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
       .attr('y1', this.yScale(maxY))
-      .attr('y2', this.yScale(0) + 3)
+      .attr('y2', this.yScale(0) + 3);
     indicatorLines.exit().remove();
 
     const indicatorText = this.indicatorsG.selectAll('text.indicators')
@@ -261,7 +261,7 @@ export class BaseChartComponent {
       .text((d) => d.label || '')
       .style('fill', (d) => d.color || '#292E12')
       .attr('x', (d) => (this.xScale(d.value) || 0) + (barStepWidth / 2))
-      .attr('y', this.yScale(maxY) - 3)
+      .attr('y', this.yScale(maxY) - 3);
     indicatorText.exit().remove();
 
   }

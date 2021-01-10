@@ -1,17 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { UserLoginModule } from '@app/user-login/user-login.module';
+import { PicturePiperComponent } from '@src/app/picture-piper/picture-piper.component';
+import { PicturePiperRoutingModule } from '@src/app/picture-piper/picture-piper.routes';
+import { PICTURE_PIPER_SERVICES } from '@src/app/picture-piper/services';
 import {
   PicturePiperEffects,
   picturePiperReducer,
-} from './store/index';
-import { PICTURE_PIPER_SERVICES } from './services';
-import { PicturePiperRoutingModule } from './picture-piper.routes';
-import { PicturePiperComponent } from './picture-piper.component';
+} from '@src/app/picture-piper/store/index';
 
 @NgModule({
   imports: [
