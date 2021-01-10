@@ -5,7 +5,7 @@ import {
 } from '@ngrx/store';
 import { keyBy } from 'lodash';
 
-import { ImageSourcesState } from '@src/app/picture-piper/image-sources/store/image-sources.state';
+import { ImageSourcesState } from '@pp/image-sources/store/image-sources.state';
 
 export const getImageSourcesState$: MemoizedSelector<ImageSourcesState, ImageSourcesState> = createFeatureSelector(
   'imageSources',

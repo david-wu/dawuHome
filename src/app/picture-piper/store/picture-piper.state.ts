@@ -7,13 +7,6 @@ export interface PicturePiperState  {
   visibleResourceDocCounts: any;
   resourceDocs: any;
   resourceDocsLoading: any;
-  // imageSourcesListVisible: boolean,
-  // imageSourcesList: any[],
-  // selectedImageSourceId: string,
-  // imagesBySourceId: Record<string, any[]>,
-  // imageSourceViewTab: string,
-  // isGeneratingTokenByImageSource: Record<string, boolean>,
-  // imageSourceTokensByImageSource: Record<string, any[]>,
 }
 
 export const initialPicturePiperState = {
@@ -24,11 +17,4 @@ export const initialPicturePiperState = {
   visibleResourceDocCounts: {},
   resourceDocs: {},
   resourceDocsLoading: {},
-  // imageSourcesListVisible: false,
-  // imageSourcesList: [],
-  // selectedImageSourceId: undefined,
-  // imagesBySourceId: {},
-  // imageSourceViewTab: undefined,
-  // isGeneratingTokenByImageSource: {},
-  // imageSourceTokensByImageSource: {},
 };

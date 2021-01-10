@@ -4,13 +4,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { UserLoginModule } from '@app/user-login/user-login.module';
-import { PicturePiperComponent } from '@src/app/picture-piper/picture-piper.component';
-import { PicturePiperRoutingModule } from '@src/app/picture-piper/picture-piper.routes';
-import { PICTURE_PIPER_SERVICES } from '@src/app/picture-piper/services';
+import { PicturePiperComponent } from '@pp/picture-piper.component';
+import { PicturePiperRoutingModule } from '@pp/picture-piper.routes';
+import { PICTURE_PIPER_SERVICES } from '@pp/services';
 import {
   PicturePiperEffects,
   picturePiperReducer,
-} from '@src/app/picture-piper/store/index';
+} from '@pp/store/index';
 
 @NgModule({
   imports: [

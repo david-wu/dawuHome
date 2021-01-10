@@ -28,12 +28,12 @@ import {
 } from 'rxjs/operators';
 
 import { ImageSourcesService } from '@pp/image-sources/services';
-import { PicturePiperService } from '@pp/services';
-import { ImageSourcesActions } from '@src/app/picture-piper/image-sources/store/image-sources.actions';
+import { ImageSourcesActions } from '@pp/image-sources/store/image-sources.actions';
 import {
   getImageSourcesListVisible$,
   getImageSourceViewTab$,
-} from '@src/app/picture-piper/image-sources/store/image-sources.selectors';
+} from '@pp/image-sources/store/image-sources.selectors';
+import { PicturePiperService } from '@pp/services';
 import {
   AuthActions,
   getUser$,

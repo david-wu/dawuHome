@@ -5,14 +5,14 @@ import { StoreModule } from '@ngrx/store';
 
 import { UserLoginModule } from '@app/user-login/user-login.module';
 import { ResourceSelectorModule } from '@pp/common/resource-selector/resource-selector.module';
-import { SearchInputModule } from '@src/app/common/search-input/search-input.module';
-import { ImageSourcesComponent } from '@src/app/picture-piper/image-sources/image-sources.component';
-import { ImageSourcesRoutingModule } from '@src/app/picture-piper/image-sources/image-sources.routes';
-import { IMAGE_SOURCES_SERVICES } from '@src/app/picture-piper/image-sources/services';
+import { ImageSourcesComponent } from '@pp/image-sources/image-sources.component';
+import { ImageSourcesRoutingModule } from '@pp/image-sources/image-sources.routes';
+import { IMAGE_SOURCES_SERVICES } from '@pp/image-sources/services';
 import {
   ImageSourcesEffects,
   imageSourcesReducer,
-} from '@src/app/picture-piper/image-sources/store/index';
+} from '@pp/image-sources/store/index';
+import { SearchInputModule } from '@src/app/common/search-input/search-input.module';
 
 @NgModule({
   imports: [

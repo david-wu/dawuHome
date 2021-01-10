@@ -4,7 +4,7 @@ import {
   MemoizedSelector,
 } from '@ngrx/store';
 
-import { PicturePiperState } from '@src/app/picture-piper/store/picture-piper.state';
+import { PicturePiperState } from '@pp/store/picture-piper.state';
 
 export const getPicturePiperState$: MemoizedSelector<PicturePiperState, PicturePiperState> = createFeatureSelector(
   'picturePiper',

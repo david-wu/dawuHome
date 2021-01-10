@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ImageStreamsIntroComponent } from '@src/app/picture-piper/common/image-streams-intro/image-streams-intro.component';
+import { ImageStreamsIntroComponent } from '@pp/common/image-streams-intro/image-streams-intro.component';
 
 const routes: Routes = [
   {

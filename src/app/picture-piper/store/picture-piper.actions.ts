@@ -36,7 +36,7 @@ export class PicturePiperActions {
   );
   public static setResourceDoc = createAction(
     `${PicturePiperActions.CATEGORY} SET_RESOURCE_DOC`,
-    props<{ resource: any, doc: any[] }>(),
+    props<{ resource: any, doc: any }>(),
   );
 
 

@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { CodeSnippetModule } from '@common/code-snippet/code-snippet.module';
 import { FileExplorerModule } from '@file-explorer/file-explorer.module';
+import { ImageSourceSetupComponent } from '@pp/image-sources/image-source-view/image-source-setup/image-source-setup.component';
+import { ImageSourceSetupRoutingModule } from '@pp/image-sources/image-source-view/image-source-setup/image-source-setup.routes';
+import { ImageSourceTokensListComponent } from '@pp/image-sources/image-source-view/image-source-setup/image-source-tokens-list/image-source-tokens-list.component';
 import { SearchInputModule } from '@src/app/common/search-input/search-input.module';
-import { ImageSourceSetupComponent } from '@src/app/picture-piper/image-sources/image-source-view/image-source-setup/image-source-setup.component';
-import { ImageSourceSetupRoutingModule } from '@src/app/picture-piper/image-sources/image-source-view/image-source-setup/image-source-setup.routes';
-import { ImageSourceTokensListComponent } from '@src/app/picture-piper/image-sources/image-source-view/image-source-setup/image-source-tokens-list/image-source-tokens-list.component';
 
 @NgModule({
   imports: [
