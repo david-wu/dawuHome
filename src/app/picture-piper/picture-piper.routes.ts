@@ -9,15 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'intro',
-        loadChildren: () => import('@app/picture-piper/common/picture-piper-intro/picture-piper-intro.module').then(m => m.PicturePiperIntroModule)
+        loadChildren: () => import('@pp/common/picture-piper-intro/picture-piper-intro.module').then(m => m.PicturePiperIntroModule)
       },
       {
         path: 'image-sources',
-        loadChildren: () => import('@app/picture-piper/image-sources/image-sources.module').then(m => m.ImageSourcesModule)
+        loadChildren: () => import('@pp/image-sources/image-sources.module').then(m => m.ImageSourcesModule)
       },
       {
         path: 'image-streams',
-        loadChildren: () => import('@app/picture-piper/image-streams/image-streams.module').then(m => m.ImageStreamsModule)
+        loadChildren: () => import('@pp/image-streams/image-streams.module').then(m => m.ImageStreamsModule)
+      },
+      {
+        path: 'pp-test-app',
+        loadChildren: () => import('@pp/pp-test-app/pp-test-app.module').then(m => m.PpTestAppModule)
       },
       {
         path: '',

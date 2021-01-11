@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('./image-source-images-view/image-source-images-view.module').then(m => m.ImageSourceImagesViewModule)
       },
       {
+        path: 'test-app',
+        loadChildren: () => import('./image-source-test-app/image-source-test-app.module').then(m => m.ImageSourceTestAppModule)
+      },
+      {
         path: 'setup',
         loadChildren: () => import('./image-source-setup/image-source-setup.module').then(m => m.ImageSourceSetupModule)
       },
