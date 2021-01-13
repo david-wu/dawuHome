@@ -2817,10 +2817,42 @@
   },
   {
     "dateStr": "1/8/21",
-    "cases": 424,
-    "deaths": 18,
+    "cases": 661,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 237,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "1/9/21",
+    "cases": 661,
+    "deaths": 19,
     "recovered": 0,
     "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "1/10/21",
+    "cases": 661,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "1/11/21",
+    "cases": 661,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "1/12/21",
+    "cases": 672,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 11,
     "newDeaths": 0
   }
 ]

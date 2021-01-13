@@ -1,54 +1,54 @@
 {
   "Fairfield": {
-    "dateStr": "1/8/21",
-    "cases": 61285,
-    "deaths": 1779,
+    "dateStr": "1/12/21",
+    "cases": 64066,
+    "deaths": 1806,
     "recovered": 0,
-    "new": 889,
-    "newDeaths": 7
+    "new": 993,
+    "newDeaths": 9
   },
   "Hartford": {
-    "dateStr": "1/8/21",
-    "cases": 51890,
-    "deaths": 1921,
+    "dateStr": "1/12/21",
+    "cases": 54900,
+    "deaths": 1966,
     "recovered": 0,
-    "new": 840,
-    "newDeaths": 4
+    "new": 1008,
+    "newDeaths": 8
   },
   "Litchfield": {
-    "dateStr": "1/8/21",
-    "cases": 8239,
-    "deaths": 239,
+    "dateStr": "1/12/21",
+    "cases": 8631,
+    "deaths": 241,
     "recovered": 0,
-    "new": 122,
-    "newDeaths": 4
+    "new": 135,
+    "newDeaths": 2
   },
   "Middlesex": {
-    "dateStr": "1/8/21",
-    "cases": 7483,
-    "deaths": 277,
+    "dateStr": "1/12/21",
+    "cases": 7875,
+    "deaths": 282,
     "recovered": 0,
-    "new": 142,
-    "newDeaths": 7
-  },
-  "New Haven": {
-    "dateStr": "1/8/21",
-    "cases": 52278,
-    "deaths": 1627,
-    "recovered": 0,
-    "new": 712,
-    "newDeaths": 12
-  },
-  "New London": {
-    "dateStr": "1/8/21",
-    "cases": 12434,
-    "deaths": 276,
-    "recovered": 0,
-    "new": 270,
+    "new": 118,
     "newDeaths": 1
   },
+  "New Haven": {
+    "dateStr": "1/12/21",
+    "cases": 54757,
+    "deaths": 1653,
+    "recovered": 0,
+    "new": 833,
+    "newDeaths": 5
+  },
+  "New London": {
+    "dateStr": "1/12/21",
+    "cases": 13492,
+    "deaths": 284,
+    "recovered": 0,
+    "new": 332,
+    "newDeaths": 2
+  },
   "Out of CT": {
-    "dateStr": "1/8/21",
+    "dateStr": "1/12/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -56,15 +56,15 @@
     "newDeaths": 0
   },
   "Tolland": {
-    "dateStr": "1/8/21",
-    "cases": 5443,
-    "deaths": 115,
+    "dateStr": "1/12/21",
+    "cases": 5791,
+    "deaths": 120,
     "recovered": 0,
-    "new": 78,
-    "newDeaths": 1
+    "new": 102,
+    "newDeaths": 2
   },
   "Unassigned": {
-    "dateStr": "1/8/21",
+    "dateStr": "1/12/21",
     "cases": 1144,
     "deaths": 52,
     "recovered": 0,
@@ -72,11 +72,11 @@
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "1/8/21",
-    "cases": 6172,
-    "deaths": 89,
+    "dateStr": "1/12/21",
+    "cases": 6732,
+    "deaths": 95,
     "recovered": 0,
-    "new": 168,
-    "newDeaths": 1
+    "new": 144,
+    "newDeaths": 3
   }
 }
