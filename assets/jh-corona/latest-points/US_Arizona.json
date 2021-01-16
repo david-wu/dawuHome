@@ -1,86 +1,86 @@
 {
   "Apache": {
-    "dateStr": "1/12/21",
-    "cases": 8355,
-    "deaths": 260,
+    "dateStr": "1/15/21",
+    "cases": 8482,
+    "deaths": 274,
     "recovered": 0,
-    "new": 46,
-    "newDeaths": 1
+    "new": 72,
+    "newDeaths": 7
   },
   "Cochise": {
-    "dateStr": "1/12/21",
-    "cases": 9232,
-    "deaths": 172,
+    "dateStr": "1/15/21",
+    "cases": 9444,
+    "deaths": 189,
     "recovered": 0,
-    "new": 263,
-    "newDeaths": 8
+    "new": 64,
+    "newDeaths": 3
   },
   "Coconino": {
-    "dateStr": "1/12/21",
-    "cases": 13089,
-    "deaths": 237,
+    "dateStr": "1/15/21",
+    "cases": 13616,
+    "deaths": 244,
     "recovered": 0,
-    "new": 93,
-    "newDeaths": 4
-  },
-  "Gila": {
-    "dateStr": "1/12/21",
-    "cases": 5147,
-    "deaths": 157,
-    "recovered": 0,
-    "new": 49,
+    "new": 196,
     "newDeaths": 2
   },
-  "Graham": {
-    "dateStr": "1/12/21",
-    "cases": 4170,
-    "deaths": 56,
+  "Gila": {
+    "dateStr": "1/15/21",
+    "cases": 5306,
+    "deaths": 165,
     "recovered": 0,
-    "new": 99,
+    "new": 89,
+    "newDeaths": 7
+  },
+  "Graham": {
+    "dateStr": "1/15/21",
+    "cases": 4276,
+    "deaths": 57,
+    "recovered": 0,
+    "new": 41,
     "newDeaths": 0
   },
   "Greenlee": {
-    "dateStr": "1/12/21",
-    "cases": 465,
+    "dateStr": "1/15/21",
+    "cases": 471,
     "deaths": 4,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "La Paz": {
-    "dateStr": "1/12/21",
-    "cases": 1885,
-    "deaths": 41,
+    "dateStr": "1/15/21",
+    "cases": 1967,
+    "deaths": 45,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 2
+    "new": 32,
+    "newDeaths": 0
   },
   "Maricopa": {
-    "dateStr": "1/12/21",
-    "cases": 393732,
-    "deaths": 6012,
+    "dateStr": "1/15/21",
+    "cases": 407631,
+    "deaths": 6320,
     "recovered": 0,
-    "new": 5214,
-    "newDeaths": 189
+    "new": 5776,
+    "newDeaths": 108
   },
   "Mohave": {
-    "dateStr": "1/12/21",
-    "cases": 15790,
-    "deaths": 404,
+    "dateStr": "1/15/21",
+    "cases": 16397,
+    "deaths": 431,
     "recovered": 0,
-    "new": 195,
-    "newDeaths": 14
+    "new": 110,
+    "newDeaths": 9
   },
   "Navajo": {
-    "dateStr": "1/12/21",
-    "cases": 12854,
-    "deaths": 377,
+    "dateStr": "1/15/21",
+    "cases": 13090,
+    "deaths": 389,
     "recovered": 0,
-    "new": 179,
+    "new": 148,
     "newDeaths": 5
   },
   "Out of AZ": {
-    "dateStr": "1/12/21",
+    "dateStr": "1/15/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,31 +88,31 @@
     "newDeaths": 0
   },
   "Pima": {
-    "dateStr": "1/12/21",
-    "cases": 84426,
-    "deaths": 1311,
+    "dateStr": "1/15/21",
+    "cases": 87687,
+    "deaths": 1393,
     "recovered": 0,
-    "new": 1040,
-    "newDeaths": 48
+    "new": 1342,
+    "newDeaths": 31
   },
   "Pinal": {
-    "dateStr": "1/12/21",
-    "cases": 34653,
-    "deaths": 447,
+    "dateStr": "1/15/21",
+    "cases": 36122,
+    "deaths": 478,
     "recovered": 0,
-    "new": 1015,
-    "newDeaths": 29
+    "new": 572,
+    "newDeaths": 2
   },
   "Santa Cruz": {
-    "dateStr": "1/12/21",
-    "cases": 6790,
-    "deaths": 121,
+    "dateStr": "1/15/21",
+    "cases": 6950,
+    "deaths": 129,
     "recovered": 0,
-    "new": 74,
-    "newDeaths": 3
+    "new": 84,
+    "newDeaths": 1
   },
   "Unassigned": {
-    "dateStr": "1/12/21",
+    "dateStr": "1/15/21",
     "cases": 35,
     "deaths": 42,
     "recovered": 0,
@@ -120,19 +120,19 @@
     "newDeaths": 0
   },
   "Yavapai": {
-    "dateStr": "1/12/21",
-    "cases": 13854,
-    "deaths": 292,
+    "dateStr": "1/15/21",
+    "cases": 14398,
+    "deaths": 308,
     "recovered": 0,
-    "new": 130,
-    "newDeaths": 17
+    "new": 228,
+    "newDeaths": 6
   },
   "Yuma": {
-    "dateStr": "1/12/21",
-    "cases": 31658,
-    "deaths": 591,
+    "dateStr": "1/15/21",
+    "cases": 32349,
+    "deaths": 614,
     "recovered": 0,
-    "new": 157,
-    "newDeaths": 13
+    "new": 391,
+    "newDeaths": 4
   }
 }
