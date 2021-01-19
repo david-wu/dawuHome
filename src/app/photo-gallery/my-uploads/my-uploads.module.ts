@@ -8,7 +8,6 @@ import { ZoomLevelPickerModule } from '@common/zoom-level-picker/zoom-level-pick
 import { MyUploadsComponent } from '@photo-gallery/my-uploads/my-uploads.component';
 import { MyUploadsRoutingModule } from '@photo-gallery/my-uploads/my-uploads.routes';
 import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
-// import { MlFileExplorerComponent } from './ml-file-explorer/ml-file-explorer.component';
 
 @NgModule({
   imports: [
@@ -21,11 +20,9 @@ import { PHOTO_GALLERY_SERVICES } from '@photo-gallery/services/index';
   ],
   declarations: [
     MyUploadsComponent,
-    // MlFileExplorerComponent,
   ],
   exports: [
     MyUploadsComponent,
-    // MlFileExplorerComponent,
   ],
   providers: [
     ...PHOTO_GALLERY_SERVICES,

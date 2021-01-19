@@ -1,22 +1,6 @@
-
 <ng-container *ngIf="user$ | async as user; else loginTemplate">
-  <!-- <div *ngIf="viewingFilePicker">
-    <dwu-ml-file-explorer></dwu-ml-file-explorer>
-  </div> -->
-
   <div class="control-bar">
     <div class="left-side">
-
-<!--       <div
-        class="file-picker-icon-container"
-        (click)="viewingFilePicker = !viewingFilePicker"
-      >
-        <span
-          class="material-icons file-picker-icon"
-          [class.active]="viewingFilePicker"
-        >folder</span>
-      </div> -->
-
       <dwu-user-login></dwu-user-login>
       <dwu-file-uploader
         (fileChange)="onFileChange($event, user)"

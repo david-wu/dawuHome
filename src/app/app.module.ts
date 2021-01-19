@@ -11,13 +11,13 @@ import {
 import { APP_SERVICES } from '@services/index';
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
-import { UserLoginModule } from '@src/app/user-login/user-login.module';
+// import { UserLoginModule } from '@src/app/user-login/user-login.module';
 
 @NgModule({
   imports: [
     NoopAnimationsModule,
     AppRoutingModule,
-    UserLoginModule,
+    // UserLoginModule,
     StoreModule.forRoot({ auth: authReducer }),
     EffectsModule.forRoot([AuthEffects]),
   ],
