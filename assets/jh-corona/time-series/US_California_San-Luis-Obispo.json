@@ -2873,10 +2873,34 @@
   },
   {
     "dateStr": "1/15/21",
-    "cases": 14851,
-    "deaths": 125,
+    "cases": 15102,
+    "deaths": 128,
     "recovered": 0,
-    "new": 73,
+    "new": 324,
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "1/16/21",
+    "cases": 15129,
+    "deaths": 128,
+    "recovered": 0,
+    "new": 27,
     "newDeaths": 0
+  },
+  {
+    "dateStr": "1/17/21",
+    "cases": 15466,
+    "deaths": 128,
+    "recovered": 0,
+    "new": 337,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "1/18/21",
+    "cases": 15658,
+    "deaths": 135,
+    "recovered": 0,
+    "new": 192,
+    "newDeaths": 7
   }
 ]
