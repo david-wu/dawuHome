@@ -14,6 +14,11 @@ import {
   of,
 } from 'rxjs';
 import {
+  switchMap,
+  catchError,
+} from 'rxjs/operators';
+
+import {
   map,
   mergeMap,
   withLatestFrom,
@@ -48,7 +53,7 @@ export class PicturePiperEffects {
                 resource,
                 list,
               });
-            })
+            }),
           );
         }
         return of(PicturePiperActions.setResourceList({
@@ -108,7 +113,26 @@ export class PicturePiperEffects {
     );
   });
 
-
+  public createResourceDoc$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PicturePiperActions.createResourceDoc),
+      withLatestFrom(this.store$.pipe(select(getUser$))),
+      switchMap(([action, user]) => {
+        const { resource, patch } = action;
+        if (!user) {
+          return of(PicturePiperActions.createResourceDocFailure({ resource: resource.path }));
+        }
+        return this.ppService.createResourceDoc(user, resource, patch).pipe(
+          map((imageSource) => {
+            return PicturePiperActions.createResourceDocSuccess({ resource: resource.path });
+          }),
+          catchError((err) => {
+            return of(PicturePiperActions.createResourceDocFailure({ resource: resource.path }));
+          })
+        );
+      }),
+    );
+  });
 
   constructor(
     public store$: Store,

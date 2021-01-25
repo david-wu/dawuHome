@@ -14,31 +14,6 @@ import {
 const reducer: ActionReducer<ImageStreamsState> = createReducer(
   initialImageStreamsState,
 
-  on(ImageStreamsActions.setImageStreamsListVisible, (state: ImageStreamsState, action: any) => {
-    return {
-      ...state,
-      imageStreamsListVisible: action.payload,
-    };
-  }),
-
-  on(ImageStreamsActions.setImageStreamsList, (state: ImageStreamsState, action: any) => {
-    const imageStreamsList = action.payload || [];
-    // const defaultId = imageStreamsList.length ? [imageStreamsList[0].id] : [];
-    return {
-      ...state,
-      imageStreamsList,
-      // selectedImageStreamIds: state.selectedImageStreamIds.size ? state.selectedImageStreamIds : new Set(defaultId),
-    };
-  }),
-
-  on(ImageStreamsActions.createImageStreamSuccess, (state: ImageStreamsState, action: any) => {
-    return state;
-  }),
-
-  on(ImageStreamsActions.createImageStreamFailure, (state: ImageStreamsState, action: any) => {
-    return state;
-  }),
-
   on(ImageStreamsActions.setSelectedImageStreamId, (state: ImageStreamsState, action: any) => {
     return {
       ...state,

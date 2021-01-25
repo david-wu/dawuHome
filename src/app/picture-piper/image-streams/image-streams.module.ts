@@ -4,7 +4,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { UserLoginModule } from '@app/user-login/user-login.module';
-import { ResourceSelectorModule } from '@pp/common/resource-selector/resource-selector.module';
 import { ImageStreamsComponent } from '@pp/image-streams/image-streams.component';
 import { ImageStreamsRoutingModule } from '@pp/image-streams/image-streams.routes';
 import { IMAGE_STREAMS_SERVICES } from '@pp/image-streams/services';
@@ -13,12 +12,15 @@ import {
   imageStreamsReducer,
 } from '@pp/image-streams/store/index';
 import { SearchInputModule } from '@src/app/common/search-input/search-input.module';
+import { ResourceListViewModule } from '@pp/common/resource-list-view/resource-list-view.module';
+import { ResourceCreateButtonModule } from '@pp/common/resource-create-button/resource-create-button.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SearchInputModule,
-    ResourceSelectorModule,
+    ResourceListViewModule,
+    ResourceCreateButtonModule,
     ImageStreamsRoutingModule,
     UserLoginModule,
     StoreModule.forFeature('imageStreams', imageStreamsReducer),

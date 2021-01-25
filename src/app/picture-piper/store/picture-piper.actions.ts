@@ -39,6 +39,19 @@ export class PicturePiperActions {
     props<{ resource: any, doc: any }>(),
   );
 
+  public static createResourceDoc = createAction(
+    `${PicturePiperActions.CATEGORY} CREATE_RESOURCE_DOC`,
+    props<{ resource: any, patch: any }>(),
+  );
+  public static createResourceDocSuccess = createAction(
+    `${PicturePiperActions.CATEGORY} CREATE_RESOURCE_DOC_SUCCESS`,
+    props<{ resource: any }>(),
+  );
+  public static createResourceDocFailure = createAction(
+    `${PicturePiperActions.CATEGORY} CREATE_RESOURCE_DOC_FAILURE`,
+    props<{ resource: any }>(),
+  );
+
 
   public static patchResourceDoc = createAction(
     `${PicturePiperActions.CATEGORY} PATCH_RESOURCE_DOC`,

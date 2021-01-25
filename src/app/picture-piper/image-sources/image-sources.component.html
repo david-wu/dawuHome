@@ -7,12 +7,11 @@
     [class.expanded]="leftSideExpanded"
   >
     <div class="control-buttons">
-      <div
-        class="wide-button"
-        (click)="onCreateSource()"
-      >
-        + New Source
-      </div>
+      <dwu-resource-create-button
+        class="wide-button-container"
+        [resourceConfig]="imageSourcesConfig"
+        [buttonLabel]="'+ New Source'"
+      ></dwu-resource-create-button>
       <div
         class="icon-button"
         [routerLink]="['intro']"
@@ -25,13 +24,12 @@
       [(searchText)]="filterStr"
       [placeholder]="'search..'"
     ></dwu-search-input>
-    <dwu-resource-selector
-      class="file-explorer"
-      [resources]="imageSourcesList$ | async"
-      [filterStr]="filterStr"
+    <dwu-resource-list-view
+      [resourceConfig]="imageSourcesConfig"
       [selectedResourceId]="selectedImageSourceId$ | async"
       (selectedResourceIdChange)="onSelectedImageSourceIdChange($event)"
-    ></dwu-resource-selector>
+      [filterStr]="filterStr"
+    ></dwu-resource-list-view>
   </div>
   <div class="right-side">
     <router-outlet></router-outlet>

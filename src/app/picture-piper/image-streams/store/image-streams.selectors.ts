@@ -6,6 +6,7 @@ import {
 import { keyBy } from 'lodash';
 
 import { ImageStreamsState } from '@pp/image-streams/store/image-streams.state';
+import { getResourceLists$ } from '@pp/store';
 
 export const getImageStreamsState$: MemoizedSelector<ImageStreamsState, ImageStreamsState> = createFeatureSelector(
   'imageStreams',
@@ -21,9 +22,9 @@ export const getImageStreamsList$: MemoizedSelector<ImageStreamsState, any[]> = 
   (state: ImageStreamsState) => state.imageStreamsList,
 );
 
-export const getImageStreamsById$: MemoizedSelector<ImageStreamsState, Record<string, any>> = createSelector(
-  getImageStreamsList$,
-  (imageStreamsList: any[]) => keyBy(imageStreamsList, 'id'),
+export const getImageStreamsById$: MemoizedSelector<any, Record<string, any>> = createSelector(
+  getResourceLists$,
+  (resourceLists) => keyBy(resourceLists['imageStreams'], 'id'),
 );
 
 export const getSelectedImageStreamId$: MemoizedSelector<ImageStreamsState, string> = createSelector(

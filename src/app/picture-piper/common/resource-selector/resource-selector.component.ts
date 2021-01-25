@@ -24,6 +24,7 @@ export class ResourceSelectorComponent {
   @Input() selectedResourceIds: Set<string>;
   @Output() selectedResourceIdsChange = new EventEmitter<Set<string>>();
 
+  public resourceIds: Set<string> = new Set<string>();
   public fileGroup: FileGroup = FileGroup.createWithRoot('ROOT');
   public readonly rootFileId = 'ROOT';
 
@@ -31,8 +32,11 @@ export class ResourceSelectorComponent {
     if (changes.resources) {
       this.onResourcesChanges(this.resources);
     }
-    if (changes.selectedResourceId) {
-      this.selectedResourceIds = this.selectedResourceId ? new Set([this.selectedResourceId]) : new Set();
+    if (changes.selectedResourceId && !this.selectedResourceIds) {
+      this.resourceIds = this.selectedResourceId ? new Set([this.selectedResourceId]) : new Set();
+    }
+    if (changes.selectedResourceIds && this.selectedResourceIds) {
+      this.resourceIds = new Set(this.selectedResourceIds);
     }
   }
 

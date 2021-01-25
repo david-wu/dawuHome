@@ -14,29 +14,6 @@ import {
 const reducer: ActionReducer<ImageSourcesState> = createReducer(
   initialImageSourcesState,
 
-  on(ImageSourcesActions.setImageSourcesListVisible, (state: ImageSourcesState, action: any) => {
-    return {
-      ...state,
-      imageSourcesListVisible: action.payload,
-    };
-  }),
-
-  on(ImageSourcesActions.setImageSourcesList, (state: ImageSourcesState, action: any) => {
-    const imageSourcesList = action.payload || [];
-    return {
-      ...state,
-      imageSourcesList,
-    };
-  }),
-
-  on(ImageSourcesActions.createImageSourceSuccess, (state: ImageSourcesState, action: any) => {
-    return state;
-  }),
-
-  on(ImageSourcesActions.createImageSourceFailure, (state: ImageSourcesState, action: any) => {
-    return state;
-  }),
-
   on(ImageSourcesActions.setSelectedImageSourceId, (state: ImageSourcesState, action: any) => {
     return {
       ...state,

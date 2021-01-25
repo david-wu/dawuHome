@@ -13,7 +13,6 @@ import { Observable, Subscription } from 'rxjs';
 import { getUser$ } from '@app/store';
 import { User } from '@models/index';
 import {
-  getImageStreamsList$,
   getSelectedImageStreamId$,
   ImageStreamsActions,
 } from '@pp/image-streams/store/index';
@@ -26,12 +25,14 @@ import {
 export class ImageStreamsComponent {
 
   public user$: Observable<User>;
-  public imageStreamsList$: Observable<any[]>;
   public selectedImageStreamId$: Observable<string>;
 
   public filterStr = '';
   public leftSideExpanded = false;
   public sub: Subscription;
+  public readonly imageStreamsConfig = {
+    path: 'imageStreams',
+  };
 
   constructor(
     public store: Store,
@@ -39,27 +40,16 @@ export class ImageStreamsComponent {
     public activatedRoute: ActivatedRoute,
   ) {
     this.user$ = this.store.pipe(select(getUser$));
-    this.imageStreamsList$ = this.store.pipe(select(getImageStreamsList$));
     this.selectedImageStreamId$ = this.store.pipe(select(getSelectedImageStreamId$));
   }
 
   public ngOnInit() {
-    this.store.dispatch(ImageStreamsActions.setImageStreamsListVisible({ payload: true }));
-
     this.loadInUrlState(this.router.url);
     this.sub = this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationEnd) {
         this.loadInUrlState(routerEvent.url);
       }
     });
-  }
-
-  public ngOnDestroy() {
-    this.store.dispatch(ImageStreamsActions.setImageStreamsListVisible({ payload: false }));
-  }
-
-  public onCreateSource() {
-    this.store.dispatch(ImageStreamsActions.createImageStream());
   }
 
   public onSelectedImageStreamIdChange(selectedImageStreamId: string) {

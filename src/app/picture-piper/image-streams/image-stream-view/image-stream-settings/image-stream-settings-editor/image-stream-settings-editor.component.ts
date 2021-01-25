@@ -26,29 +26,20 @@ export class ImageStreamSettingsEditorComponent {
 
   public imageSourcesFilterStr = '';
   public classifiersFilterStr = '';
-  public imageSources$: Observable<any[]>;
-  public classifiers$: Observable<any[]>;
   public selectedImageSourceIds = new Set();
   public selectedClassifierIds = new Set();
   public editImageSourceIds = new Set();
   public editClassifierIds = new Set();
   public isEditing = false;
 
-  public readonly imageSourcePath = 'imageSources';
-  public readonly classifiersPath = 'classifiers';
-
-  constructor(
-    public store: Store,
-  ) {
-    this.imageSources$ = this.store.pipe(
-      select(getResourceLists$),
-      map((resourceLists) => resourceLists[this.imageSourcePath]),
-    );
-    this.classifiers$ = this.store.pipe(
-      select(getResourceLists$),
-      map((resourceLists) => resourceLists[this.classifiersPath]),
-    );
+  public readonly imageSourcesConfig = {
+    path: 'imageSources',
   }
+  public readonly classifiersConfig = {
+    path: 'classifiers',
+  }
+
+  constructor(public store: Store) {}
 
   public ngOnChanges(changes) {
     if (changes.imageStream) {
@@ -88,39 +79,19 @@ export class ImageStreamSettingsEditorComponent {
   }
 
   public watchData() {
-    this.store.dispatch(PicturePiperActions.addVisibleResourceList({
-      resource: {
-        path: this.imageSourcePath,
-      },
-    }));
-    this.store.dispatch(PicturePiperActions.addVisibleResourceList({
-      resource: {
-        path: this.classifiersPath,
-      },
-    }));
-    this.store.dispatch(PicturePiperActions.addVisibleResourceDoc({
-      resource: {
-        path: `imageStreams/${this.imageStream.id}`,
-      },
-    }));
+    // this.store.dispatch(PicturePiperActions.addVisibleResourceDoc({
+    //   resource: {
+    //     path: `imageStreams/${this.imageStream.id}`,
+    //   },
+    // }));
   }
 
   public unwatchData() {
-    this.store.dispatch(PicturePiperActions.removeVisibleResourceList({
-      resource: {
-        path: this.imageSourcePath,
-      },
-    }));
-    this.store.dispatch(PicturePiperActions.removeVisibleResourceList({
-      resource: {
-        path: this.classifiersPath,
-      },
-    }));
-    this.store.dispatch(PicturePiperActions.removeVisibleResourceDoc({
-      resource: {
-        path: `imageStreams/${this.imageStream.id}`,
-      },
-    }));
+    // this.store.dispatch(PicturePiperActions.removeVisibleResourceDoc({
+    //   resource: {
+    //     path: `imageStreams/${this.imageStream.id}`,
+    //   },
+    // }));
   }
 
   public onSelectedImageSourceIdsChange(selectedImageSourceIds: Set<string>) {

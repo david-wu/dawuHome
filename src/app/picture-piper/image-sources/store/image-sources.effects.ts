@@ -42,48 +42,6 @@ import {
 @Injectable()
 export class ImageSourcesEffects {
 
-  public getImageSources$: Observable<Action> = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(
-        AuthActions.setUser,
-        ImageSourcesActions.setImageSourcesListVisible,
-      ),
-      withLatestFrom(
-        this.store$.pipe(select(getUser$)),
-        this.store$.pipe(select(getImageSourcesListVisible$)),
-      ),
-      switchMap(([action, user, isVisible]) => {
-        if (!isVisible || !user) {
-          return of(ImageSourcesActions.setImageSourcesList({ payload: [] }));
-        }
-        return this.ppService.getImageSources$(user).pipe(
-          map((imageSources) => ImageSourcesActions.setImageSourcesList({ payload: imageSources })),
-        );
-      }),
-    );
-  });
-
-  public createImageSource$: Observable<Action> = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(ImageSourcesActions.createImageSource),
-      withLatestFrom(this.store$.pipe(select(getUser$))),
-      switchMap(([action, user]) => {
-        if (!user) {
-          return of(ImageSourcesActions.createImageSourceFailure({ payload: 'no user' }));
-        }
-        return this.firestore.createImageSource(user).pipe(
-          map((imageSource) => {
-            return ImageSourcesActions.createImageSourceSuccess({ payload: 'imageSource' });
-          }),
-          catchError((err) => {
-            return of(ImageSourcesActions.createImageSourceFailure({ payload: err }));
-          })
-        );
-      }),
-    );
-  });
-
-
   public loadImagesBySourceId$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType(ImageSourcesActions.loadImagesBySourceId),

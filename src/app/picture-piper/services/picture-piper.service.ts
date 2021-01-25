@@ -48,11 +48,20 @@ export class PicturePiperService {
 
 
   public patchResourceDoc(user: User, resource: any, patch): Observable<any> {
-    console.log('patchResourceDoc', resource.path, patch);
+    // console.log('patchResourceDoc', resource.path, patch);
     return from(this.firestore.db.doc(resource.path).update(patch));
   }
 
-
+  public createResourceDoc(user: User, resource: any, patch): Observable<any> {
+    // console.log('createResourceDoc', resource.path, patch);
+    const timestamp = this.firestore.firestoreTimestamp();
+    const doc = {
+      userId: user.uid,
+      createdAt: timestamp,
+      updatedAt: timestamp,
+    }
+    return from(this.firestore.db.collection(resource.path).add(doc));
+  }
 
   public getImageSources$(user: User): Observable<any[]> {
     return this.firestore.query((db) => {

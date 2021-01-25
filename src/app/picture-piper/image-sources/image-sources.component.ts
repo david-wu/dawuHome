@@ -9,11 +9,11 @@ import {
   Store,
 } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { getUser$ } from '@app/store';
 import { User } from '@models/index';
 import {
-  getImageSourcesList$,
   getSelectedImageSourceId$,
   ImageSourcesActions,
 } from '@pp/image-sources/store/index';
@@ -26,12 +26,14 @@ import {
 export class ImageSourcesComponent {
 
   public user$: Observable<User>;
-  public imageSourcesList$: Observable<any[]>;
   public selectedImageSourceId$: Observable<string>;
 
   public filterStr = '';
   public leftSideExpanded = false;
   public sub;
+  public readonly imageSourcesConfig = {
+    path: 'imageSources',
+  }
 
   constructor(
     public store: Store,
@@ -39,7 +41,6 @@ export class ImageSourcesComponent {
     public activatedRoute: ActivatedRoute,
   ) {
     this.user$ = this.store.pipe(select(getUser$));
-    this.imageSourcesList$ = this.store.pipe(select(getImageSourcesList$));
     this.selectedImageSourceId$ = this.store.pipe(select(getSelectedImageSourceId$));
 
     this.loadInUrlState(this.router.url);
@@ -48,18 +49,6 @@ export class ImageSourcesComponent {
         this.loadInUrlState(routerEvent.url);
       }
     });
-  }
-
-  public ngOnInit() {
-    this.store.dispatch(ImageSourcesActions.setImageSourcesListVisible({ payload: true }));
-  }
-
-  public ngOnDestroy() {
-    this.store.dispatch(ImageSourcesActions.setImageSourcesListVisible({ payload: false }));
-  }
-
-  public onCreateSource() {
-    this.store.dispatch(ImageSourcesActions.createImageSource());
   }
 
   public onSelectedImageSourceIdChange(selectedImageSourceId: string) {

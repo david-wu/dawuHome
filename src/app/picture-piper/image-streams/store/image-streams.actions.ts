@@ -6,27 +6,6 @@ import {
 export class ImageStreamsActions {
   public static readonly CATEGORY = '[IMAGE_STREAMS]';
 
-  public static setImageStreamsListVisible = createAction(
-    `${ImageStreamsActions.CATEGORY} SET_IMAGE_STREAMS_LIST_VISIBLE`,
-    props<{ payload: boolean }>(),
-  );
-  public static setImageStreamsList = createAction(
-    `${ImageStreamsActions.CATEGORY} SET_IMAGE_STREAMS_LIST`,
-    props<{ payload: any[] }>(),
-  );
-
-  public static createImageStream = createAction(
-    `${ImageStreamsActions.CATEGORY} CREATE_IMAGE_STREAM`,
-  );
-  public static createImageStreamSuccess = createAction(
-    `${ImageStreamsActions.CATEGORY} CREATE_IMAGE_STREAM_SUCCESS`,
-    props<{ payload: any }>(),
-  );
-  public static createImageStreamFailure = createAction(
-    `${ImageStreamsActions.CATEGORY} CREATE_IMAGE_STREAM_FAILURE`,
-    props<{ payload: any }>(),
-  );
-
   public static setSelectedImageStreamId = createAction(
     `${ImageStreamsActions.CATEGORY} SET_SELECTED_IMAGE_STREAM_ID`,
     props<{ payload: string }>(),

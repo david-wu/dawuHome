@@ -42,48 +42,6 @@ import {
 @Injectable()
 export class ImageStreamsEffects {
 
-  public getImageStreams$: Observable<Action> = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(
-        AuthActions.setUser,
-        ImageStreamsActions.setImageStreamsListVisible,
-      ),
-      withLatestFrom(
-        this.store$.pipe(select(getUser$)),
-        this.store$.pipe(select(getImageStreamsListVisible$)),
-      ),
-      switchMap(([action, user, isVisible]) => {
-        if (!isVisible || !user) {
-          return of(ImageStreamsActions.setImageStreamsList({ payload: [] }));
-        }
-        return this.ppService.getImageStreams$(user).pipe(
-          map((imageStreams) => ImageStreamsActions.setImageStreamsList({ payload: imageStreams })),
-        );
-      }),
-    );
-  });
-
-  public createImageStream$: Observable<Action> = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(ImageStreamsActions.createImageStream),
-      withLatestFrom(this.store$.pipe(select(getUser$))),
-      switchMap(([action, user]) => {
-        if (!user) {
-          return of(ImageStreamsActions.createImageStreamFailure({ payload: 'no user' }));
-        }
-        return this.firestore.createImageStream(user).pipe(
-          map((imageStream) => {
-            return ImageStreamsActions.createImageStreamSuccess({ payload: 'imageStream' });
-          }),
-          catchError((err) => {
-            return of(ImageStreamsActions.createImageStreamFailure({ payload: err }));
-          })
-        );
-      }),
-    );
-  });
-
-
   public loadImagesByStreamId$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType(ImageStreamsActions.loadImagesByStreamId),
