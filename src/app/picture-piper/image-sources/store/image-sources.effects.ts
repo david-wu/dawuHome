@@ -93,7 +93,7 @@ export class ImageSourcesEffects {
         if (!sourceId || !user) {
           return of(ImageSourcesActions.addImagesBySourceId({ payload: {} }));
         }
-        return this.firestore.getFilesForSource$(sourceId).pipe(
+        return this.ppService.getFilesForSource$(sourceId).pipe(
           map((myUploads) => {
             return ImageSourcesActions.addImagesBySourceId({
               payload: {

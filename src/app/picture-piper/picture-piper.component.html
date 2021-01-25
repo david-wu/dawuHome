@@ -1,5 +1,5 @@
 <div class="top-nav">
-  <div class="page-title-container" [routerLink]="['/pp']">
+  <div class="page-title-container" [routerLink]="['./']">
     <div>Picture Piper</div>
   </div>
   <div class="right-section">
@@ -7,17 +7,17 @@
       <div
         class="nav-item"
         [routerLinkActive]="['active']"
-        [routerLink]="['/pp/image-sources']"
+        [routerLink]="['image-sources']"
       >Sources</div>
       <div
         class="nav-item"
         [routerLinkActive]="['active']"
-        [routerLink]="['/pp/image-streams']"
+        [routerLink]="['image-streams']"
       >Streams</div>
       <div
         class="nav-item"
         [routerLinkActive]="['active']"
-        [routerLink]="['/pp/effects']"
+        [routerLink]="['effects']"
       >Effects</div>
       <dwu-user-login></dwu-user-login>
     </div>

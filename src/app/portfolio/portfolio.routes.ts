@@ -29,6 +29,10 @@ const routes: Routes = [
       },
       {
         path: 'PHOTO_APP',
+        loadChildren: () => import('./photo-app-demo/photo-app-demo.module').then(m => m.PhotoAppDemoModule),
+      },
+      {
+        path: 'PICTURE_PIPER',
         loadChildren: () => import('./picture-piper-demo/picture-piper-demo.module').then(m => m.PicturePiperDemoModule)
       },
       {

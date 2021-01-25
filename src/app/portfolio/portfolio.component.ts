@@ -46,9 +46,8 @@ export class PortfolioComponent {
           label: 'covid tracker',
         },
         FUZZ: { label: 'fuzz-js' },
-        PHOTO_APP: {
-          label: 'photo app',
-        },
+        PHOTO_APP: { label: 'photo app' },
+        PICTURE_PIPER: { label: 'picture piper' },
         COMPONENTS: {
           label: 'components',
           childrenById: {

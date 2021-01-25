@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PicturePiperDemoComponent } from '@src/app/portfolio/picture-piper-demo/picture-piper-demo.component';
+import { PhotoAppDemoComponent } from '@src/app/portfolio/photo-app-demo/photo-app-demo.component';
 // import { CoronaModule } from '@src/app/corona/corona.module';
 const routes: Routes = [
   {
     path: '',
-    component: PicturePiperDemoComponent,
+    component: PhotoAppDemoComponent,
     children: [
       {
         path: '',
-        loadChildren: () => import('@src/app/picture-piper/picture-piper.module').then(m => m.PicturePiperModule)
+        loadChildren: () => import('@src/app/photo-gallery/photo-gallery.module').then(m => m.PhotoGalleryModule)
       },
     ],
   },
@@ -24,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PicturePiperDemoRoutingModule { }
+export class PhotoAppDemoRoutingModule { }

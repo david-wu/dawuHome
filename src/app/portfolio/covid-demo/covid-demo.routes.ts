@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CovidDemoComponent } from '@src/app/portfolio/covid-demo/covid-demo.component';
-// import { CoronaModule } from '@src/app/corona/corona.module';
 const routes: Routes = [
   {
     path: '',

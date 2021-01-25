@@ -22,6 +22,15 @@ export class PicturePiperService {
     public exifService: ExifService,
   ) {}
 
+  public getFilesForSource$(sourceId: string): Observable<any[]> {
+    return this.firestore.query((db) => {
+      return db
+        .collection('ppUploads')
+        .where('sourceId', '==', sourceId)
+        .orderBy('updatedAt', 'desc')
+    });
+  }
+
   public getResourceList$(user: User, resource: any): Observable<any[]> {
     return this.firestore.query((db) => {
       return db
