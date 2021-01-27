@@ -52,15 +52,27 @@ export class ImageStreamsComponent {
     });
   }
 
+  public ngOnDestroy() {
+    this.sub && this.sub.unsubscribe();
+  }
+
   public onSelectedImageStreamIdChange(selectedImageStreamId: string) {
     const urlTree = this.router.createUrlTree([selectedImageStreamId], { relativeTo: this.activatedRoute });
     this.store.dispatch(ImageStreamsActions.navigateToImageStreamView({ payload: urlTree.toString() }));
   }
 
+  /**
+   * loadInUrlState
+   * @param {string} url
+   */
   public loadInUrlState(url: string) {
     const urlArr = url.split('/');
-    const imageStreamId = urlArr[3] === 'intro' ? undefined : urlArr[3];
-    const tabName = urlArr[4];
+    const baseIndex = urlArr.indexOf('image-streams');
+    const idIndex = baseIndex + 1;
+    const tabIndex = baseIndex + 2;
+
+    const imageStreamId = urlArr[idIndex] === 'intro' ? undefined : urlArr[idIndex];
+    const tabName = urlArr[tabIndex];
     this.store.dispatch(ImageStreamsActions.setSelectedImageStreamId({ payload: imageStreamId }));
     this.store.dispatch(ImageStreamsActions.setImageStreamViewTab({ payload: tabName }));
   }

@@ -56,10 +56,18 @@ export class ImageSourcesComponent {
     this.store.dispatch(ImageSourcesActions.navigateToImageSourceView({ payload: urlTree.toString() }));
   }
 
+  /**
+   * loadInUrlState
+   * @param {string} url
+   */
   public loadInUrlState(url: string) {
     const urlArr = url.split('/');
-    const imageSourceId = urlArr[3] === 'intro' ? undefined : urlArr[3];
-    const tabName = urlArr[4];
+    const baseIndex = urlArr.indexOf('image-sources');
+    const idIndex = baseIndex + 1;
+    const tabIndex = baseIndex + 2;
+
+    const imageSourceId = urlArr[idIndex] === 'intro' ? undefined : urlArr[idIndex];
+    const tabName = urlArr[tabIndex];
     this.store.dispatch(ImageSourcesActions.setSelectedImageSourceId({ payload: imageSourceId }));
     this.store.dispatch(ImageSourcesActions.setImageSourceViewTab({ payload: tabName }));
   }

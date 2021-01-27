@@ -47,7 +47,7 @@ export class PortfolioComponent {
         },
         FUZZ: { label: 'fuzz-js' },
         PHOTO_APP: { label: 'photo app' },
-        // PICTURE_PIPER: { label: 'picture piper' },
+        PICTURE_PIPER: { label: 'picture piper' },
         COMPONENTS: {
           label: 'components',
           childrenById: {

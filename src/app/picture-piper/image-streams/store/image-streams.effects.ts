@@ -125,31 +125,6 @@ export class ImageStreamsEffects {
     );
   });
 
-  // public generateImageStreamToken$: Observable<any> = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(ImageStreamsActions.generateImageStreamToken),
-  //     switchMap((action) => {
-  //       const imageStreamId = action.payload;
-  //       return from(this.imageStreamsService.generateImageStreamToken(imageStreamId)).pipe(
-  //         map(() => ImageStreamsActions.generateImageStreamTokenSuccess({ payload: imageStreamId })),
-  //         catchError(() => of(ImageStreamsActions.generateImageStreamTokenFailure({ payload: imageStreamId }))),
-  //       );
-  //     }),
-  //   );
-  // });
-
-  // public loadImageStreamTokens$: Observable<any> = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(ImageStreamsActions.loadImageStreamTokens),
-  //     switchMap((action) => {
-  //       const imageStreamId = action.imageStreamId;
-  //       return from(this.imageStreamsService.loadImageStreamTokens(imageStreamId)).pipe(
-  //         map((imageStreamTokens: any[]) => ImageStreamsActions.loadImageStreamTokensSuccess({ imageStreamId, imageStreamTokens })),
-  //       );
-  //     }),
-  //   );
-  // });
-
   constructor(
     public store$: Store,
     public actions$: Actions,
