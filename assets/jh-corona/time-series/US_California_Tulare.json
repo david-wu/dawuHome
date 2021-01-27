@@ -2953,10 +2953,18 @@
   },
   {
     "dateStr": "1/25/21",
-    "cases": 43006,
-    "deaths": 531,
+    "cases": 43574,
+    "deaths": 542,
     "recovered": 0,
-    "new": 247,
+    "new": 815,
+    "newDeaths": 11
+  },
+  {
+    "dateStr": "1/26/21",
+    "cases": 43574,
+    "deaths": 542,
+    "recovered": 0,
+    "new": 0,
     "newDeaths": 0
   }
 ]
