@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('@pp/image-sources/image-sources.module').then(m => m.ImageSourcesModule)
       },
       {
+        path: 'image-classifiers',
+        loadChildren: () => import('@pp/image-classifiers/image-classifiers.module').then(m => m.ImageClassifiersModule)
+      },
+      {
         path: 'image-streams',
         loadChildren: () => import('@pp/image-streams/image-streams.module').then(m => m.ImageStreamsModule)
       },
