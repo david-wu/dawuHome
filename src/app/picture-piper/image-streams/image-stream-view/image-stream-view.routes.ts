@@ -12,6 +12,14 @@ const routes: Routes = [
         loadChildren: () => import('./image-stream-overview/image-stream-overview.module').then(m => m.ImageStreamOverviewModule)
       },
       {
+        path: 'classifiers',
+        loadChildren: () => import('./image-stream-classifiers/image-stream-classifiers.module').then(m => m.ImageStreamClassifiersModule)
+      },
+      {
+        path: 'set-up',
+        loadChildren: () => import('./image-stream-set-up/image-stream-set-up.module').then(m => m.ImageStreamSetUpModule)
+      },
+      {
         path: 'settings',
         loadChildren: () => import('./image-stream-settings/image-stream-settings.module').then(m => m.ImageStreamSettingsModule)
       },

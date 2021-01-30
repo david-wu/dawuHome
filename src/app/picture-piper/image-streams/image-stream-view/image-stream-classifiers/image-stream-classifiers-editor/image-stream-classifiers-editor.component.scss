@@ -4,18 +4,20 @@
   @include standard-demo-page;
 
   .control-buttons {
-    @include control-buttons;
+    .control-button {
+      @include light-mini-button;
+    }
   }
 
   .join-table {
     display: flex;
     align-items: center;
     height: 25rem;
-    max-width: 60rem;
+    max-width: 30rem;
     .file-explorer-container {
       @include full-file-explorer-container;
       height: 100%;
-      width: 50%;
+      width: 100%;
       &:not(:last-child) {
         border-right: 1px solid $moss-green;
       }

@@ -41,7 +41,7 @@
         }
         .nav-item {
           flex: 0 1 auto;
-          @include dark-button;
+          @include dark-egg-button;
           margin: 0 0.25rem;
           border-radius: 4px 4px 0 0;
         }
