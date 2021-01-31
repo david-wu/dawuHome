@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { PpTestAppComponent } from '@pp/pp-test-app/pp-test-app.component';
-import { PpTestAppRoutingModule } from '@pp/pp-test-app/pp-test-app.routes';
+import { PpTestAppComponent } from '@app/pp-test-app/pp-test-app.component';
+import { PpTestAppRoutingModule } from '@app/pp-test-app/pp-test-app.routes';
 
 @NgModule({
   imports: [

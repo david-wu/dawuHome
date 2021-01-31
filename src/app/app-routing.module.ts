@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./picture-piper/picture-piper.module').then(m => m.PicturePiperModule)
   },
   {
+    path: 'pp-test-app',
+    loadChildren: () => import('./pp-test-app/pp-test-app.module').then(m => m.PpTestAppModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'corona'

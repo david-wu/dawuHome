@@ -24,10 +24,6 @@ const routes: Routes = [
         loadChildren: () => import('@pp/image-streams/image-streams.module').then(m => m.ImageStreamsModule)
       },
       {
-        path: 'pp-test-app',
-        loadChildren: () => import('@pp/pp-test-app/pp-test-app.module').then(m => m.PpTestAppModule)
-      },
-      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'intro',
