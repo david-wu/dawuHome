@@ -1,38 +1,38 @@
 {
   "Aleutians East": {
-    "dateStr": "1/29/21",
-    "cases": 80,
+    "dateStr": "2/4/21",
+    "cases": 178,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 26,
     "newDeaths": 0
   },
   "Aleutians West": {
-    "dateStr": "1/29/21",
-    "cases": 321,
+    "dateStr": "2/4/21",
+    "cases": 355,
     "deaths": 0,
     "recovered": 0,
-    "new": 4,
+    "new": 3,
     "newDeaths": 0
   },
   "Anchorage": {
-    "dateStr": "1/29/21",
-    "cases": 25376,
-    "deaths": 141,
+    "dateStr": "2/4/21",
+    "cases": 25675,
+    "deaths": 152,
     "recovered": 0,
-    "new": 80,
+    "new": 34,
     "newDeaths": 0
   },
   "Bethel": {
-    "dateStr": "1/29/21",
-    "cases": 3287,
-    "deaths": 15,
+    "dateStr": "2/4/21",
+    "cases": 3384,
+    "deaths": 17,
     "recovered": 0,
-    "new": 11,
+    "new": 37,
     "newDeaths": 0
   },
   "Bristol Bay": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -40,7 +40,7 @@
     "newDeaths": 0
   },
   "Bristol Bay plus Lake and Peninsula": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 170,
     "deaths": 0,
     "recovered": 0,
@@ -48,39 +48,39 @@
     "newDeaths": 0
   },
   "Denali": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 68,
     "deaths": 0,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Dillingham": {
-    "dateStr": "1/29/21",
-    "cases": 169,
-    "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Dillingham": {
+    "dateStr": "2/4/21",
+    "cases": 177,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
   "Fairbanks North Star": {
-    "dateStr": "1/29/21",
-    "cases": 5855,
+    "dateStr": "2/4/21",
+    "cases": 5928,
     "deaths": 26,
     "recovered": 0,
-    "new": 13,
+    "new": 19,
     "newDeaths": 0
   },
   "Haines": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 26,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Hoonah-Angoon": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,79 +88,79 @@
     "newDeaths": 0
   },
   "Juneau": {
-    "dateStr": "1/29/21",
-    "cases": 1151,
+    "dateStr": "2/4/21",
+    "cases": 1188,
     "deaths": 5,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Kenai Peninsula": {
-    "dateStr": "1/29/21",
-    "cases": 3909,
-    "deaths": 21,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
+  "Kenai Peninsula": {
+    "dateStr": "2/4/21",
+    "cases": 3930,
+    "deaths": 22,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Ketchikan Gateway": {
-    "dateStr": "1/29/21",
-    "cases": 282,
-    "deaths": 1,
+    "dateStr": "2/4/21",
+    "cases": 288,
+    "deaths": 2,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Kodiak Island": {
-    "dateStr": "1/29/21",
-    "cases": 1028,
+    "dateStr": "2/4/21",
+    "cases": 1043,
     "deaths": 5,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Kusilvak": {
-    "dateStr": "1/29/21",
-    "cases": 1106,
-    "deaths": 3,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Matanuska-Susitna": {
-    "dateStr": "1/29/21",
-    "cases": 7481,
-    "deaths": 27,
-    "recovered": 0,
-    "new": 40,
-    "newDeaths": 0
-  },
-  "Nome": {
-    "dateStr": "1/29/21",
-    "cases": 307,
-    "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Kusilvak": {
+    "dateStr": "2/4/21",
+    "cases": 1143,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 17,
+    "newDeaths": 0
+  },
+  "Matanuska-Susitna": {
+    "dateStr": "2/4/21",
+    "cases": 7636,
+    "deaths": 29,
+    "recovered": 0,
+    "new": 33,
+    "newDeaths": 0
+  },
+  "Nome": {
+    "dateStr": "2/4/21",
+    "cases": 313,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "North Slope": {
-    "dateStr": "1/29/21",
-    "cases": 982,
+    "dateStr": "2/4/21",
+    "cases": 986,
     "deaths": 3,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Northwest Arctic": {
-    "dateStr": "1/29/21",
-    "cases": 569,
+    "dateStr": "2/4/21",
+    "cases": 574,
     "deaths": 1,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Out of AK": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -168,15 +168,15 @@
     "newDeaths": 0
   },
   "Petersburg": {
-    "dateStr": "1/29/21",
-    "cases": 47,
+    "dateStr": "2/4/21",
+    "cases": 49,
     "deaths": 2,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Prince of Wales-Hyder": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 75,
     "deaths": 1,
     "recovered": 0,
@@ -184,15 +184,15 @@
     "newDeaths": 0
   },
   "Sitka": {
-    "dateStr": "1/29/21",
-    "cases": 302,
+    "dateStr": "2/4/21",
+    "cases": 306,
     "deaths": 0,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Skagway": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 17,
     "deaths": 0,
     "recovered": 0,
@@ -200,15 +200,15 @@
     "newDeaths": 0
   },
   "Southeast Fairbanks": {
-    "dateStr": "1/29/21",
-    "cases": 428,
+    "dateStr": "2/4/21",
+    "cases": 443,
     "deaths": 3,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 253,
     "deaths": 5,
     "recovered": 0,
@@ -216,32 +216,32 @@
     "newDeaths": 0
   },
   "Valdez-Cordova": {
-    "dateStr": "1/29/21",
-    "cases": 439,
+    "dateStr": "2/4/21",
+    "cases": 453,
     "deaths": 3,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Wrangell": {
-    "dateStr": "1/29/21",
-    "cases": 26,
+    "dateStr": "2/4/21",
+    "cases": 27,
     "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Yakutat": {
-    "dateStr": "1/29/21",
+    "dateStr": "2/4/21",
     "cases": 66,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Yukon-Koyukuk": {
-    "dateStr": "1/29/21",
-    "cases": 265,
+    "dateStr": "2/4/21",
+    "cases": 271,
     "deaths": 4,
     "recovered": 0,
     "new": 0,
