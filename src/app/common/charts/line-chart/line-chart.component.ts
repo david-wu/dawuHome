@@ -38,6 +38,8 @@ export class LineChartComponent extends BaseChartComponent {
   @Output() hoverSeriesChange: EventEmitter<string> = new EventEmitter<string>();
   @Input() yAxisFormatter: any;
   @Input() indicators: any[];
+  @Input() xMin: number = Date.now() - (12*7*24*60*60*1000);
+  @Input() xMax: number;
 
   @Input() tooltipTemplate: TemplateRef<any>;
 
@@ -61,8 +63,10 @@ export class LineChartComponent extends BaseChartComponent {
     if (changes.tableData && changes.tableData.firstChange && this.tableData) {
       this.initializeSvg();
     }
-    if (changes.tableData || changes.disabledKeys) {
+    if (changes.tableData || changes.disabledKeys || changes.xMin || changes.xMax) {
       if (this.tableData) {
+        this.xMin = isUndefined(this.xMin) ? first(this.tableData).timestamp : this.xMin;
+        this.xMax = isUndefined(this.xMax) ? last(this.tableData).timestamp : this.xMax;
         this.render();
       }
     }
@@ -101,15 +105,10 @@ export class LineChartComponent extends BaseChartComponent {
     if (!numberOfXDataPoints) {
       return;
     }
-    const xDomain = this.xScale.domain();
-    // const range = this.xScale.range();
-    const width = this.xScale(xDomain[1]) - this.xScale(xDomain[0]);
-    const startingPx = this.xScale(this.tableData[0].timestamp);
-    const distanceBetweenPoints = width / (numberOfXDataPoints - 1);
-    const xOnChart =  x - this.margins.left - this.chartMargin;
+    const xOnChart = x - this.margins.left;
     const valueOnChart = this.xScale.invert(xOnChart);
-    const rawIndex = Math.max(Math.round(xOnChart / distanceBetweenPoints), 0) || 0;
-    const hoverIndex = Math.min(Math.max(rawIndex, 0), numberOfXDataPoints - 1);
+    const unboundIndex = this.getNearestIndex(this.tableData, +valueOnChart, 'timestamp');
+    const hoverIndex = Math.min(Math.max(unboundIndex, 0), numberOfXDataPoints - 1);
 
     const hoverSeries = this.findClosestSeries(hoverIndex, y);
 
@@ -136,12 +135,13 @@ export class LineChartComponent extends BaseChartComponent {
 
     const hoverSeries = '';
     const dataPoint = this.tableData[hoverIndex];
-    const keyVals = this.keys.map((key: string) => {
-      return {
-        key,
-        yVal: this.yScale(dataPoint[key]),
-      };
-    });
+    const keyVals = this.keys.filter((key: string) => !this.disabledKeys.has(key))
+      .map((key: string) => {
+        return {
+          key,
+          yVal: this.yScale(dataPoint[key]),
+        };
+      });
     keyVals.sort((a, b) => a.yVal - b.yVal);
 
     let distanceFrom = Math.abs(y - keyVals[0].yVal);
@@ -252,7 +252,12 @@ export class LineChartComponent extends BaseChartComponent {
       return series;
     });
 
-    const domain = this.tableData.length ? [first(this.tableData).timestamp, last(this.tableData).timestamp] : [];
+    // const xMin = this.xMin || first(this.tableData).timestamp;
+    // const xMax = this.xMax || last(this.tableData).timestamp;
+
+    const domain = this.tableData.length
+      ? [this.xMin, this.xMax]
+      : [];
 
     this.xScale = d3.scaleTime()
       .domain(domain)
@@ -269,7 +274,11 @@ export class LineChartComponent extends BaseChartComponent {
       .domain([0, this.maxY || 1])
       .range([height, 0]);
 
-    const numberOfXDataPoints = this.tableData.length || 0;
+    const xDomain = this.xScale.domain();
+    const dataInDomain = this.tableData.filter((datum) => {
+      return (datum.timestamp >= xDomain[0]) && (datum.timestamp <= xDomain[1]);
+    });
+    const numberOfXDataPoints = dataInDomain.length;
     const allXValues = this.tableData.length ? this.tableData.map((d) => d.timestamp) : [];
     const xAxis = super.getXAxisTicks(this.xScale, width, numberOfXDataPoints, allXValues);
     super.applyXAxis(this.xAxisG, xAxis, height);
@@ -314,6 +323,23 @@ export class LineChartComponent extends BaseChartComponent {
         }
       });
 
+  }
+
+
+  public getNearestIndex(data, targetVal, key = 'timestamp') {
+    let nearestIndex = 0
+    let nearestVal = data[nearestIndex][key];
+    for(let i = 1; i < data.length; i++) {
+      const currentVal = data[i][key];
+      const currentDist = Math.abs(currentVal - targetVal);
+      const nearestDist = Math.abs(nearestVal - targetVal);
+      if (currentDist >= nearestDist) {
+        return nearestIndex;
+      }
+      nearestIndex = i;
+      nearestVal = data[nearestIndex][key];
+    }
+    return nearestIndex;
   }
 
 }
