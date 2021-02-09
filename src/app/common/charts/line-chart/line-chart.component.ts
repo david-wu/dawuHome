@@ -38,7 +38,7 @@ export class LineChartComponent extends BaseChartComponent {
   @Output() hoverSeriesChange: EventEmitter<string> = new EventEmitter<string>();
   @Input() yAxisFormatter: any;
   @Input() indicators: any[];
-  @Input() xMin: number = Date.now() - (12*7*24*60*60*1000);
+  @Input() xMin: number;// = Date.now() - (12*7*24*60*60*1000);
   @Input() xMax: number;
 
   @Input() tooltipTemplate: TemplateRef<any>;
