@@ -3057,8 +3057,16 @@
   },
   {
     "dateStr": "2/7/21",
-    "cases": 21219,
-    "deaths": 192,
+    "cases": 21246,
+    "deaths": 194,
+    "recovered": 0,
+    "new": 27,
+    "newDeaths": 2
+  },
+  {
+    "dateStr": "2/8/21",
+    "cases": 21246,
+    "deaths": 194,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
