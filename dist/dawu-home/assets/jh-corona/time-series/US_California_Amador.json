@@ -3074,9 +3074,17 @@
   {
     "dateStr": "2/9/21",
     "cases": 3344,
-    "deaths": 36,
+    "deaths": 37,
     "recovered": 0,
     "new": 1,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "2/10/21",
+    "cases": 3347,
+    "deaths": 37,
+    "recovered": 0,
+    "new": 3,
     "newDeaths": 0
   }
 ]
