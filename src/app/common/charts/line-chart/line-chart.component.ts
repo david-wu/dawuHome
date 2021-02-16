@@ -110,14 +110,14 @@ export class LineChartComponent extends BaseChartComponent {
     const unboundIndex = this.getNearestIndex(this.tableData, +valueOnChart, 'timestamp');
     const hoverIndex = Math.min(Math.max(unboundIndex, 0), numberOfXDataPoints - 1);
 
-    const hoverSeries = this.findClosestSeries(hoverIndex, y);
-
     if (hoverIndex !== this.hoverIndex) {
       this.ngZone.run(() => {
         this.hoverIndex = hoverIndex;
         this.hoverIndexChange.emit(hoverIndex);
       });
     }
+
+    const hoverSeries = this.findClosestSeries(hoverIndex, y);
     if (hoverSeries !== this.hoverSeries) {
       this.ngZone.run(() => {
         this.hoverSeries = hoverSeries;

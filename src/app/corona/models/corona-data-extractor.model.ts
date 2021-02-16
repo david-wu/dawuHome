@@ -80,10 +80,20 @@ export class CoronaDataExtractor {
 
     for (let i = 0; i < cleanData.length; i++) {
       const cleanPoint = cleanData[i];
-      const previousCases = cleanPoint.cases - cleanPoint.new;
-      const r = previousCases
-      ? (cleanPoint.new / previousCases)
-      : 1;
+      // const previousCases = cleanPoint.cases - cleanPoint.new;
+
+      const previousPoint = cleanData[i - 1];
+
+      let r = 0;
+      if (previousPoint && previousPoint.new) {
+        const changeInNewCases = cleanPoint.new - previousPoint.new;
+        r = changeInNewCases / (previousPoint.new);
+      }
+
+      // const previousCases = cleanPoint.cases - cleanPoint.new;
+      // const r = previousCases
+      // ? (cleanPoint.new / previousCases)
+      // : 1;
       const normalizedPoint = {
         ...cleanData[i],
         [NormalKeys.R]: r,

@@ -33,7 +33,7 @@ export class CoronaCompareDashboardComponent {
     public compareRData;
     public compareKeys;
     public compareColorsByKey;
-    public disabledCompareKeys;
+    public disabledCompareKeys = new Set();
     public hoverIndex = 0;
     public indicators;
     public compareLabelsByKey;
