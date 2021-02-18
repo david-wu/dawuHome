@@ -79,7 +79,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'BACKYARD_PATIO',
+        redirectTo: 'COVID_DEMO',
       },
     ]
   },

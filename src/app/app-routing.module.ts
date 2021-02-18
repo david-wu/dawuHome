@@ -41,7 +41,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'corona'
+    redirectTo: 'portfolio'
   },
 ];
 
