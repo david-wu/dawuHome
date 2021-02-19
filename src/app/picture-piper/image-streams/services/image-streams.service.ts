@@ -4,6 +4,7 @@ import { User } from '@models/index';
 import { UploadFile } from '@photo-gallery/models/index';
 import {
   ExifService,
+  FirebaseFunctionsService,
   FirebaseFirestoreService,
   FirebaseStorageService,
   ImageProcessingService,
@@ -13,6 +14,7 @@ import {
 export class ImageStreamsService {
 
   constructor(
+    public firebaseFunctionsService: FirebaseFunctionsService,
     public firestore: FirebaseFirestoreService,
     public storage: FirebaseStorageService,
     public imageProcessing: ImageProcessingService,
@@ -23,7 +25,7 @@ export class ImageStreamsService {
    * generateImageStreamToken
    */
   public async generateImageStreamToken(imageStreamId: string) {
-    const generateToken = window.firebase.functions().httpsCallable('generateImageStreamTokenTask');
+    const generateToken = this.firebaseFunctionsService.functions.httpsCallable('generateImageStreamTokenTask');
     return await generateToken({ imageStreamId });
   }
 

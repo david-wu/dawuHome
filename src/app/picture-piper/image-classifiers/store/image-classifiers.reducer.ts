@@ -38,34 +38,6 @@ const reducer: ActionReducer<ImageClassifiersState> = createReducer(
     };
   }),
 
-  on(ImageClassifiersActions.generateImageClassifierToken, (state: ImageClassifiersState, action: any) => {
-    return {
-      ...state,
-      isGeneratingTokenByImageClassifier: {
-        ...state.isGeneratingTokenByImageClassifier,
-        [action.payload]: true,
-      },
-    };
-  }),
-  on(ImageClassifiersActions.generateImageClassifierTokenSuccess, (state: ImageClassifiersState, action: any) => {
-    return {
-      ...state,
-      isGeneratingTokenByImageClassifier: {
-        ...state.isGeneratingTokenByImageClassifier,
-        [action.payload]: false,
-      },
-    };
-  }),
-  on(ImageClassifiersActions.generateImageClassifierTokenFailure, (state: ImageClassifiersState, action: any) => {
-    return {
-      ...state,
-      isGeneratingTokenByImageClassifier: {
-        ...state.isGeneratingTokenByImageClassifier,
-        [action.payload]: false,
-      },
-    };
-  }),
-
   on(ImageClassifiersActions.loadImageClassifierTokensSuccess, (state: ImageClassifiersState, action: any) => {
     return {
       ...state,

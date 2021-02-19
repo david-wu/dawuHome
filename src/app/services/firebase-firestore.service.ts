@@ -8,6 +8,9 @@ import {
 import { map } from 'rxjs/operators';
 const bigInt = require('big-integer');
 
+import { FirebaseService } from './firebase.service';
+import 'firebase/firestore';
+
 import { User } from '@models/index';
 
 @Injectable({
@@ -15,8 +18,10 @@ import { User } from '@models/index';
 })
 export class FirebaseFirestoreService {
 
-  public db = window.firebase.firestore();
-  public firestoreTimestamp = window.firebase.firestore.FieldValue.serverTimestamp;
+  public db = this.firebaseService.firebase.firestore();
+  public firestoreTimestamp = this.firebaseService.firebase.firestore.FieldValue.serverTimestamp;
+
+  constructor(public firebaseService: FirebaseService) {}
 
   public createImageSource(user: User): Observable<any> {
     const timestamp = this.firestoreTimestamp();

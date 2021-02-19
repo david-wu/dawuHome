@@ -7,14 +7,20 @@ import {
 import { map } from 'rxjs/operators';
 
 import { User } from '@models/index';
+import { FirebaseService } from './firebase.service';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+// var firebaseui = require('firebaseui');
+import * as firebaseui from 'firebaseui';
+console.log('firebaseui', firebaseui, firebaseui.auth)
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseAuthService {
 
-  public firebaseAuth = window.firebase.auth();
-  public FirebaseAuthUI = window.firebaseui.auth.AuthUI;
+  public firebaseAuth = this.firebaseService.firebase.auth();
+  public FirebaseAuthUI = firebaseui.auth.AuthUI;
   // public firebaseAuthUI: any;
 
   public defaultUiConfig = {
@@ -23,12 +29,12 @@ export class FirebaseAuthService {
       signInSuccess: () => false,
     },
     signInOptions: [
-      window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      // window.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      // window.firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      window.firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      // window.firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      // window.firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      this.firebaseService.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      // this.firebaseService.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      // this.firebaseService.firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+      this.firebaseService.firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      // this.firebaseService.firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      // this.firebaseService.firebase.auth.PhoneAuthProvider.PROVIDER_ID,
       // window.firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
     ],
     // Terms of service and privacy url/callback.
@@ -41,7 +47,7 @@ export class FirebaseAuthService {
   public authLoading$: Observable<boolean>;
   public canLogin$: Observable<boolean>;
 
-  constructor() {
+  constructor(public firebaseService: FirebaseService) {
     // this.initialize();
     this.authLoading$ = this.user$.pipe(
       map((user: User) => user === undefined),
@@ -90,10 +96,10 @@ export class FirebaseAuthService {
   }
 
   public renderLogin(hostEl: HTMLElement): Observable<User> {
-    const firebaseAuthUI = window.firebaseui.auth.AuthUI.getInstance() || new this.FirebaseAuthUI(this.firebaseAuth);
-    firebaseAuthUI.start(hostEl, {
-      ...this.defaultUiConfig,
-    });
+    const firebaseAuthUI = firebaseui.auth.AuthUI.getInstance() || new this.FirebaseAuthUI(this.firebaseAuth);
+    // firebaseAuthUI.start(hostEl, {
+      // ...this.defaultUiConfig,
+    // });
     return this.user$.asObservable();
   }
 

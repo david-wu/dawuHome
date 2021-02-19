@@ -10,6 +10,7 @@ import { User } from '@models/index';
 import { UploadFile } from '@photo-gallery/models/index';
 import {
   ExifService,
+  FirebaseFunctionsService,
   FirebaseFirestoreService,
   FirebaseStorageService,
   ImageProcessingService,
@@ -19,6 +20,7 @@ import {
 export class ImageSourcesService {
 
   constructor(
+    public firebaseFunctionsService: FirebaseFunctionsService,
     public firestore: FirebaseFirestoreService,
     public storage: FirebaseStorageService,
     public imageProcessing: ImageProcessingService,
@@ -31,7 +33,7 @@ export class ImageSourcesService {
    * @param {User}   user
    */
   public async generateImageSourceToken(imageSourceId: string) {
-    const generateToken = window.firebase.functions().httpsCallable('generateImageSourceTokenTask');
+    const generateToken = this.firebaseFunctionsService.functions.httpsCallable('generateImageSourceTokenTask');
     // imageSourceId = 'bOuFUgQtaPzYTUiBQHaI';
     return await generateToken({ imageSourceId });
   }

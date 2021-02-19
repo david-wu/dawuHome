@@ -67,19 +67,6 @@ export class ImageClassifiersActions {
     props<{ imageClassifierId: string, patch: any, error: string }>(),
   );
 
-  public static generateImageClassifierToken = createAction(
-    `${ImageClassifiersActions.CATEGORY} GENERATE_IMAGE_CLASSIFIER_TOKEN`,
-    props<{ payload: string }>(),
-  );
-  public static generateImageClassifierTokenSuccess = createAction(
-    `${ImageClassifiersActions.CATEGORY} GENERATE_IMAGE_CLASSIFIER_TOKEN_SUCCESS`,
-    props<{ payload: string }>(),
-  );
-  public static generateImageClassifierTokenFailure = createAction(
-    `${ImageClassifiersActions.CATEGORY} GENERATE_IMAGE_CLASSIFIER_TOKEN_FAILURE`,
-    props<{ payload: string }>(),
-  );
-
   public static loadImageClassifierTokens = createAction(
     `${ImageClassifiersActions.CATEGORY} LOAD_IMAGE_CLASSIFIER_TOKENS`,
     props<{ imageClassifierId: string }>(),

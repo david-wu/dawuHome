@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
+import { FirebaseService } from './firebase.service';
+import 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseStorageService {
 
-  public firebaseStorage = window.firebase.storage();
+  public firebaseStorage = this.firebaseService.firebase.storage();
+
+  constructor(public firebaseService: FirebaseService) {}
 
   public uploadFile(file: File, fileName: string= 'image.jpg') {
     const storageRef = this.firebaseStorage.ref();

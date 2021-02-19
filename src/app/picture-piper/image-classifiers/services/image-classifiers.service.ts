@@ -20,14 +20,6 @@ export class ImageClassifiersService {
   ) {}
 
   /**
-   * generateImageClassifierToken
-   */
-  public async generateImageClassifierToken(imageClassifierId: string) {
-    const generateToken = window.firebase.functions().httpsCallable('generateImageClassifierTokenTask');
-    return await generateToken({ imageClassifierId });
-  }
-
-  /**
    * deleteFile
    */
   public async deleteFile(uploadFileId: string) {
