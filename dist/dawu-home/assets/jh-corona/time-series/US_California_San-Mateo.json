@@ -3146,9 +3146,17 @@
   {
     "dateStr": "2/18/21",
     "cases": 38124,
-    "deaths": 481,
+    "deaths": 497,
     "recovered": 0,
     "new": 83,
+    "newDeaths": 16
+  },
+  {
+    "dateStr": "2/19/21",
+    "cases": 38229,
+    "deaths": 497,
+    "recovered": 0,
+    "new": 105,
     "newDeaths": 0
   }
 ]
