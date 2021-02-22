@@ -1,70 +1,70 @@
 {
   "Androscoggin": {
-    "dateStr": "2/19/21",
-    "cases": 4666,
+    "dateStr": "2/21/21",
+    "cases": 4695,
     "deaths": 55,
     "recovered": 0,
-    "new": 7,
+    "new": 11,
     "newDeaths": 0
   },
   "Aroostook": {
-    "dateStr": "2/19/21",
-    "cases": 1252,
+    "dateStr": "2/21/21",
+    "cases": 1257,
     "deaths": 43,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Cumberland": {
-    "dateStr": "2/19/21",
-    "cases": 12160,
-    "deaths": 176,
-    "recovered": 0,
-    "new": 40,
-    "newDeaths": 0
-  },
-  "Franklin": {
-    "dateStr": "2/19/21",
-    "cases": 881,
-    "deaths": 10,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
+  "Cumberland": {
+    "dateStr": "2/21/21",
+    "cases": 12228,
+    "deaths": 176,
+    "recovered": 0,
+    "new": 31,
+    "newDeaths": 0
+  },
+  "Franklin": {
+    "dateStr": "2/21/21",
+    "cases": 881,
+    "deaths": 10,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Hancock": {
-    "dateStr": "2/19/21",
-    "cases": 867,
+    "dateStr": "2/21/21",
+    "cases": 874,
     "deaths": 31,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "Kennebec": {
-    "dateStr": "2/19/21",
-    "cases": 3522,
+    "dateStr": "2/21/21",
+    "cases": 3548,
     "deaths": 49,
     "recovered": 0,
-    "new": 10,
+    "new": 11,
     "newDeaths": 0
   },
   "Knox": {
-    "dateStr": "2/19/21",
-    "cases": 620,
+    "dateStr": "2/21/21",
+    "cases": 622,
     "deaths": 5,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "2/19/21",
-    "cases": 559,
+    "dateStr": "2/21/21",
+    "cases": 566,
     "deaths": 2,
     "recovered": 0,
-    "new": 5,
+    "new": 3,
     "newDeaths": 0
   },
   "Out of ME": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -72,47 +72,47 @@
     "newDeaths": 0
   },
   "Oxford": {
-    "dateStr": "2/19/21",
-    "cases": 2144,
-    "deaths": 41,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Penobscot": {
-    "dateStr": "2/19/21",
-    "cases": 3748,
-    "deaths": 76,
-    "recovered": 0,
-    "new": 18,
-    "newDeaths": 0
-  },
-  "Piscataquis": {
-    "dateStr": "2/19/21",
-    "cases": 244,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Sagadahoc": {
-    "dateStr": "2/19/21",
-    "cases": 862,
-    "deaths": 1,
+    "dateStr": "2/21/21",
+    "cases": 2157,
+    "deaths": 42,
     "recovered": 0,
     "new": 5,
     "newDeaths": 0
   },
+  "Penobscot": {
+    "dateStr": "2/21/21",
+    "cases": 3784,
+    "deaths": 76,
+    "recovered": 0,
+    "new": 25,
+    "newDeaths": 0
+  },
+  "Piscataquis": {
+    "dateStr": "2/21/21",
+    "cases": 244,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Sagadahoc": {
+    "dateStr": "2/21/21",
+    "cases": 865,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Somerset": {
-    "dateStr": "2/19/21",
-    "cases": 1227,
+    "dateStr": "2/21/21",
+    "cases": 1230,
     "deaths": 26,
     "recovered": 0,
-    "new": 2,
+    "new": 1,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 26,
     "deaths": 3,
     "recovered": 0,
@@ -120,27 +120,27 @@
     "newDeaths": 0
   },
   "Waldo": {
-    "dateStr": "2/19/21",
-    "cases": 570,
-    "deaths": 18,
+    "dateStr": "2/21/21",
+    "cases": 574,
+    "deaths": 19,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "2/19/21",
-    "cases": 699,
+    "dateStr": "2/21/21",
+    "cases": 704,
     "deaths": 14,
     "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
+    "new": 5,
+    "newDeaths": 0
   },
   "York": {
-    "dateStr": "2/19/21",
-    "cases": 9203,
+    "dateStr": "2/21/21",
+    "cases": 9266,
     "deaths": 110,
     "recovered": 0,
-    "new": 23,
+    "new": 26,
     "newDeaths": 0
   }
 }

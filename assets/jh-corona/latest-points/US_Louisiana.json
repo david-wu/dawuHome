@@ -1,54 +1,54 @@
 {
   "Acadia": {
-    "dateStr": "2/19/21",
-    "cases": 5999,
+    "dateStr": "2/21/21",
+    "cases": 6021,
     "deaths": 181,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 0
+  },
+  "Allen": {
+    "dateStr": "2/21/21",
+    "cases": 2946,
+    "deaths": 84,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 0
+  },
+  "Ascension": {
+    "dateStr": "2/21/21",
+    "cases": 10843,
+    "deaths": 147,
+    "recovered": 0,
+    "new": 31,
+    "newDeaths": 3
+  },
+  "Assumption": {
+    "dateStr": "2/21/21",
+    "cases": 2073,
+    "deaths": 33,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Avoyelles": {
+    "dateStr": "2/21/21",
+    "cases": 3850,
+    "deaths": 117,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
-  "Allen": {
-    "dateStr": "2/19/21",
-    "cases": 2932,
-    "deaths": 84,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Ascension": {
-    "dateStr": "2/19/21",
-    "cases": 10812,
-    "deaths": 144,
-    "recovered": 0,
-    "new": 29,
-    "newDeaths": 0
-  },
-  "Assumption": {
-    "dateStr": "2/19/21",
-    "cases": 2069,
-    "deaths": 33,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Avoyelles": {
-    "dateStr": "2/19/21",
-    "cases": 3844,
-    "deaths": 117,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Beauregard": {
-    "dateStr": "2/19/21",
-    "cases": 2742,
+    "dateStr": "2/21/21",
+    "cases": 2759,
     "deaths": 65,
     "recovered": 0,
-    "new": 0,
+    "new": 17,
     "newDeaths": 0
   },
   "Bienville": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 1579,
     "deaths": 69,
     "recovered": 0,
@@ -56,55 +56,55 @@
     "newDeaths": 0
   },
   "Bossier": {
-    "dateStr": "2/19/21",
-    "cases": 12852,
+    "dateStr": "2/21/21",
+    "cases": 12881,
     "deaths": 256,
     "recovered": 0,
-    "new": 10,
+    "new": 29,
     "newDeaths": 0
   },
   "Caddo": {
-    "dateStr": "2/19/21",
-    "cases": 24415,
-    "deaths": 664,
+    "dateStr": "2/21/21",
+    "cases": 24488,
+    "deaths": 665,
     "recovered": 0,
-    "new": 0,
+    "new": 73,
     "newDeaths": 1
   },
   "Calcasieu": {
-    "dateStr": "2/19/21",
-    "cases": 18778,
+    "dateStr": "2/21/21",
+    "cases": 18919,
     "deaths": 346,
     "recovered": 0,
-    "new": 30,
+    "new": 141,
     "newDeaths": 0
   },
   "Caldwell": {
-    "dateStr": "2/19/21",
-    "cases": 1070,
+    "dateStr": "2/21/21",
+    "cases": 1074,
     "deaths": 25,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
   "Cameron": {
-    "dateStr": "2/19/21",
-    "cases": 530,
+    "dateStr": "2/21/21",
+    "cases": 533,
     "deaths": 5,
     "recovered": 0,
-    "new": 2,
+    "new": 3,
     "newDeaths": 0
   },
   "Catahoula": {
-    "dateStr": "2/19/21",
-    "cases": 1041,
+    "dateStr": "2/21/21",
+    "cases": 1046,
     "deaths": 33,
     "recovered": 0,
-    "new": 0,
+    "new": 5,
     "newDeaths": 0
   },
   "Claiborne": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 1397,
     "deaths": 49,
     "recovered": 0,
@@ -112,55 +112,55 @@
     "newDeaths": 0
   },
   "Concordia": {
-    "dateStr": "2/19/21",
-    "cases": 1745,
+    "dateStr": "2/21/21",
+    "cases": 1748,
     "deaths": 55,
     "recovered": 0,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "De Soto": {
-    "dateStr": "2/19/21",
-    "cases": 2609,
+    "dateStr": "2/21/21",
+    "cases": 2617,
     "deaths": 70,
     "recovered": 0,
-    "new": 0,
+    "new": 8,
     "newDeaths": 0
   },
   "East Baton Rouge": {
-    "dateStr": "2/19/21",
-    "cases": 34823,
-    "deaths": 721,
+    "dateStr": "2/21/21",
+    "cases": 35128,
+    "deaths": 725,
     "recovered": 0,
-    "new": 28,
+    "new": 305,
     "newDeaths": 4
   },
   "East Carroll": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 1097,
     "deaths": 23,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 1
-  },
-  "East Feliciana": {
-    "dateStr": "2/19/21",
-    "cases": 2936,
-    "deaths": 104,
-    "recovered": 0,
-    "new": 5,
     "newDeaths": 0
   },
+  "East Feliciana": {
+    "dateStr": "2/21/21",
+    "cases": 2941,
+    "deaths": 105,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 1
+  },
   "Evangeline": {
-    "dateStr": "2/19/21",
-    "cases": 3227,
+    "dateStr": "2/21/21",
+    "cases": 3248,
     "deaths": 77,
     "recovered": 0,
-    "new": 0,
+    "new": 21,
     "newDeaths": 0
   },
   "Franklin": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 2410,
     "deaths": 100,
     "recovered": 0,
@@ -168,135 +168,135 @@
     "newDeaths": 0
   },
   "Grant": {
-    "dateStr": "2/19/21",
-    "cases": 1980,
+    "dateStr": "2/21/21",
+    "cases": 1984,
     "deaths": 51,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
   "Iberia": {
-    "dateStr": "2/19/21",
-    "cases": 6367,
+    "dateStr": "2/21/21",
+    "cases": 6380,
     "deaths": 143,
     "recovered": 0,
-    "new": 14,
-    "newDeaths": 1
+    "new": 13,
+    "newDeaths": 0
   },
   "Iberville": {
-    "dateStr": "2/19/21",
-    "cases": 3390,
+    "dateStr": "2/21/21",
+    "cases": 3392,
     "deaths": 91,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Jackson": {
-    "dateStr": "2/19/21",
-    "cases": 1746,
-    "deaths": 45,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Jefferson": {
-    "dateStr": "2/19/21",
-    "cases": 43233,
-    "deaths": 834,
-    "recovered": 0,
-    "new": 61,
-    "newDeaths": 4
-  },
-  "Jefferson Davis": {
-    "dateStr": "2/19/21",
-    "cases": 2827,
-    "deaths": 83,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "LaSalle": {
-    "dateStr": "2/19/21",
-    "cases": 1404,
-    "deaths": 33,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Lafayette": {
-    "dateStr": "2/19/21",
-    "cases": 21355,
-    "deaths": 253,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
-  },
-  "Lafourche": {
-    "dateStr": "2/19/21",
-    "cases": 8921,
-    "deaths": 194,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 1
-  },
-  "Lincoln": {
-    "dateStr": "2/19/21",
-    "cases": 4205,
-    "deaths": 88,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Livingston": {
-    "dateStr": "2/19/21",
-    "cases": 12036,
-    "deaths": 177,
-    "recovered": 0,
-    "new": 26,
-    "newDeaths": 5
-  },
-  "Madison": {
-    "dateStr": "2/19/21",
-    "cases": 1545,
-    "deaths": 31,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Morehouse": {
-    "dateStr": "2/19/21",
-    "cases": 2681,
-    "deaths": 67,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Natchitoches": {
-    "dateStr": "2/19/21",
-    "cases": 3836,
-    "deaths": 77,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Orleans": {
-    "dateStr": "2/19/21",
-    "cases": 27942,
-    "deaths": 755,
-    "recovered": 0,
-    "new": 67,
-    "newDeaths": 5
-  },
-  "Ouachita": {
-    "dateStr": "2/19/21",
-    "cases": 17592,
-    "deaths": 404,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Jackson": {
+    "dateStr": "2/21/21",
+    "cases": 1767,
+    "deaths": 45,
+    "recovered": 0,
+    "new": 21,
+    "newDeaths": 0
+  },
+  "Jefferson": {
+    "dateStr": "2/21/21",
+    "cases": 43375,
+    "deaths": 834,
+    "recovered": 0,
+    "new": 142,
+    "newDeaths": 0
+  },
+  "Jefferson Davis": {
+    "dateStr": "2/21/21",
+    "cases": 2837,
+    "deaths": 84,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 1
+  },
+  "LaSalle": {
+    "dateStr": "2/21/21",
+    "cases": 1411,
+    "deaths": 33,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Lafayette": {
+    "dateStr": "2/21/21",
+    "cases": 21418,
+    "deaths": 257,
+    "recovered": 0,
+    "new": 63,
+    "newDeaths": 4
+  },
+  "Lafourche": {
+    "dateStr": "2/21/21",
+    "cases": 8985,
+    "deaths": 195,
+    "recovered": 0,
+    "new": 64,
+    "newDeaths": 1
+  },
+  "Lincoln": {
+    "dateStr": "2/21/21",
+    "cases": 4212,
+    "deaths": 88,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Livingston": {
+    "dateStr": "2/21/21",
+    "cases": 12107,
+    "deaths": 179,
+    "recovered": 0,
+    "new": 71,
+    "newDeaths": 2
+  },
+  "Madison": {
+    "dateStr": "2/21/21",
+    "cases": 1547,
+    "deaths": 31,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Morehouse": {
+    "dateStr": "2/21/21",
+    "cases": 2681,
+    "deaths": 67,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Natchitoches": {
+    "dateStr": "2/21/21",
+    "cases": 3840,
+    "deaths": 77,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Orleans": {
+    "dateStr": "2/21/21",
+    "cases": 28044,
+    "deaths": 757,
+    "recovered": 0,
+    "new": 102,
+    "newDeaths": 2
+  },
+  "Ouachita": {
+    "dateStr": "2/21/21",
+    "cases": 17612,
+    "deaths": 404,
+    "recovered": 0,
+    "new": 20,
+    "newDeaths": 0
+  },
   "Out of LA": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -304,151 +304,151 @@
     "newDeaths": 0
   },
   "Plaquemines": {
-    "dateStr": "2/19/21",
-    "cases": 2247,
+    "dateStr": "2/21/21",
+    "cases": 2273,
     "deaths": 23,
     "recovered": 0,
-    "new": 6,
+    "new": 26,
     "newDeaths": 0
   },
   "Pointe Coupee": {
-    "dateStr": "2/19/21",
-    "cases": 2326,
+    "dateStr": "2/21/21",
+    "cases": 2342,
     "deaths": 69,
     "recovered": 0,
-    "new": 0,
+    "new": 16,
     "newDeaths": 0
   },
   "Rapides": {
-    "dateStr": "2/19/21",
-    "cases": 11140,
-    "deaths": 290,
+    "dateStr": "2/21/21",
+    "cases": 11174,
+    "deaths": 291,
     "recovered": 0,
-    "new": 9,
-    "newDeaths": 3
+    "new": 34,
+    "newDeaths": 1
   },
   "Red River": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 856,
     "deaths": 35,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Richland": {
-    "dateStr": "2/19/21",
-    "cases": 2315,
+    "dateStr": "2/21/21",
+    "cases": 2318,
     "deaths": 49,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Sabine": {
-    "dateStr": "2/19/21",
-    "cases": 2739,
-    "deaths": 52,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "St. Bernard": {
-    "dateStr": "2/19/21",
-    "cases": 3571,
-    "deaths": 46,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "St. Charles": {
-    "dateStr": "2/19/21",
-    "cases": 5023,
-    "deaths": 88,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "St. Helena": {
-    "dateStr": "2/19/21",
-    "cases": 873,
-    "deaths": 8,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "St. James": {
-    "dateStr": "2/19/21",
-    "cases": 1821,
-    "deaths": 49,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "St. John the Baptist": {
-    "dateStr": "2/19/21",
-    "cases": 3478,
-    "deaths": 131,
-    "recovered": 0,
-    "new": 12,
-    "newDeaths": 0
-  },
-  "St. Landry": {
-    "dateStr": "2/19/21",
-    "cases": 8175,
-    "deaths": 241,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "St. Martin": {
-    "dateStr": "2/19/21",
-    "cases": 4792,
-    "deaths": 110,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "St. Mary": {
-    "dateStr": "2/19/21",
-    "cases": 4017,
-    "deaths": 119,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "St. Tammany": {
-    "dateStr": "2/19/21",
-    "cases": 23223,
-    "deaths": 475,
-    "recovered": 0,
-    "new": 41,
-    "newDeaths": 0
-  },
-  "Tangipahoa": {
-    "dateStr": "2/19/21",
-    "cases": 11820,
-    "deaths": 261,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 4
-  },
-  "Tensas": {
-    "dateStr": "2/19/21",
-    "cases": 356,
-    "deaths": 6,
+  "Sabine": {
+    "dateStr": "2/21/21",
+    "cases": 2740,
+    "deaths": 52,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "St. Bernard": {
+    "dateStr": "2/21/21",
+    "cases": 3628,
+    "deaths": 46,
+    "recovered": 0,
+    "new": 57,
+    "newDeaths": 0
+  },
+  "St. Charles": {
+    "dateStr": "2/21/21",
+    "cases": 5047,
+    "deaths": 88,
+    "recovered": 0,
+    "new": 24,
+    "newDeaths": 0
+  },
+  "St. Helena": {
+    "dateStr": "2/21/21",
+    "cases": 874,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "St. James": {
+    "dateStr": "2/21/21",
+    "cases": 1828,
+    "deaths": 49,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "St. John the Baptist": {
+    "dateStr": "2/21/21",
+    "cases": 3485,
+    "deaths": 131,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "St. Landry": {
+    "dateStr": "2/21/21",
+    "cases": 8206,
+    "deaths": 242,
+    "recovered": 0,
+    "new": 31,
+    "newDeaths": 1
+  },
+  "St. Martin": {
+    "dateStr": "2/21/21",
+    "cases": 4804,
+    "deaths": 111,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 1
+  },
+  "St. Mary": {
+    "dateStr": "2/21/21",
+    "cases": 4068,
+    "deaths": 119,
+    "recovered": 0,
+    "new": 51,
+    "newDeaths": 0
+  },
+  "St. Tammany": {
+    "dateStr": "2/21/21",
+    "cases": 23409,
+    "deaths": 477,
+    "recovered": 0,
+    "new": 186,
+    "newDeaths": 2
+  },
+  "Tangipahoa": {
+    "dateStr": "2/21/21",
+    "cases": 11857,
+    "deaths": 261,
+    "recovered": 0,
+    "new": 37,
+    "newDeaths": 0
+  },
+  "Tensas": {
+    "dateStr": "2/21/21",
+    "cases": 356,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Terrebonne": {
-    "dateStr": "2/19/21",
-    "cases": 9281,
+    "dateStr": "2/21/21",
+    "cases": 9337,
     "deaths": 192,
     "recovered": 0,
-    "new": 13,
+    "new": 56,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 7913,
     "deaths": 237,
     "recovered": 0,
@@ -456,55 +456,55 @@
     "newDeaths": 0
   },
   "Union": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 2287,
     "deaths": 75,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Vermilion": {
-    "dateStr": "2/19/21",
-    "cases": 4768,
-    "deaths": 105,
+    "dateStr": "2/21/21",
+    "cases": 4786,
+    "deaths": 106,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 18,
+    "newDeaths": 1
   },
   "Vernon": {
-    "dateStr": "2/19/21",
-    "cases": 2831,
-    "deaths": 95,
+    "dateStr": "2/21/21",
+    "cases": 2849,
+    "deaths": 96,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 18,
+    "newDeaths": 1
   },
   "Washington": {
-    "dateStr": "2/19/21",
-    "cases": 4014,
+    "dateStr": "2/21/21",
+    "cases": 4028,
     "deaths": 120,
     "recovered": 0,
-    "new": 7,
-    "newDeaths": 3
+    "new": 14,
+    "newDeaths": 0
   },
   "Webster": {
-    "dateStr": "2/19/21",
-    "cases": 3879,
+    "dateStr": "2/21/21",
+    "cases": 3883,
     "deaths": 92,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
   "West Baton Rouge": {
-    "dateStr": "2/19/21",
-    "cases": 2452,
+    "dateStr": "2/21/21",
+    "cases": 2462,
     "deaths": 54,
     "recovered": 0,
-    "new": 3,
+    "new": 10,
     "newDeaths": 0
   },
   "West Carroll": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 1154,
     "deaths": 39,
     "recovered": 0,
@@ -512,19 +512,19 @@
     "newDeaths": 0
   },
   "West Feliciana": {
-    "dateStr": "2/19/21",
+    "dateStr": "2/21/21",
     "cases": 1105,
     "deaths": 31,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Winn": {
-    "dateStr": "2/19/21",
-    "cases": 1441,
+    "dateStr": "2/21/21",
+    "cases": 1446,
     "deaths": 39,
     "recovered": 0,
-    "new": 0,
+    "new": 5,
     "newDeaths": 0
   }
 }
