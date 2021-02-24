@@ -1,134 +1,134 @@
 {
   "Allegany": {
-    "dateStr": "2/22/21",
-    "cases": 6393,
-    "deaths": 197,
+    "dateStr": "2/23/21",
+    "cases": 6395,
+    "deaths": 198,
     "recovered": 0,
     "new": 2,
-    "newDeaths": 0
-  },
-  "Anne Arundel": {
-    "dateStr": "2/22/21",
-    "cases": 35166,
-    "deaths": 522,
-    "recovered": 0,
-    "new": 72,
     "newDeaths": 1
   },
-  "Baltimore": {
-    "dateStr": "2/22/21",
-    "cases": 50132,
-    "deaths": 1251,
+  "Anne Arundel": {
+    "dateStr": "2/23/21",
+    "cases": 35218,
+    "deaths": 524,
     "recovered": 0,
-    "new": 69,
+    "new": 52,
+    "newDeaths": 2
+  },
+  "Baltimore": {
+    "dateStr": "2/23/21",
+    "cases": 50194,
+    "deaths": 1254,
+    "recovered": 0,
+    "new": 62,
     "newDeaths": 3
   },
   "Baltimore City": {
-    "dateStr": "2/22/21",
-    "cases": 39899,
-    "deaths": 867,
+    "dateStr": "2/23/21",
+    "cases": 39980,
+    "deaths": 869,
     "recovered": 0,
-    "new": 60,
-    "newDeaths": 0
+    "new": 81,
+    "newDeaths": 2
   },
   "Calvert": {
-    "dateStr": "2/22/21",
-    "cases": 3620,
-    "deaths": 67,
+    "dateStr": "2/23/21",
+    "cases": 3623,
+    "deaths": 68,
     "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
+    "new": 3,
+    "newDeaths": 1
   },
   "Caroline": {
-    "dateStr": "2/22/21",
-    "cases": 2021,
+    "dateStr": "2/23/21",
+    "cases": 2022,
     "deaths": 18,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Carroll": {
+    "dateStr": "2/23/21",
+    "cases": 7460,
+    "deaths": 210,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 2
+  },
+  "Cecil": {
+    "dateStr": "2/23/21",
+    "cases": 4978,
+    "deaths": 117,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
-  "Carroll": {
-    "dateStr": "2/22/21",
-    "cases": 7447,
-    "deaths": 208,
-    "recovered": 0,
-    "new": 13,
-    "newDeaths": 0
-  },
-  "Cecil": {
-    "dateStr": "2/22/21",
-    "cases": 4974,
-    "deaths": 117,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
   "Charles": {
-    "dateStr": "2/22/21",
-    "cases": 8751,
-    "deaths": 153,
+    "dateStr": "2/23/21",
+    "cases": 8771,
+    "deaths": 154,
     "recovered": 0,
-    "new": 18,
-    "newDeaths": 0
+    "new": 20,
+    "newDeaths": 1
   },
   "Dorchester": {
-    "dateStr": "2/22/21",
-    "cases": 2306,
+    "dateStr": "2/23/21",
+    "cases": 2318,
     "deaths": 43,
     "recovered": 0,
-    "new": 5,
+    "new": 12,
     "newDeaths": 0
   },
   "Frederick": {
-    "dateStr": "2/22/21",
-    "cases": 16715,
+    "dateStr": "2/23/21",
+    "cases": 16747,
     "deaths": 267,
     "recovered": 0,
-    "new": 24,
+    "new": 32,
     "newDeaths": 0
   },
   "Garrett": {
-    "dateStr": "2/22/21",
-    "cases": 1835,
-    "deaths": 59,
+    "dateStr": "2/23/21",
+    "cases": 1836,
+    "deaths": 61,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 2
+  },
+  "Harford": {
+    "dateStr": "2/23/21",
+    "cases": 12336,
+    "deaths": 233,
+    "recovered": 0,
+    "new": 27,
+    "newDeaths": 2
+  },
+  "Howard": {
+    "dateStr": "2/23/21",
+    "cases": 15603,
+    "deaths": 218,
+    "recovered": 0,
+    "new": 35,
+    "newDeaths": 1
+  },
+  "Kent": {
+    "dateStr": "2/23/21",
+    "cases": 1107,
+    "deaths": 42,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Harford": {
-    "dateStr": "2/22/21",
-    "cases": 12309,
-    "deaths": 231,
-    "recovered": 0,
-    "new": 24,
-    "newDeaths": 0
-  },
-  "Howard": {
-    "dateStr": "2/22/21",
-    "cases": 15568,
-    "deaths": 217,
-    "recovered": 0,
-    "new": 49,
-    "newDeaths": 0
-  },
-  "Kent": {
-    "dateStr": "2/22/21",
-    "cases": 1105,
-    "deaths": 42,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Montgomery": {
-    "dateStr": "2/22/21",
-    "cases": 62523,
+    "dateStr": "2/23/21",
+    "cases": 62626,
     "deaths": 1398,
     "recovered": 0,
-    "new": 87,
-    "newDeaths": 2
+    "new": 103,
+    "newDeaths": 0
   },
   "Out of MD": {
-    "dateStr": "2/22/21",
+    "dateStr": "2/23/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -136,47 +136,47 @@
     "newDeaths": 0
   },
   "Prince George's": {
-    "dateStr": "2/22/21",
-    "cases": 72250,
-    "deaths": 1307,
+    "dateStr": "2/23/21",
+    "cases": 72416,
+    "deaths": 1309,
     "recovered": 0,
-    "new": 128,
+    "new": 166,
     "newDeaths": 2
   },
   "Queen Anne's": {
-    "dateStr": "2/22/21",
+    "dateStr": "2/23/21",
     "cases": 2549,
     "deaths": 38,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Somerset": {
-    "dateStr": "2/22/21",
-    "cases": 2365,
-    "deaths": 30,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "St. Mary's": {
-    "dateStr": "2/22/21",
-    "cases": 5011,
-    "deaths": 112,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Talbot": {
-    "dateStr": "2/22/21",
-    "cases": 1851,
-    "deaths": 31,
+  "Somerset": {
+    "dateStr": "2/23/21",
+    "cases": 2369,
+    "deaths": 30,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
+  "St. Mary's": {
+    "dateStr": "2/23/21",
+    "cases": 5025,
+    "deaths": 113,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 1
+  },
+  "Talbot": {
+    "dateStr": "2/23/21",
+    "cases": 1855,
+    "deaths": 32,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 1
+  },
   "Unassigned": {
-    "dateStr": "2/22/21",
+    "dateStr": "2/23/21",
     "cases": 7,
     "deaths": 145,
     "recovered": 0,
@@ -184,27 +184,27 @@
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "2/22/21",
-    "cases": 12249,
-    "deaths": 248,
+    "dateStr": "2/23/21",
+    "cases": 12264,
+    "deaths": 249,
     "recovered": 0,
-    "new": 17,
-    "newDeaths": 0
+    "new": 15,
+    "newDeaths": 1
   },
   "Wicomico": {
-    "dateStr": "2/22/21",
-    "cases": 6698,
+    "dateStr": "2/23/21",
+    "cases": 6703,
     "deaths": 141,
     "recovered": 0,
-    "new": 9,
+    "new": 5,
     "newDeaths": 0
   },
   "Worcester": {
-    "dateStr": "2/22/21",
-    "cases": 3229,
+    "dateStr": "2/23/21",
+    "cases": 3233,
     "deaths": 91,
     "recovered": 0,
-    "new": 2,
+    "new": 4,
     "newDeaths": 0
   }
 }
