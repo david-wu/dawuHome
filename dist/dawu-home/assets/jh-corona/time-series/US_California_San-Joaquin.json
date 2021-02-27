@@ -3185,8 +3185,32 @@
   },
   {
     "dateStr": "2/23/21",
-    "cases": 66046,
-    "deaths": 1039,
+    "cases": 66290,
+    "deaths": 1042,
+    "recovered": 0,
+    "new": 244,
+    "newDeaths": 3
+  },
+  {
+    "dateStr": "2/24/21",
+    "cases": 66462,
+    "deaths": 1061,
+    "recovered": 0,
+    "new": 172,
+    "newDeaths": 19
+  },
+  {
+    "dateStr": "2/25/21",
+    "cases": 66569,
+    "deaths": 1082,
+    "recovered": 0,
+    "new": 107,
+    "newDeaths": 21
+  },
+  {
+    "dateStr": "2/26/21",
+    "cases": 66569,
+    "deaths": 1082,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
