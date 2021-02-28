@@ -1,30 +1,30 @@
 {
   "Barnstable": {
-    "dateStr": "2/26/21",
-    "cases": 10011,
-    "deaths": 401,
+    "dateStr": "2/27/21",
+    "cases": 10048,
+    "deaths": 403,
     "recovered": 0,
-    "new": 56,
-    "newDeaths": 3
+    "new": 37,
+    "newDeaths": 2
   },
   "Berkshire": {
-    "dateStr": "2/26/21",
-    "cases": 4850,
-    "deaths": 257,
+    "dateStr": "2/27/21",
+    "cases": 4859,
+    "deaths": 258,
     "recovered": 0,
-    "new": 6,
-    "newDeaths": 3
+    "new": 9,
+    "newDeaths": 1
   },
   "Bristol": {
-    "dateStr": "2/26/21",
-    "cases": 55481,
-    "deaths": 1486,
+    "dateStr": "2/27/21",
+    "cases": 55604,
+    "deaths": 1493,
     "recovered": 0,
-    "new": 125,
-    "newDeaths": 4
+    "new": 123,
+    "newDeaths": 7
   },
   "Dukes": {
-    "dateStr": "2/26/21",
+    "dateStr": "2/27/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -32,55 +32,55 @@
     "newDeaths": 0
   },
   "Dukes and Nantucket": {
-    "dateStr": "2/26/21",
-    "cases": 2014,
+    "dateStr": "2/27/21",
+    "cases": 2020,
     "deaths": 2,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Essex": {
+    "dateStr": "2/27/21",
+    "cases": 83624,
+    "deaths": 2152,
+    "recovered": 0,
+    "new": 177,
+    "newDeaths": 3
+  },
+  "Franklin": {
+    "dateStr": "2/27/21",
+    "cases": 1972,
+    "deaths": 101,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Essex": {
-    "dateStr": "2/26/21",
-    "cases": 83447,
-    "deaths": 2149,
-    "recovered": 0,
-    "new": 202,
-    "newDeaths": 8
-  },
-  "Franklin": {
-    "dateStr": "2/26/21",
-    "cases": 1969,
-    "deaths": 101,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 1
-  },
   "Hampden": {
-    "dateStr": "2/26/21",
-    "cases": 41472,
-    "deaths": 1322,
+    "dateStr": "2/27/21",
+    "cases": 41608,
+    "deaths": 1328,
     "recovered": 0,
-    "new": 171,
-    "newDeaths": 2
+    "new": 136,
+    "newDeaths": 6
   },
   "Hampshire": {
-    "dateStr": "2/26/21",
-    "cases": 7299,
-    "deaths": 260,
+    "dateStr": "2/27/21",
+    "cases": 7339,
+    "deaths": 261,
     "recovered": 0,
-    "new": 45,
-    "newDeaths": 2
+    "new": 40,
+    "newDeaths": 1
   },
   "Middlesex": {
-    "dateStr": "2/26/21",
-    "cases": 111231,
-    "deaths": 3420,
+    "dateStr": "2/27/21",
+    "cases": 111505,
+    "deaths": 3429,
     "recovered": 0,
-    "new": 332,
-    "newDeaths": 4
+    "new": 274,
+    "newDeaths": 9
   },
   "Nantucket": {
-    "dateStr": "2/26/21",
+    "dateStr": "2/27/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,15 +88,15 @@
     "newDeaths": 0
   },
   "Norfolk": {
-    "dateStr": "2/26/21",
-    "cases": 45176,
-    "deaths": 1612,
+    "dateStr": "2/27/21",
+    "cases": 45344,
+    "deaths": 1613,
     "recovered": 0,
-    "new": 199,
-    "newDeaths": 5
+    "new": 168,
+    "newDeaths": 1
   },
   "Out of MA": {
-    "dateStr": "2/26/21",
+    "dateStr": "2/27/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -104,35 +104,35 @@
     "newDeaths": 0
   },
   "Plymouth": {
-    "dateStr": "2/26/21",
-    "cases": 40067,
-    "deaths": 1289,
+    "dateStr": "2/27/21",
+    "cases": 40182,
+    "deaths": 1291,
     "recovered": 0,
-    "new": 145,
-    "newDeaths": 6
-  },
-  "Suffolk": {
-    "dateStr": "2/26/21",
-    "cases": 77831,
-    "deaths": 1687,
-    "recovered": 0,
-    "new": 262,
+    "new": 115,
     "newDeaths": 2
   },
+  "Suffolk": {
+    "dateStr": "2/27/21",
+    "cases": 78064,
+    "deaths": 1693,
+    "recovered": 0,
+    "new": 233,
+    "newDeaths": 6
+  },
   "Unassigned": {
-    "dateStr": "2/26/21",
-    "cases": 32109,
+    "dateStr": "2/27/21",
+    "cases": 32294,
     "deaths": 603,
     "recovered": 0,
-    "new": 254,
+    "new": 185,
     "newDeaths": 0
   },
   "Worcester": {
-    "dateStr": "2/26/21",
-    "cases": 65023,
-    "deaths": 2030,
+    "dateStr": "2/27/21",
+    "cases": 65217,
+    "deaths": 2035,
     "recovered": 0,
-    "new": 184,
-    "newDeaths": 6
+    "new": 194,
+    "newDeaths": 5
   }
 }
