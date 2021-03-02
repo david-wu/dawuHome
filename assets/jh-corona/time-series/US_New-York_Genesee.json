@@ -3209,10 +3209,10 @@
   },
   {
     "dateStr": "2/26/21",
-    "cases": 4372,
+    "cases": 4378,
     "deaths": 118,
     "recovered": 0,
-    "new": 0,
+    "new": 6,
     "newDeaths": 0
   },
   {
@@ -3220,7 +3220,15 @@
     "cases": 4395,
     "deaths": 118,
     "recovered": 0,
-    "new": 23,
+    "new": 17,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "2/28/21",
+    "cases": 4406,
+    "deaths": 118,
+    "recovered": 0,
+    "new": 11,
     "newDeaths": 0
   }
 ]
