@@ -3217,18 +3217,18 @@
   },
   {
     "dateStr": "2/27/21",
-    "cases": 7734,
-    "deaths": 130,
+    "cases": 7735,
+    "deaths": 131,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 1,
+    "newDeaths": 1
   },
   {
     "dateStr": "2/28/21",
-    "cases": 7734,
-    "deaths": 130,
+    "cases": 7736,
+    "deaths": 131,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   {
@@ -3236,7 +3236,15 @@
     "cases": 7737,
     "deaths": 131,
     "recovered": 0,
-    "new": 3,
-    "newDeaths": 1
+    "new": 1,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "3/2/21",
+    "cases": 7742,
+    "deaths": 131,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
   }
 ]
