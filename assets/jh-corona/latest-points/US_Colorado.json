@@ -1,78 +1,78 @@
 {
   "Adams": {
-    "dateStr": "3/1/21",
-    "cases": 48560,
+    "dateStr": "3/2/21",
+    "cases": 48635,
     "deaths": 613,
     "recovered": 0,
-    "new": 147,
+    "new": 75,
     "newDeaths": 0
   },
   "Alamosa": {
-    "dateStr": "3/1/21",
-    "cases": 1286,
+    "dateStr": "3/2/21",
+    "cases": 1289,
     "deaths": 28,
     "recovered": 0,
-    "new": 8,
+    "new": 3,
     "newDeaths": 0
   },
   "Arapahoe": {
-    "dateStr": "3/1/21",
-    "cases": 48640,
+    "dateStr": "3/2/21",
+    "cases": 48715,
     "deaths": 653,
     "recovered": 0,
-    "new": 177,
+    "new": 75,
     "newDeaths": 0
   },
   "Archuleta": {
-    "dateStr": "3/1/21",
-    "cases": 650,
+    "dateStr": "3/2/21",
+    "cases": 656,
     "deaths": 1,
     "recovered": 0,
-    "new": 1,
+    "new": 6,
     "newDeaths": 0
   },
   "Baca": {
-    "dateStr": "3/1/21",
-    "cases": 272,
+    "dateStr": "3/2/21",
+    "cases": 273,
     "deaths": 4,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Bent": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 1479,
     "deaths": 21,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Boulder": {
-    "dateStr": "3/1/21",
-    "cases": 18888,
+    "dateStr": "3/2/21",
+    "cases": 18910,
     "deaths": 225,
-    "recovered": 0,
-    "new": 89,
-    "newDeaths": 0
-  },
-  "Broomfield": {
-    "dateStr": "3/1/21",
-    "cases": 3759,
-    "deaths": 74,
     "recovered": 0,
     "new": 22,
     "newDeaths": 0
   },
-  "Chaffee": {
-    "dateStr": "3/1/21",
-    "cases": 1454,
-    "deaths": 24,
+  "Broomfield": {
+    "dateStr": "3/2/21",
+    "cases": 3772,
+    "deaths": 74,
     "recovered": 0,
-    "new": 12,
+    "new": 13,
     "newDeaths": 0
   },
+  "Chaffee": {
+    "dateStr": "3/2/21",
+    "cases": 1454,
+    "deaths": 25,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 1
+  },
   "Cheyenne": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 125,
     "deaths": 5,
     "recovered": 0,
@@ -80,39 +80,39 @@
     "newDeaths": 0
   },
   "Clear Creek": {
-    "dateStr": "3/1/21",
-    "cases": 363,
+    "dateStr": "3/2/21",
+    "cases": 364,
     "deaths": 2,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Conejos": {
-    "dateStr": "3/1/21",
-    "cases": 442,
+    "dateStr": "3/2/21",
+    "cases": 444,
     "deaths": 9,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Costilla": {
-    "dateStr": "3/1/21",
-    "cases": 187,
+    "dateStr": "3/2/21",
+    "cases": 189,
     "deaths": 2,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Crowley": {
+    "dateStr": "3/2/21",
+    "cases": 2048,
+    "deaths": 14,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Crowley": {
-    "dateStr": "3/1/21",
-    "cases": 2048,
-    "deaths": 14,
-    "recovered": 0,
-    "new": 67,
-    "newDeaths": 0
-  },
   "Custer": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 164,
     "deaths": 1,
     "recovered": 0,
@@ -120,79 +120,79 @@
     "newDeaths": 0
   },
   "Delta": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 2473,
     "deaths": 60,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Denver": {
-    "dateStr": "3/1/21",
-    "cases": 59779,
-    "deaths": 765,
-    "recovered": 0,
-    "new": 195,
-    "newDeaths": 0
-  },
-  "Dolores": {
-    "dateStr": "3/1/21",
-    "cases": 68,
-    "deaths": 0,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Denver": {
+    "dateStr": "3/2/21",
+    "cases": 59842,
+    "deaths": 765,
+    "recovered": 0,
+    "new": 63,
+    "newDeaths": 0
+  },
+  "Dolores": {
+    "dateStr": "3/2/21",
+    "cases": 69,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Douglas": {
-    "dateStr": "3/1/21",
-    "cases": 21402,
+    "dateStr": "3/2/21",
+    "cases": 21463,
     "deaths": 222,
     "recovered": 0,
-    "new": 75,
+    "new": 61,
     "newDeaths": 0
   },
   "Eagle": {
-    "dateStr": "3/1/21",
-    "cases": 5088,
+    "dateStr": "3/2/21",
+    "cases": 5120,
     "deaths": 20,
     "recovered": 0,
-    "new": 23,
+    "new": 32,
     "newDeaths": 0
   },
   "El Paso": {
-    "dateStr": "3/1/21",
-    "cases": 52145,
+    "dateStr": "3/2/21",
+    "cases": 52264,
     "deaths": 746,
     "recovered": 0,
-    "new": 170,
+    "new": 119,
     "newDeaths": 0
   },
   "Elbert": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 1288,
     "deaths": 12,
     "recovered": 0,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "Fremont": {
-    "dateStr": "3/1/21",
-    "cases": 5473,
+    "dateStr": "3/2/21",
+    "cases": 5476,
     "deaths": 50,
     "recovered": 0,
-    "new": 13,
+    "new": 3,
     "newDeaths": 0
   },
   "Garfield": {
-    "dateStr": "3/1/21",
-    "cases": 5110,
+    "dateStr": "3/2/21",
+    "cases": 5116,
     "deaths": 39,
     "recovered": 0,
-    "new": 14,
+    "new": 6,
     "newDeaths": 0
   },
   "Gilpin": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 168,
     "deaths": 3,
     "recovered": 0,
@@ -200,23 +200,23 @@
     "newDeaths": 0
   },
   "Grand": {
-    "dateStr": "3/1/21",
-    "cases": 1272,
+    "dateStr": "3/2/21",
+    "cases": 1273,
     "deaths": 5,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Gunnison": {
-    "dateStr": "3/1/21",
-    "cases": 1203,
+    "dateStr": "3/2/21",
+    "cases": 1207,
     "deaths": 7,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
   "Hinsdale": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 17,
     "deaths": 0,
     "recovered": 0,
@@ -224,15 +224,15 @@
     "newDeaths": 0
   },
   "Huerfano": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 310,
     "deaths": 18,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Jackson": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 51,
     "deaths": 0,
     "recovered": 0,
@@ -240,15 +240,15 @@
     "newDeaths": 0
   },
   "Jefferson": {
-    "dateStr": "3/1/21",
-    "cases": 37323,
-    "deaths": 720,
+    "dateStr": "3/2/21",
+    "cases": 37380,
+    "deaths": 725,
     "recovered": 0,
-    "new": 121,
-    "newDeaths": 0
+    "new": 57,
+    "newDeaths": 5
   },
   "Kiowa": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 91,
     "deaths": 3,
     "recovered": 0,
@@ -256,71 +256,71 @@
     "newDeaths": 0
   },
   "Kit Carson": {
-    "dateStr": "3/1/21",
-    "cases": 536,
+    "dateStr": "3/2/21",
+    "cases": 540,
     "deaths": 10,
     "recovered": 0,
-    "new": 1,
+    "new": 4,
     "newDeaths": 0
   },
   "La Plata": {
-    "dateStr": "3/1/21",
-    "cases": 2980,
+    "dateStr": "3/2/21",
+    "cases": 2982,
     "deaths": 37,
     "recovered": 0,
-    "new": 12,
+    "new": 2,
     "newDeaths": 0
   },
   "Lake": {
-    "dateStr": "3/1/21",
-    "cases": 659,
+    "dateStr": "3/2/21",
+    "cases": 661,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Larimer": {
-    "dateStr": "3/1/21",
-    "cases": 20153,
+    "dateStr": "3/2/21",
+    "cases": 20234,
     "deaths": 222,
     "recovered": 0,
     "new": 81,
     "newDeaths": 0
   },
   "Las Animas": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 997,
     "deaths": 11,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Lincoln": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 998,
     "deaths": 3,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Logan": {
+    "dateStr": "3/2/21",
+    "cases": 3741,
+    "deaths": 65,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Logan": {
-    "dateStr": "3/1/21",
-    "cases": 3740,
-    "deaths": 65,
-    "recovered": 0,
-    "new": 27,
-    "newDeaths": 0
-  },
   "Mesa": {
-    "dateStr": "3/1/21",
-    "cases": 13355,
+    "dateStr": "3/2/21",
+    "cases": 13368,
     "deaths": 199,
     "recovered": 0,
-    "new": 56,
+    "new": 13,
     "newDeaths": 0
   },
   "Mineral": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 62,
     "deaths": 1,
     "recovered": 0,
@@ -328,55 +328,55 @@
     "newDeaths": 0
   },
   "Moffat": {
-    "dateStr": "3/1/21",
-    "cases": 672,
+    "dateStr": "3/2/21",
+    "cases": 676,
     "deaths": 23,
     "recovered": 0,
-    "new": 3,
+    "new": 4,
     "newDeaths": 0
   },
   "Montezuma": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 1731,
     "deaths": 23,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Montrose": {
-    "dateStr": "3/1/21",
-    "cases": 3250,
+    "dateStr": "3/2/21",
+    "cases": 3265,
     "deaths": 53,
     "recovered": 0,
-    "new": 6,
+    "new": 15,
     "newDeaths": 0
   },
   "Morgan": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 2434,
     "deaths": 90,
     "recovered": 0,
-    "new": 11,
+    "new": 0,
     "newDeaths": 0
   },
   "Otero": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 1865,
     "deaths": 62,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Ouray": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 258,
     "deaths": 3,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Out of CO": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 0,
     "deaths": 2,
     "recovered": 0,
@@ -384,15 +384,15 @@
     "newDeaths": 0
   },
   "Park": {
-    "dateStr": "3/1/21",
-    "cases": 551,
+    "dateStr": "3/2/21",
+    "cases": 552,
     "deaths": 5,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Phillips": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 337,
     "deaths": 12,
     "recovered": 0,
@@ -400,15 +400,15 @@
     "newDeaths": 0
   },
   "Pitkin": {
-    "dateStr": "3/1/21",
-    "cases": 2018,
+    "dateStr": "3/2/21",
+    "cases": 2031,
     "deaths": 4,
     "recovered": 0,
-    "new": 8,
+    "new": 13,
     "newDeaths": 0
   },
   "Prowers": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 1161,
     "deaths": 21,
     "recovered": 0,
@@ -416,47 +416,47 @@
     "newDeaths": 0
   },
   "Pueblo": {
-    "dateStr": "3/1/21",
-    "cases": 15046,
+    "dateStr": "3/2/21",
+    "cases": 15058,
     "deaths": 363,
     "recovered": 0,
-    "new": 39,
+    "new": 12,
     "newDeaths": 0
   },
   "Rio Blanco": {
-    "dateStr": "3/1/21",
-    "cases": 473,
+    "dateStr": "3/2/21",
+    "cases": 475,
     "deaths": 3,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Rio Grande": {
-    "dateStr": "3/1/21",
-    "cases": 702,
+    "dateStr": "3/2/21",
+    "cases": 705,
     "deaths": 13,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Routt": {
-    "dateStr": "3/1/21",
-    "cases": 1890,
-    "deaths": 19,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
+  "Routt": {
+    "dateStr": "3/2/21",
+    "cases": 1896,
+    "deaths": 19,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
   "Saguache": {
-    "dateStr": "3/1/21",
-    "cases": 320,
+    "dateStr": "3/2/21",
+    "cases": 323,
     "deaths": 4,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "San Juan": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 43,
     "deaths": 0,
     "recovered": 0,
@@ -464,15 +464,15 @@
     "newDeaths": 0
   },
   "San Miguel": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 821,
     "deaths": 0,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Sedgwick": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 191,
     "deaths": 2,
     "recovered": 0,
@@ -480,23 +480,23 @@
     "newDeaths": 0
   },
   "Summit": {
-    "dateStr": "3/1/21",
-    "cases": 3036,
+    "dateStr": "3/2/21",
+    "cases": 3047,
     "deaths": 8,
     "recovered": 0,
-    "new": 7,
+    "new": 11,
     "newDeaths": 0
   },
   "Teller": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 1275,
     "deaths": 14,
     "recovered": 0,
-    "new": 6,
+    "new": 0,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "3/1/21",
+    "dateStr": "3/2/21",
     "cases": 276,
     "deaths": 34,
     "recovered": 0,
@@ -504,27 +504,27 @@
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "3/1/21",
-    "cases": 387,
+    "dateStr": "3/2/21",
+    "cases": 389,
     "deaths": 12,
     "recovered": 0,
-    "new": 7,
+    "new": 2,
     "newDeaths": 0
   },
   "Weld": {
-    "dateStr": "3/1/21",
-    "cases": 25562,
+    "dateStr": "3/2/21",
+    "cases": 25613,
     "deaths": 319,
     "recovered": 0,
-    "new": 97,
+    "new": 51,
     "newDeaths": 0
   },
   "Yuma": {
-    "dateStr": "3/1/21",
-    "cases": 712,
+    "dateStr": "3/2/21",
+    "cases": 716,
     "deaths": 17,
     "recovered": 0,
-    "new": 3,
+    "new": 4,
     "newDeaths": 0
   }
 }
