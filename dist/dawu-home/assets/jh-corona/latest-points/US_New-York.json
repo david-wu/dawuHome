@@ -1,462 +1,462 @@
 {
   "Albany": {
-    "dateStr": "3/2/21",
-    "cases": 20931,
-    "deaths": 333,
+    "dateStr": "3/6/21",
+    "cases": 21180,
+    "deaths": 334,
     "recovered": 0,
-    "new": 41,
-    "newDeaths": 1
+    "new": 66,
+    "newDeaths": 0
   },
   "Allegany": {
-    "dateStr": "3/2/21",
-    "cases": 2906,
+    "dateStr": "3/6/21",
+    "cases": 2924,
     "deaths": 81,
     "recovered": 0,
-    "new": 2,
+    "new": 5,
     "newDeaths": 0
   },
   "Bronx": {
-    "dateStr": "3/2/21",
-    "cases": 145226,
-    "deaths": 5897,
+    "dateStr": "3/6/21",
+    "cases": 148210,
+    "deaths": 5943,
     "recovered": 0,
-    "new": 707,
-    "newDeaths": 16
+    "new": 934,
+    "newDeaths": 9
   },
   "Broome": {
-    "dateStr": "3/2/21",
-    "cases": 14913,
-    "deaths": 336,
+    "dateStr": "3/6/21",
+    "cases": 15384,
+    "deaths": 339,
     "recovered": 0,
-    "new": 43,
-    "newDeaths": 0
+    "new": 108,
+    "newDeaths": 1
   },
   "Cattaraugus": {
-    "dateStr": "3/2/21",
-    "cases": 4433,
-    "deaths": 76,
+    "dateStr": "3/6/21",
+    "cases": 4489,
+    "deaths": 77,
     "recovered": 0,
-    "new": 13,
+    "new": 15,
     "newDeaths": 0
   },
   "Cayuga": {
-    "dateStr": "3/2/21",
-    "cases": 5386,
-    "deaths": 88,
+    "dateStr": "3/6/21",
+    "cases": 5428,
+    "deaths": 89,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
   },
   "Chautauqua": {
-    "dateStr": "3/2/21",
-    "cases": 7341,
-    "deaths": 123,
+    "dateStr": "3/6/21",
+    "cases": 7425,
+    "deaths": 125,
     "recovered": 0,
-    "new": 5,
+    "new": 23,
     "newDeaths": 0
   },
   "Chemung": {
-    "dateStr": "3/2/21",
-    "cases": 6445,
+    "dateStr": "3/6/21",
+    "cases": 6480,
     "deaths": 130,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Chenango": {
-    "dateStr": "3/2/21",
-    "cases": 2443,
-    "deaths": 69,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Clinton": {
-    "dateStr": "3/2/21",
-    "cases": 3645,
-    "deaths": 26,
-    "recovered": 0,
-    "new": 35,
-    "newDeaths": 0
-  },
-  "Columbia": {
-    "dateStr": "3/2/21",
-    "cases": 3405,
-    "deaths": 96,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Cortland": {
-    "dateStr": "3/2/21",
-    "cases": 3172,
-    "deaths": 60,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Delaware": {
-    "dateStr": "3/2/21",
-    "cases": 1524,
-    "deaths": 33,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Dutchess": {
-    "dateStr": "3/2/21",
-    "cases": 22457,
-    "deaths": 408,
-    "recovered": 0,
-    "new": 70,
-    "newDeaths": 0
-  },
-  "Erie": {
-    "dateStr": "3/2/21",
-    "cases": 65571,
-    "deaths": 1607,
-    "recovered": 0,
-    "new": 152,
-    "newDeaths": 4
-  },
-  "Essex": {
-    "dateStr": "3/2/21",
-    "cases": 1347,
-    "deaths": 26,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Franklin": {
-    "dateStr": "3/2/21",
-    "cases": 2098,
-    "deaths": 12,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
-  },
-  "Fulton": {
-    "dateStr": "3/2/21",
-    "cases": 3351,
-    "deaths": 84,
-    "recovered": 0,
-    "new": 14,
-    "newDeaths": 0
-  },
-  "Genesee": {
-    "dateStr": "3/2/21",
-    "cases": 4420,
-    "deaths": 118,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Greene": {
-    "dateStr": "3/2/21",
-    "cases": 2650,
-    "deaths": 71,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Hamilton": {
-    "dateStr": "3/2/21",
-    "cases": 285,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Herkimer": {
-    "dateStr": "3/2/21",
-    "cases": 4568,
-    "deaths": 107,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Jefferson": {
-    "dateStr": "3/2/21",
-    "cases": 4816,
-    "deaths": 63,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Kings": {
-    "dateStr": "3/2/21",
-    "cases": 212124,
-    "deaths": 9144,
-    "recovered": 0,
-    "new": 1174,
-    "newDeaths": 26
-  },
-  "Lewis": {
-    "dateStr": "3/2/21",
-    "cases": 2073,
-    "deaths": 30,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Livingston": {
-    "dateStr": "3/2/21",
-    "cases": 3558,
-    "deaths": 56,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Madison": {
-    "dateStr": "3/2/21",
-    "cases": 3854,
-    "deaths": 85,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Monroe": {
-    "dateStr": "3/2/21",
-    "cases": 52759,
-    "deaths": 992,
-    "recovered": 0,
-    "new": 80,
-    "newDeaths": 1
-  },
-  "Montgomery": {
-    "dateStr": "3/2/21",
-    "cases": 3199,
-    "deaths": 107,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Nassau": {
-    "dateStr": "3/2/21",
-    "cases": 149251,
-    "deaths": 2926,
-    "recovered": 0,
-    "new": 582,
-    "newDeaths": 8
-  },
-  "New York": {
-    "dateStr": "3/2/21",
-    "cases": 104444,
-    "deaths": 3917,
-    "recovered": 0,
-    "new": 522,
-    "newDeaths": 11
-  },
-  "Niagara": {
-    "dateStr": "3/2/21",
-    "cases": 15351,
-    "deaths": 313,
-    "recovered": 0,
-    "new": 27,
-    "newDeaths": 0
-  },
-  "Oneida": {
-    "dateStr": "3/2/21",
-    "cases": 19763,
-    "deaths": 478,
-    "recovered": 0,
-    "new": 28,
-    "newDeaths": 0
-  },
-  "Onondaga": {
-    "dateStr": "3/2/21",
-    "cases": 32489,
-    "deaths": 634,
-    "recovered": 0,
-    "new": 37,
-    "newDeaths": 4
-  },
-  "Ontario": {
-    "dateStr": "3/2/21",
-    "cases": 5813,
-    "deaths": 88,
     "recovered": 0,
     "new": 12,
     "newDeaths": 0
   },
-  "Orange": {
-    "dateStr": "3/2/21",
-    "cases": 37232,
-    "deaths": 720,
+  "Chenango": {
+    "dateStr": "3/6/21",
+    "cases": 2487,
+    "deaths": 70,
     "recovered": 0,
-    "new": 173,
+    "new": 13,
+    "newDeaths": 0
+  },
+  "Clinton": {
+    "dateStr": "3/6/21",
+    "cases": 3761,
+    "deaths": 27,
+    "recovered": 0,
+    "new": 20,
+    "newDeaths": 1
+  },
+  "Columbia": {
+    "dateStr": "3/6/21",
+    "cases": 3443,
+    "deaths": 96,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 0
+  },
+  "Cortland": {
+    "dateStr": "3/6/21",
+    "cases": 3231,
+    "deaths": 60,
+    "recovered": 0,
+    "new": 24,
+    "newDeaths": 0
+  },
+  "Delaware": {
+    "dateStr": "3/6/21",
+    "cases": 1573,
+    "deaths": 33,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 0
+  },
+  "Dutchess": {
+    "dateStr": "3/6/21",
+    "cases": 22900,
+    "deaths": 413,
+    "recovered": 0,
+    "new": 106,
+    "newDeaths": 0
+  },
+  "Erie": {
+    "dateStr": "3/6/21",
+    "cases": 66604,
+    "deaths": 1616,
+    "recovered": 0,
+    "new": 260,
+    "newDeaths": 3
+  },
+  "Essex": {
+    "dateStr": "3/6/21",
+    "cases": 1363,
+    "deaths": 26,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Franklin": {
+    "dateStr": "3/6/21",
+    "cases": 2160,
+    "deaths": 12,
+    "recovered": 0,
+    "new": 18,
+    "newDeaths": 0
+  },
+  "Fulton": {
+    "dateStr": "3/6/21",
+    "cases": 3424,
+    "deaths": 85,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 1
+  },
+  "Genesee": {
+    "dateStr": "3/6/21",
+    "cases": 4473,
+    "deaths": 118,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 0
+  },
+  "Greene": {
+    "dateStr": "3/6/21",
+    "cases": 2700,
+    "deaths": 71,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Hamilton": {
+    "dateStr": "3/6/21",
+    "cases": 285,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Herkimer": {
+    "dateStr": "3/6/21",
+    "cases": 4601,
+    "deaths": 107,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 0
+  },
+  "Jefferson": {
+    "dateStr": "3/6/21",
+    "cases": 4891,
+    "deaths": 63,
+    "recovered": 0,
+    "new": 19,
+    "newDeaths": 0
+  },
+  "Kings": {
+    "dateStr": "3/6/21",
+    "cases": 216963,
+    "deaths": 9239,
+    "recovered": 0,
+    "new": 1350,
+    "newDeaths": 17
+  },
+  "Lewis": {
+    "dateStr": "3/6/21",
+    "cases": 2096,
+    "deaths": 30,
+    "recovered": 0,
+    "new": 11,
+    "newDeaths": 0
+  },
+  "Livingston": {
+    "dateStr": "3/6/21",
+    "cases": 3599,
+    "deaths": 56,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Madison": {
+    "dateStr": "3/6/21",
+    "cases": 3893,
+    "deaths": 85,
+    "recovered": 0,
+    "new": 11,
+    "newDeaths": 0
+  },
+  "Monroe": {
+    "dateStr": "3/6/21",
+    "cases": 53274,
+    "deaths": 997,
+    "recovered": 0,
+    "new": 107,
+    "newDeaths": 3
+  },
+  "Montgomery": {
+    "dateStr": "3/6/21",
+    "cases": 3244,
+    "deaths": 107,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Nassau": {
+    "dateStr": "3/6/21",
+    "cases": 151970,
+    "deaths": 2951,
+    "recovered": 0,
+    "new": 643,
+    "newDeaths": 8
+  },
+  "New York": {
+    "dateStr": "3/6/21",
+    "cases": 106864,
+    "deaths": 3974,
+    "recovered": 0,
+    "new": 720,
+    "newDeaths": 10
+  },
+  "Niagara": {
+    "dateStr": "3/6/21",
+    "cases": 15508,
+    "deaths": 315,
+    "recovered": 0,
+    "new": 46,
+    "newDeaths": 1
+  },
+  "Oneida": {
+    "dateStr": "3/6/21",
+    "cases": 19896,
+    "deaths": 481,
+    "recovered": 0,
+    "new": 30,
+    "newDeaths": 0
+  },
+  "Onondaga": {
+    "dateStr": "3/6/21",
+    "cases": 32733,
+    "deaths": 636,
+    "recovered": 0,
+    "new": 52,
+    "newDeaths": 1
+  },
+  "Ontario": {
+    "dateStr": "3/6/21",
+    "cases": 5898,
+    "deaths": 90,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 0
+  },
+  "Orange": {
+    "dateStr": "3/6/21",
+    "cases": 38029,
+    "deaths": 730,
+    "recovered": 0,
+    "new": 182,
     "newDeaths": 0
   },
   "Orleans": {
-    "dateStr": "3/2/21",
-    "cases": 2452,
-    "deaths": 81,
+    "dateStr": "3/6/21",
+    "cases": 2472,
+    "deaths": 82,
     "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
+    "new": 5,
+    "newDeaths": 1
   },
   "Oswego": {
-    "dateStr": "3/2/21",
-    "cases": 6008,
+    "dateStr": "3/6/21",
+    "cases": 6106,
     "deaths": 89,
     "recovered": 0,
-    "new": 6,
+    "new": 19,
     "newDeaths": 0
   },
   "Otsego": {
-    "dateStr": "3/2/21",
-    "cases": 2360,
+    "dateStr": "3/6/21",
+    "cases": 2470,
     "deaths": 43,
     "recovered": 0,
-    "new": 5,
+    "new": 39,
     "newDeaths": 0
   },
   "Out of NY": {
-    "dateStr": "3/2/21",
+    "dateStr": "3/6/21",
     "cases": 0,
-    "deaths": 192,
+    "deaths": 194,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Putnam": {
-    "dateStr": "3/2/21",
-    "cases": 8389,
+    "dateStr": "3/6/21",
+    "cases": 8539,
     "deaths": 86,
     "recovered": 0,
-    "new": 20,
+    "new": 36,
     "newDeaths": 0
   },
   "Queens": {
-    "dateStr": "3/2/21",
-    "cases": 212927,
-    "deaths": 8804,
+    "dateStr": "3/6/21",
+    "cases": 217265,
+    "deaths": 8903,
     "recovered": 0,
-    "new": 1115,
-    "newDeaths": 20
+    "new": 1232,
+    "newDeaths": 26
   },
   "Rensselaer": {
-    "dateStr": "3/2/21",
-    "cases": 9059,
+    "dateStr": "3/6/21",
+    "cases": 9205,
     "deaths": 132,
     "recovered": 0,
-    "new": 20,
+    "new": 45,
     "newDeaths": 0
   },
   "Richmond": {
-    "dateStr": "3/2/21",
-    "cases": 57405,
-    "deaths": 1580,
+    "dateStr": "3/6/21",
+    "cases": 58545,
+    "deaths": 1602,
     "recovered": 0,
-    "new": 204,
-    "newDeaths": 1
+    "new": 333,
+    "newDeaths": 6
   },
   "Rockland": {
-    "dateStr": "3/2/21",
-    "cases": 38797,
-    "deaths": 891,
+    "dateStr": "3/6/21",
+    "cases": 39546,
+    "deaths": 896,
     "recovered": 0,
-    "new": 169,
-    "newDeaths": 2
+    "new": 222,
+    "newDeaths": 0
   },
   "Saratoga": {
-    "dateStr": "3/2/21",
-    "cases": 12002,
-    "deaths": 145,
+    "dateStr": "3/6/21",
+    "cases": 12190,
+    "deaths": 148,
+    "recovered": 0,
+    "new": 44,
+    "newDeaths": 2
+  },
+  "Schenectady": {
+    "dateStr": "3/6/21",
+    "cases": 11010,
+    "deaths": 178,
     "recovered": 0,
     "new": 32,
     "newDeaths": 0
   },
-  "Schenectady": {
-    "dateStr": "3/2/21",
-    "cases": 10870,
-    "deaths": 178,
-    "recovered": 0,
-    "new": 28,
-    "newDeaths": 0
-  },
   "Schoharie": {
-    "dateStr": "3/2/21",
-    "cases": 1215,
-    "deaths": 12,
+    "dateStr": "3/6/21",
+    "cases": 1243,
+    "deaths": 13,
     "recovered": 0,
-    "new": 5,
+    "new": 2,
     "newDeaths": 0
   },
   "Schuyler": {
-    "dateStr": "3/2/21",
-    "cases": 868,
+    "dateStr": "3/6/21",
+    "cases": 872,
     "deaths": 12,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Seneca": {
-    "dateStr": "3/2/21",
-    "cases": 1626,
+    "dateStr": "3/6/21",
+    "cases": 1648,
     "deaths": 53,
     "recovered": 0,
-    "new": 6,
+    "new": 8,
     "newDeaths": 0
   },
   "St. Lawrence": {
-    "dateStr": "3/2/21",
-    "cases": 5563,
-    "deaths": 86,
+    "dateStr": "3/6/21",
+    "cases": 5689,
+    "deaths": 90,
     "recovered": 0,
-    "new": 31,
-    "newDeaths": 1
+    "new": 45,
+    "newDeaths": 0
   },
   "Steuben": {
-    "dateStr": "3/2/21",
-    "cases": 5516,
-    "deaths": 137,
+    "dateStr": "3/6/21",
+    "cases": 5581,
+    "deaths": 138,
     "recovered": 0,
-    "new": 7,
+    "new": 19,
     "newDeaths": 0
   },
   "Suffolk": {
-    "dateStr": "3/2/21",
-    "cases": 163316,
-    "deaths": 3095,
+    "dateStr": "3/6/21",
+    "cases": 165879,
+    "deaths": 3120,
     "recovered": 0,
-    "new": 498,
-    "newDeaths": 9
+    "new": 590,
+    "newDeaths": 6
   },
   "Sullivan": {
-    "dateStr": "3/2/21",
-    "cases": 4771,
-    "deaths": 59,
+    "dateStr": "3/6/21",
+    "cases": 4863,
+    "deaths": 60,
     "recovered": 0,
-    "new": 16,
+    "new": 18,
     "newDeaths": 0
   },
   "Tioga": {
-    "dateStr": "3/2/21",
-    "cases": 2813,
+    "dateStr": "3/6/21",
+    "cases": 2854,
     "deaths": 56,
     "recovered": 0,
-    "new": 7,
+    "new": 18,
     "newDeaths": 0
   },
   "Tompkins": {
-    "dateStr": "3/2/21",
-    "cases": 3461,
-    "deaths": 42,
+    "dateStr": "3/6/21",
+    "cases": 3509,
+    "deaths": 43,
     "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
+    "new": 9,
+    "newDeaths": 1
   },
   "Ulster": {
-    "dateStr": "3/2/21",
-    "cases": 10096,
-    "deaths": 228,
+    "dateStr": "3/6/21",
+    "cases": 10279,
+    "deaths": 231,
     "recovered": 0,
-    "new": 27,
-    "newDeaths": 0
+    "new": 41,
+    "newDeaths": 1
   },
   "Unassigned": {
-    "dateStr": "3/2/21",
+    "dateStr": "3/6/21",
     "cases": 449,
     "deaths": 4429,
     "recovered": 0,
@@ -464,48 +464,48 @@
     "newDeaths": 0
   },
   "Warren": {
-    "dateStr": "3/2/21",
-    "cases": 2854,
+    "dateStr": "3/6/21",
+    "cases": 2907,
     "deaths": 55,
     "recovered": 0,
-    "new": 13,
+    "new": 17,
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "3/2/21",
-    "cases": 2353,
-    "deaths": 52,
+    "dateStr": "3/6/21",
+    "cases": 2397,
+    "deaths": 54,
     "recovered": 0,
-    "new": 10,
+    "new": 17,
     "newDeaths": 0
   },
   "Wayne": {
-    "dateStr": "3/2/21",
-    "cases": 4482,
-    "deaths": 64,
+    "dateStr": "3/6/21",
+    "cases": 4528,
+    "deaths": 65,
     "recovered": 0,
-    "new": 9,
+    "new": 6,
     "newDeaths": 0
   },
   "Westchester": {
-    "dateStr": "3/2/21",
-    "cases": 108193,
-    "deaths": 2105,
+    "dateStr": "3/6/21",
+    "cases": 109951,
+    "deaths": 2122,
     "recovered": 0,
-    "new": 336,
+    "new": 435,
     "newDeaths": 4
   },
   "Wyoming": {
-    "dateStr": "3/2/21",
-    "cases": 2833,
+    "dateStr": "3/6/21",
+    "cases": 2879,
     "deaths": 49,
     "recovered": 0,
-    "new": 13,
+    "new": 12,
     "newDeaths": 0
   },
   "Yates": {
-    "dateStr": "3/2/21",
-    "cases": 1015,
+    "dateStr": "3/6/21",
+    "cases": 1023,
     "deaths": 26,
     "recovered": 0,
     "new": 1,
