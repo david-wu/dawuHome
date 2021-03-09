@@ -1,54 +1,54 @@
 {
   "French Guiana": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 16693,
     "deaths": 87,
     "recovered": 9995,
-    "new": 66,
-    "newDeaths": 2
-  },
-  "French Polynesia": {
-    "dateStr": "3/6/21",
-    "cases": 18459,
-    "deaths": 140,
-    "recovered": 4842,
     "new": 0,
     "newDeaths": 0
   },
+  "French Polynesia": {
+    "dateStr": "3/8/21",
+    "cases": 18482,
+    "deaths": 141,
+    "recovered": 4842,
+    "new": 23,
+    "newDeaths": 1
+  },
   "Guadeloupe": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 10458,
     "deaths": 168,
     "recovered": 2242,
-    "new": 490,
-    "newDeaths": 4
-  },
-  "Martinique": {
-    "dateStr": "3/6/21",
-    "cases": 6886,
-    "deaths": 47,
-    "recovered": 98,
-    "new": 140,
-    "newDeaths": 2
-  },
-  "Mayotte": {
-    "dateStr": "3/6/21",
-    "cases": 18140,
-    "deaths": 125,
-    "recovered": 2964,
     "new": 0,
     "newDeaths": 0
   },
+  "Martinique": {
+    "dateStr": "3/8/21",
+    "cases": 6886,
+    "deaths": 47,
+    "recovered": 98,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Mayotte": {
+    "dateStr": "3/8/21",
+    "cases": 18315,
+    "deaths": 128,
+    "recovered": 2964,
+    "new": 175,
+    "newDeaths": 3
+  },
   "New Caledonia": {
-    "dateStr": "3/6/21",
-    "cases": 58,
+    "dateStr": "3/8/21",
+    "cases": 67,
     "deaths": 0,
     "recovered": 58,
     "new": 0,
     "newDeaths": 0
   },
   "Reunion": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 13125,
     "deaths": 59,
     "recovered": 11956,
@@ -56,7 +56,7 @@
     "newDeaths": 0
   },
   "Saint Barthelemy": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 638,
     "deaths": 1,
     "recovered": 462,
@@ -64,15 +64,15 @@
     "newDeaths": 0
   },
   "Saint Pierre and Miquelon": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 24,
     "deaths": 0,
-    "recovered": 16,
+    "recovered": 23,
     "new": 0,
     "newDeaths": 0
   },
   "St Martin": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 1571,
     "deaths": 12,
     "recovered": 1399,
@@ -80,11 +80,11 @@
     "newDeaths": 0
   },
   "Wallis and Futuna": {
-    "dateStr": "3/6/21",
-    "cases": 9,
+    "dateStr": "3/8/21",
+    "cases": 19,
     "deaths": 0,
     "recovered": 7,
-    "new": 0,
+    "new": 9,
     "newDeaths": 0
   }
 }
