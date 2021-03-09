@@ -1,22 +1,22 @@
 {
   "Australian Capital Territory": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 122,
     "deaths": 3,
     "recovered": 115,
-    "new": 2,
+    "new": 0,
     "newDeaths": 0
   },
   "New South Wales": {
-    "dateStr": "3/6/21",
-    "cases": 5209,
+    "dateStr": "3/8/21",
+    "cases": 5215,
     "deaths": 54,
     "recovered": 2997,
-    "new": 2,
+    "new": 5,
     "newDeaths": 0
   },
   "Northern Territory": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 105,
     "deaths": 0,
     "recovered": 105,
@@ -24,23 +24,23 @@
     "newDeaths": 0
   },
   "Queensland": {
-    "dateStr": "3/6/21",
-    "cases": 1349,
+    "dateStr": "3/8/21",
+    "cases": 1362,
     "deaths": 7,
-    "recovered": 1316,
-    "new": 2,
+    "recovered": 1318,
+    "new": 6,
     "newDeaths": 0
   },
   "South Australia": {
-    "dateStr": "3/6/21",
-    "cases": 618,
+    "dateStr": "3/8/21",
+    "cases": 620,
     "deaths": 4,
     "recovered": 611,
-    "new": 0,
+    "new": 2,
     "newDeaths": 0
   },
   "Tasmania": {
-    "dateStr": "3/6/21",
+    "dateStr": "3/8/21",
     "cases": 234,
     "deaths": 13,
     "recovered": 221,
@@ -48,19 +48,19 @@
     "newDeaths": 0
   },
   "Victoria": {
-    "dateStr": "3/6/21",
-    "cases": 20482,
+    "dateStr": "3/8/21",
+    "cases": 20483,
     "deaths": 820,
-    "recovered": 19657,
-    "new": 0,
+    "recovered": 19658,
+    "new": 1,
     "newDeaths": 0
   },
   "Western Australia": {
-    "dateStr": "3/6/21",
-    "cases": 916,
+    "dateStr": "3/8/21",
+    "cases": 920,
     "deaths": 9,
     "recovered": 903,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   }
 }
