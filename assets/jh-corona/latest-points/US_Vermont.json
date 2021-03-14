@@ -1,86 +1,86 @@
 {
   "Addison": {
-    "dateStr": "3/11/21",
-    "cases": 830,
+    "dateStr": "3/13/21",
+    "cases": 842,
     "deaths": 8,
     "recovered": 0,
-    "new": 9,
+    "new": 6,
     "newDeaths": 0
   },
   "Bennington": {
-    "dateStr": "3/11/21",
-    "cases": 1530,
+    "dateStr": "3/13/21",
+    "cases": 1538,
     "deaths": 9,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Caledonia": {
-    "dateStr": "3/11/21",
-    "cases": 499,
-    "deaths": 5,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Chittenden": {
-    "dateStr": "3/11/21",
-    "cases": 5225,
-    "deaths": 91,
-    "recovered": 0,
-    "new": 36,
-    "newDeaths": 0
-  },
-  "Essex": {
-    "dateStr": "3/11/21",
-    "cases": 178,
-    "deaths": 1,
-    "recovered": 0,
-    "new": 6,
-    "newDeaths": 0
-  },
-  "Franklin": {
-    "dateStr": "3/11/21",
-    "cases": 1408,
-    "deaths": 36,
-    "recovered": 0,
-    "new": 14,
-    "newDeaths": 0
-  },
-  "Grand Isle": {
-    "dateStr": "3/11/21",
-    "cases": 131,
-    "deaths": 0,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Lamoille": {
-    "dateStr": "3/11/21",
-    "cases": 544,
-    "deaths": 2,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Orange": {
-    "dateStr": "3/11/21",
-    "cases": 529,
-    "deaths": 3,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Caledonia": {
+    "dateStr": "3/13/21",
+    "cases": 505,
+    "deaths": 5,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Chittenden": {
+    "dateStr": "3/13/21",
+    "cases": 5278,
+    "deaths": 93,
+    "recovered": 0,
+    "new": 20,
+    "newDeaths": 2
+  },
+  "Essex": {
+    "dateStr": "3/13/21",
+    "cases": 181,
+    "deaths": 1,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Franklin": {
+    "dateStr": "3/13/21",
+    "cases": 1443,
+    "deaths": 36,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Grand Isle": {
+    "dateStr": "3/13/21",
+    "cases": 135,
+    "deaths": 0,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Lamoille": {
+    "dateStr": "3/13/21",
+    "cases": 556,
+    "deaths": 2,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Orange": {
+    "dateStr": "3/13/21",
+    "cases": 530,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Orleans": {
-    "dateStr": "3/11/21",
-    "cases": 635,
+    "dateStr": "3/13/21",
+    "cases": 647,
     "deaths": 7,
     "recovered": 0,
-    "new": 18,
+    "new": 8,
     "newDeaths": 0
   },
   "Out of VT": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -88,15 +88,15 @@
     "newDeaths": 0
   },
   "Rutland": {
-    "dateStr": "3/11/21",
-    "cases": 1396,
+    "dateStr": "3/13/21",
+    "cases": 1412,
     "deaths": 12,
     "recovered": 0,
-    "new": 4,
+    "new": 6,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 59,
     "deaths": 18,
     "recovered": 0,
@@ -104,27 +104,27 @@
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "3/11/21",
-    "cases": 1501,
+    "dateStr": "3/13/21",
+    "cases": 1518,
     "deaths": 14,
     "recovered": 0,
-    "new": 9,
+    "new": 5,
     "newDeaths": 0
   },
   "Windham": {
-    "dateStr": "3/11/21",
-    "cases": 1001,
+    "dateStr": "3/13/21",
+    "cases": 1006,
     "deaths": 13,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Windsor": {
-    "dateStr": "3/11/21",
-    "cases": 1085,
-    "deaths": 10,
+    "dateStr": "3/13/21",
+    "cases": 1099,
+    "deaths": 11,
     "recovered": 0,
-    "new": 3,
+    "new": 4,
     "newDeaths": 0
   }
 }
