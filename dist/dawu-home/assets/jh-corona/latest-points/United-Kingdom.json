@@ -1,22 +1,22 @@
 {
   "Anguilla": {
-    "dateStr": "3/11/21",
-    "cases": 18,
+    "dateStr": "3/13/21",
+    "cases": 21,
     "deaths": 0,
     "recovered": 18,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "Bermuda": {
-    "dateStr": "3/11/21",
-    "cases": 732,
+    "dateStr": "3/13/21",
+    "cases": 735,
     "deaths": 12,
     "recovered": 692,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "British Virgin Islands": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 153,
     "deaths": 1,
     "recovered": 131,
@@ -24,15 +24,15 @@
     "newDeaths": 0
   },
   "Cayman Islands": {
-    "dateStr": "3/11/21",
-    "cases": 463,
+    "dateStr": "3/13/21",
+    "cases": 468,
     "deaths": 2,
     "recovered": 430,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Channel Islands": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 4043,
     "deaths": 86,
     "recovered": 3958,
@@ -40,7 +40,7 @@
     "newDeaths": 0
   },
   "Falkland Islands (Malvinas)": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 54,
     "deaths": 0,
     "recovered": 54,
@@ -48,23 +48,23 @@
     "newDeaths": 0
   },
   "Gibraltar": {
-    "dateStr": "3/11/21",
-    "cases": 4259,
-    "deaths": 93,
-    "recovered": 4139,
-    "new": 3,
-    "newDeaths": 0
+    "dateStr": "3/13/21",
+    "cases": 4263,
+    "deaths": 94,
+    "recovered": 4142,
+    "new": 0,
+    "newDeaths": 1
   },
   "Isle of Man": {
-    "dateStr": "3/11/21",
-    "cases": 1091,
-    "deaths": 25,
-    "recovered": 422,
-    "new": 65,
+    "dateStr": "3/13/21",
+    "cases": 1234,
+    "deaths": 26,
+    "recovered": 424,
+    "new": 77,
     "newDeaths": 0
   },
   "Montserrat": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 20,
     "deaths": 1,
     "recovered": 18,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "Saint Helena, Ascension and Tristan da Cunha": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 4,
     "deaths": 1,
     "recovered": 4,
@@ -80,11 +80,11 @@
     "newDeaths": 0
   },
   "Turks and Caicos Islands": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 2200,
     "deaths": 15,
     "recovered": 2081,
-    "new": 10,
+    "new": 0,
     "newDeaths": 0
   }
 }

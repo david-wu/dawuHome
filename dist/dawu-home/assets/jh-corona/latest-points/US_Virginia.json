@@ -1,30 +1,30 @@
 {
   "Accomack": {
-    "dateStr": "3/11/21",
-    "cases": 2636,
+    "dateStr": "3/13/21",
+    "cases": 2646,
     "deaths": 35,
     "recovered": 0,
-    "new": 6,
+    "new": 8,
     "newDeaths": 0
   },
   "Albemarle": {
-    "dateStr": "3/11/21",
-    "cases": 5010,
-    "deaths": 74,
-    "recovered": 0,
-    "new": 22,
-    "newDeaths": 0
-  },
-  "Alexandria": {
-    "dateStr": "3/11/21",
-    "cases": 10504,
-    "deaths": 127,
+    "dateStr": "3/13/21",
+    "cases": 5039,
+    "deaths": 76,
     "recovered": 0,
     "new": 14,
     "newDeaths": 0
   },
+  "Alexandria": {
+    "dateStr": "3/13/21",
+    "cases": 10548,
+    "deaths": 128,
+    "recovered": 0,
+    "new": 19,
+    "newDeaths": 1
+  },
   "Alleghany": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 1260,
     "deaths": 48,
     "recovered": 0,
@@ -32,103 +32,103 @@
     "newDeaths": 0
   },
   "Amelia": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 788,
-    "deaths": 22,
+    "deaths": 23,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Amherst": {
-    "dateStr": "3/11/21",
-    "cases": 2727,
+    "dateStr": "3/13/21",
+    "cases": 2729,
     "deaths": 36,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Appomattox": {
-    "dateStr": "3/11/21",
-    "cases": 1442,
+    "dateStr": "3/13/21",
+    "cases": 1443,
     "deaths": 23,
     "recovered": 0,
-    "new": 3,
+    "new": 0,
     "newDeaths": 0
   },
   "Arlington": {
-    "dateStr": "3/11/21",
-    "cases": 13526,
-    "deaths": 241,
+    "dateStr": "3/13/21",
+    "cases": 13603,
+    "deaths": 242,
     "recovered": 0,
-    "new": 25,
-    "newDeaths": 1
+    "new": 44,
+    "newDeaths": 0
   },
   "Augusta": {
-    "dateStr": "3/11/21",
-    "cases": 5261,
+    "dateStr": "3/13/21",
+    "cases": 5277,
     "deaths": 70,
     "recovered": 0,
-    "new": 3,
+    "new": 10,
     "newDeaths": 0
   },
   "Bath": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 247,
-    "deaths": 11,
+    "deaths": 12,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Bedford": {
-    "dateStr": "3/11/21",
-    "cases": 5884,
+    "dateStr": "3/13/21",
+    "cases": 5896,
     "deaths": 89,
-    "recovered": 0,
-    "new": 13,
-    "newDeaths": 3
-  },
-  "Bland": {
-    "dateStr": "3/11/21",
-    "cases": 624,
-    "deaths": 10,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Botetourt": {
-    "dateStr": "3/11/21",
-    "cases": 2301,
-    "deaths": 33,
-    "recovered": 0,
-    "new": 11,
-    "newDeaths": 0
-  },
-  "Bristol": {
-    "dateStr": "3/11/21",
-    "cases": 1234,
-    "deaths": 30,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Brunswick": {
-    "dateStr": "3/11/21",
-    "cases": 1220,
-    "deaths": 20,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Buchanan": {
-    "dateStr": "3/11/21",
-    "cases": 1330,
-    "deaths": 36,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
   },
+  "Bland": {
+    "dateStr": "3/13/21",
+    "cases": 629,
+    "deaths": 10,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Botetourt": {
+    "dateStr": "3/13/21",
+    "cases": 2316,
+    "deaths": 33,
+    "recovered": 0,
+    "new": 10,
+    "newDeaths": 0
+  },
+  "Bristol": {
+    "dateStr": "3/13/21",
+    "cases": 1235,
+    "deaths": 30,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Brunswick": {
+    "dateStr": "3/13/21",
+    "cases": 1225,
+    "deaths": 20,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Buchanan": {
+    "dateStr": "3/13/21",
+    "cases": 1330,
+    "deaths": 37,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Buckingham": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 2049,
     "deaths": 29,
     "recovered": 0,
@@ -136,95 +136,95 @@
     "newDeaths": 0
   },
   "Buena Vista": {
-    "dateStr": "3/11/21",
-    "cases": 851,
+    "dateStr": "3/13/21",
+    "cases": 853,
     "deaths": 19,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Campbell": {
-    "dateStr": "3/11/21",
-    "cases": 4108,
-    "deaths": 76,
+    "dateStr": "3/13/21",
+    "cases": 4118,
+    "deaths": 77,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Caroline": {
+    "dateStr": "3/13/21",
+    "cases": 1880,
+    "deaths": 30,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Caroline": {
-    "dateStr": "3/11/21",
-    "cases": 1866,
-    "deaths": 30,
+  "Carroll": {
+    "dateStr": "3/13/21",
+    "cases": 2177,
+    "deaths": 67,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Charles City": {
+    "dateStr": "3/13/21",
+    "cases": 419,
+    "deaths": 13,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Carroll": {
-    "dateStr": "3/11/21",
-    "cases": 2164,
-    "deaths": 67,
-    "recovered": 0,
-    "new": 10,
-    "newDeaths": 0
-  },
-  "Charles City": {
-    "dateStr": "3/11/21",
-    "cases": 417,
-    "deaths": 13,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Charlotte": {
-    "dateStr": "3/11/21",
-    "cases": 761,
-    "deaths": 15,
+    "dateStr": "3/13/21",
+    "cases": 768,
+    "deaths": 16,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Charlottesville": {
-    "dateStr": "3/11/21",
-    "cases": 3697,
+    "dateStr": "3/13/21",
+    "cases": 3711,
     "deaths": 47,
     "recovered": 0,
-    "new": 8,
+    "new": 9,
     "newDeaths": 0
   },
   "Chesapeake": {
-    "dateStr": "3/11/21",
-    "cases": 18675,
-    "deaths": 246,
+    "dateStr": "3/13/21",
+    "cases": 18775,
+    "deaths": 253,
     "recovered": 0,
-    "new": 50,
-    "newDeaths": 5
+    "new": 36,
+    "newDeaths": 1
   },
   "Chesterfield": {
-    "dateStr": "3/11/21",
-    "cases": 24195,
-    "deaths": 371,
+    "dateStr": "3/13/21",
+    "cases": 24323,
+    "deaths": 377,
     "recovered": 0,
-    "new": 58,
-    "newDeaths": 5
+    "new": 69,
+    "newDeaths": 1
   },
   "Clarke": {
-    "dateStr": "3/11/21",
-    "cases": 802,
+    "dateStr": "3/13/21",
+    "cases": 815,
     "deaths": 19,
     "recovered": 0,
-    "new": 4,
+    "new": 6,
     "newDeaths": 0
   },
   "Colonial Heights": {
-    "dateStr": "3/11/21",
-    "cases": 1425,
+    "dateStr": "3/13/21",
+    "cases": 1435,
     "deaths": 53,
     "recovered": 0,
-    "new": 0,
+    "new": 7,
     "newDeaths": 0
   },
   "Covington": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 632,
     "deaths": 11,
     "recovered": 0,
@@ -232,247 +232,247 @@
     "newDeaths": 0
   },
   "Craig": {
-    "dateStr": "3/11/21",
-    "cases": 247,
+    "dateStr": "3/13/21",
+    "cases": 248,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Culpeper": {
-    "dateStr": "3/11/21",
-    "cases": 4144,
+    "dateStr": "3/13/21",
+    "cases": 4155,
     "deaths": 56,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
   "Cumberland": {
-    "dateStr": "3/11/21",
-    "cases": 401,
+    "dateStr": "3/13/21",
+    "cases": 404,
     "deaths": 9,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Danville": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 4452,
     "deaths": 119,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   "Dickenson": {
-    "dateStr": "3/11/21",
-    "cases": 880,
+    "dateStr": "3/13/21",
+    "cases": 881,
     "deaths": 15,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Dinwiddie": {
+    "dateStr": "3/13/21",
+    "cases": 1877,
+    "deaths": 37,
+    "recovered": 0,
+    "new": 11,
+    "newDeaths": 0
+  },
+  "Emporia": {
+    "dateStr": "3/13/21",
+    "cases": 628,
+    "deaths": 41,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
-  "Dinwiddie": {
-    "dateStr": "3/11/21",
-    "cases": 1864,
-    "deaths": 37,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Emporia": {
-    "dateStr": "3/11/21",
-    "cases": 626,
-    "deaths": 41,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Essex": {
-    "dateStr": "3/11/21",
-    "cases": 652,
+    "dateStr": "3/13/21",
+    "cases": 655,
     "deaths": 7,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Fairfax": {
-    "dateStr": "3/11/21",
-    "cases": 68208,
-    "deaths": 1027,
+    "dateStr": "3/13/21",
+    "cases": 68491,
+    "deaths": 1032,
     "recovered": 0,
-    "new": 139,
-    "newDeaths": 0
+    "new": 145,
+    "newDeaths": 1
   },
   "Fairfax City": {
-    "dateStr": "3/11/21",
-    "cases": 501,
+    "dateStr": "3/13/21",
+    "cases": 505,
     "deaths": 16,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Falls Church": {
-    "dateStr": "3/11/21",
-    "cases": 362,
-    "deaths": 9,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Fauquier": {
-    "dateStr": "3/11/21",
-    "cases": 4059,
-    "deaths": 60,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Floyd": {
-    "dateStr": "3/11/21",
-    "cases": 758,
-    "deaths": 19,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
+  "Falls Church": {
+    "dateStr": "3/13/21",
+    "cases": 366,
+    "deaths": 9,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Fauquier": {
+    "dateStr": "3/13/21",
+    "cases": 4080,
+    "deaths": 60,
+    "recovered": 0,
+    "new": 7,
+    "newDeaths": 0
+  },
+  "Floyd": {
+    "dateStr": "3/13/21",
+    "cases": 760,
+    "deaths": 20,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 1
+  },
   "Fluvanna": {
-    "dateStr": "3/11/21",
-    "cases": 1319,
+    "dateStr": "3/13/21",
+    "cases": 1333,
     "deaths": 17,
     "recovered": 0,
-    "new": 4,
+    "new": 12,
     "newDeaths": 0
   },
   "Franklin": {
-    "dateStr": "3/11/21",
-    "cases": 3760,
+    "dateStr": "3/13/21",
+    "cases": 3765,
     "deaths": 68,
     "recovered": 0,
-    "new": 4,
-    "newDeaths": 4
+    "new": 2,
+    "newDeaths": 0
   },
   "Franklin City": {
-    "dateStr": "3/11/21",
-    "cases": 1026,
-    "deaths": 27,
+    "dateStr": "3/13/21",
+    "cases": 1028,
+    "deaths": 28,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Frederick": {
+    "dateStr": "3/13/21",
+    "cases": 6930,
+    "deaths": 94,
+    "recovered": 0,
+    "new": 19,
+    "newDeaths": 1
+  },
+  "Fredericksburg": {
+    "dateStr": "3/13/21",
+    "cases": 1814,
+    "deaths": 22,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Frederick": {
-    "dateStr": "3/11/21",
-    "cases": 6893,
-    "deaths": 91,
-    "recovered": 0,
-    "new": 15,
-    "newDeaths": 0
-  },
-  "Fredericksburg": {
-    "dateStr": "3/11/21",
-    "cases": 1812,
-    "deaths": 22,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
   "Galax": {
-    "dateStr": "3/11/21",
-    "cases": 1003,
+    "dateStr": "3/13/21",
+    "cases": 1008,
     "deaths": 50,
     "recovered": 0,
-    "new": 1,
+    "new": 2,
     "newDeaths": 0
   },
   "Giles": {
-    "dateStr": "3/11/21",
-    "cases": 1096,
+    "dateStr": "3/13/21",
+    "cases": 1103,
     "deaths": 16,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Gloucester": {
-    "dateStr": "3/11/21",
-    "cases": 1945,
+    "dateStr": "3/13/21",
+    "cases": 1955,
     "deaths": 46,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 1
+    "new": 6,
+    "newDeaths": 0
   },
   "Goochland": {
-    "dateStr": "3/11/21",
-    "cases": 1251,
+    "dateStr": "3/13/21",
+    "cases": 1257,
     "deaths": 17,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Grayson": {
+    "dateStr": "3/13/21",
+    "cases": 1164,
+    "deaths": 34,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Greene": {
+    "dateStr": "3/13/21",
+    "cases": 1035,
+    "deaths": 15,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Grayson": {
-    "dateStr": "3/11/21",
-    "cases": 1148,
-    "deaths": 34,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Greene": {
-    "dateStr": "3/11/21",
-    "cases": 1029,
-    "deaths": 15,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
   "Greensville": {
-    "dateStr": "3/11/21",
-    "cases": 1476,
+    "dateStr": "3/13/21",
+    "cases": 1484,
     "deaths": 25,
     "recovered": 0,
-    "new": 1,
+    "new": 6,
     "newDeaths": 0
   },
   "Halifax": {
-    "dateStr": "3/11/21",
-    "cases": 2522,
-    "deaths": 71,
+    "dateStr": "3/13/21",
+    "cases": 2552,
+    "deaths": 72,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 2
+    "new": 16,
+    "newDeaths": 1
   },
   "Hampton": {
-    "dateStr": "3/11/21",
-    "cases": 8911,
+    "dateStr": "3/13/21",
+    "cases": 8949,
     "deaths": 140,
     "recovered": 0,
-    "new": 9,
-    "newDeaths": 2
+    "new": 26,
+    "newDeaths": 0
   },
   "Hanover": {
-    "dateStr": "3/11/21",
-    "cases": 6869,
+    "dateStr": "3/13/21",
+    "cases": 6906,
     "deaths": 144,
     "recovered": 0,
-    "new": 15,
+    "new": 18,
     "newDeaths": 0
   },
   "Harrisonburg": {
-    "dateStr": "3/11/21",
-    "cases": 5876,
+    "dateStr": "3/13/21",
+    "cases": 5916,
     "deaths": 94,
     "recovered": 0,
-    "new": 31,
+    "new": 14,
     "newDeaths": 0
   },
   "Henrico": {
-    "dateStr": "3/11/21",
-    "cases": 21917,
-    "deaths": 551,
+    "dateStr": "3/13/21",
+    "cases": 22069,
+    "deaths": 558,
     "recovered": 0,
-    "new": 33,
+    "new": 99,
     "newDeaths": 2
   },
   "Henry": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 4270,
     "deaths": 119,
     "recovered": 0,
@@ -480,7 +480,7 @@
     "newDeaths": 0
   },
   "Highland": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 98,
     "deaths": 1,
     "recovered": 0,
@@ -488,55 +488,55 @@
     "newDeaths": 0
   },
   "Hopewell": {
-    "dateStr": "3/11/21",
-    "cases": 2197,
+    "dateStr": "3/13/21",
+    "cases": 2207,
     "deaths": 62,
     "recovered": 0,
     "new": 2,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   "Isle of Wight": {
-    "dateStr": "3/11/21",
-    "cases": 2720,
+    "dateStr": "3/13/21",
+    "cases": 2742,
     "deaths": 58,
     "recovered": 0,
-    "new": 11,
+    "new": 10,
     "newDeaths": 0
   },
   "James City": {
-    "dateStr": "3/11/21",
-    "cases": 3980,
-    "deaths": 67,
+    "dateStr": "3/13/21",
+    "cases": 3995,
+    "deaths": 68,
     "recovered": 0,
-    "new": 12,
-    "newDeaths": 0
+    "new": 4,
+    "newDeaths": 1
   },
   "King George": {
-    "dateStr": "3/11/21",
-    "cases": 1443,
+    "dateStr": "3/13/21",
+    "cases": 1453,
     "deaths": 16,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   },
   "King William": {
-    "dateStr": "3/11/21",
-    "cases": 973,
+    "dateStr": "3/13/21",
+    "cases": 980,
     "deaths": 10,
     "recovered": 0,
-    "new": 6,
+    "new": 3,
     "newDeaths": 0
   },
   "King and Queen": {
-    "dateStr": "3/11/21",
-    "cases": 327,
-    "deaths": 6,
+    "dateStr": "3/13/21",
+    "cases": 331,
+    "deaths": 7,
     "recovered": 0,
-    "new": 2,
+    "new": 3,
     "newDeaths": 0
   },
   "Lancaster": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 676,
     "deaths": 16,
     "recovered": 0,
@@ -544,191 +544,191 @@
     "newDeaths": 0
   },
   "Lee": {
-    "dateStr": "3/11/21",
-    "cases": 2318,
+    "dateStr": "3/13/21",
+    "cases": 2327,
     "deaths": 43,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Lexington": {
-    "dateStr": "3/11/21",
-    "cases": 1129,
-    "deaths": 29,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "Loudoun": {
-    "dateStr": "3/11/21",
-    "cases": 23708,
-    "deaths": 262,
-    "recovered": 0,
-    "new": 67,
-    "newDeaths": 2
-  },
-  "Louisa": {
-    "dateStr": "3/11/21",
-    "cases": 1704,
-    "deaths": 27,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
-  },
-  "Lunenburg": {
-    "dateStr": "3/11/21",
-    "cases": 674,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Lynchburg": {
-    "dateStr": "3/11/21",
-    "cases": 6954,
-    "deaths": 142,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "Madison": {
-    "dateStr": "3/11/21",
-    "cases": 545,
-    "deaths": 14,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Manassas": {
-    "dateStr": "3/11/21",
-    "cases": 4060,
-    "deaths": 42,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Manassas Park": {
-    "dateStr": "3/11/21",
+  "Lexington": {
+    "dateStr": "3/13/21",
     "cases": 1134,
-    "deaths": 12,
+    "deaths": 29,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
-  "Martinsville": {
-    "dateStr": "3/11/21",
-    "cases": 1518,
-    "deaths": 68,
+  "Loudoun": {
+    "dateStr": "3/13/21",
+    "cases": 23848,
+    "deaths": 264,
     "recovered": 0,
-    "new": 0,
+    "new": 66,
     "newDeaths": 0
   },
-  "Mathews": {
-    "dateStr": "3/11/21",
-    "cases": 560,
-    "deaths": 12,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
-  },
-  "Mecklenburg": {
-    "dateStr": "3/11/21",
-    "cases": 2040,
-    "deaths": 59,
+  "Louisa": {
+    "dateStr": "3/13/21",
+    "cases": 1712,
+    "deaths": 27,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Middlesex": {
-    "dateStr": "3/11/21",
-    "cases": 534,
-    "deaths": 18,
+  "Lunenburg": {
+    "dateStr": "3/13/21",
+    "cases": 680,
+    "deaths": 7,
     "recovered": 0,
     "new": 2,
+    "newDeaths": 1
+  },
+  "Lynchburg": {
+    "dateStr": "3/13/21",
+    "cases": 6972,
+    "deaths": 142,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "Madison": {
+    "dateStr": "3/13/21",
+    "cases": 546,
+    "deaths": 14,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Manassas": {
+    "dateStr": "3/13/21",
+    "cases": 4065,
+    "deaths": 42,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Manassas Park": {
+    "dateStr": "3/13/21",
+    "cases": 1135,
+    "deaths": 12,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Martinsville": {
+    "dateStr": "3/13/21",
+    "cases": 1522,
+    "deaths": 70,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 1
+  },
+  "Mathews": {
+    "dateStr": "3/13/21",
+    "cases": 560,
+    "deaths": 12,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Mecklenburg": {
+    "dateStr": "3/13/21",
+    "cases": 2054,
+    "deaths": 59,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 0
+  },
+  "Middlesex": {
+    "dateStr": "3/13/21",
+    "cases": 536,
+    "deaths": 18,
+    "recovered": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Montgomery": {
-    "dateStr": "3/11/21",
-    "cases": 8168,
-    "deaths": 89,
+    "dateStr": "3/13/21",
+    "cases": 8308,
+    "deaths": 90,
     "recovered": 0,
-    "new": 23,
+    "new": 31,
     "newDeaths": 0
   },
   "Nelson": {
-    "dateStr": "3/11/21",
-    "cases": 834,
+    "dateStr": "3/13/21",
+    "cases": 837,
     "deaths": 11,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "New Kent": {
-    "dateStr": "3/11/21",
-    "cases": 1282,
+    "dateStr": "3/13/21",
+    "cases": 1290,
     "deaths": 13,
     "recovered": 0,
-    "new": 7,
+    "new": 0,
     "newDeaths": 0
   },
   "Newport News": {
-    "dateStr": "3/11/21",
-    "cases": 11883,
-    "deaths": 199,
+    "dateStr": "3/13/21",
+    "cases": 11951,
+    "deaths": 200,
     "recovered": 0,
-    "new": 45,
+    "new": 33,
     "newDeaths": 1
   },
   "Norfolk": {
-    "dateStr": "3/11/21",
-    "cases": 15288,
-    "deaths": 222,
+    "dateStr": "3/13/21",
+    "cases": 15384,
+    "deaths": 227,
     "recovered": 0,
-    "new": 38,
-    "newDeaths": 1
+    "new": 44,
+    "newDeaths": 2
   },
   "Northampton": {
-    "dateStr": "3/11/21",
-    "cases": 728,
+    "dateStr": "3/13/21",
+    "cases": 729,
     "deaths": 35,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Northumberland": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 683,
     "deaths": 21,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Norton": {
+    "dateStr": "3/13/21",
+    "cases": 244,
+    "deaths": 6,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Norton": {
-    "dateStr": "3/11/21",
-    "cases": 242,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
   "Nottoway": {
-    "dateStr": "3/11/21",
-    "cases": 1828,
+    "dateStr": "3/13/21",
+    "cases": 1831,
     "deaths": 41,
     "recovered": 0,
-    "new": 0,
+    "new": 3,
     "newDeaths": 0
   },
   "Orange": {
-    "dateStr": "3/11/21",
-    "cases": 1897,
+    "dateStr": "3/13/21",
+    "cases": 1910,
     "deaths": 34,
     "recovered": 0,
-    "new": 1,
+    "new": 8,
     "newDeaths": 0
   },
   "Out of VA": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -736,263 +736,263 @@
     "newDeaths": 0
   },
   "Page": {
-    "dateStr": "3/11/21",
-    "cases": 1848,
+    "dateStr": "3/13/21",
+    "cases": 1856,
     "deaths": 55,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 2
-  },
-  "Patrick": {
-    "dateStr": "3/11/21",
-    "cases": 1249,
-    "deaths": 39,
-    "recovered": 0,
-    "new": 14,
-    "newDeaths": 0
-  },
-  "Petersburg": {
-    "dateStr": "3/11/21",
-    "cases": 3315,
-    "deaths": 72,
-    "recovered": 0,
-    "new": 24,
-    "newDeaths": 1
-  },
-  "Pittsylvania": {
-    "dateStr": "3/11/21",
-    "cases": 4795,
-    "deaths": 71,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Poquoson": {
-    "dateStr": "3/11/21",
-    "cases": 739,
-    "deaths": 16,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 1
-  },
-  "Portsmouth": {
-    "dateStr": "3/11/21",
-    "cases": 7917,
-    "deaths": 153,
-    "recovered": 0,
-    "new": 21,
-    "newDeaths": 2
-  },
-  "Powhatan": {
-    "dateStr": "3/11/21",
-    "cases": 1688,
-    "deaths": 10,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Prince Edward": {
-    "dateStr": "3/11/21",
-    "cases": 1981,
-    "deaths": 31,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Prince George": {
-    "dateStr": "3/11/21",
-    "cases": 3071,
-    "deaths": 19,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Prince William": {
-    "dateStr": "3/11/21",
-    "cases": 40172,
-    "deaths": 459,
-    "recovered": 0,
-    "new": 57,
-    "newDeaths": 0
-  },
-  "Pulaski": {
-    "dateStr": "3/11/21",
-    "cases": 2351,
-    "deaths": 59,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Radford": {
-    "dateStr": "3/11/21",
-    "cases": 1919,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Rappahannock": {
-    "dateStr": "3/11/21",
-    "cases": 311,
-    "deaths": 3,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Richmond": {
-    "dateStr": "3/11/21",
-    "cases": 1399,
+  "Patrick": {
+    "dateStr": "3/13/21",
+    "cases": 1260,
+    "deaths": 40,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Petersburg": {
+    "dateStr": "3/13/21",
+    "cases": 3335,
+    "deaths": 72,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Pittsylvania": {
+    "dateStr": "3/13/21",
+    "cases": 4995,
+    "deaths": 73,
+    "recovered": 0,
+    "new": 91,
+    "newDeaths": 2
+  },
+  "Poquoson": {
+    "dateStr": "3/13/21",
+    "cases": 745,
+    "deaths": 16,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Portsmouth": {
+    "dateStr": "3/13/21",
+    "cases": 7972,
+    "deaths": 157,
+    "recovered": 0,
+    "new": 26,
+    "newDeaths": 3
+  },
+  "Powhatan": {
+    "dateStr": "3/13/21",
+    "cases": 1703,
     "deaths": 10,
     "recovered": 0,
-    "new": 5,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Prince Edward": {
+    "dateStr": "3/13/21",
+    "cases": 1984,
+    "deaths": 33,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Prince George": {
+    "dateStr": "3/13/21",
+    "cases": 3087,
+    "deaths": 21,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Prince William": {
+    "dateStr": "3/13/21",
+    "cases": 40338,
+    "deaths": 466,
+    "recovered": 0,
+    "new": 74,
+    "newDeaths": 1
+  },
+  "Pulaski": {
+    "dateStr": "3/13/21",
+    "cases": 2366,
+    "deaths": 59,
+    "recovered": 0,
+    "new": 6,
+    "newDeaths": 0
+  },
+  "Radford": {
+    "dateStr": "3/13/21",
+    "cases": 1925,
+    "deaths": 18,
+    "recovered": 0,
+    "new": 4,
+    "newDeaths": 1
+  },
+  "Rappahannock": {
+    "dateStr": "3/13/21",
+    "cases": 311,
+    "deaths": 3,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Richmond": {
+    "dateStr": "3/13/21",
+    "cases": 1413,
+    "deaths": 11,
+    "recovered": 0,
+    "new": 0,
     "newDeaths": 0
   },
   "Richmond City": {
-    "dateStr": "3/11/21",
-    "cases": 15126,
-    "deaths": 224,
+    "dateStr": "3/13/21",
+    "cases": 15165,
+    "deaths": 225,
     "recovered": 0,
-    "new": 16,
-    "newDeaths": 4
+    "new": 19,
+    "newDeaths": 0
   },
   "Roanoke": {
-    "dateStr": "3/11/21",
-    "cases": 7490,
+    "dateStr": "3/13/21",
+    "cases": 7513,
     "deaths": 135,
     "recovered": 0,
-    "new": 7,
+    "new": 6,
     "newDeaths": 0
   },
   "Roanoke City": {
-    "dateStr": "3/11/21",
-    "cases": 7712,
-    "deaths": 176,
+    "dateStr": "3/13/21",
+    "cases": 7748,
+    "deaths": 177,
     "recovered": 0,
-    "new": 15,
-    "newDeaths": 3
+    "new": 12,
+    "newDeaths": 1
   },
   "Rockbridge": {
-    "dateStr": "3/11/21",
-    "cases": 1382,
+    "dateStr": "3/13/21",
+    "cases": 1410,
     "deaths": 44,
     "recovered": 0,
-    "new": 27,
+    "new": 18,
     "newDeaths": 0
   },
   "Rockingham": {
-    "dateStr": "3/11/21",
-    "cases": 6150,
-    "deaths": 101,
+    "dateStr": "3/13/21",
+    "cases": 6160,
+    "deaths": 102,
     "recovered": 0,
-    "new": 9,
+    "new": 6,
     "newDeaths": 0
   },
   "Russell": {
-    "dateStr": "3/11/21",
-    "cases": 2067,
+    "dateStr": "3/13/21",
+    "cases": 2076,
     "deaths": 35,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
   },
   "Salem": {
-    "dateStr": "3/11/21",
-    "cases": 1899,
+    "dateStr": "3/13/21",
+    "cases": 1912,
     "deaths": 43,
     "recovered": 0,
-    "new": 9,
+    "new": 4,
     "newDeaths": 0
   },
   "Scott": {
-    "dateStr": "3/11/21",
-    "cases": 1613,
+    "dateStr": "3/13/21",
+    "cases": 1625,
     "deaths": 50,
     "recovered": 0,
-    "new": 1,
+    "new": 5,
     "newDeaths": 0
   },
   "Shenandoah": {
-    "dateStr": "3/11/21",
-    "cases": 3779,
+    "dateStr": "3/13/21",
+    "cases": 3794,
     "deaths": 126,
     "recovered": 0,
     "new": 8,
     "newDeaths": 0
   },
   "Smyth": {
-    "dateStr": "3/11/21",
-    "cases": 2540,
+    "dateStr": "3/13/21",
+    "cases": 2548,
     "deaths": 89,
     "recovered": 0,
-    "new": 4,
+    "new": 5,
     "newDeaths": 0
   },
   "Southampton": {
-    "dateStr": "3/11/21",
-    "cases": 1867,
+    "dateStr": "3/13/21",
+    "cases": 1873,
     "deaths": 53,
     "recovered": 0,
-    "new": 2,
+    "new": 3,
     "newDeaths": 0
   },
   "Spotsylvania": {
-    "dateStr": "3/11/21",
-    "cases": 8519,
-    "deaths": 104,
+    "dateStr": "3/13/21",
+    "cases": 8548,
+    "deaths": 106,
     "recovered": 0,
-    "new": 17,
-    "newDeaths": 1
+    "new": 8,
+    "newDeaths": 2
   },
   "Stafford": {
-    "dateStr": "3/11/21",
-    "cases": 9754,
+    "dateStr": "3/13/21",
+    "cases": 9802,
     "deaths": 69,
     "recovered": 0,
-    "new": 18,
+    "new": 24,
     "newDeaths": 0
   },
   "Staunton": {
-    "dateStr": "3/11/21",
-    "cases": 2488,
-    "deaths": 68,
+    "dateStr": "3/13/21",
+    "cases": 2489,
+    "deaths": 69,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Suffolk": {
-    "dateStr": "3/11/21",
-    "cases": 7067,
-    "deaths": 171,
+    "dateStr": "3/13/21",
+    "cases": 7099,
+    "deaths": 173,
     "recovered": 0,
-    "new": 14,
+    "new": 17,
     "newDeaths": 0
   },
   "Surry": {
-    "dateStr": "3/11/21",
-    "cases": 385,
+    "dateStr": "3/13/21",
+    "cases": 389,
     "deaths": 8,
     "recovered": 0,
-    "new": 0,
+    "new": 4,
     "newDeaths": 0
   },
   "Sussex": {
-    "dateStr": "3/11/21",
-    "cases": 1099,
+    "dateStr": "3/13/21",
+    "cases": 1104,
     "deaths": 20,
     "recovered": 0,
-    "new": 5,
+    "new": 2,
     "newDeaths": 0
   },
   "Tazewell": {
-    "dateStr": "3/11/21",
-    "cases": 3269,
+    "dateStr": "3/13/21",
+    "cases": 3290,
     "deaths": 62,
     "recovered": 0,
-    "new": 7,
+    "new": 8,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 3,
     "deaths": 140,
     "recovered": 0,
@@ -1000,47 +1000,47 @@
     "newDeaths": 0
   },
   "Virginia Beach": {
-    "dateStr": "3/11/21",
-    "cases": 31505,
-    "deaths": 347,
+    "dateStr": "3/13/21",
+    "cases": 31725,
+    "deaths": 349,
     "recovered": 0,
-    "new": 82,
-    "newDeaths": 4
+    "new": 95,
+    "newDeaths": 1
   },
   "Warren": {
-    "dateStr": "3/11/21",
-    "cases": 2358,
+    "dateStr": "3/13/21",
+    "cases": 2373,
     "deaths": 49,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Washington": {
+    "dateStr": "3/13/21",
+    "cases": 4357,
+    "deaths": 102,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 1
+  },
+  "Waynesboro": {
+    "dateStr": "3/13/21",
+    "cases": 2184,
+    "deaths": 34,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
   },
-  "Washington": {
-    "dateStr": "3/11/21",
-    "cases": 4350,
-    "deaths": 101,
-    "recovered": 0,
-    "new": 20,
-    "newDeaths": 0
-  },
-  "Waynesboro": {
-    "dateStr": "3/11/21",
-    "cases": 2175,
-    "deaths": 34,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
   "Westmoreland": {
-    "dateStr": "3/11/21",
-    "cases": 1129,
+    "dateStr": "3/13/21",
+    "cases": 1135,
     "deaths": 22,
     "recovered": 0,
     "new": 1,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   "Williamsburg": {
-    "dateStr": "3/11/21",
+    "dateStr": "3/13/21",
     "cases": 548,
     "deaths": 12,
     "recovered": 0,
@@ -1048,35 +1048,35 @@
     "newDeaths": 0
   },
   "Winchester": {
-    "dateStr": "3/11/21",
-    "cases": 2504,
+    "dateStr": "3/13/21",
+    "cases": 2517,
     "deaths": 41,
     "recovered": 0,
-    "new": 12,
+    "new": 2,
     "newDeaths": 0
   },
   "Wise": {
-    "dateStr": "3/11/21",
-    "cases": 2922,
+    "dateStr": "3/13/21",
+    "cases": 2925,
     "deaths": 93,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Wythe": {
-    "dateStr": "3/11/21",
-    "cases": 2111,
+    "dateStr": "3/13/21",
+    "cases": 2118,
     "deaths": 71,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "York": {
-    "dateStr": "3/11/21",
-    "cases": 3163,
+    "dateStr": "3/13/21",
+    "cases": 3200,
     "deaths": 44,
     "recovered": 0,
-    "new": 11,
-    "newDeaths": 1
+    "new": 20,
+    "newDeaths": 0
   }
 }
