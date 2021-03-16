@@ -3290,15 +3290,15 @@
   {
     "dateStr": "3/8/21",
     "cases": 1613,
-    "deaths": 34,
+    "deaths": 35,
     "recovered": 0,
     "new": 2,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   {
     "dateStr": "3/9/21",
     "cases": 1619,
-    "deaths": 34,
+    "deaths": 35,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
@@ -3306,7 +3306,7 @@
   {
     "dateStr": "3/10/21",
     "cases": 1625,
-    "deaths": 34,
+    "deaths": 35,
     "recovered": 0,
     "new": 6,
     "newDeaths": 0
@@ -3314,7 +3314,7 @@
   {
     "dateStr": "3/11/21",
     "cases": 1625,
-    "deaths": 34,
+    "deaths": 35,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
@@ -3325,7 +3325,7 @@
     "deaths": 35,
     "recovered": 0,
     "new": 3,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   {
     "dateStr": "3/13/21",
@@ -3333,6 +3333,22 @@
     "deaths": 35,
     "recovered": 0,
     "new": 4,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "3/14/21",
+    "cases": 1632,
+    "deaths": 35,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "3/15/21",
+    "cases": 1634,
+    "deaths": 35,
+    "recovered": 0,
+    "new": 2,
     "newDeaths": 0
   }
 ]
