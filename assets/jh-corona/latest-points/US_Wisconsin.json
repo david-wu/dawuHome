@@ -1,78 +1,78 @@
 {
   "Adams": {
-    "dateStr": "3/13/21",
-    "cases": 1767,
+    "dateStr": "3/15/21",
+    "cases": 1769,
     "deaths": 15,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Ashland": {
-    "dateStr": "3/13/21",
-    "cases": 1255,
+    "dateStr": "3/15/21",
+    "cases": 1257,
     "deaths": 16,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
   "Barron": {
-    "dateStr": "3/13/21",
-    "cases": 5616,
+    "dateStr": "3/15/21",
+    "cases": 5629,
     "deaths": 76,
     "recovered": 0,
-    "new": 5,
+    "new": 3,
     "newDeaths": 0
   },
   "Bayfield": {
-    "dateStr": "3/13/21",
-    "cases": 1147,
+    "dateStr": "3/15/21",
+    "cases": 1148,
     "deaths": 19,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Brown": {
-    "dateStr": "3/13/21",
-    "cases": 33166,
+    "dateStr": "3/15/21",
+    "cases": 33194,
     "deaths": 260,
     "recovered": 0,
-    "new": 40,
-    "newDeaths": 2
+    "new": 16,
+    "newDeaths": 0
   },
   "Buffalo": {
-    "dateStr": "3/13/21",
-    "cases": 1355,
+    "dateStr": "3/15/21",
+    "cases": 1356,
     "deaths": 7,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Burnett": {
-    "dateStr": "3/13/21",
-    "cases": 1357,
+    "dateStr": "3/15/21",
+    "cases": 1360,
     "deaths": 23,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Calumet": {
-    "dateStr": "3/13/21",
-    "cases": 6094,
+    "dateStr": "3/15/21",
+    "cases": 6098,
     "deaths": 47,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Chippewa": {
+    "dateStr": "3/15/21",
+    "cases": 7303,
+    "deaths": 95,
     "recovered": 0,
     "new": 4,
     "newDeaths": 0
   },
-  "Chippewa": {
-    "dateStr": "3/13/21",
-    "cases": 7296,
-    "deaths": 95,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
   "Clark": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 3553,
     "deaths": 63,
     "recovered": 0,
@@ -80,127 +80,127 @@
     "newDeaths": 0
   },
   "Columbia": {
-    "dateStr": "3/13/21",
-    "cases": 5478,
+    "dateStr": "3/15/21",
+    "cases": 5483,
     "deaths": 66,
-    "recovered": 0,
-    "new": 5,
-    "newDeaths": 0
-  },
-  "Crawford": {
-    "dateStr": "3/13/21",
-    "cases": 1721,
-    "deaths": 17,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Dane": {
-    "dateStr": "3/13/21",
-    "cases": 42784,
-    "deaths": 303,
-    "recovered": 0,
-    "new": 33,
-    "newDeaths": 0
-  },
-  "Dodge": {
-    "dateStr": "3/13/21",
-    "cases": 12291,
-    "deaths": 181,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Door": {
-    "dateStr": "3/13/21",
-    "cases": 2642,
-    "deaths": 25,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
-  "Douglas": {
-    "dateStr": "3/13/21",
-    "cases": 4285,
-    "deaths": 44,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Dunn": {
-    "dateStr": "3/13/21",
-    "cases": 4646,
-    "deaths": 30,
+  "Crawford": {
+    "dateStr": "3/15/21",
+    "cases": 1721,
+    "deaths": 17,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Dane": {
+    "dateStr": "3/15/21",
+    "cases": 42840,
+    "deaths": 303,
+    "recovered": 0,
+    "new": 22,
+    "newDeaths": 0
+  },
+  "Dodge": {
+    "dateStr": "3/15/21",
+    "cases": 12298,
+    "deaths": 182,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 1
+  },
+  "Door": {
+    "dateStr": "3/15/21",
+    "cases": 2643,
+    "deaths": 25,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Douglas": {
+    "dateStr": "3/15/21",
+    "cases": 4291,
+    "deaths": 44,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Dunn": {
+    "dateStr": "3/15/21",
+    "cases": 4650,
+    "deaths": 30,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
   "Eau Claire": {
-    "dateStr": "3/13/21",
-    "cases": 11433,
+    "dateStr": "3/15/21",
+    "cases": 11443,
     "deaths": 117,
     "recovered": 0,
-    "new": 1,
+    "new": 4,
     "newDeaths": 0
   },
   "Florence": {
-    "dateStr": "3/13/21",
-    "cases": 471,
+    "dateStr": "3/15/21",
+    "cases": 472,
     "deaths": 12,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Fond du Lac": {
+    "dateStr": "3/15/21",
+    "cases": 13161,
+    "deaths": 106,
     "recovered": 0,
     "new": 2,
     "newDeaths": 0
   },
-  "Fond du Lac": {
-    "dateStr": "3/13/21",
-    "cases": 13159,
-    "deaths": 106,
-    "recovered": 0,
-    "new": 13,
-    "newDeaths": 0
-  },
   "Forest": {
-    "dateStr": "3/13/21",
-    "cases": 1000,
+    "dateStr": "3/15/21",
+    "cases": 1002,
     "deaths": 26,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Grant": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 5391,
     "deaths": 87,
     "recovered": 0,
-    "new": 7,
+    "new": 0,
     "newDeaths": 0
   },
   "Green": {
-    "dateStr": "3/13/21",
-    "cases": 3351,
+    "dateStr": "3/15/21",
+    "cases": 3356,
     "deaths": 23,
     "recovered": 0,
-    "new": 8,
+    "new": 1,
     "newDeaths": 0
   },
   "Green Lake": {
-    "dateStr": "3/13/21",
-    "cases": 1954,
+    "dateStr": "3/15/21",
+    "cases": 1955,
     "deaths": 21,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
   "Iowa": {
-    "dateStr": "3/13/21",
-    "cases": 2001,
+    "dateStr": "3/15/21",
+    "cases": 2010,
     "deaths": 11,
     "recovered": 0,
-    "new": 5,
+    "new": 9,
     "newDeaths": 0
   },
   "Iron": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 676,
     "deaths": 40,
     "recovered": 0,
@@ -208,111 +208,111 @@
     "newDeaths": 0
   },
   "Jackson": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 2629,
     "deaths": 28,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Jefferson": {
-    "dateStr": "3/13/21",
-    "cases": 8932,
-    "deaths": 127,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Juneau": {
-    "dateStr": "3/13/21",
-    "cases": 3118,
-    "deaths": 20,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Kenosha": {
-    "dateStr": "3/13/21",
-    "cases": 17187,
-    "deaths": 317,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "Kewaunee": {
-    "dateStr": "3/13/21",
-    "cases": 2599,
-    "deaths": 30,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "La Crosse": {
-    "dateStr": "3/13/21",
-    "cases": 13034,
-    "deaths": 80,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Lafayette": {
-    "dateStr": "3/13/21",
-    "cases": 1634,
-    "deaths": 8,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Langlade": {
-    "dateStr": "3/13/21",
-    "cases": 2099,
-    "deaths": 44,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Lincoln": {
-    "dateStr": "3/13/21",
-    "cases": 3117,
-    "deaths": 76,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Jefferson": {
+    "dateStr": "3/15/21",
+    "cases": 8940,
+    "deaths": 127,
+    "recovered": 0,
+    "new": 8,
+    "newDeaths": 0
+  },
+  "Juneau": {
+    "dateStr": "3/15/21",
+    "cases": 3125,
+    "deaths": 20,
+    "recovered": 0,
+    "new": 5,
+    "newDeaths": 0
+  },
+  "Kenosha": {
+    "dateStr": "3/15/21",
+    "cases": 17206,
+    "deaths": 318,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Kewaunee": {
+    "dateStr": "3/15/21",
+    "cases": 2599,
+    "deaths": 30,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "La Crosse": {
+    "dateStr": "3/15/21",
+    "cases": 13047,
+    "deaths": 80,
+    "recovered": 0,
+    "new": 3,
+    "newDeaths": 0
+  },
+  "Lafayette": {
+    "dateStr": "3/15/21",
+    "cases": 1635,
+    "deaths": 8,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Langlade": {
+    "dateStr": "3/15/21",
+    "cases": 2100,
+    "deaths": 44,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
+  "Lincoln": {
+    "dateStr": "3/15/21",
+    "cases": 3121,
+    "deaths": 76,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Manitowoc": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 8439,
     "deaths": 83,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Marathon": {
-    "dateStr": "3/13/21",
-    "cases": 15174,
+    "dateStr": "3/15/21",
+    "cases": 15192,
     "deaths": 217,
     "recovered": 0,
-    "new": 9,
-    "newDeaths": 1
+    "new": 7,
+    "newDeaths": 0
   },
   "Marinette": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 4385,
     "deaths": 67,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 1
+    "newDeaths": 0
   },
   "Marquette": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 1502,
     "deaths": 27,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Menominee": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 797,
     "deaths": 11,
     "recovered": 0,
@@ -320,39 +320,39 @@
     "newDeaths": 0
   },
   "Milwaukee": {
-    "dateStr": "3/13/21",
-    "cases": 108144,
+    "dateStr": "3/15/21",
+    "cases": 108272,
     "deaths": 1292,
     "recovered": 0,
-    "new": 53,
-    "newDeaths": 1
+    "new": 54,
+    "newDeaths": 0
   },
   "Monroe": {
-    "dateStr": "3/13/21",
-    "cases": 4446,
+    "dateStr": "3/15/21",
+    "cases": 4447,
     "deaths": 35,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Oconto": {
-    "dateStr": "3/13/21",
-    "cases": 4756,
+    "dateStr": "3/15/21",
+    "cases": 4758,
     "deaths": 55,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Oneida": {
-    "dateStr": "3/13/21",
-    "cases": 3576,
-    "deaths": 73,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
+  "Oneida": {
+    "dateStr": "3/15/21",
+    "cases": 3579,
+    "deaths": 73,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
   "Out of WI": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -360,55 +360,55 @@
     "newDeaths": 0
   },
   "Outagamie": {
-    "dateStr": "3/13/21",
-    "cases": 22040,
+    "dateStr": "3/15/21",
+    "cases": 22090,
     "deaths": 209,
-    "recovered": 0,
-    "new": 21,
-    "newDeaths": 0
-  },
-  "Ozaukee": {
-    "dateStr": "3/13/21",
-    "cases": 8640,
-    "deaths": 86,
     "recovered": 0,
     "new": 13,
     "newDeaths": 0
   },
+  "Ozaukee": {
+    "dateStr": "3/15/21",
+    "cases": 8647,
+    "deaths": 86,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Pepin": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 832,
     "deaths": 7,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Pierce": {
-    "dateStr": "3/13/21",
-    "cases": 4429,
+    "dateStr": "3/15/21",
+    "cases": 4438,
     "deaths": 39,
     "recovered": 0,
-    "new": 15,
+    "new": 5,
     "newDeaths": 0
   },
   "Polk": {
-    "dateStr": "3/13/21",
-    "cases": 4068,
+    "dateStr": "3/15/21",
+    "cases": 4073,
     "deaths": 48,
     "recovered": 0,
-    "new": 2,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Portage": {
-    "dateStr": "3/13/21",
-    "cases": 7048,
+    "dateStr": "3/15/21",
+    "cases": 7050,
     "deaths": 67,
     "recovered": 0,
-    "new": 4,
+    "new": 0,
     "newDeaths": 0
   },
   "Price": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 1271,
     "deaths": 7,
     "recovered": 0,
@@ -416,15 +416,15 @@
     "newDeaths": 0
   },
   "Racine": {
-    "dateStr": "3/13/21",
-    "cases": 23162,
+    "dateStr": "3/15/21",
+    "cases": 23183,
     "deaths": 355,
     "recovered": 0,
-    "new": 21,
+    "new": 19,
     "newDeaths": 0
   },
   "Richland": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 1330,
     "deaths": 15,
     "recovered": 0,
@@ -432,79 +432,79 @@
     "newDeaths": 0
   },
   "Rock": {
-    "dateStr": "3/13/21",
-    "cases": 16107,
+    "dateStr": "3/15/21",
+    "cases": 16111,
     "deaths": 176,
     "recovered": 0,
-    "new": 26,
+    "new": 3,
     "newDeaths": 0
   },
   "Rusk": {
-    "dateStr": "3/13/21",
-    "cases": 1312,
+    "dateStr": "3/15/21",
+    "cases": 1314,
     "deaths": 17,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
   "Sauk": {
-    "dateStr": "3/13/21",
-    "cases": 5615,
+    "dateStr": "3/15/21",
+    "cases": 5634,
     "deaths": 49,
     "recovered": 0,
-    "new": 10,
+    "new": 9,
     "newDeaths": 0
   },
   "Sawyer": {
-    "dateStr": "3/13/21",
-    "cases": 1579,
+    "dateStr": "3/15/21",
+    "cases": 1580,
     "deaths": 22,
-    "recovered": 0,
-    "new": 4,
-    "newDeaths": 0
-  },
-  "Shawano": {
-    "dateStr": "3/13/21",
-    "cases": 5133,
-    "deaths": 81,
-    "recovered": 0,
-    "new": 3,
-    "newDeaths": 0
-  },
-  "Sheboygan": {
-    "dateStr": "3/13/21",
-    "cases": 13849,
-    "deaths": 142,
-    "recovered": 0,
-    "new": 26,
-    "newDeaths": 0
-  },
-  "St. Croix": {
-    "dateStr": "3/13/21",
-    "cases": 8161,
-    "deaths": 54,
-    "recovered": 0,
-    "new": 40,
-    "newDeaths": 6
-  },
-  "Taylor": {
-    "dateStr": "3/13/21",
-    "cases": 2027,
-    "deaths": 30,
-    "recovered": 0,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Trempealeau": {
-    "dateStr": "3/13/21",
-    "cases": 3510,
-    "deaths": 40,
     "recovered": 0,
     "new": 1,
     "newDeaths": 0
   },
+  "Shawano": {
+    "dateStr": "3/15/21",
+    "cases": 5133,
+    "deaths": 81,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Sheboygan": {
+    "dateStr": "3/15/21",
+    "cases": 13858,
+    "deaths": 142,
+    "recovered": 0,
+    "new": 9,
+    "newDeaths": 0
+  },
+  "St. Croix": {
+    "dateStr": "3/15/21",
+    "cases": 8184,
+    "deaths": 54,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 0
+  },
+  "Taylor": {
+    "dateStr": "3/15/21",
+    "cases": 2028,
+    "deaths": 30,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Trempealeau": {
+    "dateStr": "3/15/21",
+    "cases": 3510,
+    "deaths": 40,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
   "Unassigned": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 61,
     "deaths": 0,
     "recovered": 0,
@@ -512,63 +512,63 @@
     "newDeaths": 0
   },
   "Vernon": {
-    "dateStr": "3/13/21",
-    "cases": 1917,
+    "dateStr": "3/15/21",
+    "cases": 1918,
     "deaths": 41,
     "recovered": 0,
-    "new": 1,
+    "new": 0,
     "newDeaths": 0
   },
   "Vilas": {
-    "dateStr": "3/13/21",
-    "cases": 2301,
+    "dateStr": "3/15/21",
+    "cases": 2305,
     "deaths": 40,
     "recovered": 0,
-    "new": 3,
+    "new": 2,
     "newDeaths": 0
   },
   "Walworth": {
-    "dateStr": "3/13/21",
-    "cases": 11364,
+    "dateStr": "3/15/21",
+    "cases": 11365,
     "deaths": 151,
     "recovered": 0,
-    "new": 8,
+    "new": 0,
     "newDeaths": 0
   },
   "Washburn": {
-    "dateStr": "3/13/21",
-    "cases": 1389,
+    "dateStr": "3/15/21",
+    "cases": 1393,
     "deaths": 20,
     "recovered": 0,
     "new": 3,
     "newDeaths": 0
   },
   "Washington": {
-    "dateStr": "3/13/21",
-    "cases": 15714,
+    "dateStr": "3/15/21",
+    "cases": 15721,
     "deaths": 147,
     "recovered": 0,
-    "new": 13,
+    "new": 2,
     "newDeaths": 0
   },
   "Waukesha": {
-    "dateStr": "3/13/21",
-    "cases": 45442,
+    "dateStr": "3/15/21",
+    "cases": 45501,
     "deaths": 535,
     "recovered": 0,
-    "new": 57,
-    "newDeaths": 1
+    "new": 45,
+    "newDeaths": 0
   },
   "Waupaca": {
-    "dateStr": "3/13/21",
-    "cases": 5751,
+    "dateStr": "3/15/21",
+    "cases": 5753,
     "deaths": 157,
     "recovered": 0,
-    "new": 5,
-    "newDeaths": 1
+    "new": 0,
+    "newDeaths": 0
   },
   "Waushara": {
-    "dateStr": "3/13/21",
+    "dateStr": "3/15/21",
     "cases": 2416,
     "deaths": 35,
     "recovered": 0,
@@ -576,19 +576,19 @@
     "newDeaths": 0
   },
   "Winnebago": {
-    "dateStr": "3/13/21",
-    "cases": 20007,
+    "dateStr": "3/15/21",
+    "cases": 20038,
     "deaths": 205,
     "recovered": 0,
-    "new": 11,
+    "new": 31,
     "newDeaths": 0
   },
   "Wood": {
-    "dateStr": "3/13/21",
-    "cases": 7180,
+    "dateStr": "3/15/21",
+    "cases": 7187,
     "deaths": 89,
     "recovered": 0,
-    "new": 1,
+    "new": 3,
     "newDeaths": 0
   }
 }
