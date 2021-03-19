@@ -1,6 +1,6 @@
 {
   "French Guiana": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 16764,
     "deaths": 87,
     "recovered": 9995,
@@ -8,15 +8,15 @@
     "newDeaths": 0
   },
   "French Polynesia": {
-    "dateStr": "3/16/21",
-    "cases": 18561,
+    "dateStr": "3/17/21",
+    "cases": 18566,
     "deaths": 141,
     "recovered": 4842,
-    "new": 15,
+    "new": 5,
     "newDeaths": 0
   },
   "Guadeloupe": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 10725,
     "deaths": 168,
     "recovered": 2242,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Martinique": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 7037,
     "deaths": 47,
     "recovered": 98,
@@ -32,7 +32,7 @@
     "newDeaths": 0
   },
   "Mayotte": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 18845,
     "deaths": 137,
     "recovered": 2964,
@@ -40,23 +40,23 @@
     "newDeaths": 0
   },
   "New Caledonia": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 95,
     "deaths": 0,
     "recovered": 58,
-    "new": 2,
-    "newDeaths": 0
-  },
-  "Reunion": {
-    "dateStr": "3/16/21",
-    "cases": 13801,
-    "deaths": 71,
-    "recovered": 12389,
     "new": 0,
     "newDeaths": 0
   },
+  "Reunion": {
+    "dateStr": "3/17/21",
+    "cases": 14631,
+    "deaths": 87,
+    "recovered": 12389,
+    "new": 830,
+    "newDeaths": 16
+  },
   "Saint Barthelemy": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 712,
     "deaths": 1,
     "recovered": 462,
@@ -64,7 +64,7 @@
     "newDeaths": 0
   },
   "Saint Pierre and Miquelon": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 24,
     "deaths": 0,
     "recovered": 24,
@@ -72,7 +72,7 @@
     "newDeaths": 0
   },
   "St Martin": {
-    "dateStr": "3/16/21",
+    "dateStr": "3/17/21",
     "cases": 1602,
     "deaths": 12,
     "recovered": 1399,
@@ -80,11 +80,11 @@
     "newDeaths": 0
   },
   "Wallis and Futuna": {
-    "dateStr": "3/16/21",
-    "cases": 233,
+    "dateStr": "3/17/21",
+    "cases": 261,
     "deaths": 0,
     "recovered": 7,
-    "new": 47,
+    "new": 28,
     "newDeaths": 0
   }
 }

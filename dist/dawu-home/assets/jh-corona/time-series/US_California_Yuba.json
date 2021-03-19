@@ -3353,10 +3353,18 @@
   },
   {
     "dateStr": "3/16/21",
-    "cases": 5874,
+    "cases": 5888,
     "deaths": 42,
     "recovered": 0,
-    "new": 0,
+    "new": 14,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "3/17/21",
+    "cases": 5892,
+    "deaths": 42,
+    "recovered": 0,
+    "new": 4,
     "newDeaths": 0
   }
 ]
