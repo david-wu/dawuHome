@@ -1,22 +1,22 @@
 {
   "Alameda": {
-    "dateStr": "3/17/21",
-    "cases": 82258,
-    "deaths": 1358,
+    "dateStr": "3/18/21",
+    "cases": 82368,
+    "deaths": 1366,
     "recovered": 0,
-    "new": 90,
-    "newDeaths": 28
+    "new": 110,
+    "newDeaths": 8
   },
   "Alpine": {
-    "dateStr": "3/17/21",
-    "cases": 85,
+    "dateStr": "3/18/21",
+    "cases": 86,
     "deaths": 0,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Amador": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 3506,
     "deaths": 44,
     "recovered": 0,
@@ -24,7 +24,7 @@
     "newDeaths": 0
   },
   "Butte": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 11141,
     "deaths": 185,
     "recovered": 0,
@@ -32,103 +32,103 @@
     "newDeaths": 0
   },
   "Calaveras": {
-    "dateStr": "3/17/21",
-    "cases": 1958,
+    "dateStr": "3/18/21",
+    "cases": 1963,
     "deaths": 50,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 0
-  },
-  "Colusa": {
-    "dateStr": "3/17/21",
-    "cases": 2155,
-    "deaths": 14,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
-  },
-  "Contra Costa": {
-    "dateStr": "3/17/21",
-    "cases": 64280,
-    "deaths": 732,
-    "recovered": 0,
-    "new": 77,
-    "newDeaths": 0
-  },
-  "Del Norte": {
-    "dateStr": "3/17/21",
-    "cases": 1078,
-    "deaths": 6,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 0
-  },
-  "El Dorado": {
-    "dateStr": "3/17/21",
-    "cases": 9313,
-    "deaths": 107,
-    "recovered": 0,
-    "new": 8,
-    "newDeaths": 0
-  },
-  "Fresno": {
-    "dateStr": "3/17/21",
-    "cases": 97638,
-    "deaths": 1543,
-    "recovered": 0,
-    "new": 118,
-    "newDeaths": 8
-  },
-  "Glenn": {
-    "dateStr": "3/17/21",
-    "cases": 2261,
-    "deaths": 24,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "Humboldt": {
-    "dateStr": "3/17/21",
-    "cases": 3392,
-    "deaths": 35,
-    "recovered": 0,
-    "new": 9,
-    "newDeaths": 1
-  },
-  "Imperial": {
-    "dateStr": "3/17/21",
-    "cases": 27122,
-    "deaths": 687,
-    "recovered": 0,
-    "new": 0,
-    "newDeaths": 1
-  },
-  "Inyo": {
-    "dateStr": "3/17/21",
-    "cases": 1374,
-    "deaths": 37,
     "recovered": 0,
     "new": 5,
     "newDeaths": 0
   },
+  "Colusa": {
+    "dateStr": "3/18/21",
+    "cases": 2155,
+    "deaths": 15,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 1
+  },
+  "Contra Costa": {
+    "dateStr": "3/18/21",
+    "cases": 64358,
+    "deaths": 732,
+    "recovered": 0,
+    "new": 78,
+    "newDeaths": 0
+  },
+  "Del Norte": {
+    "dateStr": "3/18/21",
+    "cases": 1090,
+    "deaths": 6,
+    "recovered": 0,
+    "new": 12,
+    "newDeaths": 0
+  },
+  "El Dorado": {
+    "dateStr": "3/18/21",
+    "cases": 9326,
+    "deaths": 107,
+    "recovered": 0,
+    "new": 13,
+    "newDeaths": 0
+  },
+  "Fresno": {
+    "dateStr": "3/18/21",
+    "cases": 97727,
+    "deaths": 1546,
+    "recovered": 0,
+    "new": 89,
+    "newDeaths": 3
+  },
+  "Glenn": {
+    "dateStr": "3/18/21",
+    "cases": 2261,
+    "deaths": 24,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 0
+  },
+  "Humboldt": {
+    "dateStr": "3/18/21",
+    "cases": 3406,
+    "deaths": 35,
+    "recovered": 0,
+    "new": 14,
+    "newDeaths": 0
+  },
+  "Imperial": {
+    "dateStr": "3/18/21",
+    "cases": 27122,
+    "deaths": 689,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 2
+  },
+  "Inyo": {
+    "dateStr": "3/18/21",
+    "cases": 1375,
+    "deaths": 37,
+    "recovered": 0,
+    "new": 1,
+    "newDeaths": 0
+  },
   "Kern": {
-    "dateStr": "3/17/21",
-    "cases": 105144,
+    "dateStr": "3/18/21",
+    "cases": 105222,
     "deaths": 1141,
     "recovered": 0,
-    "new": 124,
+    "new": 78,
     "newDeaths": 0
   },
   "Kings": {
-    "dateStr": "3/17/21",
-    "cases": 22424,
-    "deaths": 236,
+    "dateStr": "3/18/21",
+    "cases": 22441,
+    "deaths": 237,
     "recovered": 0,
-    "new": 16,
-    "newDeaths": 0
+    "new": 17,
+    "newDeaths": 1
   },
   "Lake": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 3237,
     "deaths": 43,
     "recovered": 0,
@@ -136,23 +136,23 @@
     "newDeaths": 0
   },
   "Lassen": {
-    "dateStr": "3/17/21",
-    "cases": 5633,
+    "dateStr": "3/18/21",
+    "cases": 5634,
     "deaths": 25,
     "recovered": 0,
-    "new": 0,
+    "new": 1,
     "newDeaths": 0
   },
   "Los Angeles": {
-    "dateStr": "3/17/21",
-    "cases": 1211739,
-    "deaths": 22581,
+    "dateStr": "3/18/21",
+    "cases": 1212648,
+    "deaths": 22666,
     "recovered": 0,
-    "new": 778,
-    "newDeaths": 60
+    "new": 909,
+    "newDeaths": 85
   },
   "Madera": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 15806,
     "deaths": 226,
     "recovered": 0,
@@ -160,87 +160,87 @@
     "newDeaths": 0
   },
   "Marin": {
-    "dateStr": "3/17/21",
-    "cases": 13477,
+    "dateStr": "3/18/21",
+    "cases": 13487,
     "deaths": 232,
     "recovered": 0,
-    "new": 15,
+    "new": 10,
     "newDeaths": 0
   },
   "Mariposa": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 400,
     "deaths": 7,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Mendocino": {
-    "dateStr": "3/17/21",
-    "cases": 3888,
-    "deaths": 46,
-    "recovered": 0,
-    "new": 7,
-    "newDeaths": 1
-  },
-  "Merced": {
-    "dateStr": "3/17/21",
-    "cases": 30027,
-    "deaths": 425,
-    "recovered": 0,
-    "new": 48,
-    "newDeaths": 2
-  },
-  "Modoc": {
-    "dateStr": "3/17/21",
-    "cases": 465,
-    "deaths": 4,
-    "recovered": 0,
-    "new": 1,
-    "newDeaths": 0
-  },
-  "Mono": {
-    "dateStr": "3/17/21",
-    "cases": 1233,
-    "deaths": 4,
     "recovered": 0,
     "new": 0,
     "newDeaths": 0
   },
-  "Monterey": {
-    "dateStr": "3/17/21",
-    "cases": 42643,
-    "deaths": 337,
-    "recovered": 0,
-    "new": 15,
-    "newDeaths": 0
-  },
-  "Napa": {
-    "dateStr": "3/17/21",
-    "cases": 9208,
-    "deaths": 75,
-    "recovered": 0,
-    "new": 12,
-    "newDeaths": 0
-  },
-  "Nevada": {
-    "dateStr": "3/17/21",
-    "cases": 4143,
-    "deaths": 74,
+  "Mendocino": {
+    "dateStr": "3/18/21",
+    "cases": 3895,
+    "deaths": 46,
     "recovered": 0,
     "new": 7,
     "newDeaths": 0
   },
-  "Orange": {
-    "dateStr": "3/17/21",
-    "cases": 264216,
-    "deaths": 4511,
+  "Merced": {
+    "dateStr": "3/18/21",
+    "cases": 30087,
+    "deaths": 428,
     "recovered": 0,
-    "new": 183,
-    "newDeaths": 25
+    "new": 60,
+    "newDeaths": 3
+  },
+  "Modoc": {
+    "dateStr": "3/18/21",
+    "cases": 467,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Mono": {
+    "dateStr": "3/18/21",
+    "cases": 1235,
+    "deaths": 4,
+    "recovered": 0,
+    "new": 2,
+    "newDeaths": 0
+  },
+  "Monterey": {
+    "dateStr": "3/18/21",
+    "cases": 42667,
+    "deaths": 338,
+    "recovered": 0,
+    "new": 24,
+    "newDeaths": 1
+  },
+  "Napa": {
+    "dateStr": "3/18/21",
+    "cases": 9233,
+    "deaths": 75,
+    "recovered": 0,
+    "new": 25,
+    "newDeaths": 0
+  },
+  "Nevada": {
+    "dateStr": "3/18/21",
+    "cases": 4160,
+    "deaths": 74,
+    "recovered": 0,
+    "new": 17,
+    "newDeaths": 0
+  },
+  "Orange": {
+    "dateStr": "3/18/21",
+    "cases": 264335,
+    "deaths": 4522,
+    "recovered": 0,
+    "new": 119,
+    "newDeaths": 11
   },
   "Out of CA": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 0,
     "deaths": 0,
     "recovered": 0,
@@ -248,39 +248,39 @@
     "newDeaths": 0
   },
   "Placer": {
-    "dateStr": "3/17/21",
-    "cases": 20407,
-    "deaths": 239,
+    "dateStr": "3/18/21",
+    "cases": 20460,
+    "deaths": 244,
     "recovered": 0,
-    "new": 13,
-    "newDeaths": 0
+    "new": 53,
+    "newDeaths": 5
   },
   "Plumas": {
-    "dateStr": "3/17/21",
-    "cases": 662,
+    "dateStr": "3/18/21",
+    "cases": 670,
     "deaths": 6,
     "recovered": 0,
-    "new": 0,
+    "new": 8,
     "newDeaths": 0
   },
   "Riverside": {
-    "dateStr": "3/17/21",
-    "cases": 292606,
-    "deaths": 4052,
+    "dateStr": "3/18/21",
+    "cases": 292817,
+    "deaths": 4097,
     "recovered": 0,
-    "new": 203,
-    "newDeaths": 41
+    "new": 211,
+    "newDeaths": 45
   },
   "Sacramento": {
-    "dateStr": "3/17/21",
-    "cases": 95667,
-    "deaths": 1559,
+    "dateStr": "3/18/21",
+    "cases": 95837,
+    "deaths": 1565,
     "recovered": 0,
-    "new": 111,
-    "newDeaths": 8
+    "new": 170,
+    "newDeaths": 6
   },
   "San Benito": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 5831,
     "deaths": 61,
     "recovered": 0,
@@ -288,23 +288,23 @@
     "newDeaths": 0
   },
   "San Bernardino": {
-    "dateStr": "3/17/21",
-    "cases": 289057,
+    "dateStr": "3/18/21",
+    "cases": 289242,
     "deaths": 4004,
     "recovered": 0,
-    "new": 125,
+    "new": 185,
     "newDeaths": 0
   },
   "San Diego": {
-    "dateStr": "3/17/21",
-    "cases": 266317,
-    "deaths": 3470,
+    "dateStr": "3/18/21",
+    "cases": 266756,
+    "deaths": 3478,
     "recovered": 0,
-    "new": 411,
+    "new": 439,
     "newDeaths": 8
   },
   "San Francisco": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 34820,
     "deaths": 456,
     "recovered": 0,
@@ -312,23 +312,23 @@
     "newDeaths": 0
   },
   "San Joaquin": {
-    "dateStr": "3/17/21",
-    "cases": 68301,
-    "deaths": 1213,
+    "dateStr": "3/18/21",
+    "cases": 68551,
+    "deaths": 1216,
     "recovered": 0,
-    "new": 265,
-    "newDeaths": 1
+    "new": 250,
+    "newDeaths": 3
   },
   "San Luis Obispo": {
-    "dateStr": "3/17/21",
-    "cases": 20136,
+    "dateStr": "3/18/21",
+    "cases": 20172,
     "deaths": 253,
     "recovered": 0,
-    "new": 21,
+    "new": 36,
     "newDeaths": 0
   },
   "San Mateo": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 39765,
     "deaths": 536,
     "recovered": 0,
@@ -336,39 +336,39 @@
     "newDeaths": 0
   },
   "Santa Barbara": {
-    "dateStr": "3/17/21",
-    "cases": 32703,
-    "deaths": 431,
+    "dateStr": "3/18/21",
+    "cases": 32755,
+    "deaths": 434,
     "recovered": 0,
-    "new": 34,
-    "newDeaths": 0
+    "new": 52,
+    "newDeaths": 3
   },
   "Santa Clara": {
-    "dateStr": "3/17/21",
-    "cases": 113044,
-    "deaths": 1876,
+    "dateStr": "3/18/21",
+    "cases": 113173,
+    "deaths": 1892,
     "recovered": 0,
-    "new": 135,
-    "newDeaths": 0
+    "new": 129,
+    "newDeaths": 16
   },
   "Santa Cruz": {
-    "dateStr": "3/17/21",
-    "cases": 15137,
+    "dateStr": "3/18/21",
+    "cases": 15169,
     "deaths": 200,
     "recovered": 0,
-    "new": 36,
+    "new": 32,
     "newDeaths": 0
   },
   "Shasta": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 11192,
-    "deaths": 194,
+    "deaths": 195,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 1
   },
   "Sierra": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 101,
     "deaths": 0,
     "recovered": 0,
@@ -376,47 +376,47 @@
     "newDeaths": 0
   },
   "Siskiyou": {
-    "dateStr": "3/17/21",
-    "cases": 1842,
+    "dateStr": "3/18/21",
+    "cases": 1846,
     "deaths": 14,
     "recovered": 0,
-    "new": 5,
+    "new": 4,
     "newDeaths": 0
   },
   "Solano": {
-    "dateStr": "3/17/21",
-    "cases": 30670,
-    "deaths": 178,
+    "dateStr": "3/18/21",
+    "cases": 30710,
+    "deaths": 181,
     "recovered": 0,
-    "new": 46,
-    "newDeaths": 1
+    "new": 40,
+    "newDeaths": 3
   },
   "Sonoma": {
-    "dateStr": "3/17/21",
-    "cases": 28845,
+    "dateStr": "3/18/21",
+    "cases": 28882,
     "deaths": 308,
     "recovered": 0,
-    "new": 25,
+    "new": 37,
     "newDeaths": 0
   },
   "Stanislaus": {
-    "dateStr": "3/17/21",
-    "cases": 57817,
-    "deaths": 976,
+    "dateStr": "3/18/21",
+    "cases": 57904,
+    "deaths": 978,
     "recovered": 0,
-    "new": 130,
+    "new": 87,
     "newDeaths": 2
   },
   "Sutter": {
-    "dateStr": "3/17/21",
-    "cases": 9020,
+    "dateStr": "3/18/21",
+    "cases": 9029,
     "deaths": 102,
     "recovered": 0,
-    "new": 14,
+    "new": 9,
     "newDeaths": 0
   },
   "Tehama": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 5180,
     "deaths": 53,
     "recovered": 0,
@@ -424,31 +424,31 @@
     "newDeaths": 0
   },
   "Trinity": {
-    "dateStr": "3/17/21",
-    "cases": 380,
+    "dateStr": "3/18/21",
+    "cases": 381,
     "deaths": 5,
     "recovered": 0,
-    "new": 2,
+    "new": 1,
     "newDeaths": 0
   },
   "Tulare": {
-    "dateStr": "3/17/21",
-    "cases": 48691,
+    "dateStr": "3/18/21",
+    "cases": 48740,
     "deaths": 800,
     "recovered": 0,
-    "new": 42,
+    "new": 49,
     "newDeaths": 0
   },
   "Tuolumne": {
-    "dateStr": "3/17/21",
-    "cases": 4003,
+    "dateStr": "3/18/21",
+    "cases": 4006,
     "deaths": 59,
     "recovered": 0,
-    "new": 8,
+    "new": 3,
     "newDeaths": 0
   },
   "Unassigned": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 167,
     "deaths": 2,
     "recovered": 0,
@@ -456,27 +456,27 @@
     "newDeaths": 0
   },
   "Ventura": {
-    "dateStr": "3/17/21",
-    "cases": 78968,
-    "deaths": 937,
+    "dateStr": "3/18/21",
+    "cases": 79028,
+    "deaths": 940,
     "recovered": 0,
-    "new": 97,
+    "new": 60,
     "newDeaths": 3
   },
   "Yolo": {
-    "dateStr": "3/17/21",
+    "dateStr": "3/18/21",
     "cases": 13131,
-    "deaths": 190,
+    "deaths": 192,
     "recovered": 0,
     "new": 0,
-    "newDeaths": 0
+    "newDeaths": 2
   },
   "Yuba": {
-    "dateStr": "3/17/21",
-    "cases": 5892,
+    "dateStr": "3/18/21",
+    "cases": 5900,
     "deaths": 42,
     "recovered": 0,
-    "new": 4,
+    "new": 8,
     "newDeaths": 0
   }
 }
