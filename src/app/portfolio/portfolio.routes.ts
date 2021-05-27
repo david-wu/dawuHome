@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: () => import('./photo-app-demo/photo-app-demo.module').then(m => m.PhotoAppDemoModule),
       },
       {
+        path: 'GOBBLER',
+        loadChildren: () => import('./gobbler-demo/gobbler-demo.module').then(m => m.GobblerDemoModule)
+      },
+      {
         path: 'PICTURE_PIPER',
         loadChildren: () => import('./picture-piper-demo/picture-piper-demo.module').then(m => m.PicturePiperDemoModule)
       },

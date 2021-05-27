@@ -12,7 +12,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 // var firebaseui = require('firebaseui');
 import * as firebaseui from 'firebaseui';
-console.log('firebaseui', firebaseui, firebaseui.auth)
 
 @Injectable({
   providedIn: 'root',
