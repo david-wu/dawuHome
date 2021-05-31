@@ -3,9 +3,9 @@ import {
   props,
 } from '@ngrx/store';
 
-class ResourceList {
+class Resource {
 
-  public path: string[];
+  public path: string;
 
 }
 
@@ -24,7 +24,6 @@ export class PicturePiperActions {
     `${PicturePiperActions.CATEGORY} SET_RESOURCE_LIST`,
     props<{ resource: any, list: any[] }>(),
   );
-
 
   public static addVisibleResourceDoc = createAction(
     `${PicturePiperActions.CATEGORY} ADD_VISIBLE_RESOURCE_DOC`,
@@ -51,7 +50,6 @@ export class PicturePiperActions {
     `${PicturePiperActions.CATEGORY} CREATE_RESOURCE_DOC_FAILURE`,
     props<{ resource: any }>(),
   );
-
 
   public static patchResourceDoc = createAction(
     `${PicturePiperActions.CATEGORY} PATCH_RESOURCE_DOC`,

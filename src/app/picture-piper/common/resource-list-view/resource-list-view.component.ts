@@ -12,7 +12,6 @@ import {
   Store,
 } from '@ngrx/store';
 
-
 import { File, FileGroup } from '@file-explorer/index';
 import {
   getResourceLists$,
@@ -80,24 +79,5 @@ export class ResourceListViewComponent {
   public onSelectedResourceIdsChange(ids) {
     this.selectedResourceIdsChange.emit(ids);
   }
-
-
-  // public onResourcesChanges(resources) {
-  //   const files = map(resources, (resource) => {
-  //     return Object.assign(new File(), {
-  //       id: resource.id,
-  //       label: resource.label || resource.id,
-  //     });
-  //   });
-  //   this.fileGroup.setRootChildren(files);
-  // }
-
-  // public onSelectedFileIdsChange(selectedFileIds: Set<string>) {
-  //   if (this.isMultiSelect) {
-  //     this.selectedResourceIdsChange.emit(selectedFileIds);
-  //   }
-  //   const selectedFileId = Array.from(selectedFileIds || [])[0];
-  //   this.selectedResourceIdChange.emit(selectedFileId);
-  // }
 
 }
