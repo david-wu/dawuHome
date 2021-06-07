@@ -6,7 +6,7 @@ import { CodeSnippetModule } from '@common/code-snippet/code-snippet.module';
 import { TooltipModule } from '@common/tooltip/tooltip.module';
 import { GobblerDemoComponent } from '@src/app/portfolio/gobbler-demo/gobbler-demo.component';
 import { GobblerDemoRoutingModule } from '@src/app/portfolio/gobbler-demo/gobbler-demo.routes';
-
+import { GobblerModule } from '@src/app/portfolio/gobbler-demo/gobbler/gobbler.module';
 
 @NgModule({
   imports: [
@@ -14,6 +14,7 @@ import { GobblerDemoRoutingModule } from '@src/app/portfolio/gobbler-demo/gobble
     TooltipModule,
     GobblerDemoRoutingModule,
     CodeSnippetModule,
+    GobblerModule,
   ],
   declarations: [
     GobblerDemoComponent,

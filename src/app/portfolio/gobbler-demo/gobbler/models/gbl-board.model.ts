@@ -1,15 +1,12 @@
-import { cloneDeep } from 'lodash';
+import { cloneDeep, last } from 'lodash';
+import { GblPiece } from './gbl-piece.model';
 
-const emptyPiece = {
-  player: undefined,
-  value: 0,
-};
-
-export class Board {
+export class GblBoard {
   public static initial = [
-    [emptyPiece, emptyPiece, emptyPiece],
-    [emptyPiece, emptyPiece, emptyPiece],
-    [emptyPiece, emptyPiece, emptyPiece],
+    [[], [], [], []],
+    [[], [], [], []],
+    [[], [], [], []],
+    [[], [], [], []],
   ];
   public static winStates = [
     [
@@ -55,49 +52,52 @@ export class Board {
   ];
 
   public static createBlank() {
-    return Object.assign(new Board(), {
-      state: cloneDeep(Board.initial),
+    return Object.assign(new GblBoard(), {
+      state: cloneDeep(GblBoard.initial),
     })
   }
 
   public static createFromState(state) {
-    return Object.assign(new Board(), {
+    return Object.assign(new GblBoard(), {
       state: state,
     })
   }
 
   public static checkBoardState(state) {
-    for(let i = 0; i < Board.winStates.length; i++) {
-      const winState = Board.winStates[i];
-      let cell = state[winState[0][0]][winState[0][1]];
+    for(let i = 0; i < GblBoard.winStates.length; i++) {
+      const winState = GblBoard.winStates[i];
+      const cell = state[winState[0][0]][winState[0][1]];
+      const piece = last(cell)
 
       for(let j = 1; j < winState.length; j++) {
         const nextCell = state[winState[j][0]][winState[j][1]];
-        if (!nextCell.player || (cell.player !== nextCell.player)) {
+        const nextPiece = last(nextCell);
+        if (!nextPiece || (nextPiece.player !== nextCell.player)) {
           break;
         }
         if (j === 2) {
-          return cell.player;
+          return nextPiece.player;
         }
       }
     }
   }
 
-
   public state = [];
 
   public checkBoardState() {
-    for(let i = 0; i < Board.winStates.length; i++) {
-      const winState = Board.winStates[i];
-      let cell = this.state[winState[0][0]][winState[0][1]];
+    for(let i = 0; i < GblBoard.winStates.length; i++) {
+      const winState = GblBoard.winStates[i];
+      const cell = this.state[winState[0][0]][winState[0][1]];
+      const piece = last(cell)
 
       for(let j = 1; j < winState.length; j++) {
         const nextCell = this.state[winState[j][0]][winState[j][1]];
-        if (!nextCell.player || (cell.player !== nextCell.player)) {
+        const nextPiece = last(nextCell);
+        if (!nextPiece || (nextPiece.player !== nextCell.player)) {
           break;
         }
         if (j === 2) {
-          return cell.player;
+          return nextPiece.player;
         }
       }
     }
