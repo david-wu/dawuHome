@@ -14,10 +14,11 @@ export class GblGame {
   }
 
   public resetGame() {
-    this.board = GblBoard.createBlank();
     const pieceValues = [3, 3, 2, 2, 2, 1, 1, 1];
+    this.board = GblBoard.createBlank();
     this.p1Pieces = this.getPlayerPieces('p1', pieceValues);
     this.p2Pieces = this.getPlayerPieces('p2', pieceValues);
+    this.isP1Turn = true;
   }
 
   public makeMove(rowIndex, cellIndex, piece) {
@@ -30,11 +31,13 @@ export class GblGame {
     for(let i = 0; i < this.p1Pieces.length; i++) {
       if (this.p1Pieces[i] === piece) {
         this.p1Pieces = this.p1Pieces.filter((p1Piece) => p1Piece !== piece);
+        return;
       }
     }
     for(let i = 0; i < this.p2Pieces.length; i++) {
       if (this.p2Pieces[i] === piece) {
         this.p2Pieces = this.p2Pieces.filter((p2Piece) => p2Piece !== piece);
+        return;
       }
     }
   }
@@ -99,7 +102,6 @@ export class GblGame {
 
   public getValidMoves(piece: GblPiece) {
     const validMoves = {};
-
     for(let i = 0; i < this.board.state.length; i++) {
       const row = this.board.state[i];
       for(let j = 0; j < row.length; j++) {
@@ -111,7 +113,6 @@ export class GblGame {
         }
       }
     }
-
     return validMoves;
   }
 
