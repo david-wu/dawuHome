@@ -4353,9 +4353,41 @@
   },
   {
     "dateStr": "7/19/21",
-    "cases": 991727,
-    "deaths": 22811,
-    "recovered": 920066,
+    "cases": 993872,
+    "deaths": 22848,
+    "recovered": 921095,
+    "new": 2145,
+    "newDeaths": 37
+  },
+  {
+    "dateStr": "7/20/21",
+    "cases": 996451,
+    "deaths": 22888,
+    "recovered": 922034,
+    "new": 2579,
+    "newDeaths": 40
+  },
+  {
+    "dateStr": "7/21/21",
+    "cases": 998609,
+    "deaths": 22928,
+    "recovered": 922929,
+    "new": 2158,
+    "newDeaths": 40
+  },
+  {
+    "dateStr": "7/22/21",
+    "cases": 1000034,
+    "deaths": 22939,
+    "recovered": 923472,
+    "new": 1425,
+    "newDeaths": 11
+  },
+  {
+    "dateStr": "7/23/21",
+    "cases": 1000034,
+    "deaths": 22939,
+    "recovered": 923472,
     "new": 0,
     "newDeaths": 0
   }
