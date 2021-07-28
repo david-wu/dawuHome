@@ -4385,10 +4385,10 @@
   },
   {
     "dateStr": "7/23/21",
-    "cases": 78269,
+    "cases": 86957,
     "deaths": 370,
-    "recovered": 13421,
-    "new": 0,
+    "recovered": 15536,
+    "new": 8688,
     "newDeaths": 0
   },
   {
@@ -4396,7 +4396,31 @@
     "cases": 94913,
     "deaths": 370,
     "recovered": 17583,
-    "new": 16644,
+    "new": 7956,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "7/25/21",
+    "cases": 101173,
+    "deaths": 370,
+    "recovered": 19342,
+    "new": 6260,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "7/26/21",
+    "cases": 106347,
+    "deaths": 524,
+    "recovered": 21344,
+    "new": 5174,
+    "newDeaths": 154
+  },
+  {
+    "dateStr": "7/27/21",
+    "cases": 117121,
+    "deaths": 524,
+    "recovered": 22946,
+    "new": 10774,
     "newDeaths": 0
   }
 ]
