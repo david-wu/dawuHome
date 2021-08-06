@@ -4377,50 +4377,50 @@
   },
   {
     "dateStr": "7/22/21",
-    "cases": 142359,
-    "deaths": 2566,
+    "cases": 143132,
+    "deaths": 2567,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 773,
+    "newDeaths": 1
   },
   {
     "dateStr": "7/23/21",
-    "cases": 142359,
-    "deaths": 2566,
+    "cases": 143499,
+    "deaths": 2567,
     "recovered": 0,
-    "new": 0,
+    "new": 367,
     "newDeaths": 0
   },
   {
     "dateStr": "7/24/21",
-    "cases": 142359,
-    "deaths": 2566,
+    "cases": 143906,
+    "deaths": 2568,
     "recovered": 0,
-    "new": 0,
-    "newDeaths": 0
+    "new": 407,
+    "newDeaths": 1
   },
   {
     "dateStr": "7/25/21",
-    "cases": 144462,
+    "cases": 144200,
     "deaths": 2568,
     "recovered": 0,
-    "new": 2103,
-    "newDeaths": 2
+    "new": 294,
+    "newDeaths": 0
   },
   {
     "dateStr": "7/26/21",
-    "cases": 144462,
+    "cases": 144321,
     "deaths": 2569,
     "recovered": 0,
-    "new": 0,
+    "new": 121,
     "newDeaths": 1
   },
   {
     "dateStr": "7/27/21",
-    "cases": 144462,
+    "cases": 144413,
     "deaths": 2574,
     "recovered": 0,
-    "new": 0,
+    "new": 92,
     "newDeaths": 5
   },
   {
@@ -4428,7 +4428,7 @@
     "cases": 144829,
     "deaths": 2577,
     "recovered": 0,
-    "new": 367,
+    "new": 416,
     "newDeaths": 3
   },
   {
@@ -4454,5 +4454,45 @@
     "recovered": 0,
     "new": 1314,
     "newDeaths": 2
+  },
+  {
+    "dateStr": "8/1/21",
+    "cases": 147545,
+    "deaths": 2581,
+    "recovered": 0,
+    "new": 744,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "8/2/21",
+    "cases": 147775,
+    "deaths": 2585,
+    "recovered": 0,
+    "new": 230,
+    "newDeaths": 4
+  },
+  {
+    "dateStr": "8/3/21",
+    "cases": 148005,
+    "deaths": 2589,
+    "recovered": 0,
+    "new": 230,
+    "newDeaths": 4
+  },
+  {
+    "dateStr": "8/4/21",
+    "cases": 149148,
+    "deaths": 2594,
+    "recovered": 0,
+    "new": 1143,
+    "newDeaths": 5
+  },
+  {
+    "dateStr": "8/5/21",
+    "cases": 149357,
+    "deaths": 2594,
+    "recovered": 0,
+    "new": 209,
+    "newDeaths": 0
   }
 ]
