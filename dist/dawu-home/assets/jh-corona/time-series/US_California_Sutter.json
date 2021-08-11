@@ -4489,10 +4489,50 @@
   },
   {
     "dateStr": "8/5/21",
-    "cases": 10392,
+    "cases": 10436,
     "deaths": 127,
     "recovered": 0,
-    "new": 49,
+    "new": 93,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/6/21",
+    "cases": 10498,
+    "deaths": 127,
+    "recovered": 0,
+    "new": 62,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/7/21",
+    "cases": 10498,
+    "deaths": 128,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "8/8/21",
+    "cases": 10498,
+    "deaths": 129,
+    "recovered": 0,
+    "new": 0,
+    "newDeaths": 1
+  },
+  {
+    "dateStr": "8/9/21",
+    "cases": 10622,
+    "deaths": 129,
+    "recovered": 0,
+    "new": 124,
+    "newDeaths": 0
+  },
+  {
+    "dateStr": "8/10/21",
+    "cases": 10622,
+    "deaths": 129,
+    "recovered": 0,
+    "new": 0,
     "newDeaths": 0
   }
 ]
